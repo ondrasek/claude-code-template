@@ -77,6 +77,7 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 - `/doc-update` - Update documentation to match code changes
 - `/stacks` - List available technology stacks
 - `/use-python` - Activate Python development guidelines
+- `/create-prompt` - Generate optimized prompts for AI frameworks
 
 ### MCP Tools (Non-Redundant Only)
 - **memory** - Persistent session memory (cross-session state)
@@ -92,7 +93,8 @@ Note: Claude Code has built-in filesystem and web tools - no MCP needed!
 - **Documentation**: Automatic documentation synchronization
 - **Conflict Resolution**: Handles pattern vs principle conflicts
 - **Technology Experts**: Python-expert and more stack-specific agents
-- Total of 17 specialized agents for different aspects of development
+- **Implementation Support**: Prompt-engineer for creating framework-specific prompts
+- Total of 18 specialized agents for different aspects of development
 
 ### Automation Hooks
 - **Pre-read security** - Scans for sensitive data

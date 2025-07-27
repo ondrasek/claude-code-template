@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2025-01-27
+
+### Added
+- New `prompt-engineer` agent for creating optimized AI framework prompts
+- `/create-prompt` command for easy prompt generation
+- Example implementation: patterns-langchain-gpt4.md
+- Support for LangChain, CrewAI, AutoGen prompt optimization
+
+### Changed
+- Updated agent count to 18 total agents
+- Enhanced CLAUDE.md with prompt-engineer usage guidelines
+
 ## [1.2.1] - 2025-01-27
 
 ### Changed

@@ -75,6 +75,7 @@ Claude Code should PROACTIVELY use specialized agents for better results:
 - `docsync`: After any feature addition or API change
 - `hypothesis`: Debugging mysterious behavior
 - `meta`: Noticing code generation opportunities
+- `prompt-engineer`: Implementing agents in LangChain, CrewAI, or other frameworks
 
 ### Agent Collaboration Patterns
 
