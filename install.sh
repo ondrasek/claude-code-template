@@ -66,8 +66,9 @@ alias claude-review='claude /review'
 alias claude-test='claude /test'
 alias claude-security='claude /security'
 
-# Dotfiles update alias
-alias update-dotfiles='cd $(readlink -f ~/.claude/commands | xargs dirname | xargs dirname) && git pull && echo "✅ Dotfiles updated! You may need to restart your shell or run: source ~/.bashrc"'
+# Dotfiles update alias and environment
+export CLAUDE_DOTFILES_DIR="${DOTFILES_DIR}"
+alias update-dotfiles='if [ -n "${CLAUDE_DOTFILES_DIR}" ] && [ -d "${CLAUDE_DOTFILES_DIR}" ]; then cd "${CLAUDE_DOTFILES_DIR}" && git pull && echo "✅ Dotfiles updated!"; else echo "❌ Dotfiles directory not found. You may need to re-run install.sh"; fi'
 
 # Claude Code environment
 export CLAUDE_CONFIG_PATH="${HOME}/.claude/config.json"
@@ -85,8 +86,9 @@ alias claude-review='claude /review'
 alias claude-test='claude /test'
 alias claude-security='claude /security'
 
-# Dotfiles update alias
-alias update-dotfiles='cd $(readlink -f ~/.claude/commands | xargs dirname | xargs dirname) && git pull && echo "✅ Dotfiles updated! You may need to restart your shell or run: source ~/.bashrc"'
+# Dotfiles update alias and environment
+export CLAUDE_DOTFILES_DIR="${DOTFILES_DIR}"
+alias update-dotfiles='if [ -n "${CLAUDE_DOTFILES_DIR}" ] && [ -d "${CLAUDE_DOTFILES_DIR}" ]; then cd "${CLAUDE_DOTFILES_DIR}" && git pull && echo "✅ Dotfiles updated!"; else echo "❌ Dotfiles directory not found. You may need to re-run install.sh"; fi'
 
 # Claude Code environment
 export CLAUDE_CONFIG_PATH="${HOME}/.claude/config.json"
