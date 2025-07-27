@@ -76,6 +76,7 @@ Claude Code should PROACTIVELY use specialized agents for better results:
 - `hypothesis`: Debugging mysterious behavior
 - `meta`: Noticing code generation opportunities
 - `prompt-engineer`: Implementing agents in LangChain, CrewAI, or other frameworks
+- `critic`: User asks "is X a good idea?" or proposes major changes
 
 ### Agent Collaboration Patterns
 

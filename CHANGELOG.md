@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2025-01-27
+
+### Added
+- New `critic` agent to prevent sycophancy and challenge ideas
+- `/discuss` command for critical analysis of proposals
+- PRINCIPLES.md file for documenting observed patterns and principles
+- Documentation philosophy in docsync agent
+
+### Changed
+- docsync agent now strongly prefers updating existing docs over creating new ones
+- patterns and principles agents now maintain PRINCIPLES.md
+- Updated agent count to 19 total agents
+
+### Improved
+- Documentation strategy to avoid file proliferation
+- Critical thinking capabilities with dedicated skeptical agent
+
 ## [1.3.1] - 2025-01-27
 
 ### Changed

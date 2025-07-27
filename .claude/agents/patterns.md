@@ -47,3 +47,10 @@ EXAMPLE: [Code showing the improvement]
 ```
 
 Focus on patterns that have real impact on maintainability and quality.
+
+## Documentation
+Update PRINCIPLES.md with:
+- Newly discovered patterns
+- Pattern evolution over time
+- Anti-patterns to avoid
+- Pattern trade-offs and contexts

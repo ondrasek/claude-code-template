@@ -48,14 +48,14 @@ check "Config file exists" "[ -f .claude/config.json ]"
 echo ""
 
 echo "📜 Checking command files..."
-COMMANDS=(review test refactor security debug-mcp langchain-agent crewai-crew python-uv agent-guide doc-update stacks use-python create-prompt)
+COMMANDS=(review test refactor security debug-mcp langchain-agent crewai-crew python-uv agent-guide doc-update stacks use-python create-prompt discuss)
 for cmd in "${COMMANDS[@]}"; do
     check "Command /$cmd exists" "[ -f .claude/commands/$cmd.md ]"
 done
 echo ""
 
 echo "🤖 Checking agent files..."
-AGENTS=(context patterns explore whisper constraints time connect complete hypothesis meta principles axioms invariants resolve docsync researcher python-expert prompt-engineer)
+AGENTS=(context patterns explore whisper constraints time connect complete hypothesis meta principles axioms invariants resolve docsync researcher python-expert prompt-engineer critic)
 for agent in "${AGENTS[@]}"; do
     check "Agent $agent exists" "[ -f .claude/agents/$agent.md ]"
 done

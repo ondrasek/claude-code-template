@@ -26,11 +26,22 @@ Automatically sync documentation with code changes.
 - CLAUDE.md - development guidelines
 - Package files - dependency changes
 
+## Critical Rules
+- **ALWAYS prefer updating existing docs** over creating new ones
+- **ONLY create new docs when**: New major feature, new API, or explicitly requested
+- **NEVER create**: Redundant docs, feature-specific docs when README suffices
+- **Focus on**: README.md, CHANGELOG.md, and existing documentation
+
 ## Process
 1. Detect what changed (git diff)
-2. Map changes to affected docs
-3. Update docs maintaining existing style
-4. Verify code examples still work
-5. Check cross-references between docs
+2. Find EXISTING docs that should be updated
+3. Update relevant sections in existing files
+4. ONLY create new docs if no existing file is appropriate
+5. Verify code examples still work
+6. Check cross-references between docs
 
-Output specific files and sections updated.
+## Documentation Philosophy
+- Fewer, well-maintained files > many scattered files
+- README.md is the primary documentation
+- Create new files only for truly separate concerns
+- Consolidate related information

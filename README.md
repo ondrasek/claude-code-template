@@ -78,6 +78,7 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 - `/stacks` - List available technology stacks
 - `/use-python` - Activate Python development guidelines
 - `/create-prompt` - Generate optimized prompts for AI frameworks
+- `/discuss` - Get critical analysis of ideas and proposals
 
 ### MCP Tools (Non-Redundant Only)
 - **memory** - Persistent session memory (cross-session state)
@@ -94,7 +95,8 @@ Note: Claude Code has built-in filesystem and web tools - no MCP needed!
 - **Conflict Resolution**: Handles pattern vs principle conflicts
 - **Technology Experts**: Python-expert and more stack-specific agents
 - **Implementation Support**: Prompt-engineer for creating framework-specific prompts
-- Total of 18 specialized agents for different aspects of development
+- **Critical Analysis**: Critic agent to prevent sycophancy and bad decisions
+- Total of 19 specialized agents for different aspects of development
 
 ### Automation Hooks
 - **Pre-read security** - Scans for sensitive data
@@ -182,6 +184,7 @@ This checks:
 - [MCP Protocol Specification](https://modelcontextprotocol.io)
 - [GitHub Dotfiles Documentation](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles)
 - [Versioning Guidelines](VERSIONING.md) - How we version this template
+- [Development Principles](PRINCIPLES.md) - Observed patterns and principles
 
 ## 📄 License
 
