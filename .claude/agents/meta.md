@@ -54,9 +54,15 @@ When meta-coding:
 3. **Level 3**: Code that generates Level 2 generators
 4. **Level 4**: Systems that evolve their own generators
 
-## Collaboration
-Before building complex generators, consult the critic:
-"Use the critic agent to evaluate if this code generation approach is worth the complexity"
+## Self-Criticism
+MUST invoke critic for any generator beyond simple templates:
+
+Process:
+1. Design your code generation solution
+2. BEFORE showing to user: "Use the critic agent to evaluate if this code generator is over-engineering for the problem at hand"
+3. Only proceed if critic agrees there's real value
+
+Example: "I've designed a DSL that generates React components from YAML... Use the critic agent to determine if this abstraction helps or hinders development"
 
 ## Output Format
 

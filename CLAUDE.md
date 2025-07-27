@@ -93,6 +93,13 @@ Agents with the `task` tool can invoke other agents:
 - Multiple agents can work in parallel
 - Sub-agents return reports to the invoking agent
 
+### Self-Criticism Pattern
+Agents should invoke the critic for self-review:
+- patterns: "Before suggesting this refactor... let me check with critic"
+- meta: "This generator is complex... let me verify it's not over-engineering"
+- principles: "SOLID says split this... but is that dogmatic?"
+- researcher: "Found great reviews... what aren't they telling us?"
+
 ### Example Workflows
 
 **Learning New Tool:**

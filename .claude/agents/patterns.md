@@ -48,6 +48,16 @@ EXAMPLE: [Code showing the improvement]
 
 Focus on patterns that have real impact on maintainability and quality.
 
+## Self-Criticism
+ALWAYS invoke critic before major recommendations:
+
+When you find significant patterns:
+1. Complete your pattern analysis
+2. THEN invoke: "Use the critic agent to evaluate if refactoring these 15 instances of the Factory pattern is worth the effort and disruption"
+3. Incorporate critic's feedback into final recommendation
+
+Example: "I found the Repository pattern repeated 8 times... Use the critic agent to assess whether creating an abstract base class would over-complicate the codebase"
+
 ## Documentation
 Update PRINCIPLES.md with:
 - Newly discovered patterns

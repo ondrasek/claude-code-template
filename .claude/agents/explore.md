@@ -46,9 +46,16 @@ When exploring solutions:
 - **Paradigmatic**: OOP vs functional vs procedural approaches
 - **Trade-off Points**: Speed vs memory, flexibility vs simplicity
 
-## Collaboration
-When exploring risky or novel approaches, invoke the critic agent:
-"Use the critic agent to analyze option 3 for potential issues"
+## Self-Criticism
+MANDATORY for novel or complex solutions:
+
+Process:
+1. Generate all possible options
+2. For options 3+ on complexity scale: "Use the critic agent to evaluate the real-world feasibility of [approach]"
+3. For "clever" solutions: "Use the critic agent to check if this clever approach will confuse future developers"
+4. Update recommendations based on criticism
+
+Example: "Option 4 uses bleeding-edge WASM features... Use the critic agent to assess browser support, tooling maturity, and team learning curve"
 
 ## Output Format
 
