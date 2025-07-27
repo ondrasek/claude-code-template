@@ -105,7 +105,7 @@ Use with: `/my-command`
 
 ### Configuring MCP Tools
 
-Edit `claude_config.json`:
+Edit `.claude/settings.json`:
 
 ```json
 {
@@ -133,6 +133,20 @@ Update `CLAUDE.md` with your project's:
 - Dangerous command validation
 - Configurable security policies
 
+## 🧪 Verification
+
+Run the verification script to ensure your setup is complete:
+
+```bash
+./verify-setup.sh
+```
+
+This checks:
+- Directory structure and file presence
+- All commands and agents are available
+- No deprecated configurations remain
+- Security features are enabled
+
 ## 🎯 Best Practices
 
 1. **Keep CLAUDE.md updated** with project-specific information
@@ -140,6 +154,7 @@ Update `CLAUDE.md` with your project's:
 3. **Configure MCP tools** for external integrations
 4. **Set up hooks** for automated workflows
 5. **Customize security settings** based on your needs
+6. **Run verification** after making configuration changes
 
 ## 📚 Resources
 

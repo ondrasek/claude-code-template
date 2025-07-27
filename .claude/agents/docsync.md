@@ -1,6 +1,6 @@
 ---
 name: docsync
-description: Keep documentation synchronized with code changes
+description: MUST BE USED after any feature addition, API change, or configuration update to keep docs in sync
 tools:
   - read_file
   - edit_file

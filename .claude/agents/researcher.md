@@ -1,6 +1,6 @@
 ---
 name: researcher
-description: Conduct parallel web searches to gather comprehensive information quickly
+description: PROACTIVELY conduct parallel web searches when user asks about unfamiliar tools, errors, or best practices
 tools:
   - web_search
   - batch
