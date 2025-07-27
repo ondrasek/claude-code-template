@@ -1,6 +1,6 @@
 # Claude Code Configuration Template & Dotfiles
 
-A comprehensive template repository and dotfiles setup for Claude Code that automatically configures custom commands, MCP tools, and development environment. Works as a GitHub template repository, dotfiles repository, or with GitHub Codespaces.
+A comprehensive template repository and dotfiles setup for Claude Code that automatically configures custom commands, MCP tools, and development environment. Works as a GitHub template repository or dotfiles repository.
 
 ## 🚀 Quick Start
 
@@ -55,7 +55,7 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
   - `config.json` - Project-specific settings
 - **`claude_config.json`** - Main configuration (auto-loaded by Claude Code)
 - **`CLAUDE.md`** - Project guidelines for Claude Code
-- **`.devcontainer/`** - GitHub Codespaces configuration
+- **`install.sh`** & **`bootstrap.sh`** - Installation scripts for dotfiles setup
 
 ## 🔧 Pre-Configured Features
 
@@ -116,15 +116,6 @@ Update `CLAUDE.md` with your project's:
 - Development workflows
 - Testing requirements
 
-## 🐳 GitHub Codespaces
-
-This template includes a complete development environment:
-
-- **Pre-installed tools**: Node.js, Python, GitHub CLI
-- **MCP development tools**: Inspector, Client CLI
-- **AI frameworks**: LangChain, CrewAI
-- **Code quality**: Black, ESLint, Prettier
-
 ## 🛡️ Security Features
 
 - Automatic secret detection and redaction
@@ -144,7 +135,7 @@ This template includes a complete development environment:
 
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
 - [MCP Protocol Specification](https://modelcontextprotocol.io)
-- [GitHub Codespaces](https://github.com/features/codespaces)
+- [GitHub Dotfiles Documentation](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles)
 
 ## 📄 License
 
