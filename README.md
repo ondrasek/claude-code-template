@@ -150,10 +150,10 @@ Update `CLAUDE.md` with your project's:
 
 ## 🛡️ Security Features
 
-- Automatic secret detection and redaction
-- Sensitive file blocking (`.env`, `*.key`)
-- Dangerous command validation
-- Configurable security policies
+- Quick secret detection warnings
+- Large file size notifications  
+- Sensitive file awareness (`.env`, `*.key`)
+- Non-blocking security checks
 
 ## 🧪 Template Validation
 
@@ -169,12 +169,28 @@ This checks:
 - No deprecated configurations remain
 - Security features are enabled
 
+## ⚙️ Optional Features
+
+### Disabling Hooks
+If hooks are slowing down your workflow, disable them in `.claude/config.json`:
+```json
+"hooks": {
+  // Comment out any hooks you don't need
+  // "user-prompt-submit-hook": ".claude/hooks/validate-prompt.sh",
+  "post-edit-file-hook": ".claude/hooks/format-after-edit.sh"
+  // "pre-read-file-hook": ".claude/hooks/pre-read-security.sh"
+}
+```
+
+### Customizing Auto-formatting
+Edit `.claude/hooks/format-after-edit.sh` to add/remove formatters for your languages.
+
 ## 🎯 Best Practices
 
 1. **Keep CLAUDE.md updated** with project-specific information
 2. **Use slash commands** for repetitive tasks
 3. **Configure MCP tools** for external integrations
-4. **Set up hooks** for automated workflows
+4. **Optimize hooks** - disable any that don't add value
 5. **Customize security settings** based on your needs
 6. **Run verification** after making configuration changes
 
