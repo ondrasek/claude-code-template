@@ -1,6 +1,6 @@
 # Agent Usage Guidelines
 
-Claude Code should PROACTIVELY use ALL appropriate agents for better results:
+Claude Code MUST PROACTIVELY use ALL appropriate agents for better results:
 
 ## Base Agents (Most Requests)
 
@@ -40,7 +40,6 @@ Claude Code should PROACTIVELY use ALL appropriate agents for better results:
 - **axioms**: First-principles reasoning, fundamental understanding
 
 ### Technology-Specific
-- **python**: Python-specific patterns, frameworks, ecosystem guidance
 - **prompter**: AI agent development, LangChain, CrewAI integration
 
 ### Maintenance
@@ -85,7 +84,6 @@ Claude Code should PROACTIVELY use ALL appropriate agents for better results:
 - **Code changes made** → Add `docs`
 
 ### Technology Detection
-- **Python files (.py)** → Add `python`
 - **Agent/prompt engineering context** → Add `prompter`
 - **Type safety/state machines** → Add `invariants`
 - **Historical analysis needed** → Add `time`
@@ -97,10 +95,10 @@ Claude Code should PROACTIVELY use ALL appropriate agents for better results:
 - **"Don't use agents"** → No agent invocation
 
 ## Inter-Agent Communication
-- Agents should use Task tool to invoke other agents when needed
+- Agents MUST use Task tool to invoke other agents when needed
 - Pass specific context and expected outputs
 - Multiple agents can work in parallel when appropriate
-- Agents should build on each other's findings
+- Agents MUST build on each other's findings
 
 ## Quality Guidelines
 1. **Relevance over completeness** - Use agents that add value

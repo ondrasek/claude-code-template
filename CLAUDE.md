@@ -31,7 +31,6 @@ Specialized AI agents in `.claude/agents/` for complex tasks (alphabetically org
 - **patterns** - Pattern detection and refactoring
 - **principles** - Software design principles (SOLID, etc.)
 - **prompter** - AI agent development
-- **python** - Python-specific guidance
 - **researcher** - Information gathering and research
 - **resolver** - Conflict resolution between approaches
 - **time** - Historical analysis and evolution
@@ -63,31 +62,6 @@ External tool integrations in `mcp-tools/`:
 
 See: @.claude/instructions/git-workflow.md
 
-## Technology Stack Detection
-
-**IMPORTANT: Automatically detect and apply technology-specific guidelines based on repository contents.**
-
-When working in this repository, check for the presence of technology-specific files and refer to the appropriate stack guidelines:
-
-### Detection Rules
-- **Python files** (`.py`, `pyproject.toml`, `requirements.txt`) → Refer to @.claude/stacks/python.md
-- **Rust files** (`.rs`, `Cargo.toml`) → Refer to @.claude/stacks/rust.md
-- **JavaScript/TypeScript** (`.js`, `.ts`, `package.json`) → Refer to @.claude/stacks/javascript.md
-- **Go files** (`.go`, `go.mod`) → Refer to @.claude/stacks/go.md
-- **Java files** (`.java`, `pom.xml`, `build.gradle`) → Refer to @.claude/stacks/java.md
-- **Kotlin files** (`.kt`, `build.gradle.kts`) → Refer to @.claude/stacks/kotlin.md
-- **Ruby files** (`.rb`, `Gemfile`) → Refer to @.claude/stacks/ruby.md
-- **C# files** (`.cs`, `.csproj`, `*.sln`) → Refer to @.claude/stacks/csharp.md
-- **C/C++ files** (`.c`, `.cpp`, `.h`, `CMakeLists.txt`) → Refer to @.claude/stacks/cpp.md
-- **Docker files** (`Dockerfile`, `docker-compose.yml`) → Refer to @.claude/stacks/docker.md
-
-### Usage
-1. At the start of each session, identify which technologies are present
-2. Load the corresponding stack guidelines from `.claude/stacks/`
-3. Follow technology-specific best practices throughout the session
-4. If multiple technologies are present, apply all relevant guidelines
-
-Additional stacks can be added in `.claude/stacks/`.
 
 ## Automatic Agent Invocation
 
@@ -112,7 +86,6 @@ Additional stacks can be added in `.claude/stacks/`.
 6. `docs` - Update documentation for any changes
 
 **Additional Agents by Context:**
-- Python projects: Add `python`
 - Prompt engineering: Add `prompter`
 - Architecture discussions: Add `explorer` + `constraints`
 - Debugging: Add `hypothesis`
