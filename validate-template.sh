@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
-# Claude Code Template Verification Script
-# This script verifies that the template is properly set up
+# Claude Code Template Validation Script
+# 
+# Purpose: Validates that the Claude Code template structure is complete and correct.
+# This is a health check that ensures all required files, directories, and configurations
+# are present and properly formatted. Run this after cloning or modifying the template
+# to ensure everything is in working order.
+#
+# Usage: ./validate-template.sh
+# Returns: 0 if all checks pass, 1 if any check fails
 
 set -e
 
@@ -81,7 +88,7 @@ check "bootstrap.sh is executable" "[ -x bootstrap.sh ]"
 echo ""
 
 echo "🔍 Checking for deprecated references..."
-if grep -r "claude_config.json" . --exclude-dir=.git --exclude="verify-setup.sh" 2>/dev/null | grep -v "Binary file"; then
+if grep -r "claude_config.json" . --exclude-dir=.git --exclude="validate-template.sh" 2>/dev/null | grep -v "Binary file"; then
     warn "Found references to deprecated claude_config.json"
 else
     echo -e "${GREEN}✓${NC} No deprecated claude_config.json references found"

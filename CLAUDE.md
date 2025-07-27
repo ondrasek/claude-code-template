@@ -165,6 +165,20 @@ Use the `docsync` agent to help maintain documentation:
 Task: Use the docsync agent to update documentation after adding the new caching feature
 ```
 
+## Versioning
+
+This project follows **Semantic Versioning (SemVer)** - see VERSIONING.md for details.
+
+When making changes:
+- **MAJOR (breaking)**: Removing features, changing configurations incompatibly
+- **MINOR (features)**: Adding agents, commands, or new capabilities
+- **PATCH (fixes)**: Bug fixes, typos, small improvements
+
+Always:
+1. Update version in CHANGELOG.md
+2. Create git tag: `git tag -a v1.2.3 -m "Release version 1.2.3"`
+3. Push tag: `git push origin v1.2.3`
+
 ## Best Practices
 
 - Keep commands focused and well-documented
@@ -175,3 +189,4 @@ Task: Use the docsync agent to update documentation after adding the new caching
 - Commit and push changes frequently to maintain code history
 - Use uv exclusively for Python dependency management
 - Maintain documentation synchronously with code changes
+- Follow semantic versioning for all releases

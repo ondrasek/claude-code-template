@@ -1,5 +1,8 @@
 # Claude Code Configuration Template & Dotfiles
 
+[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template)](https://github.com/ondrasek/claude-code-template/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A comprehensive template repository and dotfiles setup for Claude Code that automatically configures custom commands, MCP tools, and development environment. Works as a GitHub template repository or dotfiles repository.
 
 ## 🚀 Quick Start
@@ -146,12 +149,12 @@ Update `CLAUDE.md` with your project's:
 - Dangerous command validation
 - Configurable security policies
 
-## 🧪 Verification
+## 🧪 Template Validation
 
-Run the verification script to ensure your setup is complete:
+Run the validation script to ensure the template structure is complete:
 
 ```bash
-./verify-setup.sh
+./validate-template.sh
 ```
 
 This checks:
@@ -174,6 +177,7 @@ This checks:
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
 - [MCP Protocol Specification](https://modelcontextprotocol.io)
 - [GitHub Dotfiles Documentation](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles)
+- [Versioning Guidelines](VERSIONING.md) - How we version this template
 
 ## 📄 License
 
