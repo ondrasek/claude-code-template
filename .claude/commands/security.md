@@ -1,33 +1,235 @@
-# Security Audit Command
+# /security
 
-Perform a security audit of the codebase:
+TRIGGER: security audit request
+FOCUS: vulnerabilities, risks, remediation
+SCOPE: full codebase security analysis
 
-1. **Input Validation**
-   - Check all user inputs for proper validation
-   - Look for SQL injection vulnerabilities
-   - Identify XSS vulnerabilities
-   - Check for command injection risks
+ACTIONS:
+1. invoke patterns agent: insecure coding patterns
+2. invoke researcher agent: CVE database check
+3. scan for injection vulnerabilities: SQL, XSS, command, path traversal
+4. check authentication/authorization implementation
+5. search for hardcoded secrets and API keys
+6. analyze dependency versions for known vulnerabilities
+7. invoke principles agent: security principles compliance
+8. invoke complete agent: missing security controls
+9. generate threat model and risk assessment
 
-2. **Authentication & Authorization**
-   - Review authentication mechanisms
-   - Check authorization logic
-   - Look for privilege escalation risks
-   - Verify session management
+PARAMETERS:
+--focus [auth|injection|crypto|deps|config]
+--severity [critical|high|medium|low]
+--fix (auto-fix simple issues)
+--quick (critical only)
+--deps-only (dependency scan only)
+--output [json|sarif|html]
 
-3. **Data Protection**
-   - Check for hardcoded secrets
-   - Review encryption usage
-   - Verify secure data transmission
-   - Check for sensitive data exposure
+AGENT_CHAIN:
+patterns -> researcher -> principles -> complete -> hypothesis -> critic -> docsync
 
-4. **Dependencies**
-   - Check for known vulnerabilities
-   - Review dependency versions
-   - Identify outdated packages
+VULNERABILITY_CHECKS:
+- injections: SQL, XSS, command, LDAP, XML
+- auth: weak auth, missing checks, privilege escalation
+- crypto: weak algorithms, hardcoded secrets
+- deps: CVE database matching
+- config: headers, CORS, TLS
 
-5. **Configuration**
-   - Review security headers
-   - Check CORS settings
-   - Verify secure defaults
+OUTPUT:
+- severity categorized vulnerabilities
+- CVSS scores where applicable
+- specific remediation code
+- prioritized fix order
+- CWE/OWASP references
 
-Provide a detailed security report with severity levels and remediation suggestions.
+```
+## Security Audit Report
+
+**Scan Date**: 2024-01-20
+**Files Scanned**: 127
+**Critical Issues**: 3
+**High Issues**: 8
+**Medium Issues**: 15
+**Low Issues**: 22
+
+### CRITICAL Vulnerabilities
+
+1. **SQL Injection** [OWASP A03:2021]
+   - **File**: `src/api/user.py:45`
+   - **Severity**: Critical (CVSS: 9.8)
+   - **Evidence**:
+   ```python
+   # VULNERABLE CODE
+   query = f"SELECT * FROM users WHERE id = {user_id}"
+   cursor.execute(query)
+   ```
+   - **Attack Vector**: Attacker can execute arbitrary SQL
+   - **Fix**:
+   ```python
+   # SECURE CODE
+   query = "SELECT * FROM users WHERE id = ?"
+   cursor.execute(query, (user_id,))
+   ```
+   - **References**: CWE-89, OWASP SQL Injection
+
+2. **Hardcoded API Key** [OWASP A07:2021]
+   - **File**: `src/config.py:12`
+   - **Severity**: Critical (CVSS: 8.6)
+   - **Evidence**:
+   ```python
+   API_KEY = "sk-1234567890abcdef"  # EXPOSED SECRET
+   ```
+   - **Fix**:
+   ```python
+   import os
+   API_KEY = os.environ.get('API_KEY')
+   if not API_KEY:
+       raise ValueError("API_KEY environment variable not set")
+   ```
+
+### HIGH Risk Issues
+
+1. **Missing Authentication**
+   - **File**: `src/api/admin.py:23`
+   - **Severity**: High (CVSS: 7.5)
+   - **Evidence**: Admin endpoint lacks authentication
+   ```python
+   @app.route('/admin/users', methods=['DELETE'])
+   def delete_user():  # No auth check!
+       User.query.filter_by(id=request.json['id']).delete()
+   ```
+   - **Fix**: Add authentication decorator
+
+### Dependency Vulnerabilities (researcher agent)
+
+| Package | Current | Secure | CVE | Severity |
+|---------|---------|--------|-----|----------|
+| flask | 1.1.2 | 2.3.3 | CVE-2023-30861 | High |
+| requests | 2.25.0 | 2.31.0 | CVE-2023-32681 | Medium |
+| pyyaml | 5.3 | 6.0.1 | CVE-2020-14343 | High |
+
+### Security Principles Analysis (principles agent)
+
+1. **Least Privilege Violation**
+   - Database user has DROP privileges
+   - API tokens don't expire
+   - No role-based access control
+
+2. **Defense in Depth Missing**
+   - No rate limiting
+   - No input sanitization layer
+   - Single point of failure in auth
+
+### Attack Surface Map
+
+```
+Internet → Load Balancer → Web Server → Application → Database
+            ↓                ↓            ↓            ↓
+         [No WAF]      [Weak TLS]   [No Auth]    [SQL Injection]
+```
+
+### Remediation Priority
+
+1. **Immediate** (24 hours)
+   - Fix SQL injection vulnerabilities
+   - Remove hardcoded secrets
+   - Add authentication to admin endpoints
+
+2. **Short-term** (1 week)
+   - Update vulnerable dependencies
+   - Implement input validation
+   - Add security headers
+
+3. **Long-term** (1 month)
+   - Implement RBAC
+   - Add rate limiting
+   - Set up security monitoring
+```
+
+## Security Scanners Integration
+
+The command can invoke external tools:
+- **SAST**: Static analysis with semgrep/bandit
+- **Dependency Check**: safety/npm audit/bundler-audit
+- **Secret Scanning**: truffleHog/gitleaks
+- **Container Scanning**: trivy/grype
+
+## Parameters
+
+- `--focus <area>`: Focus on specific security domain
+  - `auth`, `injection`, `crypto`, `deps`, `config`
+- `--severity <level>`: Minimum severity to report
+  - `critical`, `high`, `medium`, `low`
+- `--fix`: Attempt to auto-fix simple issues
+- `--quick`: Fast scan for critical issues only
+- `--deps-only`: Only scan dependencies
+- `--output <format>`: Output format (json, sarif, html)
+
+## Common Vulnerability Patterns
+
+### SQL Injection Prevention
+```python
+# Bad - String concatenation
+query = f"SELECT * FROM users WHERE name = '{name}'"
+
+# Good - Parameterized queries
+query = "SELECT * FROM users WHERE name = ?"
+cursor.execute(query, (name,))
+
+# Good - ORM with parameterization
+user = User.query.filter_by(name=name).first()
+```
+
+### XSS Prevention
+```javascript
+// Bad - Direct HTML insertion
+element.innerHTML = userInput;
+
+// Good - Text content
+element.textContent = userInput;
+
+// Good - Sanitization
+element.innerHTML = DOMPurify.sanitize(userInput);
+```
+
+### Authentication Best Practices
+```python
+# Bad - Plain text password
+if user.password == request.form['password']:
+
+# Good - Hashed password
+if bcrypt.checkpw(request.form['password'].encode('utf-8'), 
+                  user.password_hash):
+
+# Good - With rate limiting
+@limiter.limit("5 per minute")
+def login():
+    # Login logic
+```
+
+## Agent Integration
+
+The security command uses:
+- **patterns agent**: Identify insecure coding patterns
+- **researcher agent**: Check CVE databases for dependencies
+- **principles agent**: Verify security design principles
+- **complete agent**: Find missing security controls
+- **hypothesis agent**: Analyze potential attack vectors
+- **critic agent**: Challenge security assumptions
+- **docsync agent**: Update security documentation
+
+## Related Commands
+
+- `/review` - General code review including security
+- `/test` - Add security test cases
+- `/refactor` - Implement security improvements
+- Use `invariants` agent for security constraints
+- Use `constraints` agent for access control rules
+
+## Best Practices
+
+1. **Shift Left**: Run security scans early and often
+2. **Automate**: Integrate into CI/CD pipeline
+3. **Prioritize**: Fix critical issues first
+4. **Verify Fixes**: Re-scan after remediation
+5. **Document**: Keep security documentation updated
+6. **Train Team**: Share security findings with developers
+7. **Monitor**: Set up runtime security monitoring
