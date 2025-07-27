@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2025-01-27
+
+### Changed
+- Made all agent descriptions more specific with clear triggers
+- Added keywords, phrases, and commands that activate each agent
+- Maintained emphasis patterns (PROACTIVELY, AUTOMATICALLY, MUST BE USED)
+- Fixed prompt-engineer agent to focus on user's project agents, not template agents
+
+### Removed
+- Deleted unnecessary .claude/agents/examples/ folder
+
+### Fixed
+- Agent descriptions now include specific activation scenarios
+- Better agent selection through concrete trigger words
+
 ## [1.3.0] - 2025-01-27
 
 ### Added

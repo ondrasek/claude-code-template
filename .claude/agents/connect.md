@@ -1,6 +1,6 @@
 ---
 name: connect
-description: Apply knowledge from completely different domains to find innovative solutions
+description: Use when stuck on problems, user asks "think outside the box", "creative solution", "how do others solve this", or needs cross-domain insights
 tools:
   - read_file
   - write_file

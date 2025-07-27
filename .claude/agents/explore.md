@@ -1,6 +1,6 @@
 ---
 name: explore
-description: Explore multiple solution paths simultaneously and evaluate trade-offs
+description: Use when user asks "what are my options", "different ways to", "compare approaches", "pros and cons", or facing architectural decisions
 tools:
   - read_file
   - write_file

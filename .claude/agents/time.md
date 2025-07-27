@@ -1,6 +1,6 @@
 ---
 name: time
-description: Understand code evolution and predict future needs by analyzing history
+description: Use when user asks "how did this evolve", "git history analysis", "predict future needs", "technical debt", or needs historical context
 tools:
   - read_file
   - find_files

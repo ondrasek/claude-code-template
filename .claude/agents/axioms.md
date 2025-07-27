@@ -1,6 +1,6 @@
 ---
 name: axioms
-description: Derive solutions from fundamental axioms and first principles
+description: Use when user asks "why does this work", "from first principles", "fundamental approach", "derive the solution", or needs deep understanding
 tools:
   - read_file
   - write_file

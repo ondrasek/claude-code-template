@@ -1,6 +1,6 @@
 ---
 name: invariants
-description: Identify and protect system invariants using types and design
+description: Use when designing "type safety", "state machines", "data integrity", "what must never change", "system guarantees", or preventing invalid states
 tools:
   - read_file
   - edit_file

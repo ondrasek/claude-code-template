@@ -1,6 +1,6 @@
 ---
 name: constraints
-description: Work within complex multi-dimensional constraints to find optimal solutions
+description: Use when facing "requirements conflict", "limited resources", "performance vs features", "must work with legacy", or multiple competing constraints
 tools:
   - read_file
   - edit_file
