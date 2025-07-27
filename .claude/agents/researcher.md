@@ -1,6 +1,6 @@
 ---
 name: researcher
-description: PROACTIVELY search when user mentions unknown library/tool, asks "how to", "what is", "best way to", shows error message, or says tutorial, setup, implement
+description: Expert at gathering current information, best practices, and technical solutions through web search and documentation analysis
 tools:
   - WebSearch
   - WebFetch

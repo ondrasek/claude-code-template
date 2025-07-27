@@ -1,69 +1,110 @@
 # Agent Usage Guidelines
 
-Claude Code should PROACTIVELY use specialized agents for better results:
+Claude Code should intelligently select appropriate agents based on request context:
 
-## When to Use Each Agent
+## Base Agents (Most Requests)
 
-### ALWAYS use researcher agent when:
-- User mentions unfamiliar tools, libraries, or frameworks
-- Encountering errors or debugging issues
-- Asked about best practices or implementation patterns
-- Need to find examples or documentation
-- Comparing different approaches or technologies
+### researcher
+- **Purpose**: Gather current information, best practices, documentation
+- **Use for**: Any request requiring external knowledge or current practices
+- **Integration**: Often first agent in workflow, feeds context to others
 
-### PROACTIVELY use pattern agents when:
-- `patterns`: Analyzing codebases for improvements
-- `context`: User asks "how does X work" in this codebase
-- `explore`: User needs multiple solution options
-- `constraints`: Dealing with complex requirements
-- `time`: Reviewing git history or predicting future needs
+### critic  
+- **Purpose**: Challenge assumptions, identify risks, provide balanced perspective
+- **Use for**: Major decisions, architectural choices, before finalizing recommendations
+- **Integration**: Usually last in analytical workflows for validation
 
-### MUST use principle agents when:
-- `principles`: Reviewing architecture or design decisions
-- `axioms`: User asks "why" or needs first-principles thinking
-- `invariants`: Designing type systems or state machines
-- `resolve`: Patterns and principles conflict
+## Context-Specific Agent Selection
 
-### AUTOMATICALLY use utility agents when:
-- `whisper`: Code needs micro-improvements (use with BatchTool)
-- `complete`: Finding and fixing TODOs, missing handlers
-- `docsync`: After any feature addition or API change
-- `hypothesis`: Debugging mysterious behavior
-- `meta`: Noticing code generation opportunities
-- `prompt-engineer`: Implementing agents in LangChain, CrewAI, or other frameworks
-- `critic`: User asks "is X a good idea?" or proposes major changes
+### Code Analysis Tasks
+- **patterns**: Detect repeated code, anti-patterns, refactoring opportunities
+- **principles**: Apply SOLID, DRY, KISS principles to architecture decisions
+- **Use together for**: Code reviews, refactoring planning, architecture evaluation
 
-## Agent Collaboration Patterns
+### Problem Investigation
+- **hypothesis**: Form theories, design experiments, systematic debugging
+- **complete**: Find missing error handlers, TODOs, incomplete implementations  
+- **Use for**: Debugging issues, finding gaps, ensuring completeness
 
-1. **Research First**: Use `researcher` to gather information, then apply other agents
-2. **Pattern + Principle**: Use both to get complete analysis
-3. **Document Always**: Follow any change with `docsync`
-4. **Batch Operations**: Use `whisper` and `complete` with BatchTool
-5. **Critical Review**: Major decisions should invoke `critic` for pushback
+### Design and Planning
+- **explore**: Generate multiple solution alternatives, compare approaches
+- **constraints**: Handle complex requirements, conflicting needs, trade-offs
+- **resolve**: Mediate when different approaches conflict
+- **Use for**: Architecture decisions, complex requirements, design choices
+
+### Specialized Domains
+- **meta**: Create code generators, templates, DSLs for repetitive patterns
+- **invariants**: Design type systems, state machines, prevent invalid states
+- **time**: Analyze git history, predict evolution, understand system changes
+- **connect**: Find cross-domain solutions, creative approaches
+- **axioms**: First-principles reasoning, fundamental understanding
+
+### Technology-Specific
+- **python-expert**: Python-specific patterns, frameworks, ecosystem guidance
+- **prompt-engineer**: AI agent development, LangChain, CrewAI integration
+
+### Maintenance
+- **docsync**: Update documentation after code changes, maintain consistency
+- **whisper**: Apply micro-improvements, fix typos, enhance code quality
+
+## Smart Agent Workflows
+
+### Simple Information Request
+- **Agents**: `researcher` only
+- **Example**: "What's the latest version of React?"
+- **Rationale**: Straightforward lookup, no analysis needed
+
+### Code Review or Refactoring
+- **Agents**: `researcher` + `patterns` + `principles` + `critic`
+- **Flow**: Research best practices → Find patterns → Apply principles → Validate approach
+- **Example**: "Review this authentication module"
+
+### Debugging Investigation  
+- **Agents**: `researcher` + `hypothesis` + `critic`
+- **Flow**: Research known issues → Form/test theories → Validate solution
+- **Example**: "Why is this API endpoint returning 500 errors?"
+
+### Architecture Planning
+- **Agents**: `researcher` + `explore` + `constraints` + `principles` + `critic`
+- **Flow**: Research approaches → Generate alternatives → Handle constraints → Apply principles → Critical review
+- **Example**: "Design a microservices architecture for this system"
+
+### Feature Implementation
+- **Agents**: `researcher` + `patterns` + `complete` + `docsync`
+- **Flow**: Research implementation patterns → Check for existing patterns → Ensure completeness → Update docs
+- **Example**: "Add caching to the user service"
+
+## Agent Selection Logic
+
+### Context Detection
+- **Code files mentioned** → Add `patterns` + `principles`
+- **Error messages/debugging** → Add `hypothesis`  
+- **Architecture/design questions** → Add `explore` + `constraints`
+- **"What's missing" or TODOs** → Add `complete`
+- **Major decisions** → Add `critic`
+- **Code changes made** → Add `docsync`
+
+### Technology Detection
+- **Python files (.py)** → Add `python-expert`
+- **Agent/prompt engineering context** → Add `prompt-engineer`
+- **Type safety/state machines** → Add `invariants`
+- **Historical analysis needed** → Add `time`
+
+### User Intent Detection
+- **"Quick question"** → Minimal agents (`researcher` only)
+- **"Deep analysis"** → Comprehensive agent set
+- **"Just check X"** → Specific agent focus
+- **"Don't use agents"** → No agent invocation
 
 ## Inter-Agent Communication
-Agents with the `task` tool can invoke other agents:
-- "Use the critic agent to evaluate this approach"
-- "Use the researcher agent to find alternatives"
-- Multiple agents can work in parallel
-- Sub-agents return reports to the invoking agent
+- Agents should use Task tool to invoke other agents when needed
+- Pass specific context and expected outputs
+- Multiple agents can work in parallel when appropriate
+- Agents should build on each other's findings
 
-## Self-Criticism Pattern
-Agents should invoke the critic for self-review:
-- patterns: "Before suggesting this refactor... let me check with critic"
-- meta: "This generator is complex... let me verify it's not over-engineering"
-- principles: "SOLID says split this... but is that dogmatic?"
-- researcher: "Found great reviews... what aren't they telling us?"
-
-## Example Workflows
-
-### Learning New Tool:
-1. `researcher` - Gather docs, examples, best practices in parallel
-2. `patterns` - Identify common usage patterns
-3. `meta` - Create generators for boilerplate
-
-### Code Review:
-1. `context` - Understand the system
-2. `patterns` + `principles` - Analyze from both angles
-3. `resolve` - Handle any conflicts
-4. `whisper` - Apply micro-improvements
+## Quality Guidelines
+1. **Relevance over completeness** - Use agents that add value
+2. **Progressive enhancement** - Start minimal, add based on findings
+3. **User experience first** - Don't over-analyze simple requests  
+4. **Fail gracefully** - Continue if individual agents fail
+5. **Time awareness** - Respect user's need for timely responses

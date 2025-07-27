@@ -1,6 +1,6 @@
 ---
 name: whisper
-description: AUTOMATICALLY fix typos and formatting after code changes, or when user says "clean up", "fix typos", "improve naming", "format code"
+description: Expert at micro-improvements like fixing typos, formatting, naming consistency, and code quality enhancements
 tools:
   - Read
   - Edit

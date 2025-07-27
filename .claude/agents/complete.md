@@ -1,6 +1,6 @@
 ---
 name: complete
-description: AUTOMATICALLY scan for TODOs, missing error handlers, incomplete functions when opening projects or user says "complete this", "find TODOs", "check completeness"
+description: Expert at finding missing functionality, incomplete implementations, TODOs, and ensuring code completeness
 tools:
   - Read
   - Edit

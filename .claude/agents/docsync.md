@@ -1,6 +1,6 @@
 ---
 name: docsync
-description: MUST BE USED after git commits, new functions, API changes, config updates, or when user says "update docs", "document this change"
+description: Expert at maintaining documentation consistency with code changes, updating docs, and ensuring information stays current
 tools:
   - Read
   - Edit

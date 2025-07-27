@@ -89,48 +89,54 @@ When working in this repository, check for the presence of technology-specific f
 
 Additional stacks can be added in `.claude/stacks/`.
 
-## Automatic Agent Invocation
+## Intelligent Agent Invocation
 
-**CRITICAL: Claude Code MUST use agents for EVERY user request, prompt, or interaction.**
+**Claude Code should proactively use appropriate agents based on request context for optimal results.**
 
-### Universal Agent Rule
+### Context-Aware Agent Selection
 
-**For ANY user request**: Use ALL appropriate agents automatically
-- **ALWAYS start with**: `researcher` + `patterns` + `principles` + `complete`
-- **ALWAYS add**: `critic` to validate approaches and challenge assumptions
-- **ALWAYS include**: `docsync` after any code modifications
-- **ALWAYS consider**: Domain-specific agents based on detected technology stacks
+**Core Principle**: Use the right agents for the task, not all agents for every task.
 
-### Default Agent Pipeline
+**Base Agents** (used for most requests):
+- `researcher` - Gather information and current best practices
+- `critic` - Validate approaches and challenge assumptions
 
-**Standard Pipeline for ALL Requests:**
-1. `researcher` - Gather information and context
-2. `patterns` - Identify relevant patterns and structures  
-3. `principles` - Apply design principles and best practices
-4. `complete` - Ensure completeness and find missing elements
-5. `critic` - Challenge assumptions and validate approaches
-6. `docsync` - Update documentation for any changes
+**Context-Specific Agents**:
+- **Code Analysis**: Add `patterns` + `principles` when reviewing or refactoring code
+- **Debugging Issues**: Add `hypothesis` for systematic problem investigation  
+- **Architecture Decisions**: Add `explore` + `constraints` for design alternatives
+- **Missing Functionality**: Add `complete` when scanning for TODOs or gaps
+- **Code Generation**: Add `meta` for templates, DSLs, or repetitive code
+- **Documentation Changes**: Add `docsync` after any code modifications
+- **Historical Context**: Add `time` for git history or evolution analysis
 
-**Additional Agents by Context:**
-- Python projects: Add `python-expert`
-- Prompt engineering: Add `prompt-engineer`
-- Architecture discussions: Add `explore` + `constraints`
-- Debugging: Add `hypothesis`
-- Code generation: Add `meta`
-- Historical analysis: Add `time`
+**Technology-Specific Agents**:
+- Python projects: Add `python-expert` when working with .py files
+- Prompt engineering: Add `prompt-engineer` for AI agent development
+- Type systems: Add `invariants` for state machine or type safety work
 
-### Simplified Automation Rules
+### Smart Agent Workflows
 
-1. **Use agents for EVERYTHING** - No exceptions, no trigger pattern matching needed
-2. **Start comprehensive** - Begin with the standard 6-agent pipeline
-3. **Add context-specific** - Include domain agents based on project detection
-4. **Run in parallel when possible** - Maximum efficiency
-5. **Always end with `docsync`** - Keep documentation current
+**Simple Queries** → `researcher` only
+**Code Review** → `researcher` + `patterns` + `principles` + `critic`
+**Debugging** → `researcher` + `hypothesis` + `critic`  
+**Architecture Planning** → `researcher` + `explore` + `constraints` + `principles` + `critic`
+**Feature Implementation** → `researcher` + `patterns` + `complete` + `docsync`
 
-### Override Mechanism
-Users can disable automatic agent usage by:
-- Adding `--no-agents` flag to commands
-- Explicitly stating "don't use agents"
+### User Control Mechanisms
+
+**Comprehensive Analysis**: User says "use all agents" or "deep analysis"
+**Quick Response**: User says "quick answer" or "simple question"  
+**Specific Focus**: User says "just check patterns" or "only research this"
+**No Agents**: User says "don't use agents" or adds `--no-agents` flag
+
+### Performance Guidelines
+
+1. **Start minimal** - Begin with base agents, add based on context
+2. **Progressive enhancement** - Add agents based on initial findings
+3. **Parallel execution** - Run compatible agents simultaneously
+4. **Fail gracefully** - Continue if individual agents fail
+5. **Respect time limits** - Don't over-analyze simple requests
 
 ## Key Instructions
 
