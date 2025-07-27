@@ -1,0 +1,36 @@
+{
+  "projectType": "template",
+  "customCommands": {
+    "enabled": true,
+    "directory": ".claude/commands"
+  },
+  "prompts": {
+    "directory": ".claude/prompts"
+  },
+  "hooks": {
+    "preCommit": ".claude/hooks/pre-commit.sh",
+    "postEdit": ".claude/hooks/post-edit.sh"
+  },
+  "tools": {
+    "linting": {
+      "python": ["black", "flake8"],
+      "javascript": ["eslint", "prettier"],
+      "typescript": ["eslint", "prettier"]
+    },
+    "testing": {
+      "python": "pytest",
+      "javascript": "npm test",
+      "typescript": "npm test"
+    }
+  },
+  "security": {
+    "scanForSecrets": true,
+    "blockSensitiveFiles": [".env", "*.pem", "*.key"],
+    "redactPatterns": [
+      "api[_-]?key",
+      "password",
+      "secret",
+      "token"
+    ]
+  }
+}

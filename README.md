@@ -1,1 +1,151 @@
-# claude-code-template
+# Claude Code Configuration Template & Dotfiles
+
+A comprehensive template repository and dotfiles setup for Claude Code that automatically configures custom commands, MCP tools, and development environment. Works as a GitHub template repository, dotfiles repository, or with GitHub Codespaces.
+
+## 🚀 Quick Start
+
+### Method 1: Using as GitHub Dotfiles (Recommended)
+
+1. Fork this repository and name it `dotfiles`
+2. Go to GitHub Settings → Codespaces → Enable "Automatically install dotfiles"
+3. Select your dotfiles repository
+4. Every new Codespace will automatically have Claude Code configured!
+
+### Method 2: Using as a GitHub Template
+
+1. Click "Use this template" on GitHub
+2. Create your new repository
+3. Clone and start coding - Claude Code will automatically detect the configuration!
+
+### Method 3: Direct Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/claude-code-template.git dotfiles
+cd dotfiles
+
+# Run the install script
+./install.sh
+
+# Reload your shell
+source ~/.bashrc
+```
+
+## 🎯 What Gets Installed
+
+When used as dotfiles, the install script automatically:
+
+1. **Installs Claude Code** via npm globally
+2. **Sets up configuration** in `~/.claude/`
+3. **Creates shell aliases** for quick access
+4. **Installs MCP tools** (filesystem, memory, fetch)
+5. **Configures Git aliases** for Claude-powered commits
+6. **Installs AI frameworks** (LangChain, CrewAI)
+7. **Sets up development tools** (formatters, linters)
+
+## 📁 Repository Structure
+
+This template follows Claude Code's expected structure and GitHub dotfiles conventions:
+
+- **`.claude/`** - Claude Code configuration directory
+  - `commands/` - Custom slash commands (/review, /test, etc.)
+  - `prompts/` - Reusable agent prompts
+  - `hooks/` - Automation scripts
+  - `mcp-servers/` - MCP tool configurations
+  - `config.json` - Project-specific settings
+- **`claude_config.json`** - Main configuration (auto-loaded by Claude Code)
+- **`CLAUDE.md`** - Project guidelines for Claude Code
+- **`.devcontainer/`** - GitHub Codespaces configuration
+
+## 🔧 Pre-Configured Features
+
+### Custom Slash Commands
+- `/review` - Comprehensive code review
+- `/test` - Testing assistance
+- `/refactor` - Code improvement
+- `/security` - Security audit
+- `/debug-mcp` - MCP server debugging
+- `/langchain-agent` - LangChain development
+- `/crewai-crew` - CrewAI multi-agent systems
+
+### MCP Tools (Auto-Configured)
+- **filesystem** - Local file access
+- **memory** - Persistent session memory
+- **fetch** - Web content retrieval
+- Additional tools in `.claude/mcp-servers/`
+
+### Automation Hooks
+- **Pre-read security** - Scans for sensitive data
+- **Post-edit formatting** - Auto-formats code
+- **Prompt validation** - Checks for dangerous commands
+
+## 📝 Customization
+
+### Adding New Commands
+
+Create a new file in `.claude/commands/`:
+
+```markdown
+# my-command.md
+
+Your custom prompt here...
+```
+
+Use with: `/my-command`
+
+### Configuring MCP Tools
+
+Edit `claude_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "your-tool": {
+      "command": "npx",
+      "args": ["-y", "@your/mcp-server"]
+    }
+  }
+}
+```
+
+### Project-Specific Guidelines
+
+Update `CLAUDE.md` with your project's:
+- Architecture decisions
+- Coding standards
+- Development workflows
+- Testing requirements
+
+## 🐳 GitHub Codespaces
+
+This template includes a complete development environment:
+
+- **Pre-installed tools**: Node.js, Python, GitHub CLI
+- **MCP development tools**: Inspector, Client CLI
+- **AI frameworks**: LangChain, CrewAI
+- **Code quality**: Black, ESLint, Prettier
+
+## 🛡️ Security Features
+
+- Automatic secret detection and redaction
+- Sensitive file blocking (`.env`, `*.key`)
+- Dangerous command validation
+- Configurable security policies
+
+## 🎯 Best Practices
+
+1. **Keep CLAUDE.md updated** with project-specific information
+2. **Use slash commands** for repetitive tasks
+3. **Configure MCP tools** for external integrations
+4. **Set up hooks** for automated workflows
+5. **Customize security settings** based on your needs
+
+## 📚 Resources
+
+- [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
+- [MCP Protocol Specification](https://modelcontextprotocol.io)
+- [GitHub Codespaces](https://github.com/features/codespaces)
+
+## 📄 License
+
+MIT License - see LICENSE file for details.

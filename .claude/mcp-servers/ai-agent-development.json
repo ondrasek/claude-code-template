@@ -1,0 +1,73 @@
+{
+  "mcpServers": {
+    "langchain-server": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-langchain"],
+      "description": "LangChain integration for MCP - Access LangChain tools and chains"
+    },
+    "python-runner": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-python"],
+      "description": "Python code execution for testing LangChain and CrewAI scripts"
+    },
+    "vector-store": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-vectorstore"],
+      "description": "Vector database access for RAG development"
+    },
+    "web-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-websearch"],
+      "description": "Web search capabilities for agent research tasks"
+    },
+    "browserbase": {
+      "command": "npx",
+      "args": ["-y", "@browserbase/mcp-server-browserbase"],
+      "env": {
+        "BROWSERBASE_API_KEY": "${BROWSERBASE_API_KEY}"
+      },
+      "description": "Browser automation for web-based agent tasks"
+    },
+    "memory-store": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "description": "Persistent memory for agent conversation state"
+    },
+    "ollama": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-ollama"],
+      "description": "Local LLM access via Ollama for agent testing"
+    },
+    "jupyter": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-jupyter"],
+      "description": "Jupyter notebook integration for agent development"
+    },
+    "redis": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-redis"],
+      "env": {
+        "REDIS_URL": "${REDIS_URL}"
+      },
+      "description": "Redis for agent state management and caching"
+    }
+  },
+  "langchain_development": {
+    "example_usage": "Use these servers to develop and test LangChain agents with MCP integration",
+    "recommended_setup": [
+      "python-runner for executing LangChain code",
+      "vector-store for RAG implementations", 
+      "memory-store for conversation history",
+      "web-search for research agents"
+    ]
+  },
+  "crewai_development": {
+    "example_usage": "Use these servers to build and test CrewAI multi-agent systems",
+    "recommended_setup": [
+      "python-runner for CrewAI script execution",
+      "browserbase for web automation tasks",
+      "redis for inter-agent communication",
+      "ollama for local LLM testing"
+    ]
+  }
+}
