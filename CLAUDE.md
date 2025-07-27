@@ -4,11 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a Claude Code configuration template repository that demonstrates best practices for configuring Claude Code with custom commands, agents, and MCP tools.
-
-## Repository Purpose
-
-This repository contains Claude Code configuration examples organized by feature type. Each directory contains specific configuration types with README files explaining their usage.
+This is a Claude Code configuration template repository that demonstrates best practices for configuring Claude Code with custom commands, agents, and MCP tools. Configuration examples are organized by feature type with README files explaining their usage.
 
 ## Key Features
 
@@ -40,12 +36,6 @@ External tool integrations in `mcp-tools/`:
 3. **Tool Integration**: Configure MCP servers in `.claude/settings.json`
 4. **Efficiency**: Use agents and commands to automate repetitive tasks
 
-## Agent Usage Guidelines
-
-Detailed agent usage instructions have been moved to `.claude/instructions/agent-usage.md` for better organization.
-
-See: @.claude/instructions/agent-usage.md
-
 ## Development Workflow
 
 ### Git Workflow
@@ -54,59 +44,18 @@ See: @.claude/instructions/agent-usage.md
 
 **TRUNK-BASED DEVELOPMENT: Always work on main branch. Only create feature branches if explicitly instructed.**
 
-Git workflow instructions have been moved to `.claude/instructions/git-workflow.md` for better organization.
-
 See: @.claude/instructions/git-workflow.md
 
 ## Technology Stack Guidelines
 
-### Available Technology Stacks
+**Python**: This project uses **uv exclusively** for dependency management. See @.claude/stacks/python.md for complete Python development guidelines.
 
-This repository supports multiple technology stacks through modular configuration files. Each stack has its own guidelines, best practices, and specialized commands.
+Additional stacks can be added in `.claude/stacks/`.
 
-**Currently Available Stacks:**
-- **Python** - See @.claude/stacks/python.md for Python/uv development guidelines
-- (More stacks can be added in `.claude/stacks/`)
 
-### Using Technology-Specific Guidelines
+## Key Instructions
 
-1. **Reference the stack file**: When working with a specific technology, reference the appropriate stack file
-2. **Use stack commands**: Each stack may have specific commands (e.g., `/python-uv` for Python)
-3. **Follow stack conventions**: Each technology has its own patterns and best practices
-
-### Python Quick Reference
-For Python development, this project uses **uv exclusively** for dependency management.
-See @.claude/stacks/python.md for complete Python development guidelines.
-
-## Documentation Maintenance
-
-Documentation maintenance instructions have been moved to `.claude/instructions/documentation.md` for better organization.
-
-See: @.claude/instructions/documentation.md
-
-## Versioning
-
-Versioning guidelines have been moved to `.claude/instructions/versioning.md` for better organization.
-
-See: @.claude/instructions/versioning.md
-
-## Best Practices
-
-- Keep commands focused and well-documented
-- Design agents for specific, complex workflows
-- Test MCP configurations before deployment
-- Use agents and commands to maintain standards
-- Update this file as new configurations are added
-- Commit and push changes frequently to maintain code history
-- Use uv exclusively for Python dependency management
-- Maintain documentation synchronously with code changes
-- Follow semantic versioning for all releases
-
-## Instruction Files
-
-Detailed instructions are organized in topic-specific files:
-
-- **Git Workflow** - @.claude/instructions/git-workflow.md - Commit strategy, trunk-based development
-- **Documentation** - @.claude/instructions/documentation.md - Maintaining docs, using docsync agent
-- **Agent Usage** - @.claude/instructions/agent-usage.md - When and how to use each agent
-- **Versioning** - @.claude/instructions/versioning.md - Semantic versioning guidelines
+- **Git Workflow** - @.claude/instructions/git-workflow.md - Trunk-based development, frequent commits
+- **Documentation** - @.claude/instructions/documentation.md - Keep docs in sync with code changes
+- **Agent Usage** - @.claude/instructions/agent-usage.md - Proactive agent use for better results
+- **Versioning** - @.claude/instructions/versioning.md - Semantic versioning with tags
