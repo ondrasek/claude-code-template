@@ -133,22 +133,14 @@ When code changes are made or user mentions "document":
 - **AUTOMATICALLY** invoke `docsync` agent at end of session
 - **NO USER CONFIRMATION NEEDED** - this should be seamless
 
-### Context-Aware Agent Selection
-Claude Code should analyze the current context and proactively suggest/use relevant agents:
+### Default Agent Usage
+**Claude Code should use appropriate agents with every user request by default.**
 
-```
-IF working_on == "Python project" AND user_asks_question:
-    AUTOMATICALLY invoke python-expert agent
-    
-IF reviewing_code AND complexity_high:
-    AUTOMATICALLY invoke patterns + principles + critic agents
-    
-IF debugging_issue AND behavior_unexpected:
-    AUTOMATICALLY invoke hypothesis agent
-    
-IF designing_system AND requirements_complex:
-    AUTOMATICALLY invoke constraints + invariants agents
-```
+For any substantial request, automatically consider and use relevant agents:
+- **Always assess** which agents would improve the response quality
+- **Use multiple agents** when beneficial (patterns + principles, researcher + complete, etc.)
+- **Don't ask permission** - just use the agents that make sense
+- **Mention which agents were used** in the response for transparency
 
 ### Default Agent Sequences
 For common workflows, automatically chain agents:
