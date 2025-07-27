@@ -41,7 +41,6 @@ echo "📂 Checking directory structure..."
 check ".claude directory exists" "[ -d .claude ]"
 check "Commands directory exists" "[ -d .claude/commands ]"
 check "Agents directory exists" "[ -d .claude/agents ]"
-check "Hooks directory exists" "[ -d .claude/hooks ]"
 check "MCP servers directory exists" "[ -d .claude/mcp-servers ]"
 check "Settings file exists" "[ -f .claude/settings.json ]"
 check "Config file exists" "[ -f .claude/config.json ]"
@@ -111,11 +110,6 @@ echo ""
 
 echo "🔐 Checking security files..."
 check ".gitignore exists" "[ -f .gitignore ]"
-if [ -f .claude/hooks/pre-read-security.sh ]; then
-    echo -e "${GREEN}✓${NC} Security hook exists"
-else
-    warn "No pre-read security hook found"
-fi
 echo ""
 
 echo "✨ Verification complete!"

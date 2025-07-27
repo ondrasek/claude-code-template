@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a Claude Code configuration template repository that demonstrates best practices for configuring Claude Code with custom commands, agents, MCP tools, and hooks.
+This is a Claude Code configuration template repository that demonstrates best practices for configuring Claude Code with custom commands, agents, and MCP tools.
 
 ## Repository Purpose
 
@@ -33,15 +33,12 @@ External tool integrations in `mcp-tools/`:
 - API integrations
 - Custom tool development
 
-### 4. Hooks
-Automation scripts in `hooks/` that respond to Claude Code events
-
 ## Usage Guidelines
 
 1. **Custom Commands**: Create new slash commands by adding `.md` files to `.claude/commands/`
 2. **Agent Development**: Define specialized agents in `.claude/agents/` for domain-specific tasks
 3. **Tool Integration**: Configure MCP servers in `.claude/settings.json`
-4. **Automation**: Set up hooks for repetitive tasks and validations
+4. **Efficiency**: Use agents and commands to automate repetitive tasks
 
 ## Agent Usage Guidelines
 
@@ -201,7 +198,7 @@ Always:
 - Keep commands focused and well-documented
 - Design agents for specific, complex workflows
 - Test MCP configurations before deployment
-- Use hooks to enforce coding standards
+- Use agents and commands to maintain standards
 - Update this file as new configurations are added
 - Commit and push changes frequently to maintain code history
 - Use uv exclusively for Python dependency management

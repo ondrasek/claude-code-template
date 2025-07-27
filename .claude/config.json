@@ -22,11 +22,6 @@
   "prompts": {
     "directory": ".claude/prompts"
   },
-  "hooks": {
-    "user-prompt-submit-hook": ".claude/hooks/validate-prompt.sh",
-    "post-edit-file-hook": ".claude/hooks/format-after-edit.sh",
-    "pre-read-file-hook": ".claude/hooks/pre-read-security.sh"
-  },
   "python": {
     "packageManager": "uv",
     "commands": {
