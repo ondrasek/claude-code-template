@@ -42,95 +42,17 @@ External tool integrations in `mcp-tools/`:
 
 ## Agent Usage Guidelines
 
-Claude Code should PROACTIVELY use specialized agents for better results:
+Detailed agent usage instructions have been moved to `.claude/instructions/agent-usage.md` for better organization.
 
-### When to Use Each Agent
-
-**ALWAYS use researcher agent when:**
-- User mentions unfamiliar tools, libraries, or frameworks
-- Encountering errors or debugging issues
-- Asked about best practices or implementation patterns
-- Need to find examples or documentation
-- Comparing different approaches or technologies
-
-**PROACTIVELY use pattern agents when:**
-- `patterns`: Analyzing codebases for improvements
-- `context`: User asks "how does X work" in this codebase
-- `explore`: User needs multiple solution options
-- `constraints`: Dealing with complex requirements
-- `time`: Reviewing git history or predicting future needs
-
-**MUST use principle agents when:**
-- `principles`: Reviewing architecture or design decisions
-- `axioms`: User asks "why" or needs first-principles thinking
-- `invariants`: Designing type systems or state machines
-- `resolve`: Patterns and principles conflict
-
-**AUTOMATICALLY use utility agents when:**
-- `whisper`: Code needs micro-improvements (use with BatchTool)
-- `complete`: Finding and fixing TODOs, missing handlers
-- `docsync`: After any feature addition or API change
-- `hypothesis`: Debugging mysterious behavior
-- `meta`: Noticing code generation opportunities
-- `prompt-engineer`: Implementing agents in LangChain, CrewAI, or other frameworks
-- `critic`: User asks "is X a good idea?" or proposes major changes
-
-### Agent Collaboration Patterns
-
-1. **Research First**: Use `researcher` to gather information, then apply other agents
-2. **Pattern + Principle**: Use both to get complete analysis
-3. **Document Always**: Follow any change with `docsync`
-4. **Batch Operations**: Use `whisper` and `complete` with BatchTool
-5. **Critical Review**: Major decisions should invoke `critic` for pushback
-
-### Inter-Agent Communication
-Agents with the `task` tool can invoke other agents:
-- "Use the critic agent to evaluate this approach"
-- "Use the researcher agent to find alternatives"
-- Multiple agents can work in parallel
-- Sub-agents return reports to the invoking agent
-
-### Self-Criticism Pattern
-Agents should invoke the critic for self-review:
-- patterns: "Before suggesting this refactor... let me check with critic"
-- meta: "This generator is complex... let me verify it's not over-engineering"
-- principles: "SOLID says split this... but is that dogmatic?"
-- researcher: "Found great reviews... what aren't they telling us?"
-
-### Example Workflows
-
-**Learning New Tool:**
-1. `researcher` - Gather docs, examples, best practices in parallel
-2. `patterns` - Identify common usage patterns
-3. `meta` - Create generators for boilerplate
-
-**Code Review:**
-1. `context` - Understand the system
-2. `patterns` + `principles` - Analyze from both angles
-3. `resolve` - Handle any conflicts
-4. `whisper` - Apply micro-improvements
+See: @.claude/instructions/agent-usage.md
 
 ## Development Workflow
 
-### Git Commit Strategy
-- **Commit frequently**: Make small, atomic commits after each meaningful change
-- **Trunk-based development**: Always work on main branch unless explicitly instructed otherwise
-- **No feature branches**: Push directly to main to maintain continuous integration
-- **Commit after**: 
-  - Adding new features
-  - Fixing bugs
-  - Refactoring code
-  - Updating documentation
-  - Modifying configurations
-- **Auto-push**: Push commits to origin/main immediately after committing
+### Git Workflow
 
-### Example Workflow
-```bash
-# After making changes
-git add -A
-git commit -m "Add feature X"
-git push origin main
-```
+Git workflow instructions have been moved to `.claude/instructions/git-workflow.md` for better organization.
+
+See: @.claude/instructions/git-workflow.md
 
 ## Technology Stack Guidelines
 
@@ -139,7 +61,7 @@ git push origin main
 This repository supports multiple technology stacks through modular configuration files. Each stack has its own guidelines, best practices, and specialized commands.
 
 **Currently Available Stacks:**
-- **Python** - See `.claude/stacks/python.md` for Python/uv development guidelines
+- **Python** - See @.claude/stacks/python.md for Python/uv development guidelines
 - (More stacks can be added in `.claude/stacks/`)
 
 ### Using Technology-Specific Guidelines
@@ -150,48 +72,19 @@ This repository supports multiple technology stacks through modular configuratio
 
 ### Python Quick Reference
 For Python development, this project uses **uv exclusively** for dependency management.
-See `.claude/stacks/python.md` for complete Python development guidelines.
+See @.claude/stacks/python.md for complete Python development guidelines.
 
 ## Documentation Maintenance
 
-### Automatic Documentation Updates
-- **Always update documentation** when making code changes
-- **Same commit rule**: Documentation updates go in the same commit as code changes
-- **Files to maintain**: README.md, CHANGELOG.md, API documentation, CLAUDE.md
-- **What to update**:
-  - New features: Add to README features section
-  - API changes: Update API documentation
-  - Configuration changes: Update setup instructions
-  - Breaking changes: Add to CHANGELOG with migration guide
-  - New dependencies: Update installation instructions
+Documentation maintenance instructions have been moved to `.claude/instructions/documentation.md` for better organization.
 
-### Documentation Checklist
-Before committing, check if your changes affect:
-- [ ] README.md - Features, installation, usage
-- [ ] CHANGELOG.md - Version history, breaking changes
-- [ ] API docs - Endpoint changes, new methods
-- [ ] Configuration docs - New settings, environment variables
-- [ ] CLAUDE.md - Development guidelines, patterns
-
-### Using the Documentation Agent
-Use the `docsync` agent to help maintain documentation:
-```
-Task: Use the docsync agent to update documentation after adding the new caching feature
-```
+See: @.claude/instructions/documentation.md
 
 ## Versioning
 
-This project follows **Semantic Versioning (SemVer)** - see VERSIONING.md for details.
+Versioning guidelines have been moved to `.claude/instructions/versioning.md` for better organization.
 
-When making changes:
-- **MAJOR (breaking)**: Removing features, changing configurations incompatibly
-- **MINOR (features)**: Adding agents, commands, or new capabilities
-- **PATCH (fixes)**: Bug fixes, typos, small improvements
-
-Always:
-1. Update version in CHANGELOG.md
-2. Create git tag: `git tag -a v1.2.3 -m "Release version 1.2.3"`
-3. Push tag: `git push origin v1.2.3`
+See: @.claude/instructions/versioning.md
 
 ## Best Practices
 
@@ -204,3 +97,12 @@ Always:
 - Use uv exclusively for Python dependency management
 - Maintain documentation synchronously with code changes
 - Follow semantic versioning for all releases
+
+## Instruction Files
+
+Detailed instructions are organized in topic-specific files:
+
+- **Git Workflow** - @.claude/instructions/git-workflow.md - Commit strategy, trunk-based development
+- **Documentation** - @.claude/instructions/documentation.md - Maintaining docs, using docsync agent
+- **Agent Usage** - @.claude/instructions/agent-usage.md - When and how to use each agent
+- **Versioning** - @.claude/instructions/versioning.md - Semantic versioning guidelines
