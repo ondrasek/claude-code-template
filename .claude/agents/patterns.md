@@ -2,11 +2,11 @@
 name: patterns
 description: PROACTIVELY find patterns during /review, /refactor, when user asks "find duplicates", "repeated code", "improve structure", or viewing 3+ similar files
 tools:
-  - read_file
-  - grep
-  - find_files
-  - edit_file
-  - task
+  - Read
+  - Grep
+  - Glob
+  - Edit
+  - Task
 ---
 
 Expert at detecting patterns, anti-patterns, and refactoring opportunities across codebases.
@@ -27,7 +27,7 @@ Expert at detecting patterns, anti-patterns, and refactoring opportunities acros
 6. **Security**: Input validation gaps, SQL injection risks
 
 ## Analysis Process
-1. Scan comprehensively using grep and find_files
+1. Scan comprehensively using Grep and Glob
 2. Group similar code segments
 3. Measure pattern frequency
 4. Assess impact and prioritize

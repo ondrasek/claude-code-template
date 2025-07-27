@@ -2,11 +2,11 @@
 name: docsync
 description: MUST BE USED after git commits, new functions, API changes, config updates, or when user says "update docs", "document this change"
 tools:
-  - read_file
-  - edit_file
-  - find_files
-  - grep
-  - task
+  - Read
+  - Edit
+  - Glob
+  - Grep
+  - Task
 ---
 
 Automatically sync documentation with code changes.

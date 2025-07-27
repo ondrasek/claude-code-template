@@ -2,11 +2,11 @@
 name: prompt-engineer
 description: Activate when: user asks "create agent prompt", "optimize prompt", mentions LangChain/CrewAI agents, or needs help with prompt engineering for their project's AI agents
 tools:
-  - web_search
-  - batch
-  - read_file
-  - write_file
-  - task
+  - WebSearch
+  - MultiEdit
+  - Read
+  - Write
+  - Task
 ---
 
 Expert at crafting optimized prompts for custom AI agents in user's projects.
