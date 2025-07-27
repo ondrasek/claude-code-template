@@ -54,9 +54,11 @@ if [ -f "${DOTFILES_DIR}/claude_config.json" ]; then
     fi
 fi
 
-# Set up shell aliases
-echo "🐚 Setting up shell aliases..."
-cat >> "${HOME}/.bashrc" << 'EOF'
+# Set up shell configuration
+echo "🐚 Setting up shell configuration..."
+
+# Create a shell configuration snippet
+SHELL_CONFIG=$(cat << EOF
 
 # Claude Code aliases
 alias cc='claude'
@@ -66,33 +68,31 @@ alias claude-review='claude /review'
 alias claude-test='claude /test'
 alias claude-security='claude /security'
 
-# Dotfiles update alias and environment
+# Dotfiles directory location
 export CLAUDE_DOTFILES_DIR="${DOTFILES_DIR}"
-alias update-dotfiles='if [ -n "${CLAUDE_DOTFILES_DIR}" ] && [ -d "${CLAUDE_DOTFILES_DIR}" ]; then cd "${CLAUDE_DOTFILES_DIR}" && git pull && echo "✅ Dotfiles updated!"; else echo "❌ Dotfiles directory not found. You may need to re-run install.sh"; fi'
+
+# Dotfiles update alias
+alias update-dotfiles='if [ -n "\${CLAUDE_DOTFILES_DIR}" ] && [ -d "\${CLAUDE_DOTFILES_DIR}" ]; then cd "\${CLAUDE_DOTFILES_DIR}" && git pull && echo "✅ Dotfiles updated!"; else echo "❌ Dotfiles directory not found. You may need to re-run install.sh"; fi'
 
 # Claude Code environment
-export CLAUDE_CONFIG_PATH="${HOME}/.claude/config.json"
+export CLAUDE_CONFIG_PATH="\${HOME}/.claude/config.json"
 EOF
+)
 
-# Also add to .zshrc if it exists
+# Add to .bashrc
+echo "${SHELL_CONFIG}" >> "${HOME}/.bashrc"
+echo "   Added configuration to .bashrc"
+
+# Add to .zshrc if it exists
 if [ -f "${HOME}/.zshrc" ]; then
-    cat >> "${HOME}/.zshrc" << 'EOF'
+    echo "${SHELL_CONFIG}" >> "${HOME}/.zshrc"
+    echo "   Added configuration to .zshrc"
+fi
 
-# Claude Code aliases
-alias cc='claude'
-alias ccode='claude'
-alias claude-init='claude /init'
-alias claude-review='claude /review'
-alias claude-test='claude /test'
-alias claude-security='claude /security'
-
-# Dotfiles update alias and environment
-export CLAUDE_DOTFILES_DIR="${DOTFILES_DIR}"
-alias update-dotfiles='if [ -n "${CLAUDE_DOTFILES_DIR}" ] && [ -d "${CLAUDE_DOTFILES_DIR}" ]; then cd "${CLAUDE_DOTFILES_DIR}" && git pull && echo "✅ Dotfiles updated!"; else echo "❌ Dotfiles directory not found. You may need to re-run install.sh"; fi'
-
-# Claude Code environment
-export CLAUDE_CONFIG_PATH="${HOME}/.claude/config.json"
-EOF
+# Add to .profile for login shells
+if [ -f "${HOME}/.profile" ]; then
+    echo "${SHELL_CONFIG}" >> "${HOME}/.profile"
+    echo "   Added configuration to .profile"
 fi
 
 # Install MCP tools
@@ -107,8 +107,14 @@ npm install -g @modelcontextprotocol/inspector \
 echo "🐍 Installing uv for Python development..."
 if ! command -v uv &> /dev/null; then
     curl -LsSf https://astral.sh/uv/install.sh | sh || true
-    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> "${HOME}/.bashrc"
-    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> "${HOME}/.zshrc" 2>/dev/null || true
+    
+    # Add uv to PATH in all shell configs
+    UV_PATH_EXPORT='export PATH="$HOME/.cargo/bin:$PATH"'
+    echo "${UV_PATH_EXPORT}" >> "${HOME}/.bashrc"
+    [ -f "${HOME}/.zshrc" ] && echo "${UV_PATH_EXPORT}" >> "${HOME}/.zshrc"
+    [ -f "${HOME}/.profile" ] && echo "${UV_PATH_EXPORT}" >> "${HOME}/.profile"
+    
+    # Also export for current session
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
