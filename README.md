@@ -40,8 +40,8 @@ When used as dotfiles, the install script automatically:
 3. **Creates shell aliases** for quick access
 4. **Installs MCP tools** (filesystem, memory, fetch)
 5. **Configures Git aliases** for Claude-powered commits
-6. **Installs AI frameworks** (LangChain, CrewAI)
-7. **Sets up development tools** (formatters, linters)
+6. **Installs uv** for Python project management
+7. **Sets up development tools** (ruff, pytest)
 
 ## 📁 Repository Structure
 
@@ -67,6 +67,7 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 - `/debug-mcp` - MCP server debugging
 - `/langchain-agent` - LangChain development
 - `/crewai-crew` - CrewAI multi-agent systems
+- `/python-uv` - Python project setup with uv
 
 ### MCP Tools (Auto-Configured)
 - **filesystem** - Local file access

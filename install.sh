@@ -95,10 +95,21 @@ npm install -g @modelcontextprotocol/inspector \
                @modelcontextprotocol/server-memory \
                @modelcontextprotocol/server-fetch || true
 
-# Install development tools for AI agent development
-echo "🤖 Installing AI development tools..."
-if command -v pip &> /dev/null; then
-    pip install --user langchain langchain-community crewai black flake8 pytest || true
+# Install uv for Python development
+echo "🐍 Installing uv for Python development..."
+if ! command -v uv &> /dev/null; then
+    curl -LsSf https://astral.sh/uv/install.sh | sh || true
+    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> "${HOME}/.bashrc"
+    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> "${HOME}/.zshrc" 2>/dev/null || true
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# Install Python development tools using uv
+echo "🤖 Installing Python development tools..."
+if command -v uv &> /dev/null; then
+    uv tool install ruff || true
+    uv tool install pytest || true
+    echo "   Note: Project-specific dependencies (langchain, crewai) should be added with 'uv add' in each project"
 fi
 
 # Set up Git configuration for Claude Code

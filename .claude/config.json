@@ -23,14 +23,32 @@
     "preCommit": ".claude/hooks/pre-commit.sh",
     "postEdit": ".claude/hooks/post-edit.sh"
   },
+  "python": {
+    "packageManager": "uv",
+    "commands": {
+      "init": "uv init",
+      "install": "uv sync",
+      "add": "uv add",
+      "remove": "uv remove",
+      "run": "uv run",
+      "test": "uv run pytest",
+      "lint": "uv run ruff check",
+      "format": "uv run ruff format"
+    },
+    "tooling": {
+      "linter": "ruff",
+      "formatter": "ruff",
+      "testing": "pytest"
+    }
+  },
   "tools": {
     "linting": {
-      "python": ["black", "flake8"],
+      "python": ["ruff"],
       "javascript": ["eslint", "prettier"],
       "typescript": ["eslint", "prettier"]
     },
     "testing": {
-      "python": "pytest",
+      "python": "uv run pytest",
       "javascript": "npm test",
       "typescript": "npm test"
     }

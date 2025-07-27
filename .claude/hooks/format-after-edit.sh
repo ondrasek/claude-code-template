@@ -8,13 +8,17 @@ extension="${filename##*.}"
 # Format based on file type
 case "$extension" in
     py)
-        # Format Python files with black
-        if command -v black &> /dev/null; then
-            black "$filename" 2>/dev/null
-        fi
-        # Run flake8 for linting
-        if command -v flake8 &> /dev/null; then
-            flake8 "$filename" || true  # Don't block on lint errors
+        # Format Python files with ruff
+        if command -v uv &> /dev/null; then
+            # Try to run ruff format if we're in a uv project
+            if [ -f "pyproject.toml" ] || [ -f "uv.lock" ]; then
+                uv run ruff format "$filename" 2>/dev/null || true
+                uv run ruff check --fix "$filename" 2>/dev/null || true
+            elif command -v ruff &> /dev/null; then
+                # Fall back to global ruff if available
+                ruff format "$filename" 2>/dev/null || true
+                ruff check --fix "$filename" 2>/dev/null || true
+            fi
         fi
         ;;
     

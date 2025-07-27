@@ -64,6 +64,27 @@ git commit -m "Add feature X"
 git push origin main
 ```
 
+## Python Development with uv
+
+### Project Management
+- **Always use uv** for Python projects - no pip, poetry, or other tools
+- **Project initialization**: `uv init` for new projects
+- **Dependencies**: `uv add package` and `uv remove package`
+- **Virtual environments**: Managed automatically by uv
+- **Running scripts**: `uv run python script.py`
+- **Installing tools**: `uv tool install package`
+
+### Common uv Commands
+```bash
+uv init                    # Initialize new project
+uv add pandas numpy       # Add dependencies
+uv add --dev pytest ruff  # Add dev dependencies
+uv sync                   # Sync dependencies
+uv run python main.py     # Run Python scripts
+uv run pytest            # Run tests
+uv tool install ruff     # Install tools globally
+```
+
 ## Best Practices
 
 - Keep commands focused and well-documented
@@ -72,3 +93,4 @@ git push origin main
 - Use hooks to enforce coding standards
 - Update this file as new configurations are added
 - Commit and push changes frequently to maintain code history
+- Use uv exclusively for Python dependency management
