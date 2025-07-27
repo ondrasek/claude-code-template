@@ -16,12 +16,16 @@
     "enabled": true,
     "directory": ".claude/commands"
   },
+  "agents": {
+    "directory": ".claude/agents"
+  },
   "prompts": {
     "directory": ".claude/prompts"
   },
   "hooks": {
-    "preCommit": ".claude/hooks/pre-commit.sh",
-    "postEdit": ".claude/hooks/post-edit.sh"
+    "user-prompt-submit-hook": ".claude/hooks/validate-prompt.sh",
+    "post-edit-file-hook": ".claude/hooks/format-after-edit.sh",
+    "pre-read-file-hook": ".claude/hooks/pre-read-security.sh"
   },
   "python": {
     "packageManager": "uv",

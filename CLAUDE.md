@@ -20,10 +20,11 @@ Located in `commands/`, these are custom prompts that expand when invoked with `
 - `/security` - Security audit
 
 ### 2. Agents
-Specialized assistants in `agents/` for complex tasks:
-- Code Reviewer Agent - Systematic code analysis
-- Test Writer Agent - Comprehensive test creation
-- General Purpose Agent - Multi-step research tasks
+Specialized AI agents in `.claude/agents/` for complex tasks:
+- **Pattern-Based**: context, patterns, explore, whisper, constraints, time, connect, complete, hypothesis, meta
+- **First-Principles**: principles, axioms, invariants
+- **Conflict Resolution**: resolve
+Use the built-in `/agents` command to manage agents
 
 ### 3. MCP Tools
 External tool integrations in `mcp-tools/`:
