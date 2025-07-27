@@ -1,18 +1,22 @@
 # Create AI Agent Prompt
 
-Generate optimized prompts for implementing agents in AI frameworks.
+Generate optimized prompts for new AI agents in your project.
 
-## Usage
-Specify:
-1. Which agent to implement (e.g., "patterns", "researcher")
-2. Target framework (LangChain, CrewAI, AutoGen, etc.)
-3. Target model (GPT-4, Claude, Llama, etc.)
-4. Any specific requirements or constraints
+## Purpose
+Help you create effective prompts for custom agents in your application - whether it's a customer service bot, code analyzer, data processor, or any AI-powered feature.
 
-## Example Requests
-- "Create a LangChain prompt for the patterns agent using GPT-4"
-- "Implement the researcher agent in CrewAI for Claude"
-- "Convert all agents to AutoGen format for Llama"
-- "Optimize the existing prompt for token efficiency"
+## Usage Examples
+- "Create a prompt for a customer support agent that handles returns"
+- "I need an agent that reviews PR descriptions for quality"
+- "Design a data extraction agent for financial documents"
+- "Help me create a SQL query generator agent"
+- "Optimize my existing chatbot prompt for better responses"
 
-Use the prompt-engineer agent to research best practices and generate the optimal prompt for your use case.
+## What to Specify
+1. Agent's purpose in your project
+2. Target framework (optional): LangChain, CrewAI, etc.
+3. Target model (optional): GPT-4, Claude, Llama, etc.
+4. Specific capabilities needed
+5. Any constraints or guidelines
+
+The prompt-engineer agent will research best practices and create an optimized prompt tailored to your specific use case.
