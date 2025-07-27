@@ -1,5 +1,21 @@
 # Git Workflow Instructions
 
+## Automatic Commit and Push Policy
+
+**IMPORTANT: Commit and push after EVERY non-trivial change**
+
+Claude Code MUST automatically:
+1. Commit changes after completing each meaningful task
+2. Push to origin/main immediately after committing
+3. Never batch multiple unrelated changes into one commit
+
+Examples of when to commit:
+- After creating or modifying any file
+- After implementing a function or feature
+- After fixing a bug
+- After updating documentation
+- After changing configuration
+
 ## Commit Strategy
 - **Commit frequently**: Make small, atomic commits after each meaningful change
 - **Trunk-based development**: Always work on main branch unless explicitly instructed otherwise

@@ -50,6 +50,8 @@ See: @.claude/instructions/agent-usage.md
 
 ### Git Workflow
 
+**CRITICAL: Commit and push after EVERY non-trivial change. Never wait to accumulate changes.**
+
 Git workflow instructions have been moved to `.claude/instructions/git-workflow.md` for better organization.
 
 See: @.claude/instructions/git-workflow.md
