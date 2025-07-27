@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-01-27
+
+### Added
+- Modular technology stack system in `.claude/stacks/`
+- Python-specific guidelines moved to `.claude/stacks/python.md`
+- New commands: `/stacks` and `/use-python` for stack management
+- Python expert agent for Python-specific assistance
+- MCP servers README with detailed configuration instructions
+- Proper `.mcp.json` file for Claude Code MCP configuration
+
+### Changed
+- Improved agent descriptions with action-oriented language and specific triggers
+- Updated MCP configuration to use `.mcp.json` instead of settings.json
+- Enhanced verification script to check new features
+- Refined customInstructions to reference technology stacks
+
+### Fixed
+- Corrected MCP server configuration location for Claude Code
+- Updated all agent descriptions to follow best practices
+
 ## [1.0.0] - 2025-01-27
 
 ### Added

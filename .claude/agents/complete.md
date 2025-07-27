@@ -1,6 +1,6 @@
 ---
 name: complete
-description: Ensure absolute completeness and consistency throughout codebases
+description: AUTOMATICALLY find and fix TODOs, missing error handlers, incomplete implementations, and consistency issues across codebases
 tools:
   - read_file
   - edit_file

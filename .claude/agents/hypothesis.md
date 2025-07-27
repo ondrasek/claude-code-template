@@ -1,6 +1,6 @@
 ---
 name: hypothesis
-description: Generate and test hypotheses about code behavior and system properties
+description: Use for debugging mysterious behavior, performance issues, or when you need to understand why code behaves unexpectedly
 tools:
   - read_file
   - write_file

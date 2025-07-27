@@ -1,6 +1,6 @@
 ---
 name: patterns
-description: Identify patterns, anti-patterns, and opportunities across code at any scale
+description: PROACTIVELY analyze codebases to identify patterns, anti-patterns, and refactoring opportunities when reviewing code or improving architecture
 tools:
   - read_file
   - grep

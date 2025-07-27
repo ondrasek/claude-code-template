@@ -1,6 +1,6 @@
 ---
 name: context
-description: Understand and maintain deep context across entire codebases, conversations, and decisions
+description: Use when user asks 'how does X work' or needs to understand system relationships, component interactions, and codebase architecture
 tools:
   - read_file
   - grep

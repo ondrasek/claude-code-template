@@ -118,26 +118,25 @@ git commit -m "Add feature X"
 git push origin main
 ```
 
-## Python Development with uv
+## Technology Stack Guidelines
 
-### Project Management
-- **Always use uv** for Python projects - no pip, poetry, or other tools
-- **Project initialization**: `uv init` for new projects
-- **Dependencies**: `uv add package` and `uv remove package`
-- **Virtual environments**: Managed automatically by uv
-- **Running scripts**: `uv run python script.py`
-- **Installing tools**: `uv tool install package`
+### Available Technology Stacks
 
-### Common uv Commands
-```bash
-uv init                    # Initialize new project
-uv add pandas numpy       # Add dependencies
-uv add --dev pytest ruff  # Add dev dependencies
-uv sync                   # Sync dependencies
-uv run python main.py     # Run Python scripts
-uv run pytest            # Run tests
-uv tool install ruff     # Install tools globally
-```
+This repository supports multiple technology stacks through modular configuration files. Each stack has its own guidelines, best practices, and specialized commands.
+
+**Currently Available Stacks:**
+- **Python** - See `.claude/stacks/python.md` for Python/uv development guidelines
+- (More stacks can be added in `.claude/stacks/`)
+
+### Using Technology-Specific Guidelines
+
+1. **Reference the stack file**: When working with a specific technology, reference the appropriate stack file
+2. **Use stack commands**: Each stack may have specific commands (e.g., `/python-uv` for Python)
+3. **Follow stack conventions**: Each technology has its own patterns and best practices
+
+### Python Quick Reference
+For Python development, this project uses **uv exclusively** for dependency management.
+See `.claude/stacks/python.md` for complete Python development guidelines.
 
 ## Documentation Maintenance
 

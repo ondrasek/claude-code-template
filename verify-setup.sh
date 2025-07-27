@@ -41,22 +41,29 @@ check "Config file exists" "[ -f .claude/config.json ]"
 echo ""
 
 echo "📜 Checking command files..."
-COMMANDS=(review test refactor security debug-mcp langchain-agent crewai-crew python-uv agent-guide doc-update)
+COMMANDS=(review test refactor security debug-mcp langchain-agent crewai-crew python-uv agent-guide doc-update stacks use-python)
 for cmd in "${COMMANDS[@]}"; do
     check "Command /$cmd exists" "[ -f .claude/commands/$cmd.md ]"
 done
 echo ""
 
 echo "🤖 Checking agent files..."
-AGENTS=(context patterns explore whisper constraints time connect complete hypothesis meta principles axioms invariants resolve docsync researcher)
+AGENTS=(context patterns explore whisper constraints time connect complete hypothesis meta principles axioms invariants resolve docsync researcher python-expert)
 for agent in "${AGENTS[@]}"; do
     check "Agent $agent exists" "[ -f .claude/agents/$agent.md ]"
 done
 echo ""
 
 echo "🔧 Checking MCP configurations..."
+check "Project MCP config exists" "[ -f .mcp.json ]"
 check "Example MCP config exists" "[ -f .claude/mcp-servers/example-config.json ]"
 check "AI agent MCP config exists" "[ -f .claude/mcp-servers/ai-agent-development.json ]"
+check "MCP servers README exists" "[ -f .claude/mcp-servers/README.md ]"
+echo ""
+
+echo "📚 Checking technology stacks..."
+check "Stacks directory exists" "[ -d .claude/stacks ]"
+check "Python stack exists" "[ -f .claude/stacks/python.md ]"
 echo ""
 
 echo "📚 Checking documentation..."

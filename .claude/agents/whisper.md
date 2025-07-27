@@ -1,6 +1,6 @@
 ---
 name: whisper
-description: Make subtle, pervasive improvements throughout entire codebases
+description: AUTOMATICALLY apply micro-improvements like fixing typos, formatting, naming conventions, and code style with BatchTool
 tools:
   - read_file
   - edit_file

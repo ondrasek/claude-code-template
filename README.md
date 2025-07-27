@@ -49,6 +49,8 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 
 - **`.claude/`** - Claude Code configuration directory
   - `commands/` - Custom slash commands (/review, /test, etc.)
+  - `agents/` - Specialized AI agents
+  - `stacks/` - Technology-specific guidelines
   - `prompts/` - Reusable agent prompts
   - `hooks/` - Automation scripts
   - `mcp-servers/` - MCP tool configurations
@@ -70,6 +72,8 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 - `/python-uv` - Python project setup with uv
 - `/agent-guide` - Guide for using specialized AI agents
 - `/doc-update` - Update documentation to match code changes
+- `/stacks` - List available technology stacks
+- `/use-python` - Activate Python development guidelines
 
 ### MCP Tools (Auto-Configured)
 - **filesystem** - Local file access
@@ -82,7 +86,8 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 - **First-Principles**: Axiom derivation, principle enforcement, invariant protection
 - **Documentation**: Automatic documentation synchronization
 - **Conflict Resolution**: Handles pattern vs principle conflicts
-- Total of 16 specialized agents for different aspects of development
+- **Technology Experts**: Python-expert and more stack-specific agents
+- Total of 17 specialized agents for different aspects of development
 
 ### Automation Hooks
 - **Pre-read security** - Scans for sensitive data
@@ -105,17 +110,25 @@ Use with: `/my-command`
 
 ### Configuring MCP Tools
 
-Edit `.claude/settings.json`:
+MCP servers are configured in `.mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "your-tool": {
       "command": "npx",
-      "args": ["-y", "@your/mcp-server"]
+      "args": ["-y", "@your/mcp-server"],
+      "env": {
+        "API_KEY": "${YOUR_API_KEY}"
+      }
     }
   }
 }
+```
+
+You can also use the Claude Code CLI:
+```bash
+claude mcp add your-tool "npx -y @your/mcp-server"
 ```
 
 ### Project-Specific Guidelines
