@@ -16,6 +16,38 @@ Examples of when to commit:
 - After updating documentation
 - After changing configuration
 
+## Trunk-Based Development
+
+**MANDATORY: Always work directly on the main branch**
+
+### Branch Strategy
+- **Default behavior**: ALL work happens on `main` branch
+- **Feature branches**: ONLY create if explicitly instructed by the user
+- **No long-lived branches**: Merge immediately if a branch was created
+- **Continuous integration**: Every commit to main should be deployable
+
+### Release Strategy
+- **Use tags for versions**: Tag releases directly on main branch
+- **Version format**: `v1.2.3` (following semantic versioning)
+- **Release process**:
+  1. Commit all changes to main
+  2. Update CHANGELOG.md with version
+  3. Create annotated tag: `git tag -a v1.2.3 -m "Release version 1.2.3"`
+  4. Push tag: `git push origin v1.2.3`
+
+### When NOT to Create Branches
+- Regular feature development
+- Bug fixes
+- Documentation updates
+- Refactoring
+- Configuration changes
+- ANY work unless explicitly told to branch
+
+### When to Create Branches (ONLY if instructed)
+- User explicitly says "create a feature branch"
+- User mentions working on a specific branch
+- User requests a pull request workflow
+
 ## Commit Strategy
 - **Commit frequently**: Make small, atomic commits after each meaningful change
 - **Trunk-based development**: Always work on main branch unless explicitly instructed otherwise

@@ -52,6 +52,8 @@ See: @.claude/instructions/agent-usage.md
 
 **CRITICAL: Commit and push after EVERY non-trivial change. Never wait to accumulate changes.**
 
+**TRUNK-BASED DEVELOPMENT: Always work on main branch. Only create feature branches if explicitly instructed.**
+
 Git workflow instructions have been moved to `.claude/instructions/git-workflow.md` for better organization.
 
 See: @.claude/instructions/git-workflow.md

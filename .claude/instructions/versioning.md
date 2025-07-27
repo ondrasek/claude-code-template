@@ -29,10 +29,21 @@ This project follows **Semantic Versioning (SemVer)**.
 
 ## Versioning Process
 
-Always:
-1. Update version in CHANGELOG.md
-2. Create git tag: `git tag -a v1.2.3 -m "Release version 1.2.3"`
-3. Push tag: `git push origin v1.2.3`
+### Trunk-Based Release Process
+1. Ensure all changes are committed and pushed to main
+2. Update version in CHANGELOG.md
+3. Commit version update: `git commit -m "Release version 1.2.3"`
+4. Create annotated tag on main: `git tag -a v1.2.3 -m "Release version 1.2.3"`
+5. Push changes and tag:
+   ```bash
+   git push origin main
+   git push origin v1.2.3
+   ```
+
+### Important Notes
+- **NO release branches**: Tag releases directly on main
+- **Tags are immutable**: Once pushed, never modify a tag
+- **Continuous deployment**: Every commit to main should be releasable
 
 ## CHANGELOG Format
 
