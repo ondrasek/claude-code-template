@@ -84,6 +84,14 @@ Claude Code should PROACTIVELY use specialized agents for better results:
 2. **Pattern + Principle**: Use both to get complete analysis
 3. **Document Always**: Follow any change with `docsync`
 4. **Batch Operations**: Use `whisper` and `complete` with BatchTool
+5. **Critical Review**: Major decisions should invoke `critic` for pushback
+
+### Inter-Agent Communication
+Agents with the `task` tool can invoke other agents:
+- "Use the critic agent to evaluate this approach"
+- "Use the researcher agent to find alternatives"
+- Multiple agents can work in parallel
+- Sub-agents return reports to the invoking agent
 
 ### Example Workflows
 

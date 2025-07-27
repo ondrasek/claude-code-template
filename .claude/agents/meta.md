@@ -54,6 +54,10 @@ When meta-coding:
 3. **Level 3**: Code that generates Level 2 generators
 4. **Level 4**: Systems that evolve their own generators
 
+## Collaboration
+Before building complex generators, consult the critic:
+"Use the critic agent to evaluate if this code generation approach is worth the complexity"
+
 ## Output Format
 
 When creating meta-code:

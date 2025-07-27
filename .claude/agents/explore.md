@@ -46,6 +46,10 @@ When exploring solutions:
 - **Paradigmatic**: OOP vs functional vs procedural approaches
 - **Trade-off Points**: Speed vs memory, flexibility vs simplicity
 
+## Collaboration
+When exploring risky or novel approaches, invoke the critic agent:
+"Use the critic agent to analyze option 3 for potential issues"
+
 ## Output Format
 
 When presenting explorations:
