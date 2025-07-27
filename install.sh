@@ -29,15 +29,14 @@ echo "🔗 Setting up Claude Code configuration..."
 
 # For dotfiles setup (when in Codespaces or using as dotfiles repo)
 if [ -d "${DOTFILES_DIR}/.claude" ]; then
-    # Remove existing .claude if it's not a symlink
-    if [ -e "${HOME}/.claude" ] && [ ! -L "${HOME}/.claude" ]; then
-        echo "   Backing up existing .claude directory to .claude.backup"
-        mv "${HOME}/.claude" "${HOME}/.claude.backup.$(date +%Y%m%d_%H%M%S)"
-    fi
-    
-    # Create single symlink for entire .claude directory
-    ln -sfn "${DOTFILES_DIR}/.claude" "${HOME}/.claude"
-    echo "   Linked .claude directory"
+    # Create symlinks for each subdirectory
+    for dir in "${DOTFILES_DIR}/.claude"/*; do
+        if [ -d "$dir" ]; then
+            dirname=$(basename "$dir")
+            ln -sfn "$dir" "${HOME}/.claude/${dirname}"
+            echo "   Linked .claude/${dirname}"
+        fi
+    done
 fi
 
 # Handle claude_config.json based on context
