@@ -66,6 +66,9 @@ alias claude-review='claude /review'
 alias claude-test='claude /test'
 alias claude-security='claude /security'
 
+# Dotfiles update alias
+alias update-dotfiles='cd $(readlink -f ~/.claude/commands | xargs dirname | xargs dirname) && git pull && echo "✅ Dotfiles updated! You may need to restart your shell or run: source ~/.bashrc"'
+
 # Claude Code environment
 export CLAUDE_CONFIG_PATH="${HOME}/.claude/config.json"
 EOF
@@ -81,6 +84,9 @@ alias claude-init='claude /init'
 alias claude-review='claude /review'
 alias claude-test='claude /test'
 alias claude-security='claude /security'
+
+# Dotfiles update alias
+alias update-dotfiles='cd $(readlink -f ~/.claude/commands | xargs dirname | xargs dirname) && git pull && echo "✅ Dotfiles updated! You may need to restart your shell or run: source ~/.bashrc"'
 
 # Claude Code environment
 export CLAUDE_CONFIG_PATH="${HOME}/.claude/config.json"
@@ -127,6 +133,7 @@ echo "  claude-init     - Initialize project with CLAUDE.md"
 echo "  claude-review   - Run code review"
 echo "  claude-test     - Run test assistance"
 echo "  claude-security - Run security audit"
+echo "  update-dotfiles - Pull latest dotfiles changes"
 echo ""
 echo "Git aliases:"
 echo "  git claude-commit - Create commit with Claude"
