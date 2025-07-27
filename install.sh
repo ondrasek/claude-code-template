@@ -39,20 +39,9 @@ if [ -d "${DOTFILES_DIR}/.claude" ]; then
     done
 fi
 
-# Handle claude_config.json based on context
-if [ -f "${DOTFILES_DIR}/claude_config.json" ]; then
-    # When used as a template repository, claude_config.json should stay in project root
-    # When used as dotfiles, we need it in ~/.claude/
-    if [[ "${DOTFILES_DIR}" == *"dotfiles"* ]] || [[ "${CODESPACES}" == "true" ]]; then
-        # This is a dotfiles setup
-        mkdir -p "${HOME}/.claude"
-        ln -sfn "${DOTFILES_DIR}/claude_config.json" "${HOME}/.claude/config.json"
-        echo "   Linked claude_config.json for dotfiles setup"
-    else
-        # This is a project template - claude_config.json stays in project root
-        echo "   Project template detected - claude_config.json remains in project root"
-    fi
-fi
+# The .claude directory contains all configuration
+# When using as dotfiles, it will be symlinked to ~/.claude
+# When using as a template, .claude/settings.json will be in the project
 
 # Set up shell configuration
 echo "🐚 Setting up shell configuration..."

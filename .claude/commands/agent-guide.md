@@ -18,6 +18,9 @@ Note: Use the built-in `/agents` command to manage and configure agents. This gu
 - **hypothesis**: Scientific approach to understanding
 - **meta**: Create code generators and DSLs
 
+### Information Gathering
+- **researcher**: Parallel web searches using BatchTool (FAST!)
+
 ### First-Principles Agents
 - **principles**: Enforce fundamental software principles
 - **axioms**: Derive solutions from basic truths

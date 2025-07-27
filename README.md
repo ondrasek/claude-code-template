@@ -53,7 +53,7 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
   - `hooks/` - Automation scripts
   - `mcp-servers/` - MCP tool configurations
   - `config.json` - Project-specific settings
-- **`claude_config.json`** - Main configuration (auto-loaded by Claude Code)
+- **`.claude/settings.json`** - Main configuration (auto-loaded by Claude Code)
 - **`CLAUDE.md`** - Project guidelines for Claude Code
 - **`install.sh`** & **`bootstrap.sh`** - Installation scripts for dotfiles setup
 
@@ -82,7 +82,7 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 - **First-Principles**: Axiom derivation, principle enforcement, invariant protection
 - **Documentation**: Automatic documentation synchronization
 - **Conflict Resolution**: Handles pattern vs principle conflicts
-- Total of 15 specialized agents for different aspects of development
+- Total of 16 specialized agents for different aspects of development
 
 ### Automation Hooks
 - **Pre-read security** - Scans for sensitive data

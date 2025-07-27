@@ -38,9 +38,9 @@ Automation scripts in `hooks/` that respond to Claude Code events
 
 ## Usage Guidelines
 
-1. **Custom Commands**: Create new slash commands by adding `.md` files to `commands/`
-2. **Agent Development**: Define specialized agents in `agents/` for domain-specific tasks
-3. **Tool Integration**: Configure MCP servers in `mcp-tools/` for external services
+1. **Custom Commands**: Create new slash commands by adding `.md` files to `.claude/commands/`
+2. **Agent Development**: Define specialized agents in `.claude/agents/` for domain-specific tasks
+3. **Tool Integration**: Configure MCP servers in `.claude/settings.json`
 4. **Automation**: Set up hooks for repetitive tasks and validations
 
 ## Development Workflow
