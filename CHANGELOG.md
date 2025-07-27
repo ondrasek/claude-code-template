@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Removed
+- Removed redundant `config.json` file - all configuration now in CLAUDE.md and settings.json
+- Removed VERSIONING.md file - versioning instructions moved to .claude/instructions/versioning.md
+- Removed customInstructions field from settings.json (invalid field)
+
+### Changed
+- Reorganized instructions into topic-specific files in .claude/instructions/
+- Updated CLAUDE.md to use @ syntax for file references
+- Added technology stack detection rules for automatic language-specific guidance
+- Streamlined CLAUDE.md by removing low-value sections
+- Added trunk-based development rules and automatic commit/push policy
+- Added C# detection rule for .cs, .csproj, and .sln files
+
+### Added
+- Technology stack detection section in CLAUDE.md
+- Git workflow instructions emphasizing frequent commits and trunk-based development
+- Organized instruction files: git-workflow.md, documentation.md, agent-usage.md, versioning.md
+
 ## [1.4.0] - 2025-01-27
 
 ### Added

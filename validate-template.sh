@@ -43,7 +43,6 @@ check "Commands directory exists" "[ -d .claude/commands ]"
 check "Agents directory exists" "[ -d .claude/agents ]"
 check "MCP servers directory exists" "[ -d .claude/mcp-servers ]"
 check "Settings file exists" "[ -f .claude/settings.json ]"
-check "Config file exists" "[ -f .claude/config.json ]"
 echo ""
 
 echo "📜 Checking command files..."

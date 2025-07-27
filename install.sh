@@ -64,7 +64,7 @@ export CLAUDE_DOTFILES_DIR="${DOTFILES_DIR}"
 alias update-dotfiles='if [ -n "\${CLAUDE_DOTFILES_DIR}" ] && [ -d "\${CLAUDE_DOTFILES_DIR}" ]; then cd "\${CLAUDE_DOTFILES_DIR}" && git pull && echo "✅ Dotfiles updated!"; else echo "❌ Dotfiles directory not found. You may need to re-run install.sh"; fi'
 
 # Claude Code environment
-export CLAUDE_CONFIG_PATH="\${HOME}/.claude/config.json"
+# (config.json has been removed - all config is in CLAUDE.md and settings.json)
 EOF
 )
 

@@ -57,7 +57,6 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
   - `prompts/` - Reusable agent prompts
   - `hooks/` - Automation scripts
   - `mcp-servers/` - MCP tool configurations
-  - `config.json` - Project-specific settings
 - **`.claude/settings.json`** - Main configuration (auto-loaded by Claude Code)
 - **`CLAUDE.md`** - Project guidelines for Claude Code
 - **`install.sh`** & **`bootstrap.sh`** - Installation scripts for dotfiles setup
