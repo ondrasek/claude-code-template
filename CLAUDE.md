@@ -46,9 +46,27 @@ External tool integrations in `mcp-tools/`:
 
 See: @.claude/instructions/git-workflow.md
 
-## Technology Stack Guidelines
+## Technology Stack Detection
 
-**Python**: This project uses **uv exclusively** for dependency management. See @.claude/stacks/python.md for complete Python development guidelines.
+**IMPORTANT: Automatically detect and apply technology-specific guidelines based on repository contents.**
+
+When working in this repository, check for the presence of technology-specific files and refer to the appropriate stack guidelines:
+
+### Detection Rules
+- **Python files** (`.py`, `pyproject.toml`, `requirements.txt`) → Refer to @.claude/stacks/python.md
+- **Rust files** (`.rs`, `Cargo.toml`) → Refer to @.claude/stacks/rust.md (if exists)
+- **JavaScript/TypeScript** (`.js`, `.ts`, `package.json`) → Refer to @.claude/stacks/javascript.md (if exists)
+- **Go files** (`.go`, `go.mod`) → Refer to @.claude/stacks/go.md (if exists)
+- **Java files** (`.java`, `pom.xml`, `build.gradle`) → Refer to @.claude/stacks/java.md (if exists)
+- **Ruby files** (`.rb`, `Gemfile`) → Refer to @.claude/stacks/ruby.md (if exists)
+- **C/C++ files** (`.c`, `.cpp`, `.h`, `CMakeLists.txt`) → Refer to @.claude/stacks/cpp.md (if exists)
+- **Docker files** (`Dockerfile`, `docker-compose.yml`) → Refer to @.claude/stacks/docker.md (if exists)
+
+### Usage
+1. At the start of each session, identify which technologies are present
+2. Load the corresponding stack guidelines from `.claude/stacks/`
+3. Follow technology-specific best practices throughout the session
+4. If multiple technologies are present, apply all relevant guidelines
 
 Additional stacks can be added in `.claude/stacks/`.
 
