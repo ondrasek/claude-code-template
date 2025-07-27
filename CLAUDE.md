@@ -59,6 +59,7 @@ When working in this repository, check for the presence of technology-specific f
 - **Go files** (`.go`, `go.mod`) → Refer to @.claude/stacks/go.md (if exists)
 - **Java files** (`.java`, `pom.xml`, `build.gradle`) → Refer to @.claude/stacks/java.md (if exists)
 - **Ruby files** (`.rb`, `Gemfile`) → Refer to @.claude/stacks/ruby.md (if exists)
+- **C# files** (`.cs`, `.csproj`, `*.sln`) → Refer to @.claude/stacks/csharp.md (if exists)
 - **C/C++ files** (`.c`, `.cpp`, `.h`, `CMakeLists.txt`) → Refer to @.claude/stacks/cpp.md (if exists)
 - **Docker files** (`Dockerfile`, `docker-compose.yml`) → Refer to @.claude/stacks/docker.md (if exists)
 
