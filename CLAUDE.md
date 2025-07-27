@@ -42,6 +42,28 @@ Automation scripts in `hooks/` that respond to Claude Code events
 3. **Tool Integration**: Configure MCP servers in `mcp-tools/` for external services
 4. **Automation**: Set up hooks for repetitive tasks and validations
 
+## Development Workflow
+
+### Git Commit Strategy
+- **Commit frequently**: Make small, atomic commits after each meaningful change
+- **Trunk-based development**: Always work on main branch unless explicitly instructed otherwise
+- **No feature branches**: Push directly to main to maintain continuous integration
+- **Commit after**: 
+  - Adding new features
+  - Fixing bugs
+  - Refactoring code
+  - Updating documentation
+  - Modifying configurations
+- **Auto-push**: Push commits to origin/main immediately after committing
+
+### Example Workflow
+```bash
+# After making changes
+git add -A
+git commit -m "Add feature X"
+git push origin main
+```
+
 ## Best Practices
 
 - Keep commands focused and well-documented
@@ -49,3 +71,4 @@ Automation scripts in `hooks/` that respond to Claude Code events
 - Test MCP configurations before deployment
 - Use hooks to enforce coding standards
 - Update this file as new configurations are added
+- Commit and push changes frequently to maintain code history

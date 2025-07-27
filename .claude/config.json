@@ -1,5 +1,17 @@
 {
   "projectType": "template",
+  "gitStrategy": {
+    "commitFrequency": "after-each-change",
+    "defaultBranch": "main",
+    "workflow": "trunk-based",
+    "autoPush": true,
+    "commitGuidelines": [
+      "Make small, atomic commits",
+      "Write clear commit messages",
+      "Push immediately after committing",
+      "No feature branches unless instructed"
+    ]
+  },
   "customCommands": {
     "enabled": true,
     "directory": ".claude/commands"
