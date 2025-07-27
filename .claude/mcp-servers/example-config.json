@@ -4,12 +4,7 @@
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-memory"],
       "description": "Persistent memory between Claude Code sessions"
-    },
-    "postgres": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost/mydb"],
-      "description": "PostgreSQL database connection (replace with your connection string)"
     }
   },
-  "_comment": "Only included non-redundant MCP servers. Claude Code has built-in filesystem and web fetch tools."
+  "_comment": "This minimal config only includes the memory server. Add other MCP servers as needed for your specific use case (databases, APIs, etc.). Claude Code has built-in filesystem and web tools."
 }

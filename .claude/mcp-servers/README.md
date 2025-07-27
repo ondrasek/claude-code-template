@@ -2,15 +2,21 @@
 
 This directory contains example MCP (Model Context Protocol) server configurations for Claude Code.
 
-## Important: Claude Code Built-in Tools
+## Important: Avoid Redundant MCP Servers
 
-Claude Code already includes many tools natively:
-- **Filesystem**: Read, Write, Edit, MultiEdit, LS, Glob, Grep
-- **Web**: WebSearch, WebFetch
-- **Development**: Bash, Git operations, Jupyter notebooks
-- **Task Management**: TodoWrite
+Claude Code has extensive built-in tools. Only add MCP servers for capabilities NOT already available:
 
-**Only add MCP servers that provide functionality NOT already in Claude Code!**
+### ❌ Don't Install These (Already Built-in):
+- `@modelcontextprotocol/server-filesystem` - Claude has Read, Write, Edit, LS, Glob, Grep
+- Basic shell/command servers - Claude has Bash with persistent sessions
+- Simple web fetch servers - Claude has WebSearch and WebFetch
+
+### ✅ DO Install These (Add Unique Value):
+- **Memory servers** - Cross-session persistence
+- **Database connections** - PostgreSQL, MySQL, Redis, MongoDB
+- **API integrations** - Slack, GitHub API, LangChain, etc.
+- **Browser automation** - Puppeteer, Playwright
+- **Specialized services** - Vector databases, LLMs, cloud services
 
 ## How to Use These Configurations
 

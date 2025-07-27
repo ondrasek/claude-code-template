@@ -179,7 +179,6 @@ This checks:
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
 - [MCP Protocol Specification](https://modelcontextprotocol.io)
 - [GitHub Dotfiles Documentation](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles)
-- [Claude Code Built-in Tools](CLAUDE_CODE_TOOLS.md) - What tools are already available
 - [Versioning Guidelines](VERSIONING.md) - How we version this template
 
 ## 📄 License

@@ -24,18 +24,13 @@ uv tool install ruff     # Install tools globally
 ```
 
 ### Python Project Structure
-```
-project/
-├── src/
-│   └── project_name/
-│       ├── __init__.py
-│       └── main.py
-├── tests/
-│   └── test_main.py
-├── pyproject.toml       # uv manages this
-├── README.md
-└── .python-version      # Optional, for uv
-```
+
+Standard Python project layout:
+- `src/project_name/` - Main package directory with `__init__.py`
+- `tests/` - Test files prefixed with `test_`
+- `pyproject.toml` - Project configuration (managed by uv)
+- `README.md` - Project documentation
+- `.python-version` - Optional Python version specification
 
 ### Testing with Python
 - **Test framework**: Use pytest (install with `uv add --dev pytest`)
