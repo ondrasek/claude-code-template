@@ -1,6 +1,8 @@
-# Agent Usage Command
+# Agent Guide Command
 
-Help me work with Claude Code's AI agents for specialized tasks.
+Guide for using the specialized AI agents in this template. 
+
+Note: Use the built-in `/agents` command to manage and configure agents. This guide explains when and how to use each agent effectively.
 
 ## Available Agents
 
