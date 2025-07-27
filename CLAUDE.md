@@ -18,22 +18,22 @@ Located in `commands/`, these are custom prompts that expand when invoked with `
 ### 2. Agents
 Specialized AI agents in `.claude/agents/` for complex tasks (alphabetically organized):
 - **axioms** - First-principles reasoning
-- **complete** - Find missing functionality and TODOs
-- **connect** - Cross-domain creative insights
+- **completer** - Find missing functionality and TODOs
+- **connector** - Cross-domain creative insights
 - **constraints** - Multi-dimensional constraint solving
 - **context** - Deep system understanding
 - **critic** - Challenge assumptions and ideas
-- **docsync** - Documentation maintenance
-- **explore** - Multiple solution generation
+- **docs** - Documentation maintenance
+- **explorer** - Multiple solution generation
+- **generator** - Code generation and DSL creation
 - **hypothesis** - Scientific debugging approach
 - **invariants** - Type safety and state machine design
-- **meta** - Code generation and DSL creation
 - **patterns** - Pattern detection and refactoring
 - **principles** - Software design principles (SOLID, etc.)
-- **prompt-engineer** - AI agent development
-- **python-expert** - Python-specific guidance
+- **prompter** - AI agent development
+- **python** - Python-specific guidance
 - **researcher** - Information gathering and research
-- **resolve** - Conflict resolution between approaches
+- **resolver** - Conflict resolution between approaches
 - **time** - Historical analysis and evolution
 - **whisper** - Micro-improvements at scale
 
@@ -89,54 +89,54 @@ When working in this repository, check for the presence of technology-specific f
 
 Additional stacks can be added in `.claude/stacks/`.
 
-## Intelligent Agent Invocation
+## Automatic Agent Invocation
 
-**Claude Code should proactively use appropriate agents based on request context for optimal results.**
+**CRITICAL: Claude Code MUST use ALL appropriate agents for EVERY user request, prompt, or interaction.**
 
-### Context-Aware Agent Selection
+### Universal Agent Rule
 
-**Core Principle**: Use the right agents for the task, not all agents for every task.
+**For ANY user request**: Use ALL appropriate agents automatically
+- **ALWAYS start with**: `researcher` + `patterns` + `principles` + `completer`
+- **ALWAYS add**: `critic` to validate approaches and challenge assumptions
+- **ALWAYS include**: `docs` after any code modifications
+- **ALWAYS consider**: Domain-specific agents based on detected technology stacks
 
-**Base Agents** (used for most requests):
-- `researcher` - Gather information and current best practices
-- `critic` - Validate approaches and challenge assumptions
+### Default Agent Pipeline
 
-**Context-Specific Agents**:
-- **Code Analysis**: Add `patterns` + `principles` when reviewing or refactoring code
-- **Debugging Issues**: Add `hypothesis` for systematic problem investigation  
-- **Architecture Decisions**: Add `explore` + `constraints` for design alternatives
-- **Missing Functionality**: Add `complete` when scanning for TODOs or gaps
-- **Code Generation**: Add `meta` for templates, DSLs, or repetitive code
-- **Documentation Changes**: Add `docsync` after any code modifications
-- **Historical Context**: Add `time` for git history or evolution analysis
+**Standard Pipeline for ALL Requests:**
+1. `researcher` - Gather information and context
+2. `patterns` - Identify relevant patterns and structures  
+3. `principles` - Apply design principles and best practices
+4. `completer` - Ensure completeness and find missing elements
+5. `critic` - Challenge assumptions and validate approaches
+6. `docs` - Update documentation for any changes
 
-**Technology-Specific Agents**:
-- Python projects: Add `python-expert` when working with .py files
-- Prompt engineering: Add `prompt-engineer` for AI agent development
-- Type systems: Add `invariants` for state machine or type safety work
+**Additional Agents by Context:**
+- Python projects: Add `python`
+- Prompt engineering: Add `prompter`
+- Architecture discussions: Add `explorer` + `constraints`
+- Debugging: Add `hypothesis`
+- Code generation: Add `generator`
+- Historical analysis: Add `time`
+- Cross-domain solutions: Add `connector`
+- Type safety: Add `invariants`
+- First principles: Add `axioms`
+- System understanding: Add `context`
+- Conflict resolution: Add `resolver`
+- Code quality: Add `whisper`
 
-### Smart Agent Workflows
+### Simplified Automation Rules
 
-**Simple Queries** → `researcher` only
-**Code Review** → `researcher` + `patterns` + `principles` + `critic`
-**Debugging** → `researcher` + `hypothesis` + `critic`  
-**Architecture Planning** → `researcher` + `explore` + `constraints` + `principles` + `critic`
-**Feature Implementation** → `researcher` + `patterns` + `complete` + `docsync`
+1. **Use agents for EVERYTHING** - No exceptions, no trigger pattern matching needed
+2. **Start comprehensive** - Begin with the standard 6-agent pipeline
+3. **Add context-specific** - Include domain agents based on project detection
+4. **Run in parallel when possible** - Maximum efficiency
+5. **Always end with `docs`** - Keep documentation current
 
-### User Control Mechanisms
-
-**Comprehensive Analysis**: User says "use all agents" or "deep analysis"
-**Quick Response**: User says "quick answer" or "simple question"  
-**Specific Focus**: User says "just check patterns" or "only research this"
-**No Agents**: User says "don't use agents" or adds `--no-agents` flag
-
-### Performance Guidelines
-
-1. **Start minimal** - Begin with base agents, add based on context
-2. **Progressive enhancement** - Add agents based on initial findings
-3. **Parallel execution** - Run compatible agents simultaneously
-4. **Fail gracefully** - Continue if individual agents fail
-5. **Respect time limits** - Don't over-analyze simple requests
+### Override Mechanism
+Users can disable automatic agent usage by:
+- Adding `--no-agents` flag to commands
+- Explicitly stating "don't use agents"
 
 ## Key Instructions
 

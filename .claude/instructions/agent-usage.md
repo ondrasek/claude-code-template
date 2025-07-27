@@ -1,6 +1,6 @@
 # Agent Usage Guidelines
 
-Claude Code should intelligently select appropriate agents based on request context:
+Claude Code should PROACTIVELY use ALL appropriate agents for better results:
 
 ## Base Agents (Most Requests)
 
@@ -23,28 +23,28 @@ Claude Code should intelligently select appropriate agents based on request cont
 
 ### Problem Investigation
 - **hypothesis**: Form theories, design experiments, systematic debugging
-- **complete**: Find missing error handlers, TODOs, incomplete implementations  
+- **completer**: Find missing error handlers, TODOs, incomplete implementations  
 - **Use for**: Debugging issues, finding gaps, ensuring completeness
 
 ### Design and Planning
-- **explore**: Generate multiple solution alternatives, compare approaches
+- **explorer**: Generate multiple solution alternatives, compare approaches
 - **constraints**: Handle complex requirements, conflicting needs, trade-offs
-- **resolve**: Mediate when different approaches conflict
+- **resolver**: Mediate when different approaches conflict
 - **Use for**: Architecture decisions, complex requirements, design choices
 
 ### Specialized Domains
-- **meta**: Create code generators, templates, DSLs for repetitive patterns
+- **generator**: Create code generators, templates, DSLs for repetitive patterns
 - **invariants**: Design type systems, state machines, prevent invalid states
 - **time**: Analyze git history, predict evolution, understand system changes
-- **connect**: Find cross-domain solutions, creative approaches
+- **connector**: Find cross-domain solutions, creative approaches
 - **axioms**: First-principles reasoning, fundamental understanding
 
 ### Technology-Specific
-- **python-expert**: Python-specific patterns, frameworks, ecosystem guidance
-- **prompt-engineer**: AI agent development, LangChain, CrewAI integration
+- **python**: Python-specific patterns, frameworks, ecosystem guidance
+- **prompter**: AI agent development, LangChain, CrewAI integration
 
 ### Maintenance
-- **docsync**: Update documentation after code changes, maintain consistency
+- **docs**: Update documentation after code changes, maintain consistency
 - **whisper**: Apply micro-improvements, fix typos, enhance code quality
 
 ## Smart Agent Workflows
@@ -65,12 +65,12 @@ Claude Code should intelligently select appropriate agents based on request cont
 - **Example**: "Why is this API endpoint returning 500 errors?"
 
 ### Architecture Planning
-- **Agents**: `researcher` + `explore` + `constraints` + `principles` + `critic`
+- **Agents**: `researcher` + `explorer` + `constraints` + `principles` + `critic`
 - **Flow**: Research approaches → Generate alternatives → Handle constraints → Apply principles → Critical review
 - **Example**: "Design a microservices architecture for this system"
 
 ### Feature Implementation
-- **Agents**: `researcher` + `patterns` + `complete` + `docsync`
+- **Agents**: `researcher` + `patterns` + `completer` + `docs`
 - **Flow**: Research implementation patterns → Check for existing patterns → Ensure completeness → Update docs
 - **Example**: "Add caching to the user service"
 
@@ -79,14 +79,14 @@ Claude Code should intelligently select appropriate agents based on request cont
 ### Context Detection
 - **Code files mentioned** → Add `patterns` + `principles`
 - **Error messages/debugging** → Add `hypothesis`  
-- **Architecture/design questions** → Add `explore` + `constraints`
-- **"What's missing" or TODOs** → Add `complete`
+- **Architecture/design questions** → Add `explorer` + `constraints`
+- **"What's missing" or TODOs** → Add `completer`
 - **Major decisions** → Add `critic`
-- **Code changes made** → Add `docsync`
+- **Code changes made** → Add `docs`
 
 ### Technology Detection
-- **Python files (.py)** → Add `python-expert`
-- **Agent/prompt engineering context** → Add `prompt-engineer`
+- **Python files (.py)** → Add `python`
+- **Agent/prompt engineering context** → Add `prompter`
 - **Type safety/state machines** → Add `invariants`
 - **Historical analysis needed** → Add `time`
 

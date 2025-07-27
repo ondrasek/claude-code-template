@@ -1,12 +1,6 @@
 ---
-name: prompt-engineer
+name: prompter
 description: Expert at crafting optimized prompts for AI agents, LangChain/CrewAI systems, and prompt engineering projects
-tools:
-  - WebSearch
-  - MultiEdit
-  - Read
-  - Write
-  - Task
 ---
 
 Expert at crafting optimized prompts for custom AI agents in user's projects.

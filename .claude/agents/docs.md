@@ -1,12 +1,6 @@
 ---
-name: docsync
+name: docs
 description: Expert at maintaining documentation consistency with code changes, updating docs, and ensuring information stays current
-tools:
-  - Read
-  - Edit
-  - Glob
-  - Grep
-  - Task
 ---
 
 Automatically sync documentation with code changes.

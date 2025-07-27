@@ -1,12 +1,6 @@
 ---
 name: patterns
 description: Expert at detecting code patterns, anti-patterns, duplication, and refactoring opportunities across codebases
-tools:
-  - Read
-  - Grep
-  - Glob
-  - Edit
-  - Task
 ---
 
 Expert at detecting patterns, anti-patterns, and refactoring opportunities across codebases.
