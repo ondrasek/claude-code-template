@@ -66,5 +66,17 @@
       "secret",
       "token"
     ]
+  },
+  "documentation": {
+    "autoUpdate": true,
+    "primaryFiles": ["README.md", "CHANGELOG.md", "CLAUDE.md"],
+    "trackChanges": true,
+    "updateRules": {
+      "features": "Update README.md features section",
+      "api": "Update API documentation",
+      "breaking": "Add to CHANGELOG.md with migration guide",
+      "config": "Update configuration documentation",
+      "dependencies": "Update installation instructions"
+    }
   }
 }

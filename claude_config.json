@@ -16,5 +16,5 @@
       "description": "Web content fetching"
     }
   },
-  "customInstructions": "You are working in a project configured with Claude Code template. Custom commands are available in .claude/commands/. Check CLAUDE.md for project-specific guidelines. IMPORTANT: Commit and push to git frequently (after each meaningful change). Use trunk-based development - work directly on main branch unless explicitly instructed to create a feature branch. For Python projects, ALWAYS use uv for dependency management - never use pip, poetry, or conda directly. Use 'uv add', 'uv run', and other uv commands exclusively."
+  "customInstructions": "You are working in a project configured with Claude Code template. Custom commands are available in .claude/commands/. Check CLAUDE.md for project-specific guidelines. IMPORTANT: Commit and push to git frequently (after each meaningful change). Use trunk-based development - work directly on main branch unless explicitly instructed to create a feature branch. For Python projects, ALWAYS use uv for dependency management - never use pip, poetry, or conda directly. Use 'uv add', 'uv run', and other uv commands exclusively. DOCUMENTATION: Keep README.md and other documentation files up-to-date with code changes. When adding features, fixing bugs, or changing APIs, update relevant documentation in the same commit."
 }

@@ -23,6 +23,9 @@ Note: Use the built-in `/agents` command to manage and configure agents. This gu
 - **axioms**: Derive solutions from basic truths
 - **invariants**: Make invalid states impossible
 
+### Documentation
+- **docsync**: Keep documentation synchronized with code
+
 ### Conflict Resolution
 - **resolve**: Handle conflicts between patterns and principles
 

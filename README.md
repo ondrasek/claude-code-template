@@ -69,6 +69,7 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 - `/crewai-crew` - CrewAI multi-agent systems
 - `/python-uv` - Python project setup with uv
 - `/agent-guide` - Guide for using specialized AI agents
+- `/doc-update` - Update documentation to match code changes
 
 ### MCP Tools (Auto-Configured)
 - **filesystem** - Local file access
@@ -79,8 +80,9 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 ### AI-Native Agents
 - **Pattern-Based**: Context synthesis, pattern recognition, parallel exploration
 - **First-Principles**: Axiom derivation, principle enforcement, invariant protection
+- **Documentation**: Automatic documentation synchronization
 - **Conflict Resolution**: Handles pattern vs principle conflicts
-- Total of 14 specialized agents for different aspects of development
+- Total of 15 specialized agents for different aspects of development
 
 ### Automation Hooks
 - **Pre-read security** - Scans for sensitive data
