@@ -2,6 +2,16 @@
 
 This directory contains example MCP (Model Context Protocol) server configurations for Claude Code.
 
+## Important: Claude Code Built-in Tools
+
+Claude Code already includes many tools natively:
+- **Filesystem**: Read, Write, Edit, MultiEdit, LS, Glob, Grep
+- **Web**: WebSearch, WebFetch
+- **Development**: Bash, Git operations, Jupyter notebooks
+- **Task Management**: TodoWrite
+
+**Only add MCP servers that provide functionality NOT already in Claude Code!**
+
 ## How to Use These Configurations
 
 1. **Copy configuration to project root**: Copy the desired configuration to `.mcp.json` in your project root

@@ -41,7 +41,7 @@ When used as dotfiles, the install script automatically:
 1. **Installs Claude Code** via npm globally
 2. **Sets up configuration** in `~/.claude/`
 3. **Creates shell aliases** for quick access
-4. **Installs MCP tools** (filesystem, memory, fetch)
+4. **Installs MCP tools** (only non-redundant: memory, inspector)
 5. **Configures Git aliases** for Claude-powered commits
 6. **Installs uv** for Python project management
 7. **Sets up development tools** (ruff, pytest)
@@ -78,11 +78,13 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 - `/stacks` - List available technology stacks
 - `/use-python` - Activate Python development guidelines
 
-### MCP Tools (Auto-Configured)
-- **filesystem** - Local file access
-- **memory** - Persistent session memory
-- **fetch** - Web content retrieval
-- Additional tools in `.claude/mcp-servers/`
+### MCP Tools (Non-Redundant Only)
+- **memory** - Persistent session memory (cross-session state)
+- **Database servers** - PostgreSQL, Redis, etc. (see examples)
+- **API integrations** - LangChain, Ollama, etc. (see examples)
+- Additional specialized tools in `.claude/mcp-servers/`
+
+Note: Claude Code has built-in filesystem and web tools - no MCP needed!
 
 ### AI-Native Agents
 - **Pattern-Based**: Context synthesis, pattern recognition, parallel exploration
@@ -177,6 +179,7 @@ This checks:
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
 - [MCP Protocol Specification](https://modelcontextprotocol.io)
 - [GitHub Dotfiles Documentation](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles)
+- [Claude Code Built-in Tools](CLAUDE_CODE_TOOLS.md) - What tools are already available
 - [Versioning Guidelines](VERSIONING.md) - How we version this template
 
 ## 📄 License

@@ -84,13 +84,13 @@ if [ -f "${HOME}/.profile" ]; then
     echo "   Added configuration to .profile"
 fi
 
-# Install MCP tools
+# Install MCP tools (only non-redundant ones)
 echo "🔧 Installing MCP tools..."
+echo "   Note: Claude Code has built-in filesystem and web tools"
+echo "   Only installing MCP servers that add unique functionality"
 npm install -g @modelcontextprotocol/inspector \
                @modelcontextprotocol/client-cli \
-               @modelcontextprotocol/server-filesystem \
-               @modelcontextprotocol/server-memory \
-               @modelcontextprotocol/server-fetch || true
+               @modelcontextprotocol/server-memory || true
 
 # Install uv for Python development
 echo "🐍 Installing uv for Python development..."
