@@ -91,53 +91,41 @@ Additional stacks can be added in `.claude/stacks/`.
 
 ## Automatic Agent Invocation
 
-**IMPORTANT: Claude Code MUST use agents automatically based on simple trigger patterns.**
+**CRITICAL: Claude Code MUST use agents for EVERY user request, prompt, or interaction.**
 
-### Primary Trigger Patterns
+### Universal Agent Rule
 
-#### Code Quality: "review", "check", "audit", "improve", "clean", "refactor"
-**Agents**: `patterns` + `principles` + `complete`
-**Then**: `critic` (for major changes)
+**For ANY user request**: Use ALL appropriate agents automatically
+- **ALWAYS start with**: `researcher` + `patterns` + `principles` + `complete`
+- **ALWAYS add**: `critic` to validate approaches and challenge assumptions
+- **ALWAYS include**: `docsync` after any code modifications
+- **ALWAYS consider**: Domain-specific agents based on detected technology stacks
 
-#### Research/Information: "how to", "what is", "implement", "setup", error messages
-**Agents**: `researcher`
-**Then**: Relevant domain agent if applicable (e.g., `python-expert`)
+### Default Agent Pipeline
 
-#### Design/Architecture: "design", "architecture", "approach", "solution", "options"
-**Agents**: `explore` + `principles`
-**Then**: `critic` (for validation)
+**Standard Pipeline for ALL Requests:**
+1. `researcher` - Gather information and context
+2. `patterns` - Identify relevant patterns and structures  
+3. `principles` - Apply design principles and best practices
+4. `complete` - Ensure completeness and find missing elements
+5. `critic` - Challenge assumptions and validate approaches
+6. `docsync` - Update documentation for any changes
 
-#### Creation/Generation: "create", "generate", "template", "boilerplate"
-**Agents**: `meta`
-**Then**: `patterns` (to check generated code)
+**Additional Agents by Context:**
+- Python projects: Add `python-expert`
+- Prompt engineering: Add `prompt-engineer`
+- Architecture discussions: Add `explore` + `constraints`
+- Debugging: Add `hypothesis`
+- Code generation: Add `meta`
+- Historical analysis: Add `time`
 
-#### Problem-Solving: "debug", "fix", "not working", "fails", "error"
-**Agents**: `researcher` + `hypothesis`
-**Then**: `complete` (for missing handlers)
+### Simplified Automation Rules
 
-### Default Agent Rule
-
-**When no specific trigger pattern matches**: Use all appropriate agents for comprehensive response
-- **Code-related requests**: `patterns` + `principles` + `complete` + `critic`
-- **Research requests**: `researcher` + relevant domain agents
-- **Any substantial request**: Assess and use multiple agents as if user said "Use agents to..."
-- **Always include**: `docsync` after code changes
-
-### Simple Priority Rules
-
-1. **Most specific agent wins**: `python-expert` over `researcher` for Python questions
-2. **Parallel when compatible**: Run `patterns` + `principles` + `complete` together
-3. **Sequential when dependent**: `researcher` → domain expert → `complete`
-4. **Always add `critic`**: For architecture decisions and major changes
-5. **Always add `docsync`**: After any code modifications
-
-### Automatic Behaviors
-- **Default agent usage**: Claude Code MUST use multiple relevant agents for every substantial request
-- **Documentation sync**: `docsync` runs after every code change
-- **Quality validation**: `critic` reviews major architectural decisions  
-- **Completion check**: `complete` ensures no TODOs or missing functionality
-- **Technology detection**: Automatically load relevant stack guidelines
-- **Multi-agent by default**: Treat every request as if user said "Use agents to help with..."
+1. **Use agents for EVERYTHING** - No exceptions, no trigger pattern matching needed
+2. **Start comprehensive** - Begin with the standard 6-agent pipeline
+3. **Add context-specific** - Include domain agents based on project detection
+4. **Run in parallel when possible** - Maximum efficiency
+5. **Always end with `docsync`** - Keep documentation current
 
 ### Override Mechanism
 Users can disable automatic agent usage by:
