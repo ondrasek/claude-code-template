@@ -1,6 +1,6 @@
 ---
 name: context
-description: Use when user asks 'how does X work' or needs to understand system relationships, component interactions, and codebase architecture
+description: Use when user asks "how does X work", "explain the flow", "show me the architecture", "what calls what", or needs system understanding
 tools:
   - read_file
   - grep

@@ -1,6 +1,6 @@
 ---
 name: principles
-description: Ensure code adheres to fundamental software engineering principles
+description: Use during /review or when user asks "is this SOLID", "best practices", "design principles", "is this good architecture", or code quality concerns
 tools:
   - read_file
   - edit_file

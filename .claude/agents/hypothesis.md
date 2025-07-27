@@ -1,6 +1,6 @@
 ---
 name: hypothesis
-description: Use for debugging mysterious behavior, performance issues, or when you need to understand why code behaves unexpectedly
+description: Use when debugging "why does this happen", "strange behavior", "performance issue", "it should work but doesn't", or investigating unexpected results
 tools:
   - read_file
   - write_file

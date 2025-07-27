@@ -1,6 +1,6 @@
 ---
 name: resolve
-description: Resolve conflicts between patterns and principles, explaining trade-offs
+description: Use when patterns conflict with principles, user faces "trade-offs", "which approach is better", or agents give conflicting advice
 tools:
   - task
   - read_file

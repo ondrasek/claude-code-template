@@ -1,6 +1,6 @@
 ---
 name: python-expert
-description: Use for Python-specific questions about uv, pytest, type hints, async/await, decorators, or Python best practices
+description: Use for Python questions about uv, pytest, type hints, async/await, decorators, "Python best way", "Pythonic", or when viewing .py files with issues
 tools:
   - read_file
   - write_file

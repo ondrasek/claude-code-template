@@ -1,6 +1,6 @@
 ---
 name: researcher
-description: PROACTIVELY conduct parallel web searches when user asks about unfamiliar tools, errors, or best practices
+description: PROACTIVELY search when user mentions unknown library/tool, asks "how to", "what is", "best way to", shows error message, or says tutorial, setup, implement
 tools:
   - web_search
   - batch

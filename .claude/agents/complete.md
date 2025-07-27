@@ -1,6 +1,6 @@
 ---
 name: complete
-description: AUTOMATICALLY find and fix TODOs, missing error handlers, incomplete implementations, and consistency issues across codebases
+description: AUTOMATICALLY scan for TODOs, missing error handlers, incomplete functions when opening projects or user says "complete this", "find TODOs", "check completeness"
 tools:
   - read_file
   - edit_file

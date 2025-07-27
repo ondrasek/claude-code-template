@@ -1,6 +1,6 @@
 ---
 name: whisper
-description: AUTOMATICALLY apply micro-improvements like fixing typos, formatting, naming conventions, and code style with BatchTool
+description: AUTOMATICALLY fix typos and formatting after code changes, or when user says "clean up", "fix typos", "improve naming", "format code"
 tools:
   - read_file
   - edit_file

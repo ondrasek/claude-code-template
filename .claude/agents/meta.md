@@ -1,6 +1,6 @@
 ---
 name: meta
-description: Write code that writes code - create generators, DSLs, and automation
+description: Use when user needs "code generator", "create template", "automate creation", "DSL", "write code that writes code", or sees repetitive patterns
 tools:
   - read_file
   - write_file

@@ -1,6 +1,6 @@
 ---
 name: patterns
-description: PROACTIVELY analyze codebases to identify patterns, anti-patterns, and refactoring opportunities when reviewing code or improving architecture
+description: PROACTIVELY find patterns during /review, /refactor, when user asks "find duplicates", "repeated code", "improve structure", or viewing 3+ similar files
 tools:
   - read_file
   - grep
