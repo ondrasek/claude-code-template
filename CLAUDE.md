@@ -54,10 +54,11 @@
 ```
 
 ### Git Workflow Override
-**TRUNK-BASED DEVELOPMENT**: See @.claude/instructions/git-workflow.md for complete protocol
+**AUTOMATIC RELEASE TAGGING**: See @.claude/instructions/git-workflow.md for complete protocol
 - Commit and push after every non-trivial change
-- Create tags ONLY for value-adding increments when repository is in working state
-- Tags represent completed releases, not individual commits
+- Claude Code MUST automatically determine when to create tags (no user prompting)
+- Auto-assess each commit for: completeness, stability, value, logical breakpoint
+- Auto-tag when criteria met, auto-update CHANGELOG.md, auto-increment version
 
 ### MCP Server Configuration
 **ACTIVE MCP SERVERS**: This project uses these NON-REDUNDANT MCP servers (.mcp.json):

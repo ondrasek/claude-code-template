@@ -27,22 +27,33 @@ Examples of when to commit:
 - **No long-lived branches**: Merge immediately if a branch was created
 - **Continuous integration**: Every commit to main should be deployable
 
-### Selective Tagging Strategy
-- **Tag only releases**: Create tags when repository is in working state with completed value-adding increment
+### Automatic Tagging Strategy
+- **Automatic tag detection**: Claude Code MUST automatically determine when to create tags
 - **Version format**: `v1.2.3` (following semantic versioning)
 - **Release criteria**: Repository must be stable and feature-complete for that increment
-- **When to tag**:
-  - Major feature completion
-  - Significant bug fixes or improvements
-  - Documentation milestones
-  - Configuration improvements that add value
-  - When multiple related commits form a coherent release
-- **Tag process** (only for releases):
-  1. Ensure repository is in working state
-  2. Verify all tests pass and functionality works
-  3. Update CHANGELOG.md with release notes
-  4. Create annotated tag: `git tag -a v1.2.3 -m "Release version 1.2.3 - brief description"`
-  5. Push both commit and tag: `git push origin main && git push origin v1.2.3`
+
+**AUTOMATIC TAG TRIGGERS** (Claude Code decides without user instruction):
+- **Major feature completion**: When a significant new capability is fully implemented
+- **Significant bug fixes**: When critical issues are resolved and functionality restored
+- **Documentation milestones**: When major documentation updates are complete and consistent
+- **Configuration improvements**: When setup/tooling changes add meaningful value
+- **Coherent release points**: When multiple related commits form a logical increment
+- **TODO completion clusters**: When multiple TODOs are completed forming a valuable release
+- **Agent/command additions**: When new agents or commands are fully implemented and tested
+
+**AUTOMATIC TAG ASSESSMENT** (evaluate after each commit):
+1. **Functionality completeness**: Is a meaningful feature/fix/improvement complete?
+2. **Repository stability**: Are there no broken features or incomplete implementations?
+3. **Value threshold**: Does this change provide substantial value to users?
+4. **Logical breakpoint**: Is this a natural stopping point in development?
+5. **Test status**: Do existing functionalities still work as expected?
+
+**TAG PROCESS** (automatic when criteria met):
+1. Assess if current commit meets release criteria (no user prompt needed)
+2. If yes, update CHANGELOG.md with release notes
+3. Auto-increment version following semantic versioning rules
+4. Create annotated tag: `git tag -a v1.2.3 -m "Release version 1.2.3 - auto-generated"`
+5. Push both commit and tag: `git push origin main && git push origin v1.2.3`
 
 ### When NOT to Create Branches
 - Regular feature development
@@ -82,32 +93,35 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 git push origin main
 ```
 
-## Release Workflow (Only for Value-Adding Increments)
+## Automatic Release Workflow (Claude Code Decides)
 ```bash
-# After completing a meaningful increment
+# Standard commit process
 git add -A
-git commit -m "Complete feature X - ready for release
+git commit -m "Complete feature X
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
 
-# Update CHANGELOG.md with release notes
-# Verify repository is in working state
-
-# Create release tag
-git tag -a v1.2.3 -m "Release version 1.2.3 - feature X completion"
-
-# Push both commit and tag
 git push origin main
+
+# Claude Code automatically evaluates if this commit warrants a tag:
+# - Assess functionality completeness, stability, value, logical breakpoint
+# - If criteria met, automatically proceed with tagging:
+
+# Auto-update CHANGELOG.md with release notes
+# Auto-determine semantic version increment
+git tag -a v1.2.3 -m "Release version 1.2.3 - automatic tag for feature X completion"
 git push origin v1.2.3
 ```
 
-## Tag Guidelines
-- **Quality over quantity**: Only tag stable, working increments
-- **Semantic versioning**: Use `v1.2.3` format for release tags
-- **Meaningful releases**: Each tag should represent completed value
-- **Working state**: Repository must be functional when tagged
+## Automatic Tag Guidelines
+- **Autonomous decision-making**: Claude Code decides when to tag without user instruction
+- **Quality assessment**: Only tag when repository is stable and increment is complete
+- **Semantic versioning**: Auto-determine appropriate version increment (major/minor/patch)
+- **Value-based tagging**: Each tag represents meaningful, completed value
+- **Working state verification**: Ensure repository functionality before tagging
+- **No user prompting**: Never ask user "should I create a tag?" - make the decision automatically
 
 ## Commit Message Format
 - Use clear, concise messages describing what changed
