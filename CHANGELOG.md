@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.5.1] - 2025-07-28
+
+### Changed
+- Implemented mandatory 4-step git protocol directly in CLAUDE.md for improved compliance
+- Moved critical git workflow from .support/instructions/ to primary operational instructions
+- Simplified agent coordination with clear protocol requirements
+- Enhanced operational reliability by ensuring protocol visibility in main context
+
 ## [2.5.0] - 2025-07-28
 
 ### Removed
