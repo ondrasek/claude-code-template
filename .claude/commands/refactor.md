@@ -4,16 +4,18 @@ TRIGGER: refactoring request
 FOCUS: structure, performance, maintainability
 SCOPE: full codebase or specified files
 
-ACTIONS:
-1. invoke patterns agent: find duplication
-2. invoke principles agent: check SOLID
-3. invoke constraints agent: map dependencies
-4. generate refactoring plan
-5. apply changes incrementally
-6. invoke whisper agent: micro-improvements
-7. invoke complete agent: verify completeness
-8. run tests to validate
-9. invoke docsync agent: update docs
+ENHANCED_ACTIONS:
+1. coordinate enhanced parallel analysis clusters for comprehensive refactoring:
+   - **Pattern Analysis Cluster**: patterns + researcher + context + critic (find duplication with research validation)
+   - **Architecture Quality Cluster**: principles + invariants + axioms + completer (check SOLID with design integrity)
+   - **Dependency Mapping Cluster**: constraints + resolver + connector + time (map dependencies with conflict resolution)
+   - **Performance Analysis Cluster**: performance + hypothesis + patterns + critic (identify optimization opportunities)
+2. generate comprehensive refactoring plan validated by resolver + principles + critic agents
+3. apply changes incrementally with testing + completer + docs validation at each step
+4. invoke whisper agent: micro-improvements coordinated with principles + critic agents
+5. invoke completer agent: verify completeness with patterns + testing validation
+6. run comprehensive tests with testing + performance + security agent coordination
+7. invoke docs agent: update documentation with completer + principles validation
 
 PARAMETERS:
 --pattern [extract-method|extract-class|inline|rename]
@@ -24,13 +26,16 @@ PARAMETERS:
 --max-changes N
 FILES... (specific files to refactor)
 
-AGENT_CLUSTERS:
-Core Analysis: patterns + principles + constraints + hypothesis
-Implementation: whisper + completer + invariants + guidelines-file
-Quality Assurance: critic + testing + performance
-Documentation: docs + guidelines-repo
-Validation: explorer + resolver + axioms
-Coordination: All clusters execute in parallel with systematic integration
+ENHANCED_AGENT_CLUSTERS:
+Pattern Analysis: patterns + researcher + context + critic + time
+Architecture Quality: principles + invariants + axioms + completer + resolver
+Dependency Mapping: constraints + resolver + connector + time + context
+Performance Analysis: performance + hypothesis + patterns + critic + constraints
+Implementation Excellence: whisper + completer + invariants + guidelines-file + principles
+Quality Assurance: critic + testing + performance + security + completer
+Documentation: docs + guidelines-repo + completer + principles + time
+Validation: explorer + resolver + axioms + testing + invariants
+Coordination: All enhanced clusters execute in parallel with comprehensive systematic integration
 
 REFACTORING_PATTERNS:
 - extract method/class
@@ -195,32 +200,49 @@ def create_user(user_data: UserData):
 
 ## Agent Integration
 
-**Advanced Multi-Cluster Coordination**:
+**Enhanced Advanced Multi-Cluster Coordination**:
 
-**Core Analysis Cluster** (patterns + principles + constraints + hypothesis):
-- Comprehensive code pattern analysis and architectural principle validation  
-- Dependency mapping and performance bottleneck hypothesis generation
-- Parallel execution for thorough codebase understanding
+**Pattern Analysis Cluster** (patterns + researcher + context + critic + time):
+- Comprehensive code pattern analysis with research validation and historical context
+- Critical assessment of pattern effectiveness and evolution tracking
+- Deep system understanding across entire codebase with temporal analysis
 
-**Implementation Cluster** (whisper + completer + invariants + guidelines-file):
-- Micro-improvements and completeness validation
-- Type-safe refactoring with invariant preservation
-- Technology-specific guidance for optimal implementations
+**Architecture Quality Cluster** (principles + invariants + axioms + completer + resolver):
+- Architectural principle validation with design integrity and conflict resolution
+- Completeness assessment ensuring no gaps in principle application
+- Fundamental soundness validation with systematic resolution of conflicts
 
-**Quality Assurance Cluster** (critic + testing + performance):
-- Critical evaluation of refactoring proposals
-- Test impact analysis and performance optimization validation
-- Risk assessment and quality metrics tracking
+**Dependency Mapping Cluster** (constraints + resolver + connector + time + context):
+- Multi-dimensional dependency analysis with cross-domain insights
+- Historical dependency evolution and system context understanding
+- Conflict resolution in complex dependency relationships
 
-**Documentation Cluster** (docs + guidelines-repo):
-- Synchronized documentation updates with architectural context
-- Repository-level guideline compliance verification
+**Performance Analysis Cluster** (performance + hypothesis + patterns + critic + constraints):
+- Performance bottleneck hypothesis generation with pattern recognition
+- Critical assessment of optimization strategies within resource constraints
+- Systematic performance pattern analysis and validation
 
-**Validation Cluster** (explorer + resolver + axioms):
-- Alternative approach exploration and conflict resolution
-- Fundamental principle validation and design coherence
+**Implementation Excellence Cluster** (whisper + completer + invariants + guidelines-file + principles):
+- Micro-improvements with completeness validation and principle compliance
+- Type-safe refactoring with invariant preservation and guideline adherence
+- Technology-specific guidance ensuring optimal principle-based implementations
 
-**Memory-Enhanced Coordination**: Leverages historical refactoring outcomes for optimized decision-making
+**Quality Assurance Cluster** (critic + testing + performance + security + completer):
+- Critical evaluation with comprehensive testing and security validation
+- Performance optimization validation with gap identification
+- Multi-dimensional risk assessment and quality metrics tracking
+
+**Documentation Cluster** (docs + guidelines-repo + completer + principles + time):
+- Synchronized documentation with architectural context and historical evolution
+- Repository-level guideline compliance with completeness verification
+- Principle-based documentation standards with temporal context
+
+**Validation Cluster** (explorer + resolver + axioms + testing + invariants):
+- Alternative approach exploration with systematic testing validation
+- Fundamental principle validation with design integrity preservation
+- Comprehensive conflict resolution with type-safe design assurance
+
+**Enhanced Memory-Coordinated Integration**: Leverages historical refactoring outcomes through time + researcher + context agents for optimized decision-making with comprehensive validation by critic + principles + resolver agents
 
 ## Memory Integration
 

@@ -4,16 +4,15 @@ TRIGGER: security audit request
 FOCUS: vulnerabilities, risks, remediation
 SCOPE: full codebase security analysis
 
-ACTIONS:
-1. invoke vulnerability-scanner agent: comprehensive security flaw detection and pattern matching
-2. invoke threat-modeling agent: attack surface analysis and architectural security assessment  
-3. invoke compliance-checker agent: regulatory standards evaluation (SOC2, GDPR, HIPAA, PCI-DSS)
-4. coordinate parallel security analysis:
-   - researcher + patterns: CVE intelligence and insecure coding patterns
-   - hypothesis + explorer: threat vector analysis and attack scenario modeling
-   - constraints + invariants: security boundary validation and access control design
-   - critic + completer: risk validation and security control completeness
-5. synthesize findings into prioritized risk assessment with remediation roadmap
+ENHANCED_ACTIONS:
+1. coordinate enhanced parallel security specialist clusters:
+   - **Primary Security Analysis Cluster**: vulnerability-scanner + threat-modeling + compliance-checker + researcher (comprehensive security analysis with intelligence validation)
+   - **Threat Intelligence Cluster**: researcher + patterns + hypothesis + context (CVE intelligence, pattern recognition, threat modeling, system understanding)
+   - **Architectural Security Cluster**: explorer + constraints + invariants + axioms (alternative security approaches, boundary validation, design integrity, fundamental security principles)
+   - **Risk Assessment Cluster**: critic + completer + performance + time (risk validation, completeness assessment, performance impact, historical analysis)
+   - **Implementation Validation Cluster**: testing + principles + docs + guidelines-file (security testing, principle compliance, documentation, technology-specific guidance)
+2. synthesize findings into prioritized risk assessment validated by resolver + critic + principles agents
+3. generate comprehensive remediation roadmap with time + constraints + completer + docs analysis
 
 PARAMETERS:
 --focus [auth|injection|crypto|deps|config]
@@ -23,12 +22,14 @@ PARAMETERS:
 --deps-only (dependency scan only)
 --output [json|sarif|html]
 
-AGENT_CLUSTERS:
-Primary Security Specialists: vulnerability-scanner + threat-modeling + compliance-checker
-Threat Intelligence: researcher + patterns + hypothesis
-Architectural Security: explorer + constraints + invariants + principles
-Validation & Completeness: critic + completer + docs
-Coordination: All clusters execute in parallel for comprehensive coverage
+ENHANCED_AGENT_CLUSTERS:
+Primary Security Analysis: vulnerability-scanner + threat-modeling + compliance-checker + researcher
+Threat Intelligence: researcher + patterns + hypothesis + context + time
+Architectural Security: explorer + constraints + invariants + axioms + principles
+Risk Assessment: critic + completer + performance + time + resolver
+Implementation Validation: testing + principles + docs + guidelines-file + completer
+Synthesis & Remediation: resolver + critic + principles + constraints + docs
+Coordination: All enhanced clusters execute in parallel for comprehensive multi-dimensional security coverage
 
 VULNERABILITY_CHECKS:
 - injections: SQL, XSS, command, LDAP, XML
@@ -211,28 +212,34 @@ def login():
 
 ## Agent Integration
 
-**Specialized Security Agents** (Primary Focus):
-- **vulnerability-scanner**: Code-level security flaw detection with pattern matching
-- **threat-modeling**: Attack surface analysis and architectural security assessment
-- **compliance-checker**: Regulatory standards evaluation across multiple frameworks
+**Enhanced Specialized Security Integration**:
 
-**Supporting Intelligence Agents**:
-- **researcher**: CVE database intelligence and latest threat information
-- **patterns**: Security anti-patterns and insecure coding pattern detection
-- **hypothesis**: Attack vector analysis and threat scenario modeling
+**Primary Security Analysis Cluster** (vulnerability-scanner + threat-modeling + compliance-checker + researcher):
+- Code-level security flaw detection with research-validated pattern matching
+- Attack surface analysis with threat intelligence and regulatory compliance
+- Comprehensive security assessment with latest CVE database integration
 
-**Architectural Security Agents**:
-- **explorer**: Security solution alternatives and defense strategy options
-- **constraints**: Security boundary limitations and access control design
-- **invariants**: Security state validation and type-safe security design
-- **principles**: Security design principles and best practices validation
+**Threat Intelligence Cluster** (researcher + patterns + hypothesis + context + time):
+- CVE database intelligence with historical threat evolution analysis
+- Security anti-pattern recognition with system context understanding
+- Attack vector analysis with temporal threat landscape assessment
 
-**Quality Assurance Agents**:
-- **critic**: Security assumption validation and risk assessment challenge
-- **completer**: Security control completeness and gap identification
-- **docs**: Security documentation updates and policy synchronization
+**Architectural Security Cluster** (explorer + constraints + invariants + axioms + principles):
+- Security solution alternatives with fundamental principle validation
+- Access control design with type-safe security state management
+- Defense strategy optimization within architectural constraints
 
-**Advanced Coordination**: Security specialists coordinate with intelligence and architectural agents for comprehensive multi-dimensional security analysis
+**Risk Assessment Cluster** (critic + completer + performance + time + resolver):
+- Security assumption validation with performance impact analysis
+- Completeness assessment with historical risk pattern analysis
+- Conflict resolution in competing security requirements
+
+**Implementation Validation Cluster** (testing + principles + docs + guidelines-file + completer):
+- Security testing with technology-specific guidance
+- Principle-based validation with comprehensive documentation
+- Implementation gap identification with completeness verification
+
+**Enhanced Advanced Multi-Dimensional Coordination**: Security specialists coordinate with intelligence, architectural, risk assessment, and implementation validation agents through resolver + critic + principles integration for comprehensive, validated, and actionable security analysis with universal agent support
 
 ## Memory Integration
 

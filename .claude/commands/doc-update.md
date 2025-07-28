@@ -4,15 +4,16 @@ TRIGGER: documentation update request, code changes requiring doc sync
 FOCUS: comprehensive documentation synchronization with code changes
 SCOPE: all project documentation including README, CHANGELOG, API docs, guides
 
-ACTIONS:
-1. invoke docs agent: systematic documentation analysis and update coordination
-2. coordinate parallel documentation analysis:
-   - **patterns + completer**: identify documentation gaps and inconsistencies
-   - **researcher + time**: analyze documentation evolution and historical patterns
-   - **guidelines-repo + constraints**: ensure documentation follows project standards
-   - **critic + testing**: validate documentation accuracy and completeness
-3. generate comprehensive documentation update plan with priority mapping
-4. implement updates with cross-reference validation and consistency checking
+ENHANCED_ACTIONS:
+1. invoke docs agent: systematic documentation analysis with enhanced universal agent coordination
+2. coordinate enhanced parallel documentation analysis clusters:
+   - **Gap Analysis Cluster**: patterns + completer + whisper + critic (identify gaps, inconsistencies, micro-improvements, critical assessment)
+   - **Historical Intelligence Cluster**: researcher + time + context + patterns (documentation evolution, historical patterns, system understanding, pattern recognition)
+   - **Standards Compliance Cluster**: guidelines-repo + constraints + principles + invariants (project standards, limitations, design principles, integrity validation)
+   - **Accuracy Validation Cluster**: critic + testing + performance + completer (validate accuracy, test examples, performance impact, completeness assessment)
+   - **Implementation Coordination Cluster**: resolver + connector + axioms + docs (conflict resolution, cross-domain insights, fundamental principles, documentation synthesis)
+3. generate comprehensive documentation update plan with priority mapping validated by resolver + critic + principles agents
+4. implement updates with cross-reference validation and consistency checking coordinated by completer + invariants + testing agents
 
 PARAMETERS:
 --scope [api|readme|changelog|all] (documentation scope, default: all)
@@ -21,13 +22,15 @@ PARAMETERS:
 --dry-run (show what would be updated without making changes)
 --priority [critical|high|medium|low] (filter updates by priority)
 
-AGENT_CLUSTERS:
-Primary Documentation: docs (comprehensive documentation strategy)
-Gap Analysis: patterns + completer + whisper
-Historical Context: researcher + time + context
-Standards Compliance: guidelines-repo + constraints + principles
-Quality Validation: critic + testing + invariants
-Coordination: All clusters support docs agent leadership
+ENHANCED_AGENT_CLUSTERS:
+Primary Documentation: docs (comprehensive documentation strategy with universal agent coordination)
+Gap Analysis: patterns + completer + whisper + critic + researcher
+Historical Intelligence: researcher + time + context + patterns + axioms
+Standards Compliance: guidelines-repo + constraints + principles + invariants + completer
+Accuracy Validation: critic + testing + performance + completer + principles
+Implementation Coordination: resolver + connector + axioms + docs + invariants
+Synthesis & Quality: critic + principles + completer + docs + time
+Coordination: All enhanced clusters support docs agent leadership with comprehensive universal integration
 
 OUTPUT:
 - Comprehensive documentation audit with gap identification
@@ -38,14 +41,16 @@ OUTPUT:
 
 ## Documentation Analysis Framework
 
-**Multi-Dimensional Documentation Assessment**:
-- **Content Accuracy**: Code example validation and technical correctness
-- **Completeness**: Gap identification and coverage analysis
-- **Consistency**: Cross-document reference validation and style compliance
-- **Usability**: User journey analysis and accessibility assessment
-- **Maintenance**: Historical update patterns and sustainability analysis
+**Enhanced Multi-Dimensional Documentation Assessment**:
+- **Content Accuracy**: Code example validation and technical correctness verified by testing + critic + principles agents
+- **Completeness**: Gap identification and coverage analysis conducted by completer + patterns + researcher agents
+- **Consistency**: Cross-document reference validation and style compliance ensured by invariants + guidelines-repo + principles agents
+- **Usability**: User journey analysis and accessibility assessment performed by context + explorer + critic agents
+- **Maintenance**: Historical update patterns and sustainability analysis conducted by time + researcher + constraints agents
+- **Implementation Quality**: Technical implementation validation by performance + testing + invariants agents
+- **Strategic Alignment**: Documentation strategy validation by resolver + axioms + principles agents
 
-**Memory-Enhanced Documentation**: Leverages historical documentation effectiveness and user feedback patterns
+**Enhanced Memory-Coordinated Documentation**: Leverages historical documentation effectiveness and user feedback patterns through time + researcher + context + patterns agents with validation by critic + principles + resolver agents for comprehensive, evidence-based documentation strategy
 
 ## Memory Integration
 

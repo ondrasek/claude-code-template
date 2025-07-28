@@ -2,16 +2,17 @@
 
 TRIGGER: technology stack overview, stack configuration analysis, technology guidance review
 FOCUS: comprehensive technology stack configuration analysis and guidance effectiveness
-SCOPE: all stack configurations in `.claude/stacks/` directory and related guidance systems
+SCOPE: all stack configurations in `.support/stacks/` directory and related guidance systems
 
-ACTIONS:
-1. coordinate parallel stack analysis clusters:
-   - **guidelines-repo + guidelines-file**: technology-specific guidance analysis and effectiveness
-   - **patterns + context**: stack usage patterns and technology adoption analysis
-   - **researcher + time**: technology ecosystem evolution and best practices research
-   - **constraints + invariants**: technology limitation analysis and compatibility assessment
-2. analyze stack configuration completeness and guidance effectiveness
-3. provide comprehensive technology guidance overview with usage recommendations
+ENHANCED_ACTIONS:
+1. coordinate enhanced parallel stack analysis clusters with universal agent integration:
+   - **Technology Guidance Cluster**: guidelines-repo + guidelines-file + constraints + principles (technology guidance analysis, limitations, design principles)
+   - **Usage Intelligence Cluster**: patterns + context + time + researcher (usage patterns, system understanding, historical analysis, research validation)
+   - **Evolution Research Cluster**: researcher + hypothesis + explorer + axioms (ecosystem evolution, technology theories, alternative approaches, fundamental principles)
+   - **Validation & Assessment Cluster**: critic + completer + invariants + performance (critical assessment, completeness validation, design integrity, performance implications)
+   - **Integration Analysis Cluster**: connector + resolver + docs + testing (cross-domain insights, conflict resolution, documentation, implementation testing)
+2. analyze stack configuration completeness and guidance effectiveness through completer + critic + principles validation
+3. provide comprehensive technology guidance overview with usage recommendations validated by resolver + docs + time agents
 
 PARAMETERS:
 --stack [name] (analyze specific technology stack)
@@ -19,12 +20,14 @@ PARAMETERS:
 --effectiveness (analyze guidance effectiveness and coverage gaps)
 --recommendations (suggest stack improvements and additions)
 
-AGENT_CLUSTERS:
-Technology Guidance: guidelines-repo + guidelines-file + constraints
-Usage Analysis: patterns + context + time
-Research & Evolution: researcher + hypothesis + explorer
-Validation: critic + completer + invariants
-Coordination: All clusters provide multi-dimensional stack analysis
+ENHANCED_AGENT_CLUSTERS:
+Technology Guidance: guidelines-repo + guidelines-file + constraints + principles + completer
+Usage Intelligence: patterns + context + time + researcher + axioms
+Evolution Research: researcher + hypothesis + explorer + axioms + time
+Validation & Assessment: critic + completer + invariants + performance + testing
+Integration Analysis: connector + resolver + docs + testing + principles
+Synthesis & Optimization: resolver + critic + principles + docs + completer
+Coordination: All enhanced clusters provide comprehensive multi-dimensional stack analysis with universal agent support
 
 OUTPUT:
 - Comprehensive stack configuration inventory with capability mapping
@@ -35,14 +38,16 @@ OUTPUT:
 
 ## Stack Analysis Framework
 
-**Multi-Dimensional Stack Assessment**:
-- **Coverage Analysis**: Technology support completeness and guidance depth
-- **Usage Effectiveness**: Stack selection patterns and guidance utilization
-- **Evolution Tracking**: Technology ecosystem changes and adaptation requirements
-- **Integration Assessment**: Cross-stack compatibility and workflow integration
-- **Quality Validation**: Guidance accuracy and best practices alignment
+**Enhanced Multi-Dimensional Stack Assessment**:
+- **Coverage Analysis**: Technology support completeness and guidance depth analyzed by completer + patterns + guidelines-repo agents
+- **Usage Effectiveness**: Stack selection patterns and guidance utilization validated by patterns + context + researcher agents
+- **Evolution Tracking**: Technology ecosystem changes and adaptation requirements researched by researcher + time + hypothesis agents
+- **Integration Assessment**: Cross-stack compatibility and workflow integration evaluated by connector + resolver + constraints agents
+- **Quality Validation**: Guidance accuracy and best practices alignment verified by critic + principles + invariants agents
+- **Performance Impact**: Technology performance implications assessed by performance + constraints + testing agents
+- **Strategic Alignment**: Stack strategy validation conducted by axioms + resolver + principles agents
 
-**Memory-Enhanced Technology Guidance**: Leverages historical technology adoption patterns and guidance effectiveness
+**Enhanced Memory-Coordinated Technology Guidance**: Leverages historical technology adoption patterns and guidance effectiveness through time + researcher + context + patterns agents with strategic validation by resolver + critic + principles agents for comprehensive, evidence-based technology guidance strategy
 
 ## Memory Integration
 

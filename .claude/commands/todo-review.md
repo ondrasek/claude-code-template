@@ -4,12 +4,14 @@ TRIGGER: review existing TODOs, prioritize tasks, analyze TODO backlog
 FOCUS: task evaluation and relevance assessment
 SCOPE: all pending TODOs in .support/todos/ directory
 
-ACTIONS:
-1. invoke todo agent: scan all TODO files using Glob tool
-2. analyze task relevance and current priority
-3. identify most actionable and high-impact tasks
-4. group related tasks for batch processing
-5. recommend implementation order based on dependencies
+ENHANCED_ACTIONS:
+1. invoke todo agent: comprehensive TODO analysis with enhanced agent coordination
+2. coordinate parallel review analysis:
+   - **Relevance Assessment Cluster**: patterns + context + time + researcher (analyze relevance with system understanding and historical context)
+   - **Priority Validation Cluster**: critic + constraints + resolver (validate priorities with critical assessment and conflict resolution)
+   - **Impact Analysis Cluster**: performance + completer + hypothesis (assess impact with performance implications and completion analysis)
+   - **Dependency Mapping Cluster**: explorer + connector + axioms (identify dependencies with cross-domain insights)
+3. generate comprehensive implementation strategy validated by resolver + principles + docs agents
 
 PARAMETERS:
 --filter [pending|in_progress|all] (status filter, default: pending)
@@ -18,16 +20,21 @@ PARAMETERS:
 --limit N (limit number of TODOs to review)
 --actionable-only (show only immediately actionable tasks)
 
-AGENT_DELEGATION:
-Primary: todo
-Support: completer (identify missing dependencies)
-Support: critic (validate priorities and feasibility)
+ENHANCED_AGENT_DELEGATION:
+Primary: todo (comprehensive TODO analysis with universal agent coordination)
+Relevance Assessment: patterns + context + time + researcher
+Priority Validation: critic + constraints + resolver + principles
+Impact Analysis: performance + completer + hypothesis + testing
+Dependency Mapping: explorer + connector + axioms + invariants
+Strategic Planning: resolver + principles + docs + time
 
-OUTPUT:
-- Prioritized list of recommended TODOs to implement
-- Task groupings for efficient batch processing
-- Dependency analysis and implementation order
-- Summary of backlog health and actionability
+ENHANCED_OUTPUT:
+- Prioritized list of recommended TODOs validated by multi-agent analysis
+- Task groupings for efficient batch processing with dependency optimization
+- Comprehensive dependency analysis and implementation order with conflict resolution
+- Summary of backlog health and actionability with strategic recommendations
+- Performance impact assessment and resource allocation guidance
+- Quality assurance validation ensuring implementation feasibility
 
 EXAMPLE:
 /todo-review --filter pending --priority high --actionable-only

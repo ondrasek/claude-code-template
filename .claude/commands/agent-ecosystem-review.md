@@ -5,46 +5,48 @@ FOCUS: comprehensive agent ecosystem assessment and optimization
 SCOPE: all agents in .claude/agents/ directory plus codebase analysis
 
 ACTIONS:
-1. invoke ecosystem-analyzer agent: orchestrate multi-agent ecosystem analysis
-2. coordinate parallel agent clusters for comprehensive assessment:
-   - patterns + axioms + context: codebase characterization
-   - patterns + principles + critic: current agent ecosystem review
-   - hypothesis + explorer + connector: gap analysis and optimization opportunities
-   - resolver + critic: synthesis and validation of recommendations
-3. generate structured optimization proposal with prioritized recommendations
-4. provide implementation roadmap for approved changes
+1. invoke ecosystem-analyzer agent: orchestrate enhanced multi-agent ecosystem analysis with universal agent integration
+2. coordinate enhanced parallel agent clusters for comprehensive assessment:
+   - **Codebase Intelligence Cluster**: patterns + axioms + context + researcher (codebase characterization with research validation)
+   - **Ecosystem Quality Cluster**: patterns + principles + critic + completer (current agent ecosystem review with completeness analysis)
+   - **Strategic Analysis Cluster**: hypothesis + explorer + connector + researcher (gap analysis with research-backed opportunities)
+   - **Validation & Synthesis Cluster**: resolver + critic + principles + invariants (conflict resolution with principle validation)
+   - **Performance Assessment Cluster**: performance + time + constraints + critic (ecosystem performance analysis with critical assessment)
+3. generate structured optimization proposal with prioritized recommendations validated by critic + principles agents
+4. provide implementation roadmap approved by resolver + completer + docs agents
 
 PARAMETERS:
---scope [agents|codebase|both] (analysis scope, default: both)
 --priority [critical|high|medium|low|all] (filter recommendations by priority)
 --output [summary|detailed|roadmap] (output format, default: detailed)  
 --dry-run (generate proposal without implementation suggestions)
 --focus [gaps|redundancy|optimization|new-agents] (specific analysis focus)
 
-AGENT_DELEGATION:
-Primary: ecosystem-analyzer (coordination and synthesis)
-Codebase Analysis: patterns, axioms, context
-Ecosystem Review: patterns, principles, critic  
-Strategic Analysis: hypothesis, explorer, connector
-Validation: resolver, critic
+ENHANCED_AGENT_DELEGATION:
+Primary: ecosystem-analyzer (coordination and synthesis with universal agent support)
+Codebase Intelligence: patterns, axioms, context, researcher
+Ecosystem Quality: patterns, principles, critic, completer
+Strategic Analysis: hypothesis, explorer, connector, researcher
+Validation & Synthesis: resolver, critic, principles, invariants
+Performance Assessment: performance, time, constraints, critic
+Documentation: docs, completer, principles
 
-OUTPUT:
-- Executive summary with alignment score and priority recommendations
-- Detailed codebase profile and development patterns
-- Current agent ecosystem assessment with usage patterns
-- Prioritized optimization recommendations (HIGH/MEDIUM/LOW)
-- Implementation roadmap with phases and success metrics
-- Proposal ready for critic agent review and user approval
+ENHANCED_OUTPUT:
+- Executive summary with alignment score and priority recommendations validated by critic + principles agents
+- Detailed codebase profile and development patterns researched by researcher + patterns + context agents
+- Current agent ecosystem assessment with usage patterns analyzed by patterns + completer + performance agents
+- Prioritized optimization recommendations (HIGH/MEDIUM/LOW) validated by resolver + constraints + critic agents
+- Implementation roadmap with phases and success metrics developed by time + completer + docs agents
+- Comprehensive proposal ready for multi-agent validation (critic + principles + resolver) and user approval
 
 EXAMPLE:
-/agent-ecosystem-review --scope both --priority high --output detailed
+/agent-ecosystem-review --priority high --output detailed
 
-BEHAVIOR:
-- Delegates ALL analysis to specialized agents off-context
-- Coordinates parallel agent execution for maximum efficiency
-- Synthesizes findings into actionable optimization proposal
-- Provides strategic overview without overwhelming detail
-- Creates proposal suitable for critic review and user decision-making
+ENHANCED_BEHAVIOR:
+- Delegates ALL analysis to enhanced specialized agent clusters off-context with universal agent support
+- Coordinates parallel agent execution for maximum efficiency with atomic task distribution
+- Synthesizes findings into actionable optimization proposal validated by multiple agent perspectives
+- Provides strategic overview without overwhelming detail, enhanced by researcher + critic + principles validation
+- Creates comprehensive proposal suitable for multi-agent validation (critic + principles + resolver + completer) and informed user decision-making
 
 ## Memory Integration
 

@@ -4,14 +4,15 @@ TRIGGER: critical analysis request, proposal evaluation, decision support
 FOCUS: comprehensive multi-perspective analysis of ideas and proposals
 SCOPE: architecture decisions, technology choices, implementation strategies
 
-ACTIONS:
-1. coordinate parallel analysis clusters for comprehensive evaluation:
-   - **explorer + constraints**: generate alternatives and identify limitations
-   - **researcher + hypothesis**: evidence-based research and scenario modeling
-   - **critic + principles**: critical evaluation and best practices validation
-   - **resolver + axioms**: conflict resolution and fundamental principle application
-2. synthesize findings into balanced decision framework with risk-benefit analysis
-3. provide structured recommendations with implementation considerations
+ENHANCED_ACTIONS:
+1. coordinate enhanced parallel analysis clusters for comprehensive evaluation with universal agent integration:
+   - **Alternative Generation Cluster**: explorer + constraints + patterns + researcher (generate alternatives, identify limitations, recognize patterns, research validation)
+   - **Evidence Analysis Cluster**: researcher + hypothesis + context + time (evidence-based research, scenario modeling, system understanding, historical analysis)
+   - **Critical Evaluation Cluster**: critic + principles + invariants + completer (critical evaluation, best practices validation, design integrity, completeness assessment)
+   - **Resolution Framework Cluster**: resolver + axioms + connector + principles (conflict resolution, fundamental principles, cross-domain insights, design principles)
+   - **Performance Impact Cluster**: performance + constraints + hypothesis + critic (performance implications, resource limitations, optimization theories, critical assessment)
+2. synthesize findings into balanced decision framework with multi-agent validated risk-benefit analysis
+3. provide structured recommendations with implementation considerations validated by completer + docs + testing agents
 
 PARAMETERS:
 --focus [technical|business|risk|alternatives] (analysis focus area)
@@ -20,20 +21,23 @@ PARAMETERS:
 --constraints [time|budget|resources|tech] (constraint consideration)
 --memory-check (include historical decision patterns)
 
-AGENT_CLUSTERS:
-Alternative Generation: explorer + constraints + guidelines-repo
-Evidence Analysis: researcher + hypothesis + time
-Critical Evaluation: critic + principles + invariants
-Resolution Framework: resolver + axioms + connector
-Coordination: All clusters execute in parallel for multi-dimensional analysis
+ENHANCED_AGENT_CLUSTERS:
+Alternative Generation: explorer + constraints + patterns + researcher + guidelines-repo
+Evidence Analysis: researcher + hypothesis + context + time + patterns
+Critical Evaluation: critic + principles + invariants + completer + testing
+Resolution Framework: resolver + axioms + connector + principles + constraints
+Performance Impact: performance + constraints + hypothesis + critic + time
+Documentation & Implementation: docs + completer + testing + guidelines-file
+Coordination: All enhanced clusters execute in parallel for comprehensive multi-dimensional analysis
 
-OUTPUT:
-- Multi-perspective analysis from specialized agent clusters
-- Alternative approaches with trade-off comparison
-- Evidence-based risk assessment with confidence levels
-- Structured decision framework with clear recommendations
-- Implementation considerations and potential obstacles
-- Memory-informed insights from similar historical decisions
+ENHANCED_OUTPUT:
+- Multi-perspective analysis from enhanced specialized agent clusters with universal agent validation
+- Alternative approaches with trade-off comparison researched by researcher + patterns + explorer agents
+- Evidence-based risk assessment with confidence levels validated by critic + principles + hypothesis agents
+- Structured decision framework with clear recommendations approved by resolver + completer + docs agents
+- Implementation considerations and potential obstacles analyzed by constraints + testing + performance agents
+- Memory-informed insights from similar historical decisions enhanced by time + context + researcher agents
+- Comprehensive feasibility assessment validated by completer + invariants + testing agents
 
 ## Usage Examples
 - "Let's discuss adding microservices to our monolith"
@@ -44,11 +48,12 @@ OUTPUT:
 
 ## Analysis Framework
 
-**Multi-Cluster Coordination** ensures comprehensive coverage:
-- **Alternative Generation**: explorer identifies options, constraints maps limitations
-- **Evidence Analysis**: researcher provides data, hypothesis models scenarios
-- **Critical Evaluation**: critic challenges assumptions, principles validates approaches
-- **Resolution**: resolver synthesizes findings, axioms grounds in fundamentals
+**Enhanced Multi-Cluster Coordination** ensures comprehensive coverage with universal agent integration:
+- **Alternative Generation**: explorer identifies options, constraints maps limitations, patterns recognizes similarities, researcher validates alternatives
+- **Evidence Analysis**: researcher provides data, hypothesis models scenarios, context adds system understanding, time provides historical perspective
+- **Critical Evaluation**: critic challenges assumptions, principles validates approaches, invariants ensures design integrity, completer identifies gaps
+- **Resolution**: resolver synthesizes findings, axioms grounds in fundamentals, connector provides cross-domain insights, principles ensures sound approach
+- **Performance Impact**: performance analyzes implications, constraints identifies limitations, hypothesis tests scenarios, critic validates assessments
 
 **Memory-Enhanced Decision Making**: Leverages historical decision outcomes and patterns for informed recommendations
 

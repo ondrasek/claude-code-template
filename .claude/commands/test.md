@@ -4,16 +4,17 @@ TRIGGER: testing request
 FOCUS: run tests, create tests, analyze coverage
 FRAMEWORK_DETECTION: automatic (pytest, jest, go test, cargo test, etc.)
 
-ACTIONS:
-1. invoke testing agent: comprehensive test strategy development and systematic testing approach
-2. coordinate parallel testing analysis:
-   - patterns + completer: identify untested code patterns and coverage gaps
-   - performance + constraints: performance testing requirements and resource limitations
-   - vulnerability-scanner + threat-modeling: security testing requirements and attack surface testing
-   - hypothesis + explorer: edge case generation and alternative testing approaches
-3. execute tests with framework-specific optimizations
-4. analyze results through critic agent for quality validation
-5. generate comprehensive test improvement recommendations
+ENHANCED_ACTIONS:
+1. invoke testing agent: comprehensive test strategy development with universal agent coordination
+2. coordinate enhanced parallel testing analysis clusters:
+   - **Coverage Analysis Cluster**: patterns + completer + whisper + critic (identify untested patterns, gaps, micro-improvements, critical assessment)
+   - **Performance Testing Cluster**: performance + constraints + hypothesis + time (performance requirements, resource limitations, optimization theories, historical analysis)
+   - **Security Testing Cluster**: vulnerability-scanner + threat-modeling + compliance-checker + researcher (security testing with threat intelligence)
+   - **Quality & Strategy Cluster**: hypothesis + explorer + principles + invariants (edge case generation, alternative approaches, testing principles, design integrity)
+   - **Implementation Validation Cluster**: completer + docs + guidelines-file + resolver (completeness verification, documentation sync, technology guidance, conflict resolution)
+3. execute tests with framework-specific optimizations validated by guidelines-file + performance + critic agents
+4. analyze results through enhanced validation cluster: critic + principles + completer + testing agents
+5. generate comprehensive test improvement recommendations validated by resolver + docs + time agents
 
 PARAMETERS:
 --coverage (include coverage analysis)
@@ -24,13 +25,15 @@ PARAMETERS:
 --watch (re-run on changes)
 FILES... (specific files to test)
 
-AGENT_CLUSTERS:
-Primary Testing: testing (comprehensive test strategy and methodology)
-Coverage Analysis: patterns + completer + whisper
-Security Testing: vulnerability-scanner + threat-modeling + compliance-checker
-Performance Testing: performance + constraints + hypothesis
-Quality Validation: critic + principles + invariants
-Coordination: All clusters work in parallel under testing agent leadership
+ENHANCED_AGENT_CLUSTERS:
+Primary Testing: testing (comprehensive test strategy and methodology with universal coordination)
+Coverage Analysis: patterns + completer + whisper + critic + researcher
+Security Testing: vulnerability-scanner + threat-modeling + compliance-checker + researcher + patterns
+Performance Testing: performance + constraints + hypothesis + time + axioms
+Quality & Strategy: hypothesis + explorer + principles + invariants + context
+Implementation Validation: completer + docs + guidelines-file + resolver + testing
+Result Analysis: critic + principles + completer + testing + performance
+Coordination: All enhanced clusters work in parallel under testing agent leadership with comprehensive integration
 
 TEST_GENERATION:
 - edge cases: null, empty, boundary values
@@ -217,16 +220,20 @@ def test_with_mock(mock_service):
 
 ## Agent Integration
 
+**Enhanced Primary Testing Integration**:
+
 **Primary Testing Agent**: 
-- **testing**: Comprehensive test strategy development with 308-line systematic methodology
+- **testing**: Comprehensive test strategy development with 308-line systematic methodology enhanced by universal agent coordination
 
-**Supporting Analysis Clusters**:
-- **Coverage Analysis**: patterns + completer + whisper for gap identification
-- **Security Testing**: vulnerability-scanner + threat-modeling + compliance-checker
-- **Performance Testing**: performance + constraints + hypothesis for optimization
-- **Quality Validation**: critic + principles + invariants for test quality assurance
+**Enhanced Supporting Analysis Clusters**:
+- **Coverage Analysis**: patterns + completer + whisper + critic + researcher for comprehensive gap identification with research validation
+- **Security Testing**: vulnerability-scanner + threat-modeling + compliance-checker + researcher + patterns for security validation with threat intelligence
+- **Performance Testing**: performance + constraints + hypothesis + time + axioms for optimization with historical analysis and fundamental principles
+- **Quality & Strategy**: hypothesis + explorer + principles + invariants + context for comprehensive test quality assurance with system understanding
+- **Implementation Validation**: completer + docs + guidelines-file + resolver + testing for implementation verification with documentation and conflict resolution
+- **Result Analysis**: critic + principles + completer + testing + performance for comprehensive result validation with quality assurance
 
-**Advanced Coordination**: Testing agent orchestrates all specialized testing approaches while maintaining systematic methodology focus
+**Enhanced Advanced Coordination**: Testing agent orchestrates all specialized testing approaches with universal agent support while maintaining systematic methodology focus through resolver + critic + principles integration
 
 ## Related Commands
 

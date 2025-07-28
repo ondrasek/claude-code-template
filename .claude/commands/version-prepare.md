@@ -24,11 +24,11 @@ I'll help you prepare a version release by analyzing completed TODOs and generat
 
 ## Process
 
-1. **Analyze completed TODOs** using parallel agent coordination:
-   - **todo**: Primary TODO analysis and version calculation coordination
-   - **completer + patterns**: Comprehensive completion analysis and implementation validation
-   - **researcher + time**: Historical version pattern analysis and semantic versioning research
-   - **docs + git-tagger**: Release documentation and git tag preparation coordination
+1. **Analyze completed TODOs** using enhanced parallel agent coordination:
+   - **Primary Analysis Cluster**: todo + completer + patterns + critic (TODO analysis, completion validation, pattern recognition, critical assessment)
+   - **Version Intelligence Cluster**: researcher + time + context + hypothesis (historical patterns, semantic versioning research, system understanding, version theories)
+   - **Documentation Preparation Cluster**: docs + git-tagger + principles + invariants (release documentation, tag preparation, design principles, integrity validation)
+   - **Quality Assurance Cluster**: critic + testing + performance + resolver (quality validation, test impact, performance assessment, conflict resolution)
 2. **Calculate version bump** based on semantic versioning analysis:
    - Any `break` tasks → MAJOR version
    - Any `feat` tasks (no breaks) → MINOR version
@@ -112,15 +112,16 @@ Following trunk-based development:
 
 ## Agent Integration
 
-**Primary Coordination**: todo agent orchestrates version preparation with systematic TODO analysis
+**Enhanced Primary Coordination**: todo agent orchestrates version preparation with comprehensive universal agent integration
 
-**Supporting Clusters**:
-- **Completion Analysis**: completer + patterns for comprehensive implementation validation
-- **Historical Analysis**: researcher + time for version pattern analysis
-- **Documentation**: docs + git-tagger for release preparation and tag coordination
-- **Quality Validation**: critic + testing for release readiness assessment
+**Enhanced Supporting Clusters**:
+- **Completion Analysis**: completer + patterns + context + testing for comprehensive implementation validation with system understanding
+- **Historical Intelligence**: researcher + time + axioms + explorer for version pattern analysis with fundamental principles and alternative approaches
+- **Documentation Excellence**: docs + git-tagger + principles + invariants for release preparation with design integrity and completeness validation
+- **Quality Assurance**: critic + testing + performance + resolver for comprehensive release readiness assessment with conflict resolution
+- **Strategic Validation**: principles + constraints + critic + completer for strategic release validation with comprehensive quality assurance
 
-This command ensures systematic version management with complete traceability from TODO tasks to release documentation, enhanced by memory-informed decision making and parallel agent coordination.
+This command ensures systematic version management with complete traceability from TODO tasks to release documentation, enhanced by memory-informed decision making and comprehensive parallel agent coordination with universal agent integration for maximum quality assurance and strategic validation.
 
 ## Related Commands
 

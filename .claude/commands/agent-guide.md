@@ -44,37 +44,47 @@ Comprehensive guide for effectively using all 26 specialized AI agents in the cu
 - **guidelines-file**: Technology-specific guidance for file modifications
 - **guidelines-repo**: Architecture decisions with stack context
 
-## Multi-Agent Coordination Patterns
+## Enhanced Multi-Agent Coordination Patterns
 
-### Security Assessment Workflow
+### Enhanced Security Assessment Workflow
 **Trigger**: User mentions security review, vulnerabilities, compliance
-```
-vulnerability-scanner → researcher → patterns → threat-modeling → compliance-checker → critic
-```
+**Enhanced Parallel Clusters**:
+- **Primary Security Analysis**: vulnerability-scanner + threat-modeling + compliance-checker + researcher
+- **Threat Intelligence**: researcher + patterns + hypothesis + context + time
+- **Risk Assessment**: critic + completer + performance + time + resolver
+- **Implementation Validation**: testing + principles + docs + guidelines-file + completer
 
-### Performance Optimization Workflow  
+### Enhanced Performance Optimization Workflow  
 **Trigger**: User reports performance issues, slow code, optimization needs
-```
-performance → patterns → hypothesis → constraints → completer → critic
-```
+**Enhanced Parallel Clusters**:
+- **Performance Analysis**: performance + hypothesis + patterns + critic + constraints
+- **Architecture Quality**: principles + invariants + axioms + completer + resolver
+- **Implementation Excellence**: whisper + completer + invariants + guidelines-file + principles
+- **Validation**: explorer + resolver + axioms + testing + invariants
 
-### Architecture Design Workflow
+### Enhanced Architecture Design Workflow
 **Trigger**: User asks about system design, architecture decisions
-```
-explorer → constraints → principles → invariants → guidelines-repo → critic
-```
+**Enhanced Parallel Clusters**:
+- **Alternative Generation**: explorer + constraints + patterns + researcher + guidelines-repo
+- **Critical Evaluation**: critic + principles + invariants + completer + testing
+- **Resolution Framework**: resolver + axioms + connector + principles + constraints
+- **Documentation**: docs + guidelines-repo + completer + principles + time
 
-### Quality Assurance Workflow
+### Enhanced Quality Assurance Workflow
 **Trigger**: User requests code review, quality improvement
-```
-patterns → principles → testing → security → performance → completer → whisper
-```
+**Enhanced Parallel Clusters**:
+- **Pattern & Quality**: patterns + principles + whisper + critic + researcher
+- **Security Analysis**: vulnerability-scanner + threat-modeling + compliance-checker + researcher
+- **Performance & Architecture**: performance + constraints + invariants + hypothesis + axioms
+- **Completeness & Testing**: completer + testing + patterns + critic + performance
 
-### Debugging Investigation Workflow
+### Enhanced Debugging Investigation Workflow
 **Trigger**: Strange behavior, unexpected results, "why does this happen"
-```
-hypothesis → researcher → patterns → context → critic
-```
+**Enhanced Parallel Clusters**:
+- **Evidence Analysis**: researcher + hypothesis + context + time + patterns
+- **Critical Evaluation**: critic + principles + invariants + completer + testing
+- **Resolution Framework**: resolver + axioms + connector + principles + constraints
+- **Performance Impact**: performance + constraints + hypothesis + critic + time
 
 ## Agent Selection by Task Type
 
@@ -102,7 +112,7 @@ hypothesis → researcher → patterns → context → critic
 
 ## Proactive Agent Usage Protocol
 
-**Claude Code automatically invokes multiple agents based on context. Users don't need to explicitly request agents.**
+**Claude Code automatically invokes enhanced multiple agent clusters based on context with universal agent integration. Users don't need to explicitly request agents - the system now provides comprehensive parallel analysis with researcher, critic, and principles agents integrated across all commands.**
 
 ### Automatic Agent Combinations
 - **"This code looks messy"** → patterns + whisper + critic
@@ -111,20 +121,21 @@ hypothesis → researcher → patterns → context → critic
 - **"Is this secure?"** → vulnerability-scanner + threat-modeling + compliance-checker
 - **"Why is this slow?"** → performance + hypothesis + patterns
 
-### Advanced Multi-Agent Workflows
+### Enhanced Advanced Multi-Agent Workflows
 
-**Security specialists demonstrate sophisticated coordination:**
-- vulnerability-scanner coordinates with researcher (CVE intelligence), patterns (security anti-patterns), critic (risk validation)
-- threat-modeling integrates with context (system boundaries), constraints (security limitations), axioms (security fundamentals)
-- compliance-checker works with researcher (regulatory updates), patterns (compliance patterns), docs (policy documentation)
+**Enhanced Security specialists demonstrate sophisticated coordination:**
+- **Primary Security Analysis Cluster**: vulnerability-scanner + threat-modeling + compliance-checker + researcher (comprehensive security analysis with intelligence validation)
+- **Threat Intelligence Cluster**: researcher + patterns + hypothesis + context + time (CVE intelligence, pattern recognition, threat modeling, system understanding, historical analysis)
+- **Risk Assessment Cluster**: critic + completer + performance + time + resolver (risk validation, completeness assessment, performance impact, historical analysis, conflict resolution)
 
-**Performance analysis follows systematic patterns:**
-- performance agent coordinates with patterns (performance anti-patterns), hypothesis (bottleneck theories), constraints (resource limitations)
-- Results validated through critic agent for comprehensive optimization strategies
+**Enhanced Performance analysis follows systematic patterns:**
+- **Performance Analysis Cluster**: performance + hypothesis + patterns + critic + constraints (performance bottlenecks, optimization theories, pattern recognition, critical assessment, resource limitations)
+- **Architecture Quality Cluster**: principles + invariants + axioms + completer + resolver (design principles, integrity validation, fundamental soundness, completeness assessment, conflict resolution)
 
-**Testing strategy employs comprehensive coordination:**
-- testing agent integrates with patterns (test patterns), completer (coverage gaps), performance (performance testing)
-- Coordinates with security agents for security testing requirements
+**Enhanced Testing strategy employs comprehensive coordination:**
+- **Coverage Analysis Cluster**: patterns + completer + whisper + critic + researcher (test patterns, coverage gaps, micro-improvements, critical assessment, research validation)
+- **Security Testing Cluster**: vulnerability-scanner + threat-modeling + compliance-checker + researcher + patterns (security testing with comprehensive threat analysis)
+- **Performance Testing Cluster**: performance + constraints + hypothesis + time + axioms (performance testing with resource analysis and fundamental principles)
 
 ## Gold Standard Agents (Excellence Examples)
 

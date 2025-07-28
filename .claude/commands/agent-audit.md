@@ -61,19 +61,22 @@ description: "PROACTIVELY use when user asks 'why does this happen', 'strange be
 
 ## Agent Spawning Strategy
 
-**Parallel Agent Cluster Analysis:**
-- Use parallel agent clusters for comprehensive ecosystem analysis
-- **patterns** + **principles** + **critic**: Core agent analysis cluster
-- **explorer** + **constraints** + **resolver**: Gap analysis and optimization cluster  
-- **researcher** + **time** + **context**: Historical performance and usage analysis
-- **axioms** + **invariants** + **connector**: Fundamental design validation cluster
-- Parallel execution for maximum performance and comprehensive coverage
+**Enhanced Parallel Agent Cluster Analysis:**
+- Use parallel agent clusters for comprehensive ecosystem analysis with universal agent integration
+- **Core Quality Cluster**: patterns + principles + critic + researcher (agent analysis with research validation)
+- **Strategic Optimization Cluster**: explorer + constraints + resolver + principles (gap analysis with principle validation)
+- **Performance Analysis Cluster**: researcher + time + context + critic (historical performance with critical assessment)
+- **Design Validation Cluster**: axioms + invariants + connector + researcher (fundamental validation with evidence research)
+- **Completeness Assessment Cluster**: completer + patterns + critic + principles (gap identification with quality validation)
+- Parallel execution for maximum performance and comprehensive coverage with universal agent support
 
-**Multi-Dimensional Aggregation:**
-- Synthesize findings from all parallel agent clusters
-- Cross-validate recommendations between analysis dimensions
-- Identify ecosystem-wide patterns, gaps, and optimization opportunities
-- Generate priority-based action plans with dependency mapping
+**Enhanced Multi-Dimensional Aggregation:**
+- Synthesize findings from all enhanced parallel agent clusters with universal agent support
+- Cross-validate recommendations between analysis dimensions using critic and principles agents
+- Identify ecosystem-wide patterns, gaps, and optimization opportunities with researcher intelligence
+- Generate priority-based action plans with dependency mapping validated by constraints and resolver agents
+- Apply completeness verification through completer agent coordination
+- Ensure research-backed recommendations through systematic researcher integration
 
 ## Batch Analysis
 
@@ -92,27 +95,32 @@ description: "PROACTIVELY use when user asks 'why does this happen', 'strange be
 4. Prepare individual audit tasks for each agent
 ```
 
-### Phase 2: Parallel Agent Cluster Execution
+### Phase 2: Enhanced Parallel Agent Cluster Execution
 ```
-Cluster 1 - Core Analysis (patterns + principles + critic):
-  Task: "Analyze agent descriptions, selection optimization, and principle compliance"
-  Context: All agent definitions + creation principles + ecosystem patterns
-  Output: Description quality assessment with optimization recommendations
+Cluster 1 - Core Quality Analysis (patterns + principles + critic + researcher):
+  Task: "Analyze agent descriptions, selection optimization, and principle compliance with research validation"
+  Context: All agent definitions + creation principles + ecosystem patterns + latest agent best practices
+  Output: Research-validated description quality assessment with optimization recommendations
 
-Cluster 2 - Strategic Analysis (explorer + constraints + resolver):
-  Task: "Identify capability gaps, redundancies, and coordination opportunities"
-  Context: Complete agent ecosystem + usage patterns + coordination requirements
-  Output: Strategic optimization plan with priority recommendations
+Cluster 2 - Strategic Optimization Analysis (explorer + constraints + resolver + principles):
+  Task: "Identify capability gaps, redundancies, and coordination opportunities with principle validation"
+  Context: Complete agent ecosystem + usage patterns + coordination requirements + design principles
+  Output: Principle-validated strategic optimization plan with priority recommendations
 
-Cluster 3 - Performance Analysis (researcher + time + context):
-  Task: "Analyze historical usage patterns and selection effectiveness"
-  Context: Agent usage data + selection algorithm behavior + performance metrics
-  Output: Performance-based optimization recommendations
+Cluster 3 - Performance Intelligence Analysis (researcher + time + context + critic):
+  Task: "Analyze historical usage patterns and selection effectiveness with critical assessment"
+  Context: Agent usage data + selection algorithm behavior + performance metrics + historical trends
+  Output: Critically-assessed performance optimization recommendations with evidence basis
 
-Cluster 4 - Design Validation (axioms + invariants + connector):
-  Task: "Validate fundamental design principles and cross-domain connections"
-  Context: Agent design principles + ecosystem architecture + integration patterns
-  Output: Design integrity assessment with architectural recommendations
+Cluster 4 - Design Validation Analysis (axioms + invariants + connector + researcher):
+  Task: "Validate fundamental design principles and cross-domain connections with research support"
+  Context: Agent design principles + ecosystem architecture + integration patterns + domain research
+  Output: Research-supported design integrity assessment with architectural recommendations
+
+Cluster 5 - Completeness Assessment Analysis (completer + patterns + critic + principles):
+  Task: "Identify missing capabilities and incomplete implementations with quality validation"
+  Context: Agent ecosystem completeness + implementation gaps + quality standards + best practices
+  Output: Principle-guided completeness assessment with quality-assured gap identification
 ```
 
 ### Phase 3: Aggregation and Analysis

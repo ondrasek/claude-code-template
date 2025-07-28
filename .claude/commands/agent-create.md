@@ -8,12 +8,12 @@ Guide for creating new Claude Code agents following empirical principles, select
 ```
 
 ## What it does
-- **Validates agent necessity** using decision framework from @.support/instructions/agent-creation.md
-- **Checks for redundancy** with existing 27 agents across all computational thinking patterns
-- **Guides agent specification** with proven description patterns from gold standard agents
-- **Generates optimized descriptions** with Tier 1 selection keywords and mandatory template compliance
-- **Designs multi-agent coordination** patterns for sophisticated workflow integration
-- **Creates agent file** with proper frontmatter, structure, and integration protocols
+- **Validates agent necessity** using enhanced decision framework with researcher + critic + principles validation
+- **Checks for redundancy** with existing 27 agents using patterns + completer + context analysis
+- **Guides agent specification** with proven description patterns validated by critic + principles agents
+- **Generates optimized descriptions** with Tier 1 selection keywords validated by researcher + patterns agents
+- **Designs multi-agent coordination** patterns using explorer + constraints + resolver for sophisticated workflow integration
+- **Creates agent file** with proper frontmatter validated by completer + principles + docs agents
 
 ## Current Agent Ecosystem (27 agents)
 
@@ -35,36 +35,60 @@ Guide for creating new Claude Code agents following empirical principles, select
 ### Technology Guidelines
 - **guidelines-file**, **guidelines-repo**
 
-## Agent Creation Workflow
+## Enhanced Agent Creation Workflow
 
-### Phase 1: Necessity Validation
-1. **Computational thinking pattern identification**: Define the single coherent thinking pattern
-2. **Complexity justification**: Verify task generates >50 lines of intermediate output
-3. **Boundary analysis**: Confirm clear input/output boundaries exist
-4. **Reuse assessment**: Check if pattern applies to >3 different contexts
-5. **Redundancy check**: Compare against all 27 existing agent capabilities
-6. **Human role avoidance**: Ensure focus on computational tasks vs organizational roles
+### Phase 1: Enhanced Necessity Validation
+**Parallel Validation Clusters:**
+- **Core Validation Cluster** (researcher + patterns + critic): Research similar agents, identify patterns, critically assess necessity
+- **Boundary Analysis Cluster** (explorer + constraints + invariants): Define clear boundaries, identify limitations, ensure type safety
+- **Redundancy Assessment Cluster** (patterns + completer + context): Check ecosystem overlap, identify gaps, understand system context
+- **Principle Compliance Cluster** (principles + axioms + critic): Validate design principles, check fundamental soundness, critical review
 
-### Phase 2: Multi-Agent Integration Design
-1. **Coordination requirements**: Define mandatory integrations with other agents
-2. **Workflow patterns**: Design multi-agent sequences (e.g., agent → researcher → critic)
-3. **Cross-validation**: Plan false positive reduction through agent collaboration
-4. **Quality assurance**: Define critic agent integration for complex findings
+1. **Computational thinking pattern identification**: Define using patterns + researcher + critic validation
+2. **Complexity justification**: Verify using completer + patterns + constraints analysis
+3. **Boundary analysis**: Confirm using explorer + invariants + principles validation
+4. **Reuse assessment**: Check using context + patterns + researcher analysis
+5. **Redundancy check**: Compare using patterns + completer + context against all 27 existing agents
+6. **Human role avoidance**: Ensure focus using principles + critic + axioms validation
 
-### Phase 3: Description Optimization
-1. **Mandatory template compliance**: Follow exact template format requirements
-2. **Tier 1 keyword integration**: Include MUST USE/PROACTIVELY keywords
-3. **Trigger specification**: Add quoted user phrases for context matching
-4. **Expert statement**: Define clear capability boundaries with "Expert at" statement
-5. **Selection testing**: Validate description against Claude Code selection algorithm
+### Phase 2: Enhanced Multi-Agent Integration Design
+**Parallel Integration Design Clusters:**
+- **Coordination Strategy Cluster** (explorer + resolver + connector): Generate coordination alternatives, resolve conflicts, create cross-domain connections
+- **Workflow Pattern Cluster** (patterns + time + context): Identify workflow patterns, analyze historical effectiveness, understand system context
+- **Validation Design Cluster** (critic + testing + completer): Design validation approaches, test integration patterns, ensure completeness
+- **Quality Assurance Cluster** (principles + invariants + critic): Apply quality principles, ensure design integrity, critical assessment
 
-### Phase 4: Agent Generation
-1. **Create agent file** in `.claude/agents/` directory
-2. **Generate YAML frontmatter** with optimized description
-3. **Add agent body** following gold standard templates (performance, testing, security agents)
-4. **Implement coordination protocols** with mandatory agent integrations
-5. **Document workflow patterns** in `.support/workflows/` if applicable
-6. **Document justification** for future audits
+1. **Coordination requirements**: Define using explorer + resolver + critic with parallel analysis
+2. **Workflow patterns**: Design using patterns + time + context with historical validation
+3. **Cross-validation**: Plan using critic + testing + completer with comprehensive validation
+4. **Quality assurance**: Define using principles + invariants + critic with systematic quality checks
+
+### Phase 3: Enhanced Description Optimization
+**Parallel Optimization Clusters:**
+- **Template Compliance Cluster** (completer + principles + docs): Ensure template compliance, apply formatting principles, documentation standards
+- **Keyword Optimization Cluster** (researcher + patterns + critic): Research effective keywords, identify keyword patterns, critically assess selection probability
+- **Trigger Specification Cluster** (context + patterns + researcher): Understand context triggers, analyze trigger patterns, research user language
+- **Capability Definition Cluster** (explorer + constraints + invariants): Define capability boundaries, identify limitations, ensure clear interfaces
+
+1. **Mandatory template compliance**: Follow using completer + principles + docs validation
+2. **Tier 1 keyword integration**: Include using researcher + patterns + critic optimization
+3. **Trigger specification**: Add using context + patterns + researcher analysis
+4. **Expert statement**: Define using explorer + constraints + invariants boundary definition
+5. **Selection testing**: Validate using critic + researcher + patterns against selection algorithm
+
+### Phase 4: Enhanced Agent Generation
+**Parallel Generation Clusters:**
+- **File Creation Cluster** (completer + docs + principles): Create complete agent files, ensure documentation standards, apply principles
+- **Content Generation Cluster** (generator + patterns + researcher): Generate agent content, follow proven patterns, research best practices
+- **Integration Implementation Cluster** (connector + resolver + invariants): Implement integrations, resolve conflicts, ensure type-safe interfaces
+- **Validation & Documentation Cluster** (critic + docs + testing): Validate implementation, document thoroughly, test coordination
+
+1. **Create agent file** using completer + docs + principles with comprehensive validation
+2. **Generate YAML frontmatter** using generator + patterns + researcher with optimization
+3. **Add agent body** using patterns + researcher + critic following gold standard templates
+4. **Implement coordination protocols** using connector + resolver + invariants with systematic integration
+5. **Document workflow patterns** using docs + patterns + time in `.support/workflows/` with historical context
+6. **Document justification** using docs + critic + completer for comprehensive future audit support
 
 ## Mandatory Description Template
 
