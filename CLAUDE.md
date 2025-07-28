@@ -59,15 +59,14 @@
 3. **Update immediately**: New features, API changes, configuration changes
 4. **Use docs agent**: Invoke docs agent for documentation maintenance
 
-### TODO Management System
-**COLLABORATIVE TODO WORKFLOW**: `.support/todos/` directory for human-AI collaboration:
-- **Purpose**: TODOs are meant to be BOTH human and AI readable
-- **Creation**: TODOs SHOULD be created by BOTH users and AI
-- **Format**: Individual markdown files with YAML frontmatter (status, type, priority, assignee)
-- **Tools**: Use Claude Code built-in tools only (Glob, Read, Write, Edit)
-- **Preservation**: Do NOT overwrite existing TODOs unless explicitly instructed
-- **Expansion**: Prefer adding new TODO files to the folder instead of modifying existing ones
-- **Integration**: Update CHANGELOG.md [Unreleased] section when TODOs are completed
+### TODO Protocol (MANDATORY)
+**USE TODO AGENT FOR ALL TASK MANAGEMENT - NO CONTEXT CLUTTER**:
+1. **Agent delegation**: Use TODO agent for creating/tracking tasks
+2. **Clean context**: No TODO tracking in main conversation flow
+3. **Deferred actions**: TODOs represent future work, not current progress
+4. **File management**: Agent handles `.support/todos/` directory autonomously
+
+**Agent invocation**: `Task: "Create TODO for X" (subagent_type: todo)`
 
 ## Key Reference Files
 

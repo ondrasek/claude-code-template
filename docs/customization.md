@@ -402,12 +402,11 @@ When updating the template:
 - Document team-specific changes in CLAUDE.md
 - Regular backup of memory database (`.mcp/memory.db`)
 
-This customization system allows you to adapt the template to any development workflow while maintaining the powerful agent system, TODO management, and memory persistence that makes it effective.
+This customization system allows you to adapt the template to any development workflow while maintaining the powerful agent system, context-clean task coordination, and memory persistence that makes it effective.
 
 ---
 
 **Next Steps:**
-- 📋 Learn about [TODO Management](todo-system.md) for tracking your work
 - 🧠 Explore the [Memory System](memory-system.md) for persistent context
 - 📖 See all [Features](features.md) available for customization
 - 📚 Return to [Getting Started](getting-started.md)

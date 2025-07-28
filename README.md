@@ -89,6 +89,7 @@ Note: Claude Code has built-in filesystem and web tools - no MCP needed!
 
 ### AI-Native Agents
 - **Mandatory coordination**: Minimum 3+ agents used for all non-trivial requests
+- **Context-clean delegation**: Complex tasks handled by agents, main context stays focused
 - **Pattern-Based**: Context synthesis, pattern recognition, parallel exploration
 - **First-Principles**: Axiom derivation, principle enforcement, invariant protection
 - **Documentation**: Automatic documentation synchronization with every code change
@@ -172,20 +173,20 @@ This checks:
 ## 🎯 Best Practices
 
 1. **Agent coordination is mandatory** - All non-trivial requests automatically use minimum 3+ agents
-2. **Documentation updates automatically** - Every code change includes documentation updates in same commit
-3. **Memory-first research** - System checks MCP memory before web searches
-4. **Keep CLAUDE.md updated** with project-specific information
-5. **Use slash commands** for repetitive tasks
-6. **Configure MCP tools** for external integrations
-7. **Customize agents** for your specific workflow needs
-8. **Run verification** after making configuration changes
+2. **Context-clean workflows** - Let agents handle complex multi-step processes independently
+3. **Documentation updates automatically** - Every code change includes documentation updates in same commit
+4. **Memory-first research** - System checks MCP memory before web searches
+5. **Keep CLAUDE.md updated** with project-specific information
+6. **Use slash commands** for repetitive tasks
+7. **Configure MCP tools** for external integrations
+8. **Customize agents** for your specific workflow needs
+9. **Run verification** after making configuration changes
 
 ## 📚 Documentation
 
 ### User Guides
 - **[Getting Started](docs/getting-started.md)** - Quick setup and essential features
 - **[Complete Features Guide](docs/features.md)** - All capabilities and AI agents
-- **[TODO System](docs/todo-system.md)** - Task management and progress tracking
 - **[Memory System](docs/memory-system.md)** - Persistent context across sessions
 - **[Customization Guide](docs/customization.md)** - Adapt for your project
 

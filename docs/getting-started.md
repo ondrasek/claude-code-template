@@ -4,6 +4,7 @@
 
 Transform your Claude Code experience with:
 - ✅ **20+ AI agents** with mandatory coordination (minimum 3+ agents for complex tasks)
+- ✅ **Context-clean workflows** - Agents handle complex tasks independently, keeping conversations focused
 - ✅ **Custom slash commands** like `/review`, `/test`, `/refactor` for instant help
 - ✅ **Technology-specific guidance** - Python, Rust, Java, JavaScript, and more
 - ✅ **Persistent memory** - Claude remembers your project decisions across sessions
@@ -73,7 +74,6 @@ Transform your Claude Code experience with:
 | Guide | Purpose |
 |-------|---------|
 | **[Features](features.md)** | Complete overview of all capabilities |
-| **[TODO System](todo-system.md)** | Task management and progress tracking |
 | **[Memory System](memory-system.md)** | How persistent memory works |
 | **[Customization](customization.md)** | Adapt the template for your project |
 
@@ -120,7 +120,7 @@ Transform your Claude Code experience with:
 ## Need Help?
 
 - 📖 **[Full Feature Guide](features.md)** - Everything the template can do
-- 📋 **[TODO System Guide](todo-system.md)** - Task management and progress tracking
+- 🧠 **[Memory System Guide](memory-system.md)** - Persistent context and learning
 - 🛠️ **[Customization Guide](customization.md)** - Make it yours
 - 🐛 **Issues?** [Report bugs or request features](https://github.com/your-username/claude-code-template/issues)
 

@@ -108,29 +108,27 @@ Automatic best practices for your tech stack.
 - **Tool integration** - Works with your existing toolchain
 - **Agent specialization** - Agents understand your tech stack
 
-## 📋 TODO Management System
+## 🎯 Context-Clean Task Management
 
-Intelligent task tracking that ensures nothing gets overlooked.
+Intelligent task coordination through specialized agents that keep your main context clean and focused.
 
-### Automatic TODO Creation
-- **Multi-step tasks** - Complex requests automatically broken into trackable steps
-- **Progress visualization** - Clear status indicators (pending, in_progress, completed)
-- **Priority management** - High, medium, low priority levels
-- **Agent coordination** - Agents work within TODO framework
+### Agent-Based Task Orchestration
+- **Delegated task management** - Agents handle complex multi-step workflows independently
+- **Clean main context** - No polluting TODO lists in your primary workspace
+- **Intelligent coordination** - Agents automatically break down complex requests
+- **Context preservation** - Task progress stored in persistent memory
 
-### TODO Workflow
-- **One active task** - Only one TODO in_progress at a time
-- **Real-time updates** - Status changes as work progresses
-- **Immediate completion** - Tasks marked done right after finishing
-- **Dynamic adjustment** - New TODOs added when unexpected work discovered
+### How It Works
+- **Automatic detection** - System recognizes when tasks need structured coordination
+- **Agent delegation** - Complex workflows handed off to specialized task agents
+- **Memory integration** - Progress and context preserved across sessions
+- **Clean handoffs** - Agents return concise results without cluttering main context
 
-### Integration Benefits
-- **Never miss requirements** - Comprehensive tracking of all work items
-- **Resume interrupted work** - Clear context for continuing complex tasks
-- **Team visibility** - Shared understanding of current progress
-- **Memory integration** - TODO context persists across sessions
-
-[Learn more about TODO management →](todo-system.md)
+### Benefits
+- **Focused conversations** - Main context stays clean and on-topic
+- **Comprehensive execution** - Nothing gets overlooked through agent coordination
+- **Persistent progress** - Work continues seamlessly across sessions
+- **Professional output** - Clean, organized results without intermediate noise
 
 ## 🔧 MCP Tool Integration
 
@@ -191,7 +189,6 @@ Agents work together in intelligent clusters with **mandatory coordination proto
 ---
 
 **Next Steps:**
-- 📋 Master the [TODO System](todo-system.md) for task management
-- 🧠 Learn about the [Memory System](memory-system.md)
+- 🧠 Learn about the [Memory System](memory-system.md) for persistent context
 - 🛠️ [Customize](customization.md) the template for your project
 - 📚 Return to [Getting Started](getting-started.md)
