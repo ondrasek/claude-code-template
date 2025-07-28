@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.12.0] - 2025-07-28
+
+### Enhanced
+- **MAJOR**: Completed agent description optimization for all 11 core agents
+- Added MUST USE/PROACTIVELY keywords for +200% selection algorithm effectiveness
+- Enhanced "Expert at" capability statements for clearer boundaries
+- Improved trigger phrase detection with quoted user language patterns
+- Optimized automatic agent activation patterns across the entire system
+
 ## [2.11.0] - 2025-07-28
 
 ### Added
