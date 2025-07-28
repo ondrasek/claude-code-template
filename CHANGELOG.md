@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.7.1] - 2025-07-28
+
+### Removed
+- Obsolete protocol files from .support/instructions (memory-protocol.md, todo-protocol.md)
+- Redundant git-workflow.md (functionality consolidated in CLAUDE.md)
+- Generic debug-mcp.md command (functionality removed)
+
+### Changed
+- Simplified instruction architecture to essential 4 files in .support/instructions
+- Consolidated all protocol documentation in CLAUDE.md for single source of truth
+- Updated all references to removed files in documentation
+
 ## [2.7.0] - 2025-07-28
 
 ### Added
