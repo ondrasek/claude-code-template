@@ -64,7 +64,6 @@ Transform your Claude Code experience with:
 - `/test` - Testing assistance and generation
 - `/refactor` - Code improvement suggestions  
 - `/security` - Security audit and recommendations
-- `/memory-export` / `/memory-import` - Manage persistent knowledge
 
 ## Documentation Guides
 
@@ -109,14 +108,13 @@ Transform your Claude Code experience with:
 - Use `/agent-guide` to see what each agent does best
 
 **Memory not persisting?**
-- Run `./.support/scripts/setup-claude-memory.sh` to set up memory workflow
-- Use `/memory-export` and `/memory-import` commands for persistence
+- Memory is handled by Claude Code's built-in MCP memory server
+- No additional setup required for basic memory functionality
 
 ## Need Help?
 
 - 📖 **[Full Feature Guide](features.md)** - Everything the template can do
 - 📋 **[TODO System Guide](todo-system.md)** - Task management and progress tracking
-- 🧠 **[Memory System Guide](memory-system.md)** - How knowledge persistence works
 - 🛠️ **[Customization Guide](customization.md)** - Make it yours
 - 🐛 **Issues?** [Report bugs or request features](https://github.com/your-username/claude-code-template/issues)
 

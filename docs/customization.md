@@ -116,7 +116,7 @@ Configure agents to work together by updating agent instructions:
 
 ```markdown
 ## Agent Coordination
-- **After analysis**: Use the `memory-export` agent to store findings
+- **After analysis**: Store findings using built-in memory capabilities
 - **For implementation**: Coordinate with `patterns` and `principles` agents  
 - **For validation**: Work with `critic` agent to verify recommendations
 - **For documentation**: Use `docs` agent to update performance guides
@@ -364,9 +364,8 @@ claude exec "/performance-check"
 # Test agent coordination
 claude exec "Use explorer and constraints agents to analyze deployment options"
 
-# Test memory persistence
-claude exec "/memory-export"
-claude exec "/memory-import"
+# Test basic functionality
+claude exec "Use explorer and researcher agents to analyze deployment options"
 ```
 
 ## Migration and Updates

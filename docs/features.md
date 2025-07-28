@@ -54,8 +54,6 @@ Ready-to-use slash commands for common tasks.
 | **`/test`** | Generate tests and testing guidance | `/test` for the current function |
 | **`/refactor`** | Code improvement suggestions | `/refactor` messy code sections |
 | **`/security`** | Security audit and recommendations | `/security` on authentication code |
-| **`/memory-export`** | Save current insights to files | Before major architecture changes |
-| **`/memory-import`** | Load previous insights from files | After environment reset |
 
 ## 🧠 Memory System
 

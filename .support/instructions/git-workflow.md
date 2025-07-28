@@ -5,12 +5,11 @@
 **IMPORTANT: Commit and push after EVERY non-trivial change**
 
 Claude Code MUST automatically:
-1. **Export memories**: Use `/memory-export` to sync MCP memory to files before every commit
-2. **Stage all changes**: Include both code changes AND exported memory files
-3. Commit changes after completing each meaningful task
-4. Push to origin/main immediately after committing
-5. Never batch multiple unrelated changes into one commit
-6. Create tags ONLY for value-adding increments that lead to releases
+1. **Stage all changes**: Include all code and configuration changes
+2. Commit changes after completing each meaningful task
+3. Push to origin/main immediately after committing
+4. Never batch multiple unrelated changes into one commit
+5. Create tags ONLY for value-adding increments that lead to releases
 
 Examples of when to commit:
 - After creating or modifying any file
@@ -82,28 +81,11 @@ Examples of when to commit:
   - Modifying configurations
 - **Auto-push**: Push commits to origin/main immediately after committing
 
-## Automated Workflow with Claude Code Hooks
+## Standard Commit Process
 
-**AUTOMATIC MEMORY EXPORT**: Claude Code hook system automatically exports memories before every commit.
-
-### Hook Configuration (`.claude/settings.json`):
-```json
-{
-  "hooks": {
-    "beforeBashExecution": {
-      "patterns": [
-        "git commit*",
-        "git add -A && git commit*"
-      ],
-      "command": "/memory-export"
-    }
-  }
-}
-```
-
-### Simplified Commit Process:
+### Commit Workflow:
 ```bash
-# Just commit normally - memory export happens automatically!
+# Stage all changes
 git add -A
 git commit -m "Add feature X
 
@@ -114,15 +96,9 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 git push origin main
 ```
 
-### What Happens Automatically:
-1. **Pre-commit hook**: `/memory-export` runs before `git commit`
-2. **Memory sync**: Current MCP memory exported to `memories/` folder
-3. **Auto-staging**: Exported memory files automatically included in commit
-4. **Knowledge preservation**: All session insights, patterns, and decisions saved
-
 ## Agent-Delegated Release Workflow
 ```bash
-# Simple commit - memory export happens via hook
+# Standard commit process
 git add -A
 git commit -m "Complete feature X"
 git push origin main
