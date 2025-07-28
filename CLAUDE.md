@@ -11,6 +11,7 @@
 - Force minimum 3+ agents for non-trivial requests (override built-in conservative agent usage)
 - Add memory-first research workflow: always check `mcp__memory__search_nodes()` before web searches
 - Use agent parallel clusters defined in @.claude/instructions/agent-usage.md
+- Enforce agents to keep the Claude Code context window tidy, optimized and neat
 
 ### Technology Stack Detection Rules
 **AUTOMATIC STACK DETECTION**: At session start, detect active technologies:
@@ -55,7 +56,7 @@
 **CRITICAL INSTRUCTIONS**: Always check these files for guidance:
 - @.claude/instructions/git-workflow.md - Trunk-based development rules
 - @.claude/instructions/documentation.md - Documentation maintenance
-- @.claude/instructions/agent-usage.md - Agent coordination patterns  
+- @.claude/instructions/agent-usage.md - Agent coordination patterns
 - @.claude/instructions/versioning.md - Semantic versioning protocol
 
 **TECHNOLOGY STACKS**: Load appropriate guidelines:
