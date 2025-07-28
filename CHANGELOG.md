@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.17.0] - 2025-07-28
+
+### Added
+- **NEW AGENT**: ecosystem-analyzer agent for comprehensive agent ecosystem analysis and optimization
+- **NEW COMMAND**: /agent-ecosystem-review slash command with configurable parameters for systematic ecosystem assessment
+- **Meta-System Capabilities**: 4-phase analysis framework (codebase characterization, ecosystem review, gap analysis, optimization synthesis)
+- **Multi-Agent Orchestration**: Parallel agent cluster coordination for maximum analysis efficiency
+- **Agent Ecosystem Management Protocol**: Comprehensive protocol in CLAUDE.md for ecosystem optimization workflows
+- **Strategic Analysis Framework**: Executive summaries, alignment scoring, prioritized recommendations, and implementation roadmaps
+
+### Changed
+- Enhanced CLAUDE.md with Agent Ecosystem Analysis pattern and comprehensive management protocol
+- Updated agent combination patterns to include ecosystem-analyzer orchestration capabilities
+- Improved todo agent with explicit file location protocol documentation
+
 ### Removed
 - **TODO Cleanup**: Removed 5 completed/obsolete TODO files from .support/todos/
 - document-agent-combination-patterns.md (completed - patterns now in CLAUDE.md)
@@ -15,8 +30,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ditch-mcp-memory.md (obsolete - different memory approach implemented)
 - researcher-current-year.md (obsolete - current year issue resolved)
 
-### Changed
+### Fixed
 - Updated document-parallel-agent-clusters.md and update-agent-usage-instructions.md status to completed
+- Fixed hardcoded 2024 year references in prompter agent search examples
 
 ## [2.16.0] - 2025-07-28
 
