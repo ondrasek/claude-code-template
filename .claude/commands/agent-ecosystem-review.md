@@ -15,9 +15,11 @@ ACTIONS:
 
 PARAMETERS:
 --priority [critical|high|medium|low|all] (filter recommendations by priority)
---output [summary|detailed|roadmap] (output format, default: detailed)  
+--output [summary|detailed|roadmap|metrics] (output format, default: detailed)  
 --dry-run (generate proposal without implementation suggestions)
---focus [gaps|redundancy|optimization|new-agents] (specific analysis focus)
+--focus [gaps|redundancy|optimization|new-agents|performance|health] (specific analysis focus)
+--metrics (include ecosystem health metrics and performance assessment)  
+--baseline (establish performance baseline for future comparisons)
 
 AGENT_EXECUTION_PLAN:
 **Phase 1 - Parallel Codebase Analysis**:
@@ -54,15 +56,36 @@ AGENT_EXECUTION_PLAN:
 - ecosystem-analyzer: Synthesize all findings into optimization proposal
 
 ENHANCED_OUTPUT:
-- Executive summary with alignment score and priority recommendations validated by critic + principles agents
-- Detailed codebase profile and development patterns researched by researcher + patterns + context agents
-- Current agent ecosystem assessment with usage patterns analyzed by patterns + completer + performance agents
-- Prioritized optimization recommendations (HIGH/MEDIUM/LOW) validated by resolver + constraints + critic agents
-- Implementation roadmap with phases and success metrics developed by time + completer + docs agents
-- Comprehensive proposal ready for multi-agent validation (critic + principles + resolver) and user approval
+- **Executive Summary**: Alignment score, ecosystem health metrics, and priority recommendations validated by critic + principles agents
+- **Codebase Intelligence**: Detailed technology profile and development patterns researched by researcher + patterns + context + axioms agents
+- **Ecosystem Assessment**: Current agent inventory, usage patterns, and efficiency metrics analyzed by patterns + completer + performance + time agents
+- **Gap Analysis**: Missing capabilities and optimization opportunities identified by hypothesis + explorer + connector + researcher agents
+- **Performance Metrics**: Ecosystem health scores (coverage, utilization, redundancy, quality) assessed by performance + constraints + critic agents
+- **Optimization Recommendations**: Prioritized improvements (CRITICAL/HIGH/MEDIUM/LOW) validated by resolver + constraints + critic + invariants agents
+- **Implementation Roadmap**: Phased approach with success metrics and performance baselines developed by time + completer + docs agents
+- **Validation Results**: Multi-agent validation ensuring principle compliance and constraint satisfaction
+- **Documentation Updates**: Comprehensive proposal with CLAUDE.md updates ready for implementation
 
-EXAMPLE:
-/agent-ecosystem-review --priority high --output detailed
+EXAMPLES:
+```bash
+# Comprehensive high-priority analysis with metrics
+/agent-ecosystem-review --priority high --output detailed --metrics
+
+# Focus on performance optimization
+/agent-ecosystem-review --focus performance --output roadmap --baseline
+
+# Health assessment with metrics baseline
+/agent-ecosystem-review --focus health --output metrics --baseline
+
+# Gap analysis for new agent identification
+/agent-ecosystem-review --focus gaps --priority critical --output summary
+
+# Redundancy elimination dry-run
+/agent-ecosystem-review --focus redundancy --dry-run --output detailed
+
+# Complete ecosystem optimization with implementation roadmap
+/agent-ecosystem-review --focus optimization --output roadmap --metrics
+```
 
 EXECUTION_BEHAVIOR:
 - **Command-Level Orchestration**: All agent spawning and coordination happens at command level

@@ -44,39 +44,84 @@ Examples:
 ## Agent Combination Patterns (MANDATORY)
 
 **Analysis Requests** (`"analyze X"`, `"review Y"`, `"examine Z"`):
-- **researcher** + **patterns** + **principles** + **critic**
-- Flow: Research context → Find patterns → Apply principles → Critical evaluation
+- **Quality Cluster**: researcher + patterns + principles + critic
+- **Deep Analysis Cluster**: context + axioms + hypothesis + completer
+- Flow: Research → Pattern detection → Principle application → Context analysis → Hypothesis validation
 
 **Architecture/Design Questions** (`"design X"`, `"architect Y"`, `"structure Z"`):
-- **researcher** + **explorer** + **constraints** + **principles** + **critic**  
-- Flow: Research approaches → Generate alternatives → Handle constraints → Apply principles → Validate
+- **Design Cluster**: researcher + explorer + constraints + principles + critic
+- **Validation Cluster**: resolver + invariants + context + completer
+- Flow: Research approaches → Generate alternatives → Apply constraints → Validate design → Complete implementation
 
 **Debugging Investigations** (`"why does X"`, `"strange behavior"`, `"not working"`):
-- **researcher** + **hypothesis** + **patterns** + **critic**
-- Flow: Research known issues → Form theories → Find similar patterns → Validate solution
+- **Investigation Cluster**: researcher + hypothesis + patterns + critic
+- **Resolution Cluster**: resolver + context + constraints + completer
+- Flow: Research issues → Form hypotheses → Pattern matching → Critical validation → Resolution synthesis
 
 **Code Quality Tasks** (`"improve X"`, `"refactor Y"`, `"optimize Z"`):
-- **patterns** + **principles** + **whisper** + **critic**
-- Flow: Detect patterns → Apply principles → Make improvements → Critical review
+- **Quality Enhancement Cluster**: patterns + principles + whisper + critic
+- **Performance Optimization Cluster**: performance + constraints + time + resolver
+- Flow: Pattern analysis → Principle application → Performance optimization → Critical validation
 
 **Feature Implementation** (`"add X"`, `"implement Y"`, `"create Z"`):
-- **researcher** + **patterns** + **completer** + **docs**
-- Flow: Research implementation → Check existing patterns → Ensure completeness → Update docs
+- **Implementation Cluster**: researcher + patterns + completer + docs
+- **Integration Cluster**: context + constraints + resolver + critic
+- Flow: Research implementation → Pattern alignment → Feature completion → Documentation → Integration validation
 
 **Decision Making** (`"options for X"`, `"approaches to Y"`, `"choose between Z"`):
-- **explorer** + **constraints** + **resolver** + **critic**
-- Flow: Generate alternatives → Handle constraints → Resolve conflicts → Critical assessment
+- **Options Generation Cluster**: explorer + researcher + hypothesis + context
+- **Decision Validation Cluster**: constraints + resolver + critic + principles
+- Flow: Generate alternatives → Research viability → Constraint analysis → Decision resolution
 
 **System Understanding** (`"how does X work"`, `"explain Y"`, `"show me Z"`):
-- **context** + **patterns** + **researcher** + **critic**
-- Flow: Understand system → Identify patterns → Research details → Validate understanding
+- **Comprehension Cluster**: context + patterns + researcher + critic
+- **Knowledge Synthesis Cluster**: axioms + principles + completer + docs
+- Flow: System mapping → Pattern identification → Research validation → Knowledge documentation
+
+**Security Analysis** (`"security review"`, `"vulnerability assessment"`, `"threat analysis"`):
+- **Security Assessment Cluster**: vulnerability-scanner + threat-modeling + compliance-checker + researcher
+- **Risk Validation Cluster**: critic + constraints + resolver + principles
+- Flow: Vulnerability scanning → Threat modeling → Compliance checking → Risk assessment → Validation
+
+**Performance Optimization** (`"optimize performance"`, `"improve speed"`, `"reduce latency"`):
+- **Performance Analysis Cluster**: performance + time + constraints + patterns
+- **Optimization Implementation Cluster**: resolver + completer + critic + docs
+- Flow: Performance measurement → Constraint analysis → Pattern optimization → Implementation validation
 
 **Agent Ecosystem Analysis** (`"optimize agents"`, `"review agent ecosystem"`, `"analyze agent efficiency"`):
-- **ecosystem-analyzer** + **patterns** + **axioms** + **context** + **principles** + **critic** + **hypothesis** + **explorer** + **connector** + **resolver**
+- **Comprehensive Analysis**: Use /agent-ecosystem-review command with 6-phase parallel cluster execution
+- **Manual Combination**: ecosystem-analyzer + patterns + axioms + context + principles + critic + hypothesis + explorer + connector + resolver
 - Flow: Orchestrate analysis → Characterize codebase → Assess current agents → Identify gaps → Generate proposals → Validate recommendations
 
 ## Agent Ecosystem Management Protocol (MANDATORY)
 **ECOSYSTEM OPTIMIZATION**: Use ecosystem-analyzer agent and /agent-ecosystem-review command for systematic agent ecosystem assessment and optimization.
+
+## Agent Ecosystem Performance Characteristics (MANDATORY)
+
+**CLUSTER COORDINATION EFFICIENCY**:
+- **Parallel Execution**: Always prefer parallel agent clusters over sequential execution for independent tasks
+- **Resource Optimization**: Monitor agent cluster performance using performance + time + constraints combination
+- **Dependency Management**: Sequence agent clusters only when output dependencies exist between phases
+- **Context Window Management**: Use agent delegation to keep main context clean and focused
+
+**ECOSYSTEM HEALTH METRICS**:
+- **Coverage Score**: Percentage of development tasks well-supported by existing agents (target: >85%)
+- **Utilization Efficiency**: Balance between underused and overloaded agents (target: 60-80% average utilization)
+- **Redundancy Index**: Minimal overlap between agent capabilities (target: <15% redundancy)
+- **Response Quality**: Consistent high-quality outputs across agent combinations (target: >90% satisfaction)
+
+**OPTIMIZATION TRIGGERS**:
+- **Usage Pattern Misalignment**: When frequently needed capabilities require manual work instead of agent assistance
+- **Performance Degradation**: When agent coordination takes longer than direct implementation
+- **Quality Inconsistency**: When agent outputs vary significantly in quality or completeness
+- **Resource Waste**: When multiple agents provide overlapping capabilities without added value
+
+**BEST PRACTICE PATTERNS**:
+- **Start with Research**: researcher agent should typically be first in complex analysis clusters
+- **End with Validation**: critic agent should typically be last for quality assurance
+- **Apply Principles**: principles agent ensures consistency with architectural decisions
+- **Complete Thoroughness**: completer agent ensures no missing elements in implementations
+- **Resolve Conflicts**: resolver agent handles competing recommendations or approaches
 
 **Ecosystem Analysis Triggers**:
 - **Automatic**: When agent usage patterns suggest misalignment with codebase needs
@@ -89,20 +134,27 @@ Examples:
 - **/agent-ecosystem-review command**: Provides structured interface for ecosystem analysis with configurable parameters
 
 **Analysis Phases**:
-1. **Codebase Characterization**: patterns + axioms + context → Technology stack, complexity, development patterns
-2. **Agent Ecosystem Assessment**: patterns + principles + critic → Current agents, usage patterns, capabilities
-3. **Gap Analysis**: hypothesis + explorer + connector → Missing capabilities, optimization opportunities
-4. **Optimization Synthesis**: resolver + critic → Prioritized recommendations, implementation roadmap
+1. **Codebase Intelligence Cluster**: patterns + axioms + context + researcher → Technology stack, complexity, development patterns, research validation
+2. **Ecosystem Quality Cluster**: patterns + principles + critic + completer → Current agents, usage patterns, capabilities, completeness analysis
+3. **Strategic Analysis Cluster**: hypothesis + explorer + connector + researcher → Missing capabilities, optimization opportunities, research-backed strategies
+4. **Validation & Synthesis Cluster**: resolver + critic + principles + invariants → Conflict resolution, principle validation, constraint maintenance
+5. **Performance Assessment Cluster**: performance + time + constraints + critic → Ecosystem efficiency, resource optimization, critical performance assessment
+6. **Final Synthesis**: ecosystem-analyzer → Comprehensive optimization proposal with executive summary and implementation roadmap
 
 **Command Usage Examples**:
-- `/agent-ecosystem-review --scope both --priority high --output detailed` (comprehensive analysis)
+- `/agent-ecosystem-review --priority high --output detailed` (comprehensive high-priority analysis)
 - `/agent-ecosystem-review --focus gaps --output summary` (focus on missing capabilities)
 - `/agent-ecosystem-review --dry-run --priority critical` (proposal without implementation)
+- `/agent-ecosystem-review --focus optimization --output roadmap` (optimization-focused with implementation timeline)
+- `/agent-ecosystem-review --focus redundancy --priority medium` (redundancy elimination analysis)
+- `/agent-ecosystem-review --focus new-agents --output detailed` (new agent recommendations)
 
 **Integration Points**:
-- **Memory Integration**: Store analysis results and optimization outcomes for trend tracking
-- **Documentation Updates**: Automatically update CLAUDE.md agent combinations based on findings
-- **Continuous Improvement**: Monitor implementation success and refine methodology
+- **Memory Integration**: Store analysis results and optimization outcomes for trend tracking using `mcp__memory__create_entities()` and `mcp__memory__create_relations()`
+- **Documentation Updates**: Automatically update CLAUDE.md agent combinations, README.md features, and CHANGELOG.md based on findings
+- **Performance Tracking**: Monitor agent cluster effectiveness, resource utilization, and coordination efficiency
+- **Continuous Improvement**: Track implementation success, refine methodology, and update optimization patterns
+- **Cross-Project Learning**: Build knowledge base of effective agent combinations and ecosystem patterns for future optimizations
 
 ## Technology Guidelines Protocol (MANDATORY)
 **CONDITIONAL AGENT INVOCATION**: Use guidelines agents only when technology-specific guidance is unclear or undetermined.
