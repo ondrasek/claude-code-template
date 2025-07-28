@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.13.0] - 2025-07-28
+
+### Added
+- **MAJOR**: Three new computational thinking pattern agents expand core system capabilities
+- **security agent**: Systematic vulnerability detection, threat modeling, OWASP framework coverage
+- **performance agent**: Algorithmic complexity analysis, bottleneck identification, optimization strategies  
+- **testing agent**: Comprehensive test case generation, coverage analysis, testing strategy development
+- New multi-agent workflow combinations: Security Review, Performance Optimization, Quality Assurance
+- Each agent follows creation principles with >250 lines of specialized computational thinking patterns
+
 ## [2.12.0] - 2025-07-28
 
 ### Enhanced
