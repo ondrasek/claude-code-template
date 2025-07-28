@@ -79,9 +79,9 @@ Examples:
 
 **Detection Logic**: Both agents reference @.support/instructions/stack-mapping.md for centralized technology detection rules
 
-Examples with git commands:
-  - Modify Python file with unclear patterns → Use guidelines-file agent → Apply guidelines → `git add -A && git commit -m "Update Python module following stack guidelines"`
-  - Architecture decision needed → Use guidelines-repo agent → Make informed choice → `git add -A && git commit -m "Implement microservices architecture per guidelines"`
+Examples:
+  - Modify Python file with unclear patterns → Use guidelines-file agent → Apply guidelines → Follow Git Protocol
+  - Architecture decision needed → Use guidelines-repo agent → Make informed choice → Follow Git Protocol
 
 ## Memory Integration Override
 **MCP MEMORY USAGE**: Project-specific memory behavior:
@@ -92,10 +92,10 @@ Examples with git commands:
 - Use `mcp__memory__search_nodes()` before web research
 - Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`
 
-Examples with git commands:
-  - Before researching: `mcp__memory__search_nodes("React architecture decisions")` → Use findings → `git add -A && git commit -m "Apply cached React patterns"`
-  - After analysis: `mcp__memory__create_entities([{name: "Component Pattern", type: "decision"}])` → Store new pattern → `git add -A && git commit -m "Implement new component pattern with memory storage"`
-  - Link decisions: `mcp__memory__create_relations([{source: "pattern_id", target: "decision_id"}])` → Apply relationships → `git add -A && git commit -m "Connect related architectural decisions"`
+Examples:
+  - Before researching: `mcp__memory__search_nodes("React architecture decisions")` → Use findings → Follow Git Protocol
+  - After analysis: `mcp__memory__create_entities([{name: "Component Pattern", type: "decision"}])` → Store new pattern → Follow Git Protocol
+  - Link decisions: `mcp__memory__create_relations([{source: "pattern_id", target: "decision_id"}])` → Apply relationships → Follow Git Protocol
 
 ## Simple Git Protocol (MANDATORY)
 **EXECUTE AFTER EVERY CHANGE - NO EXCEPTIONS**:
@@ -124,11 +124,11 @@ Example sequence:
 3. **Update immediately**: New features, API changes, configuration changes
 4. **Use docs agent**: Invoke docs agent for documentation maintenance
 
-Examples with git commands:
-  - Add new API endpoint → Update API docs + README.md → `git add -A && git commit -m "Add user endpoint with docs"`
-  - New agent created → Use docs agent to update CLAUDE.md + CHANGELOG.md → `git add -A && git commit -m "Add analyzer agent with documentation"`
-  - Configuration change → Update README.md setup instructions → `git add -A && git commit -m "Update config with README changes"`
-  - Feature complete → README.md usage section + CHANGELOG.md entry → `git add -A && git commit -m "Complete feature X with docs"`
+Examples:
+  - Add new API endpoint → Update API docs + README.md → Follow Git Protocol
+  - New agent created → Use docs agent to update CLAUDE.md + CHANGELOG.md → Follow Git Protocol
+  - Configuration change → Update README.md setup instructions → Follow Git Protocol
+  - Feature complete → README.md usage section + CHANGELOG.md entry → Follow Git Protocol
 
 ## TODO Protocol (MANDATORY)
 **USE TODO AGENT FOR ALL TASK MANAGEMENT - NO CONTEXT CLUTTER**:
@@ -136,25 +136,20 @@ Examples with git commands:
 2. **Clean context**: No TODO tracking in main conversation flow
 3. **Deferred actions**: TODOs represent future work, not current progress
 4. **File management**: Agent handles `.support/todos/` directory autonomously
-5. **Git integration**: After TODO files created → `git add -A && git commit -m "Add TODO items for X"`
+5. **Git integration**: After TODO files created → Follow Git Protocol
 
 **Agent invocation**: `Task: "Create TODO for X" (subagent_type: todo)`
 
-Examples with git commands:
-  - Create project TODOs → Use todo agent → `git add -A && git commit -m "Add project planning TODOs"`
-  - Update TODO status → Modify .support/todos/file.md → `git add -A && git commit -m "Update TODO status for feature Y"`
+Examples:
+  - Create project TODOs → Use todo agent → Follow Git Protocol
+  - Update TODO status → Modify .support/todos/file.md → Follow Git Protocol
 
 ---
 
 ## PROTOCOL ENFORCEMENT REMINDER
 
 **AFTER EVERY FILE MODIFICATION - NO EXCEPTIONS:**
-```bash
-git add -A
-git commit -m "Descriptive message"
-# Auto-invoke tagger agent
-git push origin main
-```
+Follow Git Protocol (see Simple Git Protocol section above)
 
-**Cross-reference**: All protocols above include git commands - follow them exactly.
+**Cross-reference**: All protocols above reference Git Protocol - follow it consistently.
 
