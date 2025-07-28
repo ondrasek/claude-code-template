@@ -54,7 +54,9 @@
 ```
 
 ### Git Workflow Override
-**TRUNK-BASED DEVELOPMENT**: See @.claude/instructions/git-workflow.md for complete git protocol
+**MANDATORY COMMIT-TAG-PUSH**: See @.claude/instructions/git-workflow.md for complete protocol
+- CRITICAL: Create annotated tag for EVERY non-trivial change (not just releases)
+- Push both commit and tag immediately after each change
 
 ### MCP Server Configuration
 **ACTIVE MCP SERVERS**: This project uses these NON-REDUNDANT MCP servers (.mcp.json):
@@ -85,12 +87,15 @@
 - Use `mcp__memory__search_nodes()` before web research
 - Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`
 
-### Simple TODO Management
-**TODO WORKFLOW OVERRIDE**: Use built-in tools only:
-- Individual markdown files in `todos/` directory (no external scripts)
-- YAML frontmatter with basic metadata (status, type, priority, assignee)  
-- Use Claude Code built-in tools only (Glob, Read, Write, Edit)
-- Update CHANGELOG.md [Unreleased] section for all changes
+### TODO Management System
+**COLLABORATIVE TODO WORKFLOW**: `todos/` directory for human-AI collaboration:
+- **Purpose**: TODOs are meant to be BOTH human and AI readable
+- **Creation**: TODOs SHOULD be created by BOTH users and AI
+- **Format**: Individual markdown files with YAML frontmatter (status, type, priority, assignee)
+- **Tools**: Use Claude Code built-in tools only (Glob, Read, Write, Edit)
+- **Preservation**: Do NOT overwrite existing TODOs unless explicitly instructed
+- **Expansion**: Prefer adding new TODO files to the folder instead of modifying existing ones
+- **Integration**: Update CHANGELOG.md [Unreleased] section when TODOs are completed
 
 ## Key Reference Files
 

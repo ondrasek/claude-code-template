@@ -1,13 +1,14 @@
 # Git Workflow Instructions
 
-## Automatic Commit and Push Policy
+## Automatic Commit, Tag, and Push Policy
 
-**IMPORTANT: Commit and push after EVERY non-trivial change**
+**CRITICAL: Commit, tag, and push after EVERY non-trivial change**
 
 Claude Code MUST automatically:
 1. Commit changes after completing each meaningful task
-2. Push to origin/main immediately after committing
-3. Never batch multiple unrelated changes into one commit
+2. Create annotated tag for each commit (MANDATORY)
+3. Push both commit and tag to origin/main immediately
+4. Never batch multiple unrelated changes into one commit
 
 Examples of when to commit:
 - After creating or modifying any file
@@ -26,14 +27,15 @@ Examples of when to commit:
 - **No long-lived branches**: Merge immediately if a branch was created
 - **Continuous integration**: Every commit to main should be deployable
 
-### Release Strategy
-- **Use tags for versions**: Tag releases directly on main branch
+### Continuous Tagging Strategy
+- **Tag every commit**: Create annotated tag for each non-trivial change (MANDATORY)
 - **Version format**: `v1.2.3` (following semantic versioning)
-- **Release process**:
-  1. Commit all changes to main
-  2. Update CHANGELOG.md with version
-  3. Create annotated tag: `git tag -a v1.2.3 -m "Release version 1.2.3"`
-  4. Push tag: `git push origin v1.2.3`
+- **Incremental versioning**: Increment patch version for each commit
+- **Release identification**: Major releases are simply specific tagged commits
+- **Tag process** (automatic for every non-trivial change):
+  1. Commit changes to main
+  2. Create annotated tag: `git tag -a v1.2.3 -m "Brief description of change"`
+  3. Push both commit and tag: `git push origin main && git push origin v1.2.3`
 
 ### When NOT to Create Branches
 - Regular feature development
@@ -60,13 +62,29 @@ Examples of when to commit:
   - Modifying configurations
 - **Auto-push**: Push commits to origin/main immediately after committing
 
-## Example Workflow
+## Mandatory Workflow (Every Non-Trivial Change)
 ```bash
 # After making changes
 git add -A
-git commit -m "Add feature X"
+git commit -m "Add feature X
+
+🤖 Generated with [Claude Code](https://claude.ai/code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+
+# MANDATORY: Create annotated tag for each commit
+git tag -a v1.2.3 -m "Add feature X - incremental development tag"
+
+# Push both commit and tag
 git push origin main
+git push origin v1.2.3
 ```
+
+## Tag Naming Strategy
+- **Semantic versioning**: Use `v1.2.3` format for all tags
+- **Incremental tags**: Tag every non-trivial commit (not just releases)
+- **Tag messages**: Brief description of the change
+- **Continuous tagging**: Enables easy navigation through development history
 
 ## Commit Message Format
 - Use clear, concise messages describing what changed
