@@ -1,13 +1,47 @@
 # CLAUDE.md - AI Operational Instructions
 
 ## Agent Coordination Protocol (MANDATORY)
-**EXECUTE FOR ALL NON-TRIVIAL REQUESTS - NO EXCEPTIONS**:
-1. **Minimum 3+ agents**: Always use multiple agents for complex tasks
-2. **Memory-first research**: Check `mcp__memory__search_nodes()` before web searches
-3. **Parallel agent clusters**: Use multiple agents simultaneously when possible
-4. **Context optimization**: Agents keep main context window tidy and focused
+**PROACTIVE AGENT USAGE - USE AGENTS WITHOUT USER REQUESTS**:
+- Claude Code MUST use agents proactively beyond built-in conservative defaults
+- NEVER wait for user to ask for agents - invoke based on task context automatically
+- Force minimum 3+ agents for non-trivial requests (override built-in agent usage)
+- Agents must keep main context window tidy, optimized and neat
 
-**Agent combinations**: researcher + patterns + critic (minimum baseline)
+**EXECUTION PROTOCOL**:
+1. **Memory-first research**: Check `mcp__memory__search_nodes()` before web searches
+2. **Parallel agent clusters**: Use multiple agents simultaneously when possible  
+3. **Context delegation**: Complex analysis happens in agent context, not main context
+4. **Automatic selection**: Match agent combinations to user request patterns
+
+## Agent Combination Patterns (MANDATORY)
+
+**Analysis Requests** (`"analyze X"`, `"review Y"`, `"examine Z"`):
+- **researcher** + **patterns** + **principles** + **critic**
+- Flow: Research context → Find patterns → Apply principles → Critical evaluation
+
+**Architecture/Design Questions** (`"design X"`, `"architect Y"`, `"structure Z"`):
+- **researcher** + **explorer** + **constraints** + **principles** + **critic**  
+- Flow: Research approaches → Generate alternatives → Handle constraints → Apply principles → Validate
+
+**Debugging Investigations** (`"why does X"`, `"strange behavior"`, `"not working"`):
+- **researcher** + **hypothesis** + **patterns** + **critic**
+- Flow: Research known issues → Form theories → Find similar patterns → Validate solution
+
+**Code Quality Tasks** (`"improve X"`, `"refactor Y"`, `"optimize Z"`):
+- **patterns** + **principles** + **whisper** + **critic**
+- Flow: Detect patterns → Apply principles → Make improvements → Critical review
+
+**Feature Implementation** (`"add X"`, `"implement Y"`, `"create Z"`):
+- **researcher** + **patterns** + **completer** + **docs**
+- Flow: Research implementation → Check existing patterns → Ensure completeness → Update docs
+
+**Decision Making** (`"options for X"`, `"approaches to Y"`, `"choose between Z"`):
+- **explorer** + **constraints** + **resolver** + **critic**
+- Flow: Generate alternatives → Handle constraints → Resolve conflicts → Critical assessment
+
+**System Understanding** (`"how does X work"`, `"explain Y"`, `"show me Z"`):
+- **context** + **patterns** + **researcher** + **critic**
+- Flow: Understand system → Identify patterns → Research details → Validate understanding
 
 ## Technology Stack Detection Rules
 **AUTOMATIC STACK DETECTION**: At session start, detect active technologies:
