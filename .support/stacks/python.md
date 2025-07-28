@@ -1,68 +1,74 @@
-# Python Development Reference
+# Python Stack Instructions
 
-Essential Python development guidelines for Claude Code projects.
+MANDATORY operational instructions for Claude Code when working with Python projects.
 
-## Package Management (uv)
-**Use uv exclusively** - no pip, poetry, conda, or other tools.
+## Package Management - NO EXCEPTIONS
+
+**MANDATORY: Use uv exclusively** - NEVER use pip, poetry, conda, or other tools.
 
 ```bash
-uv init                     # New project
-uv add package             # Add dependency  
-uv add --dev pytest        # Add dev dependency
-uv run python script.py    # Run scripts
+uv init                     # New projects only
+uv add package             # Add dependencies
+uv add --dev pytest        # Development dependencies
+uv run python script.py    # Execute scripts
 uv run pytest             # Run tests
 ```
 
-## Project Structure
+## Project Structure - ENFORCE
+
+**MANDATORY structure for new Python projects:**
 ```
-project/
-├── src/project_name/      # Main package with __init__.py
-├── tests/                 # test_*.py files
-├── pyproject.toml         # uv-managed config
-└── README.md
+src/package_name/          # Main package with __init__.py
+tests/                     # test_*.py files only
+pyproject.toml             # uv-managed configuration
 ```
 
-## Essential Libraries
-**Web**: fastapi, flask, django
-**CLI**: click, typer, rich  
-**Data**: pandas, numpy, scikit-learn
-**Testing**: pytest, pytest-cov
-**Quality**: ruff, mypy, black
+## Code Quality - AUTOMATIC
 
-## Code Quality
+**MANDATORY quality tools setup:**
 ```bash
 uv add --dev ruff pytest mypy
-uv run ruff check .        # Lint
-uv run ruff format .       # Format
-uv run mypy src/           # Type check
-uv run pytest --cov       # Test with coverage
+uv run ruff format .       # Format before committing
+uv run ruff check .        # Lint and fix
+uv run mypy src/           # Type checking required
+uv run pytest --cov=src   # Minimum 80% coverage
 ```
 
-## Common Patterns
-```python
-# Type hints
-def process(items: list[str], config: dict[str, Any] | None = None) -> bool:
-    pass
+## Required Patterns - ENFORCE
 
-# Dataclasses  
+**MANDATORY type hints for all functions:**
+```python
+def process(items: list[str], config: dict[str, Any] | None = None) -> bool:
+    """Process items with optional configuration."""
+    pass
+```
+
+**MANDATORY dataclasses for data structures:**
+```python
 @dataclass
 class User:
     name: str
     email: str | None = None
+```
 
-# Context managers
+**MANDATORY context managers for resources:**
+```python
 with database_connection() as conn:
-    # Use connection
+    # Use connection - automatic cleanup
+```
 
-# Error handling
+**MANDATORY explicit error handling:**
+```python
 try:
     result = risky_operation()
 except ValueError as e:
     logger.error(f"Invalid value: {e}")
-    raise
+    raise  # Re-raise, don't swallow
 ```
 
-## Environment & Config
+## Environment Configuration - REQUIRED
+
+**MANDATORY environment setup:**
 ```python
 import os
 from pathlib import Path
@@ -72,11 +78,13 @@ load_dotenv()
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
 ```
 
-## Best Practices
-- Follow PEP 8 with ruff formatting
-- Use type hints for all public functions
-- Write docstrings for public APIs  
-- Handle errors explicitly, avoid bare except
-- Use pathlib for file operations
-- Prefer composition over inheritance
-- Test with >80% coverage
+## Non-Negotiable Requirements
+
+- **ENFORCE**: PEP 8 compliance via ruff formatting
+- **REQUIRE**: Type hints for all public functions and methods
+- **MANDATE**: Docstrings for all public APIs
+- **NO EXCEPTIONS**: Explicit error handling - never bare except clauses
+- **ENFORCE**: pathlib for all file operations - no os.path
+- **REQUIRE**: Test coverage minimum 80%
+- **MANDATE**: Use dataclasses over plain classes for data
+- **ENFORCE**: Context managers for resource management

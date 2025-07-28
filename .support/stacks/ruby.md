@@ -1,88 +1,94 @@
-# Ruby Development Reference
+# Ruby Stack Instructions
 
-Essential Ruby development guidelines for Claude Code projects.
+MANDATORY operational instructions for Claude Code when working with Ruby projects.
 
-## Version Management
+## Version Management - ENFORCE
+
+**MANDATORY Ruby version and dependency management:**
 ```bash
-# rbenv
+# REQUIRED: Use rbenv for version management - NO EXCEPTIONS
 rbenv install 3.2.2
 rbenv local 3.2.2
 
-# RVM  
-rvm install 3.2.2
-rvm use 3.2.2
-
-# Bundler
-gem install bundler
-bundle install
-bundle update
-bundle exec rake
+# MANDATORY bundler workflow
+bundle install                # ALWAYS after Gemfile changes
+bundle exec rspec             # REQUIRED for running tests
+bundle exec rubocop           # MANDATORY before commits
+bundle exec rake              # REQUIRED for deployment tasks
 ```
 
-## Gemfile
+## Gemfile - MANDATORY CONFIGURATION
+
+**REQUIRED gem setup:**
 ```ruby
 source 'https://rubygems.org'
-ruby '3.2.2'
+ruby '3.2.2'  # MANDATORY: Pin Ruby version
 
+# REQUIRED: Core Rails gems
 gem 'rails', '~> 7.0'
-gem 'pg', '~> 1.4'
-gem 'puma', '~> 6.0'
+gem 'pg', '~> 1.4'      # MANDATORY: PostgreSQL only
+gem 'puma', '~> 6.0'    # REQUIRED: Application server
 
+# MANDATORY: Development and testing tools
 group :development, :test do
-  gem 'rspec-rails', '~> 6.0'
-  gem 'pry-byebug'
-  gem 'rubocop', require: false
+  gem 'rspec-rails', '~> 6.0'   # REQUIRED: Testing framework
+  gem 'rubocop', require: false  # MANDATORY: Code quality
+  gem 'factory_bot_rails'        # REQUIRED: Test data
 end
 
 group :test do
-  gem 'factory_bot_rails'
-  gem 'faker'
-  gem 'simplecov', require: false
+  gem 'simplecov', require: false  # MANDATORY: Coverage reporting
 end
 ```
 
-## Ruby Conventions
-```ruby
-# Classes: PascalCase
-class UserAccount; end
+## Ruby Conventions - ENFORCE
 
-# Methods and variables: snake_case
+**MANDATORY naming and style conventions:**
+```ruby
+# REQUIRED: PascalCase for classes and modules
+class UserAccount; end
+module PaymentProcessor; end
+
+# MANDATORY: snake_case for methods and variables
 def calculate_total_price
-  user_name = "John"
+  user_name = "John"  # REQUIRED: snake_case variables
 end
 
-# Constants: SCREAMING_SNAKE_CASE
+# REQUIRED: SCREAMING_SNAKE_CASE for constants
 MAX_RETRY_COUNT = 3
+API_BASE_URL = "https://api.example.com"
 
-# Predicates end with ?
+# MANDATORY: Predicate methods end with ?
 def valid?
   !expired? && active?
 end
 
-# Dangerous methods end with !
+# REQUIRED: Destructive methods end with !
 def save!
   save || raise(RecordNotSaved)
 end
 ```
 
-## Common Patterns
+## Required Patterns - ENFORCE
+
+**MANDATORY Ruby idioms:**
 ```ruby
-# Use symbols for hash keys
+# REQUIRED: Symbols for hash keys - NEVER strings
 user = { name: "Alice", age: 30 }
 
-# Memoization with ||=
+# MANDATORY: Memoization pattern with ||=
 def expensive_calculation
   @result ||= perform_calculation
 end
 
-# Safe navigation
-user&.profile&.name
+# REQUIRED: Safe navigation operator
+user&.profile&.name  # NEVER user.profile.name without safety
 
-# Trailing conditionals
-process_order if order.valid?
+# MANDATORY: Trailing conditionals for guard clauses
 return unless user.authorized?
+process_order if order.valid?
 
-# Object configuration with tap
+# REQUIRED: Object initialization with tap
 User.new.tap do |u|
   u.name = "Bob"
   u.email = "bob@example.com"
@@ -90,72 +96,80 @@ User.new.tap do |u|
 end
 ```
 
-## Object-Oriented Design
+## Object-Oriented Design - MANDATORY PATTERNS
+
+**REQUIRED Ruby class structure:**
 ```ruby
 class User
+  # MANDATORY: Use attr_* for accessor methods
   attr_reader :id, :name
   attr_accessor :email
   attr_writer :password
   
+  # REQUIRED: Keyword arguments for initialize
   def initialize(name:, email:)
     @name = name
     @email = email
   end
   
-  # Class methods
+  # MANDATORY: Class methods for finders
   def self.find_by_email(email)
-    # Implementation
+    # Implementation with proper error handling
   end
   
   private
   
+  # REQUIRED: Private methods for internal logic
   def validate_email
-    # Private method
+    # Private validation logic
   end
 end
 
-# Modules and mixins
+# MANDATORY: Modules with ActiveSupport::Concern
 module Trackable
   extend ActiveSupport::Concern
   
   included do
-    has_many :activities
+    has_many :activities  # REQUIRED: Define associations
   end
   
   def track_activity(action)
-    activities.create(action: action)
+    activities.create!(action: action)  # REQUIRED: Use bang methods
   end
 end
 ```
 
-## Error Handling
+## Error Handling - NO EXCEPTIONS
+
+**MANDATORY error handling patterns:**
 ```ruby
-# Basic rescue
+# REQUIRED: Always handle StandardError specifically
 begin
   risky_operation
 rescue StandardError => e
   logger.error "Operation failed: #{e.message}"
-  raise
+  raise  # MANDATORY: Re-raise unless handling completely
 end
 
-# Multiple rescue clauses
+# REQUIRED: Specific rescue clauses before generic
 begin
   api_call
 rescue Net::HTTPError => e
   handle_http_error(e)
 rescue Timeout::Error => e
   handle_timeout(e)
-rescue => e
+rescue StandardError => e  # REQUIRED: Never bare rescue
   handle_generic_error(e)
 ensure
-  cleanup_resources
+  cleanup_resources  # MANDATORY: Always cleanup
 end
 
-# Custom exceptions
+# MANDATORY: Custom exception hierarchy
 class ApplicationError < StandardError; end
 class ValidationError < ApplicationError; end
+class BusinessRuleError < ApplicationError; end
 
-# Retry pattern with exponential backoff
+# REQUIRED: Retry pattern with exponential backoff
 def fetch_with_retry(url, max_retries: 3)
   retries = 0
   begin
@@ -163,26 +177,30 @@ def fetch_with_retry(url, max_retries: 3)
   rescue Net::HTTPError => e
     retries += 1
     if retries < max_retries
-      sleep(2 ** retries)
+      sleep(2 ** retries)  # REQUIRED: Exponential backoff
       retry
     else
-      raise
+      raise  # MANDATORY: Re-raise after max retries
     end
   end
 end
 ```
 
-## Testing with RSpec
+## Testing - MANDATORY COVERAGE
+
+**REQUIRED RSpec patterns:**
 ```ruby
 # spec/models/user_spec.rb
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  # MANDATORY: Test all validations
   describe 'validations' do
     it { should validate_presence_of(:email) }
     it { should validate_uniqueness_of(:email) }
   end
   
+  # REQUIRED: Test all public methods
   describe '#full_name' do
     let(:user) { build(:user, first_name: 'John', last_name: 'Doe') }
     
@@ -191,6 +209,7 @@ RSpec.describe User, type: :model do
     end
   end
   
+  # MANDATORY: Test scopes and class methods
   describe '.active' do
     let!(:active_user) { create(:user, active: true) }
     let!(:inactive_user) { create(:user, active: false) }
@@ -203,18 +222,19 @@ RSpec.describe User, type: :model do
 end
 ```
 
-## Rails Patterns
-```ruby
-# Active Record optimization
-# Bad - N+1 query
-users = User.all
-users.each { |user| puts user.posts.count }
+## Rails Patterns - ENFORCE
 
-# Good - includes
+**MANDATORY ActiveRecord optimization:**
+```ruby
+# FORBIDDEN - N+1 queries
+# users = User.all
+# users.each { |user| puts user.posts.count }
+
+# REQUIRED - Eager loading with includes
 users = User.includes(:posts)
 users.each { |user| puts user.posts.size }
 
-# Service objects
+# MANDATORY - Service objects for complex operations
 class UserRegistrationService
   def initialize(user_params)
     @user_params = user_params
@@ -222,62 +242,42 @@ class UserRegistrationService
   
   def call
     ActiveRecord::Base.transaction do
-      user = User.create!(@user_params)
+      user = User.create!(@user_params)  # REQUIRED: Bang methods
       send_welcome_email(user)
       create_default_settings(user)
-      user
+      Result.success(user)
     end
   rescue ActiveRecord::RecordInvalid => e
-    OpenStruct.new(success?: false, errors: e.record.errors)
+    Result.error("Registration failed", e.record.errors)
   end
 end
 ```
 
-## Performance & Quality
-```ruby
-# Benchmarking
-require 'benchmark'
+## Code Quality - MANDATORY ENFORCEMENT
 
-Benchmark.bm do |x|
-  x.report("map:") { 1000.times.map { |i| i * 2 } }
-  x.report("each:") { arr = []; 1000.times.each { |i| arr << i * 2 } }
-end
-
-# Memory profiling
-require 'memory_profiler'
-
-report = MemoryProfiler.report do
-  1000.times { User.new(name: "Test") }
-end
-report.pretty_print
-```
-
-## Code Quality Tools
+**REQUIRED quality checks before every commit:**
 ```bash
-# RuboCop
-bundle exec rubocop
-bundle exec rubocop -a  # Auto-fix
+# MANDATORY - RuboCop compliance
+bundle exec rubocop --fail-level error
+bundle exec rubocop -a  # Auto-fix safe corrections
 
-# Reek (code smells)
-bundle exec reek
+# REQUIRED - Security scanning
+bundle exec brakeman --no-pager
 
-# Brakeman (security)
-bundle exec brakeman
-
-# SimpleCov (coverage)
-# Add to spec_helper.rb:
-require 'simplecov'
-SimpleCov.start 'rails'
+# MANDATORY - Test coverage (minimum 90%)
+bundle exec rspec
+# SimpleCov will enforce coverage threshold
 ```
 
-## Best Practices
-- Follow Ruby Style Guide (https://rubystyle.guide/)
-- Use semantic versioning for gems
-- Write tests first (TDD/BDD approach)
-- Keep methods small (under 10 lines ideally)
-- Use descriptive names - be explicit
-- Avoid monkey patching core classes
-- Prefer composition over inheritance
-- Use frozen string literals
-- Document public APIs with YARD
-- Profile before optimizing
+## Non-Negotiable Requirements
+
+- **ENFORCE**: Ruby Style Guide compliance via RuboCop
+- **MANDATE**: TDD/BDD approach - tests before implementation
+- **REQUIRE**: Methods under 10 lines - extract if longer
+- **ENFORCE**: Descriptive names - no abbreviations or unclear terms
+- **FORBID**: Monkey patching core classes - use refinements if needed
+- **MANDATE**: Composition over inheritance pattern
+- **REQUIRE**: frozen_string_literal pragma in all files
+- **ENFORCE**: 90% minimum test coverage with SimpleCov
+- **MANDATE**: ActiveRecord query optimization - no N+1 queries
+- **REQUIRE**: Service objects for complex business operations
