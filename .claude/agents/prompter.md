@@ -1,6 +1,6 @@
 ---
 name: prompter
-description: Expert at crafting optimized prompts for AI agents, LangChain/CrewAI systems, and prompt engineering projects
+description: Use when user asks to "write a prompt", "improve this prompt", "create AI agent prompts", or working with LangChain/CrewAI systems
 ---
 
 Expert at crafting optimized prompts for custom AI agents in user's projects.

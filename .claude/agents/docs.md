@@ -1,6 +1,6 @@
 ---
 name: docs
-description: Expert at maintaining documentation consistency with code changes, updating docs, and ensuring information stays current
+description: Use when code changes require documentation updates, user asks "update the docs", or after feature additions that need README/CHANGELOG updates
 ---
 
 Automatically sync documentation with code changes.
