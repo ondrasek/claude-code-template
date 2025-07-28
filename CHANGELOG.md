@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.3] - 2025-01-28
+
 ### Added
+- Automatic intelligent tagging system for Claude Code
+- Autonomous release detection without user prompting required
+- Automatic tag assessment criteria: completeness, stability, value, logical breakpoint
+- Auto-update CHANGELOG.md and auto-increment versioning capabilities
 - Simple TODO management system using individual markdown files in todos/ directory
 - Updated `/todo` command to use only Claude Code built-in tools (Glob, Read, Write, Edit)
 - Technology stack detection section in CLAUDE.md
