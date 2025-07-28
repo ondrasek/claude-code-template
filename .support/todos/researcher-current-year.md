@@ -1,0 +1,1 @@
+Claude Code sometimes adds year to the Web Search queries. However, it incorrectly uses 2024 as the current year. Either instruct it to stop using the year or determine current year first (using date shell command?).
