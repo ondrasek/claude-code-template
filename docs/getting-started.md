@@ -73,6 +73,7 @@ This template helps developers understand:
 - `time` - Historical analysis and evolution
 - `connector` - Cross-domain creative solutions
 - `git-tagger` - Automatic release management
+- `git-troubleshooter` - Git error diagnosis and resolution
 
 </details>
 

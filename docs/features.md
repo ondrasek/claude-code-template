@@ -49,6 +49,7 @@ Your personal team of AI specialists with **mandatory coordination** for all non
 | **`time`** | Analyzes code history and evolution | Understanding how code evolved |
 | **`connector`** | Finds creative cross-domain solutions | "How do other fields solve this?" |
 | **`git-tagger`** | Automatically manages releases and versions | Automated release workflows |
+| **`git-troubleshooter`** | Diagnoses and resolves git repository issues | "Git error", merge conflicts, push failures |
 
 ## 📋 Custom Commands
 

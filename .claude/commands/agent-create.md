@@ -9,13 +9,13 @@ Guide for creating new Claude Code agents following empirical principles, select
 
 ## What it does
 - **Validates agent necessity** using decision framework from @.support/instructions/agent-creation.md
-- **Checks for redundancy** with existing 26 agents across all computational thinking patterns
+- **Checks for redundancy** with existing 27 agents across all computational thinking patterns
 - **Guides agent specification** with proven description patterns from gold standard agents
 - **Generates optimized descriptions** with Tier 1 selection keywords and mandatory template compliance
 - **Designs multi-agent coordination** patterns for sophisticated workflow integration
 - **Creates agent file** with proper frontmatter, structure, and integration protocols
 
-## Current Agent Ecosystem (26 agents)
+## Current Agent Ecosystem (27 agents)
 
 ### Core Analysis Agents
 - **patterns**, **researcher**, **context**, **hypothesis**, **axioms**, **constraints**
@@ -30,7 +30,7 @@ Guide for creating new Claude Code agents following empirical principles, select
 - **explorer**, **resolver**, **principles**, **invariants**, **connector**
 
 ### Workflow & Documentation
-- **generator**, **docs**, **git-tagger**, **todo**, **time**, **prompter**
+- **generator**, **docs**, **git-tagger**, **git-troubleshooter**, **todo**, **time**, **prompter**
 
 ### Technology Guidelines
 - **guidelines-file**, **guidelines-repo**
@@ -42,7 +42,7 @@ Guide for creating new Claude Code agents following empirical principles, select
 2. **Complexity justification**: Verify task generates >50 lines of intermediate output
 3. **Boundary analysis**: Confirm clear input/output boundaries exist
 4. **Reuse assessment**: Check if pattern applies to >3 different contexts
-5. **Redundancy check**: Compare against all 26 existing agent capabilities
+5. **Redundancy check**: Compare against all 27 existing agent capabilities
 6. **Human role avoidance**: Ensure focus on computational tasks vs organizational roles
 
 ### Phase 2: Multi-Agent Integration Design
@@ -101,7 +101,7 @@ Before creating an agent, verify ALL criteria against current ecosystem:
 - [ ] **Context isolation**: Eliminates pollution of main context
 
 ### Ecosystem Integration
-- [ ] **No redundancy**: No existing agent among 26 covers this capability
+- [ ] **No redundancy**: No existing agent among 27 covers this capability
 - [ ] **Coordination design**: Plans for multi-agent integration patterns
 - [ ] **Workflow contribution**: Enables new or improved multi-agent workflows
 - [ ] **Human role avoidance**: Not mirroring organizational positions or social dynamics
@@ -176,4 +176,4 @@ vulnerability-scanner MUST coordinate with:
 - **Overhead Justification**: Clear >50 line context reduction
 - **Integration Readiness**: Designed for multi-agent coordination
 
-**Current ecosystem averages: 4.4/5.0 stars across 26 agents**
+**Current ecosystem averages: 4.4/5.0 stars across 27 agents**

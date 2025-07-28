@@ -2,7 +2,7 @@
 
 Comprehensive guide for effectively using all 26 specialized AI agents in the current ecosystem.
 
-## Current Agent Ecosystem (26 agents)
+## Current Agent Ecosystem (27 agents)
 
 ### Core Analysis & Research
 - **patterns**: Identify code patterns and anti-patterns at scale
@@ -35,6 +35,7 @@ Comprehensive guide for effectively using all 26 specialized AI agents in the cu
 - **generator**: Create code generators and domain-specific languages
 - **docs**: Maintain synchronized documentation with code changes
 - **git-tagger**: Autonomous git release management and versioning
+- **git-troubleshooter**: Git error diagnosis and systematic resolution
 - **todo**: Specialized task lifecycle management (context-clean)
 - **time**: Historical analysis and future trajectory prediction
 - **prompter**: AI agent prompt creation for user projects

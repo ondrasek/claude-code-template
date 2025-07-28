@@ -105,6 +105,8 @@ Examples:
 4. **Update CHANGELOG.md**: When git-tagger creates release tags, update CHANGELOG.md with release notes
 5. **Push immediately**: `git push origin main` after every commit
 
+**Error Recovery**: When git operations fail, use git-troubleshooter agent for systematic diagnosis and resolution.
+
 **Agent coordination**: All agents MUST follow this protocol. Git-tagger agent runs autonomously after every commit.
 
 Example sequence:
@@ -115,6 +117,7 @@ Example sequence:
   # Auto-invoke git-tagger agent here
   # If git-tagger creates v1.2.0 tag → Update CHANGELOG.md with release notes
   git push origin main
+  # If any step fails → Auto-invoke git-troubleshooter agent
   ```
 
 ## Documentation Protocol (MANDATORY)
