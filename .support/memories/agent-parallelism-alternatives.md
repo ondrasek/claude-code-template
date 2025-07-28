@@ -1,8 +1,9 @@
 ---
 entity_name: "Agent Parallelism Alternatives"
 entity_type: "research_topic"
-created_at: "2025-01-28"
-last_updated: "2025-01-28"
+created: "2025-01-28"
+source: "mcp_export"
+exported: "2025-07-28T10:45:00Z"
 ---
 
 # Agent Parallelism Alternatives

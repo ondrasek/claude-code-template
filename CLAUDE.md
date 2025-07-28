@@ -57,6 +57,7 @@
 - @.support/instructions/git-workflow.md - Trunk-based development rules
 - @.support/instructions/documentation.md - Documentation maintenance
 - @.support/instructions/agent-usage.md - Agent coordination patterns
+- @.support/instructions/agent-creation.md - Agent development principles
 - @.support/instructions/versioning.md - Semantic versioning protocol
 
 **TECHNOLOGY STACKS**: Load appropriate guidelines:

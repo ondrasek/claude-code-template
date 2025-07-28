@@ -1,8 +1,9 @@
 ---
 entity_name: "claude-md-analysis-task"
 entity_type: "task"
-created_at: "2025-01-28"
-last_updated: "2025-01-28"
+created: "2025-01-28"
+source: "mcp_export"
+exported: "2025-07-28T10:45:00Z"
 ---
 
 # Claude MD Analysis Task
