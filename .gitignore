@@ -21,11 +21,11 @@ project.db
 *.db-shm
 mcp-memory/
 .mcp-memory/
-# Legacy support folder locations
+# Legacy support folder locations (old structure)
 .mcp/
 memories/
-scripts/
-todos/
+legacy-scripts/
+legacy-todos/
 
 # Environment variables
 .env
