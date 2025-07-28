@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.11.0] - 2025-07-28
+
+### Added
+- **MAJOR**: Mandatory agent description template system with empirical validation
+- Tier 1 keyword guidelines (MUST USE, PROACTIVELY use, AUTOMATICALLY)  
+- Proven template examples with selection optimization insights
+- Template compliance requirements for all future agents
+
+### Enhanced  
+- **completer agent**: Upgraded with MUST USE + Expert capability statement
+- **critic agent**: Upgraded with MUST USE + Expert risk analysis capability  
+- **todo agent**: Upgraded with PROACTIVELY + Expert task lifecycle capability
+
 ## [2.10.0] - 2025-07-28
 
 ### Enhanced
