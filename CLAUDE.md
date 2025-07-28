@@ -1,12 +1,6 @@
 # CLAUDE.md - AI Operational Instructions
 
-## .claude Configuration Principles
-
-**AI-FIRST DESIGN**: Contains only project-specific operational overrides that extend Claude Code's built-in capabilities.
-
-## Project-Specific Operational Overrides
-
-### Agent Coordination Protocol (MANDATORY)
+## Agent Coordination Protocol (MANDATORY)
 **EXECUTE FOR ALL NON-TRIVIAL REQUESTS - NO EXCEPTIONS**:
 1. **Minimum 3+ agents**: Always use multiple agents for complex tasks
 2. **Memory-first research**: Check `mcp__memory__search_nodes()` before web searches
@@ -15,7 +9,7 @@
 
 **Agent combinations**: researcher + patterns + critic (minimum baseline)
 
-### Technology Stack Detection Rules
+## Technology Stack Detection Rules
 **AUTOMATIC STACK DETECTION**: At session start, detect active technologies:
 ```
 1. Use Glob tool to scan for technology indicators:
@@ -33,8 +27,7 @@
 3. Apply technology-specific best practices throughout session
 ```
 
-
-### Memory Integration Override
+## Memory Integration Override
 **MCP MEMORY USAGE**: Project-specific memory behavior:
 - Prioritize memory lookup before web searches (efficiency override)
 - Store agent combination success patterns for this project
@@ -43,7 +36,7 @@
 - Use `mcp__memory__search_nodes()` before web research
 - Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`
 
-### Simple Git Protocol (MANDATORY)
+## Simple Git Protocol (MANDATORY)
 **EXECUTE AFTER EVERY CHANGE - NO EXCEPTIONS**:
 1. **Stage immediately**: `git add -A` after any file modification
 2. **Commit at milestones**: When any meaningful task is complete
@@ -52,14 +45,14 @@
 
 **Agent coordination**: All agents MUST follow this protocol. Tagger agent runs autonomously after every commit.
 
-### Documentation Protocol (MANDATORY)
+## Documentation Protocol (MANDATORY)
 **EXECUTE WITH EVERY CODE CHANGE - NO EXCEPTIONS**:
 1. **Same commit rule**: Documentation updates in same commit as code changes
 2. **Always check**: README.md, CHANGELOG.md, API docs, CLAUDE.md for needed updates
 3. **Update immediately**: New features, API changes, configuration changes
 4. **Use docs agent**: Invoke docs agent for documentation maintenance
 
-### TODO Protocol (MANDATORY)
+## TODO Protocol (MANDATORY)
 **USE TODO AGENT FOR ALL TASK MANAGEMENT - NO CONTEXT CLUTTER**:
 1. **Agent delegation**: Use TODO agent for creating/tracking tasks
 2. **Clean context**: No TODO tracking in main conversation flow
@@ -69,5 +62,19 @@
 **Agent invocation**: `Task: "Create TODO for X" (subagent_type: todo)`
 
 ## Key Reference Files
+
+**OPERATIONAL INSTRUCTIONS**: Essential for command functionality:
+- @.support/instructions/agent-creation.md - Agent development principles and criteria
+
+**TECHNOLOGY STACKS**: Load appropriate guidelines:
+- @.support/stacks/python.md - Python with uv development
+- @.support/stacks/rust.md - Rust development patterns
+- @.support/stacks/javascript.md - Node.js/TypeScript patterns
+- @.support/stacks/java.md - Java/Spring Boot patterns
+- @.support/stacks/kotlin.md - Kotlin backend patterns
+- @.support/stacks/ruby.md - Ruby development patterns
+- @.support/stacks/csharp.md - C#/.NET patterns
+- @.support/stacks/cpp.md - Modern C++ patterns
+- @.support/stacks/docker.md - Container patterns
 
 **AGENT DEFINITIONS**: Custom agents in @.claude/agents/ extend Claude Code's built-in capabilities with project-specific behaviors and memory integration.

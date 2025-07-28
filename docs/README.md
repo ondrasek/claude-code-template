@@ -8,10 +8,12 @@ These files provide detailed guidelines and best practices that complement the A
 
 ## Contents
 
-- **[agent-creation.md](agent-creation.md)** - Principles and criteria for creating new AI agents, including decision frameworks and validation metrics
 - **[agent-usage.md](agent-usage.md)** - Detailed patterns and examples for coordinating multiple AI agents effectively
 - **[documentation.md](documentation.md)** - Guidelines for maintaining project documentation automatically alongside code changes
 - **[versioning.md](versioning.md)** - Semantic versioning rules and release management procedures
+- **[customization.md](customization.md)** - Guide for adapting the template to different project types
+- **[features.md](features.md)** - Comprehensive overview of template capabilities
+- **[getting-started.md](getting-started.md)** - Quick start guide for new users
 
 ## Purpose
 
