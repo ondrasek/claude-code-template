@@ -70,15 +70,4 @@
 
 ## Key Reference Files
 
-**TECHNOLOGY STACKS**: Load appropriate guidelines:
-- @.support/stacks/python.md - Python with uv development
-- @.support/stacks/rust.md - Rust development patterns
-- @.support/stacks/javascript.md - Node.js/TypeScript patterns
-- @.support/stacks/java.md - Java/Spring Boot patterns
-- @.support/stacks/kotlin.md - Kotlin backend patterns
-- @.support/stacks/ruby.md - Ruby development patterns
-- @.support/stacks/csharp.md - C#/.NET patterns
-- @.support/stacks/cpp.md - Modern C++ patterns
-- @.support/stacks/docker.md - Container patterns
-
 **AGENT DEFINITIONS**: Custom agents in @.claude/agents/ extend Claude Code's built-in capabilities with project-specific behaviors and memory integration.
