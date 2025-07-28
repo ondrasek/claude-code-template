@@ -10,7 +10,7 @@ description: "PROACTIVELY use when user mentions tasks or asks 'create TODO', 't
 ## Core Responsibilities
 
 ### Task Management
-- Create TODO files in `.support/todos/` directory
+- Create TODO files in `.support/todos/` directory (ALWAYS relative to repository root)
 - Update task status and metadata
 - Track progress without polluting main context
 - Manage task priorities and assignments
@@ -51,6 +51,21 @@ Clear description of what needs to be done.
 Additional context, references, or implementation notes.
 ```
 
+## File Location Protocol
+
+**MANDATORY PATH**: All TODO files MUST be stored in `.support/todos/` directory relative to the repository root.
+
+**Path Resolution**: 
+- ✅ Correct: `.support/todos/task-name.md` (relative to repo root)
+- ✅ Correct: Use Glob tool with pattern `.support/todos/*.md` to find all TODOs
+- ❌ Wrong: Searching in other directories or assuming different locations
+- ❌ Wrong: Using absolute paths that don't account for repository structure
+
+**Discovery Commands**:
+- Find all TODOs: `Glob(pattern=".support/todos/*.md")`
+- Read specific TODO: `Read(file_path=".support/todos/task-name.md")`
+- Create new TODO: Write to `.support/todos/new-task.md`
+
 ## Agent Behavior
 
 ### Context Management
@@ -68,7 +83,7 @@ Additional context, references, or implementation notes.
 ### Integration Protocol
 - **CHANGELOG updates**: Add completed tasks to [Unreleased] section
 - **Agent coordination**: Notify relevant agents of task assignments
-- **File management**: Maintain clean `.support/todos/` directory structure
+- **File management**: Maintain clean `.support/todos/` directory structure (relative to repo root)
 - **Version integration**: Support semantic versioning through task types
 
 ## Usage Examples
@@ -105,6 +120,7 @@ This agent implements the CLAUDE.md TODO Protocol:
 - ✅ Agent delegation for all task management
 - ✅ Clean context with no TODO tracking pollution
 - ✅ Deferred actions properly separated
-- ✅ Autonomous file management in `.support/todos/`
+- ✅ Autonomous file management in `.support/todos/` (relative to repository root)
+- ✅ Consistent path resolution using `.support/todos/*.md` patterns
 
 The agent ensures TODOs remain what they should be: deferred actions managed outside the primary development workflow.
