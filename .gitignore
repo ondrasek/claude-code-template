@@ -1,31 +1,15 @@
-# Claude Code
+# Claude Code runtime files
 .claude/memory/
 .claude/cache/
 .claude/logs/
 
-# MCP Memory Server Data - Uses default locations
-# Memory databases are stored in default MCP locations (not in repository)
-# Use /memory-export and /memory-import commands for version control
-
-# Memory Files - Version Control Strategy
-# .support/memories/ folder contains exported memory files for collaboration
-# These are human-readable and git-friendly (individual .md files)
-# Included in version control for team collaboration and knowledge sharing
-
-# Legacy MCP locations (still excluded)
+# MCP Memory Server database files
 memory.db
 memory.sqlite
 memories.db
 project.db
 *.db-wal
 *.db-shm
-mcp-memory/
-.mcp-memory/
-# Legacy support folder locations (old structure)
-.mcp/
-memories/
-legacy-scripts/
-legacy-todos/
 
 # Environment variables
 .env
