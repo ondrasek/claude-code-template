@@ -38,4 +38,4 @@ Find and complete missing functionality, incomplete implementations, TODOs, and 
 - Test coverage completion for critical functionality
 - Progress tracking to avoid duplicate work
 
-**Memory Integration**: Follow @.support/memory-protocol.md to track completion progress.
+**Memory Integration**: Follow @.support/instructions/memory-protocol.md to track completion progress.

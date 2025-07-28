@@ -31,4 +31,4 @@ Research current information, best practices, and technical solutions. Always ch
 - Error message research and debugging context
 - Best practice synthesis from multiple authoritative sources
 
-**Memory Integration**: Follow @.support/memory-protocol.md for efficient knowledge building.
+**Memory Integration**: Follow @.support/instructions/memory-protocol.md for efficient knowledge building.

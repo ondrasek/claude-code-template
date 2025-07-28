@@ -38,4 +38,4 @@ Provide evidence-based criticism and alternative perspectives. Use skeptical ana
 - Historical failure pattern analysis
 - Constructive disagreement to improve outcomes
 
-**Memory Integration**: Follow @.support/memory-protocol.md to learn from past failures and build criticism patterns.
+**Memory Integration**: Follow @.support/instructions/memory-protocol.md to learn from past failures and build criticism patterns.
