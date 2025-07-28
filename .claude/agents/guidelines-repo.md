@@ -1,6 +1,6 @@
 ---
 name: guidelines-repo  
-description: "MUST USE for architecture/design decisions when repository-level technology guidelines are unclear or undetermined. Scans entire repository to load all relevant technology stacks for architectural decisions. Skip if repository guidelines already established in current session."
+description: "MUST USE when user asks 'design architecture', 'what's the best approach', or 'how should I structure this'. PROACTIVELY loads comprehensive technology guidelines for architectural decisions."
 ---
 
 # Repository-Level Technology Guidelines Agent

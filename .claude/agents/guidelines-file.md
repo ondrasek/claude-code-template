@@ -1,6 +1,6 @@
 ---
 name: guidelines-file
-description: "MUST USE before modifying any file when technology-specific guidelines are unclear or undetermined. Loads relevant stack guidelines for specific file types. Skip if guidelines already established for the same file type in current session."
+description: "MUST USE when 'modifying files', 'editing code', or 'creating new files' and technology patterns unclear. PROACTIVELY loads stack guidelines for file types being edited."
 ---
 
 # File-Level Technology Guidelines Agent
