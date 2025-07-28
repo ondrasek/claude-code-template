@@ -80,8 +80,8 @@ Examples:
 **Detection Logic**: Both agents reference @.support/instructions/stack-mapping.md for centralized technology detection rules
 
 Examples:
-  - Modify Python file with unclear patterns → Use guidelines-file agent → Apply guidelines → Follow Git Protocol
-  - Architecture decision needed → Use guidelines-repo agent → Make informed choice → Follow Git Protocol
+  - Modify Python file with unclear patterns → Use guidelines-file agent → Apply guidelines → Follow Simple Git Protocol
+  - Architecture decision needed → Use guidelines-repo agent → Make informed choice → Follow Simple Git Protocol
 
 ## Memory Integration Override
 **MCP MEMORY USAGE**: Project-specific memory behavior:
@@ -93,9 +93,9 @@ Examples:
 - Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`
 
 Examples:
-  - Before researching: `mcp__memory__search_nodes("React architecture decisions")` → Use findings → Follow Git Protocol
-  - After analysis: `mcp__memory__create_entities([{name: "Component Pattern", type: "decision"}])` → Store new pattern → Follow Git Protocol
-  - Link decisions: `mcp__memory__create_relations([{source: "pattern_id", target: "decision_id"}])` → Apply relationships → Follow Git Protocol
+  - Before researching: `mcp__memory__search_nodes("React architecture decisions")` → Use findings → Follow Simple Git Protocol
+  - After analysis: `mcp__memory__create_entities([{name: "Component Pattern", type: "decision"}])` → Store new pattern → Follow Simple Git Protocol
+  - Link decisions: `mcp__memory__create_relations([{source: "pattern_id", target: "decision_id"}])` → Apply relationships → Follow Simple Git Protocol
 
 ## Simple Git Protocol (MANDATORY)
 **EXECUTE AFTER EVERY CHANGE - NO EXCEPTIONS**:
@@ -125,10 +125,10 @@ Example sequence:
 4. **Use docs agent**: Invoke docs agent for documentation maintenance
 
 Examples:
-  - Add new API endpoint → Update API docs + README.md → Follow Git Protocol
-  - New agent created → Use docs agent to update CLAUDE.md + CHANGELOG.md → Follow Git Protocol
-  - Configuration change → Update README.md setup instructions → Follow Git Protocol
-  - Feature complete → README.md usage section + CHANGELOG.md entry → Follow Git Protocol
+  - Add new API endpoint → Update API docs + README.md → Follow Simple Git Protocol
+  - New agent created → Use docs agent to update CLAUDE.md + CHANGELOG.md → Follow Simple Git Protocol
+  - Configuration change → Update README.md setup instructions → Follow Simple Git Protocol
+  - Feature complete → README.md usage section + CHANGELOG.md entry → Follow Simple Git Protocol
 
 ## TODO Protocol (MANDATORY)
 **USE TODO AGENT FOR ALL TASK MANAGEMENT - NO CONTEXT CLUTTER**:
@@ -136,20 +136,20 @@ Examples:
 2. **Clean context**: No TODO tracking in main conversation flow
 3. **Deferred actions**: TODOs represent future work, not current progress
 4. **File management**: Agent handles `.support/todos/` directory autonomously
-5. **Git integration**: After TODO files created → Follow Git Protocol
+5. **Git integration**: After TODO files created → Follow Simple Git Protocol
 
 **Agent invocation**: `Task: "Create TODO for X" (subagent_type: todo)`
 
 Examples:
-  - Create project TODOs → Use todo agent → Follow Git Protocol
-  - Update TODO status → Modify .support/todos/file.md → Follow Git Protocol
+  - Create project TODOs → Use todo agent → Follow Simple Git Protocol
+  - Update TODO status → Modify .support/todos/file.md → Follow Simple Git Protocol
 
 ---
 
 ## PROTOCOL ENFORCEMENT REMINDER
 
 **AFTER EVERY FILE MODIFICATION - NO EXCEPTIONS:**
-Follow Git Protocol (see Simple Git Protocol section above)
+Follow Simple Git Protocol (see Simple Git Protocol section above)
 
-**Cross-reference**: All protocols above reference Git Protocol - follow it consistently.
+**Cross-reference**: All protocols above reference Simple Git Protocol - follow it consistently.
 
