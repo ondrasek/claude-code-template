@@ -49,7 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - **MAJOR**: Removed memory export/import functionality entirely (366 lines removed)
 - Deleted `.support/memories/` directory and all memory files
-- Removed memory export references from git-workflow.md
+- Removed memory export references from git workflow documentation
 - Deleted memory-system.md documentation file
 - Removed memory-export/import command references from all documentation
 
@@ -102,7 +102,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated `/todo` command to use only Claude Code built-in tools (Glob, Read, Write, Edit)
 - Technology stack detection section in CLAUDE.md
 - Git workflow instructions emphasizing frequent commits and trunk-based development
-- Organized instruction files: git-workflow.md, documentation.md, agent-usage.md, versioning.md
+- Organized instruction files: documentation.md, agent-usage.md, versioning.md
 
 ### Changed
 - **MAJOR**: Drastically streamlined CLAUDE.md to eliminate redundancy with built-in Claude Code features
@@ -122,7 +122,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed complex TODO management scripts (todo-manager.py, claude-todo, scan-todos.py, install-todo-system.sh)
 - Removed verbose TODO implementation documentation (docs/todo-management-system.md, docs/todo-system-implementation.md)
 - Removed redundant MCP servers from .mcp.json (filesystem, fetch) - Claude Code has built-in capabilities
-- Removed git protocol details from CLAUDE.md - moved to modular @.claude/instructions/git-workflow.md
+- Removed git protocol details from CLAUDE.md - moved to modular instructions
 - Removed redundant `config.json` file - all configuration now in CLAUDE.md and settings.json
 - Removed VERSIONING.md file - versioning instructions moved to .claude/instructions/versioning.md
 - Removed customInstructions field from settings.json (invalid field)
@@ -258,7 +258,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `/test` - Testing assistance  
   - `/refactor` - Code improvement
   - `/security` - Security audit
-  - `/debug-mcp` - MCP server debugging
   - `/langchain-agent` - LangChain development
   - `/crewai-crew` - CrewAI multi-agent systems
   - `/python-uv` - Python project setup with uv

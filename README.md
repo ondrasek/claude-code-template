@@ -68,7 +68,6 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 - `/test` - Testing assistance
 - `/refactor` - Code improvement
 - `/security` - Security audit
-- `/debug-mcp` - MCP server debugging
 - `/langchain-agent` - LangChain development
 - `/crewai-crew` - CrewAI multi-agent systems
 - `/python-uv` - Python project setup with uv

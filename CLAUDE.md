@@ -71,7 +71,6 @@
 ## Key Reference Files
 
 **CRITICAL INSTRUCTIONS**: Always check these files for guidance:
-- @.support/instructions/git-workflow.md - Trunk-based development rules
 - @.support/instructions/documentation.md - Documentation maintenance
 - @.support/instructions/agent-usage.md - Agent coordination patterns
 - @.support/instructions/agent-creation.md - Agent development principles
