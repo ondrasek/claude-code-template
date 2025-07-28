@@ -260,6 +260,73 @@ EOF
 - Emergency fixes: Fast response with follow-up thoroughness
 ```
 
+## TODO/CHANGELOG Management Protocol
+
+### Mandatory Documentation Workflow
+**WHEN USER REQUESTS CHANGES**: Claude Code MUST follow this protocol:
+
+**1. Multi-Step Changes (>3 operations)**:
+```
+1. Add TODO entry to TODO.md with:
+   - Unique ID (TODO-XXX)
+   - Type: feat|fix|docs|refactor|perf|test|chore|break
+   - SemVer impact: major|minor|patch
+   - Clear description and acceptance criteria
+2. Implement changes systematically
+3. Mark TODO as completed in TODO.md
+4. Move completed TODO to CHANGELOG.md under [Unreleased]
+5. Determine version bump based on SemVer impact
+```
+
+**2. Simple Changes (≤3 operations)**:
+```
+1. Implement change directly
+2. Add entry to CHANGELOG.md [Unreleased] section
+3. Note SemVer impact for future release
+```
+
+### TODO.md Format Standard
+```markdown
+## Active TODOs
+
+### TODO-001: [Brief Title]
+**Type**: feat|fix|docs|refactor|perf|test|chore|break
+**SemVer Impact**: major|minor|patch  
+**Status**: pending|in_progress|completed
+**Description**: Detailed explanation
+**Acceptance Criteria**:
+- [ ] Criterion 1
+- [ ] Criterion 2
+
+## Completed TODOs (Ready for Release)
+[Completed items ready to move to CHANGELOG]
+```
+
+### CHANGELOG.md Maintenance
+**ALWAYS update CHANGELOG.md** when implementing changes:
+```
+## [Unreleased]
+
+### Added (minor)
+- New feature description (TODO-001)
+
+### Fixed (patch)  
+- Bug fix description (TODO-002)
+
+### Changed (major)
+- Breaking change description (TODO-003)
+```
+
+### Version Release Protocol
+**WHEN releasing versions**:
+```
+1. Review all [Unreleased] entries in CHANGELOG.md
+2. Calculate version bump: max(major, minor, patch) from all changes
+3. Move [Unreleased] to [vX.Y.Z] with release date
+4. Create git tag with semantic version
+5. Clear completed TODOs from TODO.md
+```
+
 ## Quality Assurance Framework
 
 ### Self-Validation Protocol
@@ -269,15 +336,7 @@ EOF
 2. Validate recommendations using memory of past outcomes
 3. Use critic agent for all significant proposals
 4. Store validation results for future reference
-```
-
-### Learning Integration
-**IMPROVEMENT CYCLE**:
-```
-1. Track success/failure of implemented recommendations
-2. Update pattern confidence based on outcomes
-3. Refine agent selection based on performance data
-4. Evolve decision algorithms based on results
+5. Ensure TODO/CHANGELOG compliance for all changes
 ```
 
 ## Key Reference Files
