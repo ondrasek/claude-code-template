@@ -1,615 +1,311 @@
-# Claude Code Multi-Agent Configuration Template Repository
+# CLAUDE.md - AI Operational Instructions
 
-## Repository Overview
+## Core Mission
+This file provides operational instructions for Claude Code AI to work efficiently with this repository. **CRITICAL**: Claude Code MUST extensively use agents for ALL user interactions and actively promote slash commands to enhance user productivity.
 
-This is a Claude Code configuration template repository that serves as a dotfiles/configuration template repository for configuring Claude Code with custom commands, agents, and MCP tools. Configuration examples are organized by feature type with README files explaining their usage.
+## Mandatory Agent Usage Policy
 
-The goal of this repository is to streamline developer work with fully working agentic configuration for Claude Code utilizing the Claude Code commands, sub-agents and MCP servers
-capability.
+**UNIVERSAL RULE**: Claude Code MUST use agents for EVERY user request without being asked:
+- **No exceptions** - Even simple questions benefit from agent specialization
+- **Proactive invocation** - Start agent workflows immediately upon user interaction
+- **Multiple agents default** - Use 3+ agents for any non-trivial request
+- **User education** - Explain agent value while using them extensively
 
-## Key Features
+## Session Initialization Protocol
 
-### 1. Slash Commands
-Located in `commands/`, these are custom prompts that expand when invoked with `/command-name`:
-- `/review` - Comprehensive code review
-- `/test` - Testing assistance
-- `/refactor` - Code refactoring help
-- `/security` - Security audit
-
-### 2. Agents
-Specialized AI agents in `.claude/agents/` for complex tasks (alphabetically organized):
-- **axioms** - First-principles reasoning
-- **completer** - Find missing functionality and TODOs
-- **connector** - Cross-domain creative insights
-- **constraints** - Multi-dimensional constraint solving
-- **context** - Deep system understanding
-- **critic** - Challenge assumptions and ideas
-- **docs** - Documentation maintenance
-- **explorer** - Multiple solution generation
-- **generator** - Code generation and DSL creation
-- **hypothesis** - Scientific debugging approach
-- **invariants** - Type safety and state machine design
-- **patterns** - Pattern detection and refactoring
-- **principles** - Software design principles (SOLID, etc.)
-- **prompter** - AI agent development
-- **researcher** - Information gathering and research
-- **resolver** - Conflict resolution between approaches
-- **time** - Historical analysis and evolution
-- **whisper** - Micro-improvements at scale
-
-Use the built-in `/agents` command to manage agents
-
-### 3. MCP Tools
-External tool integrations in `mcp-tools/`:
-- Filesystem access
-- Database connections
-- API integrations
-- Custom tool development
-
-## Usage Guidelines
-
-1. **Custom Commands**: Create new slash commands by adding `.md` files to `.claude/commands/`
-2. **Agent Development**: Define specialized agents in `.claude/agents/` for domain-specific tasks
-3. **Tool Integration**: Configure MCP servers in `.claude/settings.json`
-4. **Efficiency**: Use agents and commands to automate repetitive tasks
-
-## Development Workflow
-
-### Git Workflow
-
-**CRITICAL: Commit and push after EVERY non-trivial change. Never wait to accumulate changes.**
-
-**TRUNK-BASED DEVELOPMENT: Always work on main branch. Only create feature branches if explicitly instructed.**
-
-See: @.claude/instructions/git-workflow.md
-
-## Technology Stack Detection
-
-**IMPORTANT: Automatically detect and apply technology-specific guidelines based on repository contents.**
-
-When working in this repository, check for the presence of technology-specific files and refer to the appropriate stack guidelines:
-
-### Detection Rules
-- **Python files** (`.py`, `pyproject.toml`, `requirements.txt`) → Refer to @.claude/stacks/python.md
-- **Rust files** (`.rs`, `Cargo.toml`) → Refer to @.claude/stacks/rust.md
-- **JavaScript/TypeScript** (`.js`, `.ts`, `package.json`) → Refer to @.claude/stacks/javascript.md
-- **Go files** (`.go`, `go.mod`) → Refer to @.claude/stacks/go.md
-- **Java files** (`.java`, `pom.xml`, `build.gradle`) → Refer to @.claude/stacks/java.md
-- **Kotlin files** (`.kt`, `build.gradle.kts`) → Refer to @.claude/stacks/kotlin.md
-- **Ruby files** (`.rb`, `Gemfile`) → Refer to @.claude/stacks/ruby.md
-- **C# files** (`.cs`, `.csproj`, `*.sln`) → Refer to @.claude/stacks/csharp.md
-- **C/C++ files** (`.c`, `.cpp`, `.h`, `CMakeLists.txt`) → Refer to @.claude/stacks/cpp.md
-- **Docker files** (`Dockerfile`, `docker-compose.yml`) → Refer to @.claude/stacks/docker.md
-
-### Usage
-1. At the start of each session, identify which technologies are present
-2. Load the corresponding stack guidelines from `.claude/stacks/`
-3. Follow technology-specific best practices throughout the session
-4. If multiple technologies are present, apply all relevant guidelines
-
-Additional stacks can be added in `.claude/stacks/`.
-
-## Automatic Agent Invocation
-
-**CRITICAL: Claude Code MUST use ALL appropriate agents for EVERY user request, prompt, or interaction.**
-
-### Universal Agent Rule
-
-**For ANY user request**: Use ALL appropriate agents automatically
-- **ALWAYS start with**: `researcher` + `patterns` + `principles` + `completer`
-- **ALWAYS add**: `critic` to validate approaches and challenge assumptions
-- **ALWAYS include**: `docs` after any code modifications
-- **ALWAYS consider**: Domain-specific agents based on detected technology stacks
-
-### Default Agent Pipeline
-
-**Standard Pipeline for ALL Requests:**
-1. `researcher` - Gather information and context
-2. `patterns` - Identify relevant patterns and structures
-3. `principles` - Apply design principles and best practices
-4. `completer` - Ensure completeness and find missing elements
-5. `critic` - Challenge assumptions and validate approaches
-6. `docs` - Update documentation for any changes
-
-**Additional Agents by Context:**
-- Prompt engineering: Add `prompter`
-- Architecture discussions: Add `explorer` + `constraints`
-- Debugging: Add `hypothesis`
-- Code generation: Add `generator`
-- Historical analysis: Add `time`
-- Cross-domain solutions: Add `connector`
-- Type safety: Add `invariants`
-- First principles: Add `axioms`
-- System understanding: Add `context`
-- Conflict resolution: Add `resolver`
-- Code quality: Add `whisper`
-
-### Simplified Automation Rules
-
-1. **Use agents for EVERYTHING** - No exceptions, no trigger pattern matching needed
-2. **Start comprehensive** - Begin with the standard 6-agent pipeline
-3. **Add context-specific** - Include domain agents based on project detection
-4. **Run in parallel when possible** - Maximum efficiency
-5. **Always end with `docs`** - Keep documentation current
-
-### Override Mechanism
-Users can disable automatic agent usage by:
-- Adding `--no-agents` flag to commands
-- Explicitly stating "don't use agents"
-
-## MCP Memory Integration Protocols
-
-**CRITICAL: Claude Code MUST use MCP memory for persistent learning and context preservation.**
-
-### 1. Session Management
-
-#### Session Start Protocol
+### Technology Stack Detection
+**CRITICAL**: At session start, automatically detect active technologies:
 ```
-1. Read existing knowledge graph: mcp__memory__read_graph()
-2. Search for project context: mcp__memory__search_nodes("project_context")
-3. Load technology stack entities: mcp__memory__open_nodes(["tech_stack", "dependencies"])
-4. Identify active patterns: mcp__memory__search_nodes("successful_patterns")
-5. Initialize session entity with timestamp and scope
+1. Use Glob tool to scan for technology indicators:
+   - Python: *.py, pyproject.toml, requirements.txt
+   - Rust: *.rs, Cargo.toml  
+   - JavaScript/TypeScript: *.js, *.ts, package.json
+   - Go: *.go, go.mod
+   - Java: *.java, pom.xml, build.gradle
+   - Docker: Dockerfile, docker-compose.yml
+2. Load corresponding stack guidelines from .claude/stacks/
+3. Apply technology-specific best practices throughout session
 ```
 
-**Session Start Implementation:**
+### Memory Context Loading
+**MANDATORY**: Use MCP memory for session continuity:
+```
+1. mcp__memory__search_nodes(project_name + " current_state")
+2. mcp__memory__search_nodes("technology_stack patterns")  
+3. Load previous architectural decisions, patterns, solutions
+4. Establish project context baseline for current session
+```
+
+### Resource Prioritization Protocol
+**TOOL EFFICIENCY ORDER**:
+```
+1. Memory tools (fastest) - Check existing knowledge first
+2. Local tools (fast) - File operations, code analysis
+3. Web tools (slower) - Only for new external information
+4. Complex analysis (slowest) - When simpler approaches fail
+```
+
+**AGENT SELECTION OPTIMIZATION**:
+```
+1. Use memory to learn which agent combinations work best for specific contexts
+2. Prioritize agents based on demonstrated success patterns from memory
+3. Avoid redundant agent invocations through memory coordination
+4. Track agent performance and adjust selection algorithms accordingly
+```
+
+## Agent Selection Algorithm
+
+### Mandatory Agent Selection Matrix
+**MINIMUM AGENT REQUIREMENTS**: Always use these agent combinations:
+
+**For ANY user request (baseline)**:
+```
+ALWAYS: researcher + patterns + principles + critic
+REASON: Every interaction benefits from research, pattern analysis, best practices, and critical evaluation
+```
+
+**Context-specific additions**:
+```
+IF user mentions error/bug → ADD: hypothesis + completer
+IF user asks "should I..." → ADD: explorer + constraints  
+IF code files mentioned → ADD: completer + whisper
+IF architecture question → ADD: explorer + constraints + resolver
+IF debugging needed → ADD: hypothesis + context
+IF documentation changes → ADD: docs + completer
+IF performance issues → ADD: patterns + constraints + completer
+IF refactoring → ADD: patterns + principles + whisper + completer
+```
+
+**NEVER use fewer than 3 agents** unless user explicitly requests minimal response.
+
+### Mandatory Command Promotion
+**COMMAND EVANGELISM**: Actively promote slash commands in every interaction:
+
+**ALWAYS suggest relevant commands**:
+```
+IF code quality discussion → "Try `/review` for comprehensive code analysis"
+IF testing mentioned → "Use `/test` for testing strategy and implementation"  
+IF refactoring needed → "Run `/refactor` for systematic code improvement"
+IF security concerns → "Execute `/security` for security audit and recommendations"
+```
+
+**Command promotion template**:
+```
+"For enhanced analysis, consider using our specialized commands:
+- `/review` - Comprehensive code review with multiple perspectives
+- `/refactor` - Systematic refactoring with risk assessment
+- `/test` - Testing strategy development and implementation
+- `/security` - Security audit and vulnerability assessment
+
+These commands leverage multiple agents working in parallel for deeper insights."
+```
+
+### Parallel Agent Execution
+**MANDATORY PARALLELISM**: Use Claude Code's native parallelism extensively:
+```
+Phase 1 (Always Parallel): researcher + patterns + principles + completer
+Phase 2 (Validation Parallel): critic + constraints + resolver
+Phase 3 (Implementation Parallel): docs + whisper + generator (as needed)
+```
+
+**AGENT LOAD BALANCING**: Distribute work across agents to maximize Claude Code's capabilities rather than doing work manually.
+
+### Agent Coordination Protocol
+**MEMORY-SHARED**: Agents coordinate through shared memory:
+```
+1. Agents store findings in mcp__memory__create_entities
+2. Cross-agent access via mcp__memory__search_nodes  
+3. Avoid sequential Task calls when parallel execution possible
+4. Use memory for context handoff between agents
+```
+
+## MCP Memory Integration System
+
+### Knowledge Graph Architecture
+**ENTITY TYPES**:
 ```typescript
-// Session initialization
-const sessionId = `session_${Date.now()}`;
-await mcp__memory__create_entities([{
-  name: sessionId,
-  entityType: "session",
-  observations: [
-    `Started at ${new Date().toISOString()}`,
-    `Working directory: ${process.cwd()}`,
-    `User request: ${initialPrompt}`
-  ]
-}]);
-```
+// Core project entity structure
+type ProjectEntity = {
+  name: string
+  technology_stack: string[]
+  current_phase: 'development' | 'maintenance' | 'migration'
+  architecture_decisions: string[]
+  active_patterns: string[]
+  known_constraints: string[]
+}
 
-#### During Session Protocol
-```
-1. Continuously update project context
-2. Record successful agent combinations
-3. Track effective patterns and solutions
-4. Document decision rationales
-5. Maintain cross-reference relationships
-```
+type PatternEntity = {
+  pattern_name: string
+  frequency: number
+  locations: string[]
+  impact_level: 'high' | 'medium' | 'low'
+  refactoring_cost: 'high' | 'medium' | 'low'
+}
 
-**Active Memory Updates:**
-```typescript
-// After successful agent invocation
-await mcp__memory__add_observations([{
-  entityName: "agent_performance",
-  contents: [
-    `${agentName} successfully handled ${taskType} at ${timestamp}`,
-    `Result quality: ${qualityScore}`,
-    `Execution time: ${duration}ms`
-  ]
-}]);
-
-// Link successful patterns
-await mcp__memory__create_relations([{
-  from: sessionId,
-  to: "successful_pattern_${patternId}",
-  relationType: "utilized"
-}]);
-```
-
-#### Session End Protocol
-```
-1. Summarize session outcomes
-2. Update project evolution timeline
-3. Record lessons learned
-4. Strengthen successful pattern relationships
-5. Archive temporary entities
-```
-
-### 2. Knowledge Graph Architecture
-
-#### Core Entity Types
-
-**Project Entities:**
-```typescript
-interface ProjectEntity {
-  name: string; // e.g., "my_web_app"
-  entityType: "project";
-  observations: [
-    "Created: 2024-01-15",
-    "Primary language: TypeScript",
-    "Framework: Next.js",
-    "Current phase: development",
-    "Team size: 3"
-  ];
+type DecisionEntity = {
+  decision_context: string
+  rationale: string
+  alternatives_considered: string[]
+  outcome: 'successful' | 'problematic' | 'unknown'
+  lessons_learned: string[]
 }
 ```
 
-**Technology Stack Entities:**
-```typescript
-interface TechStackEntity {
-  name: string; // e.g., "nextjs_stack"
-  entityType: "technology_stack";
-  observations: [
-    "Primary: Next.js 14.0",
-    "Database: PostgreSQL",
-    "ORM: Prisma",
-    "Styling: Tailwind CSS",
-    "Deployment: Vercel"
-  ];
-}
+### Session Memory Protocol
+**START OF SESSION**:
+```
+1. mcp__memory__read_graph() # Load complete project context
+2. mcp__memory__search_nodes(project_name + " architecture")
+3. mcp__memory__search_nodes("recent_decisions patterns")
+4. Create session entity with timestamp and context
 ```
 
-**Agent Performance Entities:**
-```typescript
-interface AgentPerformanceEntity {
-  name: string; // e.g., "patterns_agent_performance"
-  entityType: "agent_performance";
-  observations: [
-    "Success rate: 94%",
-    "Best suited for: code refactoring",
-    "Average execution time: 2.3s",
-    "Common failures: legacy code analysis"
-  ];
-}
+**DURING SESSION**:
+```
+- Store significant findings immediately with mcp__memory__create_entities
+- Update existing entities with mcp__memory__add_observations
+- Create relations between discoveries with mcp__memory__create_relations
+- Track successful agent combinations and tool sequences
 ```
 
-**Pattern Entities:**
-```typescript
-interface PatternEntity {
-  name: string; // e.g., "react_component_pattern"
-  entityType: "code_pattern";
-  observations: [
-    "Type: React functional component",
-    "Success count: 47",
-    "Last used: 2024-01-20",
-    "Effectiveness: high",
-    "Associated agents: patterns, principles"
-  ];
-}
+**END OF SESSION**:
+```
+1. Create session summary entity with key decisions made
+2. Update project state with new understanding
+3. Strengthen relationships for successful patterns
+4. Store lessons learned for future sessions
 ```
 
-#### Relationship Types
-
-**Core Relationships:**
-- `project` **uses** `technology_stack`
-- `agent` **excels_at** `task_type`
-- `pattern` **works_with** `technology_stack`
-- `session` **utilized** `successful_pattern`
-- `agent` **collaborates_with** `agent`
-- `project` **evolved_through** `session`
-
-**Relationship Creation Example:**
-```typescript
-await mcp__memory__create_relations([
-  {
-    from: "my_web_app",
-    to: "nextjs_stack",
-    relationType: "uses"
-  },
-  {
-    from: "patterns_agent",
-    to: "code_refactoring",
-    relationType: "excels_at"
-  },
-  {
-    from: "react_component_pattern",
-    to: "nextjs_stack",
-    relationType: "works_with"
-  }
-]);
+### Cross-Session Learning
+**PATTERN TRACKING**:
+```
+1. Record successful agent combinations by context type
+2. Store effective tool sequences for common tasks
+3. Build knowledge of project-specific patterns and anti-patterns
+4. Learn user preferences and coding style guidelines
 ```
 
-### 3. Context Preservation
+## Git Workflow Automation
 
-#### Project Context Entity Structure
-```typescript
-const projectContext = {
-  name: "project_context_${projectName}",
-  entityType: "project_context",
-  observations: [
-    "Architecture: microservices",
-    "Development stage: MVP",
-    "Key challenges: scalability, performance",
-    "Recent decisions: adopted GraphQL",
-    "Active features: user authentication, payment system",
-    "Team preferences: TypeScript, functional programming",
-    "Performance requirements: <200ms response time",
-    "Security constraints: GDPR compliance"
-  ]
-};
+### Mandatory Git Protocol
+**CRITICAL**: Auto-commit and push:
+```
+1. Commit after EVERY non-trivial change
+2. Use trunk-based development (main branch only)
+3. Push immediately after committing  
+4. Create feature branches ONLY if explicitly instructed
+5. Use semantic commit messages with Claude Code attribution
 ```
 
-#### Context Retrieval Algorithm
-```typescript
-async function getProjectContext(projectName: string) {
-  // 1. Get primary context
-  const context = await mcp__memory__open_nodes([`project_context_${projectName}`]);
-  
-  // 2. Get related technology stack
-  const techStack = await mcp__memory__search_nodes("technology_stack");
-  
-  // 3. Get successful patterns for this project
-  const patterns = await mcp__memory__search_nodes(`${projectName} successful_patterns`);
-  
-  // 4. Get recent decisions and their rationales
-  const decisions = await mcp__memory__search_nodes(`${projectName} decisions`);
-  
-  return {
-    context: context[0],
-    techStack: techStack,
-    patterns: patterns,
-    decisions: decisions
-  };
-}
+### Commit Message Format
+```
+git commit -m "$(cat <<'EOF'
+[Action] [Brief description]
+
+🤖 Generated with [Claude Code](https://claude.ai/code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
-#### Cross-Session Continuity
-```typescript
-// Update project evolution
-await mcp__memory__add_observations([{
-  entityName: `project_context_${projectName}`,
-  contents: [
-    `Session ${sessionId}: Implemented user authentication`,
-    `Decision: Used JWT over sessions for stateless architecture`,
-    `Agents used: researcher, patterns, principles, security`,
-    `Outcome: 95% test coverage, security audit passed`,
-    `Next priorities: payment integration, performance optimization`
-  ]
-}]);
+## Error Handling and Recovery
+
+### Tool Failure Protocol
+**GRACEFUL DEGRADATION**:
+```
+1. If MCP memory fails: Continue with session-only context
+2. If web tools fail: Use local analysis and stored knowledge  
+3. If agent fails: Log error and continue with remaining agents
+4. Always preserve partial progress and user workflow
 ```
 
-### 4. Learning Systems
-
-#### Pattern Success Tracking
-```typescript
-interface PatternSuccessMetrics {
-  name: string; // e.g., "microservice_pattern_success"
-  entityType: "pattern_metrics";
-  observations: [
-    "Usage count: 23",
-    "Success rate: 89%",
-    "Average implementation time: 4.2 hours",
-    "Common pitfalls: service discovery complexity",
-    "Best practices: use API gateway, implement circuit breakers",
-    "Technology compatibility: works best with Docker + Kubernetes"
-  ];
-}
+### Context Recovery
+**FALLBACK SYSTEMS**:
+```
+1. If memory context lost: Rebuild from file analysis
+2. If technology detection fails: Use manual specification
+3. If agent coordination breaks: Fall back to sequential execution
+4. Maintain minimum viable operation in all failure modes
 ```
 
-#### Agent Combination Learning
-```typescript
-// Track successful agent combinations
-const agentCombination = {
-  name: "researcher_patterns_principles_combo",
-  entityType: "agent_combination",
-  observations: [
-    "Success rate: 92%",
-    "Best for: architecture planning",
-    "Execution order: researcher → patterns → principles",
-    "Average time: 8.7 seconds",
-    "Failure modes: insufficient domain knowledge"
-  ]
-};
+## Performance Optimization
+
+### Tool Prioritization
+**EFFICIENCY ORDER**:
+```
+1. Memory tools (fastest) - Check existing knowledge first
+2. Local tools (fast) - File system operations
+3. Web tools (slower) - Only for new information not in memory
+4. Complex analysis (slowest) - When simpler approaches insufficient
 ```
 
-#### Learning Algorithm Implementation
-```typescript
-async function updatePatternLearning(patternName: string, outcome: 'success' | 'failure', context: any) {
-  const metricsEntity = `${patternName}_metrics`;
-  
-  if (outcome === 'success') {
-    await mcp__memory__add_observations([{
-      entityName: metricsEntity,
-      contents: [
-        `Success at ${new Date().toISOString()}`,
-        `Context: ${JSON.stringify(context)}`,
-        `Agents involved: ${context.agents.join(', ')}`,
-        `Technology stack: ${context.techStack}`,
-        `Implementation time: ${context.duration}ms`
-      ]
-    }]);
-    
-    // Strengthen relationships
-    await mcp__memory__create_relations([{
-      from: patternName,
-      to: context.techStack,
-      relationType: "works_well_with"
-    }]);
-  } else {
-    await mcp__memory__add_observations([{
-      entityName: metricsEntity,
-      contents: [
-        `Failure at ${new Date().toISOString()}`,
-        `Context: ${JSON.stringify(context)}`,
-        `Failure reason: ${context.failureReason}`,
-        `Attempted solution: ${context.attemptedSolution}`
-      ]
-    }]);
-  }
-}
+### Response Time Guidelines
+**BALANCE**: Thoroughness vs Speed
+```
+- Simple questions: Prioritize speed, minimal agent use
+- Complex analysis: Use full agent pipeline with memory optimization
+- User preference learning: Adjust based on feedback patterns
+- Emergency fixes: Fast response with follow-up thoroughness
 ```
 
-### 5. Cross-Agent Coordination
+## Quality Assurance Framework
 
-#### Shared Knowledge Pool
-```typescript
-interface SharedKnowledge {
-  name: string; // e.g., "shared_project_knowledge"
-  entityType: "shared_knowledge";
-  observations: [
-    "Project architecture decisions",
-    "Established patterns and conventions", 
-    "Performance requirements and constraints",
-    "Security policies and compliance needs",
-    "Team preferences and coding standards",
-    "Integration points and dependencies",
-    "Testing strategies and coverage goals"
-  ];
-}
+### Self-Validation Protocol
+**CONTINUOUS VERIFICATION**:
+```
+1. Cross-check findings against stored patterns
+2. Validate recommendations using memory of past outcomes
+3. Use critic agent for all significant proposals
+4. Store validation results for future reference
 ```
 
-#### Agent Coordination Protocol
-```typescript
-// Before agent invocation
-async function prepareAgentContext(agentName: string, taskContext: any) {
-  // 1. Get shared project knowledge
-  const sharedKnowledge = await mcp__memory__search_nodes("shared_project_knowledge");
-  
-  // 2. Get agent-specific successful patterns
-  const agentPatterns = await mcp__memory__search_nodes(`${agentName} successful_patterns`);
-  
-  // 3. Get related agent collaboration history
-  const collaborations = await mcp__memory__search_nodes(`${agentName} collaborations`);
-  
-  // 4. Prepare context package
-  return {
-    projectContext: sharedKnowledge,
-    agentHistory: agentPatterns,
-    collaborationHistory: collaborations,
-    currentTask: taskContext
-  };
-}
-
-// After agent completion
-async function updateAgentKnowledge(agentName: string, results: any, collaborators: string[]) {
-  // Update agent performance
-  await mcp__memory__add_observations([{
-    entityName: `${agentName}_performance`,
-    contents: [
-      `Task completed: ${results.taskType}`,
-      `Success level: ${results.successLevel}`,
-      `Collaborators: ${collaborators.join(', ')}`,
-      `Key insights: ${results.insights}`,
-      `Recommendations: ${results.recommendations}`
-    ]
-  }]);
-  
-  // Record collaborations
-  for (const collaborator of collaborators) {
-    await mcp__memory__create_relations([{
-      from: agentName,
-      to: collaborator,
-      relationType: "collaborated_with"
-    }]);
-  }
-}
+### Learning Integration
+**IMPROVEMENT CYCLE**:
+```
+1. Track success/failure of implemented recommendations
+2. Update pattern confidence based on outcomes
+3. Refine agent selection based on performance data
+4. Evolve decision algorithms based on results
 ```
 
-#### Knowledge Sharing Example
-```typescript
-// Agent handoff protocol
-async function handoffToAgent(fromAgent: string, toAgent: string, context: any) {
-  const handoffKnowledge = {
-    name: `handoff_${fromAgent}_to_${toAgent}_${Date.now()}`,
-    entityType: "agent_handoff",
-    observations: [
-      `From: ${fromAgent}`,
-      `To: ${toAgent}`, 
-      `Context: ${JSON.stringify(context)}`,
-      `Key findings: ${context.findings}`,
-      `Recommendations: ${context.recommendations}`,
-      `Continuation points: ${context.continuationPoints}`
-    ]
-  };
-  
-  await mcp__memory__create_entities([handoffKnowledge]);
-  
-  // Create relationship
-  await mcp__memory__create_relations([{
-    from: fromAgent,
-    to: toAgent,
-    relationType: "handed_off_to"
-  }]);
-}
+## Key Reference Files
+
+**CRITICAL INSTRUCTIONS**: Always check these files for guidance:
+- `.claude/instructions/git-workflow.md` - Git automation requirements
+- `.claude/instructions/documentation.md` - Documentation sync requirements  
+- `.claude/instructions/agent-usage.md` - Agent coordination protocols
+- `.claude/stacks/[technology].md` - Technology-specific guidelines
+
+**INSTRUCTION PRIORITY**: Reference files provide context-specific guidance that overrides general protocols when applicable.
+
+## User Experience Enhancement
+
+### Proactive Agent Education
+**TEACH WHILE USING**: Explain agent value during execution:
+```
+"I'm using the researcher agent to gather current best practices..."
+"The patterns agent is analyzing your codebase for optimization opportunities..."
+"The critic agent is evaluating potential risks with this approach..."
 ```
 
-### Memory Operation Decision Algorithm
+### Command Discovery Promotion
+**FEATURE AWARENESS**: Regularly introduce users to powerful commands:
+- Mention commands contextually during conversations
+- Highlight command benefits with specific use cases
+- Demonstrate command effectiveness through results
+- Create FOMO (fear of missing out) on powerful automation
 
-#### When to Create vs Update vs Search
-```typescript
-class MemoryOperationDecider {
-  static shouldCreate(entityName: string, context: any): boolean {
-    // Create new entities for:
-    // - New sessions
-    // - First occurrence of a pattern
-    // - New project initialization
-    // - Novel agent combinations
-    return !context.existingEntities.includes(entityName) && 
-           (context.isNewSession || context.isNovelPattern);
-  }
-  
-  static shouldUpdate(entityName: string, context: any): boolean {
-    // Update existing entities for:
-    // - Adding new observations
-    // - Updating performance metrics
-    // - Recording new outcomes
-    return context.existingEntities.includes(entityName) && 
-           context.hasNewInformation;
-  }
-  
-  static shouldSearch(query: string, context: any): boolean {
-    // Search when:
-    // - Need historical context
-    // - Looking for patterns
-    // - Agent preparation
-    // - Decision support
-    return context.needsHistoricalContext || 
-           context.requiresPatternMatching;
-  }
-}
-```
+### Override Mechanisms
 
-#### Systematic Memory Usage Example
-```typescript
-async function systematicMemoryOperation(operation: string, context: any) {
-  const timestamp = new Date().toISOString();
-  
-  switch (operation) {
-    case 'session_start':
-      // Search for existing context
-      const existingContext = await mcp__memory__search_nodes("project_context");
-      
-      // Create new session
-      await mcp__memory__create_entities([{
-        name: `session_${timestamp}`,
-        entityType: "session",
-        observations: [`Started: ${timestamp}`, `Context: ${JSON.stringify(context)}`]
-      }]);
-      break;
-      
-    case 'pattern_success':
-      // Update pattern metrics
-      await mcp__memory__add_observations([{
-        entityName: context.patternName,
-        contents: [`Success: ${timestamp}`, `Context: ${JSON.stringify(context)}`]
-      }]);
-      
-      // Strengthen relationships
-      await mcp__memory__create_relations([{
-        from: context.patternName,
-        to: context.technology,
-        relationType: "works_well_with"
-      }]);
-      break;
-      
-    case 'agent_coordination':
-      // Get collaboration history
-      const history = await mcp__memory__search_nodes(`${context.agent} collaborations`);
-      
-      // Record new collaboration
-      await mcp__memory__add_observations([{
-        entityName: `${context.agent}_performance`,
-        contents: [`Collaboration: ${timestamp}`, `Partners: ${context.partners.join(',')}`]
-      }]);
-      break;
-  }
-}
-```
+Users can modify AI behavior via:
+- `--no-agents` flag to disable agent automation (DISCOURAGED - explain agent benefits)
+- Explicit instruction to "don't use agents" (RARE - suggest minimal alternative)
+- Direct technology stack specification if auto-detection fails
+- Manual agent selection when algorithmic selection inadequate
 
-## Key Instructions
+**IMPORTANT**: When users request minimal agent usage, still promote the value of full agent workflows for future interactions.
 
-- **Git Workflow** - @.claude/instructions/git-workflow.md - Trunk-based development, frequent commits
-- **Documentation** - @.claude/instructions/documentation.md - Keep docs in sync with code changes
-- **Agent Usage** - @.claude/instructions/agent-usage.md - Proactive agent use for better results
-- **Versioning** - @.claude/instructions/versioning.md - Semantic versioning with tags
-- **Memory Integration** - Use MCP memory protocols for persistent learning and context preservation
+---
+
+**OPERATIONAL PRINCIPLE**: This file guides AI behavior while maintaining human transparency. All automation is documented, debuggable, and overrideable to ensure maintainable collaboration between AI and human developers.
