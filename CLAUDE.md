@@ -13,11 +13,33 @@
 - Force minimum 3+ agents for non-trivial requests (override built-in agent usage)
 - Agents must keep main context window tidy, optimized and neat
 
+Examples:
+  - User: "This code looks messy" → Auto-invoke: patterns + whisper + critic
+  - User: "How should I structure this?" → Auto-invoke: guidelines-repo + explorer + principles
+  - User shows error message → Auto-invoke: researcher + hypothesis + patterns
+
+**NO ARTIFICIAL TIMELINES (MANDATORY)**:
+- NEVER create mock weekly milestones (Week 1, Week 2, Week 3, etc.) in ANY context
+- NEVER use arbitrary time-based phases unless explicitly requested by user
+- Focus on priority-based organization (High/Medium/Low) and dependency relationships
+- Examples of FORBIDDEN phrases: "Phase 1 (Week 1)", "implement in 2 weeks", "Q1 goals"
+- Apply to: roadmaps, implementation plans, TODO creation, project planning, agent analysis
+
+Examples:
+  ❌ Wrong: "Phase 1 (Week 1): Update agent descriptions"
+  ✅ Right: "High Priority: Update agent descriptions (blocks selection optimization)"
+  ❌ Wrong: "Implement feature in 2 weeks"  
+  ✅ Right: "High Priority: Implement feature (depends on API design completion)"
+
 **EXECUTION PROTOCOL**:
 1. **Memory-first research**: Check `mcp__memory__search_nodes()` before web searches
-2. **Parallel agent clusters**: Use multiple agents simultaneously when possible  
+   Example: Before web searching "React best practices" → First check memory for previous React decisions
+2. **Parallel agent clusters**: Use multiple agents simultaneously when possible
+   Example: Single message with 3+ Task() calls running researcher + patterns + critic simultaneously  
 3. **Context delegation**: Complex analysis happens in agent context, not main context
+   Example: Don't analyze 50 files in main context → Use patterns agent to analyze and summarize
 4. **Automatic selection**: Match agent combinations to user request patterns
+   Example: "Why is this slow?" → Auto-select researcher + hypothesis + patterns (not just one agent)
 
 ## Agent Combination Patterns (MANDATORY)
 
@@ -66,6 +88,11 @@
 - Use `mcp__memory__search_nodes()` before web research
 - Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`
 
+Examples:
+  - Before researching: `mcp__memory__search_nodes("React architecture decisions")`
+  - After analysis: `mcp__memory__create_entities([{name: "Component Pattern", type: "decision"}])`
+  - Link decisions: `mcp__memory__create_relations([{source: "pattern_id", target: "decision_id"}])`
+
 ## Simple Git Protocol (MANDATORY)
 **EXECUTE AFTER EVERY CHANGE - NO EXCEPTIONS**:
 1. **Stage immediately**: `git add -A` after any file modification
@@ -75,12 +102,27 @@
 
 **Agent coordination**: All agents MUST follow this protocol. Tagger agent runs autonomously after every commit.
 
+Example sequence:
+  ```bash
+  # After modifying src/components/Header.tsx
+  git add -A
+  git commit -m "Add dark mode toggle to header component"
+  # Auto-invoke tagger agent here
+  git push origin main
+  ```
+
 ## Documentation Protocol (MANDATORY)
 **EXECUTE WITH EVERY CODE CHANGE - NO EXCEPTIONS**:
 1. **Same commit rule**: Documentation updates in same commit as code changes
 2. **Always check**: README.md, CHANGELOG.md, API docs, CLAUDE.md for needed updates
 3. **Update immediately**: New features, API changes, configuration changes
 4. **Use docs agent**: Invoke docs agent for documentation maintenance
+
+Examples:
+  - Add new API endpoint → Update API docs + README.md in same commit
+  - New agent created → Use docs agent to update CLAUDE.md + CHANGELOG.md
+  - Configuration change → Update README.md setup instructions immediately
+  - Feature complete → README.md usage section + CHANGELOG.md entry
 
 ## TODO Protocol (MANDATORY)
 **USE TODO AGENT FOR ALL TASK MANAGEMENT - NO CONTEXT CLUTTER**:

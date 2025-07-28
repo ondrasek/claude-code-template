@@ -104,6 +104,8 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 3. **Output quality assessment**: Evaluate if agent outputs require main context interpretation
 4. **Maintenance overhead**: Time spent updating agent specifications vs. value delivered
 
+**Timeline restrictions**: Follow CLAUDE.md NO ARTIFICIAL TIMELINES protocol - never create mock weekly milestones or arbitrary time-based phases in agent analysis or recommendations
+
 ### Red Flags for Agent Elimination
 
 **Remove agents that exhibit:**
