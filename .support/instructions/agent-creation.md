@@ -53,7 +53,7 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 - **Social dynamics**: `mediator`, `facilitator`, `coordinator`
 - **Organizational positions**: `architect`, `senior-developer`, `tech-lead`
 
-**Rationale:** Agents excel at computational processing, systematic analysis patterns, and specialized analytical perspectives. They provide value through focused thinking approaches and context isolation, not by mimicking human social or organizational functions.
+**Rationale:** Agents excel at computational processing, systematic analysis patterns, and specialized analytical perspectives. They provide value through focused thinking approaches and context isolation - not at replicating human social dynamics or organizational responsibilities.
 
 ## Decision Framework
 
