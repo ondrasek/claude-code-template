@@ -260,71 +260,25 @@ EOF
 - Emergency fixes: Fast response with follow-up thoroughness
 ```
 
-## TODO/CHANGELOG Management Protocol
+## Simple TODO Management
 
-### Mandatory Documentation Workflow
-**WHEN USER REQUESTS CHANGES**: Claude Code MUST follow this protocol:
+### Basic Workflow
+**WHEN USER REQUESTS CHANGES**: 
+1. For simple changes: Implement directly and update CHANGELOG.md
+2. For complex changes: Create individual TODO file in todos/ directory
+3. Use `/todo-add`, `/todo-list`, `/todo-complete` commands as needed
 
-**1. Multi-Step Changes (>3 operations)**:
-```
-1. Add TODO entry to TODO.md with:
-   - Unique ID (TODO-XXX)
-   - Type: feat|fix|docs|refactor|perf|test|chore|break
-   - SemVer impact: major|minor|patch
-   - Clear description and acceptance criteria
-2. Implement changes systematically
-3. Mark TODO as completed in TODO.md
-4. Move completed TODO to CHANGELOG.md under [Unreleased]
-5. Determine version bump based on SemVer impact
-```
+### TODO Structure
+- Individual markdown files in `todos/` directory
+- YAML frontmatter with basic metadata (status, type, priority, assignee)  
+- Simple markdown content with description and acceptance criteria
+- Use Claude Code built-in tools only (Glob, Read, Write, Edit)
 
-**2. Simple Changes (≤3 operations)**:
-```
-1. Implement change directly
-2. Add entry to CHANGELOG.md [Unreleased] section
-3. Note SemVer impact for future release
-```
-
-### TODO.md Format Standard
+### CHANGELOG Updates
+Update CHANGELOG.md [Unreleased] section for all changes:
 ```markdown
-## Active TODOs
-
-### TODO-001: [Brief Title]
-**Type**: feat|fix|docs|refactor|perf|test|chore|break
-**SemVer Impact**: major|minor|patch  
-**Status**: pending|in_progress|completed
-**Description**: Detailed explanation
-**Acceptance Criteria**:
-- [ ] Criterion 1
-- [ ] Criterion 2
-
-## Completed TODOs (Ready for Release)
-[Completed items ready to move to CHANGELOG]
-```
-
-### CHANGELOG.md Maintenance
-**ALWAYS update CHANGELOG.md** when implementing changes:
-```
-## [Unreleased]
-
-### Added (minor)
-- New feature description (TODO-001)
-
-### Fixed (patch)  
-- Bug fix description (TODO-002)
-
-### Changed (major)
-- Breaking change description (TODO-003)
-```
-
-### Version Release Protocol
-**WHEN releasing versions**:
-```
-1. Review all [Unreleased] entries in CHANGELOG.md
-2. Calculate version bump: max(major, minor, patch) from all changes
-3. Move [Unreleased] to [vX.Y.Z] with release date
-4. Create git tag with semantic version
-5. Clear completed TODOs from TODO.md
+### Added/Changed/Fixed/Removed
+- Brief description of change
 ```
 
 ## Quality Assurance Framework
@@ -336,7 +290,7 @@ EOF
 2. Validate recommendations using memory of past outcomes
 3. Use critic agent for all significant proposals
 4. Store validation results for future reference
-5. Ensure TODO/CHANGELOG compliance for all changes
+5. Keep documentation synchronized with code changes
 ```
 
 ## Key Reference Files

@@ -8,27 +8,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Comprehensive TODO/CHANGELOG protocol with semantic versioning (@.claude/instructions/todo-protocol.md)
-- TODO template file for consistent task formatting (@.claude/templates/TODO-template.md)
-- New `todo-manager` agent for managing TODO/CHANGELOG workflows
-- Commands for TODO management: `/todo-add`, `/todo-complete`, `/todo-status`, `/version-prepare`
-- Automatic version bump detection based on TODO task types (feat/fix/break classification)
-- CHANGELOG generation from completed TODO tasks with full traceability
+- Simple TODO management system using individual markdown files in todos/ directory
+- Updated `/todo` command to use only Claude Code built-in tools (Glob, Read, Write, Edit)
 - Technology stack detection section in CLAUDE.md
 - Git workflow instructions emphasizing frequent commits and trunk-based development
 - Organized instruction files: git-workflow.md, documentation.md, agent-usage.md, versioning.md
 
 ### Changed
-- Updated existing TODO.md to follow new protocol format with proper task classification
-- Enhanced versioning.md with TODO protocol integration details
+- Simplified TODO management approach - removed complex Python scripts and CLI tools
+- Restored original TODO.md content with agent parallelism optimization notes
+- Enhanced versioning.md with simplified TODO workflow
 - Reorganized instructions into topic-specific files in .claude/instructions/
-- Updated CLAUDE.md to use @ syntax for file references and include TODO protocol reference
+- Updated CLAUDE.md to use @ syntax for file references
 - Added technology stack detection rules for automatic language-specific guidance
 - Streamlined CLAUDE.md by removing low-value sections
 - Added trunk-based development rules and automatic commit/push policy
 - Added C# detection rule for .cs, .csproj, and .sln files
 
 ### Removed
+- Removed complex TODO management scripts (todo-manager.py, claude-todo, scan-todos.py, install-todo-system.sh)
+- Removed verbose TODO implementation documentation (docs/todo-management-system.md, docs/todo-system-implementation.md)
 - Removed redundant `config.json` file - all configuration now in CLAUDE.md and settings.json
 - Removed VERSIONING.md file - versioning instructions moved to .claude/instructions/versioning.md
 - Removed customInstructions field from settings.json (invalid field)
