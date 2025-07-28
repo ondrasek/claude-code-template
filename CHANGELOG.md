@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.16.0] - 2025-07-28
+
+### Added
+- **NEW AGENT**: git-troubleshooter agent for systematic git error recovery and repository diagnostics
+- Comprehensive 169-line diagnostic framework covering 5 problem categories (repository state, remote sync, merge conflicts, history issues, configuration)
+- 3-phase resolution methodology: information gathering → problem classification → resolution execution
+- MCP memory integration for learning successful resolution patterns and building institutional troubleshooting knowledge
+- Enhanced Simple Git Protocol with error recovery guidance in CLAUDE.md
+- Updated agent ecosystem documentation to reflect 28 total agents across all project files
+
 ## [2.15.0] - 2025-07-28
 
 ### Enhanced
