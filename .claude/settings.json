@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "beforeBashExecution": {
+      "patterns": [
+        "git commit*",
+        "git add -A && git commit*"
+      ],
+      "command": "/memory-export"
+    }
+  }
+}

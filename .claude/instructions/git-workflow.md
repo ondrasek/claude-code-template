@@ -5,10 +5,12 @@
 **IMPORTANT: Commit and push after EVERY non-trivial change**
 
 Claude Code MUST automatically:
-1. Commit changes after completing each meaningful task
-2. Push to origin/main immediately after committing
-3. Never batch multiple unrelated changes into one commit
-4. Create tags ONLY for value-adding increments that lead to releases
+1. **Export memories**: Use `/memory-export` to sync MCP memory to files before every commit
+2. **Stage all changes**: Include both code changes AND exported memory files
+3. Commit changes after completing each meaningful task
+4. Push to origin/main immediately after committing
+5. Never batch multiple unrelated changes into one commit
+6. Create tags ONLY for value-adding increments that lead to releases
 
 Examples of when to commit:
 - After creating or modifying any file
@@ -80,9 +82,28 @@ Examples of when to commit:
   - Modifying configurations
 - **Auto-push**: Push commits to origin/main immediately after committing
 
-## Standard Workflow (Every Non-Trivial Change)
+## Automated Workflow with Claude Code Hooks
+
+**AUTOMATIC MEMORY EXPORT**: Claude Code hook system automatically exports memories before every commit.
+
+### Hook Configuration (`.claude/settings.json`):
+```json
+{
+  "hooks": {
+    "beforeBashExecution": {
+      "patterns": [
+        "git commit*",
+        "git add -A && git commit*"
+      ],
+      "command": "/memory-export"
+    }
+  }
+}
+```
+
+### Simplified Commit Process:
 ```bash
-# After making changes - commit and push immediately
+# Just commit normally - memory export happens automatically!
 git add -A
 git commit -m "Add feature X
 
@@ -93,20 +114,21 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 git push origin main
 ```
 
+### What Happens Automatically:
+1. **Pre-commit hook**: `/memory-export` runs before `git commit`
+2. **Memory sync**: Current MCP memory exported to `memories/` folder
+3. **Auto-staging**: Exported memory files automatically included in commit
+4. **Knowledge preservation**: All session insights, patterns, and decisions saved
+
 ## Agent-Delegated Release Workflow
 ```bash
-# Standard commit process  
+# Simple commit - memory export happens via hook
 git add -A
-git commit -m "Complete feature X
-
-🤖 Generated with [Claude Code](https://claude.ai/code)
-
-Co-Authored-By: Claude <noreply@anthropic.com>"
-
+git commit -m "Complete feature X"
 git push origin main
 
 # Automatically invoke tagger agent (happens in background):
-# Task: "Evaluate latest commit for potential tagging"
+# Task: "Evaluate latest commit for potential tagging" 
 # - Tagger agent assesses 5-point criteria independently
 # - If warranted, tagger creates tag and updates CHANGELOG autonomously
 # - Main context stays clean, focused on primary development work
