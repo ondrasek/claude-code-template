@@ -1,10 +1,8 @@
-# C++ Development Guidelines
+# C++ Development Reference
 
-This file contains C++ specific development guidelines for Claude Code.
+Essential modern C++ development guidelines for Claude Code projects.
 
-## Build Systems
-
-### CMake
+## Build System (CMake)
 ```cmake
 # CMakeLists.txt
 cmake_minimum_required(VERSION 3.20)
@@ -23,24 +21,12 @@ endif()
 
 # Find packages
 find_package(fmt REQUIRED)
-find_package(spdlog REQUIRED)
 find_package(GTest REQUIRED)
 
 # Add library
-add_library(mylib 
-    src/core.cpp
-    src/utils.cpp
-)
-
-target_include_directories(mylib PUBLIC 
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>
-)
-
-target_link_libraries(mylib 
-    PUBLIC fmt::fmt
-    PRIVATE spdlog::spdlog
-)
+add_library(mylib src/core.cpp src/utils.cpp)
+target_include_directories(mylib PUBLIC include)
+target_link_libraries(mylib PUBLIC fmt::fmt)
 
 # Add executable
 add_executable(myapp src/main.cpp)
@@ -51,7 +37,7 @@ enable_testing()
 add_subdirectory(tests)
 ```
 
-### Build Commands
+## Build Commands
 ```bash
 # Configure
 cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
@@ -66,35 +52,13 @@ ctest --test-dir build --output-on-failure
 cmake --install build --prefix /usr/local
 ```
 
-## Project Structure
-
-### Modern C++ Project Layout
-```
-project-root/
-├── include/               # Public headers
-│   └── myproject/
-│       ├── core.hpp
-│       └── utils.hpp
-├── src/                   # Implementation files
-│   ├── main.cpp
-│   ├── core.cpp
-│   └── utils.cpp
-├── tests/                 # Unit tests
-│   ├── CMakeLists.txt
-│   └── test_core.cpp
-├── benchmarks/            # Performance tests
-├── docs/                  # Documentation
-├── cmake/                 # CMake modules
-├── CMakeLists.txt
-└── README.md
-```
-
 ## Modern C++ Features (C++20)
-
-### Concepts
 ```cpp
 #include <concepts>
+#include <ranges>
+#include <coroutine>
 
+// Concepts
 template<typename T>
 concept Numeric = std::integral<T> || std::floating_point<T>;
 
@@ -103,90 +67,34 @@ T add(T a, T b) {
     return a + b;
 }
 
-// Custom concept
-template<typename T>
-concept Printable = requires(T t) {
-    { std::cout << t } -> std::same_as<std::ostream&>;
-};
-```
-
-### Ranges
-```cpp
-#include <ranges>
-#include <vector>
-#include <algorithm>
-
+// Ranges
 std::vector<int> numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-// Filter and transform
 auto result = numbers 
     | std::views::filter([](int n) { return n % 2 == 0; })
     | std::views::transform([](int n) { return n * n; });
 
-// Take first 3
-auto first_three = numbers | std::views::take(3);
+// Auto type deduction
+auto lambda = [](auto x, auto y) { return x + y; };
 ```
 
-### Coroutines
-```cpp
-#include <coroutine>
-
-struct Task {
-    struct promise_type {
-        Task get_return_object() { 
-            return {std::coroutine_handle<promise_type>::from_promise(*this)}; 
-        }
-        std::suspend_never initial_suspend() { return {}; }
-        std::suspend_never final_suspend() noexcept { return {}; }
-        void return_void() {}
-        void unhandled_exception() {}
-    };
-    
-    std::coroutine_handle<promise_type> h_;
-};
-
-Task myCoroutine() {
-    std::cout << "Start\n";
-    co_await std::suspend_always{};
-    std::cout << "End\n";
-}
-```
-
-### Modules (C++20)
-```cpp
-// math.ixx
-export module math;
-
-export namespace math {
-    int add(int a, int b) {
-        return a + b;
-    }
-    
-    template<typename T>
-    T multiply(T a, T b) {
-        return a * b;
-    }
-}
-
-// main.cpp
-import math;
-
-int main() {
-    return math::add(1, 2);
-}
-```
-
-## Smart Pointers and Memory Management
-
-### RAII and Smart Pointers
+## Memory Management
 ```cpp
 #include <memory>
-#include <vector>
 
+// Smart pointers (RAII)
+auto unique = std::make_unique<Resource>(100);
+auto shared = std::make_shared<Resource>(200);
+
+// Custom deleters
+auto fileDeleter = [](FILE* f) { if (f) fclose(f); };
+std::unique_ptr<FILE, decltype(fileDeleter)> file(
+    fopen("data.txt", "r"), fileDeleter);
+
+// Rule of Five
 class Resource {
 public:
     explicit Resource(size_t size) : data_(size) {}
-    // Rule of Five
     ~Resource() = default;
     Resource(const Resource&) = delete;
     Resource& operator=(const Resource&) = delete;
@@ -196,42 +104,13 @@ public:
 private:
     std::vector<int> data_;
 };
-
-void smartPointerExamples() {
-    // Unique ownership
-    auto unique = std::make_unique<Resource>(100);
-    
-    // Shared ownership
-    auto shared = std::make_shared<Resource>(200);
-    auto shared2 = shared; // Reference count = 2
-    
-    // Weak reference
-    std::weak_ptr<Resource> weak = shared;
-    if (auto locked = weak.lock()) {
-        // Use locked
-    }
-}
-```
-
-### Custom Deleters
-```cpp
-auto fileDeleter = [](FILE* f) { 
-    if (f) fclose(f); 
-};
-
-std::unique_ptr<FILE, decltype(fileDeleter)> file(
-    fopen("data.txt", "r"), 
-    fileDeleter
-);
 ```
 
 ## Error Handling
-
-### Modern Error Handling
 ```cpp
-#include <expected> // C++23
 #include <optional>
 #include <variant>
+#include <expected> // C++23
 
 // Using std::optional
 std::optional<int> divide(int a, int b) {
@@ -251,26 +130,15 @@ Result<int> parseNumber(const std::string& str) {
     }
 }
 
-// Using expected (C++23)
-std::expected<int, std::string> safeDivide(int a, int b) {
-    if (b == 0) 
-        return std::unexpected("Division by zero");
-    return a / b;
-}
-```
-
-### Exception Safety
-```cpp
+// Exception safety
 class Container {
     std::vector<std::unique_ptr<Resource>> resources_;
     
 public:
-    // Strong exception guarantee
     void add(std::unique_ptr<Resource> resource) {
         resources_.push_back(std::move(resource));
     }
     
-    // Basic exception guarantee with rollback
     void swap(Container& other) noexcept {
         resources_.swap(other.resources_);
     }
@@ -278,14 +146,14 @@ public:
 ```
 
 ## Concurrency
-
-### std::thread and Synchronization
 ```cpp
 #include <thread>
 #include <mutex>
 #include <condition_variable>
 #include <atomic>
+#include <future>
 
+// Thread-safe queue
 class ThreadSafeQueue {
     mutable std::mutex mutex_;
     std::condition_variable cv_;
@@ -309,13 +177,8 @@ public:
         return value;
     }
 };
-```
 
-### std::async and Futures
-```cpp
-#include <future>
-#include <numeric>
-
+// Async and futures
 template<typename Iterator>
 auto parallel_sum(Iterator begin, Iterator end) {
     auto size = std::distance(begin, end);
@@ -330,28 +193,8 @@ auto parallel_sum(Iterator begin, Iterator end) {
     auto sum1 = parallel_sum(begin, mid);
     return sum1 + future.get();
 }
-```
 
-### Atomic Operations
-```cpp
-#include <atomic>
-
-class SpinLock {
-    std::atomic_flag flag_ = ATOMIC_FLAG_INIT;
-    
-public:
-    void lock() {
-        while (flag_.test_and_set(std::memory_order_acquire)) {
-            // Spin
-        }
-    }
-    
-    void unlock() {
-        flag_.clear(std::memory_order_release);
-    }
-};
-
-// Lock-free counter
+// Atomic operations
 class Counter {
     std::atomic<int> count_{0};
     
@@ -367,9 +210,8 @@ public:
 ```
 
 ## Template Metaprogramming
-
-### Variadic Templates
 ```cpp
+// Variadic templates
 template<typename... Args>
 void print(Args&&... args) {
     ((std::cout << args << " "), ...);
@@ -381,20 +223,8 @@ template<typename... Args>
 auto sum(Args... args) {
     return (args + ...);
 }
-```
 
-### SFINAE and Type Traits
-```cpp
-#include <type_traits>
-
-// Enable if example
-template<typename T>
-typename std::enable_if_t<std::is_arithmetic_v<T>, T>
-abs(T value) {
-    return value < 0 ? -value : value;
-}
-
-// Concept-based overloading (C++20)
+// SFINAE and concepts
 template<std::integral T>
 void process(T value) {
     std::cout << "Processing integer: " << value << '\n';
@@ -407,8 +237,6 @@ void process(T value) {
 ```
 
 ## Testing with Google Test
-
-### Basic Tests
 ```cpp
 #include <gtest/gtest.h>
 
@@ -416,10 +244,6 @@ class MathTest : public ::testing::Test {
 protected:
     void SetUp() override {
         // Setup code
-    }
-    
-    void TearDown() override {
-        // Cleanup code
     }
 };
 
@@ -430,7 +254,7 @@ TEST_F(MathTest, Addition) {
 
 TEST(MathTest, Division) {
     EXPECT_THROW(divide(10, 0), std::invalid_argument);
-    EXPECT_DOUBLE_EQ(divide(10.0, 3.0), 3.33333, 0.00001);
+    EXPECT_DOUBLE_EQ(divide(10.0, 3.0), 3.33333);
 }
 
 // Parameterized tests
@@ -446,8 +270,6 @@ INSTANTIATE_TEST_SUITE_P(PrimeNumbers, PrimeTest,
 ```
 
 ## Performance Optimization
-
-### Compile-Time Optimization
 ```cpp
 // constexpr for compile-time computation
 template<size_t N>
@@ -469,18 +291,6 @@ constexpr auto fibonacci() {
 [[unlikely]] else {
     // Rare path
 }
-```
-
-### Memory Optimization
-```cpp
-// Structure packing
-#pragma pack(push, 1)
-struct PackedData {
-    char c;
-    int i;
-    short s;
-};
-#pragma pack(pop)
 
 // Cache-friendly data layout
 struct alignas(64) CacheLineAligned {
@@ -489,24 +299,32 @@ struct alignas(64) CacheLineAligned {
 };
 ```
 
+## Common Libraries
+```bash
+# Package managers
+vcpkg install fmt spdlog catch2
+conan install . --build=missing
+
+# Popular libraries
+fmt           # String formatting
+spdlog        # Logging
+nlohmann-json # JSON parsing
+catch2        # Testing framework
+boost         # Comprehensive library collection
+```
+
 ## Best Practices
-
-1. **Use RAII** - Resource Acquisition Is Initialization
-2. **Prefer stack allocation** over heap when possible
-3. **Use const correctness** - const by default
-4. **Follow Rule of Zero/Five** for classes
-5. **Use smart pointers** - avoid raw new/delete
-6. **Prefer algorithms** over hand-written loops
-7. **Use static analysis** tools (clang-tidy, cppcheck)
-8. **Enable all warnings** and treat as errors
-9. **Write unit tests** with good coverage
-10. **Profile before optimizing** - measure first
-
-## Integration with Claude Code
-
-When working with C++ projects:
-- Use the `patterns` agent for design patterns in C++
-- Use the `researcher` agent for modern C++ features
-- Use the `principles` agent for SOLID in C++ context
-- Use the `complete` agent for RAII patterns
-- Use the `docsync` agent for Doxygen documentation
+- Use RAII for resource management
+- Prefer stack allocation over heap when possible
+- Use const correctness - const by default
+- Follow Rule of Zero/Five for classes
+- Use smart pointers - avoid raw new/delete
+- Prefer algorithms over hand-written loops
+- Use static analysis tools (clang-tidy, cppcheck)
+- Enable all warnings and treat as errors
+- Write unit tests with good coverage
+- Profile before optimizing - measure first
+- Use modern C++ features appropriately
+- Keep functions small and focused
+- Use meaningful variable names
+- Avoid global state when possible
