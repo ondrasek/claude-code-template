@@ -54,11 +54,11 @@
 ```
 
 ### Git Workflow Override
-**AUTOMATIC RELEASE TAGGING**: See @.claude/instructions/git-workflow.md for complete protocol
+**AGENT-DELEGATED TAGGING**: See @.claude/instructions/git-workflow.md for complete protocol
 - Commit and push after every non-trivial change
-- Claude Code MUST automatically determine when to create tags (no user prompting)
-- Auto-assess each commit for: completeness, stability, value, logical breakpoint
-- Auto-tag when criteria met, auto-update CHANGELOG.md, auto-increment version
+- Automatically invoke `tagger` agent after each commit to evaluate tagging
+- Tagger agent assesses: completeness, stability, value, breakpoint, significance
+- Tagger creates tags autonomously without polluting main context window
 
 ### MCP Server Configuration
 **ACTIVE MCP SERVERS**: This project uses these NON-REDUNDANT MCP servers (.mcp.json):

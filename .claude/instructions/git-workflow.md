@@ -48,12 +48,12 @@ Examples of when to commit:
 4. **Logical breakpoint**: Is this a natural stopping point in development?
 5. **Test status**: Do existing functionalities still work as expected?
 
-**TAG PROCESS** (automatic when criteria met):
-1. Assess if current commit meets release criteria (no user prompt needed)
-2. If yes, update CHANGELOG.md with release notes
-3. Auto-increment version following semantic versioning rules
-4. Create annotated tag: `git tag -a v1.2.3 -m "Release version 1.2.3 - auto-generated"`
-5. Push both commit and tag: `git push origin main && git push origin v1.2.3`
+**TAG PROCESS** (delegated to tagger agent):
+1. After each commit, automatically invoke `tagger` agent
+2. Tagger agent evaluates commit against 5-point criteria autonomously  
+3. If criteria met, tagger agent creates tag without polluting main context
+4. Tagger agent updates CHANGELOG.md and pushes tag automatically
+5. Main workflow continues without tag-related context pollution
 
 ### When NOT to Create Branches
 - Regular feature development
@@ -93,9 +93,9 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 git push origin main
 ```
 
-## Automatic Release Workflow (Claude Code Decides)
+## Agent-Delegated Release Workflow
 ```bash
-# Standard commit process
+# Standard commit process  
 git add -A
 git commit -m "Complete feature X
 
@@ -105,14 +105,11 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 git push origin main
 
-# Claude Code automatically evaluates if this commit warrants a tag:
-# - Assess functionality completeness, stability, value, logical breakpoint
-# - If criteria met, automatically proceed with tagging:
-
-# Auto-update CHANGELOG.md with release notes
-# Auto-determine semantic version increment
-git tag -a v1.2.3 -m "Release version 1.2.3 - automatic tag for feature X completion"
-git push origin v1.2.3
+# Automatically invoke tagger agent (happens in background):
+# Task: "Evaluate latest commit for potential tagging"
+# - Tagger agent assesses 5-point criteria independently
+# - If warranted, tagger creates tag and updates CHANGELOG autonomously
+# - Main context stays clean, focused on primary development work
 ```
 
 ## Automatic Tag Guidelines
