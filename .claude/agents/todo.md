@@ -1,6 +1,6 @@
 ---
 name: todo
-description: "Use when user asks to 'create TODO', 'track task', 'add to TODO list', or needs task management without cluttering main context"
+description: "PROACTIVELY use when user mentions tasks or asks 'create TODO', 'track progress', 'remember to do'. Expert at managing task lifecycle without polluting main context."
 ---
 
 # TODO Management Agent

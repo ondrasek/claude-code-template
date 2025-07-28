@@ -248,22 +248,42 @@ Based on observed Claude Code behavior:
 3. **Context sensitivity**: Descriptions with quoted user phrases ("why does this happen") perform better
 4. **Negative correlation**: Generic terms like "helps with" reduce selection likelihood
 
-### Future Agent Description Template
+### Mandatory Agent Description Template
+
+**All agent descriptions MUST follow this exact template:**
 
 ```yaml
 ---
 name: [descriptive-name]
-description: "[TIER1_KEYWORD] when [specific_user_context] or [quoted_user_phrases]. [Capability_boundary_statement]"
+description: "[TIER1_KEYWORD] when [specific_user_context] or [quoted_user_phrases]. Expert at [specific_capability_statement]."
 ---
 ```
 
-**Example application:**
+**Template Components:**
+- **[TIER1_KEYWORD]**: MUST USE | PROACTIVELY use | AUTOMATICALLY 
+- **[specific_user_context]**: When user does/asks/mentions X
+- **[quoted_user_phrases]**: 'exact user language', 'common phrases', 'trigger words'
+- **Expert at [specific_capability_statement]**: Clear capability boundary with "Expert at [doing X]"
+
+**Proven Examples:**
 ```yaml
----
-name: performance-optimizer
-description: "PROACTIVELY use when user mentions 'slow performance', 'optimization needed', or 'this takes too long'. Expert at identifying bottlenecks and suggesting concrete performance improvements"
----
+# High-performing pattern (constraints agent)
+description: "Use when facing 'requirements conflict', 'limited resources', 'performance vs features', 'must work with legacy', or multiple competing constraints"
+
+# Template-compliant optimization (completer agent)  
+description: "MUST USE when user says 'finish this', 'complete implementation', or functions throw 'not implemented' errors. Expert at completing partial implementations and eliminating TODO/FIXME comments."
+
+# Template-compliant optimization (critic agent)
+description: "MUST USE when user asks 'is this a good idea', 'what could go wrong', 'devil's advocate', or before major architectural decisions need validation. Expert at systematic risk analysis and constructive criticism."
+
+# Template-compliant optimization (todo agent)
+description: "PROACTIVELY use when user mentions tasks or asks 'create TODO', 'track progress', 'remember to do'. Expert at managing task lifecycle without polluting main context."
 ```
+
+**Keyword Selection Guidelines:**
+- **MUST USE**: For agents critical to specific workflows (completer, critic, guidelines agents)
+- **PROACTIVELY use**: For agents that should activate without explicit requests (todo, patterns, whisper)  
+- **AUTOMATICALLY**: For system-triggered agents (tagger, memory management)
 
 ### Current Agent Status
 
