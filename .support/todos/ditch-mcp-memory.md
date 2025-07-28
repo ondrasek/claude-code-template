@@ -1,1 +1,0 @@
-Ditch MCP memory server and use memory protocol for persistent memories directly.

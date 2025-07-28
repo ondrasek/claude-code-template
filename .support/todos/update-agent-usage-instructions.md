@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 type: docs
 priority: medium
 assignee: docs

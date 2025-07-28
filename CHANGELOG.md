@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+- **TODO Cleanup**: Removed 5 completed/obsolete TODO files from .support/todos/
+- document-agent-combination-patterns.md (completed - patterns now in CLAUDE.md)
+- simplify-todo-system.md (completed - system modernized in v2.6.1)
+- update-agent-selection-keywords.md (completed - keywords optimized in v2.12.0)
+- ditch-mcp-memory.md (obsolete - different memory approach implemented)
+- researcher-current-year.md (obsolete - current year issue resolved)
+
+### Changed
+- Updated document-parallel-agent-clusters.md and update-agent-usage-instructions.md status to completed
+
 ## [2.16.0] - 2025-07-28
 
 ### Added
