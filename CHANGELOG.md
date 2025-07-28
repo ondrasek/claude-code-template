@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.14.0] - 2025-07-28
+
+### Changed
+- **MAJOR**: Split monolithic security agent into 3 specialized computational thinking pattern agents
+- **vulnerability-scanner**: Code-level security flaw detection and pattern matching
+- **threat-modeling**: Attack surface analysis and systems thinking for architectural security  
+- **compliance-checker**: Rule-based regulatory standards assessment (SOC2, GDPR, HIPAA)
+- Enhanced multi-agent coordination with mandatory researcher, patterns, critic, context, constraints integration
+- Added comprehensive security workflow documentation with industry-specific patterns
+- Improved agent specialization following single-thinking-pattern creation principle
+
 ## [2.13.0] - 2025-07-28
 
 ### Added
