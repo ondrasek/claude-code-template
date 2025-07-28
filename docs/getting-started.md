@@ -1,5 +1,9 @@
 # Getting Started with Claude Code Template
 
+## Overview
+
+This template transforms your Claude Code experience into a comprehensive AI-powered development environment. These files provide detailed guidelines and best practices that complement the AI operational instructions in CLAUDE.md, designed for both human reference and AI processing.
+
 ## What This Does
 
 Transform your Claude Code experience with:
@@ -10,6 +14,15 @@ Transform your Claude Code experience with:
 - ✅ **Persistent memory** - Claude remembers your project decisions across sessions
 - ✅ **Automatic documentation** - Updates docs with every code change
 - ✅ **Automatic setup** - One-time install, works in every project
+
+## Purpose
+
+This template helps developers understand:
+
+1. **Decision-making criteria** - When and why to create certain components
+2. **Best practice patterns** - Proven approaches for common development scenarios  
+3. **Process workflows** - Step-by-step procedures for project maintenance
+4. **Quality standards** - Metrics and validation approaches for project health
 
 ## Quick Start (5 Minutes)
 
@@ -76,6 +89,22 @@ Transform your Claude Code experience with:
 | **[Features](features.md)** | Complete overview of all capabilities |
 | **[Memory System](memory-system.md)** | How persistent memory works |
 | **[Customization](customization.md)** | Adapt the template for your project |
+| **[Agent Usage](agent-usage.md)** | Detailed patterns and examples for coordinating multiple AI agents effectively |
+| **[Documentation](documentation.md)** | Guidelines for maintaining project documentation automatically alongside code changes |
+| **[Versioning](versioning.md)** | Semantic versioning rules and release management procedures |
+
+## When to Use This Guide
+
+Consult these resources when:
+
+- Planning new features or architectural changes
+- Setting up development workflows  
+- Understanding project conventions and standards
+- Training new team members on project practices
+- Debugging complex issues or performance problems
+- Making architectural decisions with AI assistance
+
+These docs are maintained alongside code changes to ensure accuracy and relevance.
 
 ## Real-World Examples
 
