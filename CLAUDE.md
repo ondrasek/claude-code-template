@@ -54,14 +54,10 @@
 ```
 
 ### Git Workflow Override
-**TRUNK-BASED DEVELOPMENT**: Project-specific git behavior override:
-- Commit and push after EVERY non-trivial change (override default batch behavior)
-- Work directly on main branch (override feature branch workflow)
-- Tag releases frequently with semantic versioning
-- Use Claude Code attribution in commit messages
+**TRUNK-BASED DEVELOPMENT**: See @.claude/instructions/git-workflow.md for complete git protocol
 
 ### MCP Server Configuration
-**ACTIVE MCP SERVERS**: This project uses these MCP servers (.mcp.json):
+**ACTIVE MCP SERVERS**: This project uses these NON-REDUNDANT MCP servers (.mcp.json):
 ```json
 {
   "mcpServers": {
@@ -70,24 +66,15 @@
       "args": ["-y", "@modelcontextprotocol/server-memory"],
       "description": "Persistent memory between sessions - cross-session context and learning"
     },
-    "filesystem": {
-      "command": "npx", 
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "."],
-      "description": "Enhanced file operations - directory traversal, metadata, batch operations"
-    },
     "sqlite": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "./project.db"],
       "description": "Local database for structured data storage and queries"
-    },
-    "fetch": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-fetch"],
-      "description": "Enhanced web content fetching with parsing capabilities"
     }
   }
 }
 ```
+*Note: server-filesystem and server-fetch are redundant with Claude Code built-in capabilities*
 
 ### Memory Integration Override
 **MCP MEMORY USAGE**: Project-specific memory behavior:

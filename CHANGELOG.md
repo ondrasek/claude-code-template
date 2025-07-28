@@ -31,6 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Removed complex TODO management scripts (todo-manager.py, claude-todo, scan-todos.py, install-todo-system.sh)
 - Removed verbose TODO implementation documentation (docs/todo-management-system.md, docs/todo-system-implementation.md)
+- Removed redundant MCP servers from .mcp.json (filesystem, fetch) - Claude Code has built-in capabilities
+- Removed git protocol details from CLAUDE.md - moved to modular @.claude/instructions/git-workflow.md
 - Removed redundant `config.json` file - all configuration now in CLAUDE.md and settings.json
 - Removed VERSIONING.md file - versioning instructions moved to .claude/instructions/versioning.md
 - Removed customInstructions field from settings.json (invalid field)
