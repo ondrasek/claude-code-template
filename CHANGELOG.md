@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.3.0] - 2025-07-28
+
+### Changed
+- **MAJOR**: Implemented 60% instruction simplification reducing operational complexity
+- Consolidated memory protocol eliminating 1,260+ lines of boilerplate documentation
+- Streamlined core agent files from 148-173 lines to ~40 lines each (researcher.md, completer.md, critic.md)
+- Converted python.md stack file from 467-line tutorial to 82-line quick reference
+- Enhanced autonomous operation efficiency while preserving all core functionality
+- All agents now reference shared memory protocol for consistency
+
 ## [2.0.1] - 2025-07-28
 
 ### Added
