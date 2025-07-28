@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2025-07-28
+
+### Added
+- Specialized tagger agent for autonomous release management
+- 5-point assessment criteria for intelligent milestone evaluation (completeness, stability, value, logical breakpoint, significance)
+- Autonomous tag creation without context pollution
+- MCP memory integration for learning successful tagging patterns
+- Updated git workflow to automatically invoke tagger after commits
+
+### Changed
+- Git workflow now includes automatic tagger agent invocation after each commit
+- Streamlined release process with autonomous decision-making
+- CLAUDE.md updated to reference new autonomous tagging system
+
 ## [1.5.3] - 2025-01-28
 
 ### Added
