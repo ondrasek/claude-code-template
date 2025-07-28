@@ -77,11 +77,16 @@
 4. **Use docs agent**: Invoke docs agent for documentation maintenance
 
 ## TODO Protocol (MANDATORY)
-**USE TODO AGENT FOR ALL TASK MANAGEMENT - NO CONTEXT CLUTTER**:
-1. **Agent delegation**: Use TODO agent for creating/tracking tasks
+**USE TODO AGENTS FOR ALL TASK MANAGEMENT - NO CONTEXT CLUTTER**:
+1. **Agent delegation**: Use todo/todo-manager agents for creating/tracking tasks
 2. **Clean context**: No TODO tracking in main conversation flow
 3. **Deferred actions**: TODOs represent future work, not current progress
-4. **File management**: Agent handles `.support/todos/` directory autonomously
+4. **File management**: Agents handle `.support/todos/` directory autonomously
+5. **Version integration**: todo-manager handles CHANGELOG and semantic versioning
 
-**Agent invocation**: `Task: "Create TODO for X" (subagent_type: todo)`
+**Agent roles**:
+- `todo`: Task creation and lifecycle management in `.support/todos/` files
+- `todo-manager`: Version releases, CHANGELOG generation, semantic versioning
+
+**Agent invocation**: `Task: "Create TODO for X" (subagent_type: todo)` or `Task: "Prepare release" (subagent_type: todo-manager)`
 
