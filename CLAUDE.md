@@ -70,12 +70,6 @@
 
 ## Key Reference Files
 
-**CRITICAL INSTRUCTIONS**: Always check these files for guidance:
-- @.support/instructions/documentation.md - Documentation maintenance
-- @.support/instructions/agent-usage.md - Agent coordination patterns
-- @.support/instructions/agent-creation.md - Agent development principles
-- @.support/instructions/versioning.md - Semantic versioning protocol
-
 **TECHNOLOGY STACKS**: Load appropriate guidelines:
 - @.support/stacks/python.md - Python with uv development
 - @.support/stacks/rust.md - Rust development patterns

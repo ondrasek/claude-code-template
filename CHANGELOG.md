@@ -15,9 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Generic debug-mcp.md command (functionality removed)
 
 ### Changed
-- Simplified instruction architecture to essential 4 files in .support/instructions
-- Consolidated all protocol documentation in CLAUDE.md for single source of truth
-- Updated all references to removed files in documentation
+- Moved instruction files from .support/instructions/ to docs/developer-guide/ for human reference
+- Separated AI operational instructions (CLAUDE.md) from human-readable developer guides
+- Updated all documentation references to reflect new file locations
+- Created docs/developer-guide/README.md explaining purpose of reference materials
 
 ## [2.7.0] - 2025-07-28
 
@@ -52,7 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Implemented mandatory 4-step git protocol directly in CLAUDE.md for improved compliance
-- Moved critical git workflow from .support/instructions/ to primary operational instructions
+- Moved critical git workflow to primary operational instructions
 - Simplified agent coordination with clear protocol requirements
 - Enhanced operational reliability by ensuring protocol visibility in main context
 
@@ -136,7 +137,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed redundant MCP servers from .mcp.json (filesystem, fetch) - Claude Code has built-in capabilities
 - Removed git protocol details from CLAUDE.md - moved to modular instructions
 - Removed redundant `config.json` file - all configuration now in CLAUDE.md and settings.json
-- Removed VERSIONING.md file - versioning instructions moved to .claude/instructions/versioning.md
+- Removed VERSIONING.md file - versioning instructions moved to docs/developer-guide/versioning.md
 - Removed customInstructions field from settings.json (invalid field)
 
 ## [1.4.0] - 2025-01-27

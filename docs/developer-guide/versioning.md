@@ -88,4 +88,4 @@ This versioning process integrates with the comprehensive TODO/CHANGELOG protoco
 - `/todo-complete [task-number]` - Mark task completed
 - `/version-prepare [auto|major|minor|patch]` - Prepare release
 
-See @.claude/instructions/todo-protocol.md for complete details on the TODO/CHANGELOG workflow.
+This TODO/CHANGELOG integration is handled automatically by the system agents.
