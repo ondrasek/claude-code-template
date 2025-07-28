@@ -63,18 +63,13 @@
 
 ## Key Reference Files
 
-**OPERATIONAL INSTRUCTIONS**: Essential for command functionality:
-- @.support/instructions/agent-creation.md - Agent development principles and criteria
-
-**TECHNOLOGY STACKS**: Load appropriate guidelines:
-- @.support/stacks/python.md - Python with uv development
-- @.support/stacks/rust.md - Rust development patterns
-- @.support/stacks/javascript.md - Node.js/TypeScript patterns
-- @.support/stacks/java.md - Java/Spring Boot patterns
-- @.support/stacks/kotlin.md - Kotlin backend patterns
-- @.support/stacks/ruby.md - Ruby development patterns
-- @.support/stacks/csharp.md - C#/.NET patterns
-- @.support/stacks/cpp.md - Modern C++ patterns
-- @.support/stacks/docker.md - Container patterns
-
-**AGENT DEFINITIONS**: Custom agents in @.claude/agents/ extend Claude Code's built-in capabilities with project-specific behaviors and memory integration.
+**TECHNOLOGY STACKS**: MANDATORY operational instructions applied when technologies detected:
+- @.support/stacks/python.md - Python with uv development (ENFORCE uv exclusively)
+- @.support/stacks/rust.md - Rust development patterns (ENFORCE ownership/borrowing)
+- @.support/stacks/javascript.md - Node.js/TypeScript patterns (ENFORCE TypeScript types)
+- @.support/stacks/java.md - Java/Spring Boot patterns (ENFORCE Java 17+ features)
+- @.support/stacks/kotlin.md - Kotlin backend patterns (ENFORCE coroutines over blocking)
+- @.support/stacks/ruby.md - Ruby development patterns (ENFORCE RSpec testing)
+- @.support/stacks/csharp.md - C#/.NET patterns (ENFORCE nullable reference types)
+- @.support/stacks/cpp.md - Modern C++ patterns (ENFORCE C++20 features, RAII)
+- @.support/stacks/docker.md - Container patterns (ENFORCE security hardening)
