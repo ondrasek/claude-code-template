@@ -175,11 +175,12 @@ description: "General purpose development assistant"
 ### Selection Priority Keywords
 
 **Tier 1 (Highest priority):**
-- `PROACTIVELY` 
-- `MUST USE`
-- `automatically`
-- `should be used when`
+- `MUST USE` 
+- `PROACTIVELY`
+- `ALWAYS use`
+- `MUST USE AUTOMATICALLY`
 - `required for`
+- `should be used when`
 
 **Tier 2 (High priority):**
 - `Expert at`
@@ -260,7 +261,7 @@ description: "[TIER1_KEYWORD] when [specific_user_context] or [quoted_user_phras
 ```
 
 **Template Components:**
-- **[TIER1_KEYWORD]**: MUST USE | PROACTIVELY use | AUTOMATICALLY 
+- **[TIER1_KEYWORD]**: MUST USE | PROACTIVELY use | ALWAYS use | MUST USE AUTOMATICALLY
 - **[specific_user_context]**: When user does/asks/mentions X
 - **[quoted_user_phrases]**: 'exact user language', 'common phrases', 'trigger words'
 - **Expert at [specific_capability_statement]**: Clear capability boundary with "Expert at [doing X]"
@@ -282,8 +283,11 @@ description: "PROACTIVELY use when user mentions tasks or asks 'create TODO', 't
 
 **Keyword Selection Guidelines:**
 - **MUST USE**: For agents critical to specific workflows (completer, critic, guidelines agents)
-- **PROACTIVELY use**: For agents that should activate without explicit requests (todo, patterns, whisper)  
-- **AUTOMATICALLY**: For system-triggered agents (tagger, memory management)
+- **PROACTIVELY use**: For agents that should activate without explicit requests (todo, patterns, whisper)
+- **ALWAYS use**: For agents that should be universal defaults (memory, core utilities)
+- **MUST USE AUTOMATICALLY**: For system-triggered agents with mandatory execution (tagger, cleanup)
+
+**NEVER use standalone "AUTOMATICALLY"** - too weak for selection priority. Always combine with stronger directive.
 
 ### Current Agent Status
 
