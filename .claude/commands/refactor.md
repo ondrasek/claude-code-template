@@ -24,8 +24,13 @@ PARAMETERS:
 --max-changes N
 FILES... (specific files to refactor)
 
-AGENT_SEQUENCE:
-patterns -> principles -> constraints -> hypothesis -> whisper -> complete -> docsync -> critic
+AGENT_CLUSTERS:
+Core Analysis: patterns + principles + constraints + hypothesis
+Implementation: whisper + completer + invariants + guidelines-file
+Quality Assurance: critic + testing + performance
+Documentation: docs + guidelines-repo
+Validation: explorer + resolver + axioms
+Coordination: All clusters execute in parallel with systematic integration
 
 REFACTORING_PATTERNS:
 - extract method/class
@@ -190,23 +195,53 @@ def create_user(user_data: UserData):
 
 ## Agent Integration
 
-The command automatically invokes:
-- **patterns agent**: Find duplication (runs first)
-- **principles agent**: Verify SOLID principles
-- **constraints agent**: Understand dependencies
-- **whisper agent**: Apply micro-improvements
-- **complete agent**: Ensure nothing missed
-- **hypothesis agent**: For performance analysis
-- **docsync agent**: Update documentation
-- **critic agent**: Validate proposed changes
+**Advanced Multi-Cluster Coordination**:
+
+**Core Analysis Cluster** (patterns + principles + constraints + hypothesis):
+- Comprehensive code pattern analysis and architectural principle validation  
+- Dependency mapping and performance bottleneck hypothesis generation
+- Parallel execution for thorough codebase understanding
+
+**Implementation Cluster** (whisper + completer + invariants + guidelines-file):
+- Micro-improvements and completeness validation
+- Type-safe refactoring with invariant preservation
+- Technology-specific guidance for optimal implementations
+
+**Quality Assurance Cluster** (critic + testing + performance):
+- Critical evaluation of refactoring proposals
+- Test impact analysis and performance optimization validation
+- Risk assessment and quality metrics tracking
+
+**Documentation Cluster** (docs + guidelines-repo):
+- Synchronized documentation updates with architectural context
+- Repository-level guideline compliance verification
+
+**Validation Cluster** (explorer + resolver + axioms):
+- Alternative approach exploration and conflict resolution
+- Fundamental principle validation and design coherence
+
+**Memory-Enhanced Coordination**: Leverages historical refactoring outcomes for optimized decision-making
+
+## Memory Integration
+
+**Before Refactoring**: Use `mcp__memory__search_nodes()` to check for:
+- Previous refactoring outcomes and effectiveness patterns
+- Historical code quality improvements and architectural decisions
+- Team-specific refactoring preferences and successful approaches
+- Pattern-specific refactoring strategies and their long-term impact
+
+**After Refactoring**: Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`:
+- Refactoring pattern effectiveness and code quality improvements
+- Architectural decision outcomes and maintainability impact
+- Team learning patterns and successful refactoring strategies
+- Cross-domain relationships between refactoring and system performance
 
 ## Related Commands
 
-- `/review` - Review code before refactoring
-- `/test` - Ensure tests pass after refactoring
-- `/security` - Check security implications
-- Use `meta` agent for generating refactoring tools
-- Use `resolve` agent when patterns conflict
+- `/review` - Comprehensive code review with parallel agent clusters before refactoring
+- `/test` - Ensure comprehensive test coverage with testing agent coordination
+- `/security` - Security impact analysis with security specialist agents
+- `/agent-ecosystem-review` - Analyze refactoring process effectiveness and agent coordination
 
 ## Best Practices
 

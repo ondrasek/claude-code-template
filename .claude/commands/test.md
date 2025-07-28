@@ -5,13 +5,15 @@ FOCUS: run tests, create tests, analyze coverage
 FRAMEWORK_DETECTION: automatic (pytest, jest, go test, cargo test, etc.)
 
 ACTIONS:
-1. detect test framework from package files
-2. locate test files using framework conventions
-3. execute tests with appropriate command
-4. if coverage requested: generate coverage report
-5. if create requested: identify untested code, generate test cases
-6. invoke complete agent: find missing test scenarios
-7. parse results and categorize failures
+1. invoke testing agent: comprehensive test strategy development and systematic testing approach
+2. coordinate parallel testing analysis:
+   - patterns + completer: identify untested code patterns and coverage gaps
+   - performance + constraints: performance testing requirements and resource limitations
+   - vulnerability-scanner + threat-modeling: security testing requirements and attack surface testing
+   - hypothesis + explorer: edge case generation and alternative testing approaches
+3. execute tests with framework-specific optimizations
+4. analyze results through critic agent for quality validation
+5. generate comprehensive test improvement recommendations
 
 PARAMETERS:
 --coverage (include coverage analysis)
@@ -22,8 +24,13 @@ PARAMETERS:
 --watch (re-run on changes)
 FILES... (specific files to test)
 
-AGENT_CHAIN:
-complete -> patterns -> hypothesis
+AGENT_CLUSTERS:
+Primary Testing: testing (comprehensive test strategy and methodology)
+Coverage Analysis: patterns + completer + whisper
+Security Testing: vulnerability-scanner + threat-modeling + compliance-checker
+Performance Testing: performance + constraints + hypothesis
+Quality Validation: critic + principles + invariants
+Coordination: All clusters work in parallel under testing agent leadership
 
 TEST_GENERATION:
 - edge cases: null, empty, boundary values
@@ -194,13 +201,39 @@ def test_with_mock(mock_service):
 - Benchmark with criterion
 - Property-based testing
 
+## Memory Integration
+
+**Before Testing**: Use `mcp__memory__search_nodes()` to check for:
+- Previous test strategy decisions and outcomes
+- Historical test coverage patterns and gaps
+- Known testing framework optimization approaches
+- Test failure patterns and resolution strategies
+
+**After Testing**: Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`:
+- Test strategy effectiveness and coverage improvements
+- Testing framework performance and optimization outcomes
+- Test failure patterns and successful resolution approaches
+- Security and performance testing insights
+
+## Agent Integration
+
+**Primary Testing Agent**: 
+- **testing**: Comprehensive test strategy development with 308-line systematic methodology
+
+**Supporting Analysis Clusters**:
+- **Coverage Analysis**: patterns + completer + whisper for gap identification
+- **Security Testing**: vulnerability-scanner + threat-modeling + compliance-checker
+- **Performance Testing**: performance + constraints + hypothesis for optimization
+- **Quality Validation**: critic + principles + invariants for test quality assurance
+
+**Advanced Coordination**: Testing agent orchestrates all specialized testing approaches while maintaining systematic methodology focus
+
 ## Related Commands
 
-- `/review` - Review test quality and coverage
-- `/refactor` - Improve test structure
-- `/debug` - Debug failing tests
-- Use `complete` agent to find missing tests
-- Use `patterns` agent to identify test patterns
+- `/review` - Review test quality and coverage with agent coordination
+- `/refactor` - Improve test structure with patterns and principles agents
+- `/security` - Integrate security testing with security specialist agents
+- `/agent-ecosystem-review` - Analyze testing agent ecosystem effectiveness
 
 ## Best Practices
 

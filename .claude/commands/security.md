@@ -5,15 +5,15 @@ FOCUS: vulnerabilities, risks, remediation
 SCOPE: full codebase security analysis
 
 ACTIONS:
-1. invoke patterns agent: insecure coding patterns
-2. invoke researcher agent: CVE database check
-3. scan for injection vulnerabilities: SQL, XSS, command, path traversal
-4. check authentication/authorization implementation
-5. search for hardcoded secrets and API keys
-6. analyze dependency versions for known vulnerabilities
-7. invoke principles agent: security principles compliance
-8. invoke complete agent: missing security controls
-9. generate threat model and risk assessment
+1. invoke vulnerability-scanner agent: comprehensive security flaw detection and pattern matching
+2. invoke threat-modeling agent: attack surface analysis and architectural security assessment  
+3. invoke compliance-checker agent: regulatory standards evaluation (SOC2, GDPR, HIPAA, PCI-DSS)
+4. coordinate parallel security analysis:
+   - researcher + patterns: CVE intelligence and insecure coding patterns
+   - hypothesis + explorer: threat vector analysis and attack scenario modeling
+   - constraints + invariants: security boundary validation and access control design
+   - critic + completer: risk validation and security control completeness
+5. synthesize findings into prioritized risk assessment with remediation roadmap
 
 PARAMETERS:
 --focus [auth|injection|crypto|deps|config]
@@ -23,8 +23,12 @@ PARAMETERS:
 --deps-only (dependency scan only)
 --output [json|sarif|html]
 
-AGENT_CHAIN:
-patterns -> researcher -> principles -> complete -> hypothesis -> critic -> docsync
+AGENT_CLUSTERS:
+Primary Security Specialists: vulnerability-scanner + threat-modeling + compliance-checker
+Threat Intelligence: researcher + patterns + hypothesis
+Architectural Security: explorer + constraints + invariants + principles
+Validation & Completeness: critic + completer + docs
+Coordination: All clusters execute in parallel for comprehensive coverage
 
 VULNERABILITY_CHECKS:
 - injections: SQL, XSS, command, LDAP, XML
@@ -207,22 +211,49 @@ def login():
 
 ## Agent Integration
 
-The security command uses:
-- **patterns agent**: Identify insecure coding patterns
-- **researcher agent**: Check CVE databases for dependencies
-- **principles agent**: Verify security design principles
-- **complete agent**: Find missing security controls
-- **hypothesis agent**: Analyze potential attack vectors
-- **critic agent**: Challenge security assumptions
-- **docsync agent**: Update security documentation
+**Specialized Security Agents** (Primary Focus):
+- **vulnerability-scanner**: Code-level security flaw detection with pattern matching
+- **threat-modeling**: Attack surface analysis and architectural security assessment
+- **compliance-checker**: Regulatory standards evaluation across multiple frameworks
+
+**Supporting Intelligence Agents**:
+- **researcher**: CVE database intelligence and latest threat information
+- **patterns**: Security anti-patterns and insecure coding pattern detection
+- **hypothesis**: Attack vector analysis and threat scenario modeling
+
+**Architectural Security Agents**:
+- **explorer**: Security solution alternatives and defense strategy options
+- **constraints**: Security boundary limitations and access control design
+- **invariants**: Security state validation and type-safe security design
+- **principles**: Security design principles and best practices validation
+
+**Quality Assurance Agents**:
+- **critic**: Security assumption validation and risk assessment challenge
+- **completer**: Security control completeness and gap identification
+- **docs**: Security documentation updates and policy synchronization
+
+**Advanced Coordination**: Security specialists coordinate with intelligence and architectural agents for comprehensive multi-dimensional security analysis
+
+## Memory Integration
+
+**Before Security Analysis**: Use `mcp__memory__search_nodes()` to check for:
+- Previous security assessments and vulnerability patterns
+- Historical threat modeling outcomes
+- Known compliance requirements and audit findings
+- Security improvement success/failure patterns
+
+**After Security Analysis**: Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`:
+- Vulnerability patterns and remediation effectiveness
+- Threat model evolution and attack surface changes
+- Compliance requirement mappings and audit outcomes
+- Security architecture decisions and their long-term impact
 
 ## Related Commands
 
-- `/review` - General code review including security
-- `/test` - Add security test cases
-- `/refactor` - Implement security improvements
-- Use `invariants` agent for security constraints
-- Use `constraints` agent for access control rules
+- `/review` - General code review including security validation
+- `/test` - Add security test cases and penetration testing
+- `/refactor` - Implement security improvements with architectural changes
+- `/agent-ecosystem-review` - Include security agent effectiveness analysis
 
 ## Best Practices
 

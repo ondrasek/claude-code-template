@@ -61,17 +61,19 @@ description: "PROACTIVELY use when user asks 'why does this happen', 'strange be
 
 ## Agent Spawning Strategy
 
-**Individual Agent Analysis:**
-- Each agent gets its own dedicated audit agent instance
-- Isolated context prevents cross-contamination between evaluations
-- Higher quality analysis through focused attention per agent
-- Parallel execution for improved performance
+**Parallel Agent Cluster Analysis:**
+- Use parallel agent clusters for comprehensive ecosystem analysis
+- **patterns** + **principles** + **critic**: Core agent analysis cluster
+- **explorer** + **constraints** + **resolver**: Gap analysis and optimization cluster  
+- **researcher** + **time** + **context**: Historical performance and usage analysis
+- **axioms** + **invariants** + **connector**: Fundamental design validation cluster
+- Parallel execution for maximum performance and comprehensive coverage
 
-**Aggregation Process:**
-- Collect individual audit reports from each spawned agent
-- Identify patterns across all agent evaluations
-- Generate consolidated recommendations and priority actions
-- Detect ecosystem-wide issues (redundancy, gaps, inconsistencies)
+**Multi-Dimensional Aggregation:**
+- Synthesize findings from all parallel agent clusters
+- Cross-validate recommendations between analysis dimensions
+- Identify ecosystem-wide patterns, gaps, and optimization opportunities
+- Generate priority-based action plans with dependency mapping
 
 ## Batch Analysis
 
@@ -90,15 +92,27 @@ description: "PROACTIVELY use when user asks 'why does this happen', 'strange be
 4. Prepare individual audit tasks for each agent
 ```
 
-### Phase 2: Parallel Agent Spawning
+### Phase 2: Parallel Agent Cluster Execution
 ```
-For each agent to audit:
-  1. Read agent definition from .claude/agents/[agent-name].md
-  2. Task: "Audit the following agent definition against creation principles"
-  3. Subagent: patterns (for description analysis and optimization)
-  4. Context: Complete agent content + creation principles from @.support/instructions/agent-creation.md
-  5. Constraint: Agent definitions are ONLY in .claude/agents/ - do not search elsewhere
-  6. Output: Individual audit report with ratings and recommendations
+Cluster 1 - Core Analysis (patterns + principles + critic):
+  Task: "Analyze agent descriptions, selection optimization, and principle compliance"
+  Context: All agent definitions + creation principles + ecosystem patterns
+  Output: Description quality assessment with optimization recommendations
+
+Cluster 2 - Strategic Analysis (explorer + constraints + resolver):
+  Task: "Identify capability gaps, redundancies, and coordination opportunities"
+  Context: Complete agent ecosystem + usage patterns + coordination requirements
+  Output: Strategic optimization plan with priority recommendations
+
+Cluster 3 - Performance Analysis (researcher + time + context):
+  Task: "Analyze historical usage patterns and selection effectiveness"
+  Context: Agent usage data + selection algorithm behavior + performance metrics
+  Output: Performance-based optimization recommendations
+
+Cluster 4 - Design Validation (axioms + invariants + connector):
+  Task: "Validate fundamental design principles and cross-domain connections"
+  Context: Agent design principles + ecosystem architecture + integration patterns
+  Output: Design integrity assessment with architectural recommendations
 ```
 
 ### Phase 3: Aggregation and Analysis
@@ -130,9 +144,24 @@ For each agent to audit:
 - **Gap identification**: Missing specialized analysis patterns
 - **Quality distribution**: Spread of description optimization scores
 
+## Memory Integration
+
+**Before Analysis**: Use `mcp__memory__search_nodes()` to check for:
+- Previous audit findings and patterns
+- Historical agent performance data
+- Known optimization outcomes
+- Ecosystem evolution trends
+
+**After Analysis**: Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`:
+- Agent quality assessments and trends
+- Optimization recommendations and outcomes
+- Ecosystem health metrics over time
+- Cross-agent relationship patterns
+
 ## Related Commands
 - `/agent-create` - Create new agents following principles
 - `/agent-guide` - Documentation on using existing agents
+- `/agent-ecosystem-review` - Comprehensive ecosystem analysis
 
 ## Reference Documentation
 - @.support/instructions/agent-creation.md - Complete creation and audit principles

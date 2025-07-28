@@ -24,8 +24,12 @@ I'll help you prepare a version release by analyzing completed TODOs and generat
 
 ## Process
 
-1. **Analyze completed TODOs** using `completer` + `researcher` agents
-2. **Calculate version bump** based on task types:
+1. **Analyze completed TODOs** using parallel agent coordination:
+   - **todo**: Primary TODO analysis and version calculation coordination
+   - **completer + patterns**: Comprehensive completion analysis and implementation validation
+   - **researcher + time**: Historical version pattern analysis and semantic versioning research
+   - **docs + git-tagger**: Release documentation and git tag preparation coordination
+2. **Calculate version bump** based on semantic versioning analysis:
    - Any `break` tasks → MAJOR version
    - Any `feat` tasks (no breaks) → MINOR version
    - Only `fix`/`docs`/`perf`/`refactor`/`test`/`chore` → PATCH version
@@ -92,4 +96,34 @@ Following trunk-based development:
 2. Version tag created: `git tag -a v1.2.3 -m "Release version 1.2.3"`
 3. Push to origin: `git push origin main && git push origin v1.2.3`
 
-This command ensures systematic version management with complete traceability from TODO tasks to release documentation.
+## Memory Integration
+
+**Before Version Preparation**: Use `mcp__memory__search_nodes()` to check for:
+- Previous version release patterns and semantic versioning decisions
+- Historical TODO completion rates and release scope patterns
+- Successful release documentation strategies and CHANGELOG effectiveness
+- Version bump decision criteria and their long-term impact
+
+**After Version Preparation**: Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`:
+- Version release effectiveness and semantic versioning accuracy
+- TODO completion pattern evolution and release planning optimization
+- Release documentation quality and user engagement metrics
+- Cross-release relationship patterns and version strategy evolution
+
+## Agent Integration
+
+**Primary Coordination**: todo agent orchestrates version preparation with systematic TODO analysis
+
+**Supporting Clusters**:
+- **Completion Analysis**: completer + patterns for comprehensive implementation validation
+- **Historical Analysis**: researcher + time for version pattern analysis
+- **Documentation**: docs + git-tagger for release preparation and tag coordination
+- **Quality Validation**: critic + testing for release readiness assessment
+
+This command ensures systematic version management with complete traceability from TODO tasks to release documentation, enhanced by memory-informed decision making and parallel agent coordination.
+
+## Related Commands
+
+- `/todo-cleanup-done` - Clean completed TODOs before version preparation
+- `/doc-update` - Ensure documentation synchronization with release
+- `/agent-ecosystem-review` - Analyze version management process effectiveness

@@ -46,8 +46,29 @@ BEHAVIOR:
 - Provides strategic overview without overwhelming detail
 - Creates proposal suitable for critic review and user decision-making
 
+## Memory Integration
+
+**Before Ecosystem Analysis**: Use `mcp__memory__search_nodes()` to check for:
+- Previous ecosystem optimization outcomes and effectiveness patterns
+- Historical agent performance data and usage trends
+- Successful agent combination patterns and coordination strategies
+- Ecosystem evolution patterns and optimization impact metrics
+
+**After Ecosystem Analysis**: Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`:
+- Ecosystem health metrics and optimization recommendation effectiveness
+- Agent coordination pattern evolution and performance improvements
+- Cross-agent relationship patterns and synergy identification
+- Optimization outcome tracking and long-term ecosystem sustainability
+
 INTEGRATION:
-- Results inform agent creation/modification decisions
-- Recommendations can be implemented via todo agent
-- Updates CLAUDE.md and agent combination patterns
-- Tracks ecosystem evolution and optimization outcomes
+- Results inform agent creation/modification decisions with historical context
+- Recommendations implemented via todo agent with memory-informed prioritization
+- Updates CLAUDE.md and agent combination patterns based on proven effectiveness
+- Tracks ecosystem evolution and optimization outcomes with persistent knowledge
+- Leverages cross-project ecosystem patterns for optimization insights
+
+## Related Commands
+
+- `/agent-audit` - Individual agent analysis with ecosystem-wide impact assessment
+- `/agent-create` - New agent development informed by ecosystem gap analysis
+- `/agent-guide` - Documentation updates reflecting ecosystem optimization outcomes
