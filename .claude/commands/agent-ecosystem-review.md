@@ -5,15 +5,13 @@ FOCUS: comprehensive agent ecosystem assessment and optimization
 SCOPE: all agents in .claude/agents/ directory plus codebase analysis
 
 ACTIONS:
-1. invoke ecosystem-analyzer agent: orchestrate enhanced multi-agent ecosystem analysis with universal agent integration
-2. coordinate enhanced parallel agent clusters for comprehensive assessment:
-   - **Codebase Intelligence Cluster**: patterns + axioms + context + researcher (codebase characterization with research validation)
-   - **Ecosystem Quality Cluster**: patterns + principles + critic + completer (current agent ecosystem review with completeness analysis)
-   - **Strategic Analysis Cluster**: hypothesis + explorer + connector + researcher (gap analysis with research-backed opportunities)
-   - **Validation & Synthesis Cluster**: resolver + critic + principles + invariants (conflict resolution with principle validation)
-   - **Performance Assessment Cluster**: performance + time + constraints + critic (ecosystem performance analysis with critical assessment)
-3. generate structured optimization proposal with prioritized recommendations validated by critic + principles agents
-4. provide implementation roadmap approved by resolver + completer + docs agents
+1. **Codebase Intelligence Cluster**: Run patterns, axioms, context, and researcher agents in parallel for codebase characterization with research validation
+2. **Ecosystem Quality Cluster**: Run patterns, principles, critic, and completer agents in parallel for current agent ecosystem review with completeness analysis  
+3. **Strategic Analysis Cluster**: Run hypothesis, explorer, connector, and researcher agents in parallel for gap analysis with research-backed opportunities
+4. **Validation & Synthesis Cluster**: Run resolver, critic, principles, and invariants agents in parallel for conflict resolution with principle validation
+5. **Performance Assessment Cluster**: Run performance, time, constraints, and critic agents in parallel for ecosystem performance analysis with critical assessment
+6. **Final Analysis**: Run ecosystem-analyzer agent to synthesize all findings into structured optimization proposal
+7. **Documentation**: Run docs agent to update documentation with approved recommendations
 
 PARAMETERS:
 --priority [critical|high|medium|low|all] (filter recommendations by priority)
@@ -21,14 +19,39 @@ PARAMETERS:
 --dry-run (generate proposal without implementation suggestions)
 --focus [gaps|redundancy|optimization|new-agents] (specific analysis focus)
 
-ENHANCED_AGENT_DELEGATION:
-Primary: ecosystem-analyzer (coordination and synthesis with universal agent support)
-Codebase Intelligence: patterns, axioms, context, researcher
-Ecosystem Quality: patterns, principles, critic, completer
-Strategic Analysis: hypothesis, explorer, connector, researcher
-Validation & Synthesis: resolver, critic, principles, invariants
-Performance Assessment: performance, time, constraints, critic
-Documentation: docs, completer, principles
+AGENT_EXECUTION_PLAN:
+**Phase 1 - Parallel Codebase Analysis**:
+- patterns: Analyze codebase patterns and technology stack
+- axioms: Identify fundamental development principles  
+- context: Map system architecture and interconnections
+- researcher: Research codebase-specific development needs
+
+**Phase 2 - Parallel Ecosystem Assessment**:
+- patterns: Analyze existing agent usage patterns
+- principles: Evaluate agents against design principles
+- critic: Critical assessment of current ecosystem
+- completer: Identify incomplete agent capabilities
+
+**Phase 3 - Parallel Strategic Analysis**:
+- hypothesis: Form theories about optimal agent ecosystem
+- explorer: Generate alternative ecosystem configurations
+- connector: Find cross-domain agent solutions
+- researcher: Research best practices for agent ecosystems
+
+**Phase 4 - Parallel Validation**:
+- resolver: Resolve conflicts between optimization approaches
+- critic: Final critical evaluation of proposals
+- principles: Validate against architecture principles
+- invariants: Ensure system constraints are maintained
+
+**Phase 5 - Performance & Documentation**:
+- performance: Assess agent coordination efficiency
+- time: Analyze historical usage patterns
+- constraints: Identify resource limitations
+- docs: Update documentation with findings
+
+**Phase 6 - Synthesis**:
+- ecosystem-analyzer: Synthesize all findings into optimization proposal
 
 ENHANCED_OUTPUT:
 - Executive summary with alignment score and priority recommendations validated by critic + principles agents
@@ -41,12 +64,12 @@ ENHANCED_OUTPUT:
 EXAMPLE:
 /agent-ecosystem-review --priority high --output detailed
 
-ENHANCED_BEHAVIOR:
-- Delegates ALL analysis to enhanced specialized agent clusters off-context with universal agent support
-- Coordinates parallel agent execution for maximum efficiency with atomic task distribution
-- Synthesizes findings into actionable optimization proposal validated by multiple agent perspectives
-- Provides strategic overview without overwhelming detail, enhanced by researcher + critic + principles validation
-- Creates comprehensive proposal suitable for multi-agent validation (critic + principles + resolver + completer) and informed user decision-making
+EXECUTION_BEHAVIOR:
+- **Command-Level Orchestration**: All agent spawning and coordination happens at command level
+- **Parallel Execution**: Run multiple agents simultaneously for efficiency
+- **Sequential Phases**: Execute phases in order, with each phase's results informing the next
+- **Synthesis Focus**: Final ecosystem-analyzer agent synthesizes findings rather than coordinating other agents
+- **No Agent-to-Agent Spawning**: Individual agents never spawn other agents - only commands do
 
 ## Memory Integration
 
