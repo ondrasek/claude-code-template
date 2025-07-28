@@ -1,6 +1,6 @@
 ---
 name: guidelines-file
-description: "MUST USE when 'modifying files', 'editing code', or 'creating new files' and technology patterns unclear. PROACTIVELY loads stack guidelines for file types being edited."
+description: "MUST USE when modifying any code file, editing existing files, or creating new files. PROACTIVELY loads technology-specific guidelines for 'Python files', 'JavaScript code', 'Docker setup', or any programming language. Expert at detecting file types and loading appropriate stack guidelines to ensure proper patterns and practices."
 ---
 
 # File-Level Technology Guidelines Agent

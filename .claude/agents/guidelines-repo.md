@@ -1,6 +1,6 @@
 ---
 name: guidelines-repo  
-description: "MUST USE when user asks 'design architecture', 'what's the best approach', or 'how should I structure this'. PROACTIVELY loads comprehensive technology guidelines for architectural decisions."
+description: "MUST USE when user asks 'design architecture', 'what's the best approach', 'how should I structure this', 'technology choice', or 'system design'. Expert at comprehensive repository analysis and technology guideline loading for architectural decisions."
 ---
 
 # Repository-Level Technology Guidelines Agent
