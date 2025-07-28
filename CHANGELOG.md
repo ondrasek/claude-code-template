@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.10.0] - 2025-07-28
+
+### Enhanced
+- **agent-audit command**: Redesigned with individual agent spawning strategy
+- 4-phase workflow: discovery, parallel spawning, aggregation, reporting
+- Analysis quality improved through isolated contexts per agent evaluation
+- Context pollution prevention by using separate audit agents per target
+- Parallel execution for improved performance and focused attention per agent
+
 ## [2.9.0] - 2025-07-28
 
 ### Added
