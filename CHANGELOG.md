@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.15.0] - 2025-07-28
+
+### Enhanced
+- **MAJOR**: Complete agent-guide.md overhaul from outdated 11-agent to current 26-agent ecosystem
+- Added comprehensive documentation for security agent split (vulnerability-scanner, threat-modeling, compliance-checker)
+- Enhanced multi-agent coordination patterns with proven workflow examples  
+- Added proactive agent usage protocol demonstrating automatic Claude Code behavior
+- Included gold standard agent references and ecosystem health metrics (92/100 across all agents)
+- Integrated sophisticated multi-agent workflow documentation for complex tasks
+- Updated conditional technology guidelines system documentation (guidelines-file, guidelines-repo)
+
 ## [2.14.0] - 2025-07-28
 
 ### Changed
