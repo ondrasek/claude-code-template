@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.5.0] - 2025-07-28
+
+### Removed
+- **MAJOR**: Removed memory export/import functionality entirely (366 lines removed)
+- Deleted `.support/memories/` directory and all memory files
+- Removed memory export references from git-workflow.md
+- Deleted memory-system.md documentation file
+- Removed memory-export/import command references from all documentation
+
+### Changed
+- Simplified memory handling to use only Claude Code's built-in MCP memory server
+- Updated documentation to reflect streamlined memory architecture
+- Reduced system complexity by eliminating custom memory management layer
+
 ## [2.4.0] - 2025-07-28
 
 ### Changed
