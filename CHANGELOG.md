@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.18.0] - 2025-07-28
+
+### Added
+- **Universal Agent Integration**: Added researcher, critic, and principles agents to ALL 16 slash commands for comprehensive analysis quality
+- **Sophisticated Parallel Agent Clusters**: Implemented advanced multi-agent coordination patterns with specialized cluster architectures:
+  - Quality clusters: patterns + principles + critic + researcher
+  - Security clusters: vulnerability-scanner + threat-modeling + compliance-checker + researcher  
+  - Performance clusters: performance + constraints + hypothesis + critic + time
+  - Validation clusters: resolver + critic + principles + invariants + completer
+- **Atomic Agent Task Coordination**: Each agent now has specific, focused responsibilities creating granular coordination workflows
+- **Enhanced Command Capabilities**: All commands now provide comprehensive, validated analysis through systematic parallel agent coordination
+
+### Enhanced
+- **ALL SLASH COMMANDS**: Complete overhaul of all 16 commands with universal agent integration:
+  - /agent-audit: Enhanced with 5 parallel clusters and universal agent support
+  - /agent-create: Enhanced with 4-phase parallel cluster workflow
+  - /agent-ecosystem-review: Enhanced with 6 specialized parallel clusters
+  - /discuss: Enhanced with 6 multi-dimensional analysis clusters
+  - /refactor: Enhanced with 8 comprehensive parallel clusters
+  - /review: Enhanced with 6 parallel review clusters
+  - /security: Enhanced with 6 security specialist clusters
+  - /test: Enhanced with 7 testing coordination clusters
+  - /doc-update: Enhanced with 7 documentation analysis clusters
+  - /stacks: Enhanced with 6 technology analysis clusters
+  - All TODO commands: Enhanced with multi-agent validation clusters
+  - /version-prepare: Enhanced with 5 release preparation clusters
+  - /agent-guide: Updated to reflect enhanced command patterns
+- **Command Architecture**: Maximized parallel execution with well-defined agent clusters that execute simultaneously when dependencies allow
+- **Quality Assurance**: Every command now starts with researcher for context, ends with critic for validation, and uses principles for design decisions
+
 ## [2.17.0] - 2025-07-28
 
 ### Added
