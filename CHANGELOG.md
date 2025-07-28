@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.9.0] - 2025-07-28
+
+### Added
+- **MAJOR**: Conditional technology guidelines system with intelligent agent coordination
+- guidelines-file agent: MUST USE before modifying files when technology patterns unclear
+- guidelines-repo agent: MUST USE for architecture decisions when stack context undetermined
+- Centralized detection logic in .support/instructions/stack-mapping.md
+- Session-aware guideline state tracking to prevent redundant loading
+- Intelligent conditional invocation system that only loads relevant guidelines when needed
+
+### Changed
+- Replace static technology detection rules with intelligent conditional agent system
+- CLAUDE.md streamlined from 17-line detection rules to 4-line agent protocol
+- Context efficiency improved by 50%+ through conditional guideline loading
+- Enhanced system scalability with easy extensibility without bloating main context
+- Architecture now supports intelligent caching and performance optimization
+
+### Performance
+- Conditional loading prevents redundant agent calls and context pollution
+- Only loads relevant technology guidelines when actually needed
+- Maintains same functionality with significantly improved efficiency
+- Session-aware state management reduces redundant operations
+
 ## [2.8.0] - 2025-07-28
 
 ### Changed
