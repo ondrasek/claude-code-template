@@ -26,7 +26,7 @@ Help developers create effective prompts for THEIR agents (not Claude Code agent
 BatchTool:
 1. Search: "[task-type] agent prompt examples [framework]"
 2. Search: "[model] prompt engineering [specific-feature]"
-3. Search: "[framework] agent best practices 2024"
+3. Search: "[framework] agent best practices latest"
 4. Search: "prompt optimization [model] techniques"
 ```
 
