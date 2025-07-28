@@ -3,6 +3,24 @@
 .claude/cache/
 .claude/logs/
 
+# MCP Memory Server Data - Codespace Persistence Strategy
+# For GitHub Codespaces: Allow .mcp/*.db to persist across rebuilds
+# For privacy: Comment out these exclusions if you want memory persistence
+.mcp/memory.db
+.mcp/project.db
+.mcp/*.db-wal
+.mcp/*.db-shm
+
+# Legacy MCP locations (still excluded)
+memory.db
+memory.sqlite
+memories.db
+project.db
+*.db-wal
+*.db-shm
+mcp-memory/
+.mcp-memory/
+
 # Environment variables
 .env
 .env.local

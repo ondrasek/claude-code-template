@@ -53,32 +53,6 @@
 3. Apply technology-specific best practices throughout session
 ```
 
-### Git Workflow Override
-**AGENT-DELEGATED TAGGING**: See @.claude/instructions/git-workflow.md for complete protocol
-- Commit and push after every non-trivial change
-- Automatically invoke `tagger` agent after each commit to evaluate tagging
-- Tagger agent assesses: completeness, stability, value, breakpoint, significance
-- Tagger creates tags autonomously without polluting main context window
-
-### MCP Server Configuration
-**ACTIVE MCP SERVERS**: This project uses these NON-REDUNDANT MCP servers (.mcp.json):
-```json
-{
-  "mcpServers": {
-    "memory": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"],
-      "description": "Persistent memory between sessions - cross-session context and learning"
-    },
-    "sqlite": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "./project.db"],
-      "description": "Local database for structured data storage and queries"
-    }
-  }
-}
-```
-*Note: server-filesystem and server-fetch are redundant with Claude Code built-in capabilities*
 
 ### Memory Integration Override
 **MCP MEMORY USAGE**: Project-specific memory behavior:
