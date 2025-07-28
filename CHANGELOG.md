@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.6.1] - 2025-07-28
+
+### Changed
+- **MAJOR**: Complete TODO protocol modernization with agent-based management
+- Removed 5 command files (521 lines): todo.md, todo-add.md, todo-complete.md, todo-release.md, todo-status.md
+- Replaced with context-clean TODO agent (110 lines) for specialized task coordination
+- Updated all documentation to reflect agent-based TODO system (README.md, features.md, getting-started.md, customization.md)
+- Removed todo-system.md documentation file
+- Created sample TODO file for user authentication implementation
+- Eliminated context pollution from TODO management while preserving full functionality
+
 ## [2.6.0] - 2025-07-28
 
 ### Changed
