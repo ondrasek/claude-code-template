@@ -8,11 +8,11 @@ Audit existing agents against creation principles and usage metrics for optimiza
 ```
 
 ## What it does
-- Analyzes agent descriptions against selection optimization patterns
-- Identifies agents with low-performing description patterns
-- Checks for redundancy and overlap between agents
-- Suggests description improvements using Tier 1 keywords
-- Generates agent utilization and effectiveness report
+- **Spawns individual agents**: Creates separate audit agents for each agent being evaluated
+- **Parallel analysis**: Analyzes agent descriptions in isolated contexts for higher quality
+- **Selection optimization**: Identifies low-performing description patterns using creation principles
+- **Redundancy detection**: Checks for overlap between agents across separate analyses
+- **Coordinated reporting**: Aggregates individual audits into comprehensive report
 
 ## Audit Criteria
 
@@ -59,20 +59,74 @@ description: "PROACTIVELY use when user asks 'why does this happen', 'strange be
 - Significant overlap with other agent capabilities
 - Poor boundary definition requiring main context clarification
 
+## Agent Spawning Strategy
+
+**Individual Agent Analysis:**
+- Each agent gets its own dedicated audit agent instance
+- Isolated context prevents cross-contamination between evaluations
+- Higher quality analysis through focused attention per agent
+- Parallel execution for improved performance
+
+**Aggregation Process:**
+- Collect individual audit reports from each spawned agent
+- Identify patterns across all agent evaluations
+- Generate consolidated recommendations and priority actions
+- Detect ecosystem-wide issues (redundancy, gaps, inconsistencies)
+
 ## Batch Analysis
 
 **Options:**
 - `--detailed`: Include full analysis and recommendations for each agent
-- `agent-name...`: Audit specific agents only
-- No args: Audit all agents in `.claude/agents/` directory
+- `agent-name...`: Audit specific agents only (spawns one agent per specified agent)
+- No args: Audit all agents in `.claude/agents/` directory (spawns agent per discovered agent)
+
+## Implementation Workflow
+
+### Phase 1: Agent Discovery
+```
+1. Scan .claude/agents/ directory for all agent files
+2. Parse agent names from command arguments (if provided)
+3. Apply --detailed flag to audit scope
+4. Prepare individual audit tasks for each agent
+```
+
+### Phase 2: Parallel Agent Spawning
+```
+For each agent to audit:
+  Task: "Audit [agent-name] against creation principles" 
+  Subagent: patterns (for description analysis and optimization)
+  Context: Single agent file + creation principles
+  Output: Individual audit report with ratings and recommendations
+```
+
+### Phase 3: Aggregation and Analysis
+```
+1. Collect all individual audit reports
+2. Identify ecosystem patterns (redundancy, gaps, quality distribution)
+3. Generate priority action list based on impact vs effort
+4. Create consolidated recommendations for immediate fixes
+```
+
+### Phase 4: Reporting
+```
+- Executive summary with overall ecosystem health
+- Individual agent scores and recommendations  
+- Priority optimization actions ranked by impact
+- Red flag agents requiring elimination/major revision
+```
 
 ## Integration with Creation Principles
 
-Uses validation framework from @.support/instructions/agent-creation.md:
-- Overhead justification analysis
-- Context boundary assessment  
-- Selection optimization evaluation
-- Human role detection
+**Individual agent evaluation criteria** from @.support/instructions/agent-creation.md:
+- **Overhead justification**: Does agent reduce >50 lines of main context?
+- **Context boundaries**: Clear input/output without back-and-forth?
+- **Selection optimization**: Tier 1/2 keywords for Claude Code selection?
+- **Human role avoidance**: Computational tasks vs organizational roles?
+
+**Ecosystem-wide analysis:**
+- **Redundancy detection**: Overlapping capabilities across agents
+- **Gap identification**: Missing specialized analysis patterns
+- **Quality distribution**: Spread of description optimization scores
 
 ## Related Commands
 - `/agent-create` - Create new agents following principles
