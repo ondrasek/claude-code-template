@@ -17,13 +17,13 @@ This file provides operational instructions for Claude Code AI to work efficient
 **CRITICAL**: At session start, automatically detect active technologies:
 ```
 1. Use Glob tool to scan for technology indicators:
-   - Python: *.py, pyproject.toml, requirements.txt
-   - Rust: *.rs, Cargo.toml  
-   - JavaScript/TypeScript: *.js, *.ts, package.json
-   - Go: *.go, go.mod
-   - Java: *.java, pom.xml, build.gradle
-   - Docker: Dockerfile, docker-compose.yml
-2. Load corresponding stack guidelines from .claude/stacks/
+   - Python: *.py, pyproject.toml, requirements.txt → Apply @.claude/stacks/python.md
+   - Rust: *.rs, Cargo.toml → Apply @.claude/stacks/rust.md
+   - JavaScript/TypeScript: *.js, *.ts, package.json → Apply @.claude/stacks/javascript.md
+   - Go: *.go, go.mod → Apply @.claude/stacks/go.md
+   - Java: *.java, pom.xml, build.gradle → Apply @.claude/stacks/java.md
+   - Docker: Dockerfile, docker-compose.yml → Apply @.claude/stacks/docker.md
+2. Load corresponding stack guidelines using @ syntax
 3. Apply technology-specific best practices throughout session
 ```
 
@@ -188,13 +188,24 @@ type DecisionEntity = {
 ## Git Workflow Automation
 
 ### Mandatory Git Protocol
-**CRITICAL**: Auto-commit and push:
+**CRITICAL**: Auto-commit, tag, and push workflow:
 ```
-1. Commit after EVERY non-trivial change
-2. Use trunk-based development (main branch only)
-3. Push immediately after committing  
-4. Create feature branches ONLY if explicitly instructed
-5. Use semantic commit messages with Claude Code attribution
+1. Commit after EVERY non-trivial change with descriptive messages
+2. Tag significant milestones using semantic versioning (v1.2.3)
+3. Push both commits and tags immediately to origin/main
+4. Use trunk-based development (main branch only)
+5. Create feature branches ONLY if explicitly instructed
+6. Follow conventional commit format when possible (feat:, fix:, docs:)
+```
+
+**Automated Git Workflow**:
+```
+For each non-trivial change:
+1. git add -A
+2. git commit -m "[conventional-prefix]: [description]"
+3. IF milestone reached: git tag -a v[x.y.z] -m "Release version [x.y.z]"
+4. git push origin main
+5. IF tagged: git push origin v[x.y.z]
 ```
 
 ### Commit Message Format
@@ -272,10 +283,10 @@ EOF
 ## Key Reference Files
 
 **CRITICAL INSTRUCTIONS**: Always check these files for guidance:
-- `.claude/instructions/git-workflow.md` - Git automation requirements
-- `.claude/instructions/documentation.md` - Documentation sync requirements  
-- `.claude/instructions/agent-usage.md` - Agent coordination protocols
-- `.claude/stacks/[technology].md` - Technology-specific guidelines
+- @.claude/instructions/git-workflow.md - Git automation requirements
+- @.claude/instructions/documentation.md - Documentation sync requirements  
+- @.claude/instructions/agent-usage.md - Agent coordination protocols
+- @.claude/stacks/[technology].md - Technology-specific guidelines
 
 **MCP TOOLS AVAILABLE**: Use these specialized capabilities when appropriate:
 - `mcp__memory__*` - Persistent memory and knowledge graph management
