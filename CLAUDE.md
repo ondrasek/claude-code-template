@@ -35,12 +35,23 @@
 - Add memory-first research workflow: always check `mcp__memory__search_nodes()` before web searches
 - Use agent parallel clusters defined in @.claude/instructions/agent-usage.md
 
-### Technology Stack Integration Override  
-**STACK DETECTION ENHANCEMENT**: C# detection rule addition:
+### Technology Stack Detection Rules
+**AUTOMATIC STACK DETECTION**: At session start, detect active technologies:
 ```
-IF (.cs OR .csproj OR .sln files detected) → Apply @.claude/stacks/csharp.md guidelines
+1. Use Glob tool to scan for technology indicators:
+   - Python: *.py, pyproject.toml, requirements.txt → Apply @.claude/stacks/python.md
+   - Rust: *.rs, Cargo.toml → Apply @.claude/stacks/rust.md
+   - JavaScript/TypeScript: *.js, *.ts, package.json → Apply @.claude/stacks/javascript.md
+   - Go: *.go, go.mod → Apply @.claude/stacks/go.md
+   - Java: *.java, pom.xml, build.gradle → Apply @.claude/stacks/java.md
+   - Kotlin: *.kt, build.gradle.kts → Apply @.claude/stacks/kotlin.md
+   - Ruby: *.rb, Gemfile → Apply @.claude/stacks/ruby.md
+   - C#: *.cs, *.csproj, *.sln → Apply @.claude/stacks/csharp.md
+   - C/C++: *.c, *.cpp, *.h, CMakeLists.txt → Apply @.claude/stacks/cpp.md
+   - Docker: Dockerfile, docker-compose.yml → Apply @.claude/stacks/docker.md
+2. Load corresponding stack guidelines using @ syntax
+3. Apply technology-specific best practices throughout session
 ```
-*Note: All other technology detection relies on Claude Code built-in capabilities*
 
 ### Git Workflow Override
 **TRUNK-BASED DEVELOPMENT**: Project-specific git behavior override:
@@ -49,12 +60,43 @@ IF (.cs OR .csproj OR .sln files detected) → Apply @.claude/stacks/csharp.md g
 - Tag releases frequently with semantic versioning
 - Use Claude Code attribution in commit messages
 
+### MCP Server Configuration
+**ACTIVE MCP SERVERS**: This project uses these MCP servers (.mcp.json):
+```json
+{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "description": "Persistent memory between sessions - cross-session context and learning"
+    },
+    "filesystem": {
+      "command": "npx", 
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "."],
+      "description": "Enhanced file operations - directory traversal, metadata, batch operations"
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "./project.db"],
+      "description": "Local database for structured data storage and queries"
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "description": "Enhanced web content fetching with parsing capabilities"
+    }
+  }
+}
+```
+
 ### Memory Integration Override
 **MCP MEMORY USAGE**: Project-specific memory behavior:
 - Prioritize memory lookup before web searches (efficiency override)
 - Store agent combination success patterns for this project
 - Preserve architectural decisions across sessions
 - Track parallel agent cluster performance data
+- Use `mcp__memory__search_nodes()` before web research
+- Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`
 
 ### Simple TODO Management
 **TODO WORKFLOW OVERRIDE**: Use built-in tools only:
