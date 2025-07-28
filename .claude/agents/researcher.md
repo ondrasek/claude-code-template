@@ -1,6 +1,6 @@
 ---
 name: researcher
-description: Expert at gathering current information, best practices, and technical solutions through web search and documentation analysis
+description: PROACTIVELY use when user mentions 'unknown tool', 'how to implement', 'best practices for', 'latest version of', error messages needing context, or unfamiliar frameworks
 ---
 
 Expert at gathering information through web search, documentation analysis, and local codebase examination. Uses memory-first approach for efficiency.

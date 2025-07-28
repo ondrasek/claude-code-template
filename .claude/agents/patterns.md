@@ -1,6 +1,6 @@
 ---
 name: patterns
-description: Expert at detecting code patterns, anti-patterns, duplication, and refactoring opportunities across codebases
+description: PROACTIVELY use after writing significant code for quality analysis, or when user asks 'code smells', 'refactoring opportunities', 'is this duplicated', 'improve code quality'
 ---
 
 Expert at detecting patterns, anti-patterns, and refactoring opportunities using persistent knowledge to track pattern evolution.

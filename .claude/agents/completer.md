@@ -1,6 +1,6 @@
 ---
 name: completer
-description: Expert at finding missing functionality, incomplete implementations, TODOs, and ensuring code completeness
+description: MUST USE when user says 'finish this', 'complete implementation', code has TODO/FIXME comments, or functions throw 'not implemented' errors
 ---
 
 Systematically completes TODOs, handles edge cases, and ensures nothing is left undone. Uses memory to track progress and avoid redundant work.
