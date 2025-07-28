@@ -71,6 +71,39 @@ Examples:
 - **context** + **patterns** + **researcher** + **critic**
 - Flow: Understand system → Identify patterns → Research details → Validate understanding
 
+**Agent Ecosystem Analysis** (`"optimize agents"`, `"review agent ecosystem"`, `"analyze agent efficiency"`):
+- **ecosystem-analyzer** + **patterns** + **axioms** + **context** + **principles** + **critic** + **hypothesis** + **explorer** + **connector** + **resolver**
+- Flow: Orchestrate analysis → Characterize codebase → Assess current agents → Identify gaps → Generate proposals → Validate recommendations
+
+## Agent Ecosystem Management Protocol (MANDATORY)
+**ECOSYSTEM OPTIMIZATION**: Use ecosystem-analyzer agent and /agent-ecosystem-review command for systematic agent ecosystem assessment and optimization.
+
+**Ecosystem Analysis Triggers**:
+- **Automatic**: When agent usage patterns suggest misalignment with codebase needs
+- **Periodic**: Regular ecosystem health assessments (quarterly or after major changes)
+- **Manual**: User requests with "optimize agents", "review agent ecosystem", "analyze agent efficiency"
+- **Change-driven**: After significant codebase changes affecting agent utility
+
+**Core Tools**:
+- **ecosystem-analyzer agent**: Orchestrates multi-agent analysis for comprehensive ecosystem evaluation
+- **/agent-ecosystem-review command**: Provides structured interface for ecosystem analysis with configurable parameters
+
+**Analysis Phases**:
+1. **Codebase Characterization**: patterns + axioms + context → Technology stack, complexity, development patterns
+2. **Agent Ecosystem Assessment**: patterns + principles + critic → Current agents, usage patterns, capabilities
+3. **Gap Analysis**: hypothesis + explorer + connector → Missing capabilities, optimization opportunities
+4. **Optimization Synthesis**: resolver + critic → Prioritized recommendations, implementation roadmap
+
+**Command Usage Examples**:
+- `/agent-ecosystem-review --scope both --priority high --output detailed` (comprehensive analysis)
+- `/agent-ecosystem-review --focus gaps --output summary` (focus on missing capabilities)
+- `/agent-ecosystem-review --dry-run --priority critical` (proposal without implementation)
+
+**Integration Points**:
+- **Memory Integration**: Store analysis results and optimization outcomes for trend tracking
+- **Documentation Updates**: Automatically update CLAUDE.md agent combinations based on findings
+- **Continuous Improvement**: Monitor implementation success and refine methodology
+
 ## Technology Guidelines Protocol (MANDATORY)
 **CONDITIONAL AGENT INVOCATION**: Use guidelines agents only when technology-specific guidance is unclear or undetermined.
 
