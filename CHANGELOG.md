@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.7.0] - 2025-07-28
+
+### Added
+- Complete TODO management command suite with agent delegation
+- `/todo-create` command for new task creation via todo agent
+- `/todo-review` command for analyzing existing TODOs and prioritization 
+- `/todo-cleanup-done` command for removing implemented TODOs (CHANGELOG verified)
+- `/todo-cleanup-stale` command for removing obsolete/irrelevant TODOs
+- All commands maintain clean context principle through agent coordination
+
 ## [2.6.1] - 2025-07-28
 
 ### Changed
