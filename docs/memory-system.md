@@ -196,3 +196,11 @@ The memory system uses a knowledge graph approach:
 3. Reinitialize memory system if corruption occurs
 
 The memory system transforms Claude Code from a stateless assistant into an intelligent development partner that grows smarter with every interaction.
+
+---
+
+**Next Steps:**
+- 📋 Master [TODO Management](todo-system.md) for organized workflows
+- 🛠️ Learn about [Customization](customization.md) options
+- 📖 Explore all [Features](features.md) of the template
+- 📚 Return to [Getting Started](getting-started.md)

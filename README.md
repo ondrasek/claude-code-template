@@ -175,13 +175,20 @@ This checks:
 4. **Customize agents** for your specific workflow needs
 5. **Run verification** after making configuration changes
 
-## 📚 Resources
+## 📚 Documentation
 
+### User Guides
+- **[Getting Started](docs/getting-started.md)** - Quick setup and essential features
+- **[Complete Features Guide](docs/features.md)** - All capabilities and AI agents
+- **[TODO System](docs/todo-system.md)** - Task management and progress tracking
+- **[Memory System](docs/memory-system.md)** - Persistent context across sessions
+- **[Customization Guide](docs/customization.md)** - Adapt for your project
+
+### External Resources
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
 - [MCP Protocol Specification](https://modelcontextprotocol.io)
 - [GitHub Dotfiles Documentation](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles)
 - [Versioning Guidelines](VERSIONING.md) - How we version this template
-- **Memory System** - Architectural decisions and patterns stored in MCP memory server for cross-session persistence
 
 ## 📄 License
 
