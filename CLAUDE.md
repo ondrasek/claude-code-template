@@ -277,6 +277,12 @@ EOF
 - `.claude/instructions/agent-usage.md` - Agent coordination protocols
 - `.claude/stacks/[technology].md` - Technology-specific guidelines
 
+**MCP TOOLS AVAILABLE**: Use these specialized capabilities when appropriate:
+- `mcp__memory__*` - Persistent memory and knowledge graph management
+- `mcp__filesystem__*` - Enhanced file operations beyond basic Read/Write  
+- `mcp__sqlite__*` - SQLite database access for data analysis and storage
+- `mcp__fetch__*` - HTTP requests and web API integration for external services
+
 **INSTRUCTION PRIORITY**: Reference files provide context-specific guidance that overrides general protocols when applicable.
 
 ## User Experience Enhancement

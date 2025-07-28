@@ -3,7 +3,22 @@
     "memory": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-memory"],
-      "description": "Persistent memory between sessions - adds cross-session state management"
+      "description": "Persistent memory between sessions - cross-session context and learning"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "."],
+      "description": "Enhanced file operations - directory traversal, metadata, batch operations"
+    },
+    "sqlite": {
+      "command": "npx", 
+      "args": ["-y", "@modelcontextprotocol/server-sqlite"],
+      "description": "SQLite database access - local development databases and data analysis"
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "description": "HTTP requests and web APIs - external service integration and API testing"
     }
   }
 }
