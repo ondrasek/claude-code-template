@@ -62,12 +62,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - New `critic` agent to prevent sycophancy and challenge ideas
 - `/discuss` command for critical analysis of proposals
-- PRINCIPLES.md file for documenting observed patterns and principles
+- MCP memory integration for storing patterns and principles across sessions
 - Documentation philosophy in docsync agent
 
 ### Changed
 - docsync agent now strongly prefers updating existing docs over creating new ones
-- patterns and principles agents now maintain PRINCIPLES.md
+- patterns and principles agents now use MCP memory server for persistent storage
 - Updated agent count to 19 total agents
 
 ### Improved

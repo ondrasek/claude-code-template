@@ -181,7 +181,7 @@ This checks:
 - [MCP Protocol Specification](https://modelcontextprotocol.io)
 - [GitHub Dotfiles Documentation](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles)
 - [Versioning Guidelines](VERSIONING.md) - How we version this template
-- [Development Principles](PRINCIPLES.md) - Observed patterns and principles
+- **Memory System** - Architectural decisions and patterns stored in MCP memory server for cross-session persistence
 
 ## 📄 License
 

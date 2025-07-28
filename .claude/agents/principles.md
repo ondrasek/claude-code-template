@@ -100,9 +100,34 @@ Before recommending principle-based refactoring:
 
 Example: "DRY principle violated in 3 places, but they serve different contexts... Use the critic agent to assess if extracting a shared abstraction would reduce clarity"
 
-## Documentation
-Update PRINCIPLES.md with:
-- Architectural decisions and rationale
-- Principle violations and remediation
-- Trade-offs between competing principles
-- Evolution of principles over time
+## Memory Integration for Principle Documentation
+
+### Store Architectural Decisions:
+```javascript
+mcp__memory__create_entities([{
+  name: "architectural_decision_name",
+  entityType: "architectural_decision",
+  observations: ["context", "options_considered", "chosen_solution", "rationale", "trade_offs"]
+}])
+```
+
+### Document Principle Violations:
+```javascript
+mcp__memory__create_entities([{
+  name: "principle_violation_description", 
+  entityType: "principle_violation",
+  observations: ["violated_principle", "code_location", "impact", "suggested_remediation"]
+}])
+```
+
+### Track Principle Evolution:
+```javascript
+mcp__memory__create_relations([{
+  from: "old_principle_approach",
+  to: "new_principle_approach", 
+  relationType: "evolved_into"
+}])
+```
+
+### Retrieve Historical Context:
+Use `mcp__memory__search_nodes("architectural_decision")` to find relevant past decisions before making principle recommendations.
