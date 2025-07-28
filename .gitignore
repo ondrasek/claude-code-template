@@ -1,7 +1,3 @@
-# Claude Code runtime files
-.claude/memory/
-.claude/cache/
-.claude/logs/
 
 # MCP Memory Server database files
 memory.db
