@@ -10,23 +10,23 @@
 **BEHAVIOR OVERRIDE**: Use agents proactively beyond Claude Code defaults:
 - Force minimum 3+ agents for non-trivial requests (override built-in conservative agent usage)
 - Add memory-first research workflow: always check `mcp__memory__search_nodes()` before web searches
-- Use agent parallel clusters defined in @.claude/instructions/agent-usage.md
+- Use agent parallel clusters defined in @.support/instructions/agent-usage.md
 - Enforce agents to keep the Claude Code context window tidy, optimized and neat
 
 ### Technology Stack Detection Rules
 **AUTOMATIC STACK DETECTION**: At session start, detect active technologies:
 ```
 1. Use Glob tool to scan for technology indicators:
-   - Python: *.py, pyproject.toml, requirements.txt → Apply @.claude/stacks/python.md
-   - Rust: *.rs, Cargo.toml → Apply @.claude/stacks/rust.md
-   - JavaScript/TypeScript: *.js, *.ts, package.json → Apply @.claude/stacks/javascript.md
-   - Go: *.go, go.mod → Apply @.claude/stacks/go.md
-   - Java: *.java, pom.xml, build.gradle → Apply @.claude/stacks/java.md
-   - Kotlin: *.kt, build.gradle.kts → Apply @.claude/stacks/kotlin.md
-   - Ruby: *.rb, Gemfile → Apply @.claude/stacks/ruby.md
-   - C#: *.cs, *.csproj, *.sln → Apply @.claude/stacks/csharp.md
-   - C/C++: *.c, *.cpp, *.h, CMakeLists.txt → Apply @.claude/stacks/cpp.md
-   - Docker: Dockerfile, docker-compose.yml → Apply @.claude/stacks/docker.md
+   - Python: *.py, pyproject.toml, requirements.txt → Apply @.support/stacks/python.md
+   - Rust: *.rs, Cargo.toml → Apply @.support/stacks/rust.md
+   - JavaScript/TypeScript: *.js, *.ts, package.json → Apply @.support/stacks/javascript.md
+   - Go: *.go, go.mod → Apply @.support/stacks/go.md
+   - Java: *.java, pom.xml, build.gradle → Apply @.support/stacks/java.md
+   - Kotlin: *.kt, build.gradle.kts → Apply @.support/stacks/kotlin.md
+   - Ruby: *.rb, Gemfile → Apply @.support/stacks/ruby.md
+   - C#: *.cs, *.csproj, *.sln → Apply @.support/stacks/csharp.md
+   - C/C++: *.c, *.cpp, *.h, CMakeLists.txt → Apply @.support/stacks/cpp.md
+   - Docker: Dockerfile, docker-compose.yml → Apply @.support/stacks/docker.md
 2. Load corresponding stack guidelines using @ syntax
 3. Apply technology-specific best practices throughout session
 ```
@@ -54,20 +54,20 @@
 ## Key Reference Files
 
 **CRITICAL INSTRUCTIONS**: Always check these files for guidance:
-- @.claude/instructions/git-workflow.md - Trunk-based development rules
-- @.claude/instructions/documentation.md - Documentation maintenance
-- @.claude/instructions/agent-usage.md - Agent coordination patterns
-- @.claude/instructions/versioning.md - Semantic versioning protocol
+- @.support/instructions/git-workflow.md - Trunk-based development rules
+- @.support/instructions/documentation.md - Documentation maintenance
+- @.support/instructions/agent-usage.md - Agent coordination patterns
+- @.support/instructions/versioning.md - Semantic versioning protocol
 
 **TECHNOLOGY STACKS**: Load appropriate guidelines:
-- @.claude/stacks/python.md - Python with uv development
-- @.claude/stacks/rust.md - Rust development patterns
-- @.claude/stacks/javascript.md - Node.js/TypeScript patterns
-- @.claude/stacks/java.md - Java/Spring Boot patterns
-- @.claude/stacks/kotlin.md - Kotlin backend patterns
-- @.claude/stacks/ruby.md - Ruby development patterns
-- @.claude/stacks/csharp.md - C#/.NET patterns
-- @.claude/stacks/cpp.md - Modern C++ patterns
-- @.claude/stacks/docker.md - Container patterns
+- @.support/stacks/python.md - Python with uv development
+- @.support/stacks/rust.md - Rust development patterns
+- @.support/stacks/javascript.md - Node.js/TypeScript patterns
+- @.support/stacks/java.md - Java/Spring Boot patterns
+- @.support/stacks/kotlin.md - Kotlin backend patterns
+- @.support/stacks/ruby.md - Ruby development patterns
+- @.support/stacks/csharp.md - C#/.NET patterns
+- @.support/stacks/cpp.md - Modern C++ patterns
+- @.support/stacks/docker.md - Container patterns
 
 **AGENT DEFINITIONS**: Custom agents in @.claude/agents/ extend Claude Code's built-in capabilities with project-specific behaviors and memory integration.
