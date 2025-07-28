@@ -1,14 +1,14 @@
 # Git Workflow Instructions
 
-## Automatic Commit, Tag, and Push Policy
+## Automatic Commit and Push Policy
 
-**CRITICAL: Commit, tag, and push after EVERY non-trivial change**
+**IMPORTANT: Commit and push after EVERY non-trivial change**
 
 Claude Code MUST automatically:
 1. Commit changes after completing each meaningful task
-2. Create annotated tag for each commit (MANDATORY)
-3. Push both commit and tag to origin/main immediately
-4. Never batch multiple unrelated changes into one commit
+2. Push to origin/main immediately after committing
+3. Never batch multiple unrelated changes into one commit
+4. Create tags ONLY for value-adding increments that lead to releases
 
 Examples of when to commit:
 - After creating or modifying any file
@@ -27,15 +27,22 @@ Examples of when to commit:
 - **No long-lived branches**: Merge immediately if a branch was created
 - **Continuous integration**: Every commit to main should be deployable
 
-### Continuous Tagging Strategy
-- **Tag every commit**: Create annotated tag for each non-trivial change (MANDATORY)
+### Selective Tagging Strategy
+- **Tag only releases**: Create tags when repository is in working state with completed value-adding increment
 - **Version format**: `v1.2.3` (following semantic versioning)
-- **Incremental versioning**: Increment patch version for each commit
-- **Release identification**: Major releases are simply specific tagged commits
-- **Tag process** (automatic for every non-trivial change):
-  1. Commit changes to main
-  2. Create annotated tag: `git tag -a v1.2.3 -m "Brief description of change"`
-  3. Push both commit and tag: `git push origin main && git push origin v1.2.3`
+- **Release criteria**: Repository must be stable and feature-complete for that increment
+- **When to tag**:
+  - Major feature completion
+  - Significant bug fixes or improvements
+  - Documentation milestones
+  - Configuration improvements that add value
+  - When multiple related commits form a coherent release
+- **Tag process** (only for releases):
+  1. Ensure repository is in working state
+  2. Verify all tests pass and functionality works
+  3. Update CHANGELOG.md with release notes
+  4. Create annotated tag: `git tag -a v1.2.3 -m "Release version 1.2.3 - brief description"`
+  5. Push both commit and tag: `git push origin main && git push origin v1.2.3`
 
 ### When NOT to Create Branches
 - Regular feature development
@@ -62,9 +69,9 @@ Examples of when to commit:
   - Modifying configurations
 - **Auto-push**: Push commits to origin/main immediately after committing
 
-## Mandatory Workflow (Every Non-Trivial Change)
+## Standard Workflow (Every Non-Trivial Change)
 ```bash
-# After making changes
+# After making changes - commit and push immediately
 git add -A
 git commit -m "Add feature X
 
@@ -72,19 +79,35 @@ git commit -m "Add feature X
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
 
-# MANDATORY: Create annotated tag for each commit
-git tag -a v1.2.3 -m "Add feature X - incremental development tag"
+git push origin main
+```
+
+## Release Workflow (Only for Value-Adding Increments)
+```bash
+# After completing a meaningful increment
+git add -A
+git commit -m "Complete feature X - ready for release
+
+🤖 Generated with [Claude Code](https://claude.ai/code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+
+# Update CHANGELOG.md with release notes
+# Verify repository is in working state
+
+# Create release tag
+git tag -a v1.2.3 -m "Release version 1.2.3 - feature X completion"
 
 # Push both commit and tag
 git push origin main
 git push origin v1.2.3
 ```
 
-## Tag Naming Strategy
-- **Semantic versioning**: Use `v1.2.3` format for all tags
-- **Incremental tags**: Tag every non-trivial commit (not just releases)
-- **Tag messages**: Brief description of the change
-- **Continuous tagging**: Enables easy navigation through development history
+## Tag Guidelines
+- **Quality over quantity**: Only tag stable, working increments
+- **Semantic versioning**: Use `v1.2.3` format for release tags
+- **Meaningful releases**: Each tag should represent completed value
+- **Working state**: Repository must be functional when tagged
 
 ## Commit Message Format
 - Use clear, concise messages describing what changed

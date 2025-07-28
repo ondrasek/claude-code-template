@@ -54,9 +54,10 @@
 ```
 
 ### Git Workflow Override
-**MANDATORY COMMIT-TAG-PUSH**: See @.claude/instructions/git-workflow.md for complete protocol
-- CRITICAL: Create annotated tag for EVERY non-trivial change (not just releases)
-- Push both commit and tag immediately after each change
+**TRUNK-BASED DEVELOPMENT**: See @.claude/instructions/git-workflow.md for complete protocol
+- Commit and push after every non-trivial change
+- Create tags ONLY for value-adding increments when repository is in working state
+- Tags represent completed releases, not individual commits
 
 ### MCP Server Configuration
 **ACTIVE MCP SERVERS**: This project uses these NON-REDUNDANT MCP servers (.mcp.json):
