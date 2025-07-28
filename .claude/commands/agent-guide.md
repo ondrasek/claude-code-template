@@ -34,7 +34,7 @@ Comprehensive guide for effectively using all 26 specialized AI agents in the cu
 ### Workflow & Documentation
 - **generator**: Create code generators and domain-specific languages
 - **docs**: Maintain synchronized documentation with code changes
-- **tagger**: Autonomous git release management and versioning
+- **git-tagger**: Autonomous git release management and versioning
 - **todo**: Specialized task lifecycle management (context-clean)
 - **time**: Historical analysis and future trajectory prediction
 - **prompter**: AI agent prompt creation for user projects

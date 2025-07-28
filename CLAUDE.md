@@ -101,19 +101,19 @@ Examples:
 **EXECUTE AFTER EVERY CHANGE - NO EXCEPTIONS**:
 1. **Stage immediately**: `git add -A` after any file modification
 2. **Commit at milestones**: When any meaningful task is complete
-3. **Always invoke tagger**: Use tagger agent after EVERY commit to evaluate for tags
-4. **Update CHANGELOG.md**: When tagger creates release tags, update CHANGELOG.md with release notes
+3. **Always invoke git-tagger**: Use git-tagger agent after EVERY commit to evaluate for tags
+4. **Update CHANGELOG.md**: When git-tagger creates release tags, update CHANGELOG.md with release notes
 5. **Push immediately**: `git push origin main` after every commit
 
-**Agent coordination**: All agents MUST follow this protocol. Tagger agent runs autonomously after every commit.
+**Agent coordination**: All agents MUST follow this protocol. Git-tagger agent runs autonomously after every commit.
 
 Example sequence:
   ```bash
   # After modifying src/components/Header.tsx
   git add -A
   git commit -m "Add dark mode toggle to header component"
-  # Auto-invoke tagger agent here
-  # If tagger creates v1.2.0 tag → Update CHANGELOG.md with release notes
+  # Auto-invoke git-tagger agent here
+  # If git-tagger creates v1.2.0 tag → Update CHANGELOG.md with release notes
   git push origin main
   ```
 

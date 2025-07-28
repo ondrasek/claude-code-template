@@ -72,7 +72,7 @@ This template helps developers understand:
 - `prompter` - AI agent development
 - `time` - Historical analysis and evolution
 - `connector` - Cross-domain creative solutions
-- `tagger` - Automatic release management
+- `git-tagger` - Automatic release management
 
 </details>
 

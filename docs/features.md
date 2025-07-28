@@ -48,7 +48,7 @@ Your personal team of AI specialists with **mandatory coordination** for all non
 | **`prompter`** | Helps build AI agents and prompts | Creating custom Claude Code agents |
 | **`time`** | Analyzes code history and evolution | Understanding how code evolved |
 | **`connector`** | Finds creative cross-domain solutions | "How do other fields solve this?" |
-| **`tagger`** | Automatically manages releases and versions | Automated release workflows |
+| **`git-tagger`** | Automatically manages releases and versions | Automated release workflows |
 
 ## 📋 Custom Commands
 

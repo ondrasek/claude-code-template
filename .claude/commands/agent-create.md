@@ -30,7 +30,7 @@ Guide for creating new Claude Code agents following empirical principles, select
 - **explorer**, **resolver**, **principles**, **invariants**, **connector**
 
 ### Workflow & Documentation
-- **generator**, **docs**, **tagger**, **todo**, **time**, **prompter**
+- **generator**, **docs**, **git-tagger**, **todo**, **time**, **prompter**
 
 ### Technology Guidelines
 - **guidelines-file**, **guidelines-repo**
