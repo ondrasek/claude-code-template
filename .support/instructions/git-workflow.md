@@ -1,15 +1,14 @@
 # Git Workflow Instructions
 
-## Automatic Commit and Push Policy
+## Simple Git Protocol (MANDATORY)
 
-**IMPORTANT: Commit and push after EVERY non-trivial change**
+**EXECUTE AFTER EVERY CHANGE - NO EXCEPTIONS**:
+1. **Stage immediately**: `git add -A` after any file modification
+2. **Commit at milestones**: When any meaningful task is complete
+3. **Always invoke tagger**: Use tagger agent after EVERY commit to evaluate for tags
+4. **Push immediately**: `git push origin main` after every commit
 
-Claude Code MUST automatically:
-1. **Stage all changes**: Include all code and configuration changes
-2. Commit changes after completing each meaningful task
-3. Push to origin/main immediately after committing
-4. Never batch multiple unrelated changes into one commit
-5. Create tags ONLY for value-adding increments that lead to releases
+**Agent coordination**: All agents MUST follow this protocol. Tagger agent runs autonomously after every commit.
 
 Examples of when to commit:
 - After creating or modifying any file

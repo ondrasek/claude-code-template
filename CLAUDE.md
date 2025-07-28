@@ -41,6 +41,15 @@
 - Use `mcp__memory__search_nodes()` before web research
 - Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`
 
+### Simple Git Protocol (MANDATORY)
+**EXECUTE AFTER EVERY CHANGE - NO EXCEPTIONS**:
+1. **Stage immediately**: `git add -A` after any file modification
+2. **Commit at milestones**: When any meaningful task is complete
+3. **Always invoke tagger**: Use tagger agent after EVERY commit to evaluate for tags
+4. **Push immediately**: `git push origin main` after every commit
+
+**Agent coordination**: All agents MUST follow this protocol. Tagger agent runs autonomously after every commit.
+
 ### TODO Management System
 **COLLABORATIVE TODO WORKFLOW**: `.support/todos/` directory for human-AI collaboration:
 - **Purpose**: TODOs are meant to be BOTH human and AI readable
