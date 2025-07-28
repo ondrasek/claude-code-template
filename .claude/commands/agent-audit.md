@@ -121,7 +121,7 @@ For each agent to audit:
 - **Overhead justification**: Does agent reduce >50 lines of main context?
 - **Context boundaries**: Clear input/output without back-and-forth?
 - **Selection optimization**: Tier 1/2 keywords for Claude Code selection?
-- **Human role avoidance**: Computational tasks vs organizational roles?
+- **Focus validation**: Computational tasks, thinking patterns, paradigms, perspectives vs human roles?
 
 **Ecosystem-wide analysis:**
 - **Redundancy detection**: Overlapping capabilities across agents

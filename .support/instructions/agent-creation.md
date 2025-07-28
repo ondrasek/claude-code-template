@@ -37,21 +37,23 @@ Agents should handle tasks that have clear input/output boundaries and don't req
 - Needs access to ongoing conversation state
 - Produces outputs requiring main context interpretation
 
-### 4. Avoid Human Organizational Roles
-Agents should not mirror human team roles or organizational positions. They should focus on computational tasks and analysis patterns.
+### 4. Focus on Computational Tasks and Thinking Patterns
+Agents should embody computational tasks, thinking patterns, paradigms, and analytical perspectives - not human organizational roles.
 
-**Good agent concepts:**
-- `critic` - Provides contrarian analysis (analysis pattern)
-- `patterns` - Detects code duplication (computational task)
-- `completer` - Finds missing implementations (systematic analysis)
+**Correct agent approaches:**
+- **Computational tasks**: `patterns` - Systematically detect code duplication across files
+- **Context window isolation**: `researcher` - Gather information without cluttering main context
+- **Thinking patterns**: `critic` - Apply contrarian analysis methodology
+- **Paradigms**: `axioms` - Derive solutions from first principles reasoning
+- **Perspectives**: `constraints` - View problems through limitation/trade-off lens
+- **Points of view**: `hypothesis` - Approach debugging through systematic theory formation
 
-**Bad agent concepts:**
-- `project-manager` - Human organizational role
-- `team-lead` - Human hierarchical position  
-- `stakeholder` - Human business role
-- `scrum-master` - Human process role
+**Incorrect agent approaches:**
+- **Human roles**: `project-manager`, `team-lead`, `stakeholder`, `scrum-master`
+- **Social dynamics**: `mediator`, `facilitator`, `coordinator`
+- **Organizational positions**: `architect`, `senior-developer`, `tech-lead`
 
-**Rationale:** Claude Code agents excel at computational tasks, systematic analysis, and specialized prompting strategies - not at replicating human social dynamics or organizational responsibilities.
+**Rationale:** Agents excel at computational processing, systematic analysis patterns, and specialized analytical perspectives. They provide value through focused thinking approaches and context isolation, not by mimicking human social or organizational functions.
 
 ## Decision Framework
 
