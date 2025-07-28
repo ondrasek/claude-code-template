@@ -93,10 +93,12 @@ description: "PROACTIVELY use when user asks 'why does this happen', 'strange be
 ### Phase 2: Parallel Agent Spawning
 ```
 For each agent to audit:
-  Task: "Audit [agent-name] against creation principles" 
-  Subagent: patterns (for description analysis and optimization)
-  Context: Single agent file + creation principles
-  Output: Individual audit report with ratings and recommendations
+  1. Read agent definition from .claude/agents/[agent-name].md
+  2. Task: "Audit the following agent definition against creation principles"
+  3. Subagent: patterns (for description analysis and optimization)
+  4. Context: Complete agent content + creation principles from @.support/instructions/agent-creation.md
+  5. Constraint: Agent definitions are ONLY in .claude/agents/ - do not search elsewhere
+  6. Output: Individual audit report with ratings and recommendations
 ```
 
 ### Phase 3: Aggregation and Analysis

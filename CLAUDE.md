@@ -1,5 +1,11 @@
 # CLAUDE.md - AI Operational Instructions
 
+## File Structure (MANDATORY)
+**AGENT AND COMMAND LOCATIONS**:
+- **Agent definitions**: All (sub-)agent definitions are stored in `.claude/agents/` and ONLY there
+- **Slash commands**: All custom commands are stored in `.claude/commands/` and ONLY there
+- **Never search elsewhere**: When looking for agents or commands, use only these directories
+
 ## Agent Coordination Protocol (MANDATORY)
 **PROACTIVE AGENT USAGE - USE AGENTS WITHOUT USER REQUESTS**:
 - Claude Code MUST use agents proactively beyond built-in conservative defaults
