@@ -4,7 +4,13 @@ Complete overview of what this Claude Code template provides.
 
 ## 🤖 AI Agents (20+)
 
-Your personal team of AI specialists that work together to solve coding problems.
+Your personal team of AI specialists with **mandatory coordination** for all non-trivial requests.
+
+### Mandatory Protocol
+- **Minimum 3+ agents** automatically used for complex tasks
+- **Baseline combination**: researcher + patterns + critic
+- **Memory-first research**: System checks MCP memory before web searches
+- **Parallel clusters**: Multiple agents work simultaneously when possible
 
 ### Essential Agents (Start Here)
 | Agent | What It Does | When to Use |
@@ -142,6 +148,12 @@ External integrations that extend Claude Code capabilities.
 
 ## 🚀 Automation Features
 
+### Documentation Protocol (MANDATORY)
+- **Same commit rule** - Documentation updates included with every code change
+- **Automatic checks** - README.md, CHANGELOG.md, API docs, CLAUDE.md always reviewed
+- **Immediate updates** - New features, API changes, configuration changes documented instantly
+- **docs agent integration** - Automatic documentation maintenance
+
 ### Git Integration
 - **Automatic memory export** before every commit
 - **Autonomous tagging** based on completion criteria
@@ -156,7 +168,13 @@ External integrations that extend Claude Code capabilities.
 
 ## 🎯 Agent Coordination
 
-Agents work together in intelligent clusters.
+Agents work together in intelligent clusters with **mandatory coordination protocols**.
+
+### Mandatory Protocol (ENFORCED)
+- **Minimum 3+ agents** for all non-trivial requests - no exceptions
+- **Baseline combination**: researcher + patterns + critic (always included)
+- **Memory-first workflow**: Check MCP memory before web searches
+- **Context optimization**: Agents keep main context window tidy and focused
 
 ### Common Patterns
 - **Research → Patterns → Principles → Critic** - For code reviews

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Updated README.md and features.md to reflect new mandatory protocols from CLAUDE.md
+- Added mandatory agent coordination requirements (minimum 3+ agents for non-trivial requests)
+- Added mandatory documentation protocol (automatic updates with every code change)
+- Enhanced best practices and automation features documentation
+
 ## [2.5.1] - 2025-07-28
 
 ### Changed

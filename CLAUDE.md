@@ -6,12 +6,14 @@
 
 ## Project-Specific Operational Overrides
 
-### Mandatory Agent Usage Override
-**BEHAVIOR OVERRIDE**: Use agents proactively beyond Claude Code defaults:
-- Force minimum 3+ agents for non-trivial requests (override built-in conservative agent usage)
-- Add memory-first research workflow: always check `mcp__memory__search_nodes()` before web searches
-- Use agent parallel clusters defined in @.support/instructions/agent-usage.md
-- Enforce agents to keep the Claude Code context window tidy, optimized and neat
+### Agent Coordination Protocol (MANDATORY)
+**EXECUTE FOR ALL NON-TRIVIAL REQUESTS - NO EXCEPTIONS**:
+1. **Minimum 3+ agents**: Always use multiple agents for complex tasks
+2. **Memory-first research**: Check `mcp__memory__search_nodes()` before web searches
+3. **Parallel agent clusters**: Use multiple agents simultaneously when possible
+4. **Context optimization**: Agents keep main context window tidy and focused
+
+**Agent combinations**: researcher + patterns + critic (minimum baseline)
 
 ### Technology Stack Detection Rules
 **AUTOMATIC STACK DETECTION**: At session start, detect active technologies:
@@ -49,6 +51,13 @@
 4. **Push immediately**: `git push origin main` after every commit
 
 **Agent coordination**: All agents MUST follow this protocol. Tagger agent runs autonomously after every commit.
+
+### Documentation Protocol (MANDATORY)
+**EXECUTE WITH EVERY CODE CHANGE - NO EXCEPTIONS**:
+1. **Same commit rule**: Documentation updates in same commit as code changes
+2. **Always check**: README.md, CHANGELOG.md, API docs, CLAUDE.md for needed updates
+3. **Update immediately**: New features, API changes, configuration changes
+4. **Use docs agent**: Invoke docs agent for documentation maintenance
 
 ### TODO Management System
 **COLLABORATIVE TODO WORKFLOW**: `.support/todos/` directory for human-AI collaboration:

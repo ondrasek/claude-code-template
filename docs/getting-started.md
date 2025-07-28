@@ -3,10 +3,11 @@
 ## What This Does
 
 Transform your Claude Code experience with:
-- ✅ **20+ AI agents** for different coding tasks (debugging, reviews, architecture)
+- ✅ **20+ AI agents** with mandatory coordination (minimum 3+ agents for complex tasks)
 - ✅ **Custom slash commands** like `/review`, `/test`, `/refactor` for instant help
 - ✅ **Technology-specific guidance** - Python, Rust, Java, JavaScript, and more
 - ✅ **Persistent memory** - Claude remembers your project decisions across sessions
+- ✅ **Automatic documentation** - Updates docs with every code change
 - ✅ **Automatic setup** - One-time install, works in every project
 
 ## Quick Start (5 Minutes)
@@ -25,10 +26,12 @@ Transform your Claude Code experience with:
 
 ## What You Get
 
-### Essential AI Agents (Start Here)
+### Essential AI Agents (Mandatory Baseline)
 - **`researcher`** - Find answers and current best practices
 - **`patterns`** - Spot code problems and suggest improvements
 - **`critic`** - Get honest feedback on your ideas and decisions
+
+**Note**: These 3 agents are automatically used together for all non-trivial requests as part of the mandatory coordination protocol.
 
 ### Advanced AI Agents
 <details>
@@ -76,25 +79,28 @@ Transform your Claude Code experience with:
 
 ## Real-World Examples
 
+**Note**: All examples automatically include the mandatory baseline agents (researcher + patterns + critic) plus any additional specialized agents.
+
 ### Debugging a Complex Bug
 ```
 1. /discuss "Should I rewrite this authentication module?"
-2. Use `hypothesis` agent to form theories about the root cause
+2. System automatically uses: researcher + patterns + critic + hypothesis
 3. /test to generate test cases that isolate the problem
 ```
 
 ### Architecture Review
 ```
 1. /review to get comprehensive feedback on your code
-2. Use `patterns` agent to identify improvements
-3. Use `principles` agent to ensure SOLID compliance
+2. System automatically uses: researcher + patterns + critic + principles
+3. Documentation automatically updated with architectural decisions
 ```
 
 ### New Feature Planning
 ```
-1. Use `explorer` agent to generate multiple approaches
-2. Use `constraints` agent to handle competing requirements  
+1. Use explorer agent for multiple approaches (includes baseline agents)
+2. Use constraints agent to handle competing requirements  
 3. /discuss the trade-offs before implementing
+4. Documentation automatically updated when feature is implemented
 ```
 
 ## Troubleshooting

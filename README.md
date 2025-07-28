@@ -88,13 +88,15 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 Note: Claude Code has built-in filesystem and web tools - no MCP needed!
 
 ### AI-Native Agents
+- **Mandatory coordination**: Minimum 3+ agents used for all non-trivial requests
 - **Pattern-Based**: Context synthesis, pattern recognition, parallel exploration
 - **First-Principles**: Axiom derivation, principle enforcement, invariant protection
-- **Documentation**: Automatic documentation synchronization
+- **Documentation**: Automatic documentation synchronization with every code change
 - **Conflict Resolution**: Handles pattern vs principle conflicts
 - **Technology Experts**: Python-expert and more stack-specific agents
 - **Implementation Support**: Prompt-engineer for creating framework-specific prompts
 - **Critical Analysis**: Critic agent to prevent sycophancy and bad decisions
+- **Baseline combination**: researcher + patterns + critic (minimum standard)
 - Total of 19 specialized agents for different aspects of development
 
 ### Automation Hooks
@@ -169,11 +171,14 @@ This checks:
 
 ## 🎯 Best Practices
 
-1. **Keep CLAUDE.md updated** with project-specific information
-2. **Use slash commands** for repetitive tasks
-3. **Configure MCP tools** for external integrations
-4. **Customize agents** for your specific workflow needs
-5. **Run verification** after making configuration changes
+1. **Agent coordination is mandatory** - All non-trivial requests automatically use minimum 3+ agents
+2. **Documentation updates automatically** - Every code change includes documentation updates in same commit
+3. **Memory-first research** - System checks MCP memory before web searches
+4. **Keep CLAUDE.md updated** with project-specific information
+5. **Use slash commands** for repetitive tasks
+6. **Configure MCP tools** for external integrations
+7. **Customize agents** for your specific workflow needs
+8. **Run verification** after making configuration changes
 
 ## 📚 Documentation
 
