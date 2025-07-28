@@ -1,6 +1,6 @@
 # Memory Import Command
 
-Import memories from markdown files in the memories/ folder to the MCP memory server.
+Import memories from markdown files in the .support/memories/ folder to the MCP memory server.
 
 ## Usage
 ```
@@ -12,7 +12,7 @@ Import memories from markdown files in the memories/ folder to the MCP memory se
 - `--replace`: Clear existing memories and import from files
 
 ## What it does
-- Reads all .md files from memories/ folder
+- Reads all .md files from .support/memories/ folder
 - Parses YAML frontmatter for entity metadata
 - Creates entities and relations in MCP memory server
 - Handles duplicate entities intelligently based on merge strategy
@@ -20,7 +20,7 @@ Import memories from markdown files in the memories/ folder to the MCP memory se
 
 ## Agent Delegation
 This command delegates to the `memory-import` agent to:
-- Scan memories/ folder for .md files
+- Scan .support/memories/ folder for .md files
 - Parse YAML frontmatter and markdown content
 - Use MCP memory functions to create entities/relations
 - Handle merge conflicts and duplicates

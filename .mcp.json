@@ -3,15 +3,12 @@
     "memory": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-memory"],
-      "env": {
-        "MEMORY_DB_PATH": ".mcp/memory.db"
-      },
-      "description": "Persistent memory between sessions - workspace relative storage"
+      "description": "Persistent memory between sessions - uses default memory.db location"
     },
     "sqlite": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", ".mcp/project.db"],
-      "description": "Local database for structured data storage - workspace relative storage"
+      "args": ["-y", "@modelcontextprotocol/server-sqlite"],
+      "description": "Local database for structured data storage - uses default location"
     }
   }
 }

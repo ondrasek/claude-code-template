@@ -1,6 +1,6 @@
 # Memory Export Command
 
-Export all memories from MCP memory server to individual markdown files in the memories/ folder.
+Export all memories from MCP memory server to individual markdown files in the .support/memories/ folder.
 
 ## Usage
 ```
@@ -9,7 +9,7 @@ Export all memories from MCP memory server to individual markdown files in the m
 
 ## What it does
 - Reads all entities and relations from MCP memory server
-- Creates individual .md files in memories/ folder (one per entity)
+- Creates individual .md files in .support/memories/ folder (one per entity)
 - Uses YAML frontmatter with entity metadata
 - Preserves memory structure for git-friendly version control
 - Prevents context pollution by delegating to memory-export agent
@@ -17,19 +17,13 @@ Export all memories from MCP memory server to individual markdown files in the m
 ## Agent Delegation
 This command delegates to the `memory-export` agent to:
 - Query MCP memory server using `mcp__memory__read_graph`
-- Create memories/ directory if needed
+- Create .support/memories/ directory if needed
 - Convert each entity to markdown format with YAML frontmatter
 - Write individual files named by entity (sanitized for filesystem)
 - Provide summary of exported memories
 
 ## Output Format
-Each memory becomes a separate file:
-```
-memories/
-├── research-topic-parallel-agents.md
-├── successful-tag-v2-1-0.md
-└── task-claude-optimization.md
-```
+Each memory becomes a separate markdown file in the .support/memories/ directory, with filenames based on sanitized entity names.
 
 ## File Structure
 ```yaml

@@ -3,16 +3,12 @@
 .claude/cache/
 .claude/logs/
 
-# MCP Memory Server Data - Codespace Persistence Strategy
-# For GitHub Codespaces: Allow .mcp/*.db to persist across rebuilds
-# For privacy: Comment out these exclusions if you want memory persistence
-.mcp/memory.db
-.mcp/project.db
-.mcp/*.db-wal
-.mcp/*.db-shm
+# MCP Memory Server Data - Uses default locations
+# Memory databases are stored in default MCP locations (not in repository)
+# Use /memory-export and /memory-import commands for version control
 
 # Memory Files - Version Control Strategy
-# memories/ folder contains exported memory files for collaboration
+# .support/memories/ folder contains exported memory files for collaboration
 # These are human-readable and git-friendly (individual .md files)
 # Included in version control for team collaboration and knowledge sharing
 
@@ -25,6 +21,11 @@ project.db
 *.db-shm
 mcp-memory/
 .mcp-memory/
+# Legacy support folder locations
+.mcp/
+memories/
+scripts/
+todos/
 
 # Environment variables
 .env

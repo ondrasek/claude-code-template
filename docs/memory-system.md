@@ -16,8 +16,8 @@ Unlike standard Claude Code sessions that forget everything when they end, this 
 
 ### MCP Memory Server
 The system uses the Model Context Protocol (MCP) memory server that:
-- Stores data in `.mcp/memory.db` (SQLite database)
-- Automatically saves context before git commits
+- Stores data in default memory.db location (managed by Claude Code)
+- Automatically saves context before git commits via `/memory-export`
 - Provides cross-session access to stored information
 - Integrates seamlessly with Claude Code's conversation flow
 
@@ -160,8 +160,8 @@ The memory system uses a knowledge graph approach:
 ## Privacy and Storage
 
 ### Local Storage
-- All memory is stored locally in your project
-- Data stays in `.mcp/memory.db` within your repository
+- Memory database managed by Claude Code in default location
+- Exported memory files stored in `.support/memories/` for version control
 - No external services or cloud storage involved
 - You control retention and deletion
 
@@ -180,20 +180,20 @@ The memory system uses a knowledge graph approach:
 ## Troubleshooting
 
 ### Memory Not Persisting
-1. Check that `.mcp/memory.db` exists and is writable
-2. Verify MCP memory server is running (`claude mcp status`)
-3. Ensure git hooks are properly configured
-4. Try manual `/memory-export` to test functionality
+1. Verify MCP memory server is running (`claude mcp status`)
+2. Ensure git hooks are properly configured for `/memory-export`
+3. Try manual `/memory-export` to test functionality
+4. Check that `.support/memories/` directory is writable
 
 ### Performance Issues
 1. Memory database getting too large - consider periodic cleanup
 2. Slow memory queries - database may need optimization
 3. Export taking too long - reduce context size before export
 
-### Memory Corruption
-1. Back up `.mcp/memory.db` regularly
-2. Use `./scripts/validate-template.sh` to check system health
-3. Reinitialize memory system if corruption occurs
+### Memory Issues
+1. Export memory regularly with `/memory-export` for backup
+2. Use `./.support/scripts/validate-template.sh` to check system health
+3. Reimport memory with `/memory-import` if needed
 
 The memory system transforms Claude Code from a stateless assistant into an intelligent development partner that grows smarter with every interaction.
 

@@ -42,7 +42,7 @@
 - Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`
 
 ### TODO Management System
-**COLLABORATIVE TODO WORKFLOW**: `todos/` directory for human-AI collaboration:
+**COLLABORATIVE TODO WORKFLOW**: `.support/todos/` directory for human-AI collaboration:
 - **Purpose**: TODOs are meant to be BOTH human and AI readable
 - **Creation**: TODOs SHOULD be created by BOTH users and AI
 - **Format**: Individual markdown files with YAML frontmatter (status, type, priority, assignee)

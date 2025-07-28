@@ -109,8 +109,8 @@ Transform your Claude Code experience with:
 - Use `/agent-guide` to see what each agent does best
 
 **Memory not persisting?**
-- Run `./scripts/setup-claude-memory.sh` to enable memory storage
-- Check that `.mcp/` directory exists in your project
+- Run `./.support/scripts/setup-claude-memory.sh` to set up memory workflow
+- Use `/memory-export` and `/memory-import` commands for persistence
 
 ## Need Help?
 

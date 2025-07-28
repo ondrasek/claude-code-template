@@ -34,13 +34,7 @@ Lightweight TODO management using Claude Code built-in tools and individual mark
 - **Write tool** to create/update TODOs
 - **Edit tool** to modify TODO status
 
-**File Structure**:
-```
-todos/
-├── authentication-bug.md        # Individual TODO files
-├── add-caching-layer.md         # Easy to browse and edit
-└── improve-documentation.md     # Simple markdown format
-```
+**File Structure**: Individual TODO files are stored in the .support/todos/ directory as markdown files with kebab-case names.
 
 ## TODO File Format
 
@@ -82,14 +76,14 @@ Check JWT expiration settings and Redis session storage.
 Use built-in tools to:
 1. Create filename from title (kebab-case)
 2. Generate YAML frontmatter with metadata
-3. Write file to todos/ directory
+3. Write file to .support/todos/ directory
 4. Update main TODO.md index if needed
 ```
 
 ### `/todo-list` Command  
 ```markdown
 Use Glob tool to:
-1. Find all todos/*.md files
+1. Find all .support/todos/*.md files
 2. Read frontmatter for filtering
 3. Display filtered results with status
 ```
@@ -106,7 +100,7 @@ Use Edit tool to:
 ## Integration with Existing Agents
 
 **completer agent**: 
-- Scans todos/ directory for incomplete TODOs
+- Scans .support/todos/ directory for incomplete TODOs
 - Creates new TODO files for discovered gaps
 - Updates TODO status after completing work
 
@@ -142,7 +136,7 @@ Use Edit tool to:
 ## Migration from Complex System
 
 If you have existing TODOs in other formats:
-1. Create individual files in todos/ directory
+1. Create individual files in .support/todos/ directory
 2. Convert to simple YAML + markdown format  
 3. Remove complex scripts and dependencies
 4. Use Claude Code built-in tools for management
