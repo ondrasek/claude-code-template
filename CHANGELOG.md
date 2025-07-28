@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.8.0] - 2025-07-28
+
+### Changed
+- **MAJOR**: Complete .support structure cleanup and documentation organization
+- Flattened docs organization by moving all files from docs/developer-guide/ to docs/
+- Removed docs/developer-guide/ subfolder (unnecessary nesting)
+- Deleted .support/templates/ directory (outdated TODO template format)
+- Deleted .support/prompts/ directory (generic prompts, no unique value)  
+- Simplified .support/ to contain only essential directories: stacks/, scripts/, todos/
+- Updated all documentation references to reflect flattened structure
+- Streamlined template architecture for better usability and maintenance
+
 ## [2.7.1] - 2025-07-28
 
 ### Removed
