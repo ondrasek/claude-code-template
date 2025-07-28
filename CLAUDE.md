@@ -286,6 +286,7 @@ EOF
 - @.claude/instructions/git-workflow.md - Git automation requirements
 - @.claude/instructions/documentation.md - Documentation sync requirements  
 - @.claude/instructions/agent-usage.md - Agent coordination protocols
+- @.claude/instructions/todo-protocol.md - TODO/CHANGELOG management with semantic versioning
 - @.claude/stacks/[technology].md - Technology-specific guidelines
 
 **MCP TOOLS AVAILABLE**: Use these specialized capabilities when appropriate:

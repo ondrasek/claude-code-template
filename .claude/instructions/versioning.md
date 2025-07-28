@@ -67,3 +67,25 @@ This project follows **Semantic Versioning (SemVer)**.
 - Alpha: `1.0.0-alpha.1`
 - Beta: `1.0.0-beta.1`
 - Release Candidate: `1.0.0-rc.1`
+
+## Integration with TODO Protocol
+
+This versioning process integrates with the comprehensive TODO/CHANGELOG protocol:
+
+### Automatic Version Detection
+- Version bumps are calculated based on completed TODO task types
+- `break` tasks → MAJOR version
+- `feat` tasks → MINOR version  
+- `fix`/`docs`/`perf`/`refactor`/`test`/`chore` tasks → PATCH version
+
+### CHANGELOG Integration
+- Completed TODOs automatically generate CHANGELOG entries
+- Task types map to CHANGELOG sections (Added/Fixed/Changed/Removed)
+- Full traceability from TODO to release documentation
+
+### Commands Available
+- `/todo-add [type] [priority] "description"` - Add new TODO task
+- `/todo-complete [task-number]` - Mark task completed
+- `/version-prepare [auto|major|minor|patch]` - Prepare release
+
+See @.claude/instructions/todo-protocol.md for complete details on the TODO/CHANGELOG workflow.
