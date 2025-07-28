@@ -11,6 +11,11 @@
 .mcp/*.db-wal
 .mcp/*.db-shm
 
+# Memory Files - Version Control Strategy
+# memories/ folder contains exported memory files for collaboration
+# These are human-readable and git-friendly (individual .md files)
+# Included in version control for team collaboration and knowledge sharing
+
 # Legacy MCP locations (still excluded)
 memory.db
 memory.sqlite

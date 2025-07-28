@@ -2,30 +2,7 @@
 
 ## .claude Configuration Principles
 
-**CRITICAL**: ALL content under .claude/ is AI-optimized configuration for autonomous Claude Code operation:
-
-- **AI-FIRST DESIGN**: Every file is written for AI parsing and execution, NOT human readability
-- **ZERO REDUNDANCY**: NO content that duplicates built-in Claude Code features
-- **OPERATIONAL FOCUS**: Contains only non-obvious behavioral instructions and overrides
-- **HUMAN DOCS SEPARATION**: Human-readable content belongs in docs/ and README.md
-
-### What NOT to Include in .claude (Built-in Redundancy)
-**REMOVE these from .claude configuration** - Claude Code already provides them:
-- Tool descriptions (Read, Write, Glob, Grep, etc.) - Claude Code knows its tools
-- Basic agent invocation patterns - Claude Code handles agent orchestration  
-- File system navigation instructions - Claude Code has native file operations
-- Standard development workflows - Claude Code adapts to detected technology stacks
-- Generic coding best practices - Claude Code applies language-specific guidance
-- Basic error handling patterns - Claude Code has built-in error recovery
-
-### What BELONGS in .claude (Non-Redundant Extensions)
-**INCLUDE only project-specific overrides and behaviors**:
-- Custom agent behaviors beyond standard Claude Code agents
-- Project-specific workflow overrides (trunk-based development rules)
-- Memory integration patterns not built into Claude Code
-- Technology stack detection rules for project-specific setups
-- Custom command definitions that extend Claude Code functionality
-- Non-standard operational protocols specific to this repository
+**AI-FIRST DESIGN**: Contains only project-specific operational overrides that extend Claude Code's built-in capabilities.
 
 ## Project-Specific Operational Overrides
 
