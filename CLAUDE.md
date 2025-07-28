@@ -1,342 +1,85 @@
 # CLAUDE.md - AI Operational Instructions
 
-## Core Mission
-This file provides operational instructions for Claude Code AI to work efficiently with this repository. **CRITICAL**: Claude Code MUST extensively use agents for ALL user interactions and actively promote slash commands to enhance user productivity.
+## .claude Configuration Principles
 
-## Mandatory Agent Usage Policy
+**CRITICAL**: ALL content under .claude/ is AI-optimized configuration for autonomous Claude Code operation:
 
-**UNIVERSAL RULE**: Claude Code MUST use agents for EVERY user request without being asked:
-- **No exceptions** - Even simple questions benefit from agent specialization
-- **Proactive invocation** - Start agent workflows immediately upon user interaction
-- **Multiple agents default** - Use 3+ agents for any non-trivial request
-- **User education** - Explain agent value while using them extensively
+- **AI-FIRST DESIGN**: Every file is written for AI parsing and execution, NOT human readability
+- **ZERO REDUNDANCY**: NO content that duplicates built-in Claude Code features
+- **OPERATIONAL FOCUS**: Contains only non-obvious behavioral instructions and overrides
+- **HUMAN DOCS SEPARATION**: Human-readable content belongs in docs/ and README.md
 
-## Session Initialization Protocol
+### What NOT to Include in .claude (Built-in Redundancy)
+**REMOVE these from .claude configuration** - Claude Code already provides them:
+- Tool descriptions (Read, Write, Glob, Grep, etc.) - Claude Code knows its tools
+- Basic agent invocation patterns - Claude Code handles agent orchestration  
+- File system navigation instructions - Claude Code has native file operations
+- Standard development workflows - Claude Code adapts to detected technology stacks
+- Generic coding best practices - Claude Code applies language-specific guidance
+- Basic error handling patterns - Claude Code has built-in error recovery
 
-### Technology Stack Detection
-**CRITICAL**: At session start, automatically detect active technologies:
-```
-1. Use Glob tool to scan for technology indicators:
-   - Python: *.py, pyproject.toml, requirements.txt → Apply @.claude/stacks/python.md
-   - Rust: *.rs, Cargo.toml → Apply @.claude/stacks/rust.md
-   - JavaScript/TypeScript: *.js, *.ts, package.json → Apply @.claude/stacks/javascript.md
-   - Go: *.go, go.mod → Apply @.claude/stacks/go.md
-   - Java: *.java, pom.xml, build.gradle → Apply @.claude/stacks/java.md
-   - Docker: Dockerfile, docker-compose.yml → Apply @.claude/stacks/docker.md
-2. Load corresponding stack guidelines using @ syntax
-3. Apply technology-specific best practices throughout session
-```
+### What BELONGS in .claude (Non-Redundant Extensions)
+**INCLUDE only project-specific overrides and behaviors**:
+- Custom agent behaviors beyond standard Claude Code agents
+- Project-specific workflow overrides (trunk-based development rules)
+- Memory integration patterns not built into Claude Code
+- Technology stack detection rules for project-specific setups
+- Custom command definitions that extend Claude Code functionality
+- Non-standard operational protocols specific to this repository
 
-### Memory Context Loading
-**MANDATORY**: Use MCP memory for session continuity:
-```
-1. mcp__memory__search_nodes(project_name + " current_state")
-2. mcp__memory__search_nodes("technology_stack patterns")  
-3. Load previous architectural decisions, patterns, solutions
-4. Establish project context baseline for current session
-```
+## Project-Specific Operational Overrides
 
-### Resource Prioritization Protocol
-**TOOL EFFICIENCY ORDER**:
-```
-1. Memory tools (fastest) - Check existing knowledge first
-2. Local tools (fast) - File operations, code analysis
-3. Web tools (slower) - Only for new external information
-4. Complex analysis (slowest) - When simpler approaches fail
-```
+### Mandatory Agent Usage Override
+**BEHAVIOR OVERRIDE**: Use agents proactively beyond Claude Code defaults:
+- Force minimum 3+ agents for non-trivial requests (override built-in conservative agent usage)
+- Add memory-first research workflow: always check `mcp__memory__search_nodes()` before web searches
+- Use agent parallel clusters defined in @.claude/instructions/agent-usage.md
 
-**AGENT SELECTION OPTIMIZATION**:
+### Technology Stack Integration Override  
+**STACK DETECTION ENHANCEMENT**: C# detection rule addition:
 ```
-1. Use memory to learn which agent combinations work best for specific contexts
-2. Prioritize agents based on demonstrated success patterns from memory
-3. Avoid redundant agent invocations through memory coordination
-4. Track agent performance and adjust selection algorithms accordingly
+IF (.cs OR .csproj OR .sln files detected) → Apply @.claude/stacks/csharp.md guidelines
 ```
+*Note: All other technology detection relies on Claude Code built-in capabilities*
 
-## Agent Selection Algorithm
+### Git Workflow Override
+**TRUNK-BASED DEVELOPMENT**: Project-specific git behavior override:
+- Commit and push after EVERY non-trivial change (override default batch behavior)
+- Work directly on main branch (override feature branch workflow)
+- Tag releases frequently with semantic versioning
+- Use Claude Code attribution in commit messages
 
-### Mandatory Agent Selection Matrix
-**MINIMUM AGENT REQUIREMENTS**: Always use these agent combinations:
+### Memory Integration Override
+**MCP MEMORY USAGE**: Project-specific memory behavior:
+- Prioritize memory lookup before web searches (efficiency override)
+- Store agent combination success patterns for this project
+- Preserve architectural decisions across sessions
+- Track parallel agent cluster performance data
 
-**For ANY user request (baseline)**:
-```
-ALWAYS: researcher + patterns + principles + critic
-REASON: Every interaction benefits from research, pattern analysis, best practices, and critical evaluation
-```
-
-**Context-specific additions**:
-```
-IF user mentions error/bug → ADD: hypothesis + completer
-IF user asks "should I..." → ADD: explorer + constraints  
-IF code files mentioned → ADD: completer + whisper
-IF architecture question → ADD: explorer + constraints + resolver
-IF debugging needed → ADD: hypothesis + context
-IF documentation changes → ADD: docs + completer
-IF performance issues → ADD: patterns + constraints + completer
-IF refactoring → ADD: patterns + principles + whisper + completer
-```
-
-**NEVER use fewer than 3 agents** unless user explicitly requests minimal response.
-
-### Mandatory Command Promotion
-**COMMAND EVANGELISM**: Actively promote slash commands in every interaction:
-
-**ALWAYS suggest relevant commands**:
-```
-IF code quality discussion → "Try `/review` for comprehensive code analysis"
-IF testing mentioned → "Use `/test` for testing strategy and implementation"  
-IF refactoring needed → "Run `/refactor` for systematic code improvement"
-IF security concerns → "Execute `/security` for security audit and recommendations"
-```
-
-**Command promotion template**:
-```
-"For enhanced analysis, consider using our specialized commands:
-- `/review` - Comprehensive code review with multiple perspectives
-- `/refactor` - Systematic refactoring with risk assessment
-- `/test` - Testing strategy development and implementation
-- `/security` - Security audit and vulnerability assessment
-
-These commands leverage multiple agents working in parallel for deeper insights."
-```
-
-### Parallel Agent Execution
-**MANDATORY PARALLELISM**: Use Claude Code's native parallelism extensively:
-```
-Phase 1 (Always Parallel): researcher + patterns + principles + completer
-Phase 2 (Validation Parallel): critic + constraints + resolver
-Phase 3 (Implementation Parallel): docs + whisper + generator (as needed)
-```
-
-**AGENT LOAD BALANCING**: Distribute work across agents to maximize Claude Code's capabilities rather than doing work manually.
-
-### Agent Coordination Protocol
-**MEMORY-SHARED**: Agents coordinate through shared memory:
-```
-1. Agents store findings in mcp__memory__create_entities
-2. Cross-agent access via mcp__memory__search_nodes  
-3. Avoid sequential Task calls when parallel execution possible
-4. Use memory for context handoff between agents
-```
-
-## MCP Memory Integration System
-
-### Knowledge Graph Architecture
-**ENTITY TYPES**:
-```typescript
-// Core project entity structure
-type ProjectEntity = {
-  name: string
-  technology_stack: string[]
-  current_phase: 'development' | 'maintenance' | 'migration'
-  architecture_decisions: string[]
-  active_patterns: string[]
-  known_constraints: string[]
-}
-
-type PatternEntity = {
-  pattern_name: string
-  frequency: number
-  locations: string[]
-  impact_level: 'high' | 'medium' | 'low'
-  refactoring_cost: 'high' | 'medium' | 'low'
-}
-
-type DecisionEntity = {
-  decision_context: string
-  rationale: string
-  alternatives_considered: string[]
-  outcome: 'successful' | 'problematic' | 'unknown'
-  lessons_learned: string[]
-}
-```
-
-### Session Memory Protocol
-**START OF SESSION**:
-```
-1. mcp__memory__read_graph() # Load complete project context
-2. mcp__memory__search_nodes(project_name + " architecture")
-3. mcp__memory__search_nodes("recent_decisions patterns")
-4. Create session entity with timestamp and context
-```
-
-**DURING SESSION**:
-```
-- Store significant findings immediately with mcp__memory__create_entities
-- Update existing entities with mcp__memory__add_observations
-- Create relations between discoveries with mcp__memory__create_relations
-- Track successful agent combinations and tool sequences
-```
-
-**END OF SESSION**:
-```
-1. Create session summary entity with key decisions made
-2. Update project state with new understanding
-3. Strengthen relationships for successful patterns
-4. Store lessons learned for future sessions
-```
-
-### Cross-Session Learning
-**PATTERN TRACKING**:
-```
-1. Record successful agent combinations by context type
-2. Store effective tool sequences for common tasks
-3. Build knowledge of project-specific patterns and anti-patterns
-4. Learn user preferences and coding style guidelines
-```
-
-## Git Workflow Automation
-
-### Mandatory Git Protocol
-**CRITICAL**: Auto-commit, tag, and push workflow:
-```
-1. Commit after EVERY non-trivial change with descriptive messages
-2. Tag significant milestones using semantic versioning (v1.2.3)
-3. Push both commits and tags immediately to origin/main
-4. Use trunk-based development (main branch only)
-5. Create feature branches ONLY if explicitly instructed
-6. Follow conventional commit format when possible (feat:, fix:, docs:)
-```
-
-**Automated Git Workflow**:
-```
-For each non-trivial change:
-1. git add -A
-2. git commit -m "[conventional-prefix]: [description]"
-3. IF milestone reached: git tag -a v[x.y.z] -m "Release version [x.y.z]"
-4. git push origin main
-5. IF tagged: git push origin v[x.y.z]
-```
-
-### Commit Message Format
-```
-git commit -m "$(cat <<'EOF'
-[Action] [Brief description]
-
-🤖 Generated with [Claude Code](https://claude.ai/code)
-
-Co-Authored-By: Claude <noreply@anthropic.com>
-EOF
-)"
-```
-
-## Error Handling and Recovery
-
-### Tool Failure Protocol
-**GRACEFUL DEGRADATION**:
-```
-1. If MCP memory fails: Continue with session-only context
-2. If web tools fail: Use local analysis and stored knowledge  
-3. If agent fails: Log error and continue with remaining agents
-4. Always preserve partial progress and user workflow
-```
-
-### Context Recovery
-**FALLBACK SYSTEMS**:
-```
-1. If memory context lost: Rebuild from file analysis
-2. If technology detection fails: Use manual specification
-3. If agent coordination breaks: Fall back to sequential execution
-4. Maintain minimum viable operation in all failure modes
-```
-
-## Performance Optimization
-
-### Tool Prioritization
-**EFFICIENCY ORDER**:
-```
-1. Memory tools (fastest) - Check existing knowledge first
-2. Local tools (fast) - File system operations
-3. Web tools (slower) - Only for new information not in memory
-4. Complex analysis (slowest) - When simpler approaches insufficient
-```
-
-### Response Time Guidelines
-**BALANCE**: Thoroughness vs Speed
-```
-- Simple questions: Prioritize speed, minimal agent use
-- Complex analysis: Use full agent pipeline with memory optimization
-- User preference learning: Adjust based on feedback patterns
-- Emergency fixes: Fast response with follow-up thoroughness
-```
-
-## Simple TODO Management
-
-### Basic Workflow
-**WHEN USER REQUESTS CHANGES**: 
-1. For simple changes: Implement directly and update CHANGELOG.md
-2. For complex changes: Create individual TODO file in todos/ directory
-3. Use `/todo-add`, `/todo-list`, `/todo-complete` commands as needed
-
-### TODO Structure
-- Individual markdown files in `todos/` directory
+### Simple TODO Management
+**TODO WORKFLOW OVERRIDE**: Use built-in tools only:
+- Individual markdown files in `todos/` directory (no external scripts)
 - YAML frontmatter with basic metadata (status, type, priority, assignee)  
-- Simple markdown content with description and acceptance criteria
 - Use Claude Code built-in tools only (Glob, Read, Write, Edit)
-
-### CHANGELOG Updates
-Update CHANGELOG.md [Unreleased] section for all changes:
-```markdown
-### Added/Changed/Fixed/Removed
-- Brief description of change
-```
-
-## Quality Assurance Framework
-
-### Self-Validation Protocol
-**CONTINUOUS VERIFICATION**:
-```
-1. Cross-check findings against stored patterns
-2. Validate recommendations using memory of past outcomes
-3. Use critic agent for all significant proposals
-4. Store validation results for future reference
-5. Keep documentation synchronized with code changes
-```
+- Update CHANGELOG.md [Unreleased] section for all changes
 
 ## Key Reference Files
 
 **CRITICAL INSTRUCTIONS**: Always check these files for guidance:
-- @.claude/instructions/git-workflow.md - Git automation requirements
-- @.claude/instructions/documentation.md - Documentation sync requirements  
-- @.claude/instructions/agent-usage.md - Agent coordination protocols
-- @.claude/instructions/todo-protocol.md - TODO/CHANGELOG management with semantic versioning
-- @.claude/stacks/[technology].md - Technology-specific guidelines
+- @.claude/instructions/git-workflow.md - Trunk-based development rules
+- @.claude/instructions/documentation.md - Documentation maintenance
+- @.claude/instructions/agent-usage.md - Agent coordination patterns  
+- @.claude/instructions/versioning.md - Semantic versioning protocol
 
-**MCP TOOLS AVAILABLE**: Use these specialized capabilities when appropriate:
-- `mcp__memory__*` - Persistent memory and knowledge graph management
-- `mcp__filesystem__*` - Enhanced file operations beyond basic Read/Write  
-- `mcp__sqlite__*` - SQLite database access for data analysis and storage
-- `mcp__fetch__*` - HTTP requests and web API integration for external services
+**TECHNOLOGY STACKS**: Load appropriate guidelines:
+- @.claude/stacks/python.md - Python with uv development
+- @.claude/stacks/rust.md - Rust development patterns
+- @.claude/stacks/javascript.md - Node.js/TypeScript patterns
+- @.claude/stacks/java.md - Java/Spring Boot patterns
+- @.claude/stacks/kotlin.md - Kotlin backend patterns
+- @.claude/stacks/ruby.md - Ruby development patterns
+- @.claude/stacks/csharp.md - C#/.NET patterns
+- @.claude/stacks/cpp.md - Modern C++ patterns
+- @.claude/stacks/docker.md - Container patterns
 
-**INSTRUCTION PRIORITY**: Reference files provide context-specific guidance that overrides general protocols when applicable.
-
-## User Experience Enhancement
-
-### Proactive Agent Education
-**TEACH WHILE USING**: Explain agent value during execution:
-```
-"I'm using the researcher agent to gather current best practices..."
-"The patterns agent is analyzing your codebase for optimization opportunities..."
-"The critic agent is evaluating potential risks with this approach..."
-```
-
-### Command Discovery Promotion
-**FEATURE AWARENESS**: Regularly introduce users to powerful commands:
-- Mention commands contextually during conversations
-- Highlight command benefits with specific use cases
-- Demonstrate command effectiveness through results
-- Create FOMO (fear of missing out) on powerful automation
-
-### Override Mechanisms
-
-Users can modify AI behavior via:
-- `--no-agents` flag to disable agent automation (DISCOURAGED - explain agent benefits)
-- Explicit instruction to "don't use agents" (RARE - suggest minimal alternative)
-- Direct technology stack specification if auto-detection fails
-- Manual agent selection when algorithmic selection inadequate
-
-**IMPORTANT**: When users request minimal agent usage, still promote the value of full agent workflows for future interactions.
-
----
-
-**OPERATIONAL PRINCIPLE**: This file guides AI behavior while maintaining human transparency. All automation is documented, debuggable, and overrideable to ensure maintainable collaboration between AI and human developers.
+**AGENT DEFINITIONS**: Custom agents in @.claude/agents/ extend Claude Code's built-in capabilities with project-specific behaviors and memory integration.

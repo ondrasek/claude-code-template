@@ -15,13 +15,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Organized instruction files: git-workflow.md, documentation.md, agent-usage.md, versioning.md
 
 ### Changed
+- **MAJOR**: Drastically streamlined CLAUDE.md to eliminate redundancy with built-in Claude Code features
+- Added .claude configuration principles emphasizing AI-first design and zero redundancy
+- Reduced CLAUDE.md from verbose instructions to project-specific overrides only
+- Separated AI-optimized configuration (.claude) from human-readable docs (docs/, README.md)
 - Simplified TODO management approach - removed complex Python scripts and CLI tools
 - Restored original TODO.md content with agent parallelism optimization notes
 - Enhanced versioning.md with simplified TODO workflow
 - Reorganized instructions into topic-specific files in .claude/instructions/
 - Updated CLAUDE.md to use @ syntax for file references
 - Added technology stack detection rules for automatic language-specific guidance
-- Streamlined CLAUDE.md by removing low-value sections
 - Added trunk-based development rules and automatic commit/push policy
 - Added C# detection rule for .cs, .csproj, and .sln files
 
