@@ -43,23 +43,13 @@
 - **context** + **patterns** + **researcher** + **critic**
 - Flow: Understand system → Identify patterns → Research details → Validate understanding
 
-## Technology Stack Detection Rules
-**AUTOMATIC STACK DETECTION**: At session start, detect active technologies:
-```
-1. Use Glob tool to scan for technology indicators:
-   - Python: *.py, pyproject.toml, requirements.txt → Apply @.support/stacks/python.md
-   - Rust: *.rs, Cargo.toml → Apply @.support/stacks/rust.md
-   - JavaScript/TypeScript: *.js, *.ts, package.json → Apply @.support/stacks/javascript.md
-   - Go: *.go, go.mod → Apply @.support/stacks/go.md
-   - Java: *.java, pom.xml, build.gradle → Apply @.support/stacks/java.md
-   - Kotlin: *.kt, build.gradle.kts → Apply @.support/stacks/kotlin.md
-   - Ruby: *.rb, Gemfile → Apply @.support/stacks/ruby.md
-   - C#: *.cs, *.csproj, *.sln → Apply @.support/stacks/csharp.md
-   - C/C++: *.c, *.cpp, *.h, CMakeLists.txt → Apply @.support/stacks/cpp.md
-   - Docker: Dockerfile, docker-compose.yml → Apply @.support/stacks/docker.md
-2. Load corresponding stack guidelines using @ syntax
-3. Apply technology-specific best practices throughout session
-```
+## Technology Guidelines Protocol (MANDATORY)
+**CONDITIONAL AGENT INVOCATION**: Use guidelines agents only when technology-specific guidance is unclear or undetermined.
+
+**File-Level Guidelines**: Use `guidelines-file` agent before modifying any file when technology patterns are unclear
+**Repository-Level Guidelines**: Use `guidelines-repo` agent for architecture decisions when stack context is undetermined
+
+**Detection Logic**: Both agents reference @.support/instructions/stack-mapping.md for centralized technology detection rules
 
 ## Memory Integration Override
 **MCP MEMORY USAGE**: Project-specific memory behavior:
