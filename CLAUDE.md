@@ -61,15 +61,3 @@
 
 **Agent invocation**: `Task: "Create TODO for X" (subagent_type: todo)`
 
-## Key Reference Files
-
-**TECHNOLOGY STACKS**: MANDATORY operational instructions applied when technologies detected:
-- @.support/stacks/python.md - Python with uv development (ENFORCE uv exclusively)
-- @.support/stacks/rust.md - Rust development patterns (ENFORCE ownership/borrowing)
-- @.support/stacks/javascript.md - Node.js/TypeScript patterns (ENFORCE TypeScript types)
-- @.support/stacks/java.md - Java/Spring Boot patterns (ENFORCE Java 17+ features)
-- @.support/stacks/kotlin.md - Kotlin backend patterns (ENFORCE coroutines over blocking)
-- @.support/stacks/ruby.md - Ruby development patterns (ENFORCE RSpec testing)
-- @.support/stacks/csharp.md - C#/.NET patterns (ENFORCE nullable reference types)
-- @.support/stacks/cpp.md - Modern C++ patterns (ENFORCE C++20 features, RAII)
-- @.support/stacks/docker.md - Container patterns (ENFORCE security hardening)
