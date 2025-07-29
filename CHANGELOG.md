@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.25.1] - 2025-07-29
+
+### Fixed
+- **launch-claude.sh Telemetry Output**: Fixed telemetry data interfering with interactive Claude Code sessions
+  - Changed OTEL exports from console to file output to prevent stdout pollution
+  - Resolved issue where telemetry data was being written to stdout instead of proper log files
+  - Restored clean interactive mode functionality without telemetry interference
+
 ## [2.25.0] - 2025-07-29
 
 ### Enhanced
