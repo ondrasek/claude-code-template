@@ -44,51 +44,57 @@ Examples:
 ## Agent Combination Patterns (MANDATORY)
 
 **Analysis Requests** (`"analyze X"`, `"review Y"`, `"examine Z"`):
-- **Quality Cluster**: researcher + patterns + principles + critic
-- **Deep Analysis Cluster**: context + axioms + hypothesis + completer
+- **Quality Cluster**: Execute researcher + patterns + principles + critic simultaneously via single message with multiple Task() calls
+- **Deep Analysis Cluster**: Execute context + axioms + hypothesis + completer simultaneously via single message with multiple Task() calls
 - Flow: Research → Pattern detection → Principle application → Context analysis → Hypothesis validation
 
 **Architecture/Design Questions** (`"design X"`, `"architect Y"`, `"structure Z"`):
-- **Design Cluster**: researcher + explorer + constraints + principles + critic
-- **Validation Cluster**: resolver + invariants + context + completer
+- **Design Cluster**: Execute researcher + explorer + constraints + principles + critic simultaneously via single message with multiple Task() calls
+- **Validation Cluster**: Execute resolver + invariants + context + completer simultaneously via single message with multiple Task() calls
 - Flow: Research approaches → Generate alternatives → Apply constraints → Validate design → Complete implementation
 
 **Debugging Investigations** (`"why does X"`, `"strange behavior"`, `"not working"`):
-- **Investigation Cluster**: researcher + hypothesis + patterns + critic
-- **Resolution Cluster**: resolver + context + constraints + completer
+- **Investigation Cluster**: Execute researcher + hypothesis + patterns + critic simultaneously via single message with multiple Task() calls
+- **Resolution Cluster**: Execute resolver + context + constraints + completer simultaneously via single message with multiple Task() calls
 - Flow: Research issues → Form hypotheses → Pattern matching → Critical validation → Resolution synthesis
 
 **Code Quality Tasks** (`"improve X"`, `"refactor Y"`, `"optimize Z"`):
-- **Quality Enhancement Cluster**: patterns + principles + whisper + critic
-- **Performance Optimization Cluster**: performance + constraints + time + resolver
+- **Quality Enhancement Cluster**: Execute patterns + principles + whisper + critic simultaneously via single message with multiple Task() calls
+- **Performance Optimization Cluster**: Execute performance + constraints + time + resolver simultaneously via single message with multiple Task() calls
 - Flow: Pattern analysis → Principle application → Performance optimization → Critical validation
 
 **Feature Implementation** (`"add X"`, `"implement Y"`, `"create Z"`):
-- **Implementation Cluster**: researcher + patterns + completer + docs
-- **Integration Cluster**: context + constraints + resolver + critic
+- **Implementation Cluster**: Execute researcher + patterns + completer + docs simultaneously via single message with multiple Task() calls
+- **Integration Cluster**: Execute context + constraints + resolver + critic simultaneously via single message with multiple Task() calls
 - Flow: Research implementation → Pattern alignment → Feature completion → Documentation → Integration validation
 
 **Decision Making** (`"options for X"`, `"approaches to Y"`, `"choose between Z"`):
-- **Options Generation Cluster**: explorer + researcher + hypothesis + context
-- **Decision Validation Cluster**: constraints + resolver + critic + principles
+- **Options Generation Cluster**: Execute explorer + researcher + hypothesis + context simultaneously via single message with multiple Task() calls
+- **Decision Validation Cluster**: Execute constraints + resolver + critic + principles simultaneously via single message with multiple Task() calls
 - Flow: Generate alternatives → Research viability → Constraint analysis → Decision resolution
 
 **System Understanding** (`"how does X work"`, `"explain Y"`, `"show me Z"`):
-- **Comprehension Cluster**: context + patterns + researcher + critic
-- **Knowledge Synthesis Cluster**: axioms + principles + completer + docs
+- **Comprehension Cluster**: Execute context + patterns + researcher + critic simultaneously via single message with multiple Task() calls
+- **Knowledge Synthesis Cluster**: Execute axioms + principles + completer + docs simultaneously via single message with multiple Task() calls
 - Flow: System mapping → Pattern identification → Research validation → Knowledge documentation
 
 **Security Analysis** (`"security review"`, `"vulnerability assessment"`, `"threat analysis"`):
-- **Security Assessment Cluster**: vulnerability-scanner + threat-modeling + compliance-checker + researcher
-- **Risk Validation Cluster**: critic + constraints + resolver + principles
+- **Security Assessment Cluster**: Execute vulnerability-scanner + threat-modeling + compliance-checker + researcher simultaneously via single message with multiple Task() calls
+- **Risk Validation Cluster**: Execute critic + constraints + resolver + principles simultaneously via single message with multiple Task() calls
 - Flow: Vulnerability scanning → Threat modeling → Compliance checking → Risk assessment → Validation
 
 **Performance Optimization** (`"optimize performance"`, `"improve speed"`, `"reduce latency"`):
-- **Performance Analysis Cluster**: performance + time + constraints + patterns
-- **Optimization Implementation Cluster**: resolver + completer + critic + docs
+- **Performance Analysis Cluster**: Execute performance + time + constraints + patterns simultaneously via single message with multiple Task() calls
+- **Optimization Implementation Cluster**: Execute resolver + completer + critic + docs simultaneously via single message with multiple Task() calls
 - Flow: Performance measurement → Constraint analysis → Pattern optimization → Implementation validation
 
 ## Agent Coordination Best Practices (MANDATORY)
+
+**TRUE PARALLEL EXECUTION PATTERNS**:
+- **Single Message Multi-Task**: MUST use single message with multiple Task() calls for genuine concurrent agent processing
+- **Mandatory Parallelism**: All agent clusters MUST execute simultaneously, never sequentially
+- **Concurrent Processing**: 3-4 agents maximum per parallel batch to optimize resource usage
+- **Batch Coordination**: Each phase executes all selected agents simultaneously, then synthesizes results
 
 **EFFECTIVE CLUSTER PATTERNS**:
 - **Start with Research**: researcher agent should typically be first in complex analysis clusters
@@ -101,6 +107,8 @@ Examples:
 ## Technology Guidelines Protocol (MANDATORY)
 **CONDITIONAL AGENT INVOCATION**: Use guidelines agents only when technology-specific guidance is unclear or undetermined.
 
+**Parallel Guidelines Loading**: Execute guidelines-file + guidelines-repo agents simultaneously via single message with multiple Task() calls when both file-level and repository-level guidance needed
+
 **File-Level Guidelines**: Use `guidelines-file` agent before modifying any file when technology patterns are unclear
 **Repository-Level Guidelines**: Use `guidelines-repo` agent for architecture decisions when stack context is undetermined
 
@@ -109,6 +117,7 @@ Examples:
 Examples:
   - Modify Python file with unclear patterns → Use guidelines-file agent → Apply guidelines → Follow Simple Git Protocol
   - Architecture decision needed → Use guidelines-repo agent → Make informed choice → Follow Simple Git Protocol
+  - Complex changes needing both contexts → Execute guidelines-file + guidelines-repo simultaneously via single message with multiple Task() calls → Follow Simple Git Protocol
 
 ## MCP Server Integration Protocol (MANDATORY)
 **ENHANCED RESEARCH & MEMORY**: Follow @.support/instructions/mcp-protocol.md for comprehensive MCP server integration.
@@ -127,7 +136,7 @@ Examples:
 **MCP-ENHANCED EXECUTION PROTOCOL**:
 1. **Memory-first research**: `mcp__memory__search_nodes()` before external research
 2. **Intelligence-enhanced research**: `mcp__perplexity__search()` for current information  
-3. **Parallel agent clusters**: Memory-informed agent combinations based on proven patterns
+3. **Parallel agent clusters**: Execute memory-informed agent combinations simultaneously via single message with multiple Task() calls based on proven patterns
 4. **Context delegation**: MCP-enhanced context synthesis with persistent knowledge
 5. **Knowledge persistence**: Store all significant findings for cross-session intelligence
 
