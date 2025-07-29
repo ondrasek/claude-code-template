@@ -406,13 +406,13 @@ build_claude_command() {
     # Set default model
     cmd+=(--model "$DEFAULT_MODEL")
     
-    # Add verbose mode if enabled (only for non-interactive mode)
-    if [[ "$VERBOSE_MODE" == "true" && ${#ARGS[@]} -gt 0 ]]; then
+    # Add verbose mode if enabled
+    if [[ "$VERBOSE_MODE" == "true" ]]; then
         cmd+=(--verbose)
     fi
     
-    # Add MCP debug if enabled (but not for interactive mode as it interferes)
-    if [[ "$MCP_DEBUG" == "true" && ${#ARGS[@]} -gt 0 ]]; then
+    # Add MCP debug if enabled
+    if [[ "$MCP_DEBUG" == "true" ]]; then
         cmd+=(--mcp-debug)
     fi
     
@@ -443,6 +443,13 @@ build_claude_command() {
 main() {
     echo "🚀 launch-claude - Enhanced Claude Code wrapper"
     echo "📦 Model: $DEFAULT_MODEL"
+    
+    # Disable verbose and MCP debug modes for interactive mode (no arguments)
+    if [[ ${#ARGS[@]} -eq 0 ]]; then
+        VERBOSE_MODE="false"
+        MCP_DEBUG="false"
+        echo "ℹ️  Interactive mode: verbose and MCP debug disabled"
+    fi
     
     # Auto-detect environment before other setup
     detect_environment
