@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.26.1] - 2025-07-29
+
+### Improved
+- **launch-claude.sh Interactive Mode**: Enhanced interactive mode detection with cleaner variable control
+  - Control verbose and MCP debug modes through variables rather than conditional checks
+  - Set VERBOSE_MODE="false" and MCP_DEBUG="false" when no arguments (interactive mode)
+  - Cleaner implementation that centralizes mode control logic
+  - Removes redundant argument count checks from build_claude_command function
+
 ## [2.26.0] - 2025-07-29
 
 ### Added
