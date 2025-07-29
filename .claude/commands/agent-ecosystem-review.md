@@ -5,34 +5,37 @@ FOCUS: fast agent ecosystem assessment and optimization
 SCOPE: all agents in .claude/agents/ directory plus codebase analysis
 
 ACTIONS:
-1. **Intelligence Gathering Phase**: Run patterns, context, and researcher agents in parallel for codebase characterization and agent inventory analysis
-2. **Critical Analysis Phase**: Run principles, critic, and performance agents in parallel for ecosystem assessment and validation
-3. **Strategic Optimization Phase**: Run explorer, resolver, and ecosystem-analyzer agents for gap analysis and final recommendations (conditional based on complexity)
+1. **Codebase Assessment Phase**: Run context agent to automatically determine codebase size, complexity, and technology stack for analysis depth selection
+2. **Intelligence Gathering Phase**: Run patterns and researcher agents in parallel for agent inventory and ecosystem best practices (conditional agents based on codebase assessment)
+3. **Critical Analysis Phase**: Run principles, critic, and performance agents in parallel for ecosystem validation (scaled based on codebase complexity) 
+4. **Strategic Optimization Phase**: Run explorer, resolver, and ecosystem-analyzer agents for comprehensive optimization (enterprise codebases only)
 
 PARAMETERS:
 --priority [critical|high|medium|low|all] (filter recommendations by priority)
 --output [summary|detailed|roadmap|metrics] (output format, default: detailed)  
 --dry-run (generate proposal without implementation suggestions)
 --focus [gaps|redundancy|optimization|new-agents|performance|health] (specific analysis focus)
---depth [quick|standard|comprehensive] (analysis depth: 4-5, 6-8, or 8-10 agents)
 --metrics (include ecosystem health metrics and performance assessment)  
 --baseline (establish performance baseline for future comparisons)
+--force-depth [quick|standard|comprehensive] (override automatic depth detection, use sparingly)
 
 AGENT_EXECUTION_PLAN:
-**Phase 1 - Parallel Intelligence Gathering**:
-- patterns: Analyze agent inventory (.claude/agents/) and codebase patterns for usage analysis
-- context: Map system architecture, technology stack, and development complexity  
-- researcher: Research current agent ecosystem best practices and emerging patterns
+**Phase 1 - Codebase Assessment**:
+- context: Analyze codebase size (file count, LoC), technology stack complexity, and architectural patterns to automatically determine analysis depth
 
-**Phase 2 - Parallel Critical Analysis**:
-- principles: Evaluate current agents against design principles and architectural standards
-- critic: Critical assessment of ecosystem strengths, weaknesses, and optimization opportunities
-- performance: Analyze agent coordination efficiency and execution performance patterns
+**Phase 2 - Intelligence Gathering** (agents selected based on Phase 1 assessment):
+- patterns: Analyze agent inventory (.claude/agents/) and high-priority codebase patterns 
+- researcher: Research ecosystem best practices (medium/large codebases only)
 
-**Phase 3 - Strategic Optimization** (conditional based on depth):
-- explorer: Generate alternative ecosystem configurations and optimization approaches (complex codebases)
-- resolver: Resolve conflicts between optimization recommendations (enterprise codebases)
-- ecosystem-analyzer: Synthesize all findings into comprehensive optimization proposal
+**Phase 3 - Critical Analysis** (scaled based on codebase complexity):
+- principles: Evaluate agents against design principles (all codebases)
+- critic: Critical ecosystem assessment (medium/large codebases)
+- performance: Agent coordination analysis (large codebases only)
+
+**Phase 4 - Strategic Optimization** (enterprise/complex codebases only):
+- explorer: Generate alternative ecosystem configurations
+- resolver: Resolve optimization conflicts
+- ecosystem-analyzer: Synthesize findings into optimization proposal
 
 ENHANCED_OUTPUT:
 - **Executive Summary**: Agent count, alignment score, and top 3 priority recommendations
@@ -45,29 +48,29 @@ ENHANCED_OUTPUT:
 
 EXAMPLES:
 ```bash
-# Standard comprehensive review
+# Automatic analysis (depth determined by codebase size/complexity)
 /agent-ecosystem-review
 
-# Quick analysis for simple codebases (6 agents)
-/agent-ecosystem-review --depth quick --output summary
-
-# Deep analysis for complex ecosystems (9-10 agents)
-/agent-ecosystem-review --depth comprehensive --metrics
-
-# Focus on specific optimization areas
+# Focus on specific optimization areas with auto-depth
 /agent-ecosystem-review --focus gaps --priority high
 
-# Performance-focused review with baseline
-/agent-ecosystem-review --focus performance --baseline --metrics
+# Metrics-focused review with automatic scaling
+/agent-ecosystem-review --output metrics --baseline
+
+# Override automatic detection for testing (use sparingly)
+/agent-ecosystem-review --force-depth quick --output summary
+
+# Performance-focused review with smart scaling
+/agent-ecosystem-review --focus performance --metrics
 ```
 
 EXECUTION_BEHAVIOR:
-- **Reduced Agent Count**: 6-10 agents total based on analysis depth (vs. 24+ agents previously)
-- **Strategic Agent Selection**: Only spawn agents needed for requested analysis depth
-- **Intelligent Phasing**: 3 phases with conditional agent spawning based on codebase characteristics
+- **Automatic Depth Detection**: Codebase size/complexity automatically determines analysis scope (4-10 agents)
+- **Intelligent File Prioritization**: Focus analysis on core source files, configs, agents vs. generated/build files
+- **Conditional Agent Spawning**: 4 phases with agents selected based on automated codebase assessment
 - **Parallel Execution**: Multiple agents per phase run simultaneously for efficiency
-- **Comprehensive Analysis**: Maintains thorough ecosystem evaluation with optimized execution
-- **Adaptive Depth**: Analysis complexity scales with codebase size and agent ecosystem maturity
+- **Scalable Analysis**: Analysis depth scales automatically with codebase characteristics
+- **Smart Resource Allocation**: Comprehensive analysis for complex codebases, efficient analysis for simple ones
 
 ## Memory Integration
 

@@ -23,47 +23,54 @@ Synthesize findings from multiple specialized agents to evaluate agent ecosystem
 
 ## Analysis Framework
 
-### 1. Agent Inventory Analysis (from patterns agent)
-- **Agent Catalog**: Complete list of agents with descriptions and stated purposes
-- **Usage Pattern Detection**: Identify frequently used vs. underutilized agents
-- **Capability Mapping**: What each agent actually provides vs. stated purpose
-- **Redundancy Detection**: Overlapping or conflicting agent responsibilities
+### 1. Automatic Codebase Assessment (from context agent - Phase 1)
+- **Size Metrics**: File count, lines of code, directory structure analysis
+- **Technology Complexity**: Number of languages, frameworks, build systems
+- **Architecture Patterns**: Monolith vs microservices, layering, dependencies
+- **File Prioritization**: Core source files vs generated/build/config files
+- **Analysis Depth Determination**: Automatic selection of subsequent agent phases
 
-### 2. Codebase Context Analysis (from context agent)
-- **Technology Stack**: Primary/secondary languages, frameworks, tools
-- **Development Complexity**: Architecture patterns, code complexity indicators
-- **Common Tasks**: Recurring development patterns and workflow needs
-- **Technical Debt Areas**: Specific domains requiring specialized agent attention
+### 2. Agent Inventory Analysis (from patterns agent - Phase 2)
+- **Agent Catalog**: Complete list of agents with descriptions and stated purposes (prioritizing core agents)
+- **Usage Pattern Detection**: Focus on frequently used agents and critical gaps
+- **Capability Mapping**: What each agent provides vs. codebase-specific needs
+- **Redundancy Detection**: Overlapping responsibilities based on codebase characteristics
 
-### 3. Gap Analysis & Optimization
-- **Missing Capabilities**: Development needs not covered by existing agents
-- **Quick Wins**: Simple modifications that improve efficiency immediately
-- **Agent Modifications**: Updates to existing agents for better alignment
-- **New Agent Candidates**: Specific agents needed for identified gaps
-- **Removal Candidates**: Obsolete or redundant agents to eliminate
+### 3. Scaled Critical Analysis (Phases 3-4, conditional)
+- **Principle Compliance**: Agent alignment with codebase architectural patterns
+- **Performance Assessment**: Agent coordination efficiency (large codebases only)
+- **Strategic Optimization**: Alternative configurations (enterprise codebases only)
+- **Conflict Resolution**: Resolve competing recommendations (complex ecosystems only)
 
 ## Analysis Input Sources
 
-This agent receives analysis results from 2 specialized agents and synthesizes them:
+This agent receives analysis results from 2-6 specialized agents based on automatic codebase assessment:
 
-### Agent Inventory Intelligence (from patterns agent)
-- Complete agent catalog with descriptions and triggers
-- Usage pattern analysis and agent effectiveness metrics
-- Redundancy detection and capability gap identification
-- Agent combination patterns and coordination efficiency
+### Codebase Assessment Intelligence (from context agent - always included)
+- Automatic codebase size/complexity metrics and technology stack analysis
+- File prioritization logic separating core source from generated/build files
+- Architecture pattern detection and development workflow characteristics
+- Analysis depth recommendation based on measurable codebase characteristics
 
-### Codebase Context Intelligence (from context agent)
-- Technology stack analysis and architectural patterns
-- Development complexity assessment and common workflows
-- Domain-specific requirements and technical debt areas
-- Development bottlenecks requiring specialized agent support
+### Agent Inventory Intelligence (from patterns agent - always included)
+- Prioritized agent catalog focused on core agents relevant to detected tech stack
+- Usage pattern analysis emphasizing agents critical to identified development patterns
+- Redundancy detection targeting overlaps specific to codebase characteristics
+- Gap identification based on codebase needs vs available agent capabilities
+
+### Conditional Intelligence (additional agents based on codebase complexity)
+- **Medium Codebases**: researcher (ecosystem best practices), critic (weakness assessment)
+- **Large Codebases**: + performance (coordination efficiency), principles (architectural alignment)
+- **Enterprise Codebases**: + explorer (alternative configurations), resolver (conflict resolution)
 
 ## Output Structure
 
 ### Executive Summary
-- **Current State**: Agent count, utilization patterns, key gaps
-- **Alignment Score**: How well current agents match codebase needs (1-10)
-- **Priority Recommendations**: Top 3 most impactful changes (focus on quick wins)
+- **Codebase Profile**: Size classification (Small/Medium/Large/Enterprise) with key metrics
+- **Analysis Depth**: Agents spawned based on automatic assessment (4-10 agents)
+- **Current State**: Agent count, utilization patterns, priority gaps for this codebase type
+- **Alignment Score**: How well current agents match detected codebase characteristics (1-10)
+- **Priority Recommendations**: Top 3 most impactful changes based on codebase-specific needs
 
 ### Detailed Analysis
 
