@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.28.0] - 2025-07-29
+
+### Added
+- **Automatic Depth Detection for Ecosystem Review**: Intelligent codebase assessment replaces manual depth selection
+  - Context agent automatically determines analysis depth based on codebase size, complexity, and technology stack
+  - Intelligent file prioritization separating core source files from generated/build/config files  
+  - 4-phase conditional analysis with smart agent selection (4-10 agents based on codebase characteristics)
+  - Removes manual --depth parameter in favor of automatic scaling from Small to Enterprise codebase classifications
+  - Enhanced ecosystem-analyzer and agent-ecosystem-review command with codebase-aware analysis scaling
+  - Maintains comprehensive analysis for complex codebases while providing efficient analysis for simple ones
+
 ## [2.27.1] - 2025-07-29
 
 ### Enhanced  
