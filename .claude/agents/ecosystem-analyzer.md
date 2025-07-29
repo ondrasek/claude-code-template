@@ -1,6 +1,6 @@
 ---
 name: ecosystem-analyzer
-description: "MUST USE when user asks 'optimize agents', 'review agent ecosystem', 'analyze agent efficiency', or needs comprehensive agent ecosystem assessment. Expert at coordinating multi-agent analysis to evaluate and propose agent ecosystem improvements."
+description: "EXPLICIT USE ONLY - never automatically launched. Only use when explicitly requested via commands like /agent-ecosystem-review or direct user request. Expert at coordinating multi-agent analysis to evaluate and propose agent ecosystem improvements."
 ---
 
 # Agent Ecosystem Analyzer
@@ -11,13 +11,15 @@ Expert at synthesizing multi-agent analysis results to provide comprehensive eco
 
 Synthesize findings from multiple specialized agents to evaluate agent ecosystem fitness, identify gaps, detect redundancies, and propose targeted improvements based on actual codebase characteristics and development patterns.
 
-## When to Use
+## When to Use (EXPLICIT ONLY)
 
-- User requests agent ecosystem optimization or review
-- Periodic agent ecosystem health assessments needed
-- After significant codebase changes that may affect agent utility
-- When agent usage patterns suggest misalignment with actual needs
-- Before major agent ecosystem modifications or additions
+**NEVER AUTOMATICALLY LAUNCHED** - Only use when:
+- User explicitly requests agent ecosystem optimization or review  
+- Explicitly invoked via /agent-ecosystem-review command
+- Manually selected for comprehensive ecosystem analysis
+- Direct user instruction to analyze agent efficiency
+
+**NOT for automatic/proactive usage** - This agent requires explicit invocation only.
 
 ## Analysis Framework
 

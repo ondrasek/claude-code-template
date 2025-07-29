@@ -88,13 +88,14 @@ Examples:
 - **Optimization Implementation Cluster**: resolver + completer + critic + docs
 - Flow: Performance measurement → Constraint analysis → Pattern optimization → Implementation validation
 
-**Agent Ecosystem Analysis** (`"optimize agents"`, `"review agent ecosystem"`, `"analyze agent efficiency"`):
-- **Comprehensive Analysis**: Use /agent-ecosystem-review command with 6-phase parallel cluster execution
-- **Manual Combination**: ecosystem-analyzer + patterns + axioms + context + principles + critic + hypothesis + explorer + connector + resolver
+**Agent Ecosystem Analysis** (EXPLICIT USE ONLY - never automatic):
+- **Command Usage**: Use /agent-ecosystem-review command for structured analysis
+- **Manual Invocation**: Use ecosystem-analyzer agent only when explicitly requested
+- **Agent Combination**: ecosystem-analyzer + patterns + axioms + context + principles + critic + hypothesis + explorer + connector + resolver
 - Flow: Orchestrate analysis → Characterize codebase → Assess current agents → Identify gaps → Generate proposals → Validate recommendations
 
 ## Agent Ecosystem Management Protocol (MANDATORY)
-**ECOSYSTEM OPTIMIZATION**: Use ecosystem-analyzer agent and /agent-ecosystem-review command for systematic agent ecosystem assessment and optimization.
+**ECOSYSTEM OPTIMIZATION (EXPLICIT ONLY)**: Use ecosystem-analyzer agent and /agent-ecosystem-review command ONLY when explicitly requested - never automatically or proactively. This agent requires manual invocation for systematic agent ecosystem assessment and optimization.
 
 ## Agent Ecosystem Performance Characteristics (MANDATORY)
 
@@ -123,11 +124,11 @@ Examples:
 - **Complete Thoroughness**: completer agent ensures no missing elements in implementations
 - **Resolve Conflicts**: resolver agent handles competing recommendations or approaches
 
-**Ecosystem Analysis Triggers**:
-- **Automatic**: When agent usage patterns suggest misalignment with codebase needs
-- **Periodic**: Regular ecosystem health assessments (quarterly or after major changes)
-- **Manual**: User requests with "optimize agents", "review agent ecosystem", "analyze agent efficiency"
-- **Change-driven**: After significant codebase changes affecting agent utility
+**Ecosystem Analysis Triggers (EXPLICIT ONLY)**:
+- **Manual Only**: User explicitly requests with "optimize agents", "review agent ecosystem", "analyze agent efficiency"
+- **Command Invocation**: Direct use of /agent-ecosystem-review command
+- **Never Automatic**: Do not trigger based on usage patterns or codebase changes
+- **Never Proactive**: Requires explicit user instruction - no autonomous invocation
 
 **Core Tools**:
 - **ecosystem-analyzer agent**: Orchestrates multi-agent analysis for comprehensive ecosystem evaluation
