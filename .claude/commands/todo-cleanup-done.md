@@ -15,9 +15,15 @@ ENHANCED_ACTIONS:
 
 PARAMETERS:
 --dry-run (show what would be cleaned up without making changes)
---archive (move to archive instead of deleting)
 --since [date|tag] (check implementations since specific date or version)
 --confirm-all (skip individual confirmation prompts)
+
+GIT_SAFETY_PROTOCOL:
+MANDATORY git verification before deletion:
+1. Check `git ls-files .support/todos/` to verify TODOs are tracked
+2. Ensure `git status` shows files are committed (not untracked/modified)
+3. Only delete TODOs that exist in git history for full traceability
+4. ABORT deletion if TODOs are not properly committed to repository
 
 ENHANCED_AGENT_DELEGATION:
 Primary: todo (comprehensive completion analysis with universal agent coordination)
@@ -29,17 +35,23 @@ Cleanup Coordination: resolver + docs + completer + time
 
 ENHANCED_OUTPUT:
 - Comprehensive list of TODOs identified for cleanup with validation evidence
-- Confirmation of archived/removed TODOs with completion verification
+- Git history verification before deletion (ensures TODOs are tracked in repository)
+- User confirmation of findings before proceeding with deletion
+- Confirmation of deleted TODOs with completion verification
 - Updated CHANGELOG entries with comprehensive gap analysis and documentation
 - Clean TODO directory with quality-assured active tasks and dependency validation
 - Cross-reference validation ensuring no orphaned references or incomplete cleanup
 - Strategic recommendations for maintaining TODO directory health
 
-EXAMPLE:
+EXAMPLES:
 /todo-cleanup-done --dry-run --since v1.2.0
+/todo-cleanup-done --confirm-all (delete all identified completed TODOs without individual prompts)
 
 BEHAVIOR:
 - Delegates ALL cleanup analysis to todo agent
 - Works autonomously to identify implemented features
+- Verifies TODOs are in git history before deletion (git safety check)
+- Presents findings to user for confirmation before deletion
+- DELETES (not archives) confirmed TODOs - git provides history
 - Provides summary of cleanup actions without individual task noise
 - Ensures CHANGELOG accuracy and TODO directory hygiene
