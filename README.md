@@ -7,14 +7,14 @@ A comprehensive template repository and dotfiles setup for Claude Code that auto
 
 ## 🚀 Quick Start
 
-### Method 1: Using as GitHub Dotfiles (Recommended)
+### Method 1: Using as GitHub Dotfiles (Recommended for Persistent Setup)
 
 1. Fork this repository and name it `dotfiles`
 2. Go to GitHub Settings → Codespaces → Enable "Automatically install dotfiles"
 3. Select your dotfiles repository
 4. Every new Codespace will automatically have Claude Code configured!
 
-### Method 2: Using as a GitHub Template
+### Method 2: Using as a GitHub Template (Project-Specific Setup)
 
 1. Click "Use this template" on GitHub
 2. Create your new repository
@@ -59,7 +59,7 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
   - `mcp-servers/` - MCP tool configurations
 - **`.claude/settings.json`** - Main configuration (auto-loaded by Claude Code)
 - **`CLAUDE.md`** - Project guidelines for Claude Code
-- **`install.sh`** & **`bootstrap.sh`** - Installation scripts for dotfiles setup
+- **`install.sh`** - Installation script for dotfiles setup
 
 ## 🔧 Pre-Configured Features
 
@@ -103,7 +103,7 @@ Note: Claude Code has built-in filesystem and web tools - no MCP needed!
 - **launch-claude wrapper** - Enhanced Claude Code wrapper with comprehensive logging defaults
   - All logging enabled by default (verbose, debug, MCP debug, save logs)
   - Sonnet model as default for optimal performance
-  - Master prompt loading from `.claude.support/master-prompt.md`
+  - Master prompt loading from `.support/prompts/master-prompt.md`
   - Advanced logging with timestamped files and log analysis
   - Auto-detection of devcontainer/codespace environments for permissions
   - Installation: `./.support/scripts/install-launch-claude.sh`
@@ -162,7 +162,7 @@ Update `CLAUDE.md` with your project's:
 ## 🛡️ Security Features
 
 - Claude Code's built-in security safeguards
-- Sensitive file awareness (`.env`, `*.key`)  
+- Sensitive file awareness (`.env`, `*.key`)
 - Automatic dangerous operation prevention
 
 ## 🧪 Template Validation

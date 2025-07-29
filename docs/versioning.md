@@ -9,7 +9,7 @@ This project follows **Semantic Versioning (SemVer)**.
 
 ### MAJOR (breaking changes)
 - Removing features
-- Changing configurations incompatibly  
+- Changing configurations incompatibly
 - Breaking API changes
 - Removing deprecated functionality
 
@@ -75,7 +75,7 @@ This versioning process integrates with the comprehensive TODO/CHANGELOG protoco
 ### Automatic Version Detection
 - Version bumps are calculated based on completed TODO task types
 - `break` tasks → MAJOR version
-- `feat` tasks → MINOR version  
+- `feat` tasks → MINOR version
 - `fix`/`docs`/`perf`/`refactor`/`test`/`chore` tasks → PATCH version
 
 ### CHANGELOG Integration

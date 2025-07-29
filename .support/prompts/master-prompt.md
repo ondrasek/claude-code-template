@@ -1,6 +1,6 @@
-# Master Prompt for mycc
+# Master Prompt for launch-claude
 
-This is a custom master prompt that gets automatically loaded when using the `mycc` command.
+This is a custom master prompt that gets automatically loaded when using the `launch-claude` command.
 
 ## Custom Instructions
 
@@ -32,4 +32,4 @@ You are working with a specialized Claude Code template project. Please adhere t
 
 ---
 
-**Note:** This master prompt is automatically prepended to all queries when using the `mycc` command. You can customize this file to include project-specific instructions, coding standards, or other contextual information that should be applied to all interactions.
+**Note:** This master prompt is automatically prepended to all queries when using the `launch-claude` command. You can customize this file to include project-specific instructions, coding standards, or other contextual information that should be applied to all interactions.

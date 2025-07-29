@@ -15,7 +15,7 @@ The `CLAUDE.md` file is where you define project-specific guidelines that Claude
 - Each service owns its data store
 - Communication via REST APIs and events
 
-## Code Standards  
+## Code Standards
 - TypeScript with strict mode enabled
 - React with functional components and hooks
 - TDD with Jest and React Testing Library
@@ -32,7 +32,7 @@ Add custom detection rules in the CLAUDE.md file:
 ```markdown
 ## Technology Stack Detection
 - **Next.js files** (`next.config.js`, `app/`, `pages/`) → Refer to @.claude/stacks/nextjs.md
-- **Terraform files** (`*.tf`) → Refer to @.claude/stacks/terraform.md  
+- **Terraform files** (`*.tf`) → Refer to @.claude/stacks/terraform.md
 - **GraphQL files** (`*.graphql`, `schema.graphql`) → Refer to @.claude/stacks/graphql.md
 ```
 
@@ -74,7 +74,7 @@ Use with: `/deploy`
 Organize commands by purpose:
 
 - **Code Quality**: `/review`, `/refactor`, `/security`
-- **Testing**: `/test`, `/performance`, `/integration-test`  
+- **Testing**: `/test`, `/performance`, `/integration-test`
 - **Infrastructure**: `/deploy`, `/monitoring`, `/backup`
 - **Documentation**: `/api-docs`, `/readme-update`, `/changelog`
 
@@ -90,7 +90,7 @@ You are a performance optimization specialist focused on identifying and resolvi
 
 ## Core Capabilities
 - Profile application performance and identify bottlenecks
-- Analyze database queries and suggest optimizations  
+- Analyze database queries and suggest optimizations
 - Review caching strategies and implementations
 - Evaluate frontend bundle sizes and loading patterns
 - Recommend infrastructure scaling approaches
@@ -117,7 +117,7 @@ Configure agents to work together by updating agent instructions:
 ```markdown
 ## Agent Coordination
 - **After analysis**: Store findings using built-in memory capabilities
-- **For implementation**: Coordinate with `patterns` and `principles` agents  
+- **For implementation**: Coordinate with `patterns` and `principles` agents
 - **For validation**: Work with `critic` agent to verify recommendations
 - **For documentation**: Use `docs` agent to update performance guides
 ```
@@ -160,7 +160,7 @@ JIRA_URL=https://your-org.atlassian.net
 JIRA_TOKEN=your-api-token
 DATABASE_URL=postgresql://user:pass@localhost:5432/db
 
-# .env.global (user-specific)  
+# .env.global (user-specific)
 GITHUB_TOKEN=your-github-token
 OPENAI_API_KEY=your-openai-key
 ```
@@ -238,7 +238,7 @@ Create automation commands:
 Run comprehensive pre-publish checks:
 
 1. **Export Memory**: Save current session context
-2. **Run Tests**: Execute full test suite  
+2. **Run Tests**: Execute full test suite
 3. **Security Scan**: Check for vulnerabilities
 4. **Bundle Analysis**: Verify bundle size
 5. **Documentation**: Ensure docs are current
@@ -257,7 +257,7 @@ Create team-wide configuration:
   "team": {
     "codeReviewChecklist": [
       "Security vulnerabilities addressed",
-      "Tests cover new functionality", 
+      "Tests cover new functionality",
       "Documentation updated",
       "Performance impact considered"
     ],
@@ -281,7 +281,7 @@ Document team workflows in `CLAUDE.md`:
 4. Document findings in PR comments
 
 ### Architecture Decisions
-1. Use `explorer` agent to generate alternatives  
+1. Use `explorer` agent to generate alternatives
 2. Apply `constraints` agent for requirement analysis
 3. Get `critic` agent validation before finalizing
 4. Export decision to memory system
@@ -304,13 +304,13 @@ Document team workflows in `CLAUDE.md`:
 }
 ```
 
-### Production Environment  
+### Production Environment
 ```json
 {
   "production": {
     "enableDetailedLogging": false,
     "requiredSecurityChecks": true,
-    "agents": { 
+    "agents": {
       "critic": {
         "strictMode": true
       }

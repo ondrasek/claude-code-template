@@ -49,7 +49,7 @@ echo "🐚 Setting up shell configuration..."
 # Create a shell configuration snippet
 SHELL_CONFIG=$(cat << EOF
 
-# Claude Code aliases
+# Claude Code aliases and shortcuts
 alias cc='claude'
 alias ccode='claude'
 alias claude-init='claude /init'
@@ -64,7 +64,7 @@ export CLAUDE_DOTFILES_DIR="${DOTFILES_DIR}"
 alias update-dotfiles='if [ -n "\${CLAUDE_DOTFILES_DIR}" ] && [ -d "\${CLAUDE_DOTFILES_DIR}" ]; then cd "\${CLAUDE_DOTFILES_DIR}" && git pull && echo "✅ Dotfiles updated!"; else echo "❌ Dotfiles directory not found. You may need to re-run install.sh"; fi'
 
 # Claude Code environment
-# (config.json has been removed - all config is in CLAUDE.md and settings.json)
+# Configuration is managed through CLAUDE.md and settings.json
 EOF
 )
 
@@ -96,13 +96,11 @@ npm install -g @modelcontextprotocol/inspector \
 echo "🐍 Installing uv for Python development..."
 if ! command -v uv &> /dev/null; then
     curl -LsSf https://astral.sh/uv/install.sh | sh || true
-    
     # Add uv to PATH in all shell configs
     UV_PATH_EXPORT='export PATH="$HOME/.cargo/bin:$PATH"'
     echo "${UV_PATH_EXPORT}" >> "${HOME}/.bashrc"
     [ -f "${HOME}/.zshrc" ] && echo "${UV_PATH_EXPORT}" >> "${HOME}/.zshrc"
     [ -f "${HOME}/.profile" ] && echo "${UV_PATH_EXPORT}" >> "${HOME}/.profile"
-    
     # Also export for current session
     export PATH="$HOME/.cargo/bin:$PATH"
 fi

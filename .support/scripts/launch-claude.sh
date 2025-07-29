@@ -15,7 +15,7 @@ set -euo pipefail
 
 # Configuration variables
 DEFAULT_MODEL="sonnet"
-MASTER_PROMPT_FILE=".claude.support/master-prompt.md"
+MASTER_PROMPT_FILE=".support/prompts/master-prompt.md"
 VERBOSE_MODE="true"
 DEBUG_MODE="true"
 MCP_DEBUG="true"

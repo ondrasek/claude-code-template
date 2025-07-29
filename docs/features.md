@@ -105,7 +105,7 @@ Automatic best practices for your tech stack.
 
 ### How It Works
 - **Automatic detection** - Scans your project for technology indicators
-- **Best practices** - Loads appropriate guidelines and patterns  
+- **Best practices** - Loads appropriate guidelines and patterns
 - **Tool integration** - Works with your existing toolchain
 - **Agent specialization** - Agents understand your tech stack
 
@@ -177,7 +177,7 @@ Agents work together in intelligent clusters with **mandatory coordination proto
 
 ### Common Patterns
 - **Research → Patterns → Principles → Critic** - For code reviews
-- **Explorer → Constraints → Resolver** - For architecture decisions  
+- **Explorer → Constraints → Resolver** - For architecture decisions
 - **Hypothesis → Completer → Whisper** - For debugging
 - **Researcher → Generator → Principles** - For feature development
 

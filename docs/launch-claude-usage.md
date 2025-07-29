@@ -5,7 +5,7 @@
 ## Features
 
 - **Enhanced Defaults**: All logging enabled by default (verbose, debug, MCP debug, save logs), Sonnet model as default
-- **Master Prompt Loading**: Automatic loading of custom prompts from `.claude.support/master-prompt.md`
+- **Master Prompt Loading**: Automatic loading of custom prompts from `.support/prompts/master-prompt.md`
 - **Advanced Logging**: Comprehensive logging enabled by default with timestamped files
 - **Log Analysis**: Built-in log analysis using Claude Code agents
 - **Easy Installation**: Automated installation script for multiple shells
@@ -88,7 +88,7 @@ Create a custom master prompt that gets automatically prepended to all queries:
 
 ```bash
 # Create/edit the master prompt file
-vim .claude.support/master-prompt.md
+vim .support/prompts/master-prompt.md
 ```
 
 Example master prompt content:
@@ -150,7 +150,7 @@ The `--analyze-logs` feature uses multiple Claude Code agents to analyze your lo
 | MCP Debug | Off | On | `--no-mcp-debug` |
 | Log Saving | Off | On (timestamped) | `--no-logs` |
 | Model | Various | sonnet | `--model` |
-| Master Prompt | None | Auto-loaded | Edit `.claude.support/master-prompt.md` |
+| Master Prompt | None | Auto-loaded | Edit `.support/prompts/master-prompt.md` |
 
 ## Troubleshooting
 
@@ -174,11 +174,11 @@ chmod +x .support/scripts/launch-claude.sh
 **Master prompt not loading**
 ```bash
 # Check if file exists
-ls -la .claude.support/master-prompt.md
+ls -la .support/prompts/master-prompt.md
 
 # Create if missing
-mkdir -p .claude.support
-touch .claude.support/master-prompt.md
+mkdir -p .support/prompts
+touch .support/prompts/master-prompt.md
 ```
 
 ### Debug Mode Output
@@ -195,7 +195,7 @@ When using `--debug`, you'll see:
 `launch-claude` is fully compatible with all Claude Code features:
 
 - **Agents**: All 20+ specialized agents work normally
-- **Commands**: Slash commands (e.g., `/review`, `/test`) work as expected  
+- **Commands**: Slash commands (e.g., `/review`, `/test`) work as expected
 - **MCP Servers**: Full MCP server support with enhanced debugging
 - **Memory**: MCP memory servers work with all logging features
 - **Project Settings**: Respects `.claude/settings.json` configurations
@@ -222,7 +222,7 @@ launch-claude --analyze-logs
 
 ```bash
 # Share master prompt across team
-git add .claude.support/master-prompt.md
+git add .support/prompts/master-prompt.md
 git commit -m "Add team coding standards to master prompt"
 
 # Use consistent model for team sessions (logging enabled by default)
@@ -248,7 +248,7 @@ launch-claude --analyze-logs > code-quality-report.md
 .support/scripts/
 ├── launch-claude.sh              # Main launch-claude script
 ├── install-launch-claude.sh      # Installation script
-.claude.support/
+.support/prompts/
 ├── master-prompt.md     # Custom master prompt (auto-created)
 .logs/                   # Log files (auto-created when using --save-logs)
 ├── launch-claude-20240128-143022.log

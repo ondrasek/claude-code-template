@@ -9,7 +9,7 @@ Claude Code MUST PROACTIVELY use ALL appropriate agents for better results:
 - **Use for**: Any request requiring external knowledge or current practices
 - **Integration**: Often first agent in workflow, feeds context to others
 
-### critic  
+### critic
 - **Purpose**: Challenge assumptions, identify risks, provide balanced perspective
 - **Use for**: Major decisions, architectural choices, before finalizing recommendations
 - **Integration**: Usually last in analytical workflows for validation
@@ -23,7 +23,7 @@ Claude Code MUST PROACTIVELY use ALL appropriate agents for better results:
 
 ### Problem Investigation
 - **hypothesis**: Form theories, design experiments, systematic debugging
-- **completer**: Find missing error handlers, TODOs, incomplete implementations  
+- **completer**: Find missing error handlers, TODOs, incomplete implementations
 - **Use for**: Debugging issues, finding gaps, ensuring completeness
 
 ### Design and Planning
@@ -58,7 +58,7 @@ Claude Code MUST PROACTIVELY use ALL appropriate agents for better results:
 - **Flow**: Research best practices → Find patterns → Apply principles → Validate approach
 - **Example**: "Review this authentication module"
 
-### Debugging Investigation  
+### Debugging Investigation
 - **Agents**: `researcher` + `hypothesis` + `critic`
 - **Flow**: Research known issues → Form/test theories → Validate solution
 - **Example**: "Why is this API endpoint returning 500 errors?"
@@ -77,7 +77,7 @@ Claude Code MUST PROACTIVELY use ALL appropriate agents for better results:
 
 ### Context Detection
 - **Code files mentioned** → Add `patterns` + `principles`
-- **Error messages/debugging** → Add `hypothesis`  
+- **Error messages/debugging** → Add `hypothesis`
 - **Architecture/design questions** → Add `explorer` + `constraints`
 - **"What's missing" or TODOs** → Add `completer`
 - **Major decisions** → Add `critic`
@@ -103,6 +103,6 @@ Claude Code MUST PROACTIVELY use ALL appropriate agents for better results:
 ## Quality Guidelines
 1. **Relevance over completeness** - Use agents that add value
 2. **Progressive enhancement** - Start minimal, add based on findings
-3. **User experience first** - Don't over-analyze simple requests  
+3. **User experience first** - Don't over-analyze simple requests
 4. **Fail gracefully** - Continue if individual agents fail
 5. **Time awareness** - Respect user's need for timely responses

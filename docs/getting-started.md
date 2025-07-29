@@ -20,7 +20,7 @@ Transform your Claude Code experience with:
 This template helps developers understand:
 
 1. **Decision-making criteria** - When and why to create certain components
-2. **Best practice patterns** - Proven approaches for common development scenarios  
+2. **Best practice patterns** - Proven approaches for common development scenarios
 3. **Process workflows** - Step-by-step procedures for project maintenance
 4. **Quality standards** - Metrics and validation approaches for project health
 
@@ -34,7 +34,7 @@ This template helps developers understand:
 **Try immediately:**
 ```
 /review          # Get comprehensive code feedback
-/agent-guide     # Explore your AI helpers  
+/agent-guide     # Explore your AI helpers
 /discuss         # Challenge your architectural ideas
 ```
 
@@ -80,7 +80,7 @@ This template helps developers understand:
 ### Custom Commands
 - `/review` - Comprehensive code review
 - `/test` - Testing assistance and generation
-- `/refactor` - Code improvement suggestions  
+- `/refactor` - Code improvement suggestions
 - `/security` - Security audit and recommendations
 
 ## Documentation Guides
@@ -99,7 +99,7 @@ This template helps developers understand:
 Consult these resources when:
 
 - Planning new features or architectural changes
-- Setting up development workflows  
+- Setting up development workflows
 - Understanding project conventions and standards
 - Training new team members on project practices
 - Debugging complex issues or performance problems
@@ -128,7 +128,7 @@ These docs are maintained alongside code changes to ensure accuracy and relevanc
 ### New Feature Planning
 ```
 1. Use explorer agent for multiple approaches (includes baseline agents)
-2. Use constraints agent to handle competing requirements  
+2. Use constraints agent to handle competing requirements
 3. /discuss the trade-offs before implementing
 4. Documentation automatically updated when feature is implemented
 ```
