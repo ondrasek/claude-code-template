@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.19.0] - 2025-07-29
+
+### Added
+- **mycc Enhanced Claude Code Wrapper**: Complete implementation of enhanced Claude Code alias system
+  - Shell wrapper script (.support/scripts/mycc.sh) with 219 lines of functionality
+  - Automated installation script (.support/scripts/install-mycc.sh) supporting multiple shells (bash, zsh, fish)
+  - Master prompt loading system from .claude.support/master-prompt.md
+  - Advanced logging capabilities with debug mode and environment variable configuration
+  - MCP server verbose logging support for enhanced debugging
+  - Built-in log analysis using Claude Code agents via --analyze-logs flag
+  - Comprehensive documentation (docs/mycc-usage.md) with usage examples and configuration options
+  - README.md integration with mycc feature section
+
 ### Enhanced
 - **Agent Ecosystem Documentation**: Comprehensive updates to CLAUDE.md reflecting 5-phase ecosystem analysis findings
   - Enhanced agent combination patterns with specialized cluster architectures (Quality, Design, Investigation, Security, Performance clusters)
