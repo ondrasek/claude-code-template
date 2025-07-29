@@ -19,17 +19,17 @@ PARAMETERS:
 --baseline (establish performance baseline for future comparisons)
 
 AGENT_EXECUTION_PLAN:
-**Phase 1 - Parallel Intelligence Gathering** (3-4 minutes):
+**Phase 1 - Parallel Intelligence Gathering**:
 - patterns: Analyze agent inventory (.claude/agents/) and codebase patterns for usage analysis
 - context: Map system architecture, technology stack, and development complexity  
 - researcher: Research current agent ecosystem best practices and emerging patterns
 
-**Phase 2 - Parallel Critical Analysis** (3-4 minutes):
+**Phase 2 - Parallel Critical Analysis**:
 - principles: Evaluate current agents against design principles and architectural standards
 - critic: Critical assessment of ecosystem strengths, weaknesses, and optimization opportunities
 - performance: Analyze agent coordination efficiency and execution performance patterns
 
-**Phase 3 - Strategic Optimization** (2-4 minutes, conditional):
+**Phase 3 - Strategic Optimization** (conditional based on depth):
 - explorer: Generate alternative ecosystem configurations and optimization approaches (complex codebases)
 - resolver: Resolve conflicts between optimization recommendations (enterprise codebases)
 - ecosystem-analyzer: Synthesize all findings into comprehensive optimization proposal
@@ -45,13 +45,13 @@ ENHANCED_OUTPUT:
 
 EXAMPLES:
 ```bash
-# Standard comprehensive review (8-12 minutes)
+# Standard comprehensive review
 /agent-ecosystem-review
 
-# Quick analysis for simple codebases (6-8 minutes)
+# Quick analysis for simple codebases (6 agents)
 /agent-ecosystem-review --depth quick --output summary
 
-# Deep analysis for complex ecosystems (12-15 minutes)
+# Deep analysis for complex ecosystems (9-10 agents)
 /agent-ecosystem-review --depth comprehensive --metrics
 
 # Focus on specific optimization areas
@@ -62,8 +62,8 @@ EXAMPLES:
 ```
 
 EXECUTION_BEHAVIOR:
-- **Scalable Runtime**: 8-15 minutes based on codebase complexity (vs. 30+ minutes previously)
-- **Strategic Agent Selection**: 6-10 agents total based on analysis depth needed (vs. 24+ previously)  
+- **Reduced Agent Count**: 6-10 agents total based on analysis depth (vs. 24+ agents previously)
+- **Strategic Agent Selection**: Only spawn agents needed for requested analysis depth
 - **Intelligent Phasing**: 3 phases with conditional agent spawning based on codebase characteristics
 - **Parallel Execution**: Multiple agents per phase run simultaneously for efficiency
 - **Comprehensive Analysis**: Maintains thorough ecosystem evaluation with optimized execution
