@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+- **TODO Cleanup**: Removed implemented TODOs from .support/todos/ directory
+  - Deleted add-claude-code-alias.md (functionality implemented in launch-claude.sh)
+  - Deleted mycc-skip-permissions.md (auto-detection implemented in launch-claude.sh)
+
 ## [2.24.0] - 2025-07-29
 
 ### Added
