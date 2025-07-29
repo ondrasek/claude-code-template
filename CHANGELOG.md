@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.27.0] - 2025-07-29
+
+### Enhanced
+- **Agent Ecosystem Review Performance**: Major 10x performance optimization for agent ecosystem review command
+  - Reduced runtime from 30+ minutes to 3-5 minutes through strategic agent reduction (24+ agents to 3-5 agents)
+  - Eliminated 6 sequential phases causing excessive runtime while maintaining comprehensive analysis output
+  - Focused on actionable recommendations over exhaustive analysis for improved developer experience
+  - Major architectural improvement making ecosystem review practical for routine development workflows
+
 ## [2.26.1] - 2025-07-29
 
 ### Improved
