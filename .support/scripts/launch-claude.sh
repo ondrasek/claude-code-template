@@ -379,21 +379,29 @@ setup_logging() {
     fi
 }
 
-# Load master prompt if exists
+# Load master prompt if exists and has content
 load_master_prompt() {
     if [[ -f "$MASTER_PROMPT_FILE" ]]; then
-        echo "📋 Loading master prompt from $MASTER_PROMPT_FILE"
         local master_content
         master_content=$(cat "$MASTER_PROMPT_FILE")
         
-        # Prepend master prompt to the query
-        if [[ ${#ARGS[@]} -gt 0 ]]; then
-            ARGS[0]="$master_content
+        # Only use master prompt if it has non-whitespace content
+        if [[ -n "${master_content// }" ]]; then
+            echo "📋 Loading master prompt from $MASTER_PROMPT_FILE"
+            
+            # Prepend master prompt to the query
+            if [[ ${#ARGS[@]} -gt 0 ]]; then
+                ARGS[0]="$master_content
 
 ${ARGS[0]}"
-        else
-            ARGS=("$master_content")
+            else
+                ARGS=("$master_content")
+            fi
+        elif [[ "$DEBUG_MODE" == "true" ]]; then
+            echo "ℹ️  Master prompt file exists but is empty, skipping"
         fi
+    elif [[ "$DEBUG_MODE" == "true" ]]; then
+        echo "ℹ️  No master prompt file found at $MASTER_PROMPT_FILE"
     fi
 }
 
