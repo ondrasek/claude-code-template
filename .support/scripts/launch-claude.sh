@@ -190,6 +190,7 @@ EXAMPLES:
 FEATURES:
     - All logging enabled by default (verbose, debug, MCP debug, save logs)
     - Default model set to sonnet for optimal performance
+    - Automatic MCP configuration loading from .mcp.json in project root
     - Automatic master prompt loading from $MASTER_PROMPT_FILE
     - Comprehensive logging to .support/logs/claude-code/ directory
     - Organized log categories: sessions, mcp, telemetry, debug
@@ -406,6 +407,15 @@ build_claude_command() {
     # Set default model
     cmd+=(--model "$DEFAULT_MODEL")
     
+    # Add MCP configuration file if it exists in project root
+    local mcp_config="$PROJECT_ROOT/.mcp.json"
+    if [[ -f "$mcp_config" ]]; then
+        cmd+=(--mcp-config "$mcp_config")
+        if [[ "$DEBUG_MODE" == "true" ]]; then
+            echo "🔌 Using MCP config: $mcp_config"
+        fi
+    fi
+    
     # Add verbose mode if enabled
     if [[ "$VERBOSE_MODE" == "true" ]]; then
         cmd+=(--verbose)
@@ -466,6 +476,7 @@ main() {
     if [[ "$DEBUG_MODE" == "true" ]]; then
         echo "🔧 Debug mode enabled"
         echo "📝 Command: ${claude_cmd[*]}"
+        echo
     fi
     
     # Execute Claude with comprehensive logging if requested
