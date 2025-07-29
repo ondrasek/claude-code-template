@@ -353,8 +353,8 @@ setup_logging() {
         export MCP_TIMEOUT=30000
         
         # Disable OpenTelemetry exporters to avoid interfering with interactive mode
-        export OTEL_LOGS_EXPORTER=none
-        export OTEL_METRICS_EXPORTER=none
+        export OTEL_LOGS_EXPORTER=""
+        export OTEL_METRICS_EXPORTER=""
         export OTEL_METRIC_EXPORT_INTERVAL=10000
         export OTEL_LOGS_EXPORT_INTERVAL=5000
         
@@ -411,8 +411,8 @@ build_claude_command() {
         cmd+=(--verbose)
     fi
     
-    # Add MCP debug if enabled
-    if [[ "$MCP_DEBUG" == "true" ]]; then
+    # Add MCP debug if enabled (but not for interactive mode as it interferes)
+    if [[ "$MCP_DEBUG" == "true" && ${#ARGS[@]} -gt 0 ]]; then
         cmd+=(--mcp-debug)
     fi
     
@@ -421,7 +421,7 @@ build_claude_command() {
         cmd+=(--dangerously-skip-permissions)
     fi
     
-    # Add master prompt as system prompt if available
+    # Add master prompt as system prompt only if it has meaningful content
     if [[ -n "$MASTER_PROMPT_CONTENT" ]]; then
         cmd+=(--append-system-prompt "$MASTER_PROMPT_CONTENT")
     fi
@@ -480,11 +480,10 @@ Project: $PROJECT_ROOT
         
         # Execute Claude with comprehensive log redirection
         # Use process substitution to split logs appropriately
-        # If no arguments provided, send empty input to trigger interactive mode
+        # For interactive mode, we need to preserve stdin/stdout/stderr properly
         if [[ ${#ARGS[@]} -eq 0 ]]; then
-            echo "" | "${claude_cmd[@]}" \
-                > >(tee -a "$MYCC_SESSION_LOG" | tee -a "$LOG_FILE") \
-                2> >(tee -a "$MYCC_DEBUG_LOG" "$MYCC_MCP_LOG" "$MYCC_TELEMETRY_LOG" >&2)
+            # Interactive mode - use exec to preserve terminal properly
+            exec "${claude_cmd[@]}" 2> >(tee -a "$MYCC_DEBUG_LOG" "$MYCC_MCP_LOG" "$MYCC_TELEMETRY_LOG" >&2)
         else
             "${claude_cmd[@]}" \
                 > >(tee -a "$MYCC_SESSION_LOG" | tee -a "$LOG_FILE") \
@@ -498,9 +497,9 @@ Project: $PROJECT_ROOT
         echo "$session_footer" >> "$LOG_FILE"
         
     else
-        # If no arguments provided, send empty input to trigger interactive mode
+        # For interactive mode without logging, preserve terminal properly
         if [[ ${#ARGS[@]} -eq 0 ]]; then
-            echo "" | "${claude_cmd[@]}"
+            exec "${claude_cmd[@]}"
         else
             "${claude_cmd[@]}"
         fi

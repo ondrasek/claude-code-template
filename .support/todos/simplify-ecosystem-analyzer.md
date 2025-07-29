@@ -1,1 +1,0 @@
-Runs 30 minutes.

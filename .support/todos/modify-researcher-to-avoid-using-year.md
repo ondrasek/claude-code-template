@@ -1,1 +1,0 @@
-Researcher agent always uses 2024 as the current year. Instruct it to explicitly use latest or current or determine year using Bash(date).
