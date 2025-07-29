@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.26.0] - 2025-07-29
+
+### Added
+- **MCP Server Integration Protocol**: Comprehensive protocol for Memory Contextual Protocol (MCP) server integration
+  - Created detailed .support/instructions/mcp-protocol.md with Perplexity and Memory MCP integration guidelines
+  - Updated CLAUDE.md with MCP Server Integration Protocol section for mandatory agent usage
+  - Defined agent-specific MCP usage patterns: researcher, vulnerability-scanner, compliance-checker, threat-modeling, connector for Perplexity integration
+  - Established memory-first research patterns for all agents with mcp__memory__search_nodes() before external research
+  - Added graceful degradation protocols for MCP server unavailability with automatic fallback to WebSearch/WebFetch
+  - Enhanced Simple Git Protocol with MCP-informed intelligence for commit message validation and release tag intelligence
+  - Implemented comprehensive error handling and quality assurance protocols for MCP integration
+  - Added performance monitoring and health checking for MCP server availability and response times
+
 ## [2.25.1] - 2025-07-29
 
 ### Fixed
