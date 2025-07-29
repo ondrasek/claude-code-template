@@ -104,6 +104,7 @@ Note: Claude Code has built-in filesystem and web tools - no MCP needed!
   - All logging enabled by default (verbose, debug, MCP debug, save logs)
   - Sonnet model as default for optimal performance
   - Master prompt loading from `.support/prompts/master-prompt.md`
+  - Secure .env file loading with validation and sensitive value masking
   - Advanced logging with timestamped files and log analysis
   - Auto-detection of devcontainer/codespace environments for permissions
   - Installation: `./.support/scripts/install-launch-claude.sh`

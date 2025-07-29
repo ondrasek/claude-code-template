@@ -5,7 +5,7 @@ It should have the following functionality:
 2. factory-reset - reset all this configuration to the default state (with backup of original config to .support/config-backups - stored in git and ignored by Claude (zipped?), is there something like .claudeignore?)
 3. upgrade - upgrade to the latest available configuration (where to get it from?)
 4. agent-ecosystem - run Claude Code with special prompt optimized for ecosystem analysis and run the ecosystem review command to build repository-specific agents and related commands.
-5. troubleshoot - use mycc to launch log analysis with claude to troubleshoot claude and mcp issues
+5. troubleshoot - use launch-claude to launch log analysis with claude to troubleshoot claude and mcp issues
 6. anything else that might be useful?
 7. master-prompt - master-prompt management, run a wizard in Claude Code to help the user to craft master prompt using prompt engineering, web search and fetch, etc.
 

@@ -23,6 +23,10 @@ LOG_FILE=""
 SAVE_LOGS="true"
 SKIP_PERMISSIONS="false"
 
+# Environment file configuration
+ENV_FILES=(".env" ".env.local" ".env.development")
+LOAD_ENV="true"
+
 # Log directory configuration
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
@@ -38,6 +42,120 @@ detect_environment() {
     if [[ -n "${CODESPACES:-}" ]] || [[ -n "${REMOTE_CONTAINERS:-}" ]] || [[ -f "/.dockerenv" ]] || [[ -n "${DEVCONTAINER:-}" ]]; then
         echo "🔍 Detected devcontainer/codespace environment - enabling --dangerously-skip-permissions"
         SKIP_PERMISSIONS="true"
+    fi
+}
+
+# Secure .env file validation and parsing functions
+validate_env_file() {
+    local env_file="$1"
+    
+    # Check if file exists and is readable
+    if [[ ! -f "$env_file" ]]; then
+        return 1
+    fi
+    
+    # Check file permissions - should not be world-readable for security
+    if [[ -r "$env_file" ]]; then
+        local perms
+        perms=$(stat -c "%a" "$env_file" 2>/dev/null || stat -f "%A" "$env_file" 2>/dev/null)
+        if [[ "${perms: -1}" -gt 4 ]]; then
+            echo "⚠️  Warning: $env_file is world-readable. Consider running: chmod 640 $env_file"
+        fi
+    fi
+    
+    # Check file size (prevent DoS via large files)
+    local size
+    size=$(wc -c < "$env_file" 2>/dev/null || echo 0)
+    if [[ $size -gt 100000 ]]; then  # 100KB limit
+        echo "❌ Error: $env_file is too large (${size} bytes). Maximum 100KB allowed."
+        return 1
+    fi
+    
+    return 0
+}
+
+# Parse and load environment variables from .env file
+load_env_file() {
+    local env_file="$1"
+    local loaded_count=0
+    
+    if ! validate_env_file "$env_file"; then
+        return 1
+    fi
+    
+    echo "🔧 Loading environment variables from $env_file"
+    
+    # Process file line by line with security validation
+    local line_num=0
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        ((line_num++))
+        
+        # Skip empty lines and comments
+        [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
+        
+        # Validate line format: KEY=VALUE
+        if [[ "$line" =~ ^[[:space:]]*([A-Za-z_][A-Za-z0-9_]*)[[:space:]]*=[[:space:]]*(.*)[[:space:]]*$ ]]; then
+            local key="${BASH_REMATCH[1]}"
+            local value="${BASH_REMATCH[2]}"
+            
+            # Security checks
+            # 1. Prevent command injection in values
+            if [[ "$value" =~ \$\(|\`|\;|\||\& ]]; then
+                echo "⚠️  Warning: Skipping potentially dangerous value for $key at line $line_num"
+                continue
+            fi
+            
+            # 2. Don't override existing environment variables (user environment takes precedence)
+            if [[ -z "${!key:-}" ]]; then
+                export "$key=$value"
+                ((loaded_count++))
+                
+                # Mask sensitive values in debug output
+                if [[ "$DEBUG_MODE" == "true" ]]; then
+                    if [[ "$key" =~ (API_KEY|TOKEN|SECRET|PASSWORD|PASS) ]]; then
+                        echo "   $key=***masked***"
+                    else
+                        echo "   $key=$value"
+                    fi
+                fi
+            elif [[ "$DEBUG_MODE" == "true" ]]; then
+                echo "   Skipped $key (already set in environment)"
+            fi
+        else
+            echo "⚠️  Warning: Invalid format at line $line_num in $env_file: $line"
+        fi
+    done < "$env_file"
+    
+    if [[ $loaded_count -gt 0 ]]; then
+        echo "✅ Loaded $loaded_count environment variables from $env_file"
+    fi
+    
+    return 0
+}
+
+# Load configuration from multiple .env files with precedence
+load_configuration() {
+    if [[ "$LOAD_ENV" != "true" ]]; then
+        return 0
+    fi
+    
+    local total_loaded=0
+    local files_processed=0
+    
+    # Process .env files in order of precedence (.env.development overrides .env, etc.)
+    for env_file in "${ENV_FILES[@]}"; do
+        local full_path="$PROJECT_ROOT/$env_file"
+        if [[ -f "$full_path" ]]; then
+            if load_env_file "$full_path"; then
+                ((files_processed++))
+            fi
+        fi
+    done
+    
+    if [[ $files_processed -eq 0 ]]; then
+        if [[ "$DEBUG_MODE" == "true" ]]; then
+            echo "ℹ️  No .env files found. Using system environment variables."
+        fi
     fi
 }
 
@@ -60,6 +178,8 @@ OPTIONS:
     --analyze-logs           Analyze existing log files using Claude Code agents
     --skip-permissions       Force enable --dangerously-skip-permissions flag
     --no-skip-permissions    Force disable --dangerously-skip-permissions flag
+    --no-env                 Disable .env file loading
+    --env-file FILE          Load specific .env file (can be used multiple times)
 
 EXAMPLES:
     launch-claude "Review my code"
@@ -76,6 +196,7 @@ FEATURES:
     - MCP server debugging with telemetry support
     - Multi-agent log analysis using Claude Code agents
     - Auto-detection of devcontainer/codespace environments for permissions
+    - Secure .env file loading with validation and masking of sensitive values
 
 EOF
 }
@@ -97,7 +218,7 @@ analyze_logs() {
         
         if [[ ${#all_logs[@]} -eq 0 ]]; then
             echo "❌ No log files found in $LOG_BASE_DIR"
-            echo "💡 Run mycc with logging enabled first to generate logs."
+            echo "💡 Run launch-claude with logging enabled first to generate logs."
             exit 1
         fi
         
@@ -129,7 +250,7 @@ Provide a structured analysis with specific findings and actionable next steps."
         
     else
         echo "❌ No log directory found at $LOG_BASE_DIR"
-        echo "💡 Run mycc with logging enabled first to generate logs."
+        echo "💡 Run launch-claude with logging enabled first to generate logs."
         exit 1
     fi
 }
@@ -178,6 +299,20 @@ while [[ $# -gt 0 ]]; do
         --no-skip-permissions)
             SKIP_PERMISSIONS="false"
             shift
+            ;;
+        --no-env)
+            LOAD_ENV="false"
+            shift
+            ;;
+        --env-file)
+            if [[ -n "$2" ]]; then
+                ENV_FILES=("$2")
+                LOAD_ENV="true"
+                shift 2
+            else
+                echo "❌ Error: --env-file requires a filename"
+                exit 1
+            fi
             ;;
         *)
             ARGS+=("$1")
@@ -293,6 +428,9 @@ main() {
     
     # Auto-detect environment before other setup
     detect_environment
+    
+    # Load configuration from .env files
+    load_configuration
     
     setup_logging
     load_master_prompt

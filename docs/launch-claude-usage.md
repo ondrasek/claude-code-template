@@ -6,6 +6,7 @@
 
 - **Enhanced Defaults**: All logging enabled by default (verbose, debug, MCP debug, save logs), Sonnet model as default
 - **Master Prompt Loading**: Automatic loading of custom prompts from `.support/prompts/master-prompt.md`
+- **Environment Variable Loading**: Secure loading of `.env` files with validation and sensitive value masking
 - **Advanced Logging**: Comprehensive logging enabled by default with timestamped files
 - **Log Analysis**: Built-in log analysis using Claude Code agents
 - **Easy Installation**: Automated installation script for multiple shells
@@ -102,7 +103,52 @@ You are working on a specialized project. Please:
 - Update documentation
 ```
 
-### Environment Variables
+### Environment Variables (.env File Support)
+
+`launch-claude` automatically loads environment variables from `.env` files in your project root. This enables secure storage of API keys and configuration:
+
+```bash
+# Create .env file in project root
+cat > .env << EOF
+# Claude API Configuration
+ANTHROPIC_API_KEY=your-api-key-here
+CLAUDE_MODEL=sonnet
+
+# MCP Configuration  
+MCP_LOG_LEVEL=debug
+MCP_TIMEOUT=30000
+
+# Custom Environment Variables
+PROJECT_ENV=development
+DEBUG_LEVEL=verbose
+EOF
+```
+
+#### Supported .env Files (in order of precedence)
+- `.env.development` - Development-specific overrides
+- `.env.local` - Local machine overrides  
+- `.env` - Base configuration
+
+#### Security Features
+- **File Permission Validation**: Warns about world-readable .env files
+- **Sensitive Value Masking**: Hides API keys, tokens, and passwords in debug output
+- **Command Injection Prevention**: Validates values for dangerous patterns
+- **Size Limits**: Prevents DoS attacks via large files (100KB max)
+- **Environment Precedence**: Existing environment variables take priority
+
+#### Usage Examples
+```bash
+# Use default .env file loading
+launch-claude "Deploy the application"
+
+# Disable .env loading
+launch-claude --no-env "Use only system environment"
+
+# Load specific .env file
+launch-claude --env-file .env.production "Production deployment"
+```
+
+### Legacy Environment Variables
 
 The following environment variables are set when using debug mode:
 
