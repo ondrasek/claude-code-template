@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.24.0] - 2025-07-29
+
+### Added
+- **Enhanced Devcontainer Support**: Auto-detection of devcontainer/codespace environments for automatic --dangerously-skip-permissions flag
+  - Environment detection checks for CODESPACES, REMOTE_CONTAINERS, /.dockerenv, DEVCONTAINER variables
+  - Manual override options: --skip-permissions and --no-skip-permissions
+  - Improved user experience for containerized development environments
+
+### Changed
+- **CLI Tool Rebranding**: Complete refactoring from mycc to launch-claude with updated branding and functionality
+  - Renamed mycc.sh to launch-claude.sh with enhanced feature set
+  - Updated install script from install-mycc.sh to install-launch-claude.sh
+  - Renamed documentation from mycc-usage.md to launch-claude-usage.md
+  - Updated all references in CHANGELOG.md and README.md from mycc to launch-claude
+  - Maintained backward compatibility while improving overall user experience
+
 ## [2.23.0] - 2025-07-29
 
 ### Changed
