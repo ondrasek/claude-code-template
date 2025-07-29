@@ -4,7 +4,34 @@ Empirically-derived principles for determining when agents provide measurable va
 
 ## Core Principles
 
-### 1. Overhead Justification
+### 1. Context Window Decluttering (PRIMARY PURPOSE)
+**The fundamental value of dedicated sub-agents is maintaining a clean, focused main context window.**
+
+Agents exist primarily to prevent the main context from becoming polluted with:
+- Lengthy intermediate analysis steps
+- Multi-file code examination artifacts  
+- Complex reasoning chains that obscure primary task focus
+- Repetitive processing output that adds noise without immediate value
+- Detailed technical research that supports but doesn't directly answer user queries
+
+**Critical Requirements:**
+- **Agent tasks MUST remove clutter from main context** - not just organize it differently
+- **Agent outputs MUST be concise summaries** - detailed work stays in agent context
+- **Multiple tool calls and file analysis MUST happen in agent context** - never in main
+- **Intermediate reasoning MUST be contained** - main context sees only conclusions
+- **Complex research MUST be synthesized** - raw information gathering stays isolated
+
+**Evidence of Success:**  
+Main context conversations remain focused on user intent rather than processing artifacts. Users see clean, actionable results without intermediate computational noise.
+
+**Context Pollution Anti-Patterns:**
+- Running multi-file analysis directly in main context
+- Showing detailed reasoning chains for simple requests  
+- Displaying raw tool output instead of synthesized insights
+- Performing iterative refinement cycles visibly in main context
+- Presenting unsorted research results requiring user filtering
+
+### 2. Overhead Justification
 Create agents only when the complexity reduction in main context exceeds the overhead of agent creation and maintenance.
 
 **Measurable criteria:**
@@ -61,17 +88,24 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 
 **Before creating an agent, verify:**
 
-1. **Quantifiable complexity reduction** 
+1. **Context window decluttering justification (PRIMARY)**
+   - [ ] Task currently pollutes main context with >50 lines of intermediate processing
+   - [ ] Multiple file reads/analysis would clutter main context with technical artifacts
+   - [ ] Complex reasoning chains would obscure primary user intent in main context
+   - [ ] Raw research/analysis output would require user filtering in main context
+   - [ ] Agent can provide clean, actionable summary while containing detailed work
+
+2. **Quantifiable complexity reduction** 
    - [ ] Task currently generates >50 lines of intermediate output in main context
    - [ ] Process involves >3 tool calls with state management between them
    - [ ] Same analysis pattern needed in >3 different contexts
 
-2. **Clear boundaries**
+3. **Clear boundaries**
    - [ ] Input can be defined as specific parameters (files, patterns, criteria)
    - [ ] Output is structured and actionable without further clarification
    - [ ] Process doesn't require mid-execution guidance from main context
 
-3. **Specialization value**
+4. **Specialization value**
    - [ ] Requires specialized prompting strategy not suitable for main context
    - [ ] Benefits from focused instructions and examples
    - [ ] Produces higher quality results than general-purpose prompting
@@ -90,25 +124,39 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 
 **Measurable indicators of agent value:**
 
-1. **Context reduction**: Lines of intermediate output eliminated from main context
-2. **Reuse frequency**: Number of times agent is invoked across different scenarios  
-3. **Output quality**: Structured, actionable results that don't require clarification
-4. **Boundary respect**: Minimal back-and-forth with main context during execution
+1. **Context window decluttering (PRIMARY METRIC)**: 
+   - Lines of intermediate processing eliminated from main context
+   - Reduction in tool call artifacts visible to main context
+   - User conversations stay focused on intent rather than processing details
+   - Main context readability and focus improvement
+
+2. **Context reduction**: Lines of intermediate output eliminated from main context
+3. **Reuse frequency**: Number of times agent is invoked across different scenarios  
+4. **Output quality**: Structured, actionable results that don't require clarification
+5. **Boundary respect**: Minimal back-and-forth with main context during execution
 
 ### Agent Audit Process
 
 **Quarterly review criteria:**
 
-1. **Utilization analysis**: Track how often each agent is actually invoked
-2. **Context impact measurement**: Compare main context length with/without agent
-3. **Output quality assessment**: Evaluate if agent outputs require main context interpretation
-4. **Maintenance overhead**: Time spent updating agent specifications vs. value delivered
+1. **Context decluttering effectiveness**: 
+   - Measure main context pollution reduction (before/after agent introduction)
+   - Assess whether complex processing stays contained in agent context
+   - Evaluate user conversation focus improvement
+   - Track reduction in visible tool call artifacts
+
+2. **Utilization analysis**: Track how often each agent is actually invoked
+3. **Context impact measurement**: Compare main context length with/without agent
+4. **Output quality assessment**: Evaluate if agent outputs require main context interpretation
+5. **Maintenance overhead**: Time spent updating agent specifications vs. value delivered
 
 **Timeline restrictions**: Follow CLAUDE.md NO ARTIFICIAL TIMELINES protocol - never create mock weekly milestones or arbitrary time-based phases in agent analysis or recommendations
 
 ### Red Flags for Agent Elimination
 
 **Remove agents that exhibit:**
+- **Context pollution**: Agent use still results in cluttered main context conversations
+- **Failed decluttering**: Complex processing remains visible in main context despite agent use
 - **Low utilization**: <5 invocations per month
 - **High maintenance**: Frequent specification updates required
 - **Poor boundaries**: Consistent need for main context clarification
@@ -120,10 +168,11 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 
 **Every agent must document:**
 
-1. **Complexity justification**: Quantified evidence of context reduction
-2. **Boundary definition**: Clear input/output specifications
-3. **Success criteria**: Measurable outcomes that determine agent effectiveness
-4. **Maintenance cost**: Resources required to keep agent current
+1. **Context decluttering justification**: Specific evidence of how agent keeps main context clean and focused
+2. **Complexity justification**: Quantified evidence of context reduction
+3. **Boundary definition**: Clear input/output specifications
+4. **Success criteria**: Measurable outcomes that determine agent effectiveness
+5. **Maintenance cost**: Resources required to keep agent current
 
 ## Claude Code Agent Selection Mechanism
 
