@@ -44,7 +44,7 @@ Synthesize findings from multiple specialized agents to evaluate agent ecosystem
 
 ## Analysis Input Sources
 
-This agent receives analysis results from 2-6 specialized agents based on automatic codebase assessment:
+This agent receives analysis results from 2-6 specialized agents executed in parallel batches based on automatic codebase assessment:
 
 ### Codebase Assessment Intelligence (from context agent - always included)
 - Automatic codebase size/complexity metrics and technology stack analysis
@@ -58,10 +58,10 @@ This agent receives analysis results from 2-6 specialized agents based on automa
 - Redundancy detection targeting overlaps specific to codebase characteristics
 - Gap identification based on codebase needs vs available agent capabilities
 
-### Conditional Intelligence (additional agents based on codebase complexity)
-- **Medium Codebases**: researcher (ecosystem best practices), critic (weakness assessment)
-- **Large Codebases**: + performance (coordination efficiency), principles (architectural alignment)
-- **Enterprise Codebases**: + explorer (alternative configurations), resolver (conflict resolution)
+### Conditional Intelligence (parallel batches based on codebase complexity)
+- **Medium Codebases**: researcher + critic executed in parallel batch for ecosystem best practices and weakness assessment
+- **Large Codebases**: + performance + principles executed in parallel batch for coordination efficiency and architectural alignment
+- **Enterprise Codebases**: + explorer + resolver executed in parallel batch for alternative configurations and conflict resolution
 
 ## Output Structure
 
@@ -136,6 +136,6 @@ This agent receives analysis results from 2-6 specialized agents based on automa
 
 ## Agent Coordination
 
-This agent receives analysis results from other agents and synthesizes them into comprehensive recommendations. It does NOT spawn or coordinate other agents - command-level orchestration handles all agent coordination.
+This agent receives analysis results from other agents executed in parallel and synthesizes them into comprehensive recommendations. It does NOT spawn or coordinate other agents - command-level orchestration handles all parallel agent execution and coordination.
 
-**Key Principle**: The ecosystem analyzer synthesizes findings from other agents rather than coordinating them directly. Commands handle all agent spawning and orchestration.
+**Key Principle**: The ecosystem analyzer synthesizes findings from parallel agent batches rather than coordinating them directly. Commands handle all agent spawning, parallel execution orchestration, and result coordination.

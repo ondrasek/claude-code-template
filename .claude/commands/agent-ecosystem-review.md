@@ -6,9 +6,9 @@ SCOPE: all agents in .claude/agents/ directory plus codebase analysis
 
 ACTIONS:
 1. **Codebase Assessment Phase**: Run context agent to automatically determine codebase size, complexity, and technology stack for analysis depth selection
-2. **Intelligence Gathering Phase**: Run patterns and researcher agents in parallel for agent inventory and ecosystem best practices (conditional agents based on codebase assessment)
-3. **Critical Analysis Phase**: Run principles, critic, and performance agents in parallel for ecosystem validation (scaled based on codebase complexity) 
-4. **Strategic Optimization Phase**: Run explorer, resolver, and ecosystem-analyzer agents for comprehensive optimization (enterprise codebases only)
+2. **Intelligence Gathering Phase**: Execute patterns and researcher agents in single message for true parallel execution of agent inventory and ecosystem best practices research (conditional agents based on codebase assessment)
+3. **Critical Analysis Phase**: Execute principles, critic, and performance agents in single message for parallel ecosystem validation (scaled based on codebase complexity) 
+4. **Strategic Optimization Phase**: Execute explorer, resolver, and ecosystem-analyzer agents in single message for parallel comprehensive optimization (enterprise codebases only)
 
 PARAMETERS:
 --priority [critical|high|medium|low|all] (filter recommendations by priority)
@@ -23,19 +23,22 @@ AGENT_EXECUTION_PLAN:
 **Phase 1 - Codebase Assessment**:
 - context: Analyze codebase size (file count, LoC), technology stack complexity, and architectural patterns to automatically determine analysis depth
 
-**Phase 2 - Intelligence Gathering** (agents selected based on Phase 1 assessment):
-- patterns: Analyze agent inventory (.claude/agents/) and high-priority codebase patterns 
-- researcher: Research ecosystem best practices (medium/large codebases only)
+**Phase 2 - Intelligence Gathering** (parallel execution in single message):
+- patterns + researcher: Execute simultaneously via single message with multiple Task() calls
+  - patterns: Analyze agent inventory (.claude/agents/) and high-priority codebase patterns 
+  - researcher: Research ecosystem best practices (medium/large codebases only)
 
-**Phase 3 - Critical Analysis** (scaled based on codebase complexity):
-- principles: Evaluate agents against design principles (all codebases)
-- critic: Critical ecosystem assessment (medium/large codebases)
-- performance: Agent coordination analysis (large codebases only)
+**Phase 3 - Critical Analysis** (parallel execution in single message):
+- principles + critic + performance: Execute simultaneously via single message with multiple Task() calls
+  - principles: Evaluate agents against design principles (all codebases)
+  - critic: Critical ecosystem assessment (medium/large codebases)
+  - performance: Agent coordination analysis (large codebases only)
 
-**Phase 4 - Strategic Optimization** (enterprise/complex codebases only):
-- explorer: Generate alternative ecosystem configurations
-- resolver: Resolve optimization conflicts
-- ecosystem-analyzer: Synthesize findings into optimization proposal
+**Phase 4 - Strategic Optimization** (parallel execution in single message):
+- explorer + resolver + ecosystem-analyzer: Execute simultaneously via single message with multiple Task() calls
+  - explorer: Generate alternative ecosystem configurations
+  - resolver: Resolve optimization conflicts
+  - ecosystem-analyzer: Synthesize findings into optimization proposal
 
 ENHANCED_OUTPUT:
 - **Executive Summary**: Agent count, alignment score, and top 3 priority recommendations
@@ -68,9 +71,11 @@ EXECUTION_BEHAVIOR:
 - **Automatic Depth Detection**: Codebase size/complexity automatically determines analysis scope (4-10 agents)
 - **Intelligent File Prioritization**: Focus analysis on core source files, configs, agents vs. generated/build files
 - **Conditional Agent Spawning**: 4 phases with agents selected based on automated codebase assessment
-- **Parallel Execution**: Multiple agents per phase run simultaneously for efficiency
+- **True Parallel Execution**: Single message multi-Task() pattern ensures genuine concurrent agent processing
+- **Batch Coordination**: Each phase executes all selected agents simultaneously, then synthesizes results
 - **Scalable Analysis**: Analysis depth scales automatically with codebase characteristics
 - **Smart Resource Allocation**: Comprehensive analysis for complex codebases, efficient analysis for simple ones
+- **Performance Optimization**: 3-4 agents max per parallel batch to optimize Claude Code resource usage
 
 ## Memory Integration
 
