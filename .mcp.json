@@ -4,18 +4,6 @@
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-memory"],
       "description": "Persistent memory between sessions - uses default memory.db location"
-    },
-    "perplexity": {
-      "type": "sse",
-      "url": "https://api.perplexity.ai/mcp",
-      "env": {
-        "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}"
-      }
-    },
-    "sqlite": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sqlite"],
-      "description": "Local database for structured data storage - uses default location"
     }
   }
 }

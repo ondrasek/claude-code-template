@@ -390,13 +390,13 @@ load_master_prompt() {
         
         # Only use master prompt if it has non-whitespace content
         if [[ -n "${master_content// }" ]]; then
-            echo "📋 Loading master prompt from $MASTER_PROMPT_FILE"
+            echo "📋 Loading master prompt from $MASTER_PROMPT_FILE" >&2
             MASTER_PROMPT_CONTENT="$master_content"
         elif [[ "$DEBUG_MODE" == "true" ]]; then
-            echo "ℹ️  Master prompt file exists but is empty, skipping"
+            echo "ℹ️  Master prompt file exists but is empty, skipping" >&2
         fi
     elif [[ "$DEBUG_MODE" == "true" ]]; then
-        echo "ℹ️  No master prompt file found at $MASTER_PROMPT_FILE"
+        echo "ℹ️  No master prompt file found at $MASTER_PROMPT_FILE" >&2
     fi
 }
 
@@ -412,7 +412,7 @@ build_claude_command() {
     if [[ -f "$mcp_config" ]]; then
         cmd+=(--mcp-config "$mcp_config")
         if [[ "$DEBUG_MODE" == "true" ]]; then
-            echo "🔌 Using MCP config: $mcp_config"
+            echo "🔌 Using MCP config: $mcp_config" >&2
         fi
     fi
     
