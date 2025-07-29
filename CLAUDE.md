@@ -110,26 +110,39 @@ Examples:
   - Modify Python file with unclear patterns → Use guidelines-file agent → Apply guidelines → Follow Simple Git Protocol
   - Architecture decision needed → Use guidelines-repo agent → Make informed choice → Follow Simple Git Protocol
 
-## Memory Integration Override
-**MCP MEMORY USAGE**: Project-specific memory behavior:
-- Prioritize memory lookup before web searches (efficiency override)
-- Store agent combination success patterns for this project
-- Preserve architectural decisions across sessions
-- Track parallel agent cluster performance data
-- Use `mcp__memory__search_nodes()` before web research
-- Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`
+## MCP Server Integration Protocol (MANDATORY)
+**ENHANCED RESEARCH & MEMORY**: Follow @.support/instructions/mcp-protocol.md for comprehensive MCP server integration.
+
+**PERPLEXITY MCP INTEGRATION**:
+- **High Priority Agents**: researcher, vulnerability-scanner, compliance-checker, threat-modeling, connector
+- **Research Pattern**: Memory-first → Perplexity → WebSearch fallback → Store results
+- **Use for**: Current trends, security intelligence, regulatory updates, cross-domain solutions
+
+**MEMORY MCP INTEGRATION**:
+- **Universal Usage**: ALL agents must use memory-first research patterns
+- **Before Research**: `mcp__memory__search_nodes()` to check existing knowledge
+- **After Research**: `mcp__memory__create_entities()` + `mcp__memory__create_relations()` to store findings
+- **Graceful Degradation**: Continue operation if MCP servers unavailable
+
+**MCP-ENHANCED EXECUTION PROTOCOL**:
+1. **Memory-first research**: `mcp__memory__search_nodes()` before external research
+2. **Intelligence-enhanced research**: `mcp__perplexity__search()` for current information  
+3. **Parallel agent clusters**: Memory-informed agent combinations based on proven patterns
+4. **Context delegation**: MCP-enhanced context synthesis with persistent knowledge
+5. **Knowledge persistence**: Store all significant findings for cross-session intelligence
 
 Examples:
   - Before researching: `mcp__memory__search_nodes("React architecture decisions")` → Use findings → Follow Simple Git Protocol
-  - After analysis: `mcp__memory__create_entities([{name: "Component Pattern", type: "decision"}])` → Store new pattern → Follow Simple Git Protocol
-  - Link decisions: `mcp__memory__create_relations([{source: "pattern_id", target: "decision_id"}])` → Apply relationships → Follow Simple Git Protocol
+  - Security research: `mcp__perplexity__search("latest CVE for React SSR")` → Validate → Store → Follow Simple Git Protocol
+  - After analysis: `mcp__memory__create_entities([{name: "Security Pattern", type: "vulnerability_finding"}])` → Follow Simple Git Protocol
+  - Link knowledge: `mcp__memory__create_relations([{from: "vulnerability_id", to: "mitigation_id", relationType: "mitigated_by"}])` → Follow Simple Git Protocol
 
 ## Simple Git Protocol (MANDATORY)
 **EXECUTE AFTER EVERY CHANGE - NO EXCEPTIONS**:
 1. **Stage immediately**: `git add -A` after any file modification
-2. **Commit at milestones**: When any meaningful task is complete
-3. **Always invoke git-tagger**: Use git-tagger agent after EVERY commit to evaluate for tags
-4. **Update CHANGELOG.md**: When git-tagger creates release tags, update CHANGELOG.md with release notes
+2. **Commit at milestones**: When any meaningful task is complete (with MCP-researched commit message validation)
+3. **Always invoke git-tagger**: Use git-tagger agent after EVERY commit to evaluate for tags (with memory-informed release intelligence)
+4. **Update CHANGELOG.md**: When git-tagger creates release tags, update CHANGELOG.md with release notes (using memory-tracked feature evolution)
 5. **Push immediately**: `git push origin main` after every commit
 
 **Error Recovery**: When git operations fail, use git-troubleshooter agent for systematic diagnosis and resolution.
