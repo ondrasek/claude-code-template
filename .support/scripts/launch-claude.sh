@@ -352,9 +352,9 @@ setup_logging() {
         export MCP_LOG_LEVEL=debug
         export MCP_TIMEOUT=30000
         
-        # Configure OpenTelemetry to write to log files instead of console
-        export OTEL_LOGS_EXPORTER=file
-        export OTEL_METRICS_EXPORTER=file
+        # Configure OpenTelemetry to write to console (will be redirected to log files)
+        export OTEL_LOGS_EXPORTER=console
+        export OTEL_METRICS_EXPORTER=console
         export OTEL_METRIC_EXPORT_INTERVAL=10000
         export OTEL_LOGS_EXPORT_INTERVAL=5000
         
