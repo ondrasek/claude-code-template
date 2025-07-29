@@ -229,9 +229,17 @@ analyze_logs() {
         echo "   📊 Telemetry logs: ${#telemetry_logs[@]}"
         echo "   📁 Total files: ${#all_logs[@]}"
         
-        # Use Claude Code with multiple agents to analyze logs comprehensively
+        # Build analysis command with same permissions handling as main script
+        local analysis_cmd=("claude" --model "$DEFAULT_MODEL")
+        
+        # Auto-detect environment for analysis command (same logic as detect_environment)
+        if [[ -n "${CODESPACES:-}" ]] || [[ -n "${REMOTE_CONTAINERS:-}" ]] || [[ -f "/.dockerenv" ]] || [[ -n "${DEVCONTAINER:-}" ]] || [[ "$SKIP_PERMISSIONS" == "true" ]]; then
+            analysis_cmd+=(--dangerously-skip-permissions)
+        fi
+        
+        # Use Claude Code with multiple agents for comprehensive analysis including security
         echo "🤖 Launching comprehensive log analysis with multiple agents..."
-        claude --model "$DEFAULT_MODEL" "Use the researcher, patterns, and performance agents to analyze these log files comprehensively:
+        "${analysis_cmd[@]}" "Use the researcher, patterns, vulnerability-scanner, and threat-modeling agents to analyze these log files comprehensively:
 
 SESSION LOGS: ${session_logs[*]}
 MCP LOGS: ${mcp_logs[*]}
@@ -239,13 +247,16 @@ DEBUG LOGS: ${debug_logs[*]}
 TELEMETRY LOGS: ${telemetry_logs[*]}
 
 Please analyze for:
-1. Performance issues and bottlenecks
-2. Error patterns and failure modes
-3. MCP server communication issues
-4. Optimization opportunities
-5. Usage patterns and insights
-6. Actionable recommendations for improvement
+1. Error patterns and failure modes
+2. MCP server communication issues
+3. Security vulnerabilities and threats
+4. Attack patterns or suspicious activity
+5. Data exposure risks in logs
+6. Configuration security issues
+7. Usage patterns and insights
+8. Actionable recommendations for improvement
 
+Focus on Claude Code usage patterns, not performance analysis of the launch-claude.sh script itself.
 Provide a structured analysis with specific findings and actionable next steps."
         
     else
