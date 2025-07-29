@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.29.1] - 2025-07-29
+
+### Enhanced
+- **NO SYCOPHANCY Protocol**: Added comprehensive protocol to eliminate excessive agreement phrases and establish professional directness patterns
+  - Prohibited specific phrases like "You're absolutely correct" and "Great question!" that provide unnecessary emotional validation
+  - Established fact-first response structure with evidence-based language requirements
+  - Provided specific alternative phrasings for professional communication without obsequious validation-seeking
+  - Addresses systematic issue where Claude Code was unnecessarily telling users they are "absolutely correct"
+  - Based on research showing 76% of AI responses offer unnecessary emotional validation
+  - Maintains helpful collaboration while ensuring professional directness in all interactions
+
 ## [2.29.0] - 2025-07-29
 
 ### Enhanced
