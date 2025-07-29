@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.22.0] - 2025-07-29
+
+### Enhanced
+- **Agent Creation Guidelines - Context Window Decluttering Principle**: Established context window decluttering as the explicit primary purpose of dedicated sub-agents
+  - Added new Core Principle 1: Context Window Decluttering (PRIMARY PURPOSE) with comprehensive requirements and anti-patterns
+  - Enhanced decision framework with context decluttering as primary checklist item and success metric
+  - Updated audit process to measure context decluttering effectiveness as primary indicator
+  - Added context pollution patterns to red flags for agent elimination
+  - Enhanced specification requirements to document decluttering justification
+  - Made explicit that agents exist primarily to keep main context clean and focused on user intent
+  - Defined measurable criteria for context pollution reduction and complex processing containment
+
 ## [2.21.0] - 2025-07-29
 
 ### Added
