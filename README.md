@@ -99,6 +99,15 @@ Note: Claude Code has built-in filesystem and web tools - no MCP needed!
 - **Baseline combination**: researcher + patterns + critic (minimum standard)
 - Total of 19 specialized agents for different aspects of development
 
+### Enhanced CLI Tools
+- **mycc alias** - Enhanced Claude Code wrapper with optimized defaults
+  - Verbose mode disabled by default for cleaner output
+  - Sonnet model as default for optimal performance
+  - Master prompt loading from `.claude.support/master-prompt.md`
+  - Advanced logging with debug mode and log analysis
+  - Installation: `./.support/scripts/install-mycc.sh`
+  - Full documentation: [mycc Usage Guide](docs/mycc-usage.md)
+
 ### Automation Hooks
 - **Pre-read security** - Scans for sensitive data
 - **Post-edit formatting** - Auto-formats code
