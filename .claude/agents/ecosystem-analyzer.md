@@ -23,67 +23,47 @@ Synthesize findings from multiple specialized agents to evaluate agent ecosystem
 
 ## Analysis Framework
 
-### 1. Codebase Characterization
-**Agent Cluster**: patterns + axioms + context
-- **Technology Stack Analysis**: Identify primary/secondary technologies, frameworks, patterns
-- **Complexity Assessment**: Code complexity, architectural patterns, domain-specific needs
-- **Development Patterns**: Common tasks, recurring problems, workflow patterns
-- **Technical Debt Patterns**: Areas requiring specialized agent attention
-
-### 2. Current Agent Ecosystem Assessment
-**Agent Cluster**: patterns + principles + critic
-- **Agent Inventory**: Complete catalog of existing agents with descriptions and triggers
-- **Usage Pattern Analysis**: Which agents are used frequently vs. underutilized
+### 1. Agent Inventory Analysis (from patterns agent)
+- **Agent Catalog**: Complete list of agents with descriptions and stated purposes
+- **Usage Pattern Detection**: Identify frequently used vs. underutilized agents
 - **Capability Mapping**: What each agent actually provides vs. stated purpose
-- **Overlap Detection**: Redundant or conflicting agent responsibilities
+- **Redundancy Detection**: Overlapping or conflicting agent responsibilities
 
-### 3. Gap Analysis
-**Agent Cluster**: hypothesis + explorer + connector
+### 2. Codebase Context Analysis (from context agent)
+- **Technology Stack**: Primary/secondary languages, frameworks, tools
+- **Development Complexity**: Architecture patterns, code complexity indicators
+- **Common Tasks**: Recurring development patterns and workflow needs
+- **Technical Debt Areas**: Specific domains requiring specialized agent attention
+
+### 3. Gap Analysis & Optimization
 - **Missing Capabilities**: Development needs not covered by existing agents
-- **Specialization Opportunities**: Generic agents that should be domain-specific
-- **Workflow Optimization**: Agent combinations that could be streamlined
-- **Emerging Needs**: New technologies/patterns requiring agent support
-
-### 4. Optimization Proposals
-**Agent Cluster**: resolver + critic + principles
+- **Quick Wins**: Simple modifications that improve efficiency immediately
 - **Agent Modifications**: Updates to existing agents for better alignment
-- **New Agent Proposals**: Specific agents needed for identified gaps
+- **New Agent Candidates**: Specific agents needed for identified gaps
 - **Removal Candidates**: Obsolete or redundant agents to eliminate
-- **Combination Improvements**: Better agent clustering patterns
 
 ## Analysis Input Sources
 
-This agent receives analysis results from specialized agents and synthesizes them:
+This agent receives analysis results from 2 specialized agents and synthesizes them:
 
-### Codebase Intelligence (from patterns, axioms, context, researcher)
-- Technology stack analysis and complexity metrics
-- Fundamental development principles and constraints  
-- System architecture mapping and interconnections
-- Research on codebase-specific development needs
+### Agent Inventory Intelligence (from patterns agent)
+- Complete agent catalog with descriptions and triggers
+- Usage pattern analysis and agent effectiveness metrics
+- Redundancy detection and capability gap identification
+- Agent combination patterns and coordination efficiency
 
-### Ecosystem Assessment (from patterns, principles, critic, completer)
-- Existing agent usage patterns and effectiveness analysis
-- Agent evaluation against design principles and best practices
-- Critical assessment of current ecosystem strengths/weaknesses
-- Identification of incomplete agent capabilities
-
-### Strategic Analysis (from hypothesis, explorer, connector, researcher)
-- Theories about optimal agent ecosystem configurations
-- Alternative ecosystem design approaches
-- Cross-domain solutions and agent combination insights
-- Research on agent ecosystem best practices
-
-### Validation Results (from resolver, critic, principles, invariants)
-- Conflict resolution between different optimization approaches
-- Critical evaluation of all proposals and recommendations
-- Principle validation and constraint verification
+### Codebase Context Intelligence (from context agent)
+- Technology stack analysis and architectural patterns
+- Development complexity assessment and common workflows
+- Domain-specific requirements and technical debt areas
+- Development bottlenecks requiring specialized agent support
 
 ## Output Structure
 
 ### Executive Summary
 - **Current State**: Agent count, utilization patterns, key gaps
 - **Alignment Score**: How well current agents match codebase needs (1-10)
-- **Priority Recommendations**: Top 3-5 most impactful changes
+- **Priority Recommendations**: Top 3 most impactful changes (focus on quick wins)
 
 ### Detailed Analysis
 
@@ -113,16 +93,15 @@ This agent receives analysis results from specialized agents and synthesizes the
 [Similar structure for low priority items]
 
 #### Implementation Roadmap
-- **Immediate Actions**: Critical fixes and high-impact additions (priority dependencies)
-- **Short-term Optimizations**: Medium priority improvements (performance and efficiency gains)
-- **Long-term Strategy**: Strategic improvements, monitoring systems, and ecosystem evolution planning
+- **Quick Wins** (<30 minutes): Immediate improvements with high impact
+- **Short-term** (1-2 hours): Priority agent modifications and additions
+- **Medium-term** (1 week): Strategic ecosystem improvements and new agent development
 
 #### Ecosystem Health Assessment
-- **Coverage Score**: [X%] of development tasks supported by agents (target: >85%)
-- **Utilization Efficiency**: [X%] average agent utilization (target: 60-80%)
-- **Redundancy Index**: [X%] capability overlap (target: <15%)
-- **Quality Consistency**: [X%] output satisfaction (target: >90%)
-- **Performance Metrics**: Agent cluster coordination efficiency and resource utilization
+- **Coverage Score**: [X%] of development tasks supported by agents (target: >80%)
+- **Utilization Efficiency**: [X%] average agent utilization (target: 50-70%)
+- **Redundancy Index**: [X%] capability overlap (target: <20%)
+- **Response Time**: Average agent cluster execution time (target: <5 minutes for reviews)
 
 ## Integration Points
 

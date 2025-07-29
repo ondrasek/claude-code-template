@@ -1,17 +1,13 @@
 # /agent-ecosystem-review
 
 TRIGGER: analyze agent ecosystem, optimize agents, review agent efficiency
-FOCUS: comprehensive agent ecosystem assessment and optimization
+FOCUS: fast agent ecosystem assessment and optimization
 SCOPE: all agents in .claude/agents/ directory plus codebase analysis
 
 ACTIONS:
-1. **Codebase Intelligence Cluster**: Run patterns, axioms, context, and researcher agents in parallel for codebase characterization with research validation
-2. **Ecosystem Quality Cluster**: Run patterns, principles, critic, and completer agents in parallel for current agent ecosystem review with completeness analysis  
-3. **Strategic Analysis Cluster**: Run hypothesis, explorer, connector, and researcher agents in parallel for gap analysis with research-backed opportunities
-4. **Validation & Synthesis Cluster**: Run resolver, critic, principles, and invariants agents in parallel for conflict resolution with principle validation
-5. **Performance Assessment Cluster**: Run performance, time, constraints, and critic agents in parallel for ecosystem performance analysis with critical assessment
-6. **Final Analysis**: Run ecosystem-analyzer agent to synthesize all findings into structured optimization proposal
-7. **Documentation**: Run docs agent to update documentation with approved recommendations
+1. **Agent Inventory Analysis**: Run patterns agent to analyze all agents in .claude/agents/ for usage patterns and capabilities
+2. **Codebase Context Analysis**: Run context agent to understand technology stack and development complexity
+3. **Ecosystem Optimization**: Run ecosystem-analyzer agent to synthesize findings and generate optimization recommendations
 
 PARAMETERS:
 --priority [critical|high|medium|low|all] (filter recommendations by priority)
@@ -22,77 +18,43 @@ PARAMETERS:
 --baseline (establish performance baseline for future comparisons)
 
 AGENT_EXECUTION_PLAN:
-**Phase 1 - Parallel Codebase Analysis**:
-- patterns: Analyze codebase patterns and technology stack
-- axioms: Identify fundamental development principles  
-- context: Map system architecture and interconnections
-- researcher: Research codebase-specific development needs
+**Phase 1 - Parallel Intelligence Gathering** (2-3 minutes):
+- patterns: Analyze agent inventory (.claude/agents/) and identify usage patterns, redundancies, gaps
+- context: Map codebase technology stack, complexity, and common development patterns
 
-**Phase 2 - Parallel Ecosystem Assessment**:
-- patterns: Analyze existing agent usage patterns
-- principles: Evaluate agents against design principles
-- critic: Critical assessment of current ecosystem
-- completer: Identify incomplete agent capabilities
-
-**Phase 3 - Parallel Strategic Analysis**:
-- hypothesis: Form theories about optimal agent ecosystem
-- explorer: Generate alternative ecosystem configurations
-- connector: Find cross-domain agent solutions
-- researcher: Research best practices for agent ecosystems
-
-**Phase 4 - Parallel Validation**:
-- resolver: Resolve conflicts between optimization approaches
-- critic: Final critical evaluation of proposals
-- principles: Validate against architecture principles
-- invariants: Ensure system constraints are maintained
-
-**Phase 5 - Performance & Documentation**:
-- performance: Assess agent coordination efficiency
-- time: Analyze historical usage patterns
-- constraints: Identify resource limitations
-- docs: Update documentation with findings
-
-**Phase 6 - Synthesis**:
-- ecosystem-analyzer: Synthesize all findings into optimization proposal
+**Phase 2 - Optimization Synthesis** (1-2 minutes):
+- ecosystem-analyzer: Process findings from Phase 1 to generate optimization recommendations
 
 ENHANCED_OUTPUT:
-- **Executive Summary**: Alignment score, ecosystem health metrics, and priority recommendations validated by critic + principles agents
-- **Codebase Intelligence**: Detailed technology profile and development patterns researched by researcher + patterns + context + axioms agents
-- **Ecosystem Assessment**: Current agent inventory, usage patterns, and efficiency metrics analyzed by patterns + completer + performance + time agents
-- **Gap Analysis**: Missing capabilities and optimization opportunities identified by hypothesis + explorer + connector + researcher agents
-- **Performance Metrics**: Ecosystem health scores (coverage, utilization, redundancy, quality) assessed by performance + constraints + critic agents
-- **Optimization Recommendations**: Prioritized improvements (CRITICAL/HIGH/MEDIUM/LOW) validated by resolver + constraints + critic + invariants agents
-- **Implementation Roadmap**: Phased approach with success metrics and performance baselines developed by time + completer + docs agents
-- **Validation Results**: Multi-agent validation ensuring principle compliance and constraint satisfaction
-- **Documentation Updates**: Comprehensive proposal with CLAUDE.md updates ready for implementation
+- **Executive Summary**: Agent count, alignment score, and top 3 priority recommendations
+- **Agent Inventory**: Current agents, usage frequency, and capability gaps identified by patterns agent
+- **Codebase Profile**: Technology stack and development complexity mapped by context agent  
+- **Optimization Recommendations**: Prioritized improvements (HIGH/MEDIUM/LOW) with implementation guidance
+- **Quick Wins**: Immediate improvements that can be implemented in <30 minutes
+- **Health Metrics**: Coverage score, redundancy index, and utilization efficiency
+- **Implementation Roadmap**: Phase-based approach with clear success criteria
 
 EXAMPLES:
 ```bash
-# Comprehensive high-priority analysis with metrics
-/agent-ecosystem-review --priority high --output detailed --metrics
+# Quick ecosystem review (3-5 minutes)
+/agent-ecosystem-review
 
-# Focus on performance optimization
-/agent-ecosystem-review --focus performance --output roadmap --baseline
+# Focus on high-priority gaps only
+/agent-ecosystem-review --priority high --output summary
 
-# Health assessment with metrics baseline
-/agent-ecosystem-review --focus health --output metrics --baseline
+# Quick wins identification
+/agent-ecosystem-review --focus gaps --output summary
 
-# Gap analysis for new agent identification
-/agent-ecosystem-review --focus gaps --priority critical --output summary
-
-# Redundancy elimination dry-run
-/agent-ecosystem-review --focus redundancy --dry-run --output detailed
-
-# Complete ecosystem optimization with implementation roadmap
-/agent-ecosystem-review --focus optimization --output roadmap --metrics
+# Health check with metrics
+/agent-ecosystem-review --output metrics
 ```
 
 EXECUTION_BEHAVIOR:
-- **Command-Level Orchestration**: All agent spawning and coordination happens at command level
-- **Parallel Execution**: Run multiple agents simultaneously for efficiency
-- **Sequential Phases**: Execute phases in order, with each phase's results informing the next
-- **Synthesis Focus**: Final ecosystem-analyzer agent synthesizes findings rather than coordinating other agents
-- **No Agent-to-Agent Spawning**: Individual agents never spawn other agents - only commands do
+- **Fast Execution**: 3-5 minute total runtime (vs. 30+ minutes previously)
+- **Minimal Agent Spawning**: Maximum 3 agents total (vs. 24+ previously)
+- **Parallel Phase 1**: patterns + context agents run simultaneously
+- **Sequential Phase 2**: ecosystem-analyzer processes Phase 1 findings
+- **Focus on Actionability**: Clear, implementable recommendations over exhaustive analysis
 
 ## Memory Integration
 
