@@ -406,8 +406,8 @@ build_claude_command() {
     # Set default model
     cmd+=(--model "$DEFAULT_MODEL")
     
-    # Add verbose mode if enabled
-    if [[ "$VERBOSE_MODE" == "true" ]]; then
+    # Add verbose mode if enabled (only for non-interactive mode)
+    if [[ "$VERBOSE_MODE" == "true" && ${#ARGS[@]} -gt 0 ]]; then
         cmd+=(--verbose)
     fi
     
