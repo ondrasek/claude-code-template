@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.27.1] - 2025-07-29
+
+### Enhanced  
+- **Agent Ecosystem Review Balance**: Refined ecosystem review approach for optimal analysis depth and runtime
+  - Balanced runtime from quick 3-5 minutes to comprehensive 8-15 minutes based on codebase complexity
+  - Added --depth parameter (quick/standard/comprehensive) for adaptive analysis control
+  - Implemented 3-phase intelligent execution with 6-10 strategic agent selection
+  - Maintains comprehensive ecosystem evaluation while ensuring practical development workflow integration
+  - Improved user experience with scalable analysis depth matching project requirements
+
 ## [2.27.0] - 2025-07-29
 
 ### Enhanced
