@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.29.2] - 2025-07-29
+
+### Changed
+- **Anti-Sycophancy Protocol Architecture**: Refactored anti-sycophancy protocol from operational to system-level implementation for improved effectiveness
+  - Removed NO SYCOPHANCY protocol from CLAUDE.md as it was ineffective at operational level
+  - Created concise master-prompt.md with focused anti-sycophancy guidelines at system level
+  - Established proper hierarchical structure in `.support/prompts/master-prompt.md`
+  - Simplified to essential functionality: "Avoid excessive agreement phrases. Lead with factual analysis, not validation."
+  - Addresses systematic behavioral enforcement issues through better architectural placement
+
 ## [2.29.1] - 2025-07-29
 
 ### Enhanced
