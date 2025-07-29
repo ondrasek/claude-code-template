@@ -352,9 +352,9 @@ setup_logging() {
         export MCP_LOG_LEVEL=debug
         export MCP_TIMEOUT=30000
         
-        # Configure OpenTelemetry for console output to our logs
-        export OTEL_LOGS_EXPORTER=console
-        export OTEL_METRICS_EXPORTER=console
+        # Configure OpenTelemetry to write to log files instead of console
+        export OTEL_LOGS_EXPORTER=file
+        export OTEL_METRICS_EXPORTER=file
         export OTEL_METRIC_EXPORT_INTERVAL=10000
         export OTEL_LOGS_EXPORT_INTERVAL=5000
         
@@ -381,6 +381,8 @@ setup_logging() {
 
 # Load master prompt if exists and has content
 load_master_prompt() {
+    MASTER_PROMPT_CONTENT=""
+    
     if [[ -f "$MASTER_PROMPT_FILE" ]]; then
         local master_content
         master_content=$(cat "$MASTER_PROMPT_FILE")
@@ -388,15 +390,7 @@ load_master_prompt() {
         # Only use master prompt if it has non-whitespace content
         if [[ -n "${master_content// }" ]]; then
             echo "📋 Loading master prompt from $MASTER_PROMPT_FILE"
-            
-            # Prepend master prompt to the query
-            if [[ ${#ARGS[@]} -gt 0 ]]; then
-                ARGS[0]="$master_content
-
-${ARGS[0]}"
-            else
-                ARGS=("$master_content")
-            fi
+            MASTER_PROMPT_CONTENT="$master_content"
         elif [[ "$DEBUG_MODE" == "true" ]]; then
             echo "ℹ️  Master prompt file exists but is empty, skipping"
         fi
@@ -425,6 +419,11 @@ build_claude_command() {
     # Add skip permissions if enabled (auto-detected or forced)
     if [[ "$SKIP_PERMISSIONS" == "true" ]]; then
         cmd+=(--dangerously-skip-permissions)
+    fi
+    
+    # Add master prompt as system prompt if available
+    if [[ -n "$MASTER_PROMPT_CONTENT" ]]; then
+        cmd+=(--append-system-prompt "$MASTER_PROMPT_CONTENT")
     fi
     
     # Add debug environment variables if debug mode
@@ -481,9 +480,16 @@ Project: $PROJECT_ROOT
         
         # Execute Claude with comprehensive log redirection
         # Use process substitution to split logs appropriately
-        "${claude_cmd[@]}" \
-            > >(tee -a "$MYCC_SESSION_LOG" | tee -a "$LOG_FILE") \
-            2> >(tee -a "$MYCC_DEBUG_LOG" "$MYCC_MCP_LOG" "$MYCC_TELEMETRY_LOG" >&2)
+        # If no arguments provided, send empty input to trigger interactive mode
+        if [[ ${#ARGS[@]} -eq 0 ]]; then
+            echo "" | "${claude_cmd[@]}" \
+                > >(tee -a "$MYCC_SESSION_LOG" | tee -a "$LOG_FILE") \
+                2> >(tee -a "$MYCC_DEBUG_LOG" "$MYCC_MCP_LOG" "$MYCC_TELEMETRY_LOG" >&2)
+        else
+            "${claude_cmd[@]}" \
+                > >(tee -a "$MYCC_SESSION_LOG" | tee -a "$LOG_FILE") \
+                2> >(tee -a "$MYCC_DEBUG_LOG" "$MYCC_MCP_LOG" "$MYCC_TELEMETRY_LOG" >&2)
+        fi
         
         # Write session footer
         local session_footer="=== launch-claude session ended at $(date) ==="
@@ -492,7 +498,12 @@ Project: $PROJECT_ROOT
         echo "$session_footer" >> "$LOG_FILE"
         
     else
-        "${claude_cmd[@]}"
+        # If no arguments provided, send empty input to trigger interactive mode
+        if [[ ${#ARGS[@]} -eq 0 ]]; then
+            echo "" | "${claude_cmd[@]}"
+        else
+            "${claude_cmd[@]}"
+        fi
     fi
 }
 

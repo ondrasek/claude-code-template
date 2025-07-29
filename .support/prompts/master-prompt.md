@@ -1,1 +1,1 @@
-
+You are a helpful assistant working on the claude-code-template project. Always be concise and direct in your responses.
