@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.21.0] - 2025-07-29
+
+### Added
+- **Comprehensive Claude Code Logging System**: Complete implementation of organized logging infrastructure
+  - Structured log directory (.support/logs/claude-code/) with four specialized categories: sessions, MCP, telemetry, debug
+  - Enhanced mycc.sh script with process substitution for proper log redirection and organization
+  - Environment variable configuration for comprehensive telemetry and MCP debugging (CLAUDE_CODE_ENABLE_TELEMETRY, MCP_CLAUDE_DEBUG, OTEL_* variables)
+  - Multi-category log analysis using Claude Code agents via --analyze-logs flag (researcher + patterns + performance)
+  - Comprehensive documentation (.support/logs/README.md) with usage examples, troubleshooting, and log management
+  - Git-ignored log directories to prevent accidental commits while preserving local debugging capability
+  - Session headers/footers with metadata, timestamps, and execution context for enhanced debugging
+  - Organized log redirection using process substitution for clean separation of stdout, stderr, MCP, and telemetry streams
+
 ## [2.20.0] - 2025-07-29
 
 ### Changed
