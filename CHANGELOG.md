@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.20.0] - 2025-07-29
+
+### Changed
+- **mycc Logging Defaults**: Enable comprehensive logging by default in mycc wrapper
+  - VERBOSE_MODE, DEBUG_MODE, MCP_DEBUG, and SAVE_LOGS now default to "true"
+  - New command line options for selective disabling: --quiet/-q, --no-debug, --no-mcp-debug, --no-logs
+  - Updated documentation (docs/mycc-usage.md, README.md) to reflect new defaults and usage patterns
+  - Provides maximum debugging information by default while maintaining user control through CLI options
+
 ## [2.19.0] - 2025-07-29
 
 ### Added
