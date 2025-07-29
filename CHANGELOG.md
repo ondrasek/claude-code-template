@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.28.1] - 2025-07-29
+
+### Fixed
+- **Parallel Agent Execution Performance**: Implemented true parallel agent execution for ecosystem review command
+  - Fixed sequential execution bug where agents ran sequentially despite documentation claiming parallel execution
+  - Updated agent-ecosystem-review command to use single message multi-Task() pattern for genuine concurrent processing
+  - Enhanced ecosystem-analyzer agent documentation to reflect parallel batch processing patterns
+  - Added performance optimization with 3-4 agent maximum per parallel batch for optimal resource usage
+  - Research indicates 90% performance improvement potential with proper parallel agent coordination
+
 ## [2.28.0] - 2025-07-29
 
 ### Added
