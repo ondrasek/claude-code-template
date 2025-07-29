@@ -21,6 +21,15 @@ MCP_DEBUG="true"
 LOG_FILE=""
 SAVE_LOGS="true"
 
+# Log directory configuration
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+LOG_BASE_DIR="$PROJECT_ROOT/.support/logs/claude-code"
+SESSION_LOG_DIR="$LOG_BASE_DIR/sessions"
+MCP_LOG_DIR="$LOG_BASE_DIR/mcp"
+TELEMETRY_LOG_DIR="$LOG_BASE_DIR/telemetry"
+DEBUG_LOG_DIR="$LOG_BASE_DIR/debug"
+
 # Help function
 show_help() {
     cat << EOF
@@ -49,11 +58,66 @@ FEATURES:
     - All logging enabled by default (verbose, debug, MCP debug, save logs)
     - Default model set to sonnet for optimal performance
     - Automatic master prompt loading from $MASTER_PROMPT_FILE
-    - Advanced logging with timestamped files in .logs/
-    - MCP server debugging support
-    - Log analysis using Claude Code agents
+    - Comprehensive logging to .support/logs/claude-code/ directory
+    - Organized log categories: sessions, mcp, telemetry, debug
+    - MCP server debugging with telemetry support
+    - Multi-agent log analysis using Claude Code agents
 
 EOF
+}
+
+# Function to analyze logs using Claude Code agents
+analyze_logs() {
+    echo "🔍 Analyzing logs using Claude Code agents..."
+    
+    # Check if log directory exists
+    if [[ -d "$LOG_BASE_DIR" ]]; then
+        # Find log files from all categories
+        local session_logs=($(find "$SESSION_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -3))
+        local mcp_logs=($(find "$MCP_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -3))
+        local debug_logs=($(find "$DEBUG_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -3))
+        local telemetry_logs=($(find "$TELEMETRY_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -2))
+        
+        # Combine all log files
+        local all_logs=("${session_logs[@]}" "${mcp_logs[@]}" "${debug_logs[@]}" "${telemetry_logs[@]}")
+        
+        if [[ ${#all_logs[@]} -eq 0 ]]; then
+            echo "❌ No log files found in $LOG_BASE_DIR"
+            echo "💡 Run mycc with logging enabled first to generate logs."
+            exit 1
+        fi
+        
+        echo "📊 Found log files for analysis:"
+        echo "   📋 Session logs: ${#session_logs[@]}"
+        echo "   🔌 MCP logs: ${#mcp_logs[@]}"
+        echo "   🐛 Debug logs: ${#debug_logs[@]}"
+        echo "   📊 Telemetry logs: ${#telemetry_logs[@]}"
+        echo "   📁 Total files: ${#all_logs[@]}"
+        
+        # Use Claude Code with multiple agents to analyze logs comprehensively
+        echo "🤖 Launching comprehensive log analysis with multiple agents..."
+        claude --model "$DEFAULT_MODEL" "Use the researcher, patterns, and performance agents to analyze these log files comprehensively:
+
+SESSION LOGS: ${session_logs[*]}
+MCP LOGS: ${mcp_logs[*]}
+DEBUG LOGS: ${debug_logs[*]}
+TELEMETRY LOGS: ${telemetry_logs[*]}
+
+Please analyze for:
+1. Performance issues and bottlenecks
+2. Error patterns and failure modes
+3. MCP server communication issues
+4. Optimization opportunities
+5. Usage patterns and insights
+6. Actionable recommendations for improvement
+
+Provide a structured analysis with specific findings and actionable next steps."
+        
+    else
+        echo "❌ No log directory found at $LOG_BASE_DIR"
+        echo "💡 Run mycc with logging enabled first to generate logs."
+        exit 1
+    fi
 }
 
 # Parse command line arguments
@@ -100,37 +164,50 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Function to analyze logs using Claude Code agents
-analyze_logs() {
-    echo "🔍 Analyzing logs using Claude Code agents..."
-    
-    # Find log files
-    if [[ -d ".logs" ]]; then
-        local log_files=($(find .logs -name "*.log" -type f | head -5))
-        if [[ ${#log_files[@]} -eq 0 ]]; then
-            echo "❌ No log files found in .logs directory"
-            exit 1
-        fi
-        
-        echo "📊 Found ${#log_files[@]} log files for analysis"
-        
-        # Use Claude Code with researcher and patterns agents to analyze logs
-        claude --model "$DEFAULT_MODEL" "Use the researcher and patterns agents to analyze these log files: ${log_files[*]}. Look for performance issues, error patterns, and optimization opportunities. Provide actionable insights."
-    else
-        echo "❌ No .logs directory found. Run mycc with --save-logs first to generate logs."
-        exit 1
-    fi
-}
-
-# Setup logging if requested
+# Setup comprehensive logging system
 setup_logging() {
     if [[ "$SAVE_LOGS" == "true" ]]; then
+        # Create all log directories
+        mkdir -p "$SESSION_LOG_DIR" "$MCP_LOG_DIR" "$TELEMETRY_LOG_DIR" "$DEBUG_LOG_DIR"
+        
+        # Set up timestamped log files if not specified
+        local timestamp
+        timestamp=$(date +%Y%m%d-%H%M%S)
+        
         if [[ -z "$LOG_FILE" ]]; then
-            # Create timestamped log file
-            mkdir -p .logs
-            LOG_FILE=".logs/mycc-$(date +%Y%m%d-%H%M%S).log"
+            LOG_FILE="$SESSION_LOG_DIR/mycc-session-$timestamp.log"
         fi
-        echo "📝 Saving logs to: $LOG_FILE"
+        
+        # Set up environment variables for comprehensive logging
+        export CLAUDE_CODE_ENABLE_TELEMETRY=1
+        export MCP_CLAUDE_DEBUG=true
+        export MCP_LOG_LEVEL=debug
+        export MCP_TIMEOUT=30000
+        
+        # Configure OpenTelemetry for console output to our logs
+        export OTEL_LOGS_EXPORTER=console
+        export OTEL_METRICS_EXPORTER=console
+        export OTEL_METRIC_EXPORT_INTERVAL=10000
+        export OTEL_LOGS_EXPORT_INTERVAL=5000
+        
+        # Create organized log files
+        local session_log="$SESSION_LOG_DIR/session-$timestamp.log"
+        local mcp_log="$MCP_LOG_DIR/mcp-$timestamp.log"
+        local telemetry_log="$TELEMETRY_LOG_DIR/telemetry-$timestamp.log"
+        local debug_log="$DEBUG_LOG_DIR/debug-$timestamp.log"
+        
+        # Store paths for later use
+        export MYCC_SESSION_LOG="$session_log"
+        export MYCC_MCP_LOG="$mcp_log"
+        export MYCC_TELEMETRY_LOG="$telemetry_log"
+        export MYCC_DEBUG_LOG="$debug_log"
+        
+        echo "📝 Comprehensive logging enabled:"
+        echo "   📋 Session logs: $session_log"
+        echo "   🔌 MCP logs: $mcp_log"
+        echo "   📊 Telemetry logs: $telemetry_log"  
+        echo "   🐛 Debug logs: $debug_log"
+        echo "   📁 All logs in: $LOG_BASE_DIR"
     fi
 }
 
@@ -143,7 +220,9 @@ load_master_prompt() {
         
         # Prepend master prompt to the query
         if [[ ${#ARGS[@]} -gt 0 ]]; then
-            ARGS[0]="$master_content\n\n${ARGS[0]}"
+            ARGS[0]="$master_content
+
+${ARGS[0]}"
         else
             ARGS=("$master_content")
         fi
@@ -196,20 +275,35 @@ main() {
         echo "📝 Command: ${claude_cmd[*]}"
     fi
     
-    # Execute Claude with logging if requested
+    # Execute Claude with comprehensive logging if requested
     if [[ "$SAVE_LOGS" == "true" ]]; then
-        {
-            echo "=== mycc session started at $(date) ==="
-            echo "Command: ${claude_cmd[*]}"
-            echo "Model: $DEFAULT_MODEL"
-            echo "Verbose: $VERBOSE_MODE"
-            echo "Debug: $DEBUG_MODE"
-            echo "MCP Debug: $MCP_DEBUG"
-            echo "=========================="
-            echo
-        } >> "$LOG_FILE"
+        # Write session header to all relevant logs
+        local session_header
+        session_header="=== mycc session started at $(date) ===
+Command: ${claude_cmd[*]}
+Model: $DEFAULT_MODEL
+Verbose: $VERBOSE_MODE
+Debug: $DEBUG_MODE
+MCP Debug: $MCP_DEBUG
+Project: $PROJECT_ROOT
+=========================="
         
-        "${claude_cmd[@]}" 2>&1 | tee -a "$LOG_FILE"
+        # Write headers to organized log files
+        echo "$session_header" >> "$MYCC_SESSION_LOG"
+        echo "$session_header" >> "$MYCC_DEBUG_LOG"
+        
+        # Execute Claude with comprehensive log redirection
+        # Use process substitution to split logs appropriately
+        "${claude_cmd[@]}" \
+            > >(tee -a "$MYCC_SESSION_LOG" | tee -a "$LOG_FILE") \
+            2> >(tee -a "$MYCC_DEBUG_LOG" "$MYCC_MCP_LOG" "$MYCC_TELEMETRY_LOG" >&2)
+        
+        # Write session footer
+        local session_footer="=== mycc session ended at $(date) ==="
+        echo "$session_footer" >> "$MYCC_SESSION_LOG"
+        echo "$session_footer" >> "$MYCC_DEBUG_LOG"
+        echo "$session_footer" >> "$LOG_FILE"
+        
     else
         "${claude_cmd[@]}"
     fi

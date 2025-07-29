@@ -1,0 +1,1 @@
+mycc should detect whether it is running in a devcontainer or github codespace (same thing) and use --dangerously-skip-permissions automatically.

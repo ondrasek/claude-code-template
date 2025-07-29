@@ -43,6 +43,7 @@ build/
 # Logs
 *.log
 logs/
+.support/logs/claude-code/
 
 # Testing
 .coverage
