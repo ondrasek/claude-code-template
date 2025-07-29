@@ -5,25 +5,34 @@ FOCUS: fast agent ecosystem assessment and optimization
 SCOPE: all agents in .claude/agents/ directory plus codebase analysis
 
 ACTIONS:
-1. **Agent Inventory Analysis**: Run patterns agent to analyze all agents in .claude/agents/ for usage patterns and capabilities
-2. **Codebase Context Analysis**: Run context agent to understand technology stack and development complexity
-3. **Ecosystem Optimization**: Run ecosystem-analyzer agent to synthesize findings and generate optimization recommendations
+1. **Intelligence Gathering Phase**: Run patterns, context, and researcher agents in parallel for codebase characterization and agent inventory analysis
+2. **Critical Analysis Phase**: Run principles, critic, and performance agents in parallel for ecosystem assessment and validation
+3. **Strategic Optimization Phase**: Run explorer, resolver, and ecosystem-analyzer agents for gap analysis and final recommendations (conditional based on complexity)
 
 PARAMETERS:
 --priority [critical|high|medium|low|all] (filter recommendations by priority)
 --output [summary|detailed|roadmap|metrics] (output format, default: detailed)  
 --dry-run (generate proposal without implementation suggestions)
 --focus [gaps|redundancy|optimization|new-agents|performance|health] (specific analysis focus)
+--depth [quick|standard|comprehensive] (analysis depth: 4-5, 6-8, or 8-10 agents)
 --metrics (include ecosystem health metrics and performance assessment)  
 --baseline (establish performance baseline for future comparisons)
 
 AGENT_EXECUTION_PLAN:
-**Phase 1 - Parallel Intelligence Gathering** (2-3 minutes):
-- patterns: Analyze agent inventory (.claude/agents/) and identify usage patterns, redundancies, gaps
-- context: Map codebase technology stack, complexity, and common development patterns
+**Phase 1 - Parallel Intelligence Gathering** (3-4 minutes):
+- patterns: Analyze agent inventory (.claude/agents/) and codebase patterns for usage analysis
+- context: Map system architecture, technology stack, and development complexity  
+- researcher: Research current agent ecosystem best practices and emerging patterns
 
-**Phase 2 - Optimization Synthesis** (1-2 minutes):
-- ecosystem-analyzer: Process findings from Phase 1 to generate optimization recommendations
+**Phase 2 - Parallel Critical Analysis** (3-4 minutes):
+- principles: Evaluate current agents against design principles and architectural standards
+- critic: Critical assessment of ecosystem strengths, weaknesses, and optimization opportunities
+- performance: Analyze agent coordination efficiency and execution performance patterns
+
+**Phase 3 - Strategic Optimization** (2-4 minutes, conditional):
+- explorer: Generate alternative ecosystem configurations and optimization approaches (complex codebases)
+- resolver: Resolve conflicts between optimization recommendations (enterprise codebases)
+- ecosystem-analyzer: Synthesize all findings into comprehensive optimization proposal
 
 ENHANCED_OUTPUT:
 - **Executive Summary**: Agent count, alignment score, and top 3 priority recommendations
@@ -36,25 +45,29 @@ ENHANCED_OUTPUT:
 
 EXAMPLES:
 ```bash
-# Quick ecosystem review (3-5 minutes)
+# Standard comprehensive review (8-12 minutes)
 /agent-ecosystem-review
 
-# Focus on high-priority gaps only
-/agent-ecosystem-review --priority high --output summary
+# Quick analysis for simple codebases (6-8 minutes)
+/agent-ecosystem-review --depth quick --output summary
 
-# Quick wins identification
-/agent-ecosystem-review --focus gaps --output summary
+# Deep analysis for complex ecosystems (12-15 minutes)
+/agent-ecosystem-review --depth comprehensive --metrics
 
-# Health check with metrics
-/agent-ecosystem-review --output metrics
+# Focus on specific optimization areas
+/agent-ecosystem-review --focus gaps --priority high
+
+# Performance-focused review with baseline
+/agent-ecosystem-review --focus performance --baseline --metrics
 ```
 
 EXECUTION_BEHAVIOR:
-- **Fast Execution**: 3-5 minute total runtime (vs. 30+ minutes previously)
-- **Minimal Agent Spawning**: Maximum 3 agents total (vs. 24+ previously)
-- **Parallel Phase 1**: patterns + context agents run simultaneously
-- **Sequential Phase 2**: ecosystem-analyzer processes Phase 1 findings
-- **Focus on Actionability**: Clear, implementable recommendations over exhaustive analysis
+- **Scalable Runtime**: 8-15 minutes based on codebase complexity (vs. 30+ minutes previously)
+- **Strategic Agent Selection**: 6-10 agents total based on analysis depth needed (vs. 24+ previously)  
+- **Intelligent Phasing**: 3 phases with conditional agent spawning based on codebase characteristics
+- **Parallel Execution**: Multiple agents per phase run simultaneously for efficiency
+- **Comprehensive Analysis**: Maintains thorough ecosystem evaluation with optimized execution
+- **Adaptive Depth**: Analysis complexity scales with codebase size and agent ecosystem maturity
 
 ## Memory Integration
 
