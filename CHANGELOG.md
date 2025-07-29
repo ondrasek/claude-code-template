@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.23.0] - 2025-07-29
+
+### Changed
+- **CLAUDE.md Context Window Decluttering**: Removed extensive ecosystem-analyzer instructions from main context window
+  - Removed 62 lines of specialized ecosystem analysis content including detailed analysis phases, metrics, and configuration examples
+  - Preserved essential agent coordination patterns and best practices for daily development workflows
+  - Ecosystem analysis functionality remains fully available via dedicated /agent-ecosystem-review command when needed
+  - Streamlined context focused on core development patterns: start with research, end with validation, apply principles, complete thoroughness
+  - Improved daily developer experience by reducing cognitive load while maintaining specialized tool accessibility
+
 ## [2.22.0] - 2025-07-29
 
 ### Enhanced
@@ -24,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Comprehensive Claude Code Logging System**: Complete implementation of organized logging infrastructure
   - Structured log directory (.support/logs/claude-code/) with four specialized categories: sessions, MCP, telemetry, debug
-  - Enhanced mycc.sh script with process substitution for proper log redirection and organization
+  - Enhanced launch-claude.sh script with process substitution for proper log redirection and organization
   - Environment variable configuration for comprehensive telemetry and MCP debugging (CLAUDE_CODE_ENABLE_TELEMETRY, MCP_CLAUDE_DEBUG, OTEL_* variables)
   - Multi-category log analysis using Claude Code agents via --analyze-logs flag (researcher + patterns + performance)
   - Comprehensive documentation (.support/logs/README.md) with usage examples, troubleshooting, and log management
@@ -35,24 +45,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.20.0] - 2025-07-29
 
 ### Changed
-- **mycc Logging Defaults**: Enable comprehensive logging by default in mycc wrapper
+- **launch-claude Logging Defaults**: Enable comprehensive logging by default in launch-claude wrapper
   - VERBOSE_MODE, DEBUG_MODE, MCP_DEBUG, and SAVE_LOGS now default to "true"
   - New command line options for selective disabling: --quiet/-q, --no-debug, --no-mcp-debug, --no-logs
-  - Updated documentation (docs/mycc-usage.md, README.md) to reflect new defaults and usage patterns
+  - Updated documentation (docs/launch-claude-usage.md, README.md) to reflect new defaults and usage patterns
   - Provides maximum debugging information by default while maintaining user control through CLI options
 
 ## [2.19.0] - 2025-07-29
 
 ### Added
-- **mycc Enhanced Claude Code Wrapper**: Complete implementation of enhanced Claude Code alias system
-  - Shell wrapper script (.support/scripts/mycc.sh) with 219 lines of functionality
-  - Automated installation script (.support/scripts/install-mycc.sh) supporting multiple shells (bash, zsh, fish)
+- **launch-claude Enhanced Claude Code Wrapper**: Complete implementation of enhanced Claude Code alias system
+  - Shell wrapper script (.support/scripts/launch-claude.sh) with 219 lines of functionality
+  - Automated installation script (.support/scripts/install-launch-claude.sh) supporting multiple shells (bash, zsh, fish)
   - Master prompt loading system from .claude.support/master-prompt.md
   - Advanced logging capabilities with debug mode and environment variable configuration
   - MCP server verbose logging support for enhanced debugging
   - Built-in log analysis using Claude Code agents via --analyze-logs flag
-  - Comprehensive documentation (docs/mycc-usage.md) with usage examples and configuration options
-  - README.md integration with mycc feature section
+  - Comprehensive documentation (docs/launch-claude-usage.md) with usage examples and configuration options
+  - README.md integration with launch-claude feature section
 
 ### Enhanced
 - **Agent Ecosystem Documentation**: Comprehensive updates to CLAUDE.md reflecting 5-phase ecosystem analysis findings

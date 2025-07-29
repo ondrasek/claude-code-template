@@ -1,6 +1,6 @@
-# mycc - Enhanced Claude Code Wrapper
+# launch-claude - Enhanced Claude Code Wrapper
 
-`mycc` is a powerful alias wrapper for Claude Code that provides enhanced functionality, better defaults, and advanced logging capabilities.
+`launch-claude` is a powerful wrapper for Claude Code that provides enhanced functionality, better defaults, and advanced logging capabilities.
 
 ## Features
 
@@ -16,17 +16,17 @@
 
 ```bash
 # Run the installation script
-./.support/scripts/install-mycc.sh
+./.support/scripts/install-launch-claude.sh
 
 # Or manually add the alias to your shell config
-echo "alias mycc='$(pwd)/.support/scripts/mycc.sh'" >> ~/.bashrc
+echo "alias launch-claude='$(pwd)/.support/scripts/launch-claude.sh'" >> ~/.bashrc
 source ~/.bashrc
 ```
 
 ### Verify Installation
 
 ```bash
-mycc --help
+launch-claude --help
 ```
 
 ## Usage
@@ -35,49 +35,49 @@ mycc --help
 
 ```bash
 # Simple query with all logging enabled by default
-mycc "Review my code"
+launch-claude "Review my code"
 
 # Interactive mode (same as claude without arguments)
-mycc
+launch-claude
 ```
 
 ### Disabling Logging Options
 
 ```bash
 # Disable verbose mode (quiet mode)
-mycc --quiet "Clean output without verbose logging"
+launch-claude --quiet "Clean output without verbose logging"
 
 # Disable debug mode
-mycc --no-debug "Reduce debug verbosity"
+launch-claude --no-debug "Reduce debug verbosity"
 
 # Disable MCP server debugging
-mycc --no-mcp-debug "Turn off MCP debug output"
+launch-claude --no-mcp-debug "Turn off MCP debug output"
 
 # Disable log saving
-mycc --no-logs "Don't save session logs"
+launch-claude --no-logs "Don't save session logs"
 
 # Minimal logging mode
-mycc --quiet --no-debug --no-mcp-debug --no-logs "Minimal output"
+launch-claude --quiet --no-debug --no-mcp-debug --no-logs "Minimal output"
 ```
 
 ### Logging Customization
 
 ```bash
 # Save logs to specific file (keeps all other defaults)
-mycc --log-file debug.log "Debug session"
+launch-claude --log-file debug.log "Debug session"
 
 # Analyze existing log files using Claude Code agents
-mycc --analyze-logs
+launch-claude --analyze-logs
 ```
 
 ### Model Selection
 
 ```bash
 # Set custom model (keeps all logging defaults)
-mycc --model opus "Complex reasoning task"
+launch-claude --model opus "Complex reasoning task"
 
 # Combined custom model with selective logging disable
-mycc --model opus --quiet "Clean output with opus model"
+launch-claude --model opus --quiet "Clean output with opus model"
 ```
 
 ## Configuration
@@ -132,18 +132,18 @@ The `--analyze-logs` feature uses multiple Claude Code agents to analyze your lo
 
 | Option | Description | Example |
 |--------|-------------|---------|
-| `-h, --help` | Show help message | `mycc --help` |
-| `-q, --quiet` | Disable verbose mode | `mycc --quiet "query"` |
-| `--no-debug` | Disable debug mode | `mycc --no-debug "query"` |
-| `--no-mcp-debug` | Disable MCP debug logging | `mycc --no-mcp-debug "query"` |
-| `--no-logs` | Disable log saving | `mycc --no-logs "query"` |
-| `-m, --model MODEL` | Set model | `mycc --model opus "query"` |
-| `--log-file FILE` | Save logs to file | `mycc --log-file log.txt "query"` |
-| `--analyze-logs` | Analyze existing logs | `mycc --analyze-logs` |
+| `-h, --help` | Show help message | `launch-claude --help` |
+| `-q, --quiet` | Disable verbose mode | `launch-claude --quiet "query"` |
+| `--no-debug` | Disable debug mode | `launch-claude --no-debug "query"` |
+| `--no-mcp-debug` | Disable MCP debug logging | `launch-claude --no-mcp-debug "query"` |
+| `--no-logs` | Disable log saving | `launch-claude --no-logs "query"` |
+| `-m, --model MODEL` | Set model | `launch-claude --model opus "query"` |
+| `--log-file FILE` | Save logs to file | `launch-claude --log-file log.txt "query"` |
+| `--analyze-logs` | Analyze existing logs | `launch-claude --analyze-logs` |
 
 ## Default Behavior Changes
 
-| Feature | Claude Default | mycc Default | Override |
+| Feature | Claude Default | launch-claude Default | Override |
 |---------|----------------|--------------|----------|
 | Verbose Mode | Off | On | `--quiet` |
 | Debug Mode | Off | On | `--no-debug` |
@@ -156,19 +156,19 @@ The `--analyze-logs` feature uses multiple Claude Code agents to analyze your lo
 
 ### Common Issues
 
-**mycc command not found**
+**launch-claude command not found**
 ```bash
 # Check if alias is installed
-type mycc
+type launch-claude
 
 # Reinstall if needed
-./.support/scripts/install-mycc.sh
+./.support/scripts/install-launch-claude.sh
 ```
 
 **Permission denied**
 ```bash
 # Make script executable
-chmod +x .support/scripts/mycc.sh
+chmod +x .support/scripts/launch-claude.sh
 ```
 
 **Master prompt not loading**
@@ -192,7 +192,7 @@ When using `--debug`, you'll see:
 
 ## Integration with Claude Code Features
 
-`mycc` is fully compatible with all Claude Code features:
+`launch-claude` is fully compatible with all Claude Code features:
 
 - **Agents**: All 20+ specialized agents work normally
 - **Commands**: Slash commands (e.g., `/review`, `/test`) work as expected  
@@ -206,16 +206,16 @@ When using `--debug`, you'll see:
 
 ```bash
 # Start development session (all logging enabled by default)
-mycc "Let's implement the user authentication feature"
+launch-claude "Let's implement the user authentication feature"
 
 # Debug performance issues (already has all debug features enabled)
-mycc "Why is the login endpoint slow?"
+launch-claude "Why is the login endpoint slow?"
 
 # Review code with minimal output if desired
-mycc --quiet "Review the authentication module for security issues"
+launch-claude --quiet "Review the authentication module for security issues"
 
 # Analyze previous session logs
-mycc --analyze-logs
+launch-claude --analyze-logs
 ```
 
 ### Team Usage
@@ -226,32 +226,32 @@ git add .claude.support/master-prompt.md
 git commit -m "Add team coding standards to master prompt"
 
 # Use consistent model for team sessions (logging enabled by default)
-mycc --model sonnet "Implement feature X according to our standards"
+launch-claude --model sonnet "Implement feature X according to our standards"
 ```
 
 ### CI/CD Integration
 
 ```bash
 # Automated code review in scripts (with custom log file)
-mycc --log-file ci-review.log "Review this PR for issues" < pr-description.txt
+launch-claude --log-file ci-review.log "Review this PR for issues" < pr-description.txt
 
 # Quiet mode for CI/CD pipelines
-mycc --quiet --no-logs "Review this PR for issues" < pr-description.txt
+launch-claude --quiet --no-logs "Review this PR for issues" < pr-description.txt
 
 # Generate analysis reports
-mycc --analyze-logs > code-quality-report.md
+launch-claude --analyze-logs > code-quality-report.md
 ```
 
 ## File Structure
 
 ```
 .support/scripts/
-├── mycc.sh              # Main mycc script
-├── install-mycc.sh      # Installation script
+├── launch-claude.sh              # Main launch-claude script
+├── install-launch-claude.sh      # Installation script
 .claude.support/
 ├── master-prompt.md     # Custom master prompt (auto-created)
 .logs/                   # Log files (auto-created when using --save-logs)
-├── mycc-20240128-143022.log
-├── mycc-20240128-151045.log
+├── launch-claude-20240128-143022.log
+├── launch-claude-20240128-151045.log
 └── ...
 ```

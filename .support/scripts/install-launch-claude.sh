@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# install-mycc.sh - Install mycc alias for enhanced Claude Code wrapper
-# This script adds the mycc alias to your shell configuration
+# install-launch-claude.sh - Install launch-claude alias for enhanced Claude Code wrapper
+# This script adds the launch-claude alias to your shell configuration
 
 set -euo pipefail
 
@@ -14,7 +14,7 @@ NC='\033[0m' # No Color
 
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-MYCC_SCRIPT="$SCRIPT_DIR/mycc.sh"
+LAUNCH_CLAUDE_SCRIPT="$SCRIPT_DIR/launch-claude.sh"
 
 # Function to print colored output
 print_info() { echo -e "${BLUE}ℹ️  $1${NC}"; }
@@ -62,29 +62,29 @@ get_shell_config() {
 # Function to add alias to shell config
 add_alias() {
     local config_file="$1"
-    local alias_line="alias mycc='$MYCC_SCRIPT'"
+    local alias_line="alias launch-claude='$LAUNCH_CLAUDE_SCRIPT'"
     
     # Check if alias already exists
-    if grep -q "alias mycc=" "$config_file" 2>/dev/null; then
-        print_warning "mycc alias already exists in $config_file"
+    if grep -q "alias launch-claude=" "$config_file" 2>/dev/null; then
+        print_warning "launch-claude alias already exists in $config_file"
         print_info "Updating existing alias..."
         
         # Remove old alias and add new one
         if [[ "$OSTYPE" == "darwin"* ]]; then
             # macOS
-            sed -i '' "/alias mycc=/d" "$config_file"
+            sed -i '' "/alias launch-claude=/d" "$config_file"
         else
             # Linux
-            sed -i "/alias mycc=/d" "$config_file"
+            sed -i "/alias launch-claude=/d" "$config_file"
         fi
     fi
     
     # Add the alias
     echo "" >> "$config_file"
-    echo "# mycc - Enhanced Claude Code wrapper" >> "$config_file"
+    echo "# launch-claude - Enhanced Claude Code wrapper" >> "$config_file"
     echo "$alias_line" >> "$config_file"
     
-    print_success "Added mycc alias to $config_file"
+    print_success "Added launch-claude alias to $config_file"
 }
 
 # Function to install for specific shell
@@ -98,7 +98,7 @@ install_for_shell() {
         return 1
     fi
     
-    print_info "Installing mycc alias for $shell_type shell"
+    print_info "Installing launch-claude alias for $shell_type shell"
     print_info "Config file: $config_file"
     
     # Create config file if it doesn't exist
@@ -116,18 +116,18 @@ install_for_shell() {
 
 # Main installation function
 main() {
-    print_info "Installing mycc - Enhanced Claude Code wrapper"
-    print_info "Script location: $MYCC_SCRIPT"
+    print_info "Installing launch-claude - Enhanced Claude Code wrapper"
+    print_info "Script location: $LAUNCH_CLAUDE_SCRIPT"
     
-    # Verify mycc.sh exists and is executable
-    if [[ ! -f "$MYCC_SCRIPT" ]]; then
-        print_error "mycc.sh not found at $MYCC_SCRIPT"
+    # Verify launch-claude.sh exists and is executable
+    if [[ ! -f "$LAUNCH_CLAUDE_SCRIPT" ]]; then
+        print_error "launch-claude.sh not found at $LAUNCH_CLAUDE_SCRIPT"
         exit 1
     fi
     
-    if [[ ! -x "$MYCC_SCRIPT" ]]; then
-        print_warning "Making mycc.sh executable"
-        chmod +x "$MYCC_SCRIPT"
+    if [[ ! -x "$LAUNCH_CLAUDE_SCRIPT" ]]; then
+        print_warning "Making launch-claude.sh executable"
+        chmod +x "$LAUNCH_CLAUDE_SCRIPT"
     fi
     
     # Detect current shell
@@ -137,7 +137,7 @@ main() {
     if [[ "$current_shell" == "unknown" ]]; then
         print_warning "Could not detect shell type"
         print_info "Please manually add this alias to your shell config:"
-        print_info "alias mycc='$MYCC_SCRIPT'"
+        print_info "alias launch-claude='$LAUNCH_CLAUDE_SCRIPT'"
         exit 1
     fi
     
@@ -159,15 +159,15 @@ main() {
     done
     
     echo
-    print_success "🎉 mycc installation complete!"
+    print_success "🎉 launch-claude installation complete!"
     print_info "Usage examples:"
-    echo "  mycc \"Review my code\""
-    echo "  mycc --verbose --debug \"Complex analysis\""
-    echo "  mycc --save-logs \"Debug session\""
-    echo "  mycc --analyze-logs"
-    echo "  mycc --help"
+    echo "  launch-claude \"Review my code\""
+    echo "  launch-claude --verbose --debug \"Complex analysis\""
+    echo "  launch-claude --save-logs \"Debug session\""
+    echo "  launch-claude --analyze-logs"
+    echo "  launch-claude --help"
     echo
-    print_info "To start using mycc immediately:"
+    print_info "To start using launch-claude immediately:"
     print_info "source $(get_shell_config "$current_shell")"
     print_info "Or open a new terminal"
 }

@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# mycc - Enhanced Claude Code alias with custom configuration
-# Usage: mycc [options] [query]
+# launch-claude - Enhanced Claude Code wrapper with custom configuration
+# Usage: launch-claude [options] [query]
 # 
 # This script provides a custom wrapper around claude with:
-# - Disabled verbose mode by default
+# - Enhanced defaults with logging enabled
 # - Default model set to sonnet
 # - Custom master prompt loading
 # - Enhanced verbose logging capabilities
 # - MCP server verbose logging
+# - Auto-detection of devcontainer/codespace environments
 
 set -euo pipefail
 
@@ -20,6 +21,7 @@ DEBUG_MODE="true"
 MCP_DEBUG="true"
 LOG_FILE=""
 SAVE_LOGS="true"
+SKIP_PERMISSIONS="false"
 
 # Log directory configuration
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -30,13 +32,22 @@ MCP_LOG_DIR="$LOG_BASE_DIR/mcp"
 TELEMETRY_LOG_DIR="$LOG_BASE_DIR/telemetry"
 DEBUG_LOG_DIR="$LOG_BASE_DIR/debug"
 
+# Auto-detect environment function
+detect_environment() {
+    # Check for devcontainer environment
+    if [[ -n "${CODESPACES:-}" ]] || [[ -n "${REMOTE_CONTAINERS:-}" ]] || [[ -f "/.dockerenv" ]] || [[ -n "${DEVCONTAINER:-}" ]]; then
+        echo "🔍 Detected devcontainer/codespace environment - enabling --dangerously-skip-permissions"
+        SKIP_PERMISSIONS="true"
+    fi
+}
+
 # Help function
 show_help() {
     cat << EOF
-mycc - Enhanced Claude Code wrapper
+launch-claude - Enhanced Claude Code wrapper
 
 USAGE:
-    mycc [OPTIONS] [QUERY]
+    launch-claude [OPTIONS] [QUERY]
 
 OPTIONS:
     -h, --help                Show this help message
@@ -47,12 +58,14 @@ OPTIONS:
     -m, --model MODEL        Set model (default: $DEFAULT_MODEL)
     --log-file FILE          Save logs to specified file (default: timestamped)
     --analyze-logs           Analyze existing log files using Claude Code agents
+    --skip-permissions       Force enable --dangerously-skip-permissions flag
+    --no-skip-permissions    Force disable --dangerously-skip-permissions flag
 
 EXAMPLES:
-    mycc "Review my code"
-    mycc --quiet --no-logs "Simple query without logging"
-    mycc --log-file custom.log "Session with custom log file"
-    mycc --analyze-logs
+    launch-claude "Review my code"
+    launch-claude --quiet --no-logs "Simple query without logging"
+    launch-claude --log-file custom.log "Session with custom log file"
+    launch-claude --analyze-logs
 
 FEATURES:
     - All logging enabled by default (verbose, debug, MCP debug, save logs)
@@ -62,6 +75,7 @@ FEATURES:
     - Organized log categories: sessions, mcp, telemetry, debug
     - MCP server debugging with telemetry support
     - Multi-agent log analysis using Claude Code agents
+    - Auto-detection of devcontainer/codespace environments for permissions
 
 EOF
 }
@@ -157,6 +171,14 @@ while [[ $# -gt 0 ]]; do
             analyze_logs
             exit 0
             ;;
+        --skip-permissions)
+            SKIP_PERMISSIONS="true"
+            shift
+            ;;
+        --no-skip-permissions)
+            SKIP_PERMISSIONS="false"
+            shift
+            ;;
         *)
             ARGS+=("$1")
             shift
@@ -246,6 +268,11 @@ build_claude_command() {
         cmd+=(--mcp-debug)
     fi
     
+    # Add skip permissions if enabled (auto-detected or forced)
+    if [[ "$SKIP_PERMISSIONS" == "true" ]]; then
+        cmd+=(--dangerously-skip-permissions)
+    fi
+    
     # Add debug environment variables if debug mode
     if [[ "$DEBUG_MODE" == "true" ]]; then
         export CLAUDE_DEBUG=1
@@ -261,8 +288,11 @@ build_claude_command() {
 
 # Main execution
 main() {
-    echo "🚀 mycc - Enhanced Claude Code wrapper"
+    echo "🚀 launch-claude - Enhanced Claude Code wrapper"
     echo "📦 Model: $DEFAULT_MODEL"
+    
+    # Auto-detect environment before other setup
+    detect_environment
     
     setup_logging
     load_master_prompt
@@ -279,7 +309,7 @@ main() {
     if [[ "$SAVE_LOGS" == "true" ]]; then
         # Write session header to all relevant logs
         local session_header
-        session_header="=== mycc session started at $(date) ===
+        session_header="=== launch-claude session started at $(date) ===
 Command: ${claude_cmd[*]}
 Model: $DEFAULT_MODEL
 Verbose: $VERBOSE_MODE
@@ -299,7 +329,7 @@ Project: $PROJECT_ROOT
             2> >(tee -a "$MYCC_DEBUG_LOG" "$MYCC_MCP_LOG" "$MYCC_TELEMETRY_LOG" >&2)
         
         # Write session footer
-        local session_footer="=== mycc session ended at $(date) ==="
+        local session_footer="=== launch-claude session ended at $(date) ==="
         echo "$session_footer" >> "$MYCC_SESSION_LOG"
         echo "$session_footer" >> "$MYCC_DEBUG_LOG"
         echo "$session_footer" >> "$LOG_FILE"
