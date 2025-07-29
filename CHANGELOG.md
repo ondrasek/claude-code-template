@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.28.2] - 2025-07-29
+
+### Fixed
+- **MCP Server Configuration Loading**: Fixed critical bug in launch-claude.sh script preventing automatic MCP server loading
+  - Launch script now automatically detects and loads .mcp.json configuration from project root
+  - Added --mcp-config parameter passing to Claude Code when configuration file exists  
+  - Enhanced debug output showing MCP config file path for troubleshooting
+  - Updated help documentation to reflect automatic MCP configuration loading feature
+  - Resolves issue where users couldn't access configured MCP servers (memory, perplexity, sqlite) via launch script
+
 ## [2.28.1] - 2025-07-29
 
 ### Fixed
