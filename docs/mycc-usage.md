@@ -4,9 +4,9 @@
 
 ## Features
 
-- **Optimized Defaults**: Verbose mode disabled by default, Sonnet model as default
+- **Enhanced Defaults**: All logging enabled by default (verbose, debug, MCP debug, save logs), Sonnet model as default
 - **Master Prompt Loading**: Automatic loading of custom prompts from `.claude.support/master-prompt.md`
-- **Advanced Logging**: Comprehensive logging with debug mode and MCP server logging
+- **Advanced Logging**: Comprehensive logging enabled by default with timestamped files
 - **Log Analysis**: Built-in log analysis using Claude Code agents
 - **Easy Installation**: Automated installation script for multiple shells
 
@@ -34,50 +34,50 @@ mycc --help
 ### Basic Usage
 
 ```bash
-# Simple query with optimized defaults
+# Simple query with all logging enabled by default
 mycc "Review my code"
 
 # Interactive mode (same as claude without arguments)
 mycc
 ```
 
-### Advanced Options
+### Disabling Logging Options
 
 ```bash
-# Enable verbose mode (overrides default disable)
-mycc --verbose "Analyze performance issues"
+# Disable verbose mode (quiet mode)
+mycc --quiet "Clean output without verbose logging"
 
-# Use debug mode with extensive logging
-mycc --debug "Complex debugging session"
+# Disable debug mode
+mycc --no-debug "Reduce debug verbosity"
 
-# Set custom model
-mycc --model opus "Complex reasoning task"
+# Disable MCP server debugging
+mycc --no-mcp-debug "Turn off MCP debug output"
 
-# Enable MCP server debugging
-mycc --mcp-debug "MCP server interaction analysis"
+# Disable log saving
+mycc --no-logs "Don't save session logs"
+
+# Minimal logging mode
+mycc --quiet --no-debug --no-mcp-debug --no-logs "Minimal output"
 ```
 
-### Logging Features
+### Logging Customization
 
 ```bash
-# Save logs to specific file
+# Save logs to specific file (keeps all other defaults)
 mycc --log-file debug.log "Debug session"
-
-# Save logs to timestamped file in .logs/
-mycc --save-logs "Important session"
 
 # Analyze existing log files using Claude Code agents
 mycc --analyze-logs
 ```
 
-### Combined Options
+### Model Selection
 
 ```bash
-# Full debug session with logging
-mycc --debug --mcp-debug --save-logs "Comprehensive analysis"
+# Set custom model (keeps all logging defaults)
+mycc --model opus "Complex reasoning task"
 
-# Verbose mode with custom model and logging
-mycc --verbose --model opus --log-file analysis.log "Deep code review"
+# Combined custom model with selective logging disable
+mycc --model opus --quiet "Clean output with opus model"
 ```
 
 ## Configuration
@@ -133,22 +133,24 @@ The `--analyze-logs` feature uses multiple Claude Code agents to analyze your lo
 | Option | Description | Example |
 |--------|-------------|---------|
 | `-h, --help` | Show help message | `mycc --help` |
-| `-v, --verbose` | Enable verbose mode | `mycc --verbose "query"` |
-| `-d, --debug` | Enable debug mode | `mycc --debug "query"` |
+| `-q, --quiet` | Disable verbose mode | `mycc --quiet "query"` |
+| `--no-debug` | Disable debug mode | `mycc --no-debug "query"` |
+| `--no-mcp-debug` | Disable MCP debug logging | `mycc --no-mcp-debug "query"` |
+| `--no-logs` | Disable log saving | `mycc --no-logs "query"` |
 | `-m, --model MODEL` | Set model | `mycc --model opus "query"` |
-| `--mcp-debug` | Enable MCP debug logging | `mycc --mcp-debug "query"` |
 | `--log-file FILE` | Save logs to file | `mycc --log-file log.txt "query"` |
-| `--save-logs` | Save to timestamped file | `mycc --save-logs "query"` |
 | `--analyze-logs` | Analyze existing logs | `mycc --analyze-logs` |
 
 ## Default Behavior Changes
 
 | Feature | Claude Default | mycc Default | Override |
 |---------|----------------|--------------|----------|
-| Verbose Mode | Off | Off (explicit) | `--verbose` |
+| Verbose Mode | Off | On | `--quiet` |
+| Debug Mode | Off | On | `--no-debug` |
+| MCP Debug | Off | On | `--no-mcp-debug` |
+| Log Saving | Off | On (timestamped) | `--no-logs` |
 | Model | Various | sonnet | `--model` |
 | Master Prompt | None | Auto-loaded | Edit `.claude.support/master-prompt.md` |
-| Logging | Basic | Enhanced | Various log options |
 
 ## Troubleshooting
 
@@ -203,14 +205,14 @@ When using `--debug`, you'll see:
 ### Development Workflow
 
 ```bash
-# Start development session with logging
-mycc --save-logs "Let's implement the user authentication feature"
+# Start development session (all logging enabled by default)
+mycc "Let's implement the user authentication feature"
 
-# Debug performance issues
-mycc --debug --mcp-debug "Why is the login endpoint slow?"
+# Debug performance issues (already has all debug features enabled)
+mycc "Why is the login endpoint slow?"
 
-# Review code with verbose output
-mycc --verbose "Review the authentication module for security issues"
+# Review code with minimal output if desired
+mycc --quiet "Review the authentication module for security issues"
 
 # Analyze previous session logs
 mycc --analyze-logs
@@ -223,15 +225,18 @@ mycc --analyze-logs
 git add .claude.support/master-prompt.md
 git commit -m "Add team coding standards to master prompt"
 
-# Use consistent model for team sessions
+# Use consistent model for team sessions (logging enabled by default)
 mycc --model sonnet "Implement feature X according to our standards"
 ```
 
 ### CI/CD Integration
 
 ```bash
-# Automated code review in scripts
+# Automated code review in scripts (with custom log file)
 mycc --log-file ci-review.log "Review this PR for issues" < pr-description.txt
+
+# Quiet mode for CI/CD pipelines
+mycc --quiet --no-logs "Review this PR for issues" < pr-description.txt
 
 # Generate analysis reports
 mycc --analyze-logs > code-quality-report.md

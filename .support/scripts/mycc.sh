@@ -15,11 +15,11 @@ set -euo pipefail
 # Configuration variables
 DEFAULT_MODEL="sonnet"
 MASTER_PROMPT_FILE=".claude.support/master-prompt.md"
-VERBOSE_MODE="false"
-DEBUG_MODE="false"
-MCP_DEBUG="false"
+VERBOSE_MODE="true"
+DEBUG_MODE="true"
+MCP_DEBUG="true"
 LOG_FILE=""
-SAVE_LOGS="false"
+SAVE_LOGS="true"
 
 # Help function
 show_help() {
@@ -31,25 +31,25 @@ USAGE:
 
 OPTIONS:
     -h, --help                Show this help message
-    -v, --verbose            Enable verbose mode (overrides default disable)
-    -d, --debug              Enable debug mode with extensive logging
+    -q, --quiet              Disable verbose mode (overrides default enable)
+    --no-debug               Disable debug mode (overrides default enable)
+    --no-mcp-debug           Disable MCP server debug logging (overrides default enable)
+    --no-logs                Disable log saving (overrides default enable)
     -m, --model MODEL        Set model (default: $DEFAULT_MODEL)
-    --mcp-debug              Enable MCP server debug logging
-    --log-file FILE          Save logs to specified file
-    --save-logs              Save logs to timestamped file in .logs/
+    --log-file FILE          Save logs to specified file (default: timestamped)
     --analyze-logs           Analyze existing log files using Claude Code agents
 
 EXAMPLES:
     mycc "Review my code"
-    mycc --verbose --log-file debug.log "Analyze performance"
-    mycc --debug --mcp-debug "Complex debugging session"
+    mycc --quiet --no-logs "Simple query without logging"
+    mycc --log-file custom.log "Session with custom log file"
     mycc --analyze-logs
 
 FEATURES:
-    - Verbose mode disabled by default for cleaner output
+    - All logging enabled by default (verbose, debug, MCP debug, save logs)
     - Default model set to sonnet for optimal performance
     - Automatic master prompt loading from $MASTER_PROMPT_FILE
-    - Enhanced logging with --debug and --save-logs options
+    - Advanced logging with timestamped files in .logs/
     - MCP server debugging support
     - Log analysis using Claude Code agents
 
@@ -64,31 +64,30 @@ while [[ $# -gt 0 ]]; do
             show_help
             exit 0
             ;;
-        -v|--verbose)
-            VERBOSE_MODE="true"
+        -q|--quiet)
+            VERBOSE_MODE="false"
             shift
             ;;
-        -d|--debug)
-            DEBUG_MODE="true"
-            VERBOSE_MODE="true"
+        --no-debug)
+            DEBUG_MODE="false"
+            shift
+            ;;
+        --no-mcp-debug)
+            MCP_DEBUG="false"
+            shift
+            ;;
+        --no-logs)
+            SAVE_LOGS="false"
             shift
             ;;
         -m|--model)
             DEFAULT_MODEL="$2"
             shift 2
             ;;
-        --mcp-debug)
-            MCP_DEBUG="true"
-            shift
-            ;;
         --log-file)
             LOG_FILE="$2"
             SAVE_LOGS="true"
             shift 2
-            ;;
-        --save-logs)
-            SAVE_LOGS="true"
-            shift
             ;;
         --analyze-logs)
             analyze_logs

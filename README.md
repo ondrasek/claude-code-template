@@ -100,11 +100,11 @@ Note: Claude Code has built-in filesystem and web tools - no MCP needed!
 - Total of 19 specialized agents for different aspects of development
 
 ### Enhanced CLI Tools
-- **mycc alias** - Enhanced Claude Code wrapper with optimized defaults
-  - Verbose mode disabled by default for cleaner output
+- **mycc alias** - Enhanced Claude Code wrapper with comprehensive logging defaults
+  - All logging enabled by default (verbose, debug, MCP debug, save logs)
   - Sonnet model as default for optimal performance
   - Master prompt loading from `.claude.support/master-prompt.md`
-  - Advanced logging with debug mode and log analysis
+  - Advanced logging with timestamped files and log analysis
   - Installation: `./.support/scripts/install-mycc.sh`
   - Full documentation: [mycc Usage Guide](docs/mycc-usage.md)
 
