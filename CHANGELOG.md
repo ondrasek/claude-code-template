@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.25.0] - 2025-07-29
+
+### Enhanced
+- **TODO Cleanup Commands**: Major architectural improvement from archiving to deletion-based workflow
+  - Updated todo-cleanup-done and todo-cleanup-stale commands to delete instead of archive TODOs
+  - Added comprehensive GIT_SAFETY_PROTOCOL requiring git history verification before deletion
+  - Implemented user confirmation workflows for safe destructive operations
+  - Enhanced traceability through git repository history instead of archive files
+  - Improved command reliability with mandatory git status checks and user consent
+  - Better integration with git-based development workflows for TODO management
+
 ### Removed
 - **TODO Cleanup**: Removed implemented TODOs from .support/todos/ directory
   - Deleted add-claude-code-alias.md (functionality implemented in launch-claude.sh)
