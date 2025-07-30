@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.30.1] - 2025-07-30
+
+### Fixed
+- **Agent Ecosystem Stability**: Fixed agent spawning violations in 6 agent definitions
+  - Removed improper cross-agent spawning instructions from generator, threat-modeling, principles, compliance-checker, vulnerability-scanner, and testing agents
+  - Agents now focus on core capabilities without cross-agent dependencies
+  - Ensures only CLAUDE.md protocols coordinate agent usage, following proper separation of concerns
+  - Prevents potential cascade spawning issues and maintains system integrity
+
 ## [2.30.0] - 2025-07-30
 
 ### Removed
