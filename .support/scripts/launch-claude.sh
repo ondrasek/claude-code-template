@@ -433,7 +433,8 @@ build_claude_command() {
     
     # Add master prompt as system prompt only if it has meaningful content
     if [[ -n "$MASTER_PROMPT_CONTENT" ]]; then
-        cmd+=(--append-system-prompt "$MASTER_PROMPT_CONTENT")
+        cmd+=(--append-system-prompt)
+        cmd+=("$MASTER_PROMPT_CONTENT")
     fi
     
     # Add debug environment variables if debug mode
