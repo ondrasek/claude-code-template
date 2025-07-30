@@ -1,0 +1,2 @@
+Split Claude Code config to .claude and claude.meta. Meta will contain agents to review and create agents
+and ecosystem analysis. Build launcher script to launch meta-claude with the meta configuration.
