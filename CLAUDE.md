@@ -4,6 +4,10 @@
 **AGENT AND COMMAND LOCATIONS**:
 - **Agent definitions**: All (sub-)agent definitions are stored in `.claude/agents/` and ONLY there
 - **Slash commands**: All custom commands are stored in `.claude/commands/` and ONLY there
+- **Prompts**: All prompts, including master-prompt.md are stored in `.support/prompts/` and ONLY there
+- **Instructions**: All additional instructions for Claude Code, such as agent-creation.md are stored in `.support/instructions/` and ONLY there
+- **TODOs**: All TODOs are in `.support/todos/` and ONLY there
+
 - **Never search elsewhere**: When looking for agents or commands, use only these directories
 
 ## Agent Coordination Protocol (MANDATORY)
@@ -28,17 +32,15 @@ Examples:
 Examples:
   ❌ Wrong: "Phase 1 (Week 1): Update agent descriptions"
   ✅ Right: "High Priority: Update agent descriptions (blocks selection optimization)"
-  ❌ Wrong: "Implement feature in 2 weeks"  
+  ❌ Wrong: "Implement feature in 2 weeks"
   ✅ Right: "High Priority: Implement feature (depends on API design completion)"
 
 **EXECUTION PROTOCOL**:
-1. **Memory-first research**: Check `mcp__memory__search_nodes()` before web searches
-   Example: Before web searching "React best practices" → First check memory for previous React decisions
-2. **Parallel agent clusters**: Use multiple agents simultaneously when possible
-   Example: Single message with 3+ Task() calls running researcher + patterns + critic simultaneously  
-3. **Context delegation**: Complex analysis happens in agent context, not main context
+1. **Parallel agent clusters**: Use multiple agents simultaneously when possible
+   Example: Single message with 3+ Task() calls running researcher + patterns + critic simultaneously
+2. **Context delegation**: Complex analysis happens in agent context, not main context
    Example: Don't analyze 50 files in main context → Use patterns agent to analyze and summarize
-4. **Automatic selection**: Match agent combinations to user request patterns
+3. **Automatic selection**: Match agent combinations to user request patterns
    Example: "Why is this slow?" → Auto-select researcher + hypothesis + patterns (not just one agent)
 
 ## Agent Combination Patterns (MANDATORY)
@@ -120,39 +122,12 @@ Examples:
   - Architecture decision needed → Use guidelines-repo agent → Make informed choice → Follow Simple Git Protocol
   - Complex changes needing both contexts → Execute guidelines-file + guidelines-repo simultaneously via single message with multiple Task() calls → Follow Simple Git Protocol
 
-## MCP Server Integration Protocol (MANDATORY)
-**ENHANCED RESEARCH & MEMORY**: Follow @.support/instructions/mcp-protocol.md for comprehensive MCP server integration.
-
-**PERPLEXITY MCP INTEGRATION**:
-- **High Priority Agents**: researcher, vulnerability-scanner, compliance-checker, threat-modeling, connector
-- **Research Pattern**: Memory-first → Perplexity → WebSearch fallback → Store results
-- **Use for**: Current trends, security intelligence, regulatory updates, cross-domain solutions
-
-**MEMORY MCP INTEGRATION**:
-- **Universal Usage**: ALL agents must use memory-first research patterns
-- **Before Research**: `mcp__memory__search_nodes()` to check existing knowledge
-- **After Research**: `mcp__memory__create_entities()` + `mcp__memory__create_relations()` to store findings
-- **Graceful Degradation**: Continue operation if MCP servers unavailable
-
-**MCP-ENHANCED EXECUTION PROTOCOL**:
-1. **Memory-first research**: `mcp__memory__search_nodes()` before external research
-2. **Intelligence-enhanced research**: `mcp__perplexity__search()` for current information  
-3. **Parallel agent clusters**: Execute memory-informed agent combinations simultaneously via single message with multiple Task() calls based on proven patterns
-4. **Context delegation**: MCP-enhanced context synthesis with persistent knowledge
-5. **Knowledge persistence**: Store all significant findings for cross-session intelligence
-
-Examples:
-  - Before researching: `mcp__memory__search_nodes("React architecture decisions")` → Use findings → Follow Simple Git Protocol
-  - Security research: `mcp__perplexity__search("latest CVE for React SSR")` → Validate → Store → Follow Simple Git Protocol
-  - After analysis: `mcp__memory__create_entities([{name: "Security Pattern", type: "vulnerability_finding"}])` → Follow Simple Git Protocol
-  - Link knowledge: `mcp__memory__create_relations([{from: "vulnerability_id", to: "mitigation_id", relationType: "mitigated_by"}])` → Follow Simple Git Protocol
-
 ## Simple Git Protocol (MANDATORY)
 **EXECUTE AFTER EVERY CHANGE - NO EXCEPTIONS**:
 1. **Stage immediately**: `git add -A` after any file modification
-2. **Commit at milestones**: When any meaningful task is complete (with MCP-researched commit message validation)
-3. **Always invoke git-tagger**: Use git-tagger agent after EVERY commit to evaluate for tags (with memory-informed release intelligence)
-4. **Update CHANGELOG.md**: When git-tagger creates release tags, update CHANGELOG.md with release notes (using memory-tracked feature evolution)
+2. **Commit at milestones**: When any meaningful task is complete
+3. **Always invoke git-tagger**: Use git-tagger agent after EVERY commit to evaluate for tags
+4. **Update CHANGELOG.md**: When git-tagger creates release tags, update CHANGELOG.md with release notes
 5. **Push immediately**: `git push origin main` after every commit
 
 **Error Recovery**: When git operations fail, use git-troubleshooter agent for systematic diagnosis and resolution.
@@ -205,4 +180,3 @@ Examples:
 Follow Simple Git Protocol (see Simple Git Protocol section above)
 
 **Cross-reference**: All protocols above reference Simple Git Protocol - follow it consistently.
-
