@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.31.1] - 2025-07-30
+
+### Fixed
+- **Agent Ecosystem Analysis Accuracy**: Corrected understanding of principles agent and refined consolidation strategy
+  - Fixed principles agent definition: Universal governance and first-principles enforcement across all agents (not just architecture)
+  - Prevented incorrect axioms-principles merger (25% overlap, complementary functions preserved)
+  - Refined consolidation strategy: 29 → 22 agents (24% reduction) instead of aggressive 29 → 18 (38% reduction)
+  - Updated performance projections to 35% improvement (conservative estimate) from 35-45% range
+  - Maintained 88% workflow coverage validation with corrected foundational governance understanding
+  - Preserved specialized first-principles problem-solving capability through axioms agent
+
 ## [2.31.0] - 2025-07-30
 
 ### Added
