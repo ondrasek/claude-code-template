@@ -1,5 +1,5 @@
 ---
-name: axioms
+name: specialist-axioms
 description: "MUST USE when user asks 'why does this work', 'from first principles', 'fundamental approach', 'derive the solution', or needs deep understanding. Expert at building solutions from bedrock truths and axiomatic reasoning."
 ---
 

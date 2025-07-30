@@ -1,5 +1,5 @@
 ---
-name: completer
+name: specialist-completer
 description: "MUST USE when user says 'finish this', 'complete implementation', or functions throw 'not implemented' errors. Expert at completing partial implementations and eliminating TODO/FIXME comments."
 ---
 

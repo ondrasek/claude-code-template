@@ -1,5 +1,5 @@
 ---
-name: git-troubleshooter
+name: specialist-git-troubleshooter
 description: "MUST USE when facing 'git error', 'merge conflict', 'can't push', 'repository corrupted', 'lost commits', 'detached HEAD', or git command failures. Expert at systematic git diagnosis and resolution using proven troubleshooting methodologies."
 ---
 

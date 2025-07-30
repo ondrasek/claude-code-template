@@ -1,5 +1,5 @@
 ---
-name: git-tagger
+name: specialist-git-tagger
 description: Autonomous git tagging specialist that determines when commits warrant release tags and creates them automatically
 ---
 

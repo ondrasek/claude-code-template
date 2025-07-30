@@ -1,5 +1,5 @@
 ---
-name: prompter
+name: specialist-prompter
 description: Use when user asks to "write a prompt", "improve this prompt", "create AI agent prompts", or working with LangChain/CrewAI systems
 ---
 

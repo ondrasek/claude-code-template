@@ -18,9 +18,9 @@
 - Agents must keep main context window tidy, optimized and neat
 
 Examples:
-  - User: "This code looks messy" → Auto-invoke: patterns + whisper + critic
-  - User: "How should I structure this?" → Auto-invoke: guidelines-repo + explorer + principles
-  - User shows error message → Auto-invoke: researcher + hypothesis + patterns
+  - User: "This code looks messy" → Auto-invoke: foundation-patterns + specialist-whisper + foundation-critic
+  - User: "How should I structure this?" → Auto-invoke: specialist-guidelines-repo + specialist-explorer + foundation-principles
+  - User shows error message → Auto-invoke: foundation-researcher + specialist-hypothesis + foundation-patterns
 
 **NO ARTIFICIAL TIMELINES (MANDATORY)**:
 - NEVER create mock weekly milestones (Week 1, Week 2, Week 3, etc.) in ANY context
@@ -37,16 +37,16 @@ Examples:
 
 **EXECUTION PROTOCOL**:
 1. **Parallel agent clusters**: Use multiple agents simultaneously when possible
-   Example: Single message with 3+ Task() calls running researcher + patterns + critic simultaneously
+   Example: Single message with 3+ Task() calls running foundation-researcher + foundation-patterns + foundation-critic simultaneously
 2. **Context delegation**: Complex analysis happens in agent context, not main context
-   Example: Don't analyze 50 files in main context → Use patterns agent to analyze and summarize
+   Example: Don't analyze 50 files in main context → Use foundation-patterns agent to analyze and summarize
 3. **Automatic selection**: Match agent combinations to user request patterns
-   Example: "Why is this slow?" → Auto-select researcher + hypothesis + patterns (not just one agent)
+   Example: "Why is this slow?" → Auto-select foundation-researcher + specialist-hypothesis + foundation-patterns (not just one agent)
 
 ## Core-Satellite Agent Architecture (MANDATORY)
 
 **CORE AGENTS (Always Available - 0ms selection time)**:
-- **researcher, patterns, principles, critic, context, resolver**
+- **foundation-researcher, foundation-patterns, foundation-principles, foundation-critic, foundation-context, foundation-resolver**
 - Instant loading for 88% workflow coverage
 - Foundation for all complex tasks requiring information, quality, consistency, risk analysis, understanding, or decisions
 
@@ -62,56 +62,56 @@ Examples:
 - No selection overhead for core agent combinations
 
 **STANDARD CORE PATTERNS**:
-- **Information + Analysis**: researcher → patterns → principles → critic
-- **Decision Making**: researcher → critic → resolver → context  
-- **Quality Assurance**: patterns → principles → critic → resolver
-- **System Understanding**: context → patterns → principles → critic
+- **Information + Analysis**: foundation-researcher → foundation-patterns → foundation-principles → foundation-critic
+- **Decision Making**: foundation-researcher → foundation-critic → foundation-resolver → foundation-context  
+- **Quality Assurance**: foundation-patterns → foundation-principles → foundation-critic → foundation-resolver
+- **System Understanding**: foundation-context → foundation-patterns → foundation-principles → foundation-critic
 
 ## Agent Combination Patterns (MANDATORY)
 
 **Analysis Requests** (`"analyze X"`, `"review Y"`, `"examine Z"`):
-- **Core Foundation**: Execute researcher + patterns + principles + critic simultaneously via single message with multiple Task() calls
-- **Extended Analysis** (if specialized needs): Add context + hypothesis/axioms + completer as needed
+- **Core Foundation**: Execute foundation-researcher + foundation-patterns + foundation-principles + foundation-critic simultaneously via single message with multiple Task() calls
+- **Extended Analysis** (if specialized needs): Add foundation-context + specialist-hypothesis/specialist-axioms + specialist-completer as needed
 - Flow: Research → Pattern detection → Consistency enforcement → Critical validation
 
 **Architecture/Design Questions** (`"design X"`, `"architect Y"`, `"structure Z"`):
-- **Core Design**: Execute researcher + principles + critic + resolver simultaneously via single message with multiple Task() calls  
-- **Extended Design** (if alternatives needed): Add explorer + constraints + context as needed
+- **Core Design**: Execute foundation-researcher + foundation-principles + foundation-critic + foundation-resolver simultaneously via single message with multiple Task() calls  
+- **Extended Design** (if alternatives needed): Add specialist-explorer + specialist-constraints + foundation-context as needed
 - Flow: Research approaches → Consistency validation → Critical analysis → Decision resolution
 
 **Debugging Investigations** (`"why does X"`, `"strange behavior"`, `"not working"`):
-- **Core Investigation**: Execute researcher + patterns + critic + resolver simultaneously via single message with multiple Task() calls
-- **Extended Debugging** (if systematic needed): Add hypothesis + context + constraints as needed  
+- **Core Investigation**: Execute foundation-researcher + foundation-patterns + foundation-critic + foundation-resolver simultaneously via single message with multiple Task() calls
+- **Extended Debugging** (if systematic needed): Add specialist-hypothesis + foundation-context + specialist-constraints as needed  
 - Flow: Research issues → Pattern analysis → Critical assessment → Resolution decisions
 
 **Code Quality Tasks** (`"improve X"`, `"refactor Y"`, `"optimize Z"`):
-- **Core Quality**: Execute patterns + principles + critic + resolver simultaneously via single message with multiple Task() calls
-- **Extended Quality** (if specialized needed): Add whisper + performance + constraints as needed
+- **Core Quality**: Execute foundation-patterns + foundation-principles + foundation-critic + foundation-resolver simultaneously via single message with multiple Task() calls
+- **Extended Quality** (if specialized needed): Add specialist-whisper + specialist-performance + specialist-constraints as needed
 - Flow: Pattern analysis → Consistency enforcement → Critical validation → Resolution decisions
 
 **Feature Implementation** (`"add X"`, `"implement Y"`, `"create Z"`):
-- **Core Implementation**: Execute researcher + patterns + principles + critic simultaneously via single message with multiple Task() calls
-- **Extended Implementation** (if specialized needed): Add completer + docs + context + resolver as needed
+- **Core Implementation**: Execute foundation-researcher + foundation-patterns + foundation-principles + foundation-critic simultaneously via single message with multiple Task() calls
+- **Extended Implementation** (if specialized needed): Add specialist-completer + specialist-docs + foundation-context + foundation-resolver as needed
 - Flow: Research approaches → Pattern alignment → Consistency validation → Critical review
 
 **Decision Making** (`"options for X"`, `"approaches to Y"`, `"choose between Z"`):
-- **Core Decision**: Execute researcher + critic + resolver + principles simultaneously via single message with multiple Task() calls
-- **Extended Decision** (if alternatives needed): Add explorer + constraints + context as needed
+- **Core Decision**: Execute foundation-researcher + foundation-critic + foundation-resolver + foundation-principles simultaneously via single message with multiple Task() calls
+- **Extended Decision** (if alternatives needed): Add specialist-explorer + specialist-constraints + foundation-context as needed
 - Flow: Research options → Critical analysis → Consistency validation → Resolution decisions
 
 **System Understanding** (`"how does X work"`, `"explain Y"`, `"show me Z"`):
-- **Core Understanding**: Execute context + patterns + researcher + critic simultaneously via single message with multiple Task() calls
-- **Extended Understanding** (if deep analysis needed): Add principles + axioms + docs as needed
+- **Core Understanding**: Execute foundation-context + foundation-patterns + foundation-researcher + foundation-critic simultaneously via single message with multiple Task() calls
+- **Extended Understanding** (if deep analysis needed): Add foundation-principles + specialist-axioms + specialist-docs as needed
 - Flow: System mapping → Pattern identification → Research validation → Critical synthesis
 
 **Security Analysis** (`"security review"`, `"vulnerability assessment"`, `"threat analysis"`):
-- **Core Security**: Execute researcher + critic + principles + resolver simultaneously via single message with multiple Task() calls
-- **Extended Security** (if specialized needed): Add security + constraints as needed
+- **Core Security**: Execute foundation-researcher + foundation-critic + foundation-principles + foundation-resolver simultaneously via single message with multiple Task() calls
+- **Extended Security** (if specialized needed): Add specialist-security + specialist-constraints as needed
 - Flow: Research vulnerabilities → Critical assessment → Consistency validation → Resolution guidance
 
 **Performance Optimization** (`"optimize performance"`, `"improve speed"`, `"reduce latency"`):
-- **Core Performance**: Execute researcher + patterns + critic + resolver simultaneously via single message with multiple Task() calls
-- **Extended Performance** (if specialized needed): Add performance + constraints as needed
+- **Core Performance**: Execute foundation-researcher + foundation-patterns + foundation-critic + foundation-resolver simultaneously via single message with multiple Task() calls
+- **Extended Performance** (if specialized needed): Add specialist-performance + specialist-constraints as needed
 - Flow: Research bottlenecks → Pattern analysis → Critical assessment → Resolution decisions
 
 ## Agent Coordination Best Practices (MANDATORY)
@@ -123,10 +123,10 @@ Examples:
 - **Batch Coordination**: Each phase executes all selected agents simultaneously, then synthesizes results
 
 **CORE-SATELLITE COORDINATION PATTERNS**:
-- **Lead with Core Foundation**: Always start with core agent combinations (researcher + patterns + principles + critic)
+- **Lead with Core Foundation**: Always start with core agent combinations (foundation-researcher + foundation-patterns + foundation-principles + foundation-critic)
 - **Add Specialized Only When Needed**: Extend with specialized agents based on specific requirements
-- **Maintain Consistency**: principles agent ensures universal consistency across all agent outputs
-- **Resolve All Conflicts**: resolver agent handles competing recommendations from any source
+- **Maintain Consistency**: foundation-principles agent ensures universal consistency across all agent outputs
+- **Resolve All Conflicts**: foundation-resolver agent handles competing recommendations from any source
 - **Context Window Optimization**: Core agents handle 80%+ of work, specialized agents for remaining 20%
 - **Performance Priority**: Prefer core agent solutions over specialized when equally effective
 
@@ -136,37 +136,37 @@ Examples:
 
 **Parallel Guidelines Loading**: Execute guidelines-file + guidelines-repo agents simultaneously via single message with multiple Task() calls when both file-level and repository-level guidance needed
 
-**File-Level Guidelines**: Use `guidelines-file` agent before modifying any file when technology patterns are unclear
-**Repository-Level Guidelines**: Use `guidelines-repo` agent for architecture decisions when stack context is undetermined
+**File-Level Guidelines**: Use `specialist-guidelines-file` agent before modifying any file when technology patterns are unclear
+**Repository-Level Guidelines**: Use `specialist-guidelines-repo` agent for architecture decisions when stack context is undetermined
 
 **Detection Logic**: Both agents reference @.support/instructions/stack-mapping.md for centralized technology detection rules
 
 Examples:
-  - Modify Python file with unclear patterns → Use guidelines-file agent → Apply guidelines → Follow Simple Git Protocol
-  - Architecture decision needed → Use guidelines-repo agent → Make informed choice → Follow Simple Git Protocol
-  - Complex changes needing both contexts → Execute guidelines-file + guidelines-repo simultaneously via single message with multiple Task() calls → Follow Simple Git Protocol
+  - Modify Python file with unclear patterns → Use specialist-guidelines-file agent → Apply guidelines → Follow Simple Git Protocol
+  - Architecture decision needed → Use specialist-guidelines-repo agent → Make informed choice → Follow Simple Git Protocol
+  - Complex changes needing both contexts → Execute specialist-guidelines-file + specialist-guidelines-repo simultaneously via single message with multiple Task() calls → Follow Simple Git Protocol
 
 ## Simple Git Protocol (MANDATORY)
 **EXECUTE AFTER EVERY CHANGE - NO EXCEPTIONS**:
 1. **Stage immediately**: `git add -A` after any file modification
 2. **Commit at milestones**: When any meaningful task is complete
-3. **Always invoke git-tagger**: Use git-tagger agent after EVERY commit to evaluate for tags
+3. **Always invoke git-tagger**: Use specialist-git-tagger agent after EVERY commit to evaluate for tags
 4. **Update CHANGELOG.md**: When git-tagger creates release tags, update CHANGELOG.md with release notes
 5. **Push immediately**: `git push origin main` after every commit
 
-**Error Recovery**: When git operations fail, use git-troubleshooter agent for systematic diagnosis and resolution.
+**Error Recovery**: When git operations fail, use specialist-git-troubleshooter agent for systematic diagnosis and resolution.
 
-**Agent coordination**: All agents MUST follow this protocol. Git-tagger agent runs autonomously after every commit.
+**Agent coordination**: All agents MUST follow this protocol. specialist-git-tagger agent runs autonomously after every commit.
 
 Example sequence:
   ```bash
   # After modifying src/components/Header.tsx
   git add -A
   git commit -m "Add dark mode toggle to header component"
-  # Auto-invoke git-tagger agent here
-  # If git-tagger creates v1.2.0 tag → Update CHANGELOG.md with release notes
+  # Auto-invoke specialist-git-tagger agent here
+  # If specialist-git-tagger creates v1.2.0 tag → Update CHANGELOG.md with release notes
   git push origin main
-  # If any step fails → Auto-invoke git-troubleshooter agent
+  # If any step fails → Auto-invoke specialist-git-troubleshooter agent
   ```
 
 ## Documentation Protocol (MANDATORY)
@@ -174,26 +174,26 @@ Example sequence:
 1. **Same commit rule**: Documentation updates in same commit as code changes
 2. **Always check**: README.md, CHANGELOG.md, API docs, CLAUDE.md for needed updates
 3. **Update immediately**: New features, API changes, configuration changes
-4. **Use docs agent**: Invoke docs agent for documentation maintenance
+4. **Use docs agent**: Invoke specialist-docs agent for documentation maintenance
 
 Examples:
   - Add new API endpoint → Update API docs + README.md → Follow Simple Git Protocol
-  - New agent created → Use docs agent to update CLAUDE.md + CHANGELOG.md → Follow Simple Git Protocol
+  - New agent created → Use specialist-docs agent to update CLAUDE.md + CHANGELOG.md → Follow Simple Git Protocol
   - Configuration change → Update README.md setup instructions → Follow Simple Git Protocol
   - Feature complete → README.md usage section + CHANGELOG.md entry → Follow Simple Git Protocol
 
 ## TODO Protocol (MANDATORY)
 **USE TODO AGENT FOR ALL TASK MANAGEMENT - NO CONTEXT CLUTTER**:
-1. **Agent delegation**: Use todo agent for creating/tracking tasks
+1. **Agent delegation**: Use specialist-todo agent for creating/tracking tasks
 2. **Clean context**: No TODO tracking in main conversation flow
 3. **Deferred actions**: TODOs represent future work, not current progress
 4. **File management**: Agent handles `.support/todos/` directory autonomously
 5. **Git integration**: After TODO files created → Follow Simple Git Protocol
 
-**Agent invocation**: `Task: "Create TODO for X" (subagent_type: todo)`
+**Agent invocation**: `Task: "Create TODO for X" (subagent_type: specialist-todo)`
 
 Examples:
-  - Create project TODOs → Use todo agent → Follow Simple Git Protocol
+  - Create project TODOs → Use specialist-todo agent → Follow Simple Git Protocol
   - Update TODO status → Modify .support/todos/file.md → Follow Simple Git Protocol
 
 ---

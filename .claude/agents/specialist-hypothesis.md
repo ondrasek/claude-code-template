@@ -1,5 +1,5 @@
 ---
-name: hypothesis
+name: specialist-hypothesis
 description: "MUST USE when debugging 'why does this happen', 'strange behavior', 'performance issue', 'it should work but doesn't', or investigating unexpected results. Expert at systematic hypothesis formation and experimental debugging methodology."
 ---
 

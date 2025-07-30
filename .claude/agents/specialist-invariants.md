@@ -1,5 +1,5 @@
 ---
-name: invariants
+name: specialist-invariants
 description: "MUST USE when designing 'type safety', 'state machines', 'data integrity', 'what must never change', 'system guarantees', or preventing invalid states. Expert at making code violations impossible through advanced type systems and architectural constraints."
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: resolver
+name: foundation-resolver
 description: Use when patterns conflict with principles, user faces "trade-offs", "which approach is better", or agents give conflicting advice
 ---
 

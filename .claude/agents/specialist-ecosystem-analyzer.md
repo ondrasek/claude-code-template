@@ -1,5 +1,5 @@
 ---
-name: ecosystem-analyzer
+name: specialist-ecosystem-analyzer
 description: "EXPLICIT USE ONLY - never automatically launched. Only use when explicitly requested via commands like /agent-ecosystem-review or direct user request. Expert at coordinating multi-agent analysis to evaluate and propose agent ecosystem improvements."
 ---
 

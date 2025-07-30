@@ -1,5 +1,5 @@
 ---
-name: generator
+name: specialist-generator
 description: "MUST USE when user needs 'code generator', 'create template', 'automate creation', 'DSL', 'write code that writes code', or sees repetitive patterns. Expert at creating meta-programming solutions and code generation systems."
 ---
 

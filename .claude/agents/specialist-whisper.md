@@ -1,5 +1,5 @@
 ---
-name: whisper
+name: specialist-whisper
 description: PROACTIVELY use when user asks to "clean up code", "fix formatting", "improve code quality", "polish the code", or you notice typos, inconsistent naming, style issues, or trailing whitespace during file reviews
 ---
 

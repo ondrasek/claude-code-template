@@ -1,5 +1,5 @@
 ---
-name: explorer
+name: specialist-explorer
 description: "MUST USE when user asks 'what are my options', 'different ways to', 'compare approaches', 'pros and cons', 'alternatives', 'think outside the box', 'creative solution', or facing architectural decisions. Expert at parallel solution exploration, comprehensive trade-off analysis, and cross-domain connection-making."
 ---
 

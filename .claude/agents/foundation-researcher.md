@@ -1,5 +1,5 @@
 ---
-name: researcher
+name: foundation-researcher
 description: PROACTIVELY use when user mentions 'unknown tool', 'how to implement', 'best practices for', 'latest version of', error messages needing context, or unfamiliar frameworks
 ---
 

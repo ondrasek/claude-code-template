@@ -1,5 +1,5 @@
 ---
-name: context
+name: foundation-context
 description: "MUST USE when user asks 'how does X work', 'explain the flow', 'show me the architecture', 'what calls what', 'how did this evolve', 'git history analysis', or needs system understanding. Expert at persistent memory-backed architectural context synthesis with temporal analysis."
 ---
 

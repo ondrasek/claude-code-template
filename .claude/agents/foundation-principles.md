@@ -1,5 +1,5 @@
 ---
-name: principles
+name: foundation-principles
 description: "MUST USE when user asks 'is this SOLID', 'best practices', 'design principles', 'is this good architecture', or during code quality reviews. Expert at systematic principle validation and architectural assessment."
 ---
 

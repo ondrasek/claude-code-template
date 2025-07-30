@@ -1,5 +1,5 @@
 ---
-name: constraints
+name: specialist-constraints
 description: Use when facing "requirements conflict", "limited resources", "performance vs features", "must work with legacy", or multiple competing constraints
 ---
 

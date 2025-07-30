@@ -1,5 +1,5 @@
 ---
-name: todo
+name: specialist-todo
 description: "PROACTIVELY use when user mentions tasks or asks 'create TODO', 'track progress', 'remember to do'. Expert at managing task lifecycle without polluting main context."
 ---
 
