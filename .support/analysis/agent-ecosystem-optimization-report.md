@@ -37,7 +37,7 @@
 | **researcher** | 89% | Information gathering & analysis | Universal research needs |
 | **critic** | 89% | Risk analysis & validation | Universal quality assurance |
 | **patterns** | 78% | Code quality & pattern detection | Universal code analysis |
-| **principles** | 78% | First-principles thinking & universal enforcement | Foundational analysis & governance |
+| **principles** | 78% | Consistency enforcement & universal governance | System-wide consistency guardian |
 | **context** | 67% | System understanding & documentation | Universal comprehension |
 | **resolver** | 67% | Conflict resolution & decision making | Universal decision support |
 
@@ -66,10 +66,11 @@
 2. **connector → explorer**: Integrate cross-domain thinking
 
 #### Complementary Function Preservation
-**axioms ↔ principles**: Initially considered for merger but analysis revealed complementary functions:
-- **axioms**: Specific first-principles problem-solving technique
-- **principles**: Universal governance and enforcement across all agents  
-- **Result**: Keep separate - they work together but serve distinct functions
+**axioms ↔ principles**: Initially considered for merger but analysis revealed highly complementary functions:
+- **axioms**: First-principles problem-solving technique (how to solve from fundamentals)
+- **principles**: Universal consistency enforcement (maintain adherence to established rules)
+- **Synergy**: axioms solves problems fundamentally, principles ensures consistent application
+- **Result**: Keep separate - essential complementary functions with only 15% overlap
 
 #### Cluster Consolidations
 3. **Security Cluster**: vulnerability-scanner + threat-modeling + compliance-checker
@@ -160,7 +161,7 @@ triggers:
 - [ ] Merge time → context (temporal analysis integration) 
 - [ ] Merge connector → explorer (cross-domain thinking)
 - [ ] Consolidate security cluster (unified security analysis)
-- [ ] Preserve axioms ↔ principles complementary relationship
+- [ ] Preserve axioms ↔ principles complementary relationship (15% overlap, high synergy)
 
 **Success Criteria**: All capabilities preserved, reduced complexity measured
 
@@ -221,7 +222,7 @@ The analysis provides strong evidence supporting the core-satellite architecture
 1. **Validated Foundation**: 6 core agents provide 88% workflow coverage
 2. **Proven Benefits**: 35% performance improvement with quality maintenance  
 3. **Strategic Consolidation**: 24% agent reduction through intelligent merging
-4. **Preserved Complementarity**: axioms + principles work together with distinct functions
+4. **Preserved Complementarity**: axioms (problem-solving) + principles (consistency) with only 15% overlap
 5. **Precise Triggering**: Context-aware specialization without complexity overhead
 
 ### Next Steps

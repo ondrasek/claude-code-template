@@ -3,7 +3,7 @@
 ## Core Agent Candidates (6 agents)
 1. **researcher** - Information gathering and analysis
 2. **patterns** - Code quality and pattern detection  
-3. **principles** - First-principles thinking and universal principle enforcement
+3. **principles** - Consistency enforcement and universal principle governance
 4. **critic** - Risk analysis and constructive disagreement
 5. **context** - System understanding and architectural synthesis
 6. **resolver** - Conflict resolution and decision making
@@ -32,16 +32,16 @@
 **Coverage:** **patterns** agent handles all code analysis needs
 **Validation:** ✅ Complete coverage
 
-### First-Principles Analysis & Universal Principle Enforcement (100% coverage)
+### Consistency Enforcement & System-Wide Principle Governance (100% coverage)
 **Use Cases:**
-- Complex problem analysis from first principles
-- Universal principle identification and documentation  
-- Cross-system principle enforcement for all agents
-- Fundamental concept breakdown and analysis
-- Core truth identification and validation
+- System-wide consistency monitoring and enforcement
+- Principle documentation and maintenance
+- Violation detection across all agent outputs
+- Adherence enforcement for established principles
+- Consistency guardian for entire ecosystem
 
-**Coverage:** **principles** agent handles all foundational thinking and governance needs
-**Validation:** ✅ Complete coverage
+**Coverage:** **principles** agent ensures universal consistency across all system behavior
+**Validation:** ✅ Complete coverage - Critical for ALL workflows requiring consistency
 
 ### Risk Assessment & Critical Analysis (100% coverage)
 **Use Cases:**
@@ -84,7 +84,7 @@
 **Steps:** Research → Design → Implement → Review → Refactor
 **Core Agent Coverage:**
 - Research phase: **researcher** ✅
-- First-principles analysis: **principles** ✅  
+- Consistency enforcement: **principles** ✅  
 - Quality review: **patterns** ✅
 - Critical evaluation: **critic** ✅
 - Architecture integration: **context** ✅
@@ -97,7 +97,7 @@
 **Core Agent Coverage:**
 - Problem research: **researcher** ✅
 - Pattern analysis: **patterns** ✅
-- First-principles breakdown: **principles** ✅
+- Consistency validation: **principles** ✅
 - Critical assessment: **critic** ✅
 - System understanding: **context** ✅
 - Resolution decisions: **resolver** ✅
@@ -109,7 +109,7 @@
 **Core Agent Coverage:**
 - Option research: **researcher** ✅
 - Trade-off analysis: **critic** + **resolver** ✅
-- First-principles validation: **principles** ✅
+- Consistency validation: **principles** ✅
 - Context integration: **context** ✅
 
 **Gap Analysis:** 5% gap for parallel option exploration (specialized **explorer** agent)
@@ -118,7 +118,7 @@
 **Steps:** Quality analysis → Principle check → Risk assessment → Recommendations
 **Core Agent Coverage:**
 - Quality patterns: **patterns** ✅
-- First-principles compliance: **principles** ✅
+- Consistency enforcement: **principles** ✅
 - Risk identification: **critic** ✅
 - Context awareness: **context** ✅
 - Final decisions: **resolver** ✅
@@ -130,7 +130,7 @@
 **Core Agent Coverage:**
 - Research approaches: **researcher** ✅
 - Pattern analysis: **patterns** ✅
-- First-principles validation: **principles** ✅
+- Consistency validation: **principles** ✅
 - Critical review: **critic** ✅
 - Decision making: **resolver** ✅
 
@@ -141,7 +141,7 @@
 **Core Agent Coverage:**
 - Risk identification: **critic** ✅
 - Pattern detection: **patterns** ✅
-- First-principles security analysis: **principles** ✅
+- Consistency enforcement: **principles** ✅
 - Context analysis: **context** ✅
 - Resolution guidance: **resolver** ✅
 
@@ -156,9 +156,9 @@
 
 ### Quality Assurance (patterns + principles + critic) = 100%  
 - Code quality: **patterns**
-- First-principles quality: **principles**
+- Consistency quality: **principles**
 - Risk quality: **critic**
-- Combined: Complete quality validation with foundational enforcement
+- Combined: Complete quality validation with consistency enforcement
 
 ### Decision Support (critic + resolver + context) = 100%
 - Alternative evaluation: **critic**

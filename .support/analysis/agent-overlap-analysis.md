@@ -88,14 +88,15 @@ Analyzed each agent's core capabilities, triggers, and purposes to identify over
 6. **todo** (8% avg overlap) - Unique task management specialization
 7. **prompter** (5% avg overlap) - Unique AI prompt optimization focus
 8. **ecosystem-analyzer** (35% avg overlap) - Unique meta-system analysis capability
-9. **axioms** (25% avg overlap) - Unique first-principles problem-solving technique
+9. **axioms** (15% avg overlap) - Unique first-principles problem-solving technique
 
 ### Complementary Function Pairs (Low Overlap, High Synergy)
-**axioms** vs **principles** (25% overlap - Complementary Functions):
-- **axioms**: Building solutions from first principles, bedrock truths, axiomatic reasoning - *technique-specific*
-- **principles**: Universal principle identification, cross-system enforcement, principle documentation - *system-wide governance*
-- **Synergy**: axioms provides the methodology, principles provides the governance framework
-- **Recommendation**: **KEEP SEPARATE** - They work together but serve distinct functions
+**axioms** vs **principles** (15% overlap - Highly Complementary Functions):
+- **axioms**: Building solutions from first principles, bedrock truths, axiomatic reasoning - *problem-solving technique*
+- **principles**: System-wide consistency enforcement, principle documentation, adherence monitoring - *universal consistency guardian*
+- **Synergy**: axioms provides problem-solving methodology, principles ensures consistent application across system
+- **Key Distinction**: axioms = "how to solve from fundamentals", principles = "maintain consistency with established rules"
+- **Recommendation**: **KEEP SEPARATE** - Essential complementary functions with minimal overlap
 
 ### Analysis
 These agents provide distinct, non-overlapping value and should be preserved in specialized roles.
