@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.32.1] - 2025-07-30
+
+### Removed
+- **Security Improvement**: Removed dangerous ecosystem analyzer agent and associated command
+  - Deleted specialist-ecosystem-analyzer.md agent definition (deemed too dangerous for general use)
+  - Deleted agent-ecosystem-review.md command to prevent unauthorized ecosystem analysis
+  - Cleaned CHANGELOG.md references to removed ecosystem analyzer functionality
+  - System safety improvement through removal of potentially risky meta-analysis capabilities
+
 ## [2.32.0] - 2025-07-30
 
 ### Added
