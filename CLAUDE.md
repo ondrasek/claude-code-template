@@ -43,52 +43,76 @@ Examples:
 3. **Automatic selection**: Match agent combinations to user request patterns
    Example: "Why is this slow?" → Auto-select researcher + hypothesis + patterns (not just one agent)
 
+## Core-Satellite Agent Architecture (MANDATORY)
+
+**CORE AGENTS (Always Available - 0ms selection time)**:
+- **researcher, patterns, principles, critic, context, resolver**
+- Instant loading for 88% workflow coverage
+- Foundation for all complex tasks requiring information, quality, consistency, risk analysis, understanding, or decisions
+
+**SPECIALIZED AGENTS (Context-Triggered)**:
+- 16 specialized agents for domain-specific expertise
+- Triggered by user intent, context patterns, or complexity analysis
+- Covers remaining 12% specialized use cases
+
+**CORE AGENT UTILIZATION**:
+- Use core agents for 80%+ of interactions
+- Specialized agents only when specific expertise needed
+- Core agents work together in established patterns
+- No selection overhead for core agent combinations
+
+**STANDARD CORE PATTERNS**:
+- **Information + Analysis**: researcher → patterns → principles → critic
+- **Decision Making**: researcher → critic → resolver → context  
+- **Quality Assurance**: patterns → principles → critic → resolver
+- **System Understanding**: context → patterns → principles → critic
+
 ## Agent Combination Patterns (MANDATORY)
 
 **Analysis Requests** (`"analyze X"`, `"review Y"`, `"examine Z"`):
-- **Quality Cluster**: Execute researcher + patterns + principles + critic simultaneously via single message with multiple Task() calls
-- **Deep Analysis Cluster**: Execute context + axioms + hypothesis + completer simultaneously via single message with multiple Task() calls
-- Flow: Research → Pattern detection → Principle application → Context analysis → Hypothesis validation
+- **Core Foundation**: Execute researcher + patterns + principles + critic simultaneously via single message with multiple Task() calls
+- **Extended Analysis** (if specialized needs): Add context + hypothesis/axioms + completer as needed
+- Flow: Research → Pattern detection → Consistency enforcement → Critical validation
 
 **Architecture/Design Questions** (`"design X"`, `"architect Y"`, `"structure Z"`):
-- **Design Cluster**: Execute researcher + explorer + constraints + principles + critic simultaneously via single message with multiple Task() calls
-- **Validation Cluster**: Execute resolver + invariants + context + completer simultaneously via single message with multiple Task() calls
-- Flow: Research approaches → Generate alternatives → Apply constraints → Validate design → Complete implementation
+- **Core Design**: Execute researcher + principles + critic + resolver simultaneously via single message with multiple Task() calls  
+- **Extended Design** (if alternatives needed): Add explorer + constraints + context as needed
+- Flow: Research approaches → Consistency validation → Critical analysis → Decision resolution
 
 **Debugging Investigations** (`"why does X"`, `"strange behavior"`, `"not working"`):
-- **Investigation Cluster**: Execute researcher + hypothesis + patterns + critic simultaneously via single message with multiple Task() calls
-- **Resolution Cluster**: Execute resolver + context + constraints + completer simultaneously via single message with multiple Task() calls
-- Flow: Research issues → Form hypotheses → Pattern matching → Critical validation → Resolution synthesis
+- **Core Investigation**: Execute researcher + patterns + critic + resolver simultaneously via single message with multiple Task() calls
+- **Extended Debugging** (if systematic needed): Add hypothesis + context + constraints as needed  
+- Flow: Research issues → Pattern analysis → Critical assessment → Resolution decisions
 
 **Code Quality Tasks** (`"improve X"`, `"refactor Y"`, `"optimize Z"`):
-- **Quality Enhancement Cluster**: Execute patterns + principles + whisper + critic simultaneously via single message with multiple Task() calls
-- **Performance Optimization Cluster**: Execute performance + constraints + time + resolver simultaneously via single message with multiple Task() calls
-- Flow: Pattern analysis → Principle application → Performance optimization → Critical validation
+- **Core Quality**: Execute patterns + principles + critic + resolver simultaneously via single message with multiple Task() calls
+- **Extended Quality** (if specialized needed): Add whisper + performance + constraints as needed
+- Flow: Pattern analysis → Consistency enforcement → Critical validation → Resolution decisions
 
 **Feature Implementation** (`"add X"`, `"implement Y"`, `"create Z"`):
-- **Implementation Cluster**: Execute researcher + patterns + completer + docs simultaneously via single message with multiple Task() calls
-- **Integration Cluster**: Execute context + constraints + resolver + critic simultaneously via single message with multiple Task() calls
-- Flow: Research implementation → Pattern alignment → Feature completion → Documentation → Integration validation
+- **Core Implementation**: Execute researcher + patterns + principles + critic simultaneously via single message with multiple Task() calls
+- **Extended Implementation** (if specialized needed): Add completer + docs + context + resolver as needed
+- Flow: Research approaches → Pattern alignment → Consistency validation → Critical review
 
 **Decision Making** (`"options for X"`, `"approaches to Y"`, `"choose between Z"`):
-- **Options Generation Cluster**: Execute explorer + researcher + hypothesis + context simultaneously via single message with multiple Task() calls
-- **Decision Validation Cluster**: Execute constraints + resolver + critic + principles simultaneously via single message with multiple Task() calls
-- Flow: Generate alternatives → Research viability → Constraint analysis → Decision resolution
+- **Core Decision**: Execute researcher + critic + resolver + principles simultaneously via single message with multiple Task() calls
+- **Extended Decision** (if alternatives needed): Add explorer + constraints + context as needed
+- Flow: Research options → Critical analysis → Consistency validation → Resolution decisions
 
 **System Understanding** (`"how does X work"`, `"explain Y"`, `"show me Z"`):
-- **Comprehension Cluster**: Execute context + patterns + researcher + critic simultaneously via single message with multiple Task() calls
-- **Knowledge Synthesis Cluster**: Execute axioms + principles + completer + docs simultaneously via single message with multiple Task() calls
-- Flow: System mapping → Pattern identification → Research validation → Knowledge documentation
+- **Core Understanding**: Execute context + patterns + researcher + critic simultaneously via single message with multiple Task() calls
+- **Extended Understanding** (if deep analysis needed): Add principles + axioms + docs as needed
+- Flow: System mapping → Pattern identification → Research validation → Critical synthesis
 
 **Security Analysis** (`"security review"`, `"vulnerability assessment"`, `"threat analysis"`):
-- **Security Assessment Cluster**: Execute vulnerability-scanner + threat-modeling + compliance-checker + researcher simultaneously via single message with multiple Task() calls
-- **Risk Validation Cluster**: Execute critic + constraints + resolver + principles simultaneously via single message with multiple Task() calls
-- Flow: Vulnerability scanning → Threat modeling → Compliance checking → Risk assessment → Validation
+- **Core Security**: Execute researcher + critic + principles + resolver simultaneously via single message with multiple Task() calls
+- **Extended Security** (if specialized needed): Add security + constraints as needed
+- Flow: Research vulnerabilities → Critical assessment → Consistency validation → Resolution guidance
 
 **Performance Optimization** (`"optimize performance"`, `"improve speed"`, `"reduce latency"`):
-- **Performance Analysis Cluster**: Execute performance + time + constraints + patterns simultaneously via single message with multiple Task() calls
-- **Optimization Implementation Cluster**: Execute resolver + completer + critic + docs simultaneously via single message with multiple Task() calls
-- Flow: Performance measurement → Constraint analysis → Pattern optimization → Implementation validation
+- **Core Performance**: Execute researcher + patterns + critic + resolver simultaneously via single message with multiple Task() calls
+- **Extended Performance** (if specialized needed): Add performance + constraints as needed
+- Flow: Research bottlenecks → Pattern analysis → Critical assessment → Resolution decisions
 
 ## Agent Coordination Best Practices (MANDATORY)
 
@@ -98,13 +122,13 @@ Examples:
 - **Concurrent Processing**: 3-4 agents maximum per parallel batch to optimize resource usage
 - **Batch Coordination**: Each phase executes all selected agents simultaneously, then synthesizes results
 
-**EFFECTIVE CLUSTER PATTERNS**:
-- **Start with Research**: researcher agent should typically be first in complex analysis clusters
-- **End with Validation**: critic agent should typically be last for quality assurance
-- **Apply Principles**: principles agent ensures consistency with architectural decisions
-- **Complete Thoroughness**: completer agent ensures no missing elements in implementations
-- **Resolve Conflicts**: resolver agent handles competing recommendations or approaches
-- **Context Window Management**: Use agent delegation to keep main context clean and focused
+**CORE-SATELLITE COORDINATION PATTERNS**:
+- **Lead with Core Foundation**: Always start with core agent combinations (researcher + patterns + principles + critic)
+- **Add Specialized Only When Needed**: Extend with specialized agents based on specific requirements
+- **Maintain Consistency**: principles agent ensures universal consistency across all agent outputs
+- **Resolve All Conflicts**: resolver agent handles competing recommendations from any source
+- **Context Window Optimization**: Core agents handle 80%+ of work, specialized agents for remaining 20%
+- **Performance Priority**: Prefer core agent solutions over specialized when equally effective
 
 
 ## Technology Guidelines Protocol (MANDATORY)
