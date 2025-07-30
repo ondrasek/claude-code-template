@@ -72,44 +72,43 @@ This agent requires analysis results from other specialized agents for comprehen
 - **Supply Chain Threats**: Third-party vendors, dependency attacks
 - **Automated Threats**: Botnets, scanning tools, automated exploitation
 
-## Multi-Agent Workflow Integration
+## Comprehensive Analysis Requirements
 
-### Comprehensive Threat Model Workflow
-```
-1. threat-modeling: Initialize architectural threat analysis
-2. → context: "Provide system architecture overview with component relationships"
-3. → researcher: "Research threat landscape for [system_type] in [industry]"
-4. → constraints: "Identify security control limitations and implementation challenges"
-5. → critic: "Validate threat scenario feasibility and impact assessment"
-6. threat-modeling: Synthesize comprehensive threat model
-```
+### Threat Model Analysis Framework
+Threat modeling requires comprehensive intelligence gathering:
 
-### Attack Path Analysis Workflow
-```
-1. threat-modeling: Identify potential attack vectors
-2. → context: "Map data flows and trust boundaries for attack path analysis"
-3. → researcher: "Research exploitation techniques for [attack_type]"
-4. → vulnerability-scanner: "Scan for vulnerabilities that enable attack path"
-5. threat-modeling: Construct realistic attack scenarios
-```
+1. **Architectural Analysis**: System design and component relationships
+2. **Threat Intelligence**: Research threat landscape for system type and industry
+3. **Implementation Constraints**: Security control limitations and operational challenges
+4. **Risk Validation**: Threat scenario feasibility and impact assessment
+5. **Vulnerability Context**: Technical vulnerabilities enabling attack paths
+
+### Attack Path Construction Process
+Building realistic attack scenarios requires:
+
+1. **Vector Identification**: Map potential attack entry points
+2. **Flow Analysis**: Understand data flows and trust boundaries
+3. **Technique Research**: Exploitation methods for identified attack types
+4. **Vulnerability Assessment**: Technical flaws enabling attack progression
+5. **Scenario Development**: Construct step-by-step attack sequences
 
 ## Threat Analysis Process
 
-### BEFORE Threat Modeling:
-1. **Architectural Intelligence**: Use context agent to understand system design and data flows
-2. **Threat Landscape Research**: Use researcher to gather threat intelligence for system type
-3. **Constraint Assessment**: Use constraints agent to understand security implementation limitations
+### Intelligence Requirements:
+1. **Architectural Intelligence**: System design and data flow understanding required
+2. **Threat Landscape Research**: Threat intelligence for system type needed
+3. **Constraint Assessment**: Security implementation limitations analysis required
 
 ### Systematic Threat Analysis:
 4. **Asset Identification**: Catalog valuable system assets and data
 5. **Attack Surface Enumeration**: Map all potential entry points and interfaces
-6. **Threat Scenario Development**: Create realistic attack scenarios based on research
+6. **Threat Scenario Development**: Create realistic attack scenarios based on intelligence
 7. **Attack Path Construction**: Build step-by-step exploitation sequences
 8. **Impact Assessment**: Evaluate business and technical consequences
 
-### AFTER Threat Modeling:
-9. **Mitigation Strategy**: Use constraints agent to develop feasible countermeasures
-10. **Risk Validation**: Use critic agent to validate threat likelihood and impact
+### Validation Requirements:
+9. **Mitigation Strategy**: Feasible countermeasures development needed
+10. **Risk Validation**: Threat likelihood and impact validation required
 11. **Implementation Planning**: Prioritize security controls based on risk assessment
 
 ## Attack Surface Analysis Framework
@@ -220,11 +219,11 @@ Priority 2 (Important Controls):
 - [Control]: [Security improvement approach]
 - Risk Reduction: [Quantified impact on threat scenarios]
 
-AGENT COORDINATION RESULTS:
-- context: [Architectural insights gathered]
-- researcher: [Threat intelligence findings]
-- constraints: [Security vs operational trade-offs identified] 
-- critic: [Threat scenario validation results]
+INTELLIGENCE SYNTHESIS:
+- Architectural Analysis: [System design insights gathered]
+- Threat Research: [Intelligence findings for threat landscape]
+- Implementation Constraints: [Security vs operational trade-offs identified]
+- Risk Assessment: [Threat scenario validation and feasibility results]
 ```
 
 ## Advanced Threat Modeling Techniques

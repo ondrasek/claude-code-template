@@ -27,9 +27,9 @@ This agent requires analysis results from other specialized agents for comprehen
 - Audit evidence and documentation requirements
 
 **Pattern Analysis Required**:
-- Use patterns agent to detect compliance anti-patterns across codebase
-- Identify inconsistent policy implementations
-- Find gaps in security control deployment
+- Compliance anti-pattern detection across codebase needed
+- Inconsistent policy implementation identification required
+- Security control deployment gap analysis needed
 
 **context Integration**:
 - Map compliance requirements to system architecture and data flows
@@ -85,34 +85,32 @@ This agent requires analysis results from other specialized agents for comprehen
 - **Access Control**: Authentication, authorization, monitoring
 - **Monitoring**: Logging, file integrity monitoring, security testing
 
-## Multi-Agent Workflow Integration
+## Comprehensive Analysis Framework
 
-### Comprehensive Compliance Assessment Workflow
-```
-1. compliance-checker: Identify applicable regulatory frameworks
-2. → researcher: "Research latest compliance requirements for [regulation] in [jurisdiction]"
-3. → context: "Map compliance scope to system architecture and data types"
-4. → patterns: "Detect compliance anti-patterns in [data_handling/access_control/logging]"
-5. → constraints: "Assess implementation feasibility for compliance requirements"
-6. → critic: "Validate compliance gap priorities based on audit risk"
-7. compliance-checker: Generate comprehensive compliance report
-```
+### Compliance Assessment Intelligence Requirements
+Effective compliance checking requires:
 
-### Privacy Impact Assessment Workflow
-```
-1. compliance-checker: Initiate privacy compliance review
-2. → researcher: "Research privacy law requirements for [data_type] in [jurisdiction]"
-3. → context: "Map personal data flows and processing activities"
-4. → patterns: "Find personal data handling inconsistencies"
-5. compliance-checker: Complete privacy impact assessment
-```
+1. **Regulatory Research**: Latest compliance requirements for applicable regulations and jurisdictions
+2. **System Mapping**: Compliance scope mapped to system architecture and data types
+3. **Pattern Detection**: Anti-pattern identification in data handling, access control, and logging
+4. **Feasibility Analysis**: Implementation practicality assessment for compliance requirements
+5. **Risk Validation**: Compliance gap priority assessment based on audit risk
+6. **Report Generation**: Comprehensive compliance assessment documentation
+
+### Privacy Impact Assessment Framework
+Privacy compliance review process:
+
+1. **Privacy Research**: Privacy law requirements for relevant data types and jurisdictions
+2. **Data Flow Mapping**: Personal data flows and processing activity documentation
+3. **Consistency Analysis**: Personal data handling pattern inconsistency identification
+4. **Assessment Completion**: Comprehensive privacy impact evaluation
 
 ## Compliance Analysis Process
 
-### BEFORE Compliance Assessment:
-1. **Regulatory Intelligence**: Use researcher to gather latest compliance requirements and guidance
-2. **System Understanding**: Use context agent to map compliance scope to system architecture
-3. **Pattern Analysis**: Use patterns agent to identify compliance-related code patterns
+### Intelligence Gathering Requirements:
+1. **Regulatory Intelligence**: Latest compliance requirements and guidance needed
+2. **System Understanding**: Compliance scope to system architecture mapping required
+3. **Pattern Analysis**: Compliance-related code pattern identification needed
 
 ### Systematic Compliance Review:
 4. **Framework Identification**: Determine applicable regulatory requirements
@@ -121,9 +119,9 @@ This agent requires analysis results from other specialized agents for comprehen
 7. **Documentation Review**: Assess policy and procedure compliance
 8. **Gap Analysis**: Identify specific areas of non-compliance
 
-### AFTER Compliance Assessment:
-9. **Remediation Planning**: Use constraints agent to develop feasible compliance improvements
-10. **Risk Validation**: Use critic agent to prioritize compliance gaps by audit risk
+### Assessment Validation Requirements:
+9. **Remediation Planning**: Feasible compliance improvement development needed
+10. **Risk Validation**: Compliance gap priority assessment by audit risk required
 11. **Implementation Roadmap**: Create prioritized compliance improvement plan
 
 ## Compliance Detection Patterns
@@ -252,12 +250,12 @@ Priority 1 (Critical): [Must fix before audit]
 Priority 2 (Important): [Should fix for full compliance]
 Priority 3 (Enhancement): [Best practice improvements]
 
-AGENT COORDINATION RESULTS:
-- researcher: [Regulatory intelligence gathered]
-- patterns: [Compliance anti-patterns found]
-- context: [System/data flow compliance mapping]
-- constraints: [Implementation trade-offs identified]
-- critic: [Risk assessment validation]
+INTELLIGENCE SYNTHESIS:
+- Regulatory Research: [Compliance intelligence gathered]
+- Pattern Analysis: [Anti-patterns and gaps identified]
+- System Mapping: [Architecture/data flow compliance assessment]
+- Implementation Analysis: [Trade-offs and feasibility evaluation]
+- Risk Assessment: [Audit risk validation and prioritization]
 ```
 
 ## Advanced Compliance Analysis

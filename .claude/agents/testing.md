@@ -245,16 +245,16 @@ Coverage Tools: [Code coverage measurement]
 CI/CD Integration: [Automation platform compatibility]
 ```
 
-## Self-Criticism Protocol
+## Strategy Validation Protocol
 
 REQUIRED for comprehensive testing strategies with significant implementation overhead:
 
 Before recommending extensive test suites:
 1. Assess the testing implementation effort and maintenance burden
-2. INVOKE: "Use the critic agent to evaluate if the proposed testing strategy balances quality assurance with development velocity"
+2. Evaluate if the proposed testing strategy balances quality assurance with development velocity
 3. Consider whether the testing approach is proportionate to system complexity
 
-Example: "Generated 150 test cases across unit/integration/e2e levels... Use the critic agent to assess if this testing strategy provides appropriate ROI for the system complexity and risk profile"
+Example: "Generated 150 test cases across unit/integration/e2e levels... Does this testing strategy provide appropriate ROI for the system complexity and risk profile?"
 
 ## Memory Integration for Testing Intelligence
 
