@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.30.0] - 2025-07-30
+
+### Removed
+- **MCP Server Integration**: Complete removal of Memory Contextual Protocol (MCP) server dependencies and configurations
+  - Removed comprehensive MCP protocol documentation (`.support/instructions/mcp-protocol.md`)
+  - Removed MCP-enhanced agent coordination patterns from CLAUDE.md
+  - Removed memory-first research patterns and Perplexity integration protocols
+  - Removed MCP server configurations from settings
+  - Simplified agent coordination to focus on parallel execution without external dependencies
+
+### Changed
+- **Agent Coordination Architecture**: Streamlined execution protocol removing MCP complexity
+  - Simplified execution protocol from 4 steps to 3 steps focusing on core functionality
+  - Removed memory-first research requirement in favor of direct agent coordination
+  - Maintained parallel agent cluster execution patterns without MCP dependencies
+
 ## [2.29.2] - 2025-07-29
 
 ### Changed
