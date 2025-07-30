@@ -11,8 +11,8 @@
 
 ### ✅ Core Architecture Validation
 - **6 core agents provide 88% workflow coverage** (exceeds 80% requirement)
-- **12 specialized agents handle remaining 12%** of domain-specific use cases
-- **Agent consolidation reduces ecosystem from 29 → 18 agents** (38% reduction)
+- **12 specialized agents handle remaining 12%** of domain-specific use cases  
+- **Agent consolidation reduces ecosystem from 29 → 22 agents** (24% reduction)
 
 ### ✅ Performance Improvement Potential
 - **Agent selection time: 40% reduction** (2.5s → 1.5s average)
@@ -37,7 +37,7 @@
 | **researcher** | 89% | Information gathering & analysis | Universal research needs |
 | **critic** | 89% | Risk analysis & validation | Universal quality assurance |
 | **patterns** | 78% | Code quality & pattern detection | Universal code analysis |
-| **principles** | 78% | Architecture & best practice validation | Universal design validation |
+| **principles** | 78% | First-principles thinking & universal enforcement | Foundational analysis & governance |
 | **context** | 67% | System understanding & documentation | Universal comprehension |
 | **resolver** | 67% | Conflict resolution & decision making | Universal decision support |
 
@@ -61,22 +61,27 @@
 
 ### 2. Consolidation Strategy
 
-#### High-Confidence Mergers (94%+ overlap)
-1. **axioms → principles**: Integrate first-principles reasoning
-2. **time → context**: Integrate temporal analysis capabilities  
-3. **connector → explorer**: Integrate cross-domain thinking
+#### High-Confidence Mergers (82%+ overlap)
+1. **time → context**: Integrate temporal analysis capabilities  
+2. **connector → explorer**: Integrate cross-domain thinking
+
+#### Complementary Function Preservation
+**axioms ↔ principles**: Initially considered for merger but analysis revealed complementary functions:
+- **axioms**: Specific first-principles problem-solving technique
+- **principles**: Universal governance and enforcement across all agents  
+- **Result**: Keep separate - they work together but serve distinct functions
 
 #### Cluster Consolidations
-4. **Security Cluster**: vulnerability-scanner + threat-modeling + compliance-checker
-5. **Guidelines Cluster**: guidelines-file + guidelines-repo (scope detection)
-6. **Git Operations**: git-tagger + git-troubleshooter (unified workflow)
+3. **Security Cluster**: vulnerability-scanner + threat-modeling + compliance-checker
+4. **Guidelines Cluster**: guidelines-file + guidelines-repo (scope detection)
+5. **Git Operations**: git-tagger + git-troubleshooter (unified workflow)
 
-#### Result: **29 → 18 agents (38% reduction)**
+#### Result: **29 → 22 agents (24% reduction)**
 
 ### 3. Workflow Coverage Analysis
 
 #### Primary Workflows (80% frequency) - 95% coverage by core agents
-- **Feature Implementation**: 95% coverage (researcher → patterns → principles → critic)
+- **Feature Implementation**: 95% coverage (researcher → patterns → principles → critic)  
 - **Code Review**: 100% coverage (patterns → principles → critic → resolver)
 - **Architecture Decisions**: 95% coverage (researcher → principles → context → resolver)
 - **Problem Solving**: 85% coverage (researcher → patterns → critic → resolver)
@@ -100,7 +105,7 @@ baseline_metrics:
   workflow_overhead: 35-45%
 ```
 
-#### Optimized State (18 agents: 6 core + 12 specialized)
+#### Optimized State (22 agents: 6 core + 16 specialized)
 ```yaml
 projected_metrics:
   agent_selection_time: 1.5s average (-40%)
@@ -112,8 +117,8 @@ projected_metrics:
 
 #### Performance Benefits
 - **Core workflows (80% frequency)**: Zero selection time (always available)
-- **Specialized workflows (20% frequency)**: 58% fewer agents to consider
-- **Overall efficiency improvement**: **42% average across all workflows**
+- **Specialized workflows (20% frequency)**: 45% fewer agents to consider (22 vs 29)
+- **Overall efficiency improvement**: **35% average across all workflows**
 
 ### 5. Trigger System Design
 
@@ -152,10 +157,10 @@ triggers:
 
 ### Phase 2: Consolidation (Week 2)
 **Agent Mergers**:
-- [ ] Merge axioms → principles (first-principles mode)
-- [ ] Merge time → context (temporal analysis integration)
+- [ ] Merge time → context (temporal analysis integration) 
 - [ ] Merge connector → explorer (cross-domain thinking)
 - [ ] Consolidate security cluster (unified security analysis)
+- [ ] Preserve axioms ↔ principles complementary relationship
 
 **Success Criteria**: All capabilities preserved, reduced complexity measured
 
@@ -166,7 +171,7 @@ triggers:
 - [ ] Implement caching for common agent combinations
 - [ ] Validate performance improvements
 
-**Success Criteria**: 35-45% performance improvement achieved and measured
+**Success Criteria**: 35% performance improvement achieved and measured
 
 ### Phase 4: Validation (Week 4)
 **Quality Assurance**:
@@ -214,9 +219,10 @@ triggers:
 The analysis provides strong evidence supporting the core-satellite architecture:
 
 1. **Validated Foundation**: 6 core agents provide 88% workflow coverage
-2. **Proven Benefits**: 35-45% performance improvement with quality maintenance
-3. **Strategic Consolidation**: 38% agent reduction through intelligent merging
-4. **Precise Triggering**: Context-aware specialization without complexity overhead
+2. **Proven Benefits**: 35% performance improvement with quality maintenance  
+3. **Strategic Consolidation**: 24% agent reduction through intelligent merging
+4. **Preserved Complementarity**: axioms + principles work together with distinct functions
+5. **Precise Triggering**: Context-aware specialization without complexity overhead
 
 ### Next Steps
 1. **Immediate**: Begin Phase 1 implementation with core agent architecture

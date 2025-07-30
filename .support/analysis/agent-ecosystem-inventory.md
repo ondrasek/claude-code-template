@@ -22,11 +22,11 @@
 - **Capabilities**: Memory-based pattern analysis, evolution tracking, systematic refactoring
 - **Usage Pattern**: High frequency - proactive after code changes
 
-#### 3. **principles** - Architecture Validation
-- **Purpose**: Ensure code adheres to SOLID, DRY, YAGNI, KISS principles
-- **Triggers**: Architecture reviews, "is this good", design principles questions
-- **Capabilities**: SOLID validation, distributed system principles, conflict resolution
-- **Usage Pattern**: High frequency - architectural decisions and reviews
+#### 3. **principles** - First-Principles Thinking & Universal Principle Enforcement
+- **Purpose**: Identify and document core principles that apply universally; enforce adherence across all agents and work
+- **Triggers**: Complex problems requiring fundamental analysis, principle violations detected, "from first principles"
+- **Capabilities**: First-principles thinking methodology, universal principle identification, cross-system enforcement, principle documentation
+- **Usage Pattern**: High frequency - foundational thinking and universal governance for all agents
 
 #### 4. **critic** - Risk Analysis & Validation
 - **Purpose**: Critical analysis, risk identification, constructive disagreement

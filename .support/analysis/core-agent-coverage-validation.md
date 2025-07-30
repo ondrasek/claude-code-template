@@ -3,7 +3,7 @@
 ## Core Agent Candidates (6 agents)
 1. **researcher** - Information gathering and analysis
 2. **patterns** - Code quality and pattern detection  
-3. **principles** - Architecture validation and best practices
+3. **principles** - First-principles thinking and universal principle enforcement
 4. **critic** - Risk analysis and constructive disagreement
 5. **context** - System understanding and architectural synthesis
 6. **resolver** - Conflict resolution and decision making
@@ -32,15 +32,15 @@
 **Coverage:** **patterns** agent handles all code analysis needs
 **Validation:** ✅ Complete coverage
 
-### Architecture & Design Validation (100% coverage)
+### First-Principles Analysis & Universal Principle Enforcement (100% coverage)
 **Use Cases:**
-- SOLID principles enforcement
-- Design pattern validation
-- Architecture reviews
-- Best practice compliance
-- Distributed system principles
+- Complex problem analysis from first principles
+- Universal principle identification and documentation  
+- Cross-system principle enforcement for all agents
+- Fundamental concept breakdown and analysis
+- Core truth identification and validation
 
-**Coverage:** **principles** agent handles all validation needs
+**Coverage:** **principles** agent handles all foundational thinking and governance needs
 **Validation:** ✅ Complete coverage
 
 ### Risk Assessment & Critical Analysis (100% coverage)
@@ -84,7 +84,7 @@
 **Steps:** Research → Design → Implement → Review → Refactor
 **Core Agent Coverage:**
 - Research phase: **researcher** ✅
-- Design validation: **principles** ✅  
+- First-principles analysis: **principles** ✅  
 - Quality review: **patterns** ✅
 - Critical evaluation: **critic** ✅
 - Architecture integration: **context** ✅
@@ -97,6 +97,7 @@
 **Core Agent Coverage:**
 - Problem research: **researcher** ✅
 - Pattern analysis: **patterns** ✅
+- First-principles breakdown: **principles** ✅
 - Critical assessment: **critic** ✅
 - System understanding: **context** ✅
 - Resolution decisions: **resolver** ✅
@@ -108,7 +109,7 @@
 **Core Agent Coverage:**
 - Option research: **researcher** ✅
 - Trade-off analysis: **critic** + **resolver** ✅
-- Principle validation: **principles** ✅
+- First-principles validation: **principles** ✅
 - Context integration: **context** ✅
 
 **Gap Analysis:** 5% gap for parallel option exploration (specialized **explorer** agent)
@@ -117,7 +118,7 @@
 **Steps:** Quality analysis → Principle check → Risk assessment → Recommendations
 **Core Agent Coverage:**
 - Quality patterns: **patterns** ✅
-- Principle compliance: **principles** ✅
+- First-principles compliance: **principles** ✅
 - Risk identification: **critic** ✅
 - Context awareness: **context** ✅
 - Final decisions: **resolver** ✅
@@ -129,7 +130,7 @@
 **Core Agent Coverage:**
 - Research approaches: **researcher** ✅
 - Pattern analysis: **patterns** ✅
-- Architecture validation: **principles** ✅
+- First-principles validation: **principles** ✅
 - Critical review: **critic** ✅
 - Decision making: **resolver** ✅
 
@@ -140,7 +141,7 @@
 **Core Agent Coverage:**
 - Risk identification: **critic** ✅
 - Pattern detection: **patterns** ✅
-- Security principles: **principles** ✅
+- First-principles security analysis: **principles** ✅
 - Context analysis: **context** ✅
 - Resolution guidance: **resolver** ✅
 
@@ -155,9 +156,9 @@
 
 ### Quality Assurance (patterns + principles + critic) = 100%  
 - Code quality: **patterns**
-- Architecture quality: **principles**
+- First-principles quality: **principles**
 - Risk quality: **critic**
-- Combined: Complete quality validation
+- Combined: Complete quality validation with foundational enforcement
 
 ### Decision Support (critic + resolver + context) = 100%
 - Alternative evaluation: **critic**

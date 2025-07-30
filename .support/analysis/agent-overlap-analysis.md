@@ -5,15 +5,11 @@ Analyzed each agent's core capabilities, triggers, and purposes to identify over
 
 ## High Overlap Pairs (80%+ Capability Overlap)
 
-### 1. **axioms** vs **principles** (94% overlap)
-**axioms capabilities**: Building solutions from first principles, bedrock truths, axiomatic reasoning
-**principles capabilities**: SOLID, DRY, YAGNI enforcement, architectural principles validation
+### REVISED: **axioms** vs **principles** moved to Low Overlap section
 
-**Overlap**: Both enforce fundamental software engineering concepts
-**Difference**: axioms = theoretical foundation building, principles = practical rule enforcement
-**Recommendation**: **MERGE** - Integrate axiomatic reasoning into principles agent as "first principles" mode
+## Medium-High Overlap Pairs (75-80% Capability Overlap)
 
-### 2. **time** vs **context** (87% overlap)  
+### 1. **time** vs **context** (87% overlap)  
 **time capabilities**: Historical analysis, evolution tracking, git history analysis, technical debt
 **context capabilities**: Persistent memory-backed context, decision archaeology, evolution timeline
 
@@ -92,59 +88,64 @@ Analyzed each agent's core capabilities, triggers, and purposes to identify over
 6. **todo** (8% avg overlap) - Unique task management specialization
 7. **prompter** (5% avg overlap) - Unique AI prompt optimization focus
 8. **ecosystem-analyzer** (35% avg overlap) - Unique meta-system analysis capability
+9. **axioms** (25% avg overlap) - Unique first-principles problem-solving technique
+
+### Complementary Function Pairs (Low Overlap, High Synergy)
+**axioms** vs **principles** (25% overlap - Complementary Functions):
+- **axioms**: Building solutions from first principles, bedrock truths, axiomatic reasoning - *technique-specific*
+- **principles**: Universal principle identification, cross-system enforcement, principle documentation - *system-wide governance*
+- **Synergy**: axioms provides the methodology, principles provides the governance framework
+- **Recommendation**: **KEEP SEPARATE** - They work together but serve distinct functions
 
 ### Analysis
 These agents provide distinct, non-overlapping value and should be preserved in specialized roles.
 
 ## Consolidation Recommendations
 
-### Phase 1: High-Confidence Merges (3 consolidations)
-1. **axioms → principles** (94% overlap)
-   - Integrate first-principles reasoning into principles agent
-   - Add "from bedrock truths" mode to principles validation
-
-2. **time → context** (87% overlap)  
+### Phase 1: High-Confidence Merges (2 consolidations)
+1. **time → context** (87% overlap)  
    - Integrate temporal analysis into context agent
    - Add historical evolution tracking to architectural context
 
-3. **connector → explorer** (82% overlap)
+2. **connector → explorer** (82% overlap)
    - Integrate cross-domain thinking into explorer agent
    - Add creative connection-making to solution exploration
 
 ### Phase 2: Cluster Consolidations (3 multi-agent merges)
-4. **Security Cluster**: vulnerability-scanner + threat-modeling + compliance-checker
+3. **Security Cluster**: vulnerability-scanner + threat-modeling + compliance-checker
    - Single security agent with three analysis modes
    - Maintains specialized capabilities under unified interface
 
-5. **Guidelines Cluster**: guidelines-file + guidelines-repo  
+4. **Guidelines Cluster**: guidelines-file + guidelines-repo  
    - Single guidelines agent with scope detection
    - Automatic file vs repository level analysis
 
-6. **Git Operations**: git-tagger + git-troubleshooter
+5. **Git Operations**: git-tagger + git-troubleshooter
    - Single git-ops agent with proactive + reactive capabilities
    - Unified git workflow management
 
 ### Phase 3: Conditional Merges (1 evaluation needed)
-7. **generator → completer** (58% overlap - requires deeper analysis)
+6. **generator → completer** (58% overlap - requires deeper analysis)
    - Could integrate code generation into completion workflows
    - Need to validate if generation patterns fit completion use cases
 
 ## Impact Analysis
 
 ### Before Consolidation: 29 agents
-### After Phase 1-2: 22 agents (24% reduction)
+### After Phase 1-2: 23 agents (21% reduction)
+- 6 core agents (always available)
+- 17 specialized agents (context-triggered)
+
+### After Phase 3 (if generator merge): 22 agents (24% reduction)  
 - 6 core agents (always available)
 - 16 specialized agents (context-triggered)
 
-### After Phase 3 (if generator merge): 21 agents (28% reduction)  
-- 6 core agents (always available)
-- 15 specialized agents (context-triggered)
-
 ### Performance Benefits
-- **Selection complexity**: 28% fewer agents to consider
-- **Context pollution**: Reduced by consolidating overlapping analyses
+- **Selection complexity**: 24% fewer agents to consider (after all phases)
+- **Context pollution**: Reduced by consolidating overlapping analyses  
 - **Maintenance overhead**: Fewer agent definitions to maintain
 - **User cognitive load**: Simpler mental model with consolidated capabilities
+- **Preserved capabilities**: All functionality maintained through strategic consolidation
 
 ## Validation Requirements
 
