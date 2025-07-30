@@ -402,15 +402,15 @@ load_master_prompt() {
 
 # Build Claude command with options
 build_claude_command() {
-    local cmd=("claude")
+    CLAUDE_CMD=("claude")
     
     # Set default model
-    cmd+=(--model "$DEFAULT_MODEL")
+    CLAUDE_CMD+=(--model "$DEFAULT_MODEL")
     
     # Add MCP configuration file if it exists in project root
     local mcp_config="$PROJECT_ROOT/.mcp.json"
     if [[ -f "$mcp_config" ]]; then
-        cmd+=(--mcp-config "$mcp_config")
+        CLAUDE_CMD+=(--mcp-config "$mcp_config")
         if [[ "$DEBUG_MODE" == "true" ]]; then
             echo "🔌 Using MCP config: $mcp_config" >&2
         fi
@@ -418,23 +418,23 @@ build_claude_command() {
     
     # Add verbose mode if enabled
     if [[ "$VERBOSE_MODE" == "true" ]]; then
-        cmd+=(--verbose)
+        CLAUDE_CMD+=(--verbose)
     fi
     
     # Add MCP debug if enabled
     if [[ "$MCP_DEBUG" == "true" ]]; then
-        cmd+=(--mcp-debug)
+        CLAUDE_CMD+=(--mcp-debug)
     fi
     
     # Add skip permissions if enabled (auto-detected or forced)
     if [[ "$SKIP_PERMISSIONS" == "true" ]]; then
-        cmd+=(--dangerously-skip-permissions)
+        CLAUDE_CMD+=(--dangerously-skip-permissions)
     fi
     
     # Add master prompt as system prompt only if it has meaningful content
     if [[ -n "$MASTER_PROMPT_CONTENT" ]]; then
-        cmd+=(--append-system-prompt)
-        cmd+=("$MASTER_PROMPT_CONTENT")
+        CLAUDE_CMD+=(--append-system-prompt)
+        CLAUDE_CMD+=("$MASTER_PROMPT_CONTENT")
     fi
     
     # Add debug environment variables if debug mode
@@ -445,9 +445,7 @@ build_claude_command() {
     fi
     
     # Add user arguments
-    cmd+=("${ARGS[@]}")
-    
-    echo "${cmd[@]}"
+    CLAUDE_CMD+=("${ARGS[@]}")
 }
 
 # Main execution
@@ -471,12 +469,11 @@ main() {
     setup_logging
     load_master_prompt
     
-    local claude_cmd
-    claude_cmd=($(build_claude_command))
+    build_claude_command
     
     if [[ "$DEBUG_MODE" == "true" ]]; then
         echo "🔧 Debug mode enabled"
-        echo "📝 Command: ${claude_cmd[*]}"
+        echo "📝 Command: ${CLAUDE_CMD[*]}"
         echo
     fi
     
@@ -485,7 +482,7 @@ main() {
         # Write session header to all relevant logs
         local session_header
         session_header="=== launch-claude session started at $(date) ===
-Command: ${claude_cmd[*]}
+Command: ${CLAUDE_CMD[*]}
 Model: $DEFAULT_MODEL
 Verbose: $VERBOSE_MODE
 Debug: $DEBUG_MODE
@@ -502,9 +499,9 @@ Project: $PROJECT_ROOT
         # For interactive mode, we need to preserve stdin/stdout/stderr properly
         if [[ ${#ARGS[@]} -eq 0 ]]; then
             # Interactive mode - use exec to preserve terminal properly
-            exec "${claude_cmd[@]}" 2> >(tee -a "$MYCC_DEBUG_LOG" "$MYCC_MCP_LOG" "$MYCC_TELEMETRY_LOG" >&2)
+            exec "${CLAUDE_CMD[@]}" 2> >(tee -a "$MYCC_DEBUG_LOG" "$MYCC_MCP_LOG" "$MYCC_TELEMETRY_LOG" >&2)
         else
-            "${claude_cmd[@]}" \
+            "${CLAUDE_CMD[@]}" \
                 > >(tee -a "$MYCC_SESSION_LOG" | tee -a "$LOG_FILE") \
                 2> >(tee -a "$MYCC_DEBUG_LOG" "$MYCC_MCP_LOG" "$MYCC_TELEMETRY_LOG" >&2)
         fi
@@ -518,9 +515,9 @@ Project: $PROJECT_ROOT
     else
         # For interactive mode without logging, preserve terminal properly
         if [[ ${#ARGS[@]} -eq 0 ]]; then
-            exec "${claude_cmd[@]}"
+            exec "${CLAUDE_CMD[@]}"
         else
-            "${claude_cmd[@]}"
+            "${CLAUDE_CMD[@]}"
         fi
     fi
 }
