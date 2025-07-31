@@ -162,9 +162,18 @@ Examples:
 
 **Agent invocation**: `Task: "Create TODO for X" (subagent_type: specialist-todo)`
 
+**ENHANCED TODO COMMAND INTEGRATION**:
+- **`/todo-next`**: Comprehensive TODO hygiene + intelligent next-step analysis
+  - Combines cleanup of completed/stale TODOs with strategic task prioritization
+  - Uses parallel agent clusters for completion detection, staleness assessment, and next-step planning
+  - Supports --dry-run, --cleanup-only, --analysis-only modes for flexible workflow integration
+  - Implements git safety protocols with mandatory verification before TODO deletion
+  - Provides strategic recommendations for optimal task progression
+
 Examples:
   - Create project TODOs → Use specialist-todo agent → Follow Simple Git Protocol
   - Update TODO status → Modify .support/todos/file.md → Follow Simple Git Protocol
+  - Comprehensive TODO maintenance → `/todo-next --dry-run` → Review recommendations → `/todo-next` → Follow Simple Git Protocol
 
 ---
 
