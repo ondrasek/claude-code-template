@@ -12,20 +12,21 @@ created: 2025-01-31
 Consolidate overlapping specialist agents to reduce redundancy and improve efficiency. Merge functionally similar agents that have been identified during comprehensive agent analysis.
 
 ## Acceptance Criteria
-- [ ] Merge specialist-whisper and specialist-completer into unified specialist-code-assistant
-- [ ] Combine specialist-hypothesis and specialist-testing into specialist-validation
-- [ ] Consolidate specialist-constraints and specialist-guidelines-* agents into specialist-standards
-- [ ] Merge specialist-explorer and specialist-context into specialist-analysis
-- [ ] Reduce total specialist agent count by 40-50%
+- [ ] Remove specialist-whisper (capabilities fully covered by foundation-patterns)
+- [ ] Merge specialist-axioms + specialist-invariants → specialist-system-logic
+- [ ] Merge specialist-git-tagger + specialist-git-troubleshooter → specialist-git-manager
+- [ ] Merge specialist-guidelines-file + specialist-guidelines-repo → specialist-guidelines
+- [ ] Reduce total agent count from 24 to ~19 agents (20% reduction)
 - [ ] Preserve all critical capabilities during consolidation
 - [ ] Update CLAUDE.md agent coordination patterns for consolidated agents
 - [ ] Test consolidated agents maintain equivalent functionality
 
 ## Notes
-Consolidation should focus on agents with >70% functional overlap. Priority order:
-1. Code-focused agents (whisper + completer)
-2. Analysis agents (hypothesis + testing) 
-3. Standards agents (constraints + guidelines)
-4. Context agents (explorer + context)
+Consolidation based on evidence-based redundancy analysis. Priority order:
+1. Remove specialist-whisper (100% overlap with foundation-patterns)
+2. Merge system logic agents (axioms + invariants - both handle "fundamental truths")
+3. Merge git agents (tagger + troubleshooter - same domain)
+4. Merge guideline agents (file + repo - same technology detection logic)
 
+NO NEW AGENTS CREATED. Focus on reduction and consolidation only.
 Reference comprehensive agent analysis findings for detailed overlap assessment.

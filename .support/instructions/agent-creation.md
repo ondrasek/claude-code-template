@@ -9,7 +9,7 @@ Empirically-derived principles for determining when agents provide measurable va
 
 Agents exist primarily to prevent the main context from becoming polluted with:
 - Lengthy intermediate analysis steps
-- Multi-file code examination artifacts  
+- Multi-file code examination artifacts
 - Complex reasoning chains that obscure primary task focus
 - Repetitive processing output that adds noise without immediate value
 - Detailed technical research that supports but doesn't directly answer user queries
@@ -21,12 +21,12 @@ Agents exist primarily to prevent the main context from becoming polluted with:
 - **Intermediate reasoning MUST be contained** - main context sees only conclusions
 - **Complex research MUST be synthesized** - raw information gathering stays isolated
 
-**Evidence of Success:**  
+**Evidence of Success:**
 Main context conversations remain focused on user intent rather than processing artifacts. Users see clean, actionable results without intermediate computational noise.
 
 **Context Pollution Anti-Patterns:**
 - Running multi-file analysis directly in main context
-- Showing detailed reasoning chains for simple requests  
+- Showing detailed reasoning chains for simple requests
 - Displaying raw tool output instead of synthesized insights
 - Performing iterative refinement cycles visibly in main context
 - Presenting unsorted research results requiring user filtering
@@ -38,7 +38,7 @@ Main context conversations remain focused on user intent rather than processing 
 
 **Uniqueness Guidelines:**
 - **Domain Cohesion**: Natural problem domains should not be artificially split across multiple agents
-- **Tool Synergy**: Agents using identical tool combinations for similar outcomes indicate consolidation opportunity  
+- **Tool Synergy**: Agents using identical tool combinations for similar outcomes indicate consolidation opportunity
 - **Capability Boundaries**: Each agent should own a distinct analytical perspective or computational approach
 - **Authority Assignment**: Single agent should be authoritative source for each domain expertise
 
@@ -72,7 +72,7 @@ Agents should handle tasks that have clear input/output boundaries and don't req
 - Process: Self-contained analysis
 - Output: Structured recommendations
 
-**Bad boundaries:** 
+**Bad boundaries:**
 - Requires iterative clarification from main context
 - Needs access to ongoing conversation state
 - Produces outputs requiring main context interpretation
@@ -142,7 +142,7 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 
 2. **Capability uniqueness validation**
    - [ ] Agent provides distinct analytical perspective not available elsewhere
-   - [ ] Agent fills genuine capability gap in current ecosystem  
+   - [ ] Agent fills genuine capability gap in current ecosystem
    - [ ] Cannot be efficiently merged with existing agents without losing unique value
    - [ ] Provides unique tool combination or computational approach
    - [ ] Maintains system coherence without artificial domain splitting
@@ -154,7 +154,7 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
    - [ ] Doesn't create dependency chains that degrade system performance
    - [ ] Interaction patterns enhance rather than complicate workflow efficiency
 
-4. **Quantifiable complexity reduction** 
+4. **Quantifiable complexity reduction**
    - [ ] Task currently generates >50 lines of intermediate output in main context
    - [ ] Process involves >3 tool calls with state management between them
    - [ ] Same analysis pattern needed in >3 different contexts
@@ -183,7 +183,7 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 - **Command displacement**: Creating agents for specialization better handled by commands
 - **Context inefficiency**: Choosing agent coordination over command-directed workflows
 - **Artificial domain splitting**: Breaking naturally cohesive domains into multiple agents
-- **Tool redundancy**: Multiple agents using identical approaches for overlapping outcomes  
+- **Tool redundancy**: Multiple agents using identical approaches for overlapping outcomes
 - **Coordination dependency**: Agent cannot function independently within its stated domain
 - **Performance degradation**: Agent addition increases system complexity without proportional value
 - **Capability overlap**: Significant overlap with existing agent capabilities
@@ -195,22 +195,20 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 
 **Measurable indicators of agent value:**
 
-1. **Context window decluttering (PRIMARY METRIC)**: 
+1. **Context window decluttering (PRIMARY METRIC)**:
    - Lines of intermediate processing eliminated from main context
    - Reduction in tool call artifacts visible to main context
    - User conversations stay focused on intent rather than processing details
    - Main context readability and focus improvement
 
 2. **Context reduction**: Lines of intermediate output eliminated from main context
-3. **Reuse frequency**: Number of times agent is invoked across different scenarios  
+3. **Reuse frequency**: Number of times agent is invoked across different scenarios
 4. **Output quality**: Structured, actionable results that don't require clarification
 5. **Boundary respect**: Minimal back-and-forth with main context during execution
 
 ### Agent Audit Process
 
-**Quarterly review criteria:**
-
-1. **Context decluttering effectiveness**: 
+1. **Context decluttering effectiveness**:
    - Measure main context pollution reduction (before/after agent introduction)
    - Assess whether complex processing stays contained in agent context
    - Evaluate user conversation focus improvement
@@ -281,7 +279,7 @@ Claude Code's agent selection algorithm primarily uses:
 # Pattern 1: Mandatory usage
 description: "MUST USE when debugging 'why does this happen', 'strange behavior', 'performance issue', 'it should work but doesn't', or investigating unexpected results"
 
-# Pattern 2: Proactive triggers  
+# Pattern 2: Proactive triggers
 description: "PROACTIVELY use after writing significant code for quality analysis and potential improvements"
 
 # Pattern 3: Specific expertise
@@ -303,7 +301,7 @@ description: "General purpose development assistant"
 ### Selection Priority Keywords
 
 **Tier 1 (Highest priority):**
-- `MUST USE` 
+- `MUST USE`
 - `PROACTIVELY`
 - `ALWAYS use`
 - `MUST USE AUTOMATICALLY`
@@ -312,7 +310,7 @@ description: "General purpose development assistant"
 
 **Tier 2 (High priority):**
 - `Expert at`
-- `specialized in` 
+- `specialized in`
 - `designed for`
 - `Use when`
 
@@ -328,7 +326,7 @@ description: "General purpose development assistant"
 # Code quality contexts
 description: "Use when user asks 'is this SOLID', 'best practices', 'design principles', 'is this good architecture'"
 
-# Debugging contexts  
+# Debugging contexts
 description: "Use when debugging 'why does this happen', 'strange behavior', 'performance issue'"
 
 # Decision-making contexts
@@ -354,7 +352,7 @@ description: "Use when debugging 'why does this happen', 'strange behavior', 'pe
 # principles agent - clear proactive usage
 description: "Use during /review or when user asks 'is this SOLID', 'best practices', 'design principles', 'is this good architecture', or code quality concerns"
 
-# constraints agent - specific problem contexts  
+# constraints agent - specific problem contexts
 description: "Use when facing 'requirements conflict', 'limited resources', 'performance vs features', 'must work with legacy', or multiple competing constraints"
 ```
 
@@ -373,7 +371,7 @@ description: "Expert at detecting code patterns, anti-patterns, duplication, and
 Based on observed Claude Code behavior:
 
 1. **Exact phrase matching**: Claude Code looks for exact matches to user language in descriptions
-2. **Proactive keyword priority**: "PROACTIVELY" and "MUST USE" significantly boost selection probability  
+2. **Proactive keyword priority**: "PROACTIVELY" and "MUST USE" significantly boost selection probability
 3. **Context sensitivity**: Descriptions with quoted user phrases ("why does this happen") perform better
 4. **Negative correlation**: Generic terms like "helps with" reduce selection likelihood
 
@@ -399,7 +397,7 @@ description: "[TIER1_KEYWORD] when [specific_user_context] or [quoted_user_phras
 # High-performing pattern (constraints agent)
 description: "Use when facing 'requirements conflict', 'limited resources', 'performance vs features', 'must work with legacy', or multiple competing constraints"
 
-# Template-compliant optimization (completer agent)  
+# Template-compliant optimization (completer agent)
 description: "MUST USE when user says 'finish this', 'complete implementation', or functions throw 'not implemented' errors. Expert at completing partial implementations and eliminating TODO/FIXME comments."
 
 # Template-compliant optimization (critic agent)
