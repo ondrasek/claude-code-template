@@ -66,3 +66,5 @@ BEHAVIOR:
 - Provides strategic overview without task-by-task noise
 - Maintains clean separation between cleanup and analysis phases
 - Returns actionable next steps with implementation guidance
+- RECOMMENDATION ONLY: Does not automatically start implementing suggested tasks
+- USER DECIDES: User chooses whether to proceed with recommended next steps
