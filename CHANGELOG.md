@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.35.1] - 2025-07-31
+
+### Enhanced
+- **Enhanced /review Command**: Comprehensive upgrade with aggressive foundation agent parallel usage
+  - Implements 34-agent parallel execution across 6 coordinated clusters (4-6 agents per cluster)
+  - Replaces specialist agents with enhanced foundation agents for better coordination
+  - Adds comprehensive memory integration workflows for institutional knowledge building
+  - Provides structured output synthesis with foundation-resolver conflict mediation
+  - Enables multi-dimensional assessment with cross-validation across agent perspectives
+  - Ensures compliance with CLAUDE.md aggressive parallel usage requirements
+
 ## [2.35.0] - 2025-07-31
 
 ### Enhanced
