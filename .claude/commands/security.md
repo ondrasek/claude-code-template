@@ -6,13 +6,13 @@ SCOPE: full codebase security analysis
 
 ENHANCED_ACTIONS:
 1. coordinate enhanced parallel security specialist clusters:
-   - **Primary Security Analysis Cluster**: vulnerability-scanner + threat-modeling + compliance-checker + researcher (comprehensive security analysis with intelligence validation)
-   - **Threat Intelligence Cluster**: researcher + patterns + hypothesis + context (CVE intelligence, pattern recognition, threat modeling, system understanding)
-   - **Architectural Security Cluster**: explorer + constraints + invariants + axioms (alternative security approaches, boundary validation, design integrity, fundamental security principles)
-   - **Risk Assessment Cluster**: critic + completer + performance + time (risk validation, completeness assessment, performance impact, historical analysis)
-   - **Implementation Validation Cluster**: testing + principles + docs + guidelines-file (security testing, principle compliance, documentation, technology-specific guidance)
-2. synthesize findings into prioritized risk assessment validated by resolver + critic + principles agents
-3. generate comprehensive remediation roadmap with time + constraints + completer + docs analysis
+   - **Primary Security Analysis Cluster**: foundation-patterns + foundation-criticism + specialist-constraint-solver + foundation-research (comprehensive security analysis with intelligence validation)
+   - **Threat Intelligence Cluster**: foundation-research + foundation-patterns + specialist-options-analyzer + foundation-context (CVE intelligence, pattern recognition, threat modeling, system understanding)
+   - **Architectural Security Cluster**: specialist-options-analyzer + specialist-constraint-solver + foundation-principles + specialist-stack-advisor (alternative security approaches, boundary validation, design integrity, fundamental security principles)
+   - **Risk Assessment Cluster**: foundation-criticism + specialist-code-cleaner + specialist-performance-optimizer + specialist-stack-advisor (risk validation, completeness assessment, performance impact, analysis)
+   - **Implementation Validation Cluster**: specialist-test-strategist + foundation-principles + specialist-stack-advisor + specialist-code-cleaner (security testing, principle compliance, documentation, technology-specific guidance)
+2. synthesize findings into prioritized risk assessment validated by foundation-conflicts + foundation-criticism + foundation-principles agents
+3. generate comprehensive remediation roadmap with specialist-constraint-solver + specialist-code-cleaner + specialist-stack-advisor analysis
 
 PARAMETERS:
 --focus [auth|injection|crypto|deps|config]
@@ -23,12 +23,12 @@ PARAMETERS:
 --output [json|sarif|html]
 
 ENHANCED_AGENT_CLUSTERS:
-Primary Security Analysis: vulnerability-scanner + threat-modeling + compliance-checker + researcher
-Threat Intelligence: researcher + patterns + hypothesis + context + time
-Architectural Security: explorer + constraints + invariants + axioms + principles
-Risk Assessment: critic + completer + performance + time + resolver
-Implementation Validation: testing + principles + docs + guidelines-file + completer
-Synthesis & Remediation: resolver + critic + principles + constraints + docs
+Primary Security Analysis: foundation-patterns + foundation-criticism + specialist-constraint-solver + foundation-research
+Threat Intelligence: foundation-research + foundation-patterns + specialist-options-analyzer + foundation-context
+Architectural Security: specialist-options-analyzer + specialist-constraint-solver + foundation-principles + specialist-stack-advisor
+Risk Assessment: foundation-criticism + specialist-code-cleaner + specialist-performance-optimizer + foundation-conflicts
+Implementation Validation: specialist-test-strategist + foundation-principles + specialist-stack-advisor + specialist-code-cleaner
+Synthesis & Remediation: foundation-conflicts + foundation-criticism + foundation-principles + specialist-constraint-solver + specialist-stack-advisor
 Coordination: All enhanced clusters execute in parallel for comprehensive multi-dimensional security coverage
 
 VULNERABILITY_CHECKS:
@@ -103,7 +103,7 @@ OUTPUT:
    ```
    - **Fix**: Add authentication decorator
 
-### Dependency Vulnerabilities (researcher agent)
+### Dependency Vulnerabilities (foundation-research agent)
 
 | Package | Current | Secure | CVE | Severity |
 |---------|---------|--------|-----|----------|
@@ -111,7 +111,7 @@ OUTPUT:
 | requests | 2.25.0 | 2.31.0 | CVE-2023-32681 | Medium |
 | pyyaml | 5.3 | 6.0.1 | CVE-2020-14343 | High |
 
-### Security Principles Analysis (principles agent)
+### Security Principles Analysis (foundation-principles agent)
 
 1. **Least Privilege Violation**
    - Database user has DROP privileges
@@ -214,32 +214,32 @@ def login():
 
 **Enhanced Specialized Security Integration**:
 
-**Primary Security Analysis Cluster** (vulnerability-scanner + threat-modeling + compliance-checker + researcher):
+**Primary Security Analysis Cluster** (foundation-patterns + foundation-criticism + specialist-constraint-solver + foundation-research):
 - Code-level security flaw detection with research-validated pattern matching
-- Attack surface analysis with threat intelligence and regulatory compliance
+- Attack surface analysis with constraint-based security validation and risk assessment
 - Comprehensive security assessment with latest CVE database integration
 
-**Threat Intelligence Cluster** (researcher + patterns + hypothesis + context + time):
-- CVE database intelligence with historical threat evolution analysis
+**Threat Intelligence Cluster** (foundation-research + foundation-patterns + specialist-options-analyzer + foundation-context):
+- CVE database intelligence with comprehensive threat analysis
 - Security anti-pattern recognition with system context understanding
-- Attack vector analysis with temporal threat landscape assessment
+- Attack vector analysis with multiple threat landscape assessment approaches
 
-**Architectural Security Cluster** (explorer + constraints + invariants + axioms + principles):
+**Architectural Security Cluster** (specialist-options-analyzer + specialist-constraint-solver + foundation-principles + specialist-stack-advisor):
 - Security solution alternatives with fundamental principle validation
-- Access control design with type-safe security state management
-- Defense strategy optimization within architectural constraints
+- Access control design with constraint-aware security state management
+- Defense strategy optimization within architectural constraints and technology guidance
 
-**Risk Assessment Cluster** (critic + completer + performance + time + resolver):
+**Risk Assessment Cluster** (foundation-criticism + specialist-code-cleaner + specialist-performance-optimizer + foundation-conflicts):
 - Security assumption validation with performance impact analysis
-- Completeness assessment with historical risk pattern analysis
+- Completeness assessment with code quality risk pattern analysis
 - Conflict resolution in competing security requirements
 
-**Implementation Validation Cluster** (testing + principles + docs + guidelines-file + completer):
+**Implementation Validation Cluster** (specialist-test-strategist + foundation-principles + specialist-stack-advisor + specialist-code-cleaner):
 - Security testing with technology-specific guidance
 - Principle-based validation with comprehensive documentation
 - Implementation gap identification with completeness verification
 
-**Enhanced Advanced Multi-Dimensional Coordination**: Security specialists coordinate with intelligence, architectural, risk assessment, and implementation validation agents through resolver + critic + principles integration for comprehensive, validated, and actionable security analysis with universal agent support
+**Enhanced Advanced Multi-Dimensional Coordination**: Security analysis coordinates through foundation-conflicts + foundation-criticism + foundation-principles integration for comprehensive, validated, and actionable security analysis with universal agent support
 
 ## Memory Integration
 

@@ -6,7 +6,7 @@ SCOPE: focused implementation of specific fixes rather than broad refactoring
 
 OPTIMIZED_ACTIONS:
 1. **Fix Context Analysis**: foundation-context agent for understanding the issue and system impact
-2. **Implementation Strategy**: specialist-completer for gap analysis and implementation approach
+2. **Implementation Strategy**: specialist-code-cleaner for gap analysis and implementation approach
 3. **Quality Validation**: foundation-patterns + foundation-principles for ensuring fix quality
 4. **Risk Assessment**: foundation-criticism for evaluating fix safety and side effects
 
@@ -24,7 +24,7 @@ INTELLIGENT_FIX_DETECTION:
 4. **Safety assessment**: Evaluate risk level of proposed fixes
 
 OPTIMIZED_PARALLEL_CLUSTERS:
-Implementation (2 agents): specialist-completer + foundation-context
+Implementation (2 agents): specialist-code-cleaner + foundation-context
 Quality & Safety (3 agents): foundation-patterns + foundation-principles + foundation-criticism
 
 COORDINATION_PROTOCOL: All clusters execute simultaneously via single message with multiple Task() calls for efficient fix implementation. Total agents: 5 (focused on safe, quality fixes)
@@ -68,7 +68,7 @@ INTELLIGENT_OUTPUT:
 ### Phase 1: Fix Analysis & Planning
 ```
 Task: "Analyze issue context and system impact" (foundation-context)
-Task: "Plan implementation approach and identify gaps" (specialist-completer)
+Task: "Plan implementation approach and identify gaps" (specialist-code-cleaner)
 ```
 
 ### Phase 2: Quality & Safety Validation

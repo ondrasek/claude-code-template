@@ -8,55 +8,43 @@ Guide for creating new Claude Code agents following empirical principles, select
 ```
 
 ## What it does
-- **Validates agent necessity** using enhanced decision framework with researcher + critic + principles validation
-- **Checks for redundancy** with existing 27 agents using patterns + completer + context analysis
-- **Guides agent specification** with proven description patterns validated by critic + principles agents
-- **Generates optimized descriptions** with Tier 1 selection keywords validated by researcher + patterns agents
-- **Designs multi-agent coordination** patterns using explorer + constraints + resolver for sophisticated workflow integration
-- **Creates agent file** with proper frontmatter validated by completer + principles + docs agents
+- **Validates agent necessity** using enhanced decision framework with foundation-research + foundation-criticism + foundation-principles validation
+- **Checks for redundancy** with existing 16 agents using foundation-patterns + specialist-code-cleaner + foundation-context analysis
+- **Guides agent specification** with proven description patterns validated by foundation-criticism + foundation-principles agents
+- **Generates optimized descriptions** with Tier 1 selection keywords validated by foundation-research + foundation-patterns agents
+- **Designs multi-agent coordination** patterns using specialist-options-analyzer + specialist-constraint-solver + foundation-conflicts for sophisticated workflow integration
+- **Creates agent file** with proper frontmatter validated by specialist-code-cleaner + foundation-principles + specialist-stack-advisor agents
 
-## Current Agent Ecosystem (27 agents)
+## Current Agent Ecosystem (16 agents)
 
-### Core Analysis Agents
-- **patterns**, **researcher**, **context**, **hypothesis**, **axioms**, **constraints**
+### Foundation Agents (6 total)
+- **foundation-patterns**, **foundation-research**, **foundation-context**, **foundation-principles**, **foundation-criticism**, **foundation-conflicts**
 
-### Security Specialists (Post-Split)
-- **vulnerability-scanner**, **threat-modeling**, **compliance-checker**
-
-### Quality & Performance
-- **testing**, **performance**, **critic**, **completer**, **whisper**
-
-### Architecture & Decision
-- **explorer**, **resolver**, **principles**, **invariants**, **connector**
-
-### Workflow & Documentation
-- **generator**, **docs**, **git-tagger**, **git-troubleshooter**, **todo**, **time**, **prompter**
-
-### Technology Guidelines
-- **guidelines-file**, **guidelines-repo**
+### Specialist Agents (10 total)
+- **specialist-code-cleaner**, **specialist-constraint-solver**, **specialist-git-workflow**, **specialist-meta-programmer**, **specialist-options-analyzer**, **specialist-performance-optimizer**, **specialist-prompt-engineer**, **specialist-stack-advisor**, **specialist-test-strategist**, **specialist-todo-manager**
 
 ## Enhanced Agent Creation Workflow
 
 ### Phase 1: Enhanced Necessity Validation
 **Parallel Validation Clusters:**
-- **Core Validation Cluster** (researcher + patterns + critic): Research similar agents, identify patterns, critically assess necessity
-- **Boundary Analysis Cluster** (explorer + constraints + invariants): Define clear boundaries, identify limitations, ensure type safety
-- **Redundancy Assessment Cluster** (patterns + completer + context): Check ecosystem overlap, identify gaps, understand system context
-- **Principle Compliance Cluster** (principles + axioms + critic): Validate design principles, check fundamental soundness, critical review
+- **Core Validation Cluster** (foundation-research + foundation-patterns + foundation-criticism): Research similar agents, identify patterns, critically assess necessity
+- **Boundary Analysis Cluster** (specialist-options-analyzer + specialist-constraint-solver): Define clear boundaries, identify limitations, ensure constraint handling
+- **Redundancy Assessment Cluster** (foundation-patterns + specialist-code-cleaner + foundation-context): Check ecosystem overlap, identify gaps, understand system context
+- **Principle Compliance Cluster** (foundation-principles + foundation-criticism): Validate design principles, check fundamental soundness, critical review
 
-1. **Computational thinking pattern identification**: Define using patterns + researcher + critic validation
-2. **Complexity justification**: Verify using completer + patterns + constraints analysis
-3. **Boundary analysis**: Confirm using explorer + invariants + principles validation
-4. **Reuse assessment**: Check using context + patterns + researcher analysis
-5. **Redundancy check**: Compare using patterns + completer + context against all 27 existing agents
-6. **Human role avoidance**: Ensure focus using principles + critic + axioms validation
+1. **Computational thinking pattern identification**: Define using foundation-patterns + foundation-research + foundation-criticism validation
+2. **Complexity justification**: Verify using specialist-code-cleaner + foundation-patterns + specialist-constraint-solver analysis
+3. **Boundary analysis**: Confirm using specialist-options-analyzer + specialist-constraint-solver + foundation-principles validation
+4. **Reuse assessment**: Check using foundation-context + foundation-patterns + foundation-research analysis
+5. **Redundancy check**: Compare using foundation-patterns + specialist-code-cleaner + foundation-context against all 16 existing agents
+6. **Human role avoidance**: Ensure focus using foundation-principles + foundation-criticism validation
 
 ### Phase 2: Enhanced Multi-Agent Integration Design
 **Parallel Integration Design Clusters:**
-- **Coordination Strategy Cluster** (explorer + resolver + connector): Generate coordination alternatives, resolve conflicts, create cross-domain connections
-- **Workflow Pattern Cluster** (patterns + time + context): Identify workflow patterns, analyze historical effectiveness, understand system context
-- **Validation Design Cluster** (critic + testing + completer): Design validation approaches, test integration patterns, ensure completeness
-- **Quality Assurance Cluster** (principles + invariants + critic): Apply quality principles, ensure design integrity, critical assessment
+- **Coordination Strategy Cluster** (specialist-options-analyzer + foundation-conflicts): Generate coordination alternatives, resolve conflicts
+- **Workflow Pattern Cluster** (foundation-patterns + foundation-context): Identify workflow patterns, understand system context
+- **Validation Design Cluster** (foundation-criticism + specialist-test-strategist + specialist-code-cleaner): Design validation approaches, test integration patterns, ensure completeness
+- **Quality Assurance Cluster** (foundation-principles + specialist-constraint-solver + foundation-criticism): Apply quality principles, ensure design integrity, critical assessment
 
 1. **Coordination requirements**: Define using explorer + resolver + critic with parallel analysis
 2. **Workflow patterns**: Design using patterns + time + context with historical validation
