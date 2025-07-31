@@ -19,13 +19,6 @@ ENHANCED_ACTIONS:
 4. generate comprehensive next-step recommendations validated by resolver + principles + docs agents
 
 PARAMETERS:
---cleanup-only (perform cleanup without next-step analysis)
---analysis-only (skip cleanup, analyze remaining TODOs only)
---dry-run (show cleanup candidates and recommendations without making changes)
---since [date|tag] (check implementations since specific date or version)
---older-than [days|weeks|months] (target stale TODOs older than timeframe)
---keep-types [types] (preserve specific task types during stale cleanup)
---priority [high|medium|low] (filter next-step analysis by priority level)
 --limit N (limit number of next-step recommendations)
 
 GIT_SAFETY_PROTOCOL:
@@ -61,10 +54,7 @@ ENHANCED_OUTPUT:
   - Process improvement suggestions
 
 EXAMPLES:
-/todo-next --dry-run (show cleanup candidates and next-step analysis without changes)
-/todo-next --since v2.38.0 --priority high (cleanup since version, analyze high-priority next steps)
-/todo-next --cleanup-only --older-than 2months (only cleanup stale TODOs older than 2 months)
-/todo-next --analysis-only --limit 3 (skip cleanup, show top 3 next-step recommendations)
+/todo-next --limit 3 (show top 3 next-step recommendations)
 
 BEHAVIOR:
 - Delegates ALL cleanup and analysis to todo agent off-context

@@ -9,13 +9,6 @@ Expert at crafting optimized prompts for custom AI agents in user's projects.
 ## Purpose
 Help developers create effective prompts for THEIR agents (not Claude Code agents) when building AI-powered features in their applications.
 
-## When to Activate
-- User creating NEW agents for their project
-- Optimizing prompts for existing agents in codebase
-- Converting requirements to agent prompts
-- Implementing AI features with LangChain/CrewAI
-- Prompt performance issues
-
 ## Common Scenarios
 - "I need a customer support agent for my app"
 - "Create a code reviewer agent for our CI/CD"
