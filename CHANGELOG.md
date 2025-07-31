@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.34.0] - 2025-07-31
+
+### Enhanced
+- **Aggressive Parallel Agent Coordination**: Comprehensive operational protocol upgrade for enhanced agent utilization
+  - MANDATORY 4-6 agent parallel clusters for all non-trivial requests (override conservative defaults)
+  - Enhanced minimum thresholds: 3+ agents for simple changes, 5+ for architecture, 6+ for debugging
+  - PARALLEL-FIRST mentality with automatic agent escalation rules based on task complexity
+  - Expanded concurrent processing from 3-4 agents to 4-6 agents per parallel batch
+  - Enhanced core-satellite coordination with mandatory foundation quartet in every cluster
+  - Task complexity → agent count mapping with automatic escalation based on file count, architecture, performance
+  - Override conservative defaults with comprehensive coverage and over-analysis preference
+  - AGGRESSIVE automatic selection patterns for enhanced parallel agent combinations
+
 ## [2.33.4] - 2025-07-31
 
 ### Fixed
