@@ -132,3 +132,6 @@ mcp__memory__create_relations([{
 
 ### Retrieve Historical Context:
 Use `mcp__memory__search_nodes("architectural_decision")` to find relevant past decisions before making principle recommendations.
+
+## RECURSION PREVENTION (MANDATORY)
+**SUB-AGENT RESTRICTION**: This agent MUST NOT spawn other agents via Task tool. All principle analysis, memory operations, and practical assessment happens within this agent's context to prevent recursive delegation loops. This agent is a terminal node in the agent hierarchy.
