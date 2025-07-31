@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.36.0] - 2025-07-31
+
+### Enhanced
+- **Agent Architecture Optimization**: Evidence-based optimization principles from comprehensive specialist agent review
+  - Added Capability Redundancy Prevention with 70% overlap consolidation threshold and elimination guidelines
+  - Implemented Performance-First Architecture with 15-20 agent maximum and response time targets (<30s simple, <60s standard, <120s complex)
+  - Enhanced Agent Creation Checklist with anti-redundancy validation and performance impact assessment
+  - Added Evidence-Based Elimination Criteria with confirmed consolidation candidates (specialist-whisper elimination, axioms/invariants merge consideration)
+  - Established tiered execution strategy (3/4-5/6+ agents for simple/standard/complex tasks) and agent efficiency classification
+  - Prevents over-specialization coordination overhead that exceeds analytical benefits through empirical thresholds
+
 ## [2.35.1] - 2025-07-31
 
 ### Enhanced
