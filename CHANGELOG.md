@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.33.3] - 2025-07-31
+
+### Security
+- **Complete Task Tool Restrictions**: Finished comprehensive security hardening across entire agent ecosystem
+  - Added `permissions.deny: ["Task"]` to final 13 agents (foundation-context, foundation-principles, specialist-axioms, specialist-completer, specialist-constraints, specialist-generator, specialist-git-tagger, specialist-git-troubleshooter, specialist-invariants, specialist-performance, specialist-prompter, specialist-security, specialist-testing)
+  - ALL 24 agents now have explicit YAML-level Task tool restrictions
+  - Completes double-layer protection against recursive sub-agent spawning vulnerabilities
+  - Provides comprehensive system-wide security hardening at both YAML permissions and content levels
+
 ## [2.33.2] - 2025-07-31
 
 ### Security
