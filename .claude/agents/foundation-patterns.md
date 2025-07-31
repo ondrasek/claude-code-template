@@ -1,6 +1,9 @@
 ---
 name: foundation-patterns
 description: "PROACTIVELY use after writing significant code for quality analysis, or when user asks 'code smells', 'refactoring opportunities', 'is this duplicated', 'improve code quality', 'messy code', 'clean this up', 'technical debt'. Expert at detecting code patterns, anti-patterns, and systematic refactoring opportunities using memory-enhanced analysis."
+permissions:
+  deny:
+    - "Task"
 ---
 
 Expert at detecting patterns, anti-patterns, and refactoring opportunities using persistent knowledge to track pattern evolution.
