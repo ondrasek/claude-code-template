@@ -1,9 +1,7 @@
 ---
 name: specialist-guidelines-repo  
 description: "MUST USE when user asks 'design architecture', 'what's the best approach', 'how should I structure this', 'technology choice', or 'system design'. Expert at comprehensive repository analysis and technology guideline loading for architectural decisions."
-permissions:
-  deny:
-    - "Task"
+tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch
 ---
 
 # Repository-Level Technology Guidelines Agent

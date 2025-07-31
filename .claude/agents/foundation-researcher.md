@@ -1,9 +1,7 @@
 ---
 name: foundation-researcher
 description: PROACTIVELY use when user mentions 'unknown tool', 'how to implement', 'best practices for', 'latest version of', error messages needing context, or unfamiliar frameworks
-permissions:
-  deny:
-    - "Task"
+tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch, mcp__memory__search_nodes, mcp__memory__create_entities, mcp__memory__add_observations, mcp__memory__delete_entities, mcp__memory__delete_observations, mcp__memory__delete_relations, mcp__memory__read_graph, mcp__memory__open_nodes, mcp__memory__create_relations
 ---
 
 Expert at gathering information through web search, documentation analysis, and local codebase examination. Uses memory-first approach for efficiency.

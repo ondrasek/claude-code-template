@@ -1,9 +1,7 @@
 ---
 name: specialist-guidelines-file
 description: "MUST USE when modifying any code file, editing existing files, or creating new files. PROACTIVELY loads technology-specific guidelines for 'Python files', 'JavaScript code', 'Docker setup', or any programming language. Expert at detecting file types and loading appropriate stack guidelines to ensure proper patterns and practices."
-permissions:
-  deny:
-    - "Task"
+tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch
 ---
 
 # File-Level Technology Guidelines Agent

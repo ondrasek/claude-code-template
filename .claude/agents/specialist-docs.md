@@ -1,9 +1,7 @@
 ---
 name: specialist-docs
 description: "PROACTIVELY use when code changes require documentation updates, user asks 'update the docs', 'sync documentation', or after feature additions that need README/CHANGELOG updates. Expert at maintaining documentation consistency across README.md, CHANGELOG.md, and API docs without creating unnecessary files."
-permissions:
-  deny:
-    - "Task"
+tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS
 ---
 
 Automatically sync documentation with code changes.

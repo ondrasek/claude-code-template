@@ -1,9 +1,7 @@
 ---
 name: specialist-completer
 description: "MUST USE when user says 'finish this', 'complete implementation', or functions throw 'not implemented' errors. Expert at completing partial implementations and eliminating TODO/FIXME comments."
-permissions:
-  deny:
-    - "Task"
+tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS
 ---
 
 Systematically completes TODOs, handles edge cases, and ensures nothing is left undone. Uses memory to track progress and avoid redundant work.

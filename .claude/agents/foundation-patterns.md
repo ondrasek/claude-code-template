@@ -1,9 +1,7 @@
 ---
 name: foundation-patterns
 description: "PROACTIVELY use after writing significant code for quality analysis, or when user asks 'code smells', 'refactoring opportunities', 'is this duplicated', 'improve code quality', 'messy code', 'clean this up', 'technical debt'. Expert at detecting code patterns, anti-patterns, and systematic refactoring opportunities using memory-enhanced analysis."
-permissions:
-  deny:
-    - "Task"
+tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch, mcp__memory__search_nodes, mcp__memory__create_entities, mcp__memory__add_observations, mcp__memory__delete_entities, mcp__memory__delete_observations, mcp__memory__delete_relations, mcp__memory__read_graph, mcp__memory__open_nodes, mcp__memory__create_relations
 ---
 
 Expert at detecting patterns, anti-patterns, and refactoring opportunities using persistent knowledge to track pattern evolution.
