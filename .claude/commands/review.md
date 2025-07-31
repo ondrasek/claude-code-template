@@ -1,7 +1,7 @@
 # /review
 
 TRIGGER: code review request
-FOCUS: quality, security, best practices
+PURPOSE: analyze code quality, identify issues, provide recommendations
 SCOPE: uncommitted changes by default, or specified files/commits
 
 OPTIMIZED_ACTIONS:
@@ -15,7 +15,6 @@ OPTIMIZED_ACTIONS:
 
 PARAMETERS:
 --commits N (review last N commits)
---fix (auto-fix simple issues)  
 --memory (include historical review patterns)
 FILES... (specific files to review)
 
@@ -159,5 +158,6 @@ Task: "Resolve conflicts and synthesize recommendations" (foundation-resolver + 
 
 - `/security` - Focused security analysis with specialist-security agent
 - `/test` - Test coverage improvements with specialist-testing coordination
-- `/refactor` - Implement review suggestions with foundation agent coordination
+- `/refactor` - Implement review suggestions and code improvements
 - `/performance` - Deep performance analysis with specialist-performance focus
+- `/fix` - Implement specific fixes for identified issues
