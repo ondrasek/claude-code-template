@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.35.0] - 2025-07-31
+
+### Enhanced
+- **Foundation Agent System Overhaul**: Comprehensive enhancement of all 6 foundation agents
+  - Added safety protocol consistency with recursion prevention across all foundation agents
+  - Implemented standardized output formats for foundation-researcher and foundation-critic agents
+  - Enhanced agent descriptions for foundation-researcher and foundation-resolver with comprehensive trigger words
+  - Integrated comprehensive memory capabilities into foundation-critic and foundation-resolver agents
+  - Transformed foundation-researcher from minimal to comprehensive research agent with 250+ line enhancement
+  - Added capability boundary documentation to all foundation agents with clear specializations and selection guidance
+  - Improved parallel execution efficiency through clearer role definitions and overlap prevention
+  - Enhanced memory-driven analysis workflows with MCP memory tool operations and knowledge preservation
+  - Added structured research categories, validation protocols, and relationship mapping capabilities
+
 ## [2.34.0] - 2025-07-31
 
 ### Enhanced
