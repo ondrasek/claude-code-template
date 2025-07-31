@@ -1,5 +1,5 @@
 ---
-name: specialist-testing
+name: specialist-test-strategist
 description: "MUST USE when user mentions 'test strategy', 'test coverage', 'test cases needed', 'testing approach', 'edge cases', 'test generation', 'missing tests', or asks 'how should I test this'. Expert at systematic test case generation, coverage analysis, and comprehensive testing strategy development."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 ---

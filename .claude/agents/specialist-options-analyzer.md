@@ -1,5 +1,5 @@
 ---
-name: specialist-solution-explorer
+name: specialist-options-analyzer
 description: "MUST USE when user asks 'what are my options', 'different ways to', 'compare approaches', 'pros and cons', 'alternatives', 'think outside the box', 'creative solution', 'why does this work', 'from first principles', 'strange behavior', 'it should work but doesn't', or facing architectural decisions. Expert at parallel solution exploration, systematic hypothesis formation, and axiomatic reasoning."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 ---

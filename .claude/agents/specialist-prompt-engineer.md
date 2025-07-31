@@ -1,5 +1,5 @@
 ---
-name: specialist-prompter
+name: specialist-prompt-engineer
 description: Use when user asks to "write a prompt", "improve this prompt", "create AI agent prompts", or working with LangChain/CrewAI systems
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 ---
