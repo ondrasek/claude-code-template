@@ -108,11 +108,30 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 
 **System Scalability Principle**: Agent systems have natural complexity thresholds. Beyond these thresholds, coordination overhead degrades rather than enhances system performance.
 
+### 6. Command-Agent Balance Principle
+**Specialization should favor commands over agents due to context window economics.**
+
+**Core Principle**: Commands are selected by users and have zero context window overhead, while agents are selected by Claude Code and consume context resources. Therefore, specialization needs should prioritize command creation over agent proliferation.
+
+**Balance Guidelines:**
+- **User-Directed Specialization**: When users need specific workflows or specialized analysis, create commands
+- **System-Directed Generalization**: Agents should handle broad analytical patterns that Claude Code can automatically select
+- **Context Efficiency**: Commands avoid the coordination overhead and context fragmentation of multi-agent workflows
+- **Selection Clarity**: User command selection eliminates agent boundary ambiguity and selection errors
+
+**Specialization Hierarchy**: Commands > Agents > Agent Combinations. Move down the hierarchy only when the previous level cannot adequately address the need.
+
 ## Decision Framework
 
 ### Agent Creation Checklist
 
 **Before creating an agent, verify:**
+
+0. **Command-first evaluation (PREREQUISITE)**
+   - [ ] Specialization need cannot be addressed through user-selected commands
+   - [ ] Requires Claude Code automatic selection rather than user direction
+   - [ ] Task benefits from system-directed rather than user-directed specialization
+   - [ ] Cannot be efficiently implemented as specialized command workflow
 
 1. **Context window decluttering justification (PRIMARY)**
    - [ ] Task currently pollutes main context with >50 lines of intermediate processing
@@ -153,12 +172,16 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 ### When NOT to Create an Agent
 
 **Avoid agents when:**
+- **Command-appropriate**: Specialization need can be addressed through user-selected commands
+- **User-directed workflows**: Users can better direct the specialized analysis themselves
 - **Single-use scenarios**: Only needed for one specific task or codebase
 - **Simple tool orchestration**: Just calls 1-2 tools in sequence without complex logic
 - **Requires conversational context**: Needs access to ongoing discussion state
 - **Marginal benefit**: Overhead of agent creation exceeds complexity reduction
 
 **DESIGN ANTI-PATTERNS:**
+- **Command displacement**: Creating agents for specialization better handled by commands
+- **Context inefficiency**: Choosing agent coordination over command-directed workflows
 - **Artificial domain splitting**: Breaking naturally cohesive domains into multiple agents
 - **Tool redundancy**: Multiple agents using identical approaches for overlapping outcomes  
 - **Coordination dependency**: Agent cannot function independently within its stated domain
