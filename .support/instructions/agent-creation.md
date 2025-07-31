@@ -2,6 +2,17 @@
 
 Empirically-derived principles for determining when agents provide measurable value over inline processing.
 
+## Context and Scope
+
+**CRITICAL NOTE**: These principles apply to **agent creation decisions** and **system architecture**. They do NOT override CLAUDE.md's operational mandates for parallel agent usage in existing workflows.
+
+**Principle Application**:
+- **Agent Creation**: Apply all principles rigorously - prefer consolidation over new agents
+- **Agent Usage**: Follow CLAUDE.md aggressive parallel coordination for optimal analysis
+- **System Evolution**: Balance principle-driven design with operational performance requirements
+
+**Conflict Resolution**: When principles conflict with CLAUDE.md operational mandates, operational requirements take precedence. These principles guide long-term system design, not immediate execution patterns.
+
 ## Core Principles
 
 ### 1. Context Window Decluttering (PRIMARY PURPOSE)
@@ -54,7 +65,7 @@ Create agents only when the complexity reduction in main context exceeds the ove
 
 **Evidence required:** Document specific overhead reduction achieved
 
-### 2. Prompt Specialization (Not "Cognitive")
+### 3. Prompt Specialization (Not "Cognitive")
 Agents provide specialized prompting strategies for specific analysis patterns, not magical cognitive differences.
 
 **Practical examples:**
@@ -64,7 +75,7 @@ Agents provide specialized prompting strategies for specific analysis patterns, 
 
 **Reality check:** All agents use the same language model with different instructions
 
-### 3. Context Boundary Management
+### 4. Context Boundary Management
 Agents should handle tasks that have clear input/output boundaries and don't require ongoing main context interaction.
 
 **Good boundaries:**
@@ -77,7 +88,7 @@ Agents should handle tasks that have clear input/output boundaries and don't req
 - Needs access to ongoing conversation state
 - Produces outputs requiring main context interpretation
 
-### 4. Focus on Computational Tasks and Thinking Patterns
+### 5. Focus on Computational Tasks and Thinking Patterns
 Agents should embody computational tasks, thinking patterns, paradigms, and analytical perspectives - not human organizational roles.
 
 **Correct agent approaches:**
@@ -95,7 +106,7 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 
 **Rationale:** Agents excel at computational processing, systematic analysis patterns, and specialized analytical perspectives. They provide value through focused thinking approaches and context isolation - not at replicating human social dynamics or organizational responsibilities.
 
-### 5. Coordination Efficiency Principle
+### 6. Coordination Efficiency Principle
 **System performance emerges from agent interaction patterns, not individual agent capabilities.**
 
 **Core Principle**: The value of agent specialization must exceed the cost of coordination. Systems should optimize for interaction efficiency rather than individual agent sophistication.
@@ -108,7 +119,7 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 
 **System Scalability Principle**: Agent systems have natural complexity thresholds. Beyond these thresholds, coordination overhead degrades rather than enhances system performance.
 
-### 6. Command-Agent Balance Principle
+### 7. Command-Agent Balance Principle
 **Specialization should favor commands over agents due to context window economics.**
 
 **Core Principle**: Commands are selected by users and have zero context window overhead, while agents are selected by Claude Code and consume context resources. Therefore, specialization needs should prioritize command creation over agent proliferation.
