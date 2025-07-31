@@ -1,9 +1,2 @@
 {
-  "mcpServers": {
-    "memory": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"],
-      "description": "Persistent memory between sessions - uses default memory.db location"
-    }
-  }
 }
