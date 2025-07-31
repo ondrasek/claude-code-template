@@ -2,124 +2,102 @@
 
 Comprehensive guide for effectively using all 26 specialized AI agents in the current ecosystem.
 
-## Current Agent Ecosystem (27 agents)
+## Current Agent Ecosystem (16 agents)
 
-### Core Analysis & Research
-- **patterns**: Identify code patterns and anti-patterns at scale
-- **researcher**: Parallel web research with latest information
-- **context**: Deep system understanding across entire codebases
-- **hypothesis**: Scientific approach to debugging and investigation
-- **axioms**: Derive solutions from fundamental principles
-- **constraints**: Navigate complex multi-dimensional limitations
+### Foundation Agents (6 total)
+- **foundation-patterns**: Identify code patterns and anti-patterns at scale
+- **foundation-research**: Parallel web research with latest information
+- **foundation-context**: Deep system understanding across entire codebases
+- **foundation-principles**: Apply fundamental software engineering principles
+- **foundation-criticism**: Risk analysis and constructive challenge of proposals
+- **foundation-conflicts**: Navigate conflicts between competing approaches
 
-### Security Specialists (Post-Split Excellence)
-- **vulnerability-scanner**: Code-level security flaw detection and pattern matching
-- **threat-modeling**: Attack surface analysis and architectural security assessment
-- **compliance-checker**: Regulatory standards evaluation (SOC2, GDPR, HIPAA, PCI-DSS)
-
-### Quality & Performance Optimization
-- **testing**: Comprehensive test strategy development and coverage analysis
-- **performance**: Algorithmic complexity analysis and optimization strategies
-- **critic**: Risk analysis and constructive challenge of proposals
-- **completer**: Eliminate incomplete implementations and TODO comments
-- **whisper**: Code style improvements and micro-optimizations
-
-### Architecture & Decision Support
-- **explorer**: Generate and evaluate multiple solution alternatives
-- **resolver**: Navigate conflicts between competing approaches
-- **principles**: Apply fundamental software engineering principles
-- **invariants**: Design type-safe systems preventing invalid states
-- **connector**: Cross-domain insights and creative problem-solving
-
-### Workflow & Documentation
-- **generator**: Create code generators and domain-specific languages
-- **docs**: Maintain synchronized documentation with code changes
-- **git-tagger**: Autonomous git release management and versioning
-- **git-troubleshooter**: Git error diagnosis and systematic resolution
-- **todo**: Specialized task lifecycle management (context-clean)
-- **time**: Historical analysis and future trajectory prediction
-- **prompter**: AI agent prompt creation for user projects
-
-### Technology Guidelines (Conditional)
-- **guidelines-file**: Technology-specific guidance for file modifications
-- **guidelines-repo**: Architecture decisions with stack context
+### Specialist Agents (10 total)
+- **specialist-code-cleaner**: Code style improvements and micro-optimizations
+- **specialist-constraint-solver**: Navigate complex multi-dimensional limitations and design type-safe systems
+- **specialist-git-workflow**: Autonomous git release management and systematic error resolution
+- **specialist-meta-programmer**: Create code generators and domain-specific languages
+- **specialist-options-analyzer**: Generate and evaluate multiple solution alternatives
+- **specialist-performance-optimizer**: Algorithmic complexity analysis and optimization strategies
+- **specialist-prompt-engineer**: AI agent prompt creation for user projects
+- **specialist-stack-advisor**: Technology-specific guidance for files and architecture decisions
+- **specialist-test-strategist**: Comprehensive test strategy development and coverage analysis
+- **specialist-todo-manager**: Specialized task lifecycle management (context-clean)
 
 ## Enhanced Multi-Agent Coordination Patterns
 
 ### Enhanced Security Assessment Workflow
 **Trigger**: User mentions security review, vulnerabilities, compliance
-**Enhanced Parallel Clusters**:
-- **Primary Security Analysis**: vulnerability-scanner + threat-modeling + compliance-checker + researcher
-- **Threat Intelligence**: researcher + patterns + hypothesis + context + time
-- **Risk Assessment**: critic + completer + performance + time + resolver
-- **Implementation Validation**: testing + principles + docs + guidelines-file + completer
+**Enhanced Parallel Clusters** (CLAUDE.md compliant 3+ agents):
+- **Primary Analysis**: foundation-patterns + foundation-principles + foundation-criticism (3 agents)
+- **Context & Research**: foundation-context + foundation-research + specialist-constraint-solver (3 agents)
+- **Implementation Validation**: specialist-test-strategist + foundation-principles + specialist-stack-advisor (3 agents)
 
 ### Enhanced Performance Optimization Workflow  
 **Trigger**: User reports performance issues, slow code, optimization needs
-**Enhanced Parallel Clusters**:
-- **Performance Analysis**: performance + hypothesis + patterns + critic + constraints
-- **Architecture Quality**: principles + invariants + axioms + completer + resolver
-- **Implementation Excellence**: whisper + completer + invariants + guidelines-file + principles
-- **Validation**: explorer + resolver + axioms + testing + invariants
+**Enhanced Parallel Clusters** (CLAUDE.md compliant 3+ agents):
+- **Performance Analysis**: specialist-performance-optimizer + foundation-patterns + foundation-criticism + specialist-constraint-solver (4 agents)
+- **Architecture Quality**: foundation-principles + foundation-context + specialist-stack-advisor + foundation-conflicts (4 agents)
+- **Implementation Excellence**: specialist-code-cleaner + foundation-patterns + specialist-test-strategist + foundation-principles (4 agents)
+- **Validation**: specialist-options-analyzer + foundation-conflicts + specialist-test-strategist + foundation-criticism (4 agents)
 
 ### Enhanced Architecture Design Workflow
 **Trigger**: User asks about system design, architecture decisions
-**Enhanced Parallel Clusters**:
-- **Alternative Generation**: explorer + constraints + patterns + researcher + guidelines-repo
-- **Critical Evaluation**: critic + principles + invariants + completer + testing
-- **Resolution Framework**: resolver + axioms + connector + principles + constraints
-- **Documentation**: docs + guidelines-repo + completer + principles + time
+**Enhanced Parallel Clusters** (CLAUDE.md compliant 3+ agents):
+- **Alternative Generation**: specialist-options-analyzer + specialist-constraint-solver + foundation-patterns + foundation-research (4 agents)
+- **Critical Evaluation**: foundation-criticism + foundation-principles + specialist-test-strategist + specialist-constraint-solver (4 agents)
+- **Resolution Framework**: foundation-conflicts + foundation-principles + specialist-constraint-solver + foundation-context (4 agents)
+- **Documentation**: specialist-stack-advisor + foundation-principles + foundation-context + specialist-code-cleaner (4 agents)
 
 ### Enhanced Quality Assurance Workflow
 **Trigger**: User requests code review, quality improvement
-**Enhanced Parallel Clusters**:
-- **Pattern & Quality**: patterns + principles + whisper + critic + researcher
-- **Security Analysis**: vulnerability-scanner + threat-modeling + compliance-checker + researcher
-- **Performance & Architecture**: performance + constraints + invariants + hypothesis + axioms
-- **Completeness & Testing**: completer + testing + patterns + critic + performance
+**Enhanced Parallel Clusters** (CLAUDE.md compliant 3+ agents):
+- **Pattern & Quality**: foundation-patterns + foundation-principles + specialist-code-cleaner + foundation-criticism (4 agents)
+- **Context & Research**: foundation-research + foundation-context + specialist-stack-advisor + foundation-patterns (4 agents)
+- **Performance & Architecture**: specialist-performance-optimizer + specialist-constraint-solver + foundation-principles + foundation-criticism (4 agents)
+- **Testing & Validation**: specialist-test-strategist + foundation-patterns + foundation-criticism + specialist-constraint-solver (4 agents)
 
 ### Enhanced Debugging Investigation Workflow
 **Trigger**: Strange behavior, unexpected results, "why does this happen"
-**Enhanced Parallel Clusters**:
-- **Evidence Analysis**: researcher + hypothesis + context + time + patterns
-- **Critical Evaluation**: critic + principles + invariants + completer + testing
-- **Resolution Framework**: resolver + axioms + connector + principles + constraints
-- **Performance Impact**: performance + constraints + hypothesis + critic + time
+**Enhanced Parallel Clusters** (CLAUDE.md compliant 3+ agents):
+- **Evidence Analysis**: foundation-research + foundation-context + foundation-patterns + specialist-options-analyzer (4 agents)
+- **Critical Evaluation**: foundation-criticism + foundation-principles + specialist-test-strategist + specialist-constraint-solver (4 agents)
+- **Resolution Framework**: foundation-conflicts + foundation-principles + specialist-constraint-solver + foundation-context (4 agents)
+- **Performance Impact**: specialist-performance-optimizer + specialist-constraint-solver + foundation-criticism + foundation-patterns (4 agents)
 
 ## Agent Selection by Task Type
 
-### Understanding Systems
-- **How does X work?** → context + patterns + researcher
-- **Historical evolution** → time + patterns + context  
-- **Architecture flow** → context + explorer + principles
+### Understanding Systems (CLAUDE.md compliant 3+ agents)
+- **How does X work?** → foundation-context + foundation-patterns + foundation-research (3 agents)
+- **Historical evolution** → foundation-context + foundation-patterns + foundation-research (3 agents)
+- **Architecture flow** → foundation-context + specialist-options-analyzer + foundation-principles (3 agents)
 
-### Finding Problems
-- **Security issues** → vulnerability-scanner + threat-modeling + compliance-checker
-- **Performance bottlenecks** → performance + patterns + hypothesis
-- **Code quality** → patterns + principles + critic + whisper
-- **Test gaps** → testing + patterns + completer
+### Finding Problems (CLAUDE.md compliant 3+ agents)
+- **Performance bottlenecks** → specialist-performance-optimizer + foundation-patterns + foundation-criticism (3 agents)
+- **Code quality** → foundation-patterns + foundation-principles + foundation-criticism (3 agents)
+- **Test gaps** → specialist-test-strategist + foundation-patterns + foundation-criticism (3 agents)
+- **Architecture issues** → foundation-context + foundation-principles + specialist-stack-advisor (3 agents)
 
-### Making Decisions  
-- **Choose approach** → explorer + constraints + resolver + critic
-- **Architecture design** → guidelines-repo + explorer + principles + invariants
-- **Trade-off analysis** → constraints + resolver + critic
+### Making Decisions (CLAUDE.md compliant 3+ agents)
+- **Choose approach** → specialist-options-analyzer + specialist-constraint-solver + foundation-conflicts (3 agents)
+- **Architecture design** → specialist-stack-advisor + specialist-options-analyzer + foundation-principles (3 agents)
+- **Trade-off analysis** → specialist-constraint-solver + foundation-conflicts + foundation-criticism (3 agents)
 
-### Implementation Tasks
-- **Complete features** → completer + patterns + testing + docs
-- **Refactor code** → patterns + principles + whisper + critic
-- **Add security** → vulnerability-scanner + threat-modeling + compliance-checker
-- **Optimize performance** → performance + patterns + constraints
+### Implementation Tasks (CLAUDE.md compliant 3+ agents)
+- **Complete features** → specialist-code-cleaner + foundation-patterns + specialist-test-strategist (3 agents)
+- **Refactor code** → foundation-patterns + foundation-principles + specialist-code-cleaner (3 agents)
+- **Optimize performance** → specialist-performance-optimizer + foundation-patterns + specialist-constraint-solver (3 agents)
+- **Architecture decisions** → foundation-context + foundation-principles + specialist-stack-advisor (3 agents)
 
 ## Proactive Agent Usage Protocol
 
 **Claude Code automatically invokes enhanced multiple agent clusters based on context with universal agent integration. Users don't need to explicitly request agents - the system now provides comprehensive parallel analysis with researcher, critic, and principles agents integrated across all commands.**
 
-### Automatic Agent Combinations
-- **"This code looks messy"** → patterns + whisper + critic
-- **"How should I structure this?"** → guidelines-repo + explorer + principles  
-- **Error messages shown** → researcher + hypothesis + patterns
-- **"Is this secure?"** → vulnerability-scanner + threat-modeling + compliance-checker
-- **"Why is this slow?"** → performance + hypothesis + patterns
+### Automatic Agent Combinations (CLAUDE.md compliant 3+ agents)
+- **"This code looks messy"** → foundation-patterns + specialist-code-cleaner + foundation-criticism (3 agents)
+- **"How should I structure this?"** → specialist-stack-advisor + specialist-options-analyzer + foundation-principles (3 agents)
+- **Error messages shown** → foundation-research + specialist-options-analyzer + foundation-patterns (3 agents)
+- **"Why is this slow?"** → specialist-performance-optimizer + foundation-patterns + foundation-criticism (3 agents)
 
 ### Enhanced Advanced Multi-Agent Workflows
 
@@ -146,7 +124,7 @@ Comprehensive guide for effectively using all 26 specialized AI agents in the cu
 - **threat-modeling.md**: Outstanding architectural security analysis
 - **compliance-checker.md**: Comprehensive regulatory framework coverage
 
-**Ecosystem Health: 92/100 across 26 agents**
+**Ecosystem Health: Current 16 agents (6 foundation + 10 specialist) following CLAUDE.md parallel execution protocols**
 
 ## Related Commands
 - `/agent-audit` - Comprehensive ecosystem health analysis

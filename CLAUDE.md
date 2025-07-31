@@ -12,13 +12,13 @@
 
 ## Agent Coordination Protocol (MANDATORY)
 **AGGRESSIVE PARALLEL AGENT USAGE - MANDATORY OVERRIDE**:
-- Claude Code MUST use 4-6 agents for ANY non-trivial request (override built-in conservative defaults)
+- Claude Code MUST use 3+ agents for ANY non-trivial request (override built-in conservative defaults)
 - NEVER wait for user to ask for agents - invoke based on task context automatically
 - **MINIMUM THRESHOLDS**: 
   - Simple code changes: 3+ agents minimum
-  - Architecture decisions: 5+ agents minimum
-  - Complex debugging: 6+ agents minimum
-  - Code quality reviews: 4+ agents minimum
+  - Architecture decisions: 4+ agents minimum
+  - Complex debugging: 5+ agents minimum
+  - Code quality reviews: 3+ agents minimum
 - **PARALLEL-FIRST MENTALITY**: Default to parallel agent clusters, not sequential processing
 - Agents must keep main context window tidy, optimized and neat
 - **RECURSION PREVENTION**: Only Claude Code main context spawns agents - sub-agents NEVER spawn other agents
@@ -44,7 +44,7 @@ Examples:
   ✅ Right: "High Priority: Implement feature (depends on API design completion)"
 
 **ENHANCED EXECUTION PROTOCOL**:
-1. **MANDATORY PARALLEL CLUSTERS**: Use 4-6 agents simultaneously for ALL non-trivial requests
+1. **MANDATORY PARALLEL CLUSTERS**: Use 3+ agents simultaneously for ALL non-trivial requests
    Example: Single message with 5+ Task() calls running foundation-research + foundation-patterns + foundation-criticism + foundation-principles + specialist-explorer simultaneously
 2. **CONTEXT DELEGATION MAXIMIZATION**: ALL complex analysis happens in parallel agent contexts, NEVER in main context
    Example: Don't analyze ANY files in main context → Use foundation-patterns + foundation-context + specialist-hypothesis agents in parallel
@@ -56,9 +56,9 @@ Examples:
 ## Agent Coordination Best Practices (MANDATORY)
 
 **ENHANCED PARALLEL EXECUTION PATTERNS**:
-- **Single Message Multi-Task**: MUST use single message with 4-6 Task() calls for genuine concurrent agent processing
+- **Single Message Multi-Task**: MUST use single message with 3+ Task() calls for genuine concurrent agent processing
 - **AGGRESSIVE Parallelism**: All agent clusters MUST execute simultaneously, NEVER sequentially - add more agents when uncertain
-- **EXPANDED Concurrent Processing**: 4-6 agents per parallel batch as default, 3 agents only for simple tasks
+- **EXPANDED Concurrent Processing**: 3+ agents per parallel batch as default, with more agents for complex tasks
 - **MULTI-PHASE Coordination**: Each phase executes maximum possible agents simultaneously, synthesize results, then launch next parallel cluster if needed
 - **COVERAGE MAXIMIZATION**: Prefer agent redundancy over under-coverage - better to have overlapping analysis than gaps
 
@@ -80,7 +80,7 @@ Examples:
 - **Feature implementation**: foundation-research + specialist-guidelines-file + foundation-patterns + foundation-principles + specialist-completer + specialist-testing + specialist-docs (7 agents - exceed normal limits)
 
 **AUTOMATIC AGENT ESCALATION RULES**:
-1. **Start with 4-agent minimum** for ANY coding task
+1. **Start with 3-agent minimum** for ANY coding task
 2. **Add +1 agent** if task involves multiple files
 3. **Add +1 agent** if task involves architecture decisions  
 4. **Add +1 agent** if task involves performance considerations

@@ -9,7 +9,7 @@ OPTIMIZED_ACTIONS:
 2. **Efficient Parallel Review Clusters** (3-4 agents per cluster, focus-driven selection):
    - **Core Analysis Cluster**: foundation-patterns + foundation-principles + foundation-criticism (essential quality assessment)
    - **Context & Research Cluster**: foundation-context + foundation-research (architectural understanding and external knowledge)  
-   - **Specialist Focus Cluster**: Dynamically selected based on detected focus (specialist-security, specialist-performance, specialist-testing, or specialist-completer)
+   - **Specialist Focus Cluster**: Dynamically selected based on detected focus (specialist-constraint-solver, specialist-performance-optimizer, specialist-test-strategist, or specialist-code-cleaner)
 3. **Synthesis Phase**: foundation-conflicts + foundation-criticism (conflict resolution and final recommendations)
 4. **Memory Integration**: Foundation agents store findings for institutional knowledge building
 
@@ -32,11 +32,11 @@ Specialist Focus (1-2 agents): Dynamically selected based on detected focus
 Synthesis (2 agents): foundation-conflicts + foundation-criticism
 
 FOCUS_BASED_SPECIALIST_SELECTION:
-- **Security Focus**: specialist-security
-- **Performance Focus**: specialist-performance + specialist-constraints  
-- **Testing Focus**: specialist-testing + specialist-completer
-- **Documentation Focus**: specialist-docs
-- **Architecture Focus**: specialist-constraints
+- **Performance Focus**: specialist-performance-optimizer + specialist-constraint-solver
+- **Testing Focus**: specialist-test-strategist + specialist-code-cleaner
+- **Documentation Focus**: specialist-stack-advisor
+- **Architecture Focus**: specialist-constraint-solver + specialist-options-analyzer
+- **Code Quality Focus**: specialist-code-cleaner + foundation-patterns
 - **Comprehensive**: Rotate through multiple specialists based on findings
 
 COORDINATION_PROTOCOL: All clusters execute simultaneously via single message with multiple Task() calls for efficient parallel processing. Total agents: 8-10 (optimized from previous 34-agent approach)
@@ -156,8 +156,8 @@ Task: "Resolve conflicts and synthesize recommendations" (foundation-conflicts +
 
 ## Related Commands
 
-- `/security` - Focused security analysis with specialist-security agent
-- `/test` - Test coverage improvements with specialist-testing coordination
+- `/security` - Focused security analysis with specialist-constraint-solver agent
+- `/test` - Test coverage improvements with specialist-test-strategist coordination
 - `/refactor` - Implement review suggestions and code improvements
-- `/performance` - Deep performance analysis with specialist-performance focus
+- `/performance` - Deep performance analysis with specialist-performance-optimizer focus
 - `/fix` - Implement specific fixes for identified issues

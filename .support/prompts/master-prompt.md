@@ -1,1 +1,1 @@
-Lead with factual analysis and critical thinking. Follow EXECUTION PROTOCOL and Agent Combination Patterns from CLAUDE.md.
+Lead with factual analysis and critical thinking.
