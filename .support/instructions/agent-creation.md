@@ -31,24 +31,18 @@ Main context conversations remain focused on user intent rather than processing 
 - Performing iterative refinement cycles visibly in main context
 - Presenting unsorted research results requiring user filtering
 
-### 1a. Capability Redundancy Prevention (EFFICIENCY PRINCIPLE)
-**Agents must provide unique value without duplicating existing capabilities.**
+### 1a. Capability Uniqueness Principle
+**Each agent must provide distinct, non-overlapping value to the system.**
 
-**EMPIRICAL FINDING**: Over-specialization creates coordination overhead that outweighs benefits. Based on comprehensive specialist agent analysis, maintain these boundaries:
+**Core Principle**: Agent specialization value diminishes when coordination overhead exceeds analytical benefits. The system optimizes for unique contributions rather than exhaustive coverage.
 
-**Consolidation Guidelines:**
-- **Merge overlapping domains**: Agents with >70% capability overlap should be consolidated
-- **Eliminate redundant tools**: If two agents use identical tool sets for similar outcomes, merge them
-- **Avoid artificial boundaries**: Don't split naturally cohesive domains (e.g., axioms/invariants/constraints)
-- **Single source of truth**: Each domain expertise should have one authoritative agent
+**Uniqueness Guidelines:**
+- **Domain Cohesion**: Natural problem domains should not be artificially split across multiple agents
+- **Tool Synergy**: Agents using identical tool combinations for similar outcomes indicate consolidation opportunity  
+- **Capability Boundaries**: Each agent should own a distinct analytical perspective or computational approach
+- **Authority Assignment**: Single agent should be authoritative source for each domain expertise
 
-**Evidence-Based Redundancy Patterns to Avoid:**
-- Multiple agents handling "fundamental truths" or "system logic" (consolidate into single system-logic agent)
-- Separate agents for closely related git operations (merge git-tagger + git-troubleshooter → git-manager)
-- Technology detection split across file/repository levels (merge guidelines-file + guidelines-repo → guidelines)
-- Code quality improvements scattered across multiple agents (foundation-patterns subsumes specialist-whisper capabilities)
-
-**Optimization Principle**: Target 15-20 total agents maximum. Beyond this threshold, coordination complexity exceeds specialization benefits.
+**System Optimization Principle**: Minimize total agent count while maximizing unique value contribution. Quality of specialization matters more than quantity of specialists.
 
 ### 2. Overhead Justification
 Create agents only when the complexity reduction in main context exceeds the overhead of agent creation and maintenance.
@@ -101,32 +95,18 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 
 **Rationale:** Agents excel at computational processing, systematic analysis patterns, and specialized analytical perspectives. They provide value through focused thinking approaches and context isolation - not at replicating human social dynamics or organizational responsibilities.
 
-### 5. Performance-First Architecture (OPTIMIZATION PRINCIPLE)
-**Agent coordination overhead must not exceed the value of specialized analysis.**
+### 5. Coordination Efficiency Principle
+**System performance emerges from agent interaction patterns, not individual agent capabilities.**
 
-**EMPIRICAL FINDING**: Current 24-agent system (6 foundation + 18 specialist) creates coordination complexity that degrades performance. Evidence-based optimization principles:
+**Core Principle**: The value of agent specialization must exceed the cost of coordination. Systems should optimize for interaction efficiency rather than individual agent sophistication.
 
-**Performance Constraints:**
-- **Maximum Agent Count**: Target 15-20 total agents (current 24 exceeds optimal threshold)
-- **Coordination Complexity**: Avoid scenarios requiring >6 agents for routine tasks
-- **Response Time Targets**: Simple tasks <30s, standard tasks <60s, complex analysis <120s
-- **Context Window Management**: Aggressive parallel execution limited by context fragmentation
+**Efficiency Guidelines:**
+- **Self-Sufficiency**: Agents requiring multiple other agents for basic functionality indicate poor boundary design
+- **Proportional Complexity**: Agent sophistication should match task complexity requirements
+- **Resource Awareness**: Agent selection should consider computational cost relative to analytical value
+- **Execution Patterns**: Different task types warrant different coordination approaches
 
-**Tiered Execution Strategy:**
-- **Tier 1 (Simple)**: 3 lightweight agents for routine tasks
-- **Tier 2 (Standard)**: 4-5 agents for typical workflows  
-- **Tier 3 (Complex)**: 6+ agents only for comprehensive analysis
-
-**Agent Efficiency Classification:**
-- **High Performance**: <100 lines, no memory operations (whisper, completer, docs)
-- **Medium Performance**: 100-200 lines, selective memory use (patterns, principles)
-- **High Overhead**: >200 lines, extensive memory operations (researcher, critic, testing)
-
-**Optimization Guidelines:**
-- **Embed Dependencies**: Self-contained agents reduce coordination overhead
-- **Cache Memory Operations**: Store MCP results within session to prevent redundant queries
-- **Intelligent Selection**: Match agent complexity to task requirements
-- **Parallel Execution**: True parallelism limited by context window constraints
+**System Scalability Principle**: Agent systems have natural complexity thresholds. Beyond these thresholds, coordination overhead degrades rather than enhances system performance.
 
 ## Decision Framework
 
@@ -141,19 +121,19 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
    - [ ] Raw research/analysis output would require user filtering in main context
    - [ ] Agent can provide clean, actionable summary while containing detailed work
 
-2. **Capability uniqueness validation (ANTI-REDUNDANCY)**
-   - [ ] No existing agent provides >70% capability overlap
+2. **Capability uniqueness validation**
+   - [ ] Agent provides distinct analytical perspective not available elsewhere
    - [ ] Agent fills genuine capability gap in current ecosystem  
-   - [ ] Cannot be efficiently merged with existing specialist agents
-   - [ ] Provides unique tool combination or analytical perspective
-   - [ ] Total agent count remains ≤20 after addition
+   - [ ] Cannot be efficiently merged with existing agents without losing unique value
+   - [ ] Provides unique tool combination or computational approach
+   - [ ] Maintains system coherence without artificial domain splitting
 
-3. **Performance impact assessment (OPTIMIZATION)**
-   - [ ] Agent complexity matches task requirements (don't use high-overhead agents for simple tasks)
-   - [ ] Coordination overhead justified by analytical value
-   - [ ] Can execute within performance targets (simple <30s, standard <60s, complex <120s)
-   - [ ] Doesn't require >6 agents for routine coordination
-   - [ ] Memory operations justified by reusable knowledge value
+3. **Coordination efficiency assessment**
+   - [ ] Agent can operate self-sufficiently for its core domain
+   - [ ] Coordination overhead justified by specialized analytical value
+   - [ ] Agent complexity proportional to task complexity requirements
+   - [ ] Doesn't create dependency chains that degrade system performance
+   - [ ] Interaction patterns enhance rather than complicate workflow efficiency
 
 4. **Quantifiable complexity reduction** 
    - [ ] Task currently generates >50 lines of intermediate output in main context
@@ -178,13 +158,13 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 - **Requires conversational context**: Needs access to ongoing discussion state
 - **Marginal benefit**: Overhead of agent creation exceeds complexity reduction
 
-**EMPIRICAL RED FLAGS (Based on specialist agent analysis):**
-- **Artificial domain splitting**: Breaking naturally cohesive domains into multiple agents (axioms/invariants/constraints)
-- **Tool redundancy**: Multiple agents using identical tool sets for overlapping outcomes
-- **Coordination dependency**: Agent cannot function without 3+ other agents to complete basic tasks
-- **Performance degradation**: Agent addition increases routine task execution time beyond targets
-- **Capability overlap**: >70% overlap with existing agent capabilities
-- **Agent count inflation**: Addition pushes total beyond 20-agent optimization threshold
+**DESIGN ANTI-PATTERNS:**
+- **Artificial domain splitting**: Breaking naturally cohesive domains into multiple agents
+- **Tool redundancy**: Multiple agents using identical approaches for overlapping outcomes  
+- **Coordination dependency**: Agent cannot function independently within its stated domain
+- **Performance degradation**: Agent addition increases system complexity without proportional value
+- **Capability overlap**: Significant overlap with existing agent capabilities
+- **System bloat**: Addition contributes to coordination complexity exceeding analytical benefits
 
 ## Validation and Measurement
 
@@ -230,17 +210,13 @@ Agents should embody computational tasks, thinking patterns, paradigms, and anal
 - **Poor boundaries**: Consistent need for main context clarification
 - **Redundant function**: Capabilities overlap significantly with other agents
 
-**EVIDENCE-BASED ELIMINATION CRITERIA (From specialist agent review):**
-- **Capability overlap >70%**: Agent provides nearly identical functionality to existing agents
-- **Coordination overhead**: Agent requires 3+ other agents for basic functionality completion
-- **Performance degradation**: Agent use increases task completion time beyond acceptable thresholds
-- **Artificial boundaries**: Agent handles unnaturally narrow slice of broader cohesive domain
-- **Tool redundancy**: Uses identical tool combinations as other agents for same outcomes
-- **Selection confusion**: Users consistently select wrong agent due to unclear boundaries
-
-**CONFIRMED ELIMINATION CANDIDATES (Evidence-based):**
-- `specialist-whisper`: Capabilities fully covered by `foundation-patterns` (100% overlap in code quality improvements)
-- Consider consolidation: `specialist-axioms` + `specialist-invariants` (both handle "fundamental truths" with 80% overlap)
+**PRINCIPLE-BASED ELIMINATION CRITERIA:**
+- **Uniqueness failure**: Agent provides nearly identical functionality to existing agents
+- **Coordination inefficiency**: Agent requires extensive coordination for basic domain tasks
+- **System degradation**: Agent use increases system complexity without proportional analytical value
+- **Domain incoherence**: Agent handles artificially narrow slice of broader cohesive domain
+- **Redundant approaches**: Uses identical methodologies as other agents for overlapping outcomes
+- **Selection ambiguity**: Unclear boundaries create confusion in agent selection decisions
 
 ## Implementation Guidelines
 
