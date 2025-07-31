@@ -8,23 +8,23 @@ Your personal team of AI specialists with **mandatory coordination** for all non
 
 ### Mandatory Protocol
 - **Minimum 3+ agents** automatically used for complex tasks
-- **Baseline combination**: researcher + patterns + critic
+- **Baseline combination**: research + patterns + criticism
 - **Memory-first research**: System checks MCP memory before web searches
 - **Parallel clusters**: Multiple agents work simultaneously when possible
 
 ### Essential Agents (Start Here)
 | Agent | What It Does | When to Use |
 |-------|-------------|-------------|
-| **`researcher`** | Finds current best practices and documentation | "What's the latest way to do X?" |
+| **`research`** | Finds current best practices and documentation | "What's the latest way to do X?" |
 | **`patterns`** | Identifies code patterns and refactoring opportunities | Code reviews, architecture cleanup |
-| **`critic`** | Provides honest feedback and challenges assumptions | Before big decisions, design reviews |
+| **`criticism`** | Provides honest feedback and challenges assumptions | Before big decisions, design reviews |
 
 ### Problem-Solving Agents
 | Agent | What It Does | When to Use |
 |-------|-------------|-------------|
 | **`hypothesis`** | Forms theories and tests them scientifically | Debugging complex issues |
 | **`constraints`** | Handles competing requirements and trade-offs | "I need X but also Y, and they conflict" |
-| **`resolver`** | Mediates when different approaches conflict | When agents give conflicting advice |
+| **`conflicts`** | Mediates when different approaches conflict | When agents give conflicting advice |
 
 ### Code Quality Agents
 | Agent | What It Does | When to Use |
@@ -171,15 +171,15 @@ Agents work together in intelligent clusters with **mandatory coordination proto
 
 ### Mandatory Protocol (ENFORCED)
 - **Minimum 3+ agents** for all non-trivial requests - no exceptions
-- **Baseline combination**: researcher + patterns + critic (always included)
+- **Baseline combination**: research + patterns + criticism (always included)
 - **Memory-first workflow**: Check MCP memory before web searches
 - **Context optimization**: Agents keep main context window tidy and focused
 
 ### Common Patterns
-- **Research → Patterns → Principles → Critic** - For code reviews
-- **Explorer → Constraints → Resolver** - For architecture decisions
+- **Research → Patterns → Principles → Criticism** - For code reviews
+- **Explorer → Constraints → Conflicts** - For architecture decisions
 - **Hypothesis → Completer → Whisper** - For debugging
-- **Researcher → Generator → Principles** - For feature development
+- **Research → Generator → Principles** - For feature development
 
 ### Smart Workflows
 - **Parallel execution** - Multiple agents work simultaneously

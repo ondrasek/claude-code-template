@@ -8,7 +8,7 @@ OPTIMIZED_ACTIONS:
 1. **Fix Context Analysis**: foundation-context agent for understanding the issue and system impact
 2. **Implementation Strategy**: specialist-completer for gap analysis and implementation approach
 3. **Quality Validation**: foundation-patterns + foundation-principles for ensuring fix quality
-4. **Risk Assessment**: foundation-critic for evaluating fix safety and side effects
+4. **Risk Assessment**: foundation-criticism for evaluating fix safety and side effects
 
 PARAMETERS:
 --issue "description" (specific issue to fix)
@@ -25,7 +25,7 @@ INTELLIGENT_FIX_DETECTION:
 
 OPTIMIZED_PARALLEL_CLUSTERS:
 Implementation (2 agents): specialist-completer + foundation-context
-Quality & Safety (3 agents): foundation-patterns + foundation-principles + foundation-critic
+Quality & Safety (3 agents): foundation-patterns + foundation-principles + foundation-criticism
 
 COORDINATION_PROTOCOL: All clusters execute simultaneously via single message with multiple Task() calls for efficient fix implementation. Total agents: 5 (focused on safe, quality fixes)
 
@@ -73,7 +73,7 @@ Task: "Plan implementation approach and identify gaps" (specialist-completer)
 
 ### Phase 2: Quality & Safety Validation
 ```
-Task: "Validate fix quality and design adherence" (foundation-patterns + foundation-principles + foundation-critic)
+Task: "Validate fix quality and design adherence" (foundation-patterns + foundation-principles + foundation-criticism)
 ```
 
 **FOCUSED AGENT COUNT**: 5 agents total (implementation-focused coordination)

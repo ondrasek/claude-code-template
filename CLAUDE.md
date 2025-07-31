@@ -24,11 +24,11 @@
 - **RECURSION PREVENTION**: Only Claude Code main context spawns agents - sub-agents NEVER spawn other agents
 
 **MANDATORY PARALLEL PATTERNS**:
-  - User: "This code looks messy" → Auto-invoke: foundation-patterns + specialist-whisper + foundation-critic + foundation-principles + specialist-docs (5 agents)
-  - User: "How should I structure this?" → Auto-invoke: specialist-guidelines-repo + specialist-explorer + foundation-principles + foundation-critic + specialist-constraints + foundation-resolver (6 agents)
-  - User shows error message → Auto-invoke: foundation-researcher + specialist-hypothesis + foundation-patterns + foundation-critic + specialist-testing (5 agents)
-  - User asks for implementation → Auto-invoke: foundation-researcher + specialist-guidelines-file + foundation-patterns + foundation-principles + specialist-completer (5 agents)
-  - User requests feature → Auto-invoke: specialist-explorer + foundation-principles + specialist-constraints + foundation-critic + specialist-testing + specialist-docs (6 agents)
+  - User: "This code looks messy" → Auto-invoke: foundation-patterns + specialist-whisper + foundation-criticism + foundation-principles + specialist-docs (5 agents)
+  - User: "How should I structure this?" → Auto-invoke: specialist-guidelines-repo + specialist-explorer + foundation-principles + foundation-criticism + specialist-constraints + foundation-conflicts (6 agents)
+  - User shows error message → Auto-invoke: foundation-research + specialist-hypothesis + foundation-patterns + foundation-criticism + specialist-testing (5 agents)
+  - User asks for implementation → Auto-invoke: foundation-research + specialist-guidelines-file + foundation-patterns + foundation-principles + specialist-completer (5 agents)
+  - User requests feature → Auto-invoke: specialist-explorer + foundation-principles + specialist-constraints + foundation-criticism + specialist-testing + specialist-docs (6 agents)
 
 **NO ARTIFICIAL TIMELINES (MANDATORY)**:
 - NEVER create mock weekly milestones (Week 1, Week 2, Week 3, etc.) in ANY context
@@ -45,11 +45,11 @@ Examples:
 
 **ENHANCED EXECUTION PROTOCOL**:
 1. **MANDATORY PARALLEL CLUSTERS**: Use 4-6 agents simultaneously for ALL non-trivial requests
-   Example: Single message with 5+ Task() calls running foundation-researcher + foundation-patterns + foundation-critic + foundation-principles + specialist-explorer simultaneously
+   Example: Single message with 5+ Task() calls running foundation-research + foundation-patterns + foundation-criticism + foundation-principles + specialist-explorer simultaneously
 2. **CONTEXT DELEGATION MAXIMIZATION**: ALL complex analysis happens in parallel agent contexts, NEVER in main context
    Example: Don't analyze ANY files in main context → Use foundation-patterns + foundation-context + specialist-hypothesis agents in parallel
 3. **AGGRESSIVE AUTOMATIC SELECTION**: Match EXPANDED agent combinations to user request patterns
-   Example: "Why is this slow?" → Auto-select foundation-researcher + specialist-hypothesis + foundation-patterns + specialist-performance + foundation-critic + specialist-testing (6 agents)
+   Example: "Why is this slow?" → Auto-select foundation-research + specialist-hypothesis + foundation-patterns + specialist-performance + foundation-criticism + specialist-testing (6 agents)
 4. **PARALLEL-FIRST DECISION MAKING**: When in doubt, add MORE agents to the parallel cluster
 5. **AGENT HIERARCHY**: Only main Claude Code context spawns agents. Sub-agents are terminal nodes and NEVER spawn other agents via Task tool.
 
@@ -63,10 +63,10 @@ Examples:
 - **COVERAGE MAXIMIZATION**: Prefer agent redundancy over under-coverage - better to have overlapping analysis than gaps
 
 **ENHANCED CORE-SATELLITE COORDINATION PATTERNS**:
-- **MANDATORY Core Foundation Quartet**: ALWAYS include foundation-researcher + foundation-patterns + foundation-principles + foundation-critic in EVERY parallel cluster
+- **MANDATORY Core Foundation Quartet**: ALWAYS include foundation-research + foundation-patterns + foundation-principles + foundation-criticism in EVERY parallel cluster
 - **AGGRESSIVE Specialized Addition**: Add 2-3 specialized agents to EVERY request - don't wait for "need", anticipate requirements
 - **UNIVERSAL Consistency**: foundation-principles agent MANDATORY in every parallel cluster for universal consistency
-- **PROACTIVE Conflict Resolution**: foundation-resolver agent AUTO-INCLUDED when 4+ agents involved to handle competing recommendations
+- **PROACTIVE Conflict Resolution**: foundation-conflicts agent AUTO-INCLUDED when 4+ agents involved to handle competing recommendations
 - **BALANCED Load Distribution**: Core agents handle 60% of work, specialized agents handle 40% - more even distribution
 - **COMPREHENSIVE Coverage Priority**: Prefer agent redundancy and over-analysis under-coverage - better safe than sorry
 
@@ -74,10 +74,10 @@ Examples:
 
 **TASK COMPLEXITY → AGENT COUNT MAPPING**:
 - **Simple file edit**: foundation-patterns + specialist-whisper + foundation-principles (3 agents minimum)
-- **Code refactoring**: foundation-patterns + specialist-whisper + foundation-principles + foundation-critic + specialist-completer (5 agents)
-- **Bug investigation**: foundation-researcher + specialist-hypothesis + foundation-patterns + foundation-critic + specialist-testing + specialist-performance (6 agents)
-- **Architecture design**: specialist-explorer + foundation-principles + specialist-constraints + foundation-critic + specialist-guidelines-repo + foundation-resolver (6 agents)
-- **Feature implementation**: foundation-researcher + specialist-guidelines-file + foundation-patterns + foundation-principles + specialist-completer + specialist-testing + specialist-docs (7 agents - exceed normal limits)
+- **Code refactoring**: foundation-patterns + specialist-whisper + foundation-principles + foundation-criticism + specialist-completer (5 agents)
+- **Bug investigation**: foundation-research + specialist-hypothesis + foundation-patterns + foundation-criticism + specialist-testing + specialist-performance (6 agents)
+- **Architecture design**: specialist-explorer + foundation-principles + specialist-constraints + foundation-criticism + specialist-guidelines-repo + foundation-conflicts (6 agents)
+- **Feature implementation**: foundation-research + specialist-guidelines-file + foundation-patterns + foundation-principles + specialist-completer + specialist-testing + specialist-docs (7 agents - exceed normal limits)
 
 **AUTOMATIC AGENT ESCALATION RULES**:
 1. **Start with 4-agent minimum** for ANY coding task
@@ -85,14 +85,14 @@ Examples:
 3. **Add +1 agent** if task involves architecture decisions  
 4. **Add +1 agent** if task involves performance considerations
 5. **Add +1 agent** if task involves testing or quality assurance
-6. **Add foundation-resolver** automatically when 5+ agents involved
+6. **Add foundation-conflicts** automatically when 5+ agents involved
 
 **PARALLEL CLUSTER COMPOSITION RULES**:
 - **ALWAYS include**: foundation-principles (consistency)
-- **USUALLY include**: foundation-patterns (quality) + foundation-critic (validation)
-- **OFTEN include**: foundation-researcher (context) when unknowns exist
+- **USUALLY include**: foundation-patterns (quality) + foundation-criticism (validation)
+- **OFTEN include**: foundation-research (context) when unknowns exist
 - **CONTEXT-BASED addition**: 2-3 specialists based on task domain
-- **CONFLICT RESOLUTION**: foundation-resolver when multiple viewpoints expected
+- **CONFLICT RESOLUTION**: foundation-conflicts when multiple viewpoints expected
 
 **OVERRIDE CONSERVATIVE DEFAULTS**:
 - Claude Code's built-in agent usage is TOO CONSERVATIVE

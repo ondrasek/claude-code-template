@@ -7,10 +7,10 @@ SCOPE: uncommitted changes by default, or specified files/commits
 OPTIMIZED_ACTIONS:
 1. **Focus Determination Phase**: Auto-detect review focus or ask user for clarification
 2. **Efficient Parallel Review Clusters** (3-4 agents per cluster, focus-driven selection):
-   - **Core Analysis Cluster**: foundation-patterns + foundation-principles + foundation-critic (essential quality assessment)
-   - **Context & Research Cluster**: foundation-context + foundation-researcher (architectural understanding and external knowledge)  
+   - **Core Analysis Cluster**: foundation-patterns + foundation-principles + foundation-criticism (essential quality assessment)
+   - **Context & Research Cluster**: foundation-context + foundation-research (architectural understanding and external knowledge)  
    - **Specialist Focus Cluster**: Dynamically selected based on detected focus (specialist-security, specialist-performance, specialist-testing, or specialist-completer)
-3. **Synthesis Phase**: foundation-resolver + foundation-critic (conflict resolution and final recommendations)
+3. **Synthesis Phase**: foundation-conflicts + foundation-criticism (conflict resolution and final recommendations)
 4. **Memory Integration**: Foundation agents store findings for institutional knowledge building
 
 PARAMETERS:
@@ -26,10 +26,10 @@ INTELLIGENT_FOCUS_DETECTION:
 5. **Default comprehensive**: If no specific focus detected, provide balanced multi-dimensional analysis
 
 OPTIMIZED_PARALLEL_CLUSTERS:
-Core Analysis (3 agents): foundation-patterns + foundation-principles + foundation-critic
-Context & Research (2 agents): foundation-context + foundation-researcher  
+Core Analysis (3 agents): foundation-patterns + foundation-principles + foundation-criticism
+Context & Research (2 agents): foundation-context + foundation-research  
 Specialist Focus (1-2 agents): Dynamically selected based on detected focus
-Synthesis (2 agents): foundation-resolver + foundation-critic
+Synthesis (2 agents): foundation-conflicts + foundation-criticism
 
 FOCUS_BASED_SPECIALIST_SELECTION:
 - **Security Focus**: specialist-security
@@ -46,7 +46,7 @@ INTELLIGENT_OUTPUT:
 - **Memory-Enhanced Findings**: Built on historical review patterns and institutional knowledge
 - **Optimized Assessment**: Comprehensive analysis through efficient agent coordination (8-10 agents)
 - **Auto-Determined Severity**: Intelligent severity classification without user pre-specification
-- **Conflict Resolution**: foundation-resolver mediates competing recommendations
+- **Conflict Resolution**: foundation-conflicts mediates competing recommendations
 - **Prioritized Action Items**: Ranked by impact, effort, and historical success patterns
 - **Institutional Knowledge**: All findings stored in memory graph for continuous learning
 
@@ -54,8 +54,8 @@ INTELLIGENT_OUTPUT:
 
 **BEFORE Review** (Automatic via foundation agents):
 - **foundation-patterns**: Load historical code pattern discoveries and evolution trends
-- **foundation-critic**: Check stored risk assessments and failure patterns from similar changes
-- **foundation-researcher**: Access external best practices and community solutions for identified issues  
+- **foundation-criticism**: Check stored risk assessments and failure patterns from similar changes
+- **foundation-research**: Access external best practices and community solutions for identified issues  
 - **foundation-context**: Load architectural evolution context and historical decision rationale
 - **foundation-principles**: Review previous principle violation patterns and resolution effectiveness
 
@@ -86,10 +86,10 @@ INTELLIGENT_OUTPUT:
 5. **Comprehensive Default**: Balanced analysis when no specific focus is identified
 
 ### Dynamic Agent Coordination
-- **Core Foundation Trio**: foundation-patterns + foundation-principles + foundation-critic (always included)
-- **Context & Research Duo**: foundation-context + foundation-researcher (architectural understanding and external knowledge)
+- **Core Foundation Trio**: foundation-patterns + foundation-principles + foundation-criticism (always included)
+- **Context & Research Duo**: foundation-context + foundation-research (architectural understanding and external knowledge)
 - **Specialist Selection**: Dynamically chosen based on detected focus priorities
-- **Synthesis Pair**: foundation-resolver + foundation-critic (conflict resolution and final recommendations)
+- **Synthesis Pair**: foundation-conflicts + foundation-criticism (conflict resolution and final recommendations)
 
 **EFFICIENCY PRINCIPLE**: Maintains comprehensive coverage while optimizing agent count (8-10 total) for faster execution and reduced coordination overhead
 
@@ -100,19 +100,19 @@ INTELLIGENT_OUTPUT:
 1. Parse user prompt and analyze files/changes for focus indicators
 2. If focus unclear, ask user to specify priority areas
 3. Load system context: foundation-context agent
-4. Baseline research: foundation-researcher agent
+4. Baseline research: foundation-research agent
 ```
 
 ### Phase 2: Parallel Review Clusters (8-10 agents total)
 ```
-Task: "Execute Core Analysis" (foundation-patterns + foundation-principles + foundation-critic)
-Task: "Execute Context & Research analysis" (foundation-context + foundation-researcher)  
+Task: "Execute Core Analysis" (foundation-patterns + foundation-principles + foundation-criticism)
+Task: "Execute Context & Research analysis" (foundation-context + foundation-research)  
 Task: "Execute Specialist Focus analysis" (dynamically selected based on detected focus)
 ```
 
 ### Phase 3: Synthesis & Resolution
 ```
-Task: "Resolve conflicts and synthesize recommendations" (foundation-resolver + foundation-critic)
+Task: "Resolve conflicts and synthesize recommendations" (foundation-conflicts + foundation-criticism)
 ```
 
 **OPTIMIZED AGENT COUNT**: 8-10 agents total (efficient coordination within performance targets)
@@ -132,12 +132,12 @@ Task: "Resolve conflicts and synthesize recommendations" (foundation-resolver + 
 - **Code Quality**: From foundation-patterns with historical trend analysis
 - **Design Principles**: From foundation-principles with adherence assessment
 - **Architecture & Context**: From foundation-context with evolution analysis
-- **External Research**: From foundation-researcher with best practices integration
+- **External Research**: From foundation-research with best practices integration
 - **Specialist Analysis**: Focus-specific findings from dynamically selected specialist agents
-- **Critical Risks**: From foundation-critic with evidence-based risk assessment
+- **Critical Risks**: From foundation-criticism with evidence-based risk assessment
 
 ### Intelligent Synthesis
-- **Conflict Resolution**: foundation-resolver mediates competing approaches
+- **Conflict Resolution**: foundation-conflicts mediates competing approaches
 - **Trade-off Analysis**: Risk vs benefit with historical precedent data
 - **Recommended Actions**: Evidence-based prioritization with success probability
 - **Implementation Strategy**: Optimized based on stored resolution patterns

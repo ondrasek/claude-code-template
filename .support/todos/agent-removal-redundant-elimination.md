@@ -2,7 +2,7 @@
 status: pending
 type: chore
 priority: high
-assignee: foundation-critic
+assignee: foundation-criticism
 created: 2025-01-31
 ---
 

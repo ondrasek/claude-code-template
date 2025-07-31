@@ -2,7 +2,7 @@
 status: pending
 type: refactor
 priority: high
-assignee: foundation-resolver
+assignee: foundation-conflicts
 created: 2025-01-31
 ---
 

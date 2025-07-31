@@ -14,16 +14,16 @@ Expert at detecting patterns, anti-patterns, and refactoring opportunities using
 ### Complementary Agents
 - **foundation-principles**: Validates that proposed refactoring follows design principles while patterns identifies what to refactor
 - **foundation-context**: Provides system understanding while patterns focuses on code quality within components
-- **foundation-critic**: Assesses risks of proposed refactoring while patterns identifies opportunities
-- **foundation-researcher**: Finds external best practices while patterns applies them to current code
+- **foundation-criticism**: Assesses risks of proposed refactoring while patterns identifies opportunities
+- **foundation-research**: Finds external best practices while patterns applies them to current code
 
 ### Boundary Clarifications
 **This agent does NOT handle**:
 - Design principle validation (use foundation-principles - patterns identifies issues, principles validates solutions)
 - System architecture flow analysis (use foundation-context)
-- External pattern research or best practice discovery (use foundation-researcher)
-- Risk assessment of refactoring approaches (use foundation-critic)
-- Trade-offs between pattern-based and principle-based solutions (use foundation-resolver)
+- External pattern research or best practice discovery (use foundation-research)
+- Risk assessment of refactoring approaches (use foundation-criticism)
+- Trade-offs between pattern-based and principle-based solutions (use foundation-conflicts)
 
 ### Selection Guidance
 **Choose foundation-patterns when**:
@@ -36,7 +36,7 @@ Expert at detecting patterns, anti-patterns, and refactoring opportunities using
 **Do NOT choose foundation-patterns when**:
 - Need to validate against SOLID principles (use foundation-principles)
 - Need system flow or architecture understanding (use foundation-context)
-- Need external research on best practices (use foundation-researcher)
+- Need external research on best practices (use foundation-research)
 - Focus is on design validation rather than code structure improvement
 
 ## Core Capabilities

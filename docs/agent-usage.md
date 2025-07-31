@@ -4,12 +4,12 @@ Claude Code MUST PROACTIVELY use ALL appropriate agents for better results:
 
 ## Base Agents (Most Requests)
 
-### researcher
+### research
 - **Purpose**: Gather current information, best practices, documentation
 - **Use for**: Any request requiring external knowledge or current practices
 - **Integration**: Often first agent in workflow, feeds context to others
 
-### critic
+### criticism
 - **Purpose**: Challenge assumptions, identify risks, provide balanced perspective
 - **Use for**: Major decisions, architectural choices, before finalizing recommendations
 - **Integration**: Usually last in analytical workflows for validation
@@ -29,7 +29,7 @@ Claude Code MUST PROACTIVELY use ALL appropriate agents for better results:
 ### Design and Planning
 - **explorer**: Generate multiple solution alternatives, compare approaches
 - **constraints**: Handle complex requirements, conflicting needs, trade-offs
-- **resolver**: Mediate when different approaches conflict
+- **conflicts**: Mediate when different approaches conflict
 - **Use for**: Architecture decisions, complex requirements, design choices
 
 ### Specialized Domains
@@ -49,27 +49,27 @@ Claude Code MUST PROACTIVELY use ALL appropriate agents for better results:
 ## Smart Agent Workflows
 
 ### Simple Information Request
-- **Agents**: `researcher` only
+- **Agents**: `research` only
 - **Example**: "What's the latest version of React?"
 - **Rationale**: Straightforward lookup, no analysis needed
 
 ### Code Review or Refactoring
-- **Agents**: `researcher` + `patterns` + `principles` + `critic`
+- **Agents**: `research` + `patterns` + `principles` + `criticism`
 - **Flow**: Research best practices → Find patterns → Apply principles → Validate approach
 - **Example**: "Review this authentication module"
 
 ### Debugging Investigation
-- **Agents**: `researcher` + `hypothesis` + `critic`
+- **Agents**: `research` + `hypothesis` + `criticism`
 - **Flow**: Research known issues → Form/test theories → Validate solution
 - **Example**: "Why is this API endpoint returning 500 errors?"
 
 ### Architecture Planning
-- **Agents**: `researcher` + `explorer` + `constraints` + `principles` + `critic`
+- **Agents**: `research` + `explorer` + `constraints` + `principles` + `criticism`
 - **Flow**: Research approaches → Generate alternatives → Handle constraints → Apply principles → Critical review
 - **Example**: "Design a microservices architecture for this system"
 
 ### Feature Implementation
-- **Agents**: `researcher` + `patterns` + `completer` + `docs`
+- **Agents**: `research` + `patterns` + `completer` + `docs`
 - **Flow**: Research implementation patterns → Check for existing patterns → Ensure completeness → Update docs
 - **Example**: "Add caching to the user service"
 
@@ -80,7 +80,7 @@ Claude Code MUST PROACTIVELY use ALL appropriate agents for better results:
 - **Error messages/debugging** → Add `hypothesis`
 - **Architecture/design questions** → Add `explorer` + `constraints`
 - **"What's missing" or TODOs** → Add `completer`
-- **Major decisions** → Add `critic`
+- **Major decisions** → Add `criticism`
 - **Code changes made** → Add `docs`
 
 ### Technology Detection
@@ -89,7 +89,7 @@ Claude Code MUST PROACTIVELY use ALL appropriate agents for better results:
 - **Historical analysis needed** → Add `time`
 
 ### User Intent Detection
-- **"Quick question"** → Minimal agents (`researcher` only)
+- **"Quick question"** → Minimal agents (`research` only)
 - **"Deep analysis"** → Comprehensive agent set
 - **"Just check X"** → Specific agent focus
 - **"Don't use agents"** → No agent invocation
