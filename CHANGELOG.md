@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.33.4] - 2025-07-31
+
+### Fixed
+- **Critical Syntax Fix**: Corrected invalid agent frontmatter syntax across all 24 agents
+  - Replaced unsupported `permissions.deny` with documented `tools` field format
+  - Ensures proper Claude Code YAML frontmatter syntax compliance
+  - Prevents potential agent parsing failures from invalid permissions syntax
+  - Maintains double-layer Task tool restrictions while using correct implementation
+
 ## [2.33.3] - 2025-07-31
 
 ### Security
