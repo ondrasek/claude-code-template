@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.33.1] - 2025-07-31
+
+### Fixed
+- **Critical Security Fix**: Fixed recursive sub-agent spawning vulnerabilities that could cause infinite loops
+  - Added SUB-AGENT RESTRICTION sections to 9 terminal agents (foundation-critic, foundation-patterns, foundation-researcher, foundation-resolver, specialist-explorer, specialist-guidelines-file, specialist-guidelines-repo, specialist-hypothesis, specialist-todo)
+  - Removed explicit agent spawning instructions from specialist-explorer and foundation-resolver
+  - Updated CLAUDE.md coordination protocol with agent hierarchy rules
+  - Established clear terminal node constraints to prevent recursion loops and system crashes
+  - Maintained agent functionality while preventing infinite delegation chains
+
 ## [2.33.0] - 2025-07-30
 
 ### Added
