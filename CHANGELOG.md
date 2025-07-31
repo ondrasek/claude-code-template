@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.40.0] - 2025-07-31
+
+### Added
+- **Enhanced TODO Management**: Comprehensive /todo-next command for intelligent TODO lifecycle management
+  - Combines cleanup functionality from todo-cleanup-done and todo-cleanup-stale commands
+  - Implements parallel agent clusters for completion detection and staleness assessment
+  - Provides strategic next-step recommendations with implementation guidance
+  - Supports flexible operational modes: --dry-run, --cleanup-only, --analysis-only
+  - Includes git safety protocols with mandatory verification before deletion
+  - Features comprehensive parameter support for filtering and targeting specific TODOs
+  - Integrates with specialist-todo agent for clean context delegation
+  - Maintains full traceability through git history for deleted TODOs
+
 ## [2.39.0] - 2025-07-31
 
 ### Enhanced
