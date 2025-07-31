@@ -1,5 +1,5 @@
 ---
-name: specialist-task-manager
+name: specialist-todo-manager
 description: "PROACTIVELY use when user mentions tasks or asks 'create TODO', 'track progress', 'remember to do'. Expert at managing task lifecycle without polluting main context."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS
 ---
