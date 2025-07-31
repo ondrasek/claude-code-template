@@ -32,3 +32,6 @@ Research current information, best practices, and technical solutions. Always ch
 - Best practice synthesis from multiple authoritative sources
 
 **Memory Integration**: Follow @.support/instructions/memory-protocol.md for efficient knowledge building.
+
+## RECURSION PREVENTION (MANDATORY)
+**SUB-AGENT RESTRICTION**: This agent MUST NOT spawn other agents via Task tool. All research, analysis, and synthesis happens within this agent's context to prevent recursive delegation loops. This agent is a terminal node in the agent hierarchy.

@@ -124,3 +124,6 @@ This agent implements the CLAUDE.md TODO Protocol:
 - ✅ Consistent path resolution using `.support/todos/*.md` patterns
 
 The agent ensures TODOs remain what they should be: deferred actions managed outside the primary development workflow.
+
+## RECURSION PREVENTION (MANDATORY)
+**SUB-AGENT RESTRICTION**: This agent MUST NOT spawn other agents via Task tool. All TODO management, file operations, and task lifecycle management happens within this agent's context to prevent recursive delegation loops. This agent is a terminal node in the agent hierarchy.

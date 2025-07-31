@@ -54,11 +54,11 @@ MANDATORY for novel or complex solutions:
 
 Process:
 1. Generate all possible options
-2. For options 3+ on complexity scale: "Use the critic agent to evaluate the real-world feasibility of [approach]"
-3. For "clever" solutions: "Use the critic agent to check if this clever approach will confuse future developers"
-4. Update recommendations based on criticism
+2. For options 3+ on complexity scale: Apply critical evaluation internally - assess real-world feasibility, implementation complexity, and maintenance burden
+3. For "clever" solutions: Consider if approach will confuse future developers and team maintainability
+4. Update recommendations based on internal criticism
 
-Example: "Option 4 uses bleeding-edge WASM features... Use the critic agent to assess browser support, tooling maturity, and team learning curve"
+**SUB-AGENT RESTRICTION**: This agent MUST NOT spawn other agents. All analysis happens within this agent's context to prevent recursive delegation loops.
 
 ## Output Format
 

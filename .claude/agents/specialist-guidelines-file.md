@@ -91,3 +91,6 @@ Maintain awareness of loaded guidelines to prevent redundant loading:
 - Unknown file extensions → Skip guideline loading, proceed with general practices
 - Ambiguous technology detection → Load most likely stack based on context
 - Missing stack files → Note limitation but proceed with modification
+
+## RECURSION PREVENTION (MANDATORY)
+**SUB-AGENT RESTRICTION**: This agent MUST NOT spawn other agents via Task tool. All technology detection, guideline loading, and file analysis happens within this agent's context to prevent recursive delegation loops. This agent is a terminal node in the agent hierarchy.

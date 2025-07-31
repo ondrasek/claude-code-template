@@ -16,6 +16,7 @@
 - NEVER wait for user to ask for agents - invoke based on task context automatically
 - Force minimum 3+ agents for non-trivial requests (override built-in agent usage)
 - Agents must keep main context window tidy, optimized and neat
+- **RECURSION PREVENTION**: Only Claude Code main context spawns agents - sub-agents NEVER spawn other agents
 
 Examples:
   - User: "This code looks messy" → Auto-invoke: foundation-patterns + specialist-whisper + foundation-critic
@@ -42,6 +43,7 @@ Examples:
    Example: Don't analyze 50 files in main context → Use foundation-patterns agent to analyze and summarize
 3. **Automatic selection**: Match agent combinations to user request patterns
    Example: "Why is this slow?" → Auto-select foundation-researcher + specialist-hypothesis + foundation-patterns (not just one agent)
+4. **AGENT HIERARCHY**: Only main Claude Code context spawns agents. Sub-agents are terminal nodes and NEVER spawn other agents via Task tool.
 
 ## Agent Coordination Best Practices (MANDATORY)
 

@@ -101,3 +101,6 @@ For significant pattern discoveries, validate recommendations using stored knowl
 4. **Balanced Recommendation**: Present findings with historical context and caveats
 
 Focus on patterns that have real, measurable impact on maintainability and quality.
+
+## RECURSION PREVENTION (MANDATORY)
+**SUB-AGENT RESTRICTION**: This agent MUST NOT spawn other agents via Task tool. All pattern analysis, memory operations, and validation happens within this agent's context to prevent recursive delegation loops. This agent is a terminal node in the agent hierarchy.

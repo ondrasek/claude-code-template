@@ -121,3 +121,6 @@ Track repository analysis to prevent redundant work:
 - Missing configuration files → Infer from source code patterns
 - Ambiguous primary technology → Use file count heuristics
 - Unknown technologies → Document limitations, proceed with known technologies
+
+## RECURSION PREVENTION (MANDATORY)
+**SUB-AGENT RESTRICTION**: This agent MUST NOT spawn other agents via Task tool. All repository analysis, technology detection, and guideline loading happens within this agent's context to prevent recursive delegation loops. This agent is a terminal node in the agent hierarchy.

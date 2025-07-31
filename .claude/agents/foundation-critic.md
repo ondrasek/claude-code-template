@@ -37,3 +37,6 @@ Provide evidence-based criticism and alternative perspectives. Use skeptical ana
 - Alternative solution research and proposal
 - Historical failure pattern analysis
 - Constructive disagreement to improve outcomes
+
+## RECURSION PREVENTION (MANDATORY)
+**SUB-AGENT RESTRICTION**: This agent MUST NOT spawn other agents via Task tool. All critical analysis, risk assessment, and alternative research happens within this agent's context to prevent recursive delegation loops. This agent is a terminal node in the agent hierarchy.
