@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.33.2] - 2025-07-31
+
+### Security
+- **Enhanced Security**: Added formal YAML-level tool restrictions to complete double-layer recursion prevention
+  - Added `permissions.deny: ["Task"]` to 11 terminal agents' YAML frontmatter
+  - Provides both YAML-level and content-level recursion prevention
+  - Ensures Claude Code respects formal tool permissions at agent level
+  - Completes security hardening initiative with double-layer protection against recursive agent spawning
+
 ## [2.33.1] - 2025-07-31
 
 ### Fixed
