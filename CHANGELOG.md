@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.37.0] - 2025-07-31
+
+### Changed
+- **Agent Ecosystem Consolidation**: Strategic reduction from 18 to 10 specialist agents (44% reduction) with complete functionality preservation
+  - Consolidated git-tagger + git-troubleshooter → specialist-git-manager with dual-mode operation
+  - Merged axioms + invariants + hypothesis → specialist-technical-analysis with comprehensive constraint optimization
+  - Combined completer + docs + whisper → specialist-code-quality for comprehensive quality improvements
+  - Unified guidelines-file + guidelines-repo → specialist-guidelines with intelligent conditional loading
+  - Consolidated explorer + constraints → specialist-solution-explorer for systematic problem decomposition
+  - Enhanced maintainability through strategic agent merging while preserving all specialized capabilities
+  - Improved agent selection efficiency through reduced coordination complexity
+  - Streamlined ecosystem from 24 total agents (6 foundation + 18 specialist) to 16 agents (6 foundation + 10 specialist)
+
 ## [2.36.0] - 2025-07-31
 
 ### Enhanced
