@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.39.0] - 2025-07-31
+
+### Enhanced
+- **Foundation Agent System**: Comprehensive enhancement of all 6 foundation agents with improved capabilities and systematic frameworks
+  - Enhanced foundation-conflicts.md with streamlined conflict resolution capabilities and improved decision synthesis protocols
+  - Enhanced foundation-context.md with optimized contextual intelligence mapping and coordination patterns
+  - Enhanced foundation-criticism.md with refined systematic risk analysis framework and validation protocols
+  - Enhanced foundation-patterns.md with improved memory-enhanced pattern detection and recognition capabilities
+  - Enhanced foundation-principles.md with enhanced architectural assessment protocols and governance frameworks
+  - Enhanced foundation-research.md with systematic knowledge building and comprehensive investigation methodologies
+  - Simplified tool configurations removing unused MCP dependencies for better performance
+  - Improved agent coordination efficiency through streamlined capabilities and clearer specializations
+
+### Removed
+- **Configuration Cleanup**: Removed deprecated .mcp.json configuration file that is no longer needed for MCP server configuration
+
 ## [2.38.0] - 2025-07-31
 
 ### Fixed
