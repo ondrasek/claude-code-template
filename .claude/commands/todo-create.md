@@ -7,11 +7,11 @@ SCOPE: single task creation with proper metadata
 ENHANCED_ACTIONS:
 1. invoke todo agent: create new TODO file with enhanced agent coordination
 2. coordinate parallel task analysis:
-   - **Classification Cluster**: patterns + principles + researcher (classify task type with pattern recognition and research validation)
-   - **Priority Assessment Cluster**: critic + constraints + time (assess priority based on urgency, impact, and historical patterns)
-   - **Completeness Validation Cluster**: completer + docs + invariants (ensure complete task specification with documentation standards)
-3. generate kebab-case filename validated by completer + principles agents
-4. create markdown file with comprehensive metadata validated by docs + testing agents
+   - **Classification Cluster**: foundation-patterns + foundation-principles + foundation-research (classify task type with pattern recognition and research validation)
+   - **Priority Assessment Cluster**: foundation-criticism + specialist-constraint-solver (assess priority based on urgency, impact, and constraints)
+   - **Completeness Validation Cluster**: specialist-code-cleaner + specialist-stack-advisor + specialist-constraint-solver (ensure complete task specification with documentation standards)
+3. generate kebab-case filename validated by specialist-code-cleaner + foundation-principles agents
+4. create markdown file with comprehensive metadata validated by specialist-stack-advisor + specialist-test-strategist agents
 
 PARAMETERS:
 --type [feat|fix|docs|refactor|test|chore] (force specific task type)

@@ -63,20 +63,20 @@ description: "PROACTIVELY use when user asks 'why does this happen', 'strange be
 
 **Enhanced Parallel Agent Cluster Analysis:**
 - Use parallel agent clusters for comprehensive ecosystem analysis with universal agent integration
-- **Core Quality Cluster**: patterns + principles + critic + researcher (agent analysis with research validation)
-- **Strategic Optimization Cluster**: explorer + constraints + resolver + principles (gap analysis with principle validation)
-- **Performance Analysis Cluster**: researcher + time + context + critic (historical performance with critical assessment)
-- **Design Validation Cluster**: axioms + invariants + connector + researcher (fundamental validation with evidence research)
-- **Completeness Assessment Cluster**: completer + patterns + critic + principles (gap identification with quality validation)
+- **Core Quality Cluster**: foundation-patterns + foundation-principles + foundation-criticism + foundation-research (agent analysis with research validation)
+- **Strategic Optimization Cluster**: specialist-options-analyzer + specialist-constraint-solver + foundation-conflicts + foundation-principles (gap analysis with principle validation)
+- **Performance Analysis Cluster**: foundation-research + foundation-context + foundation-criticism (performance with critical assessment)
+- **Design Validation Cluster**: foundation-principles + specialist-constraint-solver + foundation-research (fundamental validation with evidence research)
+- **Completeness Assessment Cluster**: specialist-code-cleaner + foundation-patterns + foundation-criticism + foundation-principles (gap identification with quality validation)
 - Parallel execution for maximum performance and comprehensive coverage with universal agent support
 
 **Enhanced Multi-Dimensional Aggregation:**
 - Synthesize findings from all enhanced parallel agent clusters with universal agent support
-- Cross-validate recommendations between analysis dimensions using critic and principles agents
-- Identify ecosystem-wide patterns, gaps, and optimization opportunities with researcher intelligence
-- Generate priority-based action plans with dependency mapping validated by constraints and resolver agents
-- Apply completeness verification through completer agent coordination
-- Ensure research-backed recommendations through systematic researcher integration
+- Cross-validate recommendations between analysis dimensions using foundation-criticism and foundation-principles agents
+- Identify ecosystem-wide patterns, gaps, and optimization opportunities with foundation-research intelligence
+- Generate priority-based action plans with dependency mapping validated by specialist-constraint-solver and foundation-conflicts agents
+- Apply completeness verification through specialist-code-cleaner agent coordination
+- Ensure research-backed recommendations through systematic foundation-research integration
 
 ## Batch Analysis
 

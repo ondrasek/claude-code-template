@@ -6,13 +6,13 @@ SCOPE: all stack configurations in `.support/stacks/` directory and related guid
 
 ENHANCED_ACTIONS:
 1. coordinate enhanced parallel stack analysis clusters with universal agent integration:
-   - **Technology Guidance Cluster**: guidelines-repo + guidelines-file + constraints + principles (technology guidance analysis, limitations, design principles)
-   - **Usage Intelligence Cluster**: patterns + context + time + researcher (usage patterns, system understanding, historical analysis, research validation)
-   - **Evolution Research Cluster**: researcher + hypothesis + explorer + axioms (ecosystem evolution, technology theories, alternative approaches, fundamental principles)
-   - **Validation & Assessment Cluster**: critic + completer + invariants + performance (critical assessment, completeness validation, design integrity, performance implications)
-   - **Integration Analysis Cluster**: connector + resolver + docs + testing (cross-domain insights, conflict resolution, documentation, implementation testing)
-2. analyze stack configuration completeness and guidance effectiveness through completer + critic + principles validation
-3. provide comprehensive technology guidance overview with usage recommendations validated by resolver + docs + time agents
+   - **Technology Guidance Cluster**: specialist-stack-advisor + specialist-constraint-solver + foundation-principles (technology guidance analysis, limitations, design principles)
+   - **Usage Intelligence Cluster**: foundation-patterns + foundation-context + foundation-research (usage patterns, system understanding, research validation)
+   - **Evolution Research Cluster**: foundation-research + specialist-options-analyzer + foundation-principles (ecosystem evolution, technology theories, alternative approaches, fundamental principles)
+   - **Validation & Assessment Cluster**: foundation-criticism + specialist-code-cleaner + specialist-constraint-solver + specialist-performance-optimizer (critical assessment, completeness validation, design integrity, performance implications)
+   - **Integration Analysis Cluster**: foundation-conflicts + specialist-stack-advisor + specialist-test-strategist (conflict resolution, documentation, implementation testing)
+2. analyze stack configuration completeness and guidance effectiveness through specialist-code-cleaner + foundation-criticism + foundation-principles validation
+3. provide comprehensive technology guidance overview with usage recommendations validated by foundation-conflicts + specialist-stack-advisor agents
 
 PARAMETERS:
 --stack [name] (analyze specific technology stack)
@@ -21,12 +21,12 @@ PARAMETERS:
 --recommendations (suggest stack improvements and additions)
 
 ENHANCED_AGENT_CLUSTERS:
-Technology Guidance: guidelines-repo + guidelines-file + constraints + principles + completer
-Usage Intelligence: patterns + context + time + researcher + axioms
-Evolution Research: researcher + hypothesis + explorer + axioms + time
-Validation & Assessment: critic + completer + invariants + performance + testing
-Integration Analysis: connector + resolver + docs + testing + principles
-Synthesis & Optimization: resolver + critic + principles + docs + completer
+Technology Guidance: specialist-stack-advisor + specialist-constraint-solver + foundation-principles + specialist-code-cleaner
+Usage Intelligence: foundation-patterns + foundation-context + foundation-research + foundation-principles
+Evolution Research: foundation-research + specialist-options-analyzer + foundation-principles
+Validation & Assessment: foundation-criticism + specialist-code-cleaner + specialist-constraint-solver + specialist-performance-optimizer + specialist-test-strategist
+Integration Analysis: foundation-conflicts + specialist-stack-advisor + specialist-test-strategist + foundation-principles
+Synthesis & Optimization: foundation-conflicts + foundation-criticism + foundation-principles + specialist-stack-advisor + specialist-code-cleaner
 Coordination: All enhanced clusters provide comprehensive multi-dimensional stack analysis with universal agent support
 
 OUTPUT:
@@ -77,8 +77,8 @@ For each technology stack, provides comprehensive analysis of:
 ## Technology Guidance Integration
 
 **Guidelines Agent Coordination**:
-- **guidelines-repo**: Repository-level technology stack analysis and architecture guidance
-- **guidelines-file**: File-level technology-specific guidance and implementation patterns
+- **specialist-stack-advisor**: Repository-level technology stack analysis and architecture guidance
+- **specialist-stack-advisor**: File-level technology-specific guidance and implementation patterns
 - **Conditional Activation**: Technology-specific guidance only when patterns are unclear
 
 **Stack Detection Integration**: References @.support/instructions/stack-mapping.md for centralized technology detection and optimization
@@ -88,4 +88,4 @@ For each technology stack, provides comprehensive analysis of:
 - `/review` - Include technology-specific guidance in comprehensive code analysis
 - `/refactor` - Apply stack-specific refactoring patterns and best practices
 - `/agent-ecosystem-review` - Analyze technology guidance agent effectiveness and coordination
-- Use guidelines-repo and guidelines-file agents for technology-specific analysis
+- Use specialist-stack-advisor agent for technology-specific analysis

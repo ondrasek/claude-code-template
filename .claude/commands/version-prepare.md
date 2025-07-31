@@ -25,10 +25,10 @@ I'll help you prepare a version release by analyzing completed TODOs and generat
 ## Process
 
 1. **Analyze completed TODOs** using enhanced parallel agent coordination:
-   - **Primary Analysis Cluster**: todo + completer + patterns + critic (TODO analysis, completion validation, pattern recognition, critical assessment)
-   - **Version Intelligence Cluster**: researcher + time + context + hypothesis (historical patterns, semantic versioning research, system understanding, version theories)
-   - **Documentation Preparation Cluster**: docs + git-tagger + principles + invariants (release documentation, tag preparation, design principles, integrity validation)
-   - **Quality Assurance Cluster**: critic + testing + performance + resolver (quality validation, test impact, performance assessment, conflict resolution)
+   - **Primary Analysis Cluster**: specialist-todo-manager + specialist-code-cleaner + foundation-patterns + foundation-criticism (TODO analysis, completion validation, pattern recognition, critical assessment)
+   - **Version Intelligence Cluster**: foundation-research + foundation-context + specialist-options-analyzer (historical patterns, semantic versioning research, system understanding, version theories)
+   - **Documentation Preparation Cluster**: specialist-stack-advisor + specialist-git-workflow + foundation-principles + specialist-constraint-solver (release documentation, tag preparation, design principles, integrity validation)
+   - **Quality Assurance Cluster**: foundation-criticism + specialist-test-strategist + specialist-performance-optimizer + foundation-conflicts (quality validation, test impact, performance assessment, conflict resolution)
 2. **Calculate version bump** based on semantic versioning analysis:
    - Any `break` tasks → MAJOR version
    - Any `feat` tasks (no breaks) → MINOR version

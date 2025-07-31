@@ -5,15 +5,15 @@ FOCUS: comprehensive documentation synchronization with code changes
 SCOPE: all project documentation including README, CHANGELOG, API docs, guides
 
 ENHANCED_ACTIONS:
-1. invoke docs agent: systematic documentation analysis with enhanced universal agent coordination
+1. invoke specialist-stack-advisor agent: systematic documentation analysis with enhanced universal agent coordination
 2. coordinate enhanced parallel documentation analysis clusters:
-   - **Gap Analysis Cluster**: patterns + completer + whisper + critic (identify gaps, inconsistencies, micro-improvements, critical assessment)
-   - **Historical Intelligence Cluster**: researcher + time + context + patterns (documentation evolution, historical patterns, system understanding, pattern recognition)
-   - **Standards Compliance Cluster**: guidelines-repo + constraints + principles + invariants (project standards, limitations, design principles, integrity validation)
-   - **Accuracy Validation Cluster**: critic + testing + performance + completer (validate accuracy, test examples, performance impact, completeness assessment)
-   - **Implementation Coordination Cluster**: resolver + connector + axioms + docs (conflict resolution, cross-domain insights, fundamental principles, documentation synthesis)
-3. generate comprehensive documentation update plan with priority mapping validated by resolver + critic + principles agents
-4. implement updates with cross-reference validation and consistency checking coordinated by completer + invariants + testing agents
+   - **Gap Analysis Cluster**: foundation-patterns + specialist-code-cleaner + foundation-criticism (identify gaps, inconsistencies, micro-improvements, critical assessment)
+   - **Historical Intelligence Cluster**: foundation-research + foundation-context + foundation-patterns (documentation evolution, historical patterns, system understanding, pattern recognition)
+   - **Standards Compliance Cluster**: specialist-stack-advisor + specialist-constraint-solver + foundation-principles (project standards, limitations, design principles, integrity validation)
+   - **Accuracy Validation Cluster**: foundation-criticism + specialist-test-strategist + specialist-performance-optimizer + specialist-code-cleaner (validate accuracy, test examples, performance impact, completeness assessment)
+   - **Implementation Coordination Cluster**: foundation-conflicts + foundation-principles + specialist-stack-advisor (conflict resolution, fundamental principles, documentation synthesis)
+3. generate comprehensive documentation update plan with priority mapping validated by foundation-conflicts + foundation-criticism + foundation-principles agents
+4. implement updates with cross-reference validation and consistency checking coordinated by specialist-code-cleaner + specialist-constraint-solver + specialist-test-strategist agents
 
 PARAMETERS:
 --scope [api|readme|changelog|all] (documentation scope, default: all)
@@ -23,14 +23,14 @@ PARAMETERS:
 --priority [critical|high|medium|low] (filter updates by priority)
 
 ENHANCED_AGENT_CLUSTERS:
-Primary Documentation: docs (comprehensive documentation strategy with universal agent coordination)
-Gap Analysis: patterns + completer + whisper + critic + researcher
-Historical Intelligence: researcher + time + context + patterns + axioms
-Standards Compliance: guidelines-repo + constraints + principles + invariants + completer
-Accuracy Validation: critic + testing + performance + completer + principles
-Implementation Coordination: resolver + connector + axioms + docs + invariants
-Synthesis & Quality: critic + principles + completer + docs + time
-Coordination: All enhanced clusters support docs agent leadership with comprehensive universal integration
+Primary Documentation: specialist-stack-advisor (comprehensive documentation strategy with universal agent coordination)
+Gap Analysis: foundation-patterns + specialist-code-cleaner + foundation-criticism + foundation-research
+Historical Intelligence: foundation-research + foundation-context + foundation-patterns + foundation-principles
+Standards Compliance: specialist-stack-advisor + specialist-constraint-solver + foundation-principles + specialist-code-cleaner
+Accuracy Validation: foundation-criticism + specialist-test-strategist + specialist-performance-optimizer + specialist-code-cleaner + foundation-principles
+Implementation Coordination: foundation-conflicts + foundation-principles + specialist-stack-advisor + specialist-constraint-solver
+Synthesis & Quality: foundation-criticism + foundation-principles + specialist-code-cleaner + specialist-stack-advisor
+Coordination: All enhanced clusters support specialist-stack-advisor agent leadership with comprehensive universal integration
 
 OUTPUT:
 - Comprehensive documentation audit with gap identification
