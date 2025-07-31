@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.38.0] - 2025-07-31
+
+### Fixed
+- **Command Definitions Compatibility**: Updated all command definitions to match reorganized agent directory structure (foundation/, specialists/)
+- **Agent Reference Consistency**: Fixed agent references in /agent-guide, /refactor, and /review commands to use proper naming (foundation-patterns, etc.)
+- **Protocol Alignment**: Updated CLAUDE.md minimum agent requirements from 4-6 to 3+ agents for better usability
+- **Ecosystem Documentation**: Corrected /agent-guide to reflect accurate 16-agent ecosystem count
+- **Parallel Execution Compliance**: Ensured all commands follow CLAUDE.md parallel execution protocols with proper agent coordination
+
 ## [2.37.0] - 2025-07-31
 
 ### Changed
