@@ -4,43 +4,52 @@ TRIGGER: code review request
 FOCUS: quality, security, best practices
 SCOPE: uncommitted changes by default, or specified files/commits
 
-ENHANCED_ACTIONS:
-1. **Initial Context Loading**: foundation-context + foundation-researcher parallel analysis for comprehensive change understanding
-2. **Aggressive Parallel Review Clusters** (4-6 agents minimum per phase):
-   - **Core Quality Cluster**: foundation-patterns + foundation-principles + foundation-critic + foundation-researcher (code quality assessment with memory-enhanced pattern analysis)
-   - **Deep Analysis Cluster**: foundation-context + foundation-patterns + foundation-researcher + foundation-critic + specialist-security (comprehensive system analysis with security validation)
-   - **Architecture & Performance Cluster**: foundation-context + foundation-principles + foundation-critic + specialist-performance + specialist-constraints (architectural validation with performance analysis)
-   - **Completeness & Testing Cluster**: foundation-patterns + foundation-principles + specialist-completer + specialist-testing + foundation-critic (comprehensive gap identification with quality validation)
-   - **Documentation & Standards Cluster**: specialist-docs + specialist-guidelines-repo + foundation-principles + foundation-researcher + specialist-completer (documentation verification with standards compliance)
-3. **Synthesis & Resolution Phase**: foundation-resolver + foundation-critic + foundation-principles + foundation-researcher (conflict resolution with validated recommendations)
-4. **Memory Integration Workflow**: All foundation agents store findings for institutional knowledge building
+OPTIMIZED_ACTIONS:
+1. **Focus Determination Phase**: Auto-detect review focus or ask user for clarification
+2. **Efficient Parallel Review Clusters** (3-4 agents per cluster, focus-driven selection):
+   - **Core Analysis Cluster**: foundation-patterns + foundation-principles + foundation-critic (essential quality assessment)
+   - **Context & Research Cluster**: foundation-context + foundation-researcher (architectural understanding and external knowledge)  
+   - **Specialist Focus Cluster**: Dynamically selected based on detected focus (specialist-security, specialist-performance, specialist-testing, or specialist-completer)
+3. **Synthesis Phase**: foundation-resolver + foundation-critic (conflict resolution and final recommendations)
+4. **Memory Integration**: Foundation agents store findings for institutional knowledge building
 
 PARAMETERS:
---focus [security|performance|testing|docs|architecture]
 --commits N (review last N commits)
---severity [critical|high|medium|low]
---fix (auto-fix simple issues)
+--fix (auto-fix simple issues)  
 --memory (include historical review patterns)
 FILES... (specific files to review)
 
-AGGRESSIVE_PARALLEL_CLUSTERS:
-Core Quality (4 agents): foundation-patterns + foundation-principles + foundation-critic + foundation-researcher
-Deep Analysis (5 agents): foundation-context + foundation-patterns + foundation-researcher + foundation-critic + specialist-security  
-Architecture & Performance (5 agents): foundation-context + foundation-principles + foundation-critic + specialist-performance + specialist-constraints
-Completeness & Testing (5 agents): foundation-patterns + foundation-principles + specialist-completer + specialist-testing + foundation-critic
-Documentation & Standards (5 agents): specialist-docs + specialist-guidelines-repo + foundation-principles + foundation-researcher + specialist-completer
-Synthesis & Resolution (4 agents): foundation-resolver + foundation-critic + foundation-principles + foundation-researcher
+INTELLIGENT_FOCUS_DETECTION:
+1. **Auto-determine from user prompt**: Parse user language for focus signals ("security issues", "performance problems", "test coverage", etc.)
+2. **Context analysis**: Examine files/changes to infer review priorities (new dependencies → security, database changes → performance, etc.)
+3. **User clarification**: If focus unclear, ask user to specify priority areas before proceeding
+4. **Agent-assisted determination**: Use foundation-context agent to analyze codebase and suggest focus areas
+5. **Default comprehensive**: If no specific focus detected, provide balanced multi-dimensional analysis
 
-COORDINATION_PROTOCOL: All clusters execute simultaneously via single message with multiple Task() calls for genuine parallel processing
+OPTIMIZED_PARALLEL_CLUSTERS:
+Core Analysis (3 agents): foundation-patterns + foundation-principles + foundation-critic
+Context & Research (2 agents): foundation-context + foundation-researcher  
+Specialist Focus (1-2 agents): Dynamically selected based on detected focus
+Synthesis (2 agents): foundation-resolver + foundation-critic
 
-ENHANCED_OUTPUT:
-- **Memory-Enhanced Analysis**: Findings built on historical review patterns and institutional knowledge
-- **Multi-Dimensional Assessment**: Results from 4-6 agent clusters with comprehensive cross-validation
-- **Structured Issue Categorization**: Severity and domain classification with confidence scores
-- **Conflict Resolution**: foundation-resolver mediates competing recommendations from multiple perspectives
-- **Prioritized Remediation**: Action items ranked by impact, effort, and historical success patterns
-- **Institutional Knowledge**: All findings stored in memory graph for future reference and team learning
-- **Comprehensive Coverage**: No analytical gaps through aggressive parallel cluster coordination
+FOCUS_BASED_SPECIALIST_SELECTION:
+- **Security Focus**: specialist-security
+- **Performance Focus**: specialist-performance + specialist-constraints  
+- **Testing Focus**: specialist-testing + specialist-completer
+- **Documentation Focus**: specialist-docs
+- **Architecture Focus**: specialist-constraints
+- **Comprehensive**: Rotate through multiple specialists based on findings
+
+COORDINATION_PROTOCOL: All clusters execute simultaneously via single message with multiple Task() calls for efficient parallel processing. Total agents: 8-10 (optimized from previous 34-agent approach)
+
+INTELLIGENT_OUTPUT:
+- **Focus-Driven Analysis**: Results tailored to auto-detected or user-specified priorities
+- **Memory-Enhanced Findings**: Built on historical review patterns and institutional knowledge
+- **Optimized Assessment**: Comprehensive analysis through efficient agent coordination (8-10 agents)
+- **Auto-Determined Severity**: Intelligent severity classification without user pre-specification
+- **Conflict Resolution**: foundation-resolver mediates competing recommendations
+- **Prioritized Action Items**: Ranked by impact, effort, and historical success patterns
+- **Institutional Knowledge**: All findings stored in memory graph for continuous learning
 
 ## Memory Integration Workflow
 
@@ -66,79 +75,48 @@ ENHANCED_OUTPUT:
 - **Principle Learning**: Document principle application outcomes and team preferences
 - **Resolution Patterns**: Store successful conflict resolutions and their effectiveness
 
-## Foundation Agent Integration
+## Intelligent Review Strategy
 
-**AGGRESSIVE PARALLEL EXECUTION** (4-6 agents per cluster, all clusters simultaneous):
+**FOCUS-DRIVEN ANALYSIS**: Command automatically adapts agent selection based on detected review priorities
 
-### Core Quality Cluster (4 agents)
-- **foundation-patterns**: Memory-enhanced pattern detection and evolution tracking
-- **foundation-principles**: SOLID/DRY/KISS validation with historical principle adherence data
-- **foundation-critic**: Risk assessment with evidence-based alternative approaches  
-- **foundation-researcher**: External best practices research and implementation guidance
+### Focus Detection Logic
+1. **User Prompt Analysis**: Parse explicit focus requests ("check security", "performance review", "test coverage")
+2. **Change Pattern Recognition**: Analyze modified files for focus indicators (dependencies → security, algorithms → performance, test files → testing)
+3. **Context Clues**: Repository structure and file types suggest review priorities
+4. **User Clarification**: Interactive focus selection when automated detection is ambiguous
+5. **Comprehensive Default**: Balanced analysis when no specific focus is identified
 
-### Deep Analysis Cluster (5 agents)  
-- **foundation-context**: Architectural understanding with persistent memory-backed system synthesis
-- **foundation-patterns**: Code structure analysis within architectural context
-- **foundation-researcher**: External security research and vulnerability intelligence
-- **foundation-critic**: Security risk assessment with historical failure pattern analysis
-- **specialist-security**: Focused security analysis and compliance validation
+### Dynamic Agent Coordination
+- **Core Foundation Trio**: foundation-patterns + foundation-principles + foundation-critic (always included)
+- **Context & Research Duo**: foundation-context + foundation-researcher (architectural understanding and external knowledge)
+- **Specialist Selection**: Dynamically chosen based on detected focus priorities
+- **Synthesis Pair**: foundation-resolver + foundation-critic (conflict resolution and final recommendations)
 
-### Architecture & Performance Cluster (5 agents)
-- **foundation-context**: System architecture evolution and decision archaeology
-- **foundation-principles**: Architectural principle validation (separation of concerns, loose coupling)
-- **foundation-critic**: Performance risk assessment and scalability concerns
-- **specialist-performance**: Performance optimization opportunities and bottleneck analysis
-- **specialist-constraints**: Technical constraint analysis and trade-off evaluation
+**EFFICIENCY PRINCIPLE**: Maintains comprehensive coverage while optimizing agent count (8-10 total) for faster execution and reduced coordination overhead
 
-### Completeness & Testing Cluster (5 agents)
-- **foundation-patterns**: Test pattern analysis and coverage gap identification
-- **foundation-principles**: Testing principle adherence (AAA, single responsibility)
-- **specialist-completer**: Comprehensive gap analysis and missing component identification
-- **specialist-testing**: Test strategy optimization and quality assurance
-- **foundation-critic**: Testing approach risk assessment and alternative strategies
+## Optimized Execution Workflow
 
-### Documentation & Standards Cluster (5 agents)
-- **specialist-docs**: Documentation quality analysis and maintenance requirements
-- **specialist-guidelines-repo**: Repository-level standards compliance and guideline adherence
-- **foundation-principles**: Documentation principle validation (clarity, maintainability)
-- **foundation-researcher**: Documentation best practices and tooling research
-- **specialist-completer**: Documentation completeness assessment and gap identification
-
-### Synthesis & Resolution Phase (4 agents)
-- **foundation-resolver**: Conflict mediation between competing cluster recommendations
-- **foundation-critic**: Final risk assessment of proposed resolutions
-- **foundation-principles**: Validate final recommendations against design principles
-- **foundation-researcher**: Additional research for complex resolution scenarios
-
-**COORDINATION PROTOCOL**: 
-- **Single Message Execution**: All 5 clusters (28 total agents) execute simultaneously via single message with multiple Task() calls
-- **Memory Integration**: Each foundation agent automatically stores findings in persistent memory graph
-- **Cross-Cluster Synthesis**: foundation-resolver mediates conflicts and synthesizes final recommendations
-- **Capability Boundary Awareness**: Each agent operates within defined boundaries to prevent overlap and ensure comprehensive coverage
-
-## Execution Workflow
-
-### Phase 1: Initial Analysis (2 agents parallel)
+### Phase 1: Focus Detection & Context Loading
 ```
-Task: "Load system context and research baseline" (foundation-context)
-Task: "Research external best practices for identified technologies" (foundation-researcher)
+1. Parse user prompt and analyze files/changes for focus indicators
+2. If focus unclear, ask user to specify priority areas
+3. Load system context: foundation-context agent
+4. Baseline research: foundation-researcher agent
 ```
 
-### Phase 2: Core Review Clusters (28 agents across 5 parallel clusters)
+### Phase 2: Parallel Review Clusters (8-10 agents total)
 ```
-Task: "Execute Core Quality analysis" (foundation-patterns + foundation-principles + foundation-critic + foundation-researcher)
-Task: "Execute Deep Analysis review" (foundation-context + foundation-patterns + foundation-researcher + foundation-critic + specialist-security)
-Task: "Execute Architecture & Performance analysis" (foundation-context + foundation-principles + foundation-critic + specialist-performance + specialist-constraints)
-Task: "Execute Completeness & Testing review" (foundation-patterns + foundation-principles + specialist-completer + specialist-testing + foundation-critic)
-Task: "Execute Documentation & Standards analysis" (specialist-docs + specialist-guidelines-repo + foundation-principles + foundation-researcher + specialist-completer)
+Task: "Execute Core Analysis" (foundation-patterns + foundation-principles + foundation-critic)
+Task: "Execute Context & Research analysis" (foundation-context + foundation-researcher)  
+Task: "Execute Specialist Focus analysis" (dynamically selected based on detected focus)
 ```
 
-### Phase 3: Synthesis & Resolution (4 agents parallel)
+### Phase 3: Synthesis & Resolution
 ```
-Task: "Resolve conflicts and synthesize recommendations" (foundation-resolver + foundation-critic + foundation-principles + foundation-researcher)
+Task: "Resolve conflicts and synthesize recommendations" (foundation-resolver + foundation-critic)
 ```
 
-**MINIMUM AGENT COUNT**: 34 agents total (exceeds 6-agent requirement per CLAUDE.md aggressive parallel usage mandate)
+**OPTIMIZED AGENT COUNT**: 8-10 agents total (efficient coordination within performance targets)
 
 **MEMORY INTEGRATION**: All foundation agents automatically store findings in persistent memory graph for institutional knowledge building
 
@@ -146,37 +124,36 @@ Task: "Resolve conflicts and synthesize recommendations" (foundation-resolver + 
 
 ### Review Summary
 - **Scope**: Files/commits analyzed with git context
-- **Agent Execution**: Confirmation of all 34 agents executed successfully  
+- **Focus**: Auto-detected or user-specified review priorities
+- **Agent Execution**: Confirmation of optimized cluster execution (8-10 agents)
 - **Memory Status**: Historical patterns loaded and new findings stored
-- **Overall Assessment**: Critical/High/Medium/Low with confidence scores
+- **Overall Assessment**: Auto-determined severity levels with confidence scores
 
-### Multi-Dimensional Findings
-- **Code Quality Issues**: From foundation-patterns with historical trend analysis
-- **Principle Violations**: From foundation-principles with impact assessment
-- **Security Concerns**: From specialist-security with threat intelligence
-- **Performance Issues**: From specialist-performance with optimization opportunities
-- **Architecture Risks**: From foundation-context with evolution analysis
-- **Testing Gaps**: From specialist-testing with coverage analysis
-- **Documentation Issues**: From specialist-docs with completeness assessment
+### Focus-Driven Findings
+- **Code Quality**: From foundation-patterns with historical trend analysis
+- **Design Principles**: From foundation-principles with adherence assessment
+- **Architecture & Context**: From foundation-context with evolution analysis
+- **External Research**: From foundation-researcher with best practices integration
+- **Specialist Analysis**: Focus-specific findings from dynamically selected specialist agents
+- **Critical Risks**: From foundation-critic with evidence-based risk assessment
 
-### Conflict Resolution Results
-- **Competing Approaches**: Identified by foundation-resolver
+### Intelligent Synthesis
+- **Conflict Resolution**: foundation-resolver mediates competing approaches
 - **Trade-off Analysis**: Risk vs benefit with historical precedent data
-- **Recommended Path**: Evidence-based decision with success probability
-- **Mitigation Strategies**: For chosen approach based on stored risk patterns
+- **Recommended Actions**: Evidence-based prioritization with success probability
+- **Implementation Strategy**: Optimized based on stored resolution patterns
 
-### Prioritized Action Plan
-- **Critical (Fix Immediately)**: Security vulnerabilities, system stability risks
-- **High Priority**: Principle violations with significant impact, performance bottlenecks
-- **Medium Priority**: Code quality improvements, testing gaps
-- **Low Priority**: Documentation updates, minor consistency issues
+### Auto-Prioritized Action Plan
+- **Critical**: Auto-detected security vulnerabilities and system stability risks
+- **High**: Significant principle violations and performance bottlenecks
+- **Medium**: Code quality improvements and architectural concerns
+- **Low**: Documentation updates and minor consistency issues
 
-### Memory Integration Report
-- **Patterns Stored**: New code patterns and evolution trends preserved
-- **Risks Documented**: Failure patterns and mitigation strategies recorded
-- **Research Archived**: External solutions and best practices saved
-- **Context Updated**: Architectural changes and decision rationale preserved
-- **Resolution Patterns**: Successful conflict resolutions stored for future reference
+### Knowledge Preservation
+- **Pattern Evolution**: Code patterns and trends stored for future reference
+- **Risk Intelligence**: Failure patterns and mitigation strategies documented
+- **Solution Archive**: Validated external solutions and implementation guidance preserved
+- **Decision Context**: Architectural changes and rationale recorded for institutional memory
 
 ## Related Commands
 
