@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.45.0] - 2025-08-02
+
+### Added
+- **Research Command**: New /research command for comprehensive multi-agent research orchestration
+  - Orchestrates multiple research agents (foundation-research, foundation-criticism, foundation-conflicts, specialist-options-analyzer)
+  - Integrates with Perplexity Deep Research for real-time web search
+  - Supports focus areas, time filters, and domain filtering
+  - Produces structured research reports with conflict resolution
+
+### Fixed
+- **Perplexity MCP Server API Alignment**: Complete refactor to use only real Perplexity API parameters
+  - Removed made-up constructs like focus_areas and time_filter that caused API failures
+  - Added proper support for real API parameters: search_domain_filter, search_recency_filter, top_p, top_k, presence_penalty, frequency_penalty
+  - Replaced perplexity_deep_research with perplexity_comprehensive_research using sonar-deep-research model
+  - Removed research_topic method with fabricated parameters
+  - Fixed diagnostic issues with status_code access in error handling
+  - Improved parameter validation and logging reliability
+
 ## [2.44.1] - 2025-08-02
 
 ### Fixed
