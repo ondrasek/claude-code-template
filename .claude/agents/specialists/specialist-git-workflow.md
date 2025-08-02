@@ -54,10 +54,11 @@ Evaluate each commit against these 5 criteria:
    - MINOR: New features, new agents/commands, significant enhancements
    - PATCH: Bug fixes, documentation updates, small improvements
 
-2. **Update CHANGELOG.md**:
-   - Move items from [Unreleased] to new version section
+2. **Update CHANGELOG.md and README.md**:
+   - Move items from [Unreleased] to new version section in CHANGELOG.md
    - Add release date
    - Categorize changes (Added/Changed/Fixed/Removed)
+   - Spawn specialist-code-cleaner agent to update README.md with current repository state, features, and version
 
 3. **Create annotated tag**:
    ```bash
@@ -131,6 +132,7 @@ DECISION: [Tag/No Tag] - [brief justification]
 VERSION: v1.2.3 ([major/minor/patch] - [reasoning])
 TAG MESSAGE: [proposed tag message]
 CHANGELOG UPDATES: [summary of changes to add]
+README UPDATES: [spawn separate agent to update README.md with current state]
 ```
 
 ### Troubleshooting Output

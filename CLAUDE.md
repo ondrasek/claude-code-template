@@ -69,7 +69,7 @@ Examples:
 1. **Stage immediately**: `git add -A` after any file modification
 2. **Commit at milestones**: When any meaningful task is complete
 3. **Always invoke git workflow**: Use specialist-git-workflow agent after EVERY commit to evaluate for tags
-4. **Update CHANGELOG.md**: When git workflow agent creates release tags, update CHANGELOG.md with release notes
+4. **Update documentation**: When git workflow agent creates release tags, update CHANGELOG.md AND README.md with release notes and current state
 5. **Push immediately**: `git push origin main` after every commit
 
 **Error Recovery**: When git operations fail, use specialist-git-workflow agent for systematic diagnosis and resolution.
@@ -78,37 +78,36 @@ Examples:
 
 ### Automated Implementation: `/git` Command
 
-**PREFERRED METHOD**: Use the `/git` command for automated Git Protocol execution:
+**PREFERRED METHOD**: Use the `/git` command for fully automated Git Protocol execution:
 
 ```
-/git "Your commit message"
+/git
 ```
 
-The `/git` command automatically:
-- Detects and stages all uncommitted changes
-- Creates commits with provided or generated messages
+The `/git` command is **completely automated** and:
+- Analyzes changed files to generate intelligent commit messages
+- Detects and stages all uncommitted changes automatically
 - Evaluates commits for release tag creation
 - Updates CHANGELOG.md when tags are created
+- Updates README.md to reflect current repository state (via separate agent)
 - Pushes all changes and tags to remote
 - Handles errors with systematic troubleshooting
 - Delegates all operations to specialist-git-workflow agent to prevent context clutter
+- **Requires zero arguments or decisions from user**
 
 **Benefits**:
+- ✅ **Zero Cognitive Load**: No arguments, options, or decisions required
 - ✅ **Complete Protocol Compliance**: Ensures 100% adherence to all Git Protocol requirements
 - ✅ **Context Preservation**: Keeps main conversation focused by delegating git operations
+- ✅ **Intelligent Automation**: Smart commit message generation based on file analysis
+- ✅ **Documentation Sync**: Automatically keeps README.md current with repository state
 - ✅ **Automated Releases**: Intelligent tag creation based on commit significance
 - ✅ **Error Recovery**: Systematic troubleshooting for git operation failures
 
 Example usage:
   ```
-  # Simple automated protocol execution
-  /git "Add dark mode toggle to header component"
-  
-  # Auto-generates commit message if none provided
+  # Complete automated protocol execution - just works!
   /git
-  
-  # Dry run to see what would happen
-  /git --dry-run
   ```
 
 **Manual Implementation** (when `/git` command is unavailable):
@@ -117,7 +116,7 @@ Example usage:
   git add -A
   git commit -m "Add dark mode toggle to header component"
   # Auto-invoke specialist-git-workflow agent here
-  # If specialist-git-workflow creates v1.2.0 tag → Update CHANGELOG.md with release notes
+  # If specialist-git-workflow creates v1.2.0 tag → Update CHANGELOG.md AND README.md with release notes
   git push origin main
   # If any step fails → Auto-invoke specialist-git-workflow agent
   ```
