@@ -84,8 +84,8 @@ This versioning process integrates with the comprehensive TODO/CHANGELOG protoco
 - Full traceability from TODO to release documentation
 
 ### Commands Available
-- `/todo/todo-create [type] [priority] "description"` - Add new TODO task
-- `/todo/todo-review` - Review and manage existing TODO tasks
+- `/todo:todo-create [type] [priority] "description"` - Add new TODO task
+- `/todo:todo-review` - Review and manage existing TODO tasks
 - `/version-prepare [auto|major|minor|patch]` - Prepare release
 
 This TODO/CHANGELOG integration is handled automatically by the system agents.

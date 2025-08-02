@@ -17,9 +17,9 @@ command definitions are meant for Claude Code. They are instructions, NOT human 
 ### Command File Structure
 ```markdown
 ---
-description: "Brief command description"
-argument-hint: "Expected argument format"
-allowed-tools: ["tool1", "tool2"]
+description: Brief command description.
+argument-hint: Expected argument format.
+allowed-tools: Tool1, Tool2(tool arguments)
 model: "sonnet"
 ---
 
