@@ -1,8 +1,7 @@
 ---
-description: "Review slash command compliance with guidelines using comprehensive agent analysis"
-argument-hint: "COMMAND_NAME [--fix] [--detailed] [--security-focus]"
-allowed-tools: ["Task", "Read", "Edit", "Glob"]
-model: "sonnet"
+description: Review slash command(s) following guidelines with redundancy analysis and agent coordination.
+argument-hint: Command name, group of commands, namespace or any other designation. Review all commands if empty.
+allowed-tools: Task, Read, Write, Glob, Bash, WebSearch, WebFetch
 ---
 
 # Command Compliance Review
@@ -12,12 +11,9 @@ Review slash command definition for compliance with @.support/instructions/claud
 ## Instructions
 
 1. Parse $ARGUMENTS for review parameters:
-   - COMMAND_NAME (required): Name of command to review (without .md extension)
-   - --fix (optional): Automatically fix detected compliance issues
-   - --detailed (optional): Include detailed analysis and recommendations
-   - --security-focus (optional): Emphasize security and tool restriction analysis
+   - Determine which commands are to be reviewed.
 
-2. Validate command exists in .claude/commands/ directory before proceeding
+2. Validate command exists somewhere in .claude/commands/ directory before proceeding
 
 3. Execute comprehensive parallel compliance analysis clusters:
 

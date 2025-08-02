@@ -1,22 +1,23 @@
 ---
-description: "Create new slash command following guidelines with redundancy analysis and agent coordination"
-argument-hint: "COMMAND_NAME [--description desc] [--category category] [--tools tools] [--dry-run]"
-allowed-tools: ["Task", "Read", "Write", "Glob", "Grep"]
-model: "sonnet"
+description: Create new slash command following guidelines with redundancy analysis and agent coordination.
+argument-hint: Command name, intent, objectives and purpose.
+allowed-tools: Task, Read, Write, Glob, Bash, WebSearch, WebFetch
 ---
 
 # Command Creation
 
-Create new slash command following guidelines from @.support/instructions/claude-commands-guidelines.md with comprehensive redundancy analysis and validation.
+Create new slash command following guidelines from @.support/instructions/claude-commands-guidelines.md
+with comprehensive redundancy analysis and validation.
 
 ## Instructions
 
 1. Parse $ARGUMENTS for command creation parameters:
-   - COMMAND_NAME (required): Name for the new command (will be validated for naming conventions)
-   - --description "text" (optional): Command description override
-   - --category [workflow|development|project-management] (optional): Command category
-   - --tools ["tool1","tool2"] (optional): Override default tool selection
-   - --dry-run (optional): Preview command without creating file
+   - Determine the appropriate command name.
+   - Determine any suitable command arguments, but use them sparingly. Commands must be mostly automated
+   and autonomous, without requiring extensive customization via arguments.
+   - Determine command intent and purpose. Define criteria that describe how to determine that the command
+   achieved its purpose.
+   - Determine suitable command description.
 
 2. Execute comprehensive parallel analysis clusters before creation:
 
