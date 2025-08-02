@@ -30,11 +30,7 @@ LOAD_ENV="true"
 # Log directory configuration
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-LOG_BASE_DIR="$PROJECT_ROOT/.support/logs/claude-code"
-SESSION_LOG_DIR="$LOG_BASE_DIR/sessions"
-MCP_LOG_DIR="$LOG_BASE_DIR/mcp"
-TELEMETRY_LOG_DIR="$LOG_BASE_DIR/telemetry"
-DEBUG_LOG_DIR="$LOG_BASE_DIR/debug"
+LOG_BASE_DIR="$PROJECT_ROOT/.support/logs"
 
 # Auto-detect environment function
 detect_environment() {
@@ -197,8 +193,8 @@ FEATURES:
     - Automatic MCP configuration loading from centralized config
       (.support/mcp-servers/mcp-config.json or legacy .mcp.json)
     - Automatic master prompt loading from $MASTER_PROMPT_FILE
-    - Session-based logging to .support/logs/ directory with timestamped folders
-    - Organized logs by session with all log types grouped together
+    - Session-based logging to .support/logs/[SESSION]/ directory with timestamped folders
+    - All log files include timestamps in their filenames (e.g. debug-20250802-085436.log)
     - MCP server debugging with telemetry support
     - Multi-agent log analysis using Claude Code agents
     - Auto-detection of devcontainer/codespace environments for permissions
@@ -289,11 +285,19 @@ troubleshoot_mcp() {
         exit 1
     fi
     
-    # Find relevant log files for MCP troubleshooting
-    local session_logs=($(find "$SESSION_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -5))
-    local mcp_logs=($(find "$MCP_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -5))
-    local debug_logs=($(find "$DEBUG_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -5))
-    local telemetry_logs=($(find "$TELEMETRY_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -3))
+    # Find relevant log files for MCP troubleshooting from recent sessions
+    local session_dirs=($(find "$LOG_BASE_DIR" -maxdepth 1 -type d -name "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9][0-9]" 2>/dev/null | sort -r | head -3))
+    local session_logs=()
+    local mcp_logs=()
+    local debug_logs=()
+    local telemetry_logs=()
+    
+    for session_dir in "${session_dirs[@]}"; do
+        session_logs+=($(find "$session_dir" -name "session-*.log" -type f 2>/dev/null))
+        mcp_logs+=($(find "$session_dir" -name "mcp-*.log" -type f 2>/dev/null))
+        debug_logs+=($(find "$session_dir" -name "debug-*.log" -type f 2>/dev/null))
+        telemetry_logs+=($(find "$session_dir" -name "telemetry-*.log" -type f 2>/dev/null))
+    done
     
     # Also check for MCP configuration files
     local mcp_configs=()
@@ -444,6 +448,7 @@ analyze_logs() {
     echo "   🐛 Debug logs: ${#debug_logs[@]}"
     echo "   📊 Telemetry logs: ${#telemetry_logs[@]}"
     echo "   📁 Total files: ${#all_logs[@]}"
+    echo
     
     # Build analysis command with same permissions handling as main script
     local analysis_cmd=("claude" --model "$DEFAULT_MODEL")
@@ -556,12 +561,13 @@ setup_logging() {
         # Generate session timestamp
         SESSION_TIMESTAMP=$(date +"%Y%m%d-%H%M%S")
         
-        # Create session directory
-        mkdir -p "$SESSION_LOG_DIR"
+        # Create session directory with timestamp
+        SESSION_DIR="$LOG_BASE_DIR/$SESSION_TIMESTAMP"
+        mkdir -p "$SESSION_DIR"
         
         # Set up log files in session directory with timestamps
         if [[ -z "$LOG_FILE" ]]; then
-            LOG_FILE="$SESSION_LOG_DIR/mycc-session-$SESSION_TIMESTAMP.log"
+            LOG_FILE="$SESSION_DIR/mycc-session-$SESSION_TIMESTAMP.log"
         fi
         
         # Set up environment variables for comprehensive logging
@@ -577,11 +583,11 @@ setup_logging() {
         export OTEL_LOGS_EXPORT_INTERVAL=5000
         
         # Create session-specific log files with timestamps
-        local session_log="$SESSION_LOG_DIR/session-$SESSION_TIMESTAMP.log"
-        local mcp_log="$SESSION_LOG_DIR/mcp-$SESSION_TIMESTAMP.log"
-        local telemetry_log="$SESSION_LOG_DIR/telemetry-$SESSION_TIMESTAMP.log"
-        local debug_log="$SESSION_LOG_DIR/debug-$SESSION_TIMESTAMP.log"
-        local session_info="$SESSION_LOG_DIR/session-info.txt"
+        local session_log="$SESSION_DIR/session-$SESSION_TIMESTAMP.log"
+        local mcp_log="$SESSION_DIR/mcp-$SESSION_TIMESTAMP.log"
+        local telemetry_log="$SESSION_DIR/telemetry-$SESSION_TIMESTAMP.log"
+        local debug_log="$SESSION_DIR/debug-$SESSION_TIMESTAMP.log"
+        local session_info="$SESSION_DIR/session-info-$SESSION_TIMESTAMP.txt"
         
         # Store paths for later use
         export MYCC_SESSION_LOG="$session_log"
@@ -602,12 +608,12 @@ Project: $PROJECT_ROOT
 EOF
         
         echo "📝 Session-based logging enabled:"
-        echo "   📁 Session directory: $SESSION_LOG_DIR"
+        echo "   📁 Session directory: $SESSION_DIR"
         echo "   📋 Session log: session-$SESSION_TIMESTAMP.log"
         echo "   🔌 MCP log: mcp-$SESSION_TIMESTAMP.log"
         echo "   📊 Telemetry log: telemetry-$SESSION_TIMESTAMP.log"
         echo "   🐛 Debug log: debug-$SESSION_TIMESTAMP.log"
-        echo "   ℹ️  Session info: session-info.txt"
+        echo "   ℹ️  Session info: session-info-$SESSION_TIMESTAMP.txt"
     fi
 }
 
