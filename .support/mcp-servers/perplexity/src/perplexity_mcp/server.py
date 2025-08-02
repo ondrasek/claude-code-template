@@ -127,7 +127,8 @@ async def perplexity_deep_research(
     focus_areas: Optional[List[str]] = None,
     time_filter: Optional[str] = None,
     domain_filter: Optional[List[str]] = None,
-    max_tokens: int = 1500
+    max_tokens: int = 1500,
+    temperature: float = 0.7
 ) -> str:
     """
     Conduct comprehensive research on a topic with multiple perspectives and deep analysis.
@@ -138,6 +139,7 @@ async def perplexity_deep_research(
         time_filter: Time period for search results (e.g., "month", "week", "day")
         domain_filter: Specific domains to search within (e.g., ["github.com", "stackoverflow.com"])
         max_tokens: Maximum tokens in response (default: 1500)
+        temperature: Sampling temperature between 0.0-2.0 (default: 0.7)
     
     Returns:
         Detailed research report with multiple perspectives, recent developments, and practical implications
@@ -150,7 +152,8 @@ async def perplexity_deep_research(
             focus_areas=focus_areas,
             time_filter=time_filter,
             domain_filter=domain_filter,
-            max_tokens=max_tokens
+            max_tokens=max_tokens,
+            temperature=temperature
         )
         
         if "error" in result:
@@ -191,7 +194,8 @@ async def perplexity_deep_research(
 async def perplexity_quick_query(
     question: str,
     domain_filter: Optional[List[str]] = None,
-    recency_filter: Optional[str] = None
+    recency_filter: Optional[str] = None,
+    temperature: float = 0.3
 ) -> str:
     """
     Ask a quick question and get a fast, concise response.
@@ -200,6 +204,7 @@ async def perplexity_quick_query(
         question: The question to ask
         domain_filter: Specific domains to search within (e.g., ["github.com", "docs.python.org"])
         recency_filter: How recent results should be (e.g., "month", "week", "day")
+        temperature: Sampling temperature between 0.0-2.0 (default: 0.3 for factual responses)
     
     Returns:
         Concise answer with key information and sources
@@ -212,7 +217,7 @@ async def perplexity_quick_query(
             model="sonar",  # Fast model for quick queries
             system_message="Provide a concise, direct answer with key facts. Be brief but comprehensive.",
             max_tokens=500,
-            temperature=0.3,  # Lower temperature for more factual responses
+            temperature=temperature,  # Use provided temperature parameter
             search_domain_filter=domain_filter,
             search_recency_filter=recency_filter,
             return_citations=True

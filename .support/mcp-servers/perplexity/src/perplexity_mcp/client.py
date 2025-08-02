@@ -147,7 +147,8 @@ class PerplexityClient:
         focus_areas: Optional[List[str]] = None,
         time_filter: Optional[str] = None,
         domain_filter: Optional[List[str]] = None,
-        max_tokens: int = 1500
+        max_tokens: int = 1500,
+        temperature: float = 0.3
     ) -> Dict[str, Any]:
         """
         Conduct comprehensive research on a topic.
@@ -158,6 +159,7 @@ class PerplexityClient:
             time_filter: Time period for search (e.g., "month", "week")
             domain_filter: Specific domains to search
             max_tokens: Maximum tokens for response
+            temperature: Sampling temperature (0.0 to 2.0)
             
         Returns:
             Comprehensive research results
@@ -185,7 +187,7 @@ Be thorough, balanced, and evidence-based. Structure your response clearly with 
             model="sonar-deep-research",
             system_message=system_message,
             max_tokens=max_tokens,
-            temperature=0.3,  # Lower temperature for more factual responses
+            temperature=temperature,
             search_domain_filter=domain_filter,
             search_recency_filter=time_filter,
             return_citations=True,
