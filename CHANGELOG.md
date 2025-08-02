@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.41.0] - 2025-08-02
+
+### Added
+- **Centralized MCP Configuration System**: Comprehensive infrastructure for managing MCP server configurations
+  - Created mcp-config.json with unified server configuration including Perplexity server setup
+  - Implemented environment variable templating with ${VAR:-default} syntax for flexible configuration
+  - Added automatic config detection and priority-based loading (centralized > legacy)
+  - Enhanced launch-claude.sh script with auto-detection of centralized config location
+  - Created comprehensive .env.example template for MCP server environment variables
+  - Added detailed README.md documentation for MCP server configuration and usage
+  - Implemented global settings for timeout, retries, logging, and telemetry
+  - Added environment-specific defaults (development/production) for optimized configurations
+  - Included security considerations and validation guidelines
+  - Enabled automatic path resolution relative to project root
+
 ## [2.40.0] - 2025-07-31
 
 ### Added
