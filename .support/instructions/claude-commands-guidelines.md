@@ -48,10 +48,10 @@ Use $ARGUMENTS to reference passed parameters.
 ### Example Frontmatter
 ```yaml
 ---
-description: "Execute git workflow with intelligent commit messages"
-argument-hint: "Optional custom commit message"
-allowed-tools: ["Bash", "Read", "Write", "Edit"]
-model: "sonnet"
+description: Execute git workflow with intelligent commit messages.
+argument-hint: Optional custom commit message.
+allowed-tools: Bash, Read, Write, Edit
+model: sonnet
 ---
 ```
 

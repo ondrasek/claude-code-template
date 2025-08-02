@@ -1,8 +1,7 @@
 ---
-description: "Fully automated Git Protocol implementation with intelligent commit messages"
-argument-hint: "[custom-commit-message]"
-allowed-tools: ["Task"]
-model: "sonnet"
+description: Fully automated Git Protocol implementation with intelligent commit messages.
+argument-hint: Custom commit message to be appended to automatically determined commit message.
+allowed-tools: Read, Write, Edit, MultiEdit, Glob, Bash, Task
 ---
 
 # Git Protocol Automation
