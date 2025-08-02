@@ -39,12 +39,8 @@ def setup_logging(
     # Get log directory - refuse to log if not set
     base_log_path = os.getenv("PERPLEXITY_LOG_PATH")
     if not base_log_path:
-        # Only console logging if no log path provided
-        console_handler = logging.StreamHandler()
-        console_handler.setFormatter(simple_formatter)
-        console_handler.setLevel(logging.INFO)
-        logger.addHandler(console_handler)
-        logger.warning("PERPLEXITY_LOG_PATH not set - logging only to console")
+        # No logging if no log path provided (MCP servers use STDIO)
+        logger.disabled = True
         setup_api_logging(None)
         return logger
     
@@ -55,12 +51,8 @@ def setup_logging(
     try:
         Path(log_path).mkdir(parents=True, exist_ok=True)
     except (OSError, PermissionError) as e:
-        # Only console logging if directory creation fails
-        console_handler = logging.StreamHandler()
-        console_handler.setFormatter(simple_formatter)
-        console_handler.setLevel(logging.INFO)
-        logger.addHandler(console_handler)
-        logger.error(f"Cannot create log directory {log_path}: {e} - logging only to console")
+        # No logging if directory creation fails (MCP servers use STDIO)
+        logger.disabled = True
         setup_api_logging(None)
         return logger
     
@@ -75,11 +67,7 @@ def setup_logging(
         datefmt='%Y-%m-%d %H:%M:%S'
     )
     
-    # Console handler (simplified for stdio)
-    console_handler = logging.StreamHandler()
-    console_handler.setFormatter(simple_formatter)
-    console_handler.setLevel(logging.INFO)  # Keep console less verbose
-    logger.addHandler(console_handler)
+    # No console handler - MCP servers use STDIO for protocol communication
     
     # Single log file for all logging
     log_file_path = log_file or os.path.join(log_path, "perplexity.log")
@@ -129,6 +117,9 @@ def setup_api_logging(log_path: Optional[str]) -> logging.Logger:
         except (OSError, IOError) as e:
             main_logger = logging.getLogger("perplexity_mcp")
             main_logger.warning(f"Could not create API log handler for {api_log_file}: {e}")
+    else:
+        # Disable API logging if no log path
+        api_logger.disabled = True
     
     return api_logger
 
