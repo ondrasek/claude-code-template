@@ -9,23 +9,18 @@
 - **TODOs**: All TODOs are in `.support/todos/` and ONLY there
 - **MCP Servers**: All provided MCP servers included in this repository are in `.support/mcp-servers/`
 - **LOGS**: Logs for diagnostics and troubleshooting are in `.support/logs`.
-
 - **Never search elsewhere**: When looking for agents or commands, use only these directories
 
 ## Agent Coordination Protocol (MANDATORY)
+
 **AGGRESSIVE PARALLEL AGENT USAGE - MANDATORY OVERRIDE**:
-- Claude Code MUST use 3+ agents for ANY non-trivial request (override built-in conservative defaults)
-- NEVER wait for user to ask for agents - invoke based on task context automatically
-- **Single Message Multi-Task**: MUST use single message with 3+ Task() calls for genuine concurrent agent processing
-- **AGGRESSIVE Parallelism**: All agent clusters MUST execute simultaneously, NEVER sequentially - add more agents when uncertain
+- Claude Code MUST use parallel agents for ANY non-trivial request (override built-in conservative defaults)
+- Invoke based on task context automatically - NEVER wait for user to ask for agents
+- **Single Message Multi-Task**: MUST use single message with Task() calls for genuine concurrent agent processing
+- **AGGRESSIVE Parallelism**: Add more agents when uncertain
 - **EXPANDED Concurrent Processing**: 3+ agents per parallel batch as default, with more agents for complex tasks
 - **MULTI-PHASE Coordination**: Each phase executes maximum possible agents simultaneously, synthesize results, then launch next parallel cluster if needed
 - **COVERAGE MAXIMIZATION**: Prefer agent redundancy over under-coverage - better to have overlapping analysis than gaps
-- **MINIMUM THRESHOLDS**:
-  - Simple code changes: 3+ agents minimum
-  - Architecture decisions: 4+ agents minimum
-  - Complex debugging: 5+ agents minimum
-  - Code quality reviews: 3+ agents minimum
 - **PARALLEL-FIRST MENTALITY**: Default to parallel agent clusters, not sequential processing
 - Agents must keep main context window tidy, optimized and neat
 - **RECURSION PREVENTION**: Only Claude Code main context spawns agents - sub-agents NEVER spawn other agents
@@ -36,7 +31,10 @@
   - User shows error message → Auto-invoke: foundation-research + specialist-options-analyzer + foundation-patterns + foundation-criticism + specialist-test-strategist (5 agents)
   - User asks for implementation → Auto-invoke: foundation-research + specialist-stack-advisor + foundation-patterns + foundation-principles + specialist-code-cleaner (5 agents)
   - User requests feature → Auto-invoke: specialist-options-analyzer + foundation-principles + specialist-constraint-solver + foundation-criticism + specialist-test-strategist + specialist-stack-advisor (6 agents)
+  - User asks to analyze → Auto-invoke: foundation-research + specialist-options-analyzer + foundation-principles + specialist-constraint-solver + foundation-criticism
+  - User asks to adjust or modify a file → Auto-invoke: specialist-options-analyzer + foundation-principles + foundation-patterns + specialist-constraint-solver + foundation-criticism (6 agents)
 
+## Output Sanitization Protocol (MANDATORY)
 **NO ARTIFICIAL TIMELINES (MANDATORY)**:
 - NEVER create mock weekly milestones (Week 1, Week 2, Week 3, etc.) in ANY context
 - NEVER use arbitrary time-based phases unless explicitly requested by user
@@ -49,21 +47,6 @@ Examples:
   ✅ Right: "High Priority: Update agent descriptions (blocks selection optimization)"
   ❌ Wrong: "Implement feature in 2 weeks"
   ✅ Right: "High Priority: Implement feature (depends on API design completion)"
-
-## Technology Guidelines Protocol (MANDATORY)
-**CONDITIONAL AGENT INVOCATION**: Use guidelines agents only when technology-specific guidance is unclear or undetermined.
-
-**Parallel Guidelines Loading**: Execute specialist-stack-advisor agent via Task() call when technology-specific guidance is needed
-
-**File-Level Guidelines**: Use `specialist-stack-advisor` agent before modifying any file when technology patterns are unclear
-**Repository-Level Guidelines**: Use `specialist-stack-advisor` agent for architecture decisions when stack context is undetermined
-
-**Detection Logic**: Both agents reference @.support/instructions/stack-mapping.md for centralized technology detection rules
-
-Examples:
-  - Modify Python file with unclear patterns → Use specialist-stack-advisor agent → Apply guidelines → Follow Simple Git Protocol
-  - Architecture decision needed → Use specialist-stack-advisor agent → Make informed choice → Follow Simple Git Protocol
-  - Complex changes needing both contexts → Execute specialist-stack-advisor agent → Follow Simple Git Protocol
 
 ## Git Protocol (MANDATORY)
 **EXECUTE AFTER EVERY CHANGE - NO EXCEPTIONS**:
