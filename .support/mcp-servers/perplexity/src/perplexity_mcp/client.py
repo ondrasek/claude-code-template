@@ -92,9 +92,10 @@ class PerplexityClient:
             
         self.base_url = "https://api.perplexity.ai/chat/completions"
         self.timeout = float(os.getenv("PERPLEXITY_TIMEOUT", "60.0"))
+        self.deep_research_timeout = float(os.getenv("PERPLEXITY_DEEP_RESEARCH_TIMEOUT", "300.0"))
         
         # Log configuration
-        logger.debug(f"Client configuration: base_url={self.base_url}, timeout={self.timeout}s")
+        logger.debug(f"Client configuration: base_url={self.base_url}, timeout={self.timeout}s, deep_research_timeout={self.deep_research_timeout}s")
         logger.info("Perplexity client initialized successfully")
     
     @handle_api_errors
@@ -114,7 +115,8 @@ class PerplexityClient:
         return_related_questions: bool = False,
         search_domain_filter: Optional[List[str]] = None,
         search_recency_filter: Optional[str] = None,
-        stream: bool = False
+        stream: bool = False,
+        custom_timeout: Optional[float] = None
     ) -> Dict[str, Any]:
         """
         Query the Perplexity API.
@@ -135,6 +137,7 @@ class PerplexityClient:
             search_domain_filter: List of domains to search within
             search_recency_filter: Recency filter (e.g., "month", "week", "day")
             stream: Whether to stream the response
+            custom_timeout: Custom timeout for this request (overrides default)
             
         Returns:
             API response dictionary or error dictionary
@@ -174,14 +177,19 @@ class PerplexityClient:
         if search_recency_filter:
             data["search_recency_filter"] = search_recency_filter
         
+        # Determine timeout to use
+        timeout_to_use = custom_timeout if custom_timeout is not None else (
+            self.deep_research_timeout if model == "sonar-deep-research" else self.timeout
+        )
+        
         # Log API request details
         request_id = log_api_request("POST", self.base_url, headers, data)
-        logger.debug(f"Making API request with model: {model}, request_id: {request_id}")
+        logger.debug(f"Making API request with model: {model}, timeout: {timeout_to_use}s, request_id: {request_id}")
         
         start_time = time.time()
         try:
-            async with httpx.AsyncClient(timeout=self.timeout) as client:
-                logger.debug(f"Sending HTTP POST to {self.base_url} with timeout {self.timeout}s")
+            async with httpx.AsyncClient(timeout=timeout_to_use) as client:
+                logger.debug(f"Sending HTTP POST to {self.base_url} with timeout {timeout_to_use}s")
                 response = await client.post(self.base_url, headers=headers, json=data)
                 duration = (time.time() - start_time) * 1000
                 

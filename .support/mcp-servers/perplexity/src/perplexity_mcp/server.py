@@ -34,6 +34,7 @@ logger.debug(f"Environment variables:")
 logger.debug(f"  PERPLEXITY_LOG_LEVEL: {os.getenv('PERPLEXITY_LOG_LEVEL', 'INFO')}")
 logger.debug(f"  PERPLEXITY_LOG_PATH: {os.getenv('PERPLEXITY_LOG_PATH') or 'NOT_SET'}")
 logger.debug(f"  PERPLEXITY_TIMEOUT: {os.getenv('PERPLEXITY_TIMEOUT', '60.0')}")
+logger.debug(f"  PERPLEXITY_DEEP_RESEARCH_TIMEOUT: {os.getenv('PERPLEXITY_DEEP_RESEARCH_TIMEOUT', '300.0')}")
 logger.debug(f"  PERPLEXITY_API_KEY: {'SET' if os.getenv('PERPLEXITY_API_KEY') else 'NOT_SET'}")
 
 # Create FastMCP server instance
