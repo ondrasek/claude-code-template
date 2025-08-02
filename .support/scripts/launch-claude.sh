@@ -723,11 +723,13 @@ main() {
     echo "🚀 launch-claude - Enhanced Claude Code wrapper"
     echo "📦 Model: $DEFAULT_MODEL"
     
-    # For interactive mode, keep logging enabled by default but inform user
-    if [[ ${#ARGS[@]} -eq 0 ]] && [[ "$SAVE_LOGS" != "force" ]]; then
-        # Keep logging enabled for debugging purposes
-        echo "ℹ️  Interactive mode: logging enabled for debugging"
+    # For interactive mode, disable logging by default unless forced
+    if [[ ${#ARGS[@]} -eq 0 ]] && [[ "$SAVE_LOGS" == "true" ]]; then
+        # Disable logging in interactive mode to preserve stdin
+        SAVE_LOGS="false"
+        echo "ℹ️  Interactive mode: logging disabled (use --force-logs to enable)"
     elif [[ ${#ARGS[@]} -eq 0 ]] && [[ "$SAVE_LOGS" == "force" ]]; then
+        SAVE_LOGS="true"
         echo "ℹ️  Interactive mode with forced logging enabled"
     fi
     
