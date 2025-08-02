@@ -18,7 +18,7 @@
       },
       "alwaysAllow": [
         "perplexity_search",
-        "perplexity_comprehensive_research",
+        "perplexity_deep_research",
         "perplexity_quick_query",
         "list_models",
         "health_check"

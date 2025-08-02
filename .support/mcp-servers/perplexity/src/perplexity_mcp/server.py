@@ -139,14 +139,14 @@ async def perplexity_search(
 
 @mcp.tool(
     annotations={
-        "title": "Comprehensive Research",
+        "title": "Deep Research Analysis",
         "description": "Conduct comprehensive research using the sonar-deep-research model",
         "readOnlyHint": True,
         "openWorldHint": False
     }
 )
 @debug_decorator
-async def perplexity_comprehensive_research(
+async def perplexity_deep_research(
     topic: str,
     search_domain_filter: Optional[List[str]] = None,
     search_recency_filter: Optional[str] = None,
@@ -154,7 +154,7 @@ async def perplexity_comprehensive_research(
     temperature: float = 0.3
 ) -> str:
     """
-    Conduct comprehensive research on a topic using the sonar-deep-research model.
+    Conduct deep research analysis on a topic using the sonar-deep-research model.
     
     Args:
         topic: Main research topic to investigate
@@ -166,8 +166,8 @@ async def perplexity_comprehensive_research(
     Returns:
         Detailed research report with comprehensive analysis and citations
     """
-    logger.info(f"Comprehensive research request: {topic}")
-    logger.debug(f"Research parameters: topic_length={len(topic)}, search_domain_filter={search_domain_filter}, search_recency_filter={search_recency_filter}, max_tokens={max_tokens}, temperature={temperature}")
+    logger.info(f"Deep research request: {topic}")
+    logger.debug(f"Deep research parameters: topic_length={len(topic)}, search_domain_filter={search_domain_filter}, search_recency_filter={search_recency_filter}, max_tokens={max_tokens}, temperature={temperature}")
     
     try:
         # Build comprehensive research prompt
@@ -193,9 +193,9 @@ Be thorough, balanced, and evidence-based. Structure your response clearly with 
         )
         
         if "error" in result:
-            logger.error(f"Comprehensive research API error: {result['error']}")
-            logger.debug(f"Full research error result: {result}")
-            return f"Comprehensive research failed: {result['error']}"
+            logger.error(f"Deep research API error: {result['error']}")
+            logger.debug(f"Full deep research error result: {result}")
+            return f"Deep research failed: {result['error']}"
         
         # Extract and format response
         content = result.get("choices", [{}])[0].get("message", {}).get("content", "No response generated")
@@ -213,13 +213,13 @@ Be thorough, balanced, and evidence-based. Structure your response clearly with 
                        f"Completion: {usage.get('completion_tokens', 0)}, "
                        f"Total: {usage.get('total_tokens', 0)}")
         
-        logger.debug(f"Comprehensive research completed successfully, content length: {len(content)}")
+        logger.debug(f"Deep research completed successfully, content length: {len(content)}")
         return content
         
     except Exception as e:
-        error_msg = f"Error during comprehensive research: {str(e)}"
+        error_msg = f"Error during deep research: {str(e)}"
         logger.error(error_msg)
-        logger.debug(f"Research exception details", exc_info=True)
+        logger.debug(f"Deep research exception details", exc_info=True)
         return error_msg
 
 
