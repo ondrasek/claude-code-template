@@ -1,8 +1,7 @@
 ---
-description: "Technology stack analysis and guidance for stack configurations and technology choices"
-argument-hint: "[--stack name] [--usage-patterns] [--effectiveness] [--recommendations]"
-allowed-tools: ["Task", "Read", "Glob", "Grep"]
-model: "sonnet"
+description: Technology stack analysis and guidance for stack configurations and technology choices.
+argument-hint: [--stack name] [--usage-patterns] [--effectiveness] [--recommendations]
+allowed-tools: Task, Read, Glob, Grep
 ---
 
 # Technology Stack Analysis

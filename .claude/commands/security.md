@@ -1,8 +1,7 @@
 ---
-description: "Security audit for vulnerabilities, risks, and remediation recommendations"
-argument-hint: "[--focus area] [--severity level] [--fix] [--quick] [--deps-only] [--output format]"
-allowed-tools: ["Task", "Read", "Grep", "Bash", "WebSearch"]
-model: "sonnet"
+description: Security audit for vulnerabilities, risks, and remediation recommendations.
+argument-hint: [--focus area] [--severity level] [--fix] [--quick] [--deps-only] [--output format]
+allowed-tools: Task, Read, Grep, Bash, WebSearch
 ---
 
 # Security Audit

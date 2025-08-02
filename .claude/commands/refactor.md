@@ -1,8 +1,7 @@
 ---
-description: "Comprehensive code refactoring for structure, performance, and maintainability"
-argument-hint: "[--pattern type] [--focus area] [--safe] [--dry-run] [--incremental] [FILES...]"
-allowed-tools: ["Task", "Read", "Edit", "MultiEdit", "Bash", "Grep"]
-model: "sonnet"
+description: Comprehensive code refactoring for structure, performance, and maintainability.
+argument-hint: [--pattern type] [--focus area] [--safe] [--dry-run] [--incremental] [FILES...]
+allowed-tools: Task, Read, Edit, MultiEdit, Bash, Grep
 ---
 
 # Code Refactoring

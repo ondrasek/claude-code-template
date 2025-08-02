@@ -1,8 +1,7 @@
 ---
-description: "Create new Claude Code agents following empirical principles and selection optimization"
-argument-hint: "[agent-name]"
-allowed-tools: ["Task", "Write", "Read", "Glob"]
-model: "sonnet"
+description: Create new Claude Code agents following empirical principles and selection optimization.
+argument-hint: [agent-name]
+allowed-tools: Task, Write, Read, Glob
 ---
 
 # Agent Creation

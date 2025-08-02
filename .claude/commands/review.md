@@ -1,8 +1,7 @@
 ---
-description: "Analyze code quality, identify issues, and provide recommendations"
-argument-hint: "[--commits N] [--memory] [FILES...]"
-allowed-tools: ["Task", "Read", "Grep", "Bash"]
-model: "sonnet"
+description: Analyze code quality, identify issues, and provide recommendations.
+argument-hint: [--commits N] [--memory] [FILES...]
+allowed-tools: Task, Read, Grep, Bash
 ---
 
 # Code Review

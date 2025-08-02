@@ -1,8 +1,7 @@
 ---
-description: "Implement targeted solutions for identified issues, bugs, or improvements"
-argument-hint: "[--issue description] [--safe] [--test] [--memory] [FILES...]"
-allowed-tools: ["Task", "Read", "Edit", "MultiEdit", "Bash", "Grep"]
-model: "sonnet"
+description: Implement targeted solutions for identified issues, bugs, or improvements.
+argument-hint: [--issue description] [--safe] [--test] [--memory] [FILES...]
+allowed-tools: Task, Read, Edit, MultiEdit, Bash, Grep
 ---
 
 # Issue Fix Implementation

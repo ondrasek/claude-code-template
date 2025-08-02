@@ -1,5 +1,5 @@
 ---
-description: Create new slash command following guidelines with redundancy analysis and agent coordination.
+description: Create new slash command following guidelines with comprehensive analysis.
 argument-hint: Command name, intent, objectives and purpose.
 allowed-tools: Task, Read, Write, Glob, Bash, WebSearch, WebFetch
 ---

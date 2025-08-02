@@ -1,8 +1,7 @@
 ---
-description: "Generate code components, services, and project scaffolding with templates"
-argument-hint: "[--type type] [--framework framework] [--template path] [--output dir] [--dry-run] [--overwrite] NAME"
-allowed-tools: ["Task", "Write", "Read", "MultiEdit", "Bash"]
-model: "sonnet"
+description: Generate code components, services, and project scaffolding with templates.
+argument-hint: [--type type] [--framework framework] [--template path] [--output dir] [--dry-run] [--overwrite] NAME
+allowed-tools: Task, Write, Read, MultiEdit, Bash
 ---
 
 # Code Generation

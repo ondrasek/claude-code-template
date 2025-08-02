@@ -1,8 +1,7 @@
 ---
-description: "Cleanup TODOs by removing completed tasks and stale obsolete items"
-argument-hint: "[--done] [--stale] [--dry-run] [--since date/tag] [--older-than timeframe] [--confirm-all] [--interactive] [--keep-types types]"
-allowed-tools: ["Task", "Bash"]
-model: "sonnet"
+description: Cleanup TODOs by removing completed tasks and stale obsolete items.
+argument-hint: [--done] [--stale] [--dry-run] [--since date/tag] [--older-than timeframe] [--confirm-all] [--interactive] [--keep-types types]
+allowed-tools: Task, Bash
 ---
 
 # TODO Cleanup

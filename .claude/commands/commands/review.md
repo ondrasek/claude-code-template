@@ -1,7 +1,7 @@
 ---
-description: Review slash command(s) following guidelines with redundancy analysis and agent coordination.
-argument-hint: Command name, group of commands, namespace or any other designation. Review all commands if empty.
-allowed-tools: Task, Read, Write, Glob, Bash, WebSearch, WebFetch
+description: Review slash command(s) following guidelines with comprehensive compliance analysis.
+argument-hint: [command-name] or [namespace/] to review specific commands, or empty to review all commands.
+allowed-tools: Task, Read, Glob, Bash
 ---
 
 # Command Compliance Review
@@ -18,21 +18,8 @@ Review slash command definition for compliance with @.support/instructions/claud
 2. Validate command exists somewhere in .claude/commands/ directory before proceeding
 
 3. Execute comprehensive parallel compliance analysis clusters:
-
-**Phase 1: Structure and Format Analysis**
-- **File Structure Cluster**: foundation-patterns + specialist-code-cleaner + foundation-principles (file format validation, structure compliance, principle adherence)
-- **Frontmatter Analysis Cluster**: foundation-criticism + specialist-constraint-solver (frontmatter completeness, field validation, tool restrictions)
-- **Content Structure Cluster**: foundation-principles + specialist-stack-advisor (content organization, instruction clarity, best practices)
-
-**Phase 2: Guidelines Compliance Assessment**
-- **Naming Convention Cluster**: foundation-patterns + foundation-principles (file naming, command naming, convention compliance)
-- **Security Compliance Cluster**: foundation-criticism + specialist-constraint-solver + foundation-research (tool restrictions, permission model, security best practices)
-- **Content Quality Cluster**: specialist-code-cleaner + foundation-principles + foundation-criticism (instruction quality, AI-optimization, clarity assessment)
-
-**Phase 3: Best Practices and Optimization**
-- **Agent Coordination Analysis**: foundation-research + specialist-options-analyzer + foundation-context (agent usage patterns, coordination efficiency, best practices)
-- **Integration Pattern Analysis**: foundation-context + specialist-stack-advisor + foundation-principles (project integration, workflow alignment, technology compliance)
-- **Quality Assurance Cluster**: foundation-criticism + foundation-principles + specialist-test-strategist (overall quality, improvement opportunities, validation requirements)
+   - Use agents to review the commands.
+   - In case you are reviewing multiple commands, use agents to review each command separately.
 
 4. Compliance Validation Checklist:
 

@@ -1,8 +1,7 @@
 ---
-description: "Cleanup completed/stale TODOs and determine optimal next task with strategic prioritization"
-argument-hint: "[--limit N]"
-allowed-tools: ["Task", "Bash"]
-model: "sonnet"
+description: Cleanup completed/stale TODOs and determine optimal next task with strategic prioritization.
+argument-hint: [--limit N]
+allowed-tools: Task, Bash
 ---
 
 # TODO Cleanup and Next Task

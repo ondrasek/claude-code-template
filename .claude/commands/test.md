@@ -1,8 +1,7 @@
 ---
-description: "Run tests, create tests, and analyze coverage with automatic framework detection"
-argument-hint: "[--coverage] [--create-only] [--fix] [--focus pattern] [--quick] [--watch] [FILES...]"
-allowed-tools: ["Task", "Bash", "Read", "Write", "Edit"]
-model: "sonnet"
+description: Run tests, create tests, and analyze coverage with automatic framework detection.
+argument-hint: [--coverage] [--create-only] [--fix] [--focus pattern] [--quick] [--watch] [FILES...]
+allowed-tools: Task, Bash, Read, Write, Edit
 ---
 
 # Test Management

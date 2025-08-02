@@ -1,8 +1,7 @@
 ---
-description: "Analyze performance bottlenecks, optimization opportunities, and scalability concerns"
-argument-hint: "[--commits N] [--profile] [--memory] [FILES...]"
-allowed-tools: ["Task", "Read", "Grep", "Bash"]
-model: "sonnet"
+description: Analyze performance bottlenecks, optimization opportunities, and scalability concerns.
+argument-hint: [--commits N] [--profile] [--memory] [FILES...]
+allowed-tools: Task, Read, Grep, Bash
 ---
 
 # Performance Analysis

@@ -1,8 +1,7 @@
 ---
-description: "Automate deployment processes and infrastructure management with safety checks"
-argument-hint: "[--env env] [--strategy strategy] [--dry-run] [--rollback] [--health-check] [FILES...]"
-allowed-tools: ["Task", "Bash", "Read", "Write", "Glob"]
-model: "sonnet"
+description: Automate deployment processes and infrastructure management with safety checks.
+argument-hint: [--env env] [--strategy strategy] [--dry-run] [--rollback] [--health-check] [FILES...]
+allowed-tools: Task, Bash, Read, Write, Glob
 ---
 
 # Deployment Automation

@@ -1,8 +1,7 @@
 ---
-description: "Analyze completed TODOs and prepare version release with automatic CHANGELOG generation"
-argument-hint: "[version-type]"
-allowed-tools: ["Task", "Read", "Edit", "Write", "Bash"]
-model: "sonnet"
+description: Analyze completed TODOs and prepare version release with automatic CHANGELOG generation.
+argument-hint: [version-type]
+allowed-tools: Task, Read, Edit, Write, Bash
 ---
 
 # Version Release Preparation

@@ -1,8 +1,7 @@
 ---
-description: "Setup and manage application monitoring, logging, and observability"
-argument-hint: "[--type type] [--platform platform] [--env env] [--services services] [options]"
-allowed-tools: ["Task", "Read", "Write", "Edit", "Bash"]
-model: "sonnet"
+description: Setup and manage application monitoring, logging, and observability.
+argument-hint: [--type type] [--platform platform] [--env env] [--services services] [options]
+allowed-tools: Task, Read, Write, Edit, Bash
 ---
 
 # Monitoring and Observability

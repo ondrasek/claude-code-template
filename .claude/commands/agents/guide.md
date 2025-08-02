@@ -1,8 +1,7 @@
 ---
-description: "Comprehensive guide for effectively using all specialized AI agents in the current ecosystem"
-argument-hint: "[--agent agent-name] [--workflow workflow-type] [--examples]"
-allowed-tools: ["Task", "Read", "Glob"]
-model: "sonnet"
+description: Comprehensive guide for effectively using all specialized AI agents in the current ecosystem.
+argument-hint: [--agent agent-name] [--workflow workflow-type] [--examples]
+allowed-tools: Task, Read, Glob
 ---
 
 # Agent Usage Guide

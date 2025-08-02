@@ -1,8 +1,7 @@
 ---
-description: "Comprehensive multi-perspective analysis of ideas and proposals for decision support"
-argument-hint: "[--focus area] [--depth level] [--stakeholders group] [--constraints type] [topic]"
-allowed-tools: ["Task", "Read", "Grep", "WebSearch"]
-model: "sonnet"
+description: Comprehensive multi-perspective analysis of ideas and proposals for decision support.
+argument-hint: [--focus area] [--depth level] [--stakeholders group] [--constraints type] [topic]
+allowed-tools: Task, Read, Grep, WebSearch
 ---
 
 # Discussion and Analysis

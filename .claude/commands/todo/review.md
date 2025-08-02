@@ -1,8 +1,7 @@
 ---
-description: "Review existing TODOs, prioritize tasks, and analyze TODO backlog for strategic planning"
-argument-hint: "[--filter status] [--priority level] [--type type] [--limit N] [--actionable-only]"
-allowed-tools: ["Task"]
-model: "sonnet"
+description: Review existing TODOs, prioritize tasks, and analyze TODO backlog for strategic planning.
+argument-hint: [--filter status] [--priority level] [--type type] [--limit N] [--actionable-only]
+allowed-tools: Task
 ---
 
 # TODO Review

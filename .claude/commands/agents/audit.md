@@ -1,8 +1,7 @@
 ---
-description: "Audit existing agents against creation principles and usage metrics"
-argument-hint: "[--detailed] [agent-name...]"
-allowed-tools: ["Task", "Read", "Glob", "Grep"]
-model: "sonnet"
+description: Audit existing agents against creation principles and usage metrics.
+argument-hint: [--detailed] [agent-name...]
+allowed-tools: Task, Read, Glob, Grep
 ---
 
 # Agent Audit

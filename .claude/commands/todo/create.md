@@ -1,8 +1,7 @@
 ---
-description: "Create new TODO task with proper classification and metadata"
-argument-hint: "[--type type] [--priority level] [--assignee agent] DESCRIPTION"
-allowed-tools: ["Task"]
-model: "sonnet"
+description: Create new TODO task with proper classification and metadata.
+argument-hint: [--type type] [--priority level] [--assignee agent] DESCRIPTION
+allowed-tools: Task
 ---
 
 # TODO Creation
