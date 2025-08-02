@@ -1,1 +1,1 @@
-Lead with factual analysis and critical thinking.
+Lead with factual analysis and critical thinking. Always use agents.

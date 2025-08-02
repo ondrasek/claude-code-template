@@ -190,7 +190,8 @@ EXAMPLES:
 FEATURES:
     - All logging enabled by default (verbose, debug, MCP debug, save logs)
     - Default model set to sonnet for optimal performance
-    - Automatic MCP configuration loading from .mcp.json in project root
+    - Automatic MCP configuration loading from centralized config
+      (.support/mcp-servers/mcp-config.json or legacy .mcp.json)
     - Automatic master prompt loading from $MASTER_PROMPT_FILE
     - Comprehensive logging to .support/logs/claude-code/ directory
     - Organized log categories: sessions, mcp, telemetry, debug
@@ -407,13 +408,27 @@ build_claude_command() {
     # Set default model
     CLAUDE_CMD+=(--model "$DEFAULT_MODEL")
     
-    # Add MCP configuration file if it exists in project root
-    local mcp_config="$PROJECT_ROOT/.mcp.json"
-    if [[ -f "$mcp_config" ]]; then
-        CLAUDE_CMD+=(--mcp-config "$mcp_config")
-        if [[ "$DEBUG_MODE" == "true" ]]; then
-            echo "🔌 Using MCP config: $mcp_config" >&2
+    # Add MCP configuration file - check multiple locations in priority order
+    local mcp_config_found=""
+    local mcp_config_locations=(
+        "$PROJECT_ROOT/.mcp.json"                           # Project root (legacy)
+        "$PROJECT_ROOT/.support/mcp-servers/mcp-config.json" # Centralized config
+    )
+    
+    for mcp_config in "${mcp_config_locations[@]}"; do
+        if [[ -f "$mcp_config" ]]; then
+            mcp_config_found="$mcp_config"
+            break
         fi
+    done
+    
+    if [[ -n "$mcp_config_found" ]]; then
+        CLAUDE_CMD+=(--mcp-config "$mcp_config_found")
+        if [[ "$DEBUG_MODE" == "true" ]]; then
+            echo "🔌 Using MCP config: $mcp_config_found" >&2
+        fi
+    elif [[ "$DEBUG_MODE" == "true" ]]; then
+        echo "ℹ️  No MCP configuration file found" >&2
     fi
     
     # Add verbose mode if enabled

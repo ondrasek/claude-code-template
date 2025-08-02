@@ -1,0 +1,68 @@
+{
+  "mcpServers": {
+    "perplexity-research": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        ".support/mcp-servers/perplexity",
+        "run",
+        "src/perplexity_mcp/server.py"
+      ],
+      "env": {
+        "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}",
+        "PERPLEXITY_LOG_LEVEL": "${PERPLEXITY_LOG_LEVEL:-INFO}",
+        "PERPLEXITY_DEFAULT_MODEL": "${PERPLEXITY_DEFAULT_MODEL:-sonar}",
+        "PERPLEXITY_DEFAULT_SYSTEM": "${PERPLEXITY_DEFAULT_SYSTEM:-Provide detailed, technical responses with citations.}"
+      },
+      "alwaysAllow": [
+        "perplexity_search",
+        "perplexity_deep_research", 
+        "perplexity_quick_query",
+        "list_models",
+        "health_check"
+      ],
+      "description": "Perplexity AI research and web search capabilities with real-time information access"
+    }
+  },
+  "globalSettings": {
+    "timeout": 30000,
+    "retries": 3,
+    "logLevel": "${MCP_LOG_LEVEL:-info}",
+    "enableTelemetry": "${MCP_ENABLE_TELEMETRY:-false}",
+    "allowNetworkAccess": true
+  },
+  "environmentDefaults": {
+    "development": {
+      "logLevel": "debug",
+      "enableTelemetry": "true",
+      "timeout": 60000
+    },
+    "production": {
+      "logLevel": "warn",
+      "enableTelemetry": "false",
+      "timeout": 15000
+    }
+  },
+  "configMetadata": {
+    "version": "1.0.0",
+    "description": "Centralized MCP server configuration for Claude Code template project",
+    "created": "2025-08-02",
+    "lastModified": "2025-08-02",
+    "supportedServers": [
+      "perplexity-research"
+    ],
+    "environmentVariables": {
+      "required": [
+        "PERPLEXITY_API_KEY"
+      ],
+      "optional": [
+        "PERPLEXITY_LOG_LEVEL",
+        "PERPLEXITY_DEFAULT_MODEL", 
+        "PERPLEXITY_DEFAULT_SYSTEM",
+        "MCP_LOG_LEVEL",
+        "MCP_ENABLE_TELEMETRY",
+        "PROJECT_ENV"
+      ]
+    }
+  }
+}
