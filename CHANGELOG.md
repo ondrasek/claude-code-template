@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.41.1] - 2025-08-02
+
+### Fixed
+- **Critical Bug Fix**: SESSION_TIMESTAMP unbound variable error in launch-claude script that caused script failure when logging was enabled
+- **Enhanced**: Session-based logging system reliability and error handling
+
 ## [2.41.0] - 2025-08-02
 
 ### Added
