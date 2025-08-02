@@ -20,7 +20,6 @@ command definitions are meant for Claude Code. They are instructions, NOT human 
 description: Brief command description.
 argument-hint: Expected argument format.
 allowed-tools: Tool1, Tool2(tool arguments), Tool3
-model: sonnet
 ---
 
 # Command Title
@@ -43,15 +42,13 @@ Use $ARGUMENTS to reference passed parameters.
 - **`description`**: Brief command explanation for help text
 - **`argument-hint`**: Describe expected arguments for user guidance
 - **`allowed-tools`**: Array of permitted tools for command execution
-- **`model`**: Select specific Claude model variant, usually sonnet
 
 ### Example Frontmatter
 ```yaml
 ---
 description: Execute git workflow with intelligent commit messages.
 argument-hint: Optional custom commit message.
-allowed-tools: Bash, Read, Write, Edit
-model: sonnet
+allowed-tools: Bash(git add *), Bash(got commit *), Read, Write, Edit
 ---
 ```
 
