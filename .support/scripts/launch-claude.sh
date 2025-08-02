@@ -176,6 +176,8 @@ OPTIONS:
     -m, --model MODEL        Set model (default: $DEFAULT_MODEL)
     --log-file FILE          Save logs to specified file (default: timestamped)
     --analyze-logs           Analyze existing log files using Claude Code agents
+    --clean-logs             Remove all existing session directories from .support/logs/
+    --troubleshoot-mcp       Analyze and troubleshoot MCP server issues using agents
     --skip-permissions       Force enable --dangerously-skip-permissions flag
     --no-skip-permissions    Force disable --dangerously-skip-permissions flag
     --no-env                 Disable .env file loading
@@ -186,6 +188,8 @@ EXAMPLES:
     launch-claude --quiet --no-logs "Simple query without logging"
     launch-claude --log-file custom.log "Session with custom log file"
     launch-claude --analyze-logs
+    launch-claude --clean-logs
+    launch-claude --troubleshoot-mcp
 
 FEATURES:
     - All logging enabled by default (verbose, debug, MCP debug, save logs)
@@ -193,8 +197,8 @@ FEATURES:
     - Automatic MCP configuration loading from centralized config
       (.support/mcp-servers/mcp-config.json or legacy .mcp.json)
     - Automatic master prompt loading from $MASTER_PROMPT_FILE
-    - Comprehensive logging to .support/logs/claude-code/ directory
-    - Organized log categories: sessions, mcp, telemetry, debug
+    - Session-based logging to .support/logs/ directory with timestamped folders
+    - Organized logs by session with all log types grouped together
     - MCP server debugging with telemetry support
     - Multi-agent log analysis using Claude Code agents
     - Auto-detection of devcontainer/codespace environments for permissions
@@ -203,45 +207,255 @@ FEATURES:
 EOF
 }
 
+# Function to clean all log files
+clean_logs() {
+    echo "🧹 Cleaning all Claude Code session logs..."
+    
+    if [[ ! -d "$LOG_BASE_DIR" ]]; then
+        echo "ℹ️  No log directory found at $LOG_BASE_DIR"
+        return 0
+    fi
+    
+    # Find all session directories (format: YYYYMMDD-HHMMSS)
+    local session_dirs=($(find "$LOG_BASE_DIR" -maxdepth 1 -type d -name "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9][0-9]" 2>/dev/null | sort))
+    
+    if [[ ${#session_dirs[@]} -eq 0 ]]; then
+        echo "ℹ️  No session directories found to delete."
+        return 0
+    fi
+    
+    # Confirm destructive action
+    echo "⚠️  This will permanently delete ALL session directories in:"
+    echo "   📁 $LOG_BASE_DIR"
+    echo
+    
+    # Count sessions and files to be deleted
+    local total_files=0
+    echo "📊 Session directories to be deleted:"
+    for session_dir in "${session_dirs[@]}"; do
+        local session_name=$(basename "$session_dir")
+        local file_count=$(find "$session_dir" -type f 2>/dev/null | wc -l)
+        total_files=$((total_files + file_count))
+        echo "   📅 $session_name ($file_count files)"
+    done
+    echo "   📁 Total sessions: ${#session_dirs[@]}"
+    echo "   📄 Total files: $total_files"
+    echo
+    
+    read -p "Are you sure you want to delete ${#session_dirs[@]} session directories with $total_files files? [y/N]: " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "❌ Log cleanup cancelled."
+        return 1
+    fi
+    
+    # Perform deletion with error handling
+    local deleted_sessions=0
+    local error_count=0
+    
+    for session_dir in "${session_dirs[@]}"; do
+        local session_name=$(basename "$session_dir")
+        echo "🗑️  Cleaning session $session_name..."
+        
+        if rm -rf "$session_dir" 2>/dev/null; then
+            ((deleted_sessions++))
+        else
+            echo "❌ Failed to delete: $session_dir"
+            ((error_count++))
+        fi
+    done
+    
+    echo
+    if [[ $error_count -eq 0 ]]; then
+        echo "✅ Successfully deleted $deleted_sessions session directories."
+    else
+        echo "⚠️  Deleted $deleted_sessions sessions with $error_count errors."
+    fi
+    
+    # Clean up empty base directory if needed
+    if [[ -d "$LOG_BASE_DIR" ]] && [[ -z "$(ls -A "$LOG_BASE_DIR" 2>/dev/null)" ]]; then
+        rmdir "$LOG_BASE_DIR" 2>/dev/null || true
+    fi
+}
+
+# Function to troubleshoot MCP server issues using agents
+troubleshoot_mcp() {
+    echo "🔧 Troubleshooting MCP server issues using Claude Code agents..."
+    
+    # Check if log directory exists
+    if [[ ! -d "$LOG_BASE_DIR" ]]; then
+        echo "❌ No log directory found at $LOG_BASE_DIR"
+        echo "💡 Run launch-claude with logging enabled first to generate logs for analysis."
+        exit 1
+    fi
+    
+    # Find relevant log files for MCP troubleshooting
+    local session_logs=($(find "$SESSION_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -5))
+    local mcp_logs=($(find "$MCP_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -5))
+    local debug_logs=($(find "$DEBUG_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -5))
+    local telemetry_logs=($(find "$TELEMETRY_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -3))
+    
+    # Also check for MCP configuration files
+    local mcp_configs=()
+    for mcp_config in "$PROJECT_ROOT/.mcp.json" "$PROJECT_ROOT/.support/mcp-servers/mcp-config.json"; do
+        if [[ -f "$mcp_config" ]]; then
+            mcp_configs+=("$mcp_config")
+        fi
+    done
+    
+    # Combine all relevant files
+    local all_files=("${session_logs[@]}" "${mcp_logs[@]}" "${debug_logs[@]}" "${telemetry_logs[@]}" "${mcp_configs[@]}")
+    
+    if [[ ${#all_files[@]} -eq 0 ]]; then
+        echo "❌ No log files or MCP configuration files found for analysis."
+        echo "💡 Run launch-claude with MCP features enabled first to generate data for troubleshooting."
+        exit 1
+    fi
+    
+    echo "🔍 Found files for MCP troubleshooting analysis:"
+    echo "   📋 Session logs: ${#session_logs[@]}"
+    echo "   🔌 MCP logs: ${#mcp_logs[@]}"
+    echo "   🐛 Debug logs: ${#debug_logs[@]}"
+    echo "   📊 Telemetry logs: ${#telemetry_logs[@]}"
+    echo "   ⚙️  Configuration files: ${#mcp_configs[@]}"
+    echo "   📁 Total files: ${#all_files[@]}"
+    echo
+    
+    # Build analysis command with same permissions handling as main script
+    local analysis_cmd=("claude" --model "$DEFAULT_MODEL")
+    
+    # Auto-detect environment for analysis command
+    if [[ -n "${CODESPACES:-}" ]] || [[ -n "${REMOTE_CONTAINERS:-}" ]] || [[ -f "/.dockerenv" ]] || [[ -n "${DEVCONTAINER:-}" ]] || [[ "$SKIP_PERMISSIONS" == "true" ]]; then
+        analysis_cmd+=(--dangerously-skip-permissions)
+    fi
+    
+    # Use Claude Code with specialized agents for MCP troubleshooting
+    echo "🤖 Launching specialized MCP troubleshooting analysis with multiple agents..."
+    "${analysis_cmd[@]}" "Use the foundation-research, specialist-options-analyzer, foundation-patterns, and specialist-constraint-solver agents to perform comprehensive MCP server troubleshooting analysis on these files:
+
+SESSION LOGS: ${session_logs[*]}
+MCP SERVER LOGS: ${mcp_logs[*]}
+DEBUG LOGS: ${debug_logs[*]}
+TELEMETRY LOGS: ${telemetry_logs[*]}
+CONFIGURATION FILES: ${mcp_configs[*]}
+
+Please analyze and troubleshoot:
+
+1. **MCP Server Connection Issues**:
+   - Server startup and initialization problems
+   - Connection establishment failures
+   - Protocol handshake errors
+   - Network connectivity issues
+
+2. **Configuration Problems**:
+   - Invalid or malformed MCP configuration
+   - Missing required environment variables
+   - Permission and access control issues
+   - Path resolution problems
+
+3. **Runtime Errors**:
+   - Server crashes or unexpected exits
+   - Memory leaks or resource exhaustion
+   - Protocol violation errors
+   - Communication timeouts
+
+4. **Performance Issues**:
+   - Slow response times
+   - High resource usage
+   - Request/response bottlenecks
+   - Scalability concerns
+
+5. **Integration Problems**:
+   - Claude Code to MCP server communication
+   - Tool execution failures
+   - Data serialization/deserialization errors
+   - State management issues
+
+For each issue found, provide:
+- Root cause analysis
+- Step-by-step troubleshooting instructions
+- Configuration fixes and recommendations
+- Preventive measures for future issues
+- Testing procedures to verify fixes
+
+Focus on actionable solutions that can be implemented immediately to resolve MCP server problems."
+}
+
 # Function to analyze logs using Claude Code agents
 analyze_logs() {
     echo "🔍 Analyzing logs using Claude Code agents..."
     
     # Check if log directory exists
-    if [[ -d "$LOG_BASE_DIR" ]]; then
-        # Find log files from all categories
-        local session_logs=($(find "$SESSION_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -3))
-        local mcp_logs=($(find "$MCP_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -3))
-        local debug_logs=($(find "$DEBUG_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -3))
-        local telemetry_logs=($(find "$TELEMETRY_LOG_DIR" -name "*.log" -type f 2>/dev/null | head -2))
+    if [[ ! -d "$LOG_BASE_DIR" ]]; then
+        echo "❌ No log directory found at $LOG_BASE_DIR"
+        echo "💡 Run launch-claude with logging enabled first to generate logs."
+        exit 1
+    fi
+    
+    # Find recent session directories (last 5 sessions)
+    local session_dirs=($(find "$LOG_BASE_DIR" -maxdepth 1 -type d -name "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9][0-9]" 2>/dev/null | sort -r | head -5))
+    
+    if [[ ${#session_dirs[@]} -eq 0 ]]; then
+        echo "❌ No session directories found in $LOG_BASE_DIR"
+        echo "💡 Run launch-claude with logging enabled first to generate logs."
+        exit 1
+    fi
+    
+    # Collect log files from recent sessions
+    local session_logs=()
+    local mcp_logs=()
+    local debug_logs=()
+    local telemetry_logs=()
+    
+    for session_dir in "${session_dirs[@]}"; do
+        # Find timestamped log files in each session directory
+        local session_file=$(find "$session_dir" -name "session-*.log" -type f 2>/dev/null | head -1)
+        local mcp_file=$(find "$session_dir" -name "mcp-*.log" -type f 2>/dev/null | head -1)
+        local debug_file=$(find "$session_dir" -name "debug-*.log" -type f 2>/dev/null | head -1)
+        local telemetry_file=$(find "$session_dir" -name "telemetry-*.log" -type f 2>/dev/null | head -1)
         
-        # Combine all log files
-        local all_logs=("${session_logs[@]}" "${mcp_logs[@]}" "${debug_logs[@]}" "${telemetry_logs[@]}")
-        
-        if [[ ${#all_logs[@]} -eq 0 ]]; then
-            echo "❌ No log files found in $LOG_BASE_DIR"
-            echo "💡 Run launch-claude with logging enabled first to generate logs."
-            exit 1
+        if [[ -n "$session_file" ]]; then
+            session_logs+=("$session_file")
         fi
-        
-        echo "📊 Found log files for analysis:"
-        echo "   📋 Session logs: ${#session_logs[@]}"
-        echo "   🔌 MCP logs: ${#mcp_logs[@]}"
-        echo "   🐛 Debug logs: ${#debug_logs[@]}"
-        echo "   📊 Telemetry logs: ${#telemetry_logs[@]}"
-        echo "   📁 Total files: ${#all_logs[@]}"
-        
-        # Build analysis command with same permissions handling as main script
-        local analysis_cmd=("claude" --model "$DEFAULT_MODEL")
-        
-        # Auto-detect environment for analysis command (same logic as detect_environment)
-        if [[ -n "${CODESPACES:-}" ]] || [[ -n "${REMOTE_CONTAINERS:-}" ]] || [[ -f "/.dockerenv" ]] || [[ -n "${DEVCONTAINER:-}" ]] || [[ "$SKIP_PERMISSIONS" == "true" ]]; then
-            analysis_cmd+=(--dangerously-skip-permissions)
+        if [[ -n "$mcp_file" ]]; then
+            mcp_logs+=("$mcp_file")
         fi
-        
-        # Use Claude Code with multiple agents for comprehensive analysis including security
-        echo "🤖 Launching comprehensive log analysis with multiple agents..."
-        "${analysis_cmd[@]}" "Use the researcher, patterns, vulnerability-scanner, and threat-modeling agents to analyze these log files comprehensively:
+        if [[ -n "$debug_file" ]]; then
+            debug_logs+=("$debug_file")
+        fi
+        if [[ -n "$telemetry_file" ]]; then
+            telemetry_logs+=("$telemetry_file")
+        fi
+    done
+    
+    # Combine all log files
+    local all_logs=("${session_logs[@]}" "${mcp_logs[@]}" "${debug_logs[@]}" "${telemetry_logs[@]}")
+    
+    if [[ ${#all_logs[@]} -eq 0 ]]; then
+        echo "❌ No log files found in session directories"
+        echo "💡 Run launch-claude with logging enabled first to generate logs."
+        exit 1
+    fi
+    
+    echo "📊 Found log files for analysis:"
+    echo "   📅 Sessions analyzed: ${#session_dirs[@]}"
+    echo "   📋 Session logs: ${#session_logs[@]}"
+    echo "   🔌 MCP logs: ${#mcp_logs[@]}"
+    echo "   🐛 Debug logs: ${#debug_logs[@]}"
+    echo "   📊 Telemetry logs: ${#telemetry_logs[@]}"
+    echo "   📁 Total files: ${#all_logs[@]}"
+    
+    # Build analysis command with same permissions handling as main script
+    local analysis_cmd=("claude" --model "$DEFAULT_MODEL")
+    
+    # Auto-detect environment for analysis command (same logic as detect_environment)
+    if [[ -n "${CODESPACES:-}" ]] || [[ -n "${REMOTE_CONTAINERS:-}" ]] || [[ -f "/.dockerenv" ]] || [[ -n "${DEVCONTAINER:-}" ]] || [[ "$SKIP_PERMISSIONS" == "true" ]]; then
+        analysis_cmd+=(--dangerously-skip-permissions)
+    fi
+    
+    # Use Claude Code with multiple agents for comprehensive analysis including security
+    echo "🤖 Launching comprehensive log analysis with multiple agents..."
+    "${analysis_cmd[@]}" "Use the researcher, patterns, vulnerability-scanner, and threat-modeling agents to analyze these log files comprehensively:
 
 SESSION LOGS: ${session_logs[*]}
 MCP LOGS: ${mcp_logs[*]}
@@ -260,12 +474,6 @@ Please analyze for:
 
 Focus on Claude Code usage patterns, not performance analysis of the launch-claude.sh script itself.
 Provide a structured analysis with specific findings and actionable next steps."
-        
-    else
-        echo "❌ No log directory found at $LOG_BASE_DIR"
-        echo "💡 Run launch-claude with logging enabled first to generate logs."
-        exit 1
-    fi
 }
 
 # Parse command line arguments
@@ -305,6 +513,14 @@ while [[ $# -gt 0 ]]; do
             analyze_logs
             exit 0
             ;;
+        --clean-logs)
+            clean_logs
+            exit 0
+            ;;
+        --troubleshoot-mcp)
+            troubleshoot_mcp
+            exit 0
+            ;;
         --skip-permissions)
             SKIP_PERMISSIONS="true"
             shift
@@ -334,18 +550,18 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Setup comprehensive logging system
+# Setup session-based logging system
 setup_logging() {
     if [[ "$SAVE_LOGS" == "true" ]]; then
-        # Create all log directories
-        mkdir -p "$SESSION_LOG_DIR" "$MCP_LOG_DIR" "$TELEMETRY_LOG_DIR" "$DEBUG_LOG_DIR"
+        # Generate session timestamp
+        SESSION_TIMESTAMP=$(date +"%Y%m%d-%H%M%S")
         
-        # Set up timestamped log files if not specified
-        local timestamp
-        timestamp=$(date +%Y%m%d-%H%M%S)
+        # Create session directory
+        mkdir -p "$SESSION_LOG_DIR"
         
+        # Set up log files in session directory with timestamps
         if [[ -z "$LOG_FILE" ]]; then
-            LOG_FILE="$SESSION_LOG_DIR/mycc-session-$timestamp.log"
+            LOG_FILE="$SESSION_LOG_DIR/mycc-session-$SESSION_TIMESTAMP.log"
         fi
         
         # Set up environment variables for comprehensive logging
@@ -360,24 +576,38 @@ setup_logging() {
         export OTEL_METRIC_EXPORT_INTERVAL=10000
         export OTEL_LOGS_EXPORT_INTERVAL=5000
         
-        # Create organized log files
-        local session_log="$SESSION_LOG_DIR/session-$timestamp.log"
-        local mcp_log="$MCP_LOG_DIR/mcp-$timestamp.log"
-        local telemetry_log="$TELEMETRY_LOG_DIR/telemetry-$timestamp.log"
-        local debug_log="$DEBUG_LOG_DIR/debug-$timestamp.log"
+        # Create session-specific log files with timestamps
+        local session_log="$SESSION_LOG_DIR/session-$SESSION_TIMESTAMP.log"
+        local mcp_log="$SESSION_LOG_DIR/mcp-$SESSION_TIMESTAMP.log"
+        local telemetry_log="$SESSION_LOG_DIR/telemetry-$SESSION_TIMESTAMP.log"
+        local debug_log="$SESSION_LOG_DIR/debug-$SESSION_TIMESTAMP.log"
+        local session_info="$SESSION_LOG_DIR/session-info.txt"
         
         # Store paths for later use
         export MYCC_SESSION_LOG="$session_log"
         export MYCC_MCP_LOG="$mcp_log"
         export MYCC_TELEMETRY_LOG="$telemetry_log"
         export MYCC_DEBUG_LOG="$debug_log"
+        export MYCC_SESSION_INFO="$session_info"
         
-        echo "📝 Comprehensive logging enabled:"
-        echo "   📋 Session logs: $session_log"
-        echo "   🔌 MCP logs: $mcp_log"
-        echo "   📊 Telemetry logs: $telemetry_log"  
-        echo "   🐛 Debug logs: $debug_log"
-        echo "   📁 All logs in: $LOG_BASE_DIR"
+        # Create session info file
+        cat > "$session_info" << EOF
+Session: $SESSION_TIMESTAMP
+Started: $(date)
+Model: $DEFAULT_MODEL
+Verbose: $VERBOSE_MODE
+Debug: $DEBUG_MODE
+MCP Debug: $MCP_DEBUG
+Project: $PROJECT_ROOT
+EOF
+        
+        echo "📝 Session-based logging enabled:"
+        echo "   📁 Session directory: $SESSION_LOG_DIR"
+        echo "   📋 Session log: session-$SESSION_TIMESTAMP.log"
+        echo "   🔌 MCP log: mcp-$SESSION_TIMESTAMP.log"
+        echo "   📊 Telemetry log: telemetry-$SESSION_TIMESTAMP.log"
+        echo "   🐛 Debug log: debug-$SESSION_TIMESTAMP.log"
+        echo "   ℹ️  Session info: session-info.txt"
     fi
 }
 

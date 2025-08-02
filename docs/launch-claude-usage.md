@@ -174,6 +174,82 @@ The `--analyze-logs` feature uses multiple Claude Code agents to analyze your lo
    - Optimization opportunities
    - Code quality improvements
 
+## Log Management
+
+### Cleaning Log Files
+
+The `--clean-logs` feature provides safe deletion of all Claude Code session directories:
+
+```bash
+# Remove all existing session directories with confirmation
+launch-claude --clean-logs
+```
+
+**Safety Features:**
+- Shows session counts and file counts before deletion
+- Requires user confirmation
+- Provides detailed deletion report per session
+- Handles permission errors gracefully
+- Cleans up empty base directory
+
+### Log File Organization
+
+Log files are organized in session-based directories with timestamped structure:
+```
+.support/logs/
+├── 20250801-110044/                    # Session started Aug 1, 2025 at 11:00:44
+│   ├── session-20250801-110044.log     # Main session log
+│   ├── mcp-20250801-110044.log         # MCP server communication
+│   ├── debug-20250801-110044.log       # Debug output
+│   ├── telemetry-20250801-110044.log   # Performance metrics
+│   └── session-info.txt                # Session metadata
+├── 20250802-074500/                    # Session started Aug 2, 2025 at 7:45:00
+│   ├── session-20250802-074500.log
+│   ├── mcp-20250802-074500.log
+│   ├── debug-20250802-074500.log
+│   ├── telemetry-20250802-074500.log
+│   └── session-info.txt
+└── ...
+```
+
+**Benefits of Session-Based Structure:**
+- **Complete Session Tracking**: All logs for a single session are grouped together
+- **Easy Cleanup**: Delete entire sessions at once
+- **Timeline Analysis**: Chronological session organization
+- **Session Metadata**: Each session includes configuration and timing information
+
+## MCP Server Troubleshooting
+
+### Automated MCP Diagnostics
+
+The `--troubleshoot-mcp` feature provides comprehensive MCP server analysis:
+
+```bash
+# Analyze MCP server issues using specialized agents
+launch-claude --troubleshoot-mcp
+```
+
+**Analysis Coverage:**
+- **Connection Issues**: Server startup, handshake, network connectivity
+- **Configuration Problems**: Invalid configs, missing variables, permissions
+- **Runtime Errors**: Crashes, memory leaks, protocol violations
+- **Performance Issues**: Slow responses, resource usage, bottlenecks
+- **Integration Problems**: Communication errors, tool failures
+
+**Specialized Agent Analysis:**
+- `foundation-research`: Investigates root causes and patterns
+- `specialist-options-analyzer`: Explores solution alternatives
+- `foundation-patterns`: Identifies anti-patterns and best practices
+- `specialist-constraint-solver`: Resolves configuration conflicts
+
+### Troubleshooting Process
+
+1. **File Discovery**: Finds relevant log files and configurations
+2. **Multi-Agent Analysis**: Uses specialized agents for comprehensive review
+3. **Root Cause Analysis**: Identifies underlying issues and dependencies
+4. **Solution Recommendations**: Provides step-by-step fixes
+5. **Prevention Strategies**: Suggests measures to avoid future issues
+
 ## Command Reference
 
 | Option | Description | Example |
@@ -186,6 +262,8 @@ The `--analyze-logs` feature uses multiple Claude Code agents to analyze your lo
 | `-m, --model MODEL` | Set model | `launch-claude --model opus "query"` |
 | `--log-file FILE` | Save logs to file | `launch-claude --log-file log.txt "query"` |
 | `--analyze-logs` | Analyze existing logs | `launch-claude --analyze-logs` |
+| `--clean-logs` | Remove all existing session directories | `launch-claude --clean-logs` |
+| `--troubleshoot-mcp` | Troubleshoot MCP server issues | `launch-claude --troubleshoot-mcp` |
 
 ## Default Behavior Changes
 
@@ -262,6 +340,12 @@ launch-claude --quiet "Review the authentication module for security issues"
 
 # Analyze previous session logs
 launch-claude --analyze-logs
+
+# Troubleshoot MCP server issues
+launch-claude --troubleshoot-mcp
+
+# Clean up log files when disk space is needed
+launch-claude --clean-logs
 ```
 
 ### Team Usage
@@ -286,6 +370,12 @@ launch-claude --quiet --no-logs "Review this PR for issues" < pr-description.txt
 
 # Generate analysis reports
 launch-claude --analyze-logs > code-quality-report.md
+
+# Clean logs in CI environments to manage disk space
+launch-claude --clean-logs
+
+# Automated MCP troubleshooting in CI/CD diagnostics
+launch-claude --troubleshoot-mcp > mcp-diagnostics.md
 ```
 
 ## File Structure
