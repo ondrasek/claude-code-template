@@ -16,10 +16,17 @@ from .utils.logging import setup_logging, get_logger, debug_decorator
 load_dotenv()
 
 # Initialize logging with environment configuration
-logger = setup_logging(
-    log_level=os.getenv("PERPLEXITY_LOG_LEVEL", "INFO"),
-    logger_name="perplexity_mcp"
-)
+try:
+    logger = setup_logging(
+        log_level=os.getenv("PERPLEXITY_LOG_LEVEL", "INFO"),
+        logger_name="perplexity_mcp"
+    )
+except (ValueError, OSError, PermissionError) as e:
+    # Print to stderr and exit - logging configuration is invalid
+    import sys
+    print(f"FATAL: Logging configuration error: {e}", file=sys.stderr)
+    print("Set PERPLEXITY_LOG_LEVEL=none to disable logging", file=sys.stderr)
+    sys.exit(1)
 
 # Log environment configuration
 logger.info("Perplexity MCP server starting")
@@ -329,26 +336,39 @@ async def list_models() -> str:
 @debug_decorator
 async def health_check() -> str:
     """
-    Check the health status of the Perplexity API connection.
+    Check the health status of the Perplexity API connection and logging configuration.
     
     Returns:
-        Status message indicating if the API is accessible
+        Status message indicating if the API is accessible and logging status
     """
     logger.info("Performing health check")
     logger.debug("Starting comprehensive health check of Perplexity API connection")
+    
+    # Check logging status
+    log_level = os.getenv("PERPLEXITY_LOG_LEVEL", "INFO").upper()
+    log_path = os.getenv("PERPLEXITY_LOG_PATH")
+    
+    if log_level == "NONE" or not log_level:
+        log_status = "disabled (PERPLEXITY_LOG_LEVEL=none)"
+    elif not log_path:
+        log_status = "disabled (PERPLEXITY_LOG_PATH not set)"
+    elif logger.disabled:
+        log_status = "disabled (configuration error)"
+    else:
+        log_status = f"enabled (level={log_level}, path={log_path})"
     
     try:
         is_healthy = await perplexity_client.health_check()
         
         if is_healthy:
             logger.debug("Health check passed - API is responding correctly")
-            return "✅ Perplexity API is accessible and working correctly."
+            return f"✅ Perplexity API is accessible and working correctly.\n📁 Logging: {log_status}"
         else:
             logger.debug("Health check failed - API is not responding correctly")
-            return "❌ Perplexity API is not responding correctly. Check your API key and network connection."
+            return f"❌ Perplexity API is not responding correctly. Check your API key and network connection.\n📁 Logging: {log_status}"
             
     except Exception as e:
-        error_msg = f"❌ Health check failed: {str(e)}"
+        error_msg = f"❌ Health check failed: {str(e)}\n📁 Logging: {log_status}"
         logger.error(error_msg)
         logger.debug(f"Health check exception details", exc_info=True)
         return error_msg

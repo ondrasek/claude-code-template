@@ -19,42 +19,64 @@ def setup_logging(
     Set up logging configuration for the MCP server.
     
     Environment Variables:
-        PERPLEXITY_LOG_PATH: Base directory for log files (default: ./logs)
-        PERPLEXITY_LOG_LEVEL: Logging level (default: INFO)
+        PERPLEXITY_LOG_LEVEL: Logging level (INFO, DEBUG, WARNING, ERROR, CRITICAL, none)
+                               Set to "none" to disable logging completely
+        PERPLEXITY_LOG_PATH: Base directory for log files (required if logging enabled)
     
     Args:
-        log_level: Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+        log_level: Default logging level (overridden by PERPLEXITY_LOG_LEVEL)
         log_file: Optional file path for logging output
         logger_name: Name of the logger
         
     Returns:
         Configured logger instance
+        
+    Raises:
+        ValueError: If logging is enabled but PERPLEXITY_LOG_PATH is invalid
+        OSError: If logging is enabled but log directory cannot be created
+        PermissionError: If logging is enabled but log directory is not writable
     """
     logger = logging.getLogger(logger_name)
-    logger.setLevel(getattr(logging, log_level.upper()))
     
     # Clear any existing handlers
     logger.handlers.clear()
     
-    # Get log directory - refuse to log if not set
-    base_log_path = os.getenv("PERPLEXITY_LOG_PATH")
-    if not base_log_path:
-        # No logging if no log path provided (MCP servers use STDIO)
+    # Check if logging is explicitly disabled
+    env_log_level = os.getenv("PERPLEXITY_LOG_LEVEL", log_level).upper()
+    if env_log_level == "NONE" or not env_log_level:
+        # Logging explicitly disabled
         logger.disabled = True
         setup_api_logging(None)
         return logger
+    
+    # Validate log level
+    valid_levels = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+    if env_log_level not in valid_levels:
+        raise ValueError(f"Invalid PERPLEXITY_LOG_LEVEL '{env_log_level}'. Must be one of: {valid_levels} or 'none'")
+    
+    logger.setLevel(getattr(logging, env_log_level))
+    
+    # Logging is enabled - require valid log path
+    base_log_path = os.getenv("PERPLEXITY_LOG_PATH")
+    if not base_log_path:
+        raise ValueError("PERPLEXITY_LOG_PATH must be set when logging is enabled. Set PERPLEXITY_LOG_LEVEL=none to disable logging.")
     
     session_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_path = f"{base_log_path.rstrip('/')}/perplexity_{session_timestamp}"
     
-    # Try to create log directory - refuse to log if it fails
+    # Create log directory - fail fast if it cannot be created
     try:
         Path(log_path).mkdir(parents=True, exist_ok=True)
     except (OSError, PermissionError) as e:
-        # No logging if directory creation fails (MCP servers use STDIO)
-        logger.disabled = True
-        setup_api_logging(None)
-        return logger
+        raise OSError(f"Failed to create log directory '{log_path}': {e}. Check permissions and disk space.") from e
+    
+    # Test write permissions
+    test_file = Path(log_path) / "write_test.tmp"
+    try:
+        test_file.write_text("test")
+        test_file.unlink()
+    except (OSError, PermissionError) as e:
+        raise PermissionError(f"Log directory '{log_path}' is not writable: {e}") from e
     
     # Create formatters
     detailed_formatter = logging.Formatter(
