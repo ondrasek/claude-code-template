@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.44.1] - 2025-08-02
+
+### Fixed
+- **Perplexity MCP Server Configuration**: Fixed logging bug in Perplexity MCP server configuration
+  - Resolved issue where session folder names ended with '}' character due to malformed environment variable substitution in mcp-config.json
+  - Fixed PERPLEXITY_LOG_PATH environment variable with proper command substitution syntax
+  - Cleaned up malformed session directory to prevent user confusion
+  - Improved MCP server logging reliability and path resolution
+
 ## [2.44.0] - 2025-08-02
 
 ### Added
