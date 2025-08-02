@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.41.2] - 2025-08-02
+
+### Changed
+- **Enhanced Logging Infrastructure**: Improved directory structure in launch-claude.sh
+  - Changed from complex nested directories (.support/logs/claude-code/{sessions,mcp,telemetry,debug}/) to session-based organization (.support/logs/[SESSION_TIMESTAMP]/)
+  - All log files now include timestamps in filenames for better tracking (e.g., debug-20250802-085436.log)
+  - Consolidated all log types into single session directories for easier debugging
+  - Updated clean_logs and analyze_logs functions to work with new structure
+  - Improved help text to reflect correct directory structure
+
 ## [2.41.1] - 2025-08-02
 
 ### Fixed
