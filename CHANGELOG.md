@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.43.1] - 2025-08-02
+
+### Enhanced
+- **Complete /git Command Documentation**: Comprehensive documentation enhancement for CLAUDE.md with /git command usage examples
+  - Added detailed usage examples and benefits of the /git command as the preferred method for Git Protocol execution
+  - Included both automated and manual implementation approaches for enhanced user experience
+  - Documented complete protocol compliance, context preservation, automated releases, and error recovery features
+  - Enhanced documentation structure with clear distinction between automated and manual Git Protocol implementation
+
 ## [2.43.0] - 2025-08-02
 
 ### Added
