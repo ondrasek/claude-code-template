@@ -100,5 +100,5 @@ For each technology stack, provides comprehensive analysis of:
 
 - `/review` - Include technology-specific guidance in comprehensive code analysis
 - `/refactor` - Apply stack-specific refactoring patterns and best practices
-- `/agent-ecosystem-review` - Analyze technology guidance agent effectiveness and coordination
+- `/agents-audit` - Analyze technology guidance agent effectiveness and coordination
 - Use specialist-stack-advisor agent for technology-specific analysis

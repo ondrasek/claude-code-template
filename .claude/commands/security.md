@@ -275,7 +275,7 @@ def login():
 - `/review` - General code review including security validation
 - `/test` - Add security test cases and penetration testing
 - `/refactor` - Implement security improvements with architectural changes
-- `/agent-ecosystem-review` - Include security agent effectiveness analysis
+- `/agents-audit` - Include security agent effectiveness analysis
 
 ## Best Practices
 

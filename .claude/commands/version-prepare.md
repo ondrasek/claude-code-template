@@ -137,4 +137,4 @@ This command ensures systematic version management with complete traceability fr
 
 - `/todo-cleanup-done` - Clean completed TODOs before version preparation
 - `/doc-update` - Ensure documentation synchronization with release
-- `/agent-ecosystem-review` - Analyze version management process effectiveness
+- `/agents-audit` - Analyze version management process effectiveness

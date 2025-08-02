@@ -90,5 +90,5 @@ ENHANCED_OUTPUT:
 
 - `/review` - Code-focused analysis with quality and security perspectives
 - `/refactor` - Implementation-focused improvement with systematic approaches
-- `/agent-ecosystem-review` - Meta-analysis of decision-making process effectiveness
+- `/agents-audit` - Meta-analysis of decision-making process effectiveness
 - Use specialist-options-analyzer agent for alternative generation, foundation-conflicts for conflict resolution

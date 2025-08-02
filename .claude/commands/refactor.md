@@ -279,7 +279,7 @@ def create_user(user_data: UserData):
 - `/review` - Comprehensive code review with parallel agent clusters before refactoring
 - `/test` - Ensure comprehensive test coverage with testing agent coordination
 - `/security` - Security impact analysis with security specialist agents
-- `/agent-ecosystem-review` - Analyze refactoring process effectiveness and agent coordination
+- `/agents-audit` - Analyze refactoring process effectiveness and agent coordination
 
 ## Best Practices
 

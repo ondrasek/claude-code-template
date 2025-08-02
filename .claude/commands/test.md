@@ -256,7 +256,7 @@ def test_with_mock(mock_service):
 - `/review` - Review test quality and coverage with agent coordination
 - `/refactor` - Improve test structure with patterns and principles agents
 - `/security` - Integrate security testing with security specialist agents
-- `/agent-ecosystem-review` - Analyze testing agent ecosystem effectiveness
+- `/agents-audit` - Analyze testing agent ecosystem effectiveness
 
 ## Best Practices
 

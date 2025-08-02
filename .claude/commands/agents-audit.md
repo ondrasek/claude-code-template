@@ -178,7 +178,7 @@ Cluster 5 - Completeness Assessment Analysis (completer + patterns + critic + pr
 ## Related Commands
 - `/agents-create` - Create new agents following principles
 - `/agents-guide` - Documentation on using existing agents
-- `/agent-ecosystem-review` - Comprehensive ecosystem analysis
+- `/agents-audit` - Comprehensive ecosystem analysis (this command)
 
 ## Reference Documentation
 - @.support/instructions/agent-creation.md - Complete creation and audit principles

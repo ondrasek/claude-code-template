@@ -103,4 +103,4 @@ OUTPUT:
 - `/review` - Include documentation review in comprehensive code analysis
 - `/refactor` - Ensure documentation updates accompany code refactoring
 - `/version-prepare` - Integrate with release documentation and CHANGELOG generation
-- `/agent-ecosystem-review` - Analyze documentation process effectiveness and agent coordination
+- `/agents-audit` - Analyze documentation process effectiveness and agent coordination
