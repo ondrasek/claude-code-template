@@ -43,7 +43,7 @@ Use $ARGUMENTS to reference passed parameters.
 - **`description`**: Brief command explanation for help text
 - **`argument-hint`**: Describe expected arguments for user guidance
 - **`allowed-tools`**: Array of permitted tools for command execution
-- **`model`**: Select specific Claude model variant
+- **`model`**: Select specific Claude model variant, usually sonnet
 
 ### Example Frontmatter
 ```yaml
