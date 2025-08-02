@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.41.5] - 2025-08-02
+
+### Changed
+- **Enhanced Interactive Mode Experience**: Improved launch-claude.sh with automatic verbose mode control
+  - Interactive mode (no arguments) now automatically disables verbose output for cleaner terminal experience
+  - Non-interactive mode preserves full logging and verbose output for debugging
+  - Updated help text to document interactive vs non-interactive behavior differences
+  - Maintains backward compatibility with existing --force-logs and -q flags
+
+### Fixed
+- **Perplexity Model Configuration**: Updated default model from "sonar-deep-research" to "sonar" for better performance
+
 ## [2.41.4] - 2025-08-02
 
 ### Added
