@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.42.0] - 2025-08-02
+
+### Added
+- **Comprehensive Debug Logging System**: Major enhancement to Perplexity MCP server debugging capabilities
+  - Multi-file logging system with configurable paths via environment variables
+  - Structured API request/response tracking with correlation IDs
+  - Function-level performance monitoring and debug decorators
+  - Automatic redaction of sensitive information in logs
+  - Separate log files for main, debug, API calls, and errors
+  - Enhanced error handling with detailed context
+  - Environment-based configuration for all logging options
+  - Test script to verify logging functionality
+
+- **Session-Based Logging Coordination**: Improved coordination between Claude Code and MCP servers
+  - Modified mcp-config.json to use .support/logs/perplexity with session folders
+  - Added CLAUDE_SESSION_ID environment variable support for session coordination
+  - Updated launch-claude.sh to log to .support/logs/claude-code with session folders
+  - Enhanced Perplexity MCP server to support session-based directory structure
+  - Added session ID detection and path coordination
+  - Updated log formatting to include session ID prefix
+  - Comprehensive test script for session-based logging
+
 ## [2.41.5] - 2025-08-02
 
 ### Changed

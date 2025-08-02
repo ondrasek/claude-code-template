@@ -31,7 +31,7 @@
 
 **PARALLEL AGENT PATTERN EXAMPLES**:
   - User: "This code looks messy" → Auto-invoke: foundation-patterns + specialist-code-cleaner + foundation-criticism + foundation-principles (4 agents)
-  - User: "How should I structure this?" → Auto-invoke: specialist-stack-advisor + specialist-options-analyzer + foundation-principles + foundation-criticism + specialist-constraint-solver + foundation-conflicts (6 agents)
+  - User: "How should I structure this?" → Auto-invoke: specialist-stack-advisor + specialist-options-analyzer + foundation-principles + foundation-criticism + specialist-constraint-solver + foundation-context (6 agents)
   - User shows error message → Auto-invoke: foundation-research + specialist-options-analyzer + foundation-patterns + foundation-criticism + specialist-test-strategist (5 agents)
   - User asks for implementation → Auto-invoke: foundation-research + specialist-stack-advisor + foundation-patterns + foundation-principles + specialist-code-cleaner (5 agents)
   - User requests feature → Auto-invoke: specialist-options-analyzer + foundation-principles + specialist-constraint-solver + foundation-criticism + specialist-test-strategist + specialist-stack-advisor (6 agents)
@@ -52,39 +52,39 @@ Examples:
 ## Technology Guidelines Protocol (MANDATORY)
 **CONDITIONAL AGENT INVOCATION**: Use guidelines agents only when technology-specific guidance is unclear or undetermined.
 
-**Parallel Guidelines Loading**: Execute guidelines-file + guidelines-repo agents simultaneously via single message with multiple Task() calls when both file-level and repository-level guidance needed
+**Parallel Guidelines Loading**: Execute specialist-stack-advisor agent via Task() call when technology-specific guidance is needed
 
-**File-Level Guidelines**: Use `specialist-guidelines-file` agent before modifying any file when technology patterns are unclear
-**Repository-Level Guidelines**: Use `specialist-guidelines-repo` agent for architecture decisions when stack context is undetermined
+**File-Level Guidelines**: Use `specialist-stack-advisor` agent before modifying any file when technology patterns are unclear
+**Repository-Level Guidelines**: Use `specialist-stack-advisor` agent for architecture decisions when stack context is undetermined
 
 **Detection Logic**: Both agents reference @.support/instructions/stack-mapping.md for centralized technology detection rules
 
 Examples:
-  - Modify Python file with unclear patterns → Use specialist-guidelines-file agent → Apply guidelines → Follow Simple Git Protocol
-  - Architecture decision needed → Use specialist-guidelines-repo agent → Make informed choice → Follow Simple Git Protocol
-  - Complex changes needing both contexts → Execute specialist-guidelines-file + specialist-guidelines-repo simultaneously via single message with multiple Task() calls → Follow Simple Git Protocol
+  - Modify Python file with unclear patterns → Use specialist-stack-advisor agent → Apply guidelines → Follow Simple Git Protocol
+  - Architecture decision needed → Use specialist-stack-advisor agent → Make informed choice → Follow Simple Git Protocol
+  - Complex changes needing both contexts → Execute specialist-stack-advisor agent → Follow Simple Git Protocol
 
 ## Git Protocol (MANDATORY)
 **EXECUTE AFTER EVERY CHANGE - NO EXCEPTIONS**:
 1. **Stage immediately**: `git add -A` after any file modification
 2. **Commit at milestones**: When any meaningful task is complete
-3. **Always invoke git-tagger**: Use specialist-git-tagger agent after EVERY commit to evaluate for tags
-4. **Update CHANGELOG.md**: When git-tagger creates release tags, update CHANGELOG.md with release notes
+3. **Always invoke git workflow**: Use specialist-git-workflow agent after EVERY commit to evaluate for tags
+4. **Update CHANGELOG.md**: When git workflow agent creates release tags, update CHANGELOG.md with release notes
 5. **Push immediately**: `git push origin main` after every commit
 
-**Error Recovery**: When git operations fail, use specialist-git-troubleshooter agent for systematic diagnosis and resolution.
+**Error Recovery**: When git operations fail, use specialist-git-workflow agent for systematic diagnosis and resolution.
 
-**Agent coordination**: All agents MUST follow this protocol. specialist-git-tagger agent runs autonomously after every commit.
+**Agent coordination**: All agents MUST follow this protocol. specialist-git-workflow agent runs autonomously after every commit.
 
 Example sequence:
   ```bash
   # After modifying src/components/Header.tsx
   git add -A
   git commit -m "Add dark mode toggle to header component"
-  # Auto-invoke specialist-git-tagger agent here
-  # If specialist-git-tagger creates v1.2.0 tag → Update CHANGELOG.md with release notes
+  # Auto-invoke specialist-git-workflow agent here
+  # If specialist-git-workflow creates v1.2.0 tag → Update CHANGELOG.md with release notes
   git push origin main
-  # If any step fails → Auto-invoke specialist-git-troubleshooter agent
+  # If any step fails → Auto-invoke specialist-git-workflow agent
   ```
 
 ## Documentation Protocol (MANDATORY)
@@ -92,23 +92,23 @@ Example sequence:
 1. **Same commit rule**: Documentation updates in same commit as code changes
 2. **Always check**: README.md, CHANGELOG.md, API docs, CLAUDE.md for needed updates
 3. **Update immediately**: New features, API changes, configuration changes
-4. **Use docs agent**: Invoke specialist-docs agent for documentation maintenance
+4. **Use docs agent**: Invoke specialist-code-cleaner agent for documentation maintenance
 
 Examples:
   - Add new API endpoint → Update API docs + README.md → Follow Simple Git Protocol
-  - New agent created → Use specialist-docs agent to update CLAUDE.md + CHANGELOG.md → Follow Simple Git Protocol
+  - New agent created → Use specialist-code-cleaner agent to update CLAUDE.md + CHANGELOG.md → Follow Simple Git Protocol
   - Configuration change → Update README.md setup instructions → Follow Simple Git Protocol
   - Feature complete → README.md usage section + CHANGELOG.md entry → Follow Simple Git Protocol
 
 ## TODO Protocol (MANDATORY)
 **USE TODO AGENT FOR ALL TASK MANAGEMENT - NO CONTEXT CLUTTER**:
-1. **Agent delegation**: Use specialist-todo agent for creating/tracking tasks
+1. **Agent delegation**: Use specialist-todo-manager agent for creating/tracking tasks
 2. **Clean context**: No TODO tracking in main conversation flow
 3. **Deferred actions**: TODOs represent future work, not current progress
 4. **File management**: Agent handles `.support/todos/` directory autonomously
 5. **Git integration**: After TODO files created → Follow Simple Git Protocol
 
-**Agent invocation**: `Task: "Create TODO for X" (subagent_type: specialist-todo)`
+**Agent invocation**: `Task: "Create TODO for X" (subagent_type: specialist-todo-manager)`
 
 **ENHANCED TODO COMMAND INTEGRATION**:
 - **`/todo-next`**: Comprehensive TODO hygiene + intelligent next-step analysis
@@ -119,7 +119,7 @@ Examples:
   - Provides strategic recommendations for optimal task progression
 
 Examples:
-  - Create project TODOs → Use specialist-todo agent → Follow Simple Git Protocol
+  - Create project TODOs → Use specialist-todo-manager agent → Follow Simple Git Protocol
   - Update TODO status → Modify .support/todos/file.md → Follow Simple Git Protocol
   - Comprehensive TODO maintenance → `/todo-next --dry-run` → Review recommendations → `/todo-next` → Follow Simple Git Protocol
 
