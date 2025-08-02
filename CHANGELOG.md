@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.47.0] - 2025-08-02
+
+### Changed
+- **Namespace-Based Command Organization**: Complete migration to directory-based command structure
+  - Migrated agent commands from hyphenated names to .claude/commands/agents/ namespace
+  - Migrated command management commands to .claude/commands/commands/ namespace  
+  - Enhanced git.md command with comprehensive automation documentation
+  - Updated claude-commands-guidelines.md with namespace implementation details
+  - Improved command organization, discoverability, and maintainability
+  - Maintained backwards compatibility while enabling cleaner logical grouping
+
 ## [2.46.0] - 2025-08-02
 
 ### Changed

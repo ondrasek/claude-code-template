@@ -12,6 +12,8 @@ Fully automated Git Protocol implementation using specialist-git-workflow agent 
 
 1. If $ARGUMENTS contains custom commit message, pass it to specialist-git-workflow agent
 2. Otherwise, delegate complete Git Protocol automation to specialist-git-workflow agent
+3. Check that the specialist-git-workflow agent committed all changes
+4. Check that the specialist-git-workflow agent modified CHANGELOG.md, 
 
 This command implements the complete Git Protocol as described in CLAUDE.md by delegating all git operations to the specialist-git-workflow agent. This prevents context window clutter while ensuring full protocol compliance.
 
