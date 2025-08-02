@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.45.1] - 2025-08-02
+
+### Fixed
+- **Perplexity MCP Server Logging**: Simplified logging configuration and fixed critical bugs
+  - Remove all CLAUDE_SESSION_ID references and complexity
+  - Server creates its own timestamped session folder under provided log path
+  - Use single log file instead of multiple specialized files
+  - Simplify environment variables to only essential ones (PERPLEXITY_API_KEY, PERPLEXITY_LOG_LEVEL, PERPLEXITY_LOG_PATH, PERPLEXITY_TIMEOUT)
+  - Fix function name mismatch in alwaysAllow list: perplexity_deep_research → perplexity_comprehensive_research
+  - Remove unused environment variable defaults from server code
+  - Update configuration metadata to reflect simplified variables
+
 ## [2.45.0] - 2025-08-02
 
 ### Added
