@@ -91,7 +91,7 @@ class PerplexityClient:
         logger.debug(f"API key loaded: {'***' + self.api_key[-4:] if len(self.api_key) > 4 else '***'}")
             
         self.base_url = "https://api.perplexity.ai/chat/completions"
-        self.timeout = float(os.getenv("PERPLEXITY_TIMEOUT", "60.0"))
+        self.timeout = float(os.getenv("PERPLEXITY_TIMEOUT") or "60.0")
         
         # Log configuration
         logger.debug(f"Client configuration: base_url={self.base_url}, timeout={self.timeout}s")

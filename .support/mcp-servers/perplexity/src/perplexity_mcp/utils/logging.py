@@ -37,7 +37,7 @@ def setup_logging(
     logger.handlers.clear()
     
     # Get log directory and create session folder
-    base_log_path = os.getenv("PERPLEXITY_LOG_PATH", "./logs")
+    base_log_path = os.getenv("PERPLEXITY_LOG_PATH") or "./logs"
     session_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_path = f"{base_log_path.rstrip('/')}/perplexity_{session_timestamp}"
     

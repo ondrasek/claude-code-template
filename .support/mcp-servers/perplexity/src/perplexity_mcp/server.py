@@ -17,16 +17,16 @@ load_dotenv()
 
 # Initialize logging with environment configuration
 logger = setup_logging(
-    log_level=os.getenv("PERPLEXITY_LOG_LEVEL", "INFO"),
+    log_level=os.getenv("PERPLEXITY_LOG_LEVEL") or "INFO",
     logger_name="perplexity_mcp"
 )
 
 # Log environment configuration
 logger.info("Perplexity MCP server starting")
 logger.debug(f"Environment variables:")
-logger.debug(f"  PERPLEXITY_LOG_LEVEL: {os.getenv('PERPLEXITY_LOG_LEVEL', 'INFO')}")
-logger.debug(f"  PERPLEXITY_LOG_PATH: {os.getenv('PERPLEXITY_LOG_PATH', './logs')}")
-logger.debug(f"  PERPLEXITY_TIMEOUT: {os.getenv('PERPLEXITY_TIMEOUT', '60.0')}")
+logger.debug(f"  PERPLEXITY_LOG_LEVEL: {os.getenv('PERPLEXITY_LOG_LEVEL') or 'INFO'}")
+logger.debug(f"  PERPLEXITY_LOG_PATH: {os.getenv('PERPLEXITY_LOG_PATH') or './logs'}")
+logger.debug(f"  PERPLEXITY_TIMEOUT: {os.getenv('PERPLEXITY_TIMEOUT') or '60.0'}")
 logger.debug(f"  PERPLEXITY_API_KEY: {'SET' if os.getenv('PERPLEXITY_API_KEY') else 'NOT_SET'}")
 
 # Create FastMCP server instance
