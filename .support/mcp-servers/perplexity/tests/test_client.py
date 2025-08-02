@@ -4,7 +4,6 @@ import pytest
 import os
 from unittest.mock import patch, AsyncMock
 import httpx
-from httpx_mock import HTTPXMock
 
 from perplexity_mcp.client import PerplexityClient
 
@@ -31,7 +30,7 @@ class TestPerplexityClient:
         assert client.api_key == "env-test-key"
     
     @pytest.mark.asyncio
-    async def test_query_success(self, httpx_mock: HTTPXMock):
+    async def test_query_success(self, httpx_mock):
         """Test successful API query."""
         # Mock successful response
         httpx_mock.add_response(
@@ -62,7 +61,7 @@ class TestPerplexityClient:
         assert result["usage"]["total_tokens"] == 30
     
     @pytest.mark.asyncio
-    async def test_query_with_custom_parameters(self, httpx_mock: HTTPXMock):
+    async def test_query_with_custom_parameters(self, httpx_mock):
         """Test query with custom parameters."""
         httpx_mock.add_response(
             method="POST",
@@ -102,7 +101,7 @@ class TestPerplexityClient:
         assert request_data["messages"][0]["content"] == "Custom system message"
     
     @pytest.mark.asyncio
-    async def test_query_invalid_model_fallback(self, httpx_mock: HTTPXMock):
+    async def test_query_invalid_model_fallback(self, httpx_mock):
         """Test query with invalid model falls back to sonar."""
         httpx_mock.add_response(
             method="POST",
@@ -119,7 +118,7 @@ class TestPerplexityClient:
         assert request_data["model"] == "sonar"
     
     @pytest.mark.asyncio
-    async def test_query_auth_error(self, httpx_mock: HTTPXMock):
+    async def test_query_auth_error(self, httpx_mock):
         """Test query with authentication error."""
         httpx_mock.add_response(
             method="POST",
@@ -135,7 +134,7 @@ class TestPerplexityClient:
         assert "Authentication failed" in result["error"]
     
     @pytest.mark.asyncio
-    async def test_query_rate_limit_error(self, httpx_mock: HTTPXMock):
+    async def test_query_rate_limit_error(self, httpx_mock):
         """Test query with rate limit error."""
         httpx_mock.add_response(
             method="POST",
@@ -151,7 +150,7 @@ class TestPerplexityClient:
         assert "Rate limit exceeded" in result["error"]
     
     @pytest.mark.asyncio
-    async def test_query_network_error(self, httpx_mock: HTTPXMock):
+    async def test_query_network_error(self, httpx_mock):
         """Test query with network error."""
         httpx_mock.add_exception(httpx.RequestError("Network error"))
         
@@ -162,8 +161,8 @@ class TestPerplexityClient:
         assert "Network error" in result["error"]
     
     @pytest.mark.asyncio
-    async def test_research_topic_success(self, httpx_mock: HTTPXMock):
-        """Test successful research topic request."""
+    async def test_query_with_search_filters(self, httpx_mock):
+        """Test query with search domain and recency filters."""
         httpx_mock.add_response(
             method="POST",
             url="https://api.perplexity.ai/chat/completions",
@@ -176,11 +175,12 @@ class TestPerplexityClient:
         )
         
         client = PerplexityClient(api_key="test-key")
-        result = await client.research_topic(
-            topic="AI research",
-            focus_areas=["applications", "challenges"],
-            time_filter="month",
-            domain_filter=["arxiv.org"]
+        result = await client.query(
+            prompt="AI research applications and challenges",
+            model="sonar-deep-research",
+            temperature=0.3,
+            search_domain_filter=["arxiv.org"],
+            search_recency_filter="month"
         )
         
         assert "error" not in result
@@ -193,14 +193,12 @@ class TestPerplexityClient:
         
         assert request_data["model"] == "sonar-deep-research"
         assert request_data["temperature"] == 0.3
-        assert "AI research" in request_data["messages"][1]["content"]
-        assert "applications" in request_data["messages"][1]["content"]
-        assert "challenges" in request_data["messages"][1]["content"]
+        assert "AI research applications and challenges" in request_data["messages"][0]["content"]
         assert request_data["search_domain_filter"] == ["arxiv.org"]
         assert request_data["search_recency_filter"] == "month"
     
     @pytest.mark.asyncio
-    async def test_health_check_success(self, httpx_mock: HTTPXMock):
+    async def test_health_check_success(self, httpx_mock):
         """Test successful health check."""
         httpx_mock.add_response(
             method="POST",
@@ -215,7 +213,7 @@ class TestPerplexityClient:
         assert is_healthy is True
     
     @pytest.mark.asyncio
-    async def test_health_check_failure(self, httpx_mock: HTTPXMock):
+    async def test_health_check_failure(self, httpx_mock):
         """Test failed health check."""
         httpx_mock.add_response(
             method="POST",

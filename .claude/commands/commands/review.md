@@ -24,12 +24,11 @@ Review slash command definition for compliance with @.support/instructions/claud
 4. Compliance Validation Checklist:
 
 **Mandatory Requirements**:
-- [ ] File location: .claude/commands/ directory
+- [ ] File location: .claude/commands/ directory or subdirectories (namespaces)
 - [ ] File format: Markdown (.md) extension
 - [ ] Frontmatter: Valid YAML with required fields and correct syntax
 - [ ] Description: Present and descriptive
 - [ ] Argument-hint: Clear parameter guidance
-- [ ] Model: Specified (typically "sonnet")
 - [ ] Title: Clear, descriptive command title
 - [ ] Instructions: Step-by-step AI instructions (not human docs)
 - [ ] $ARGUMENTS: Proper parameter reference usage
@@ -51,7 +50,6 @@ Review slash command definition for compliance with @.support/instructions/claud
    - Generate comprehensive compliance report with specific issues
    - Categorize violations by severity (critical, high, medium, low)
    - Provide specific remediation recommendations for each issue
-   - If --fix flag provided, automatically correct fixable issues
    - Present before/after comparison for any fixes applied
 
 6. Output structured compliance assessment with actionable recommendations
