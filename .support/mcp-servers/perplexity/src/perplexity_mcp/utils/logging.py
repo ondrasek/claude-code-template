@@ -61,6 +61,26 @@ def setup_logging(
     if not base_log_path:
         raise ValueError("PERPLEXITY_LOG_PATH must be set when logging is enabled. Set PERPLEXITY_LOG_LEVEL=none to disable logging.")
     
+    # Convert relative paths to absolute based on repository root
+    # The MCP server runs with --directory .support/mcp-servers/perplexity
+    # so we need to go up 3 levels to get to repository root
+    if not os.path.isabs(base_log_path):
+        # Find repository root by going up from current working directory
+        current_dir = Path.cwd()
+        repo_root = current_dir
+        
+        # Walk up until we find .git directory or reach filesystem root
+        while repo_root.parent != repo_root:
+            if (repo_root / '.git').exists():
+                break
+            repo_root = repo_root.parent
+        
+        # If no .git found, assume we're already in repo root
+        if not (repo_root / '.git').exists():
+            repo_root = current_dir
+            
+        base_log_path = str(repo_root / base_log_path)
+    
     session_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_path = f"{base_log_path.rstrip('/')}/perplexity_{session_timestamp}"
     
