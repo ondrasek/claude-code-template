@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.44.0] - 2025-08-02
+
+### Added
+- **Complete Git Protocol Automation**: Enhanced Git Protocol with full automation and README.md synchronization
+  - Zero-argument /git command that requires no user input or decisions
+  - Intelligent commit message generation based on file analysis and modification patterns
+  - Automatic README.md synchronization via specialist-code-cleaner agent integration
+  - Enhanced specialist-git-workflow agent with comprehensive automation capabilities
+  - Documentation synchronization integrated into core workflow protocol
+
+### Enhanced
+- **Git Protocol Documentation**: Updated CLAUDE.md with automatic README.md update requirements
+- **Workflow Automation**: Improved /git command to eliminate manual intervention completely
+- **Agent Integration**: Enhanced specialist-git-workflow agent for seamless documentation maintenance
+
 ## [2.43.1] - 2025-08-02
 
 ### Enhanced
