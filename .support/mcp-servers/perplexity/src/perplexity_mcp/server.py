@@ -25,7 +25,7 @@ logger = setup_logging(
 logger.info("Perplexity MCP server starting")
 logger.debug(f"Environment variables:")
 logger.debug(f"  PERPLEXITY_LOG_LEVEL: {os.getenv('PERPLEXITY_LOG_LEVEL', 'INFO')}")
-logger.debug(f"  PERPLEXITY_LOG_PATH: {os.getenv('PERPLEXITY_LOG_PATH', './logs')}")
+logger.debug(f"  PERPLEXITY_LOG_PATH: {os.getenv('PERPLEXITY_LOG_PATH') or 'NOT_SET'}")
 logger.debug(f"  PERPLEXITY_TIMEOUT: {os.getenv('PERPLEXITY_TIMEOUT', '60.0')}")
 logger.debug(f"  PERPLEXITY_API_KEY: {'SET' if os.getenv('PERPLEXITY_API_KEY') else 'NOT_SET'}")
 

@@ -36,13 +36,33 @@ def setup_logging(
     # Clear any existing handlers
     logger.handlers.clear()
     
-    # Get log directory and create session folder
-    base_log_path = os.getenv("PERPLEXITY_LOG_PATH", "./logs")
+    # Get log directory - refuse to log if not set
+    base_log_path = os.getenv("PERPLEXITY_LOG_PATH")
+    if not base_log_path:
+        # Only console logging if no log path provided
+        console_handler = logging.StreamHandler()
+        console_handler.setFormatter(simple_formatter)
+        console_handler.setLevel(logging.INFO)
+        logger.addHandler(console_handler)
+        logger.warning("PERPLEXITY_LOG_PATH not set - logging only to console")
+        setup_api_logging(None)
+        return logger
+    
     session_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_path = f"{base_log_path.rstrip('/')}/perplexity_{session_timestamp}"
     
-    # Ensure log directory exists
-    Path(log_path).mkdir(parents=True, exist_ok=True)
+    # Try to create log directory - refuse to log if it fails
+    try:
+        Path(log_path).mkdir(parents=True, exist_ok=True)
+    except (OSError, PermissionError) as e:
+        # Only console logging if directory creation fails
+        console_handler = logging.StreamHandler()
+        console_handler.setFormatter(simple_formatter)
+        console_handler.setLevel(logging.INFO)
+        logger.addHandler(console_handler)
+        logger.error(f"Cannot create log directory {log_path}: {e} - logging only to console")
+        setup_api_logging(None)
+        return logger
     
     # Create formatters
     detailed_formatter = logging.Formatter(
@@ -78,12 +98,12 @@ def setup_logging(
     return logger
 
 
-def setup_api_logging(log_path: str) -> logging.Logger:
+def setup_api_logging(log_path: Optional[str]) -> logging.Logger:
     """
     Set up dedicated API request/response logging.
     
     Args:
-        log_path: Base directory for log files
+        log_path: Base directory for log files (None if file logging disabled)
         
     Returns:
         API logger instance
@@ -94,20 +114,21 @@ def setup_api_logging(log_path: str) -> logging.Logger:
     # Clear any existing handlers
     api_logger.handlers.clear()
     
-    # API log file
-    api_log_file = os.path.join(log_path, "api.log")
-    try:
-        api_handler = logging.FileHandler(api_log_file)
-        api_formatter = logging.Formatter(
-            fmt='%(asctime)s.%(msecs)03d - %(levelname)s - %(message)s',
-            datefmt='%Y-%m-%d %H:%M:%S'
-        )
-        api_handler.setFormatter(api_formatter)
-        api_logger.addHandler(api_handler)
-        api_logger.debug(f"API logging to: {api_log_file}")
-    except (OSError, IOError) as e:
-        main_logger = logging.getLogger("perplexity_mcp")
-        main_logger.warning(f"Could not create API log handler for {api_log_file}: {e}")
+    # Only set up file logging if log_path is available
+    if log_path:
+        api_log_file = os.path.join(log_path, "api.log")
+        try:
+            api_handler = logging.FileHandler(api_log_file)
+            api_formatter = logging.Formatter(
+                fmt='%(asctime)s.%(msecs)03d - %(levelname)s - %(message)s',
+                datefmt='%Y-%m-%d %H:%M:%S'
+            )
+            api_handler.setFormatter(api_formatter)
+            api_logger.addHandler(api_handler)
+            api_logger.debug(f"API logging to: {api_log_file}")
+        except (OSError, IOError) as e:
+            main_logger = logging.getLogger("perplexity_mcp")
+            main_logger.warning(f"Could not create API log handler for {api_log_file}: {e}")
     
     return api_logger
 
