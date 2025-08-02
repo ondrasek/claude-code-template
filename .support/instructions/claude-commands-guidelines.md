@@ -19,8 +19,8 @@ command definitions are meant for Claude Code. They are instructions, NOT human 
 ---
 description: Brief command description.
 argument-hint: Expected argument format.
-allowed-tools: Tool1, Tool2(tool arguments)
-model: "sonnet"
+allowed-tools: Tool1, Tool2(tool arguments), Tool3
+model: sonnet
 ---
 
 # Command Title
