@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.46.0] - 2025-08-02
+
+### Changed
+- **Command Structure Reorganization**: Refactored command namespace with directory-based organization
+  - Restructured .claude/commands/ with prefix-based subdirectories for improved discoverability
+  - Move agents-* commands to .claude/commands/agents/ subdirectory
+  - Move commands-* commands to .claude/commands/commands/ subdirectory
+  - Maintain existing command functionality with enhanced organization
+  - Improved command namespace management and logical grouping of related functionality
+
 ## [2.45.4] - 2025-08-02
 
 ### Fixed
