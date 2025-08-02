@@ -1,6 +1,6 @@
 # Claude Code Configuration Template & Dotfiles
 
-[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template)](https://github.com/ondrasek/claude-code-template/releases)
+[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template?label=v2.45.2)](https://github.com/ondrasek/claude-code-template/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A comprehensive template repository and dotfiles setup for Claude Code that automatically configures custom commands, MCP tools, and development environment. Works as a GitHub template repository or dotfiles repository.
@@ -80,9 +80,17 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
 
 ### MCP Tools (Non-Redundant Only)
 - **memory** - Persistent session memory (cross-session state)
+- **perplexity** - Real-time web search and research (v2.45.2: Enhanced STDIO protocol compliance)
 - **Database servers** - PostgreSQL, Redis, etc. (see examples)
 - **API integrations** - LangChain, Ollama, etc. (see examples)
 - Additional specialized tools in `.claude/mcp-servers/`
+
+**Recent v2.45.2 Improvements:**
+- **Perplexity MCP Server**: Complete logging system overhaul for enhanced reliability
+  - Full STDIO protocol compliance prevents interference with MCP communication
+  - Silent operation mode when logging is disabled or unavailable
+  - Improved error handling and configuration management
+  - Enhanced stability for real-time research workflows
 
 Note: Claude Code has built-in filesystem and web tools - no MCP needed!
 
