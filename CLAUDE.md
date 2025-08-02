@@ -7,7 +7,7 @@
 - **Prompts**: All prompts, including master-prompt.md are stored in `.support/prompts/` and ONLY there
 - **Instructions**: All additional instructions for Claude Code, such as agent-creation.md are stored in `.support/instructions/` and ONLY there
 - **TODOs**: All TODOs are in `.support/todos/` and ONLY there
-- **MCP Servers**: All built
+- **MCP Servers**: All provided MCP servers included in this repository are in `.support/mcp-servers/`
 
 - **Never search elsewhere**: When looking for agents or commands, use only these directories
 
