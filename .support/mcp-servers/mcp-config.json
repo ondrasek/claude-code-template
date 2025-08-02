@@ -12,20 +12,13 @@
       ],
       "env": {
         "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}",
-        "PERPLEXITY_LOG_LEVEL": "${PERPLEXITY_LOG_LEVEL:-DEBUG}",
-        "PERPLEXITY_LOG_PATH": "${PERPLEXITY_LOG_PATH:-.support/logs/perplexity/${CLAUDE_SESSION_ID:-default}}",
-        "PERPLEXITY_LOG_FILE": "perplexity_mcp.log",
-        "PERPLEXITY_DEBUG_LOG_FILE": "perplexity_debug.log", 
-        "PERPLEXITY_API_LOG_FILE": "perplexity_api.log",
-        "PERPLEXITY_ERROR_LOG_FILE": "perplexity_errors.log",
-        "PERPLEXITY_DEFAULT_MODEL": "${PERPLEXITY_DEFAULT_MODEL:-sonar}",
-        "PERPLEXITY_DEFAULT_SYSTEM": "${PERPLEXITY_DEFAULT_SYSTEM:-Provide detailed, technical responses with citations.}",
-        "PERPLEXITY_DEFAULT_TEMPERATURE": "${PERPLEXITY_DEFAULT_TEMPERATURE:-0.7}",
+        "PERPLEXITY_LOG_LEVEL": "${PERPLEXITY_LOG_LEVEL:-INFO}",
+        "PERPLEXITY_LOG_PATH": "${PERPLEXITY_LOG_PATH:-.support/logs}",
         "PERPLEXITY_TIMEOUT": "${PERPLEXITY_TIMEOUT:-60.0}"
       },
       "alwaysAllow": [
         "perplexity_search",
-        "perplexity_deep_research",
+        "perplexity_comprehensive_research",
         "perplexity_quick_query",
         "list_models",
         "health_check"
@@ -66,12 +59,10 @@
       ],
       "optional": [
         "PERPLEXITY_LOG_LEVEL",
-        "PERPLEXITY_DEFAULT_MODEL",
-        "PERPLEXITY_DEFAULT_SYSTEM",
-        "PERPLEXITY_DEFAULT_TEMPERATURE",
+        "PERPLEXITY_LOG_PATH",
+        "PERPLEXITY_TIMEOUT",
         "MCP_LOG_LEVEL",
-        "MCP_ENABLE_TELEMETRY",
-        "PROJECT_ENV"
+        "MCP_ENABLE_TELEMETRY"
       ]
     }
   }

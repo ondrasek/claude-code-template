@@ -16,20 +16,15 @@ def setup_logging(
     logger_name: str = "perplexity_mcp"
 ) -> logging.Logger:
     """
-    Set up enhanced logging configuration for the MCP server with configurable paths and session support.
+    Set up logging configuration for the MCP server.
     
     Environment Variables:
-        PERPLEXITY_LOG_PATH: Base directory for all log files (default: ./logs)
+        PERPLEXITY_LOG_PATH: Base directory for log files (default: ./logs)
         PERPLEXITY_LOG_LEVEL: Logging level (default: INFO)
-        PERPLEXITY_LOG_FILE: Main log file name (default: perplexity_mcp.log)
-        PERPLEXITY_DEBUG_LOG_FILE: Debug log file name (default: perplexity_debug.log)
-        PERPLEXITY_API_LOG_FILE: API request/response log file (default: perplexity_api.log)
-        PERPLEXITY_ERROR_LOG_FILE: Error log file name (default: perplexity_errors.log)
-        CLAUDE_SESSION_ID: Session ID from launch-claude.sh for coordinated logging
     
     Args:
         log_level: Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-        log_file: Optional file path for logging output (overrides env var)
+        log_file: Optional file path for logging output
         logger_name: Name of the logger
         
     Returns:
@@ -41,29 +36,17 @@ def setup_logging(
     # Clear any existing handlers
     logger.handlers.clear()
     
-    # Get log directory from environment variable with session support
-    log_path = os.getenv("PERPLEXITY_LOG_PATH", "./logs")
-    session_id = os.getenv("CLAUDE_SESSION_ID")
-    
-    # If session ID is provided, use it in the path structure
-    if session_id and not session_id in log_path:
-        # If log_path doesn't already contain the session ID, create session-based structure
-        base_log_path = log_path.replace(f"/{session_id}", "")  # Remove if already there
-        log_path = f"{base_log_path.rstrip('/')}/{session_id}"
+    # Get log directory and create session folder
+    base_log_path = os.getenv("PERPLEXITY_LOG_PATH", "./logs")
+    session_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_path = f"{base_log_path.rstrip('/')}/perplexity_{session_timestamp}"
     
     # Ensure log directory exists
     Path(log_path).mkdir(parents=True, exist_ok=True)
     
-    # Log session information if available
-    if session_id:
-        logger_temp = logging.getLogger("temp_session")
-        logger_temp.info(f"Perplexity MCP server logging initialized for session: {session_id}")
-        logger_temp.info(f"Session-based log directory: {log_path}")
-    
-    # Create enhanced formatter with session context
-    session_prefix = f"[{session_id}] " if session_id else ""
+    # Create formatters
     detailed_formatter = logging.Formatter(
-        fmt=f'%(asctime)s.%(msecs)03d - {session_prefix}%(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s',
+        fmt='%(asctime)s.%(msecs)03d - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
     
@@ -78,40 +61,18 @@ def setup_logging(
     console_handler.setLevel(logging.INFO)  # Keep console less verbose
     logger.addHandler(console_handler)
     
-    # Main log file
-    main_log_file = log_file or os.path.join(log_path, os.getenv("PERPLEXITY_LOG_FILE", "perplexity_mcp.log"))
+    # Single log file for all logging
+    log_file_path = log_file or os.path.join(log_path, "perplexity.log")
     try:
-        main_handler = logging.FileHandler(main_log_file)
-        main_handler.setFormatter(detailed_formatter)
-        main_handler.setLevel(logging.INFO)
-        logger.addHandler(main_handler)
-        logger.info(f"Main logging to: {main_log_file}")
+        file_handler = logging.FileHandler(log_file_path)
+        file_handler.setFormatter(detailed_formatter)
+        file_handler.setLevel(logging.DEBUG)
+        logger.addHandler(file_handler)
+        logger.info(f"Logging to: {log_file_path}")
     except (OSError, IOError) as e:
-        logger.warning(f"Could not create main log handler for {main_log_file}: {e}")
+        logger.warning(f"Could not create log handler for {log_file_path}: {e}")
     
-    # Debug log file (for verbose debugging)
-    debug_log_file = os.path.join(log_path, os.getenv("PERPLEXITY_DEBUG_LOG_FILE", "perplexity_debug.log"))
-    try:
-        debug_handler = logging.FileHandler(debug_log_file)
-        debug_handler.setFormatter(detailed_formatter)
-        debug_handler.setLevel(logging.DEBUG)
-        logger.addHandler(debug_handler)
-        logger.debug(f"Debug logging to: {debug_log_file}")
-    except (OSError, IOError) as e:
-        logger.warning(f"Could not create debug log handler for {debug_log_file}: {e}")
-    
-    # Error log file (errors and exceptions only)
-    error_log_file = os.path.join(log_path, os.getenv("PERPLEXITY_ERROR_LOG_FILE", "perplexity_errors.log"))
-    try:
-        error_handler = logging.FileHandler(error_log_file)
-        error_handler.setFormatter(detailed_formatter)
-        error_handler.setLevel(logging.ERROR)
-        logger.addHandler(error_handler)
-        logger.debug(f"Error logging to: {error_log_file}")
-    except (OSError, IOError) as e:
-        logger.warning(f"Could not create error log handler for {error_log_file}: {e}")
-    
-    # Initialize API logging
+    # Initialize API logging in same directory
     setup_api_logging(log_path)
     
     return logger
@@ -133,8 +94,8 @@ def setup_api_logging(log_path: str) -> logging.Logger:
     # Clear any existing handlers
     api_logger.handlers.clear()
     
-    # API log file (structured JSON logging for API calls)
-    api_log_file = os.path.join(log_path, os.getenv("PERPLEXITY_API_LOG_FILE", "perplexity_api.log"))
+    # API log file
+    api_log_file = os.path.join(log_path, "api.log")
     try:
         api_handler = logging.FileHandler(api_log_file)
         api_formatter = logging.Formatter(

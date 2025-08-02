@@ -15,24 +15,17 @@ from .utils.logging import setup_logging, get_logger, debug_decorator
 # Load environment variables
 load_dotenv()
 
-# Initialize enhanced logging with environment configuration
+# Initialize logging with environment configuration
 logger = setup_logging(
-    log_level=os.getenv("PERPLEXITY_LOG_LEVEL", "DEBUG"),  # Default to DEBUG for troubleshooting
-    log_file=os.getenv("PERPLEXITY_LOG_FILE"),
+    log_level=os.getenv("PERPLEXITY_LOG_LEVEL", "INFO"),
     logger_name="perplexity_mcp"
 )
 
-# Log environment and session configuration
-session_id = os.getenv('CLAUDE_SESSION_ID')
-logger.info(f"Perplexity MCP server starting - Session: {session_id or 'STANDALONE'}")
+# Log environment configuration
+logger.info("Perplexity MCP server starting")
 logger.debug(f"Environment variables:")
-logger.debug(f"  CLAUDE_SESSION_ID: {session_id or 'NOT_SET'}")
 logger.debug(f"  PERPLEXITY_LOG_LEVEL: {os.getenv('PERPLEXITY_LOG_LEVEL', 'INFO')}")
 logger.debug(f"  PERPLEXITY_LOG_PATH: {os.getenv('PERPLEXITY_LOG_PATH', './logs')}")
-logger.debug(f"  PERPLEXITY_LOG_FILE: {os.getenv('PERPLEXITY_LOG_FILE', 'perplexity_mcp.log')}")
-logger.debug(f"  PERPLEXITY_DEBUG_LOG_FILE: {os.getenv('PERPLEXITY_DEBUG_LOG_FILE', 'perplexity_debug.log')}")
-logger.debug(f"  PERPLEXITY_API_LOG_FILE: {os.getenv('PERPLEXITY_API_LOG_FILE', 'perplexity_api.log')}")
-logger.debug(f"  PERPLEXITY_ERROR_LOG_FILE: {os.getenv('PERPLEXITY_ERROR_LOG_FILE', 'perplexity_errors.log')}")
 logger.debug(f"  PERPLEXITY_TIMEOUT: {os.getenv('PERPLEXITY_TIMEOUT', '60.0')}")
 logger.debug(f"  PERPLEXITY_API_KEY: {'SET' if os.getenv('PERPLEXITY_API_KEY') else 'NOT_SET'}")
 
@@ -92,15 +85,10 @@ async def perplexity_search(
     
     try:
         # Use provided system prompt or default
-        system_message = system_prompt or os.getenv(
-            "PERPLEXITY_DEFAULT_SYSTEM", 
-            "Provide a comprehensive research response with proper citations and sources."
-        )
+        system_message = system_prompt or "Provide a comprehensive research response with proper citations and sources."
         
         # Use provided model or default
-        selected_model = model if model in PerplexityClient.AVAILABLE_MODELS else os.getenv(
-            "PERPLEXITY_DEFAULT_MODEL", "sonar"
-        )
+        selected_model = model if model in PerplexityClient.AVAILABLE_MODELS else "sonar"
         
         result = await perplexity_client.query(
             prompt=query,
