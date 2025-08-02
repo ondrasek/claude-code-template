@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.45.4] - 2025-08-02
+
+### Fixed
+- **Perplexity MCP Server Command Configuration**: Fix MCP server connection failures by correcting command name
+  - Update command from 'perplexity_mcp' to 'perplexity-mcp' to match actual script entry point in pyproject.toml
+  - Resolves connection failures when Claude Code attempts to start the Perplexity MCP server
+  - Remove obsolete test_logging.py file for cleaner repository structure
+  - Update CLAUDE.md with enhanced MCP server configuration documentation
+
 ## [2.45.3] - 2025-08-02
 
 ### Fixed
