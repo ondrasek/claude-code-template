@@ -1,6 +1,6 @@
 # Claude Code Configuration Template & Dotfiles
 
-[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template?label=v2.45.4)](https://github.com/ondrasek/claude-code-template/releases)
+[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template?label=v2.47.0)](https://github.com/ondrasek/claude-code-template/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A comprehensive template repository and dotfiles setup for Claude Code that automatically configures custom commands, MCP tools, and development environment. Works as a GitHub template repository or dotfiles repository.
