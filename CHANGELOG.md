@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.41.3] - 2025-08-02
+
+### Fixed
+- **Critical Logging Pipeline Fix**: Resolved launch-claude.sh empty logging issues
+  - Fixed environment variables for proper Claude Code logging (CLAUDE_DEBUG, ANTHROPIC_DEBUG, MCP_DEBUG)
+  - Replaced complex process substitution with reliable while-read logging pipeline
+  - Enabled logging for interactive mode instead of disabling it
+  - Updated legacy naming convention (mycc-session -> launch-claude-session)
+  - Disabled OTEL exporters to prevent stdout pollution while keeping telemetry collection
+  - Improved pattern matching for MCP and telemetry log separation
+
 ## [2.41.2] - 2025-08-02
 
 ### Changed
