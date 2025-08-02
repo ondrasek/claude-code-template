@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.45.3] - 2025-08-02
+
+### Fixed
+- **Perplexity MCP Server Explicit Logging Configuration**: Replace silent failures with explicit validation and clear error messages
+  - Use PERPLEXITY_LOG_LEVEL for explicit logging control (none/INFO/DEBUG/etc)
+  - Fail fast when logging enabled but PERPLEXITY_LOG_PATH invalid or inaccessible
+  - Add comprehensive error messages with actionable guidance for configuration issues
+  - Update health_check to show current logging status and configuration
+  - Replace silent fallback behavior with clear validation and error reporting
+  - Improve user experience by providing immediate feedback on logging configuration problems
+
 ## [2.45.2] - 2025-08-02
 
 ### Fixed
