@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.41.4] - 2025-08-02
+
+### Added
+- **Temperature Parameter Support**: Enhanced Perplexity MCP server with temperature control for all query functions
+  - Added temperature parameter to perplexity_deep_research function (default: 0.7)
+  - Added temperature parameter to perplexity_quick_query function (default: 0.3)
+  - Enhanced MCP configuration with PERPLEXITY_DEFAULT_TEMPERATURE environment variable
+  - Improved user control over AI response creativity and consistency
+  - Updated default model from "sonar" to "sonar-deep-research" for better research capabilities
+
 ## [2.41.3] - 2025-08-02
 
 ### Fixed
