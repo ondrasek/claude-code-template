@@ -37,7 +37,7 @@ Review slash command definition for compliance with @.support/instructions/claud
 **Mandatory Requirements**:
 - [ ] File location: .claude/commands/ directory
 - [ ] File format: Markdown (.md) extension
-- [ ] Frontmatter: Valid YAML with required fields
+- [ ] Frontmatter: Valid YAML with required fields and correct syntax
 - [ ] Description: Present and descriptive
 - [ ] Argument-hint: Clear parameter guidance
 - [ ] Model: Specified (typically "sonnet")
