@@ -22,8 +22,11 @@ logger = setup_logging(
     logger_name="perplexity_mcp"
 )
 
-# Log environment configuration
+# Log environment and session configuration
+session_id = os.getenv('CLAUDE_SESSION_ID')
+logger.info(f"Perplexity MCP server starting - Session: {session_id or 'STANDALONE'}")
 logger.debug(f"Environment variables:")
+logger.debug(f"  CLAUDE_SESSION_ID: {session_id or 'NOT_SET'}")
 logger.debug(f"  PERPLEXITY_LOG_LEVEL: {os.getenv('PERPLEXITY_LOG_LEVEL', 'INFO')}")
 logger.debug(f"  PERPLEXITY_LOG_PATH: {os.getenv('PERPLEXITY_LOG_PATH', './logs')}")
 logger.debug(f"  PERPLEXITY_LOG_FILE: {os.getenv('PERPLEXITY_LOG_FILE', 'perplexity_mcp.log')}")

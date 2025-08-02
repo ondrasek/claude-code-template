@@ -30,7 +30,7 @@ LOAD_ENV="true"
 # Log directory configuration
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-LOG_BASE_DIR="$PROJECT_ROOT/.support/logs"
+LOG_BASE_DIR="$PROJECT_ROOT/.support/logs/claude-code"
 
 # Auto-detect environment function
 detect_environment() {
@@ -571,6 +571,9 @@ setup_logging() {
         SESSION_DIR="$LOG_BASE_DIR/$SESSION_TIMESTAMP"
         mkdir -p "$SESSION_DIR"
         
+        # Export session ID for MCP servers to use
+        export CLAUDE_SESSION_ID="$SESSION_TIMESTAMP"
+        
         # Set up log files in session directory with timestamps
         if [[ -z "$LOG_FILE" ]]; then
             LOG_FILE="$SESSION_DIR/launch-claude-session-$SESSION_TIMESTAMP.log"
@@ -615,15 +618,19 @@ Verbose: $VERBOSE_MODE
 Debug: $DEBUG_MODE
 MCP Debug: $MCP_DEBUG
 Project: $PROJECT_ROOT
+Claude Code Log Dir: $SESSION_DIR
+Perplexity Log Dir: $PROJECT_ROOT/.support/logs/perplexity/$SESSION_TIMESTAMP
 EOF
         
         echo "📝 Session-based logging enabled:"
-        echo "   📁 Session directory: $SESSION_DIR"
+        echo "   📁 Claude Code session directory: $SESSION_DIR"
+        echo "   📁 Perplexity session directory: $PROJECT_ROOT/.support/logs/perplexity/$SESSION_TIMESTAMP"
         echo "   📋 Session log: $session_log"
         echo "   🔌 MCP log: $mcp_log"
         echo "   📊 Telemetry log: $telemetry_log"
         echo "   🐛 Debug log: $debug_log"
         echo "   ℹ️  Session info: $session_info"
+        echo "   🆔 Session ID: $SESSION_TIMESTAMP (shared with MCP servers)"
         
         # Create empty log files to ensure they exist
         touch "$session_log" "$mcp_log" "$telemetry_log" "$debug_log"

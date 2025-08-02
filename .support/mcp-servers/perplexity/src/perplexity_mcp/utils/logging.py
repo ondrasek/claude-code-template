@@ -16,7 +16,7 @@ def setup_logging(
     logger_name: str = "perplexity_mcp"
 ) -> logging.Logger:
     """
-    Set up enhanced logging configuration for the MCP server with configurable paths.
+    Set up enhanced logging configuration for the MCP server with configurable paths and session support.
     
     Environment Variables:
         PERPLEXITY_LOG_PATH: Base directory for all log files (default: ./logs)
@@ -25,6 +25,7 @@ def setup_logging(
         PERPLEXITY_DEBUG_LOG_FILE: Debug log file name (default: perplexity_debug.log)
         PERPLEXITY_API_LOG_FILE: API request/response log file (default: perplexity_api.log)
         PERPLEXITY_ERROR_LOG_FILE: Error log file name (default: perplexity_errors.log)
+        CLAUDE_SESSION_ID: Session ID from launch-claude.sh for coordinated logging
     
     Args:
         log_level: Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
@@ -40,15 +41,29 @@ def setup_logging(
     # Clear any existing handlers
     logger.handlers.clear()
     
-    # Get log directory from environment variable
+    # Get log directory from environment variable with session support
     log_path = os.getenv("PERPLEXITY_LOG_PATH", "./logs")
+    session_id = os.getenv("CLAUDE_SESSION_ID")
+    
+    # If session ID is provided, use it in the path structure
+    if session_id and not session_id in log_path:
+        # If log_path doesn't already contain the session ID, create session-based structure
+        base_log_path = log_path.replace(f"/{session_id}", "")  # Remove if already there
+        log_path = f"{base_log_path.rstrip('/')}/{session_id}"
     
     # Ensure log directory exists
     Path(log_path).mkdir(parents=True, exist_ok=True)
     
-    # Create enhanced formatter with more context
+    # Log session information if available
+    if session_id:
+        logger_temp = logging.getLogger("temp_session")
+        logger_temp.info(f"Perplexity MCP server logging initialized for session: {session_id}")
+        logger_temp.info(f"Session-based log directory: {log_path}")
+    
+    # Create enhanced formatter with session context
+    session_prefix = f"[{session_id}] " if session_id else ""
     detailed_formatter = logging.Formatter(
-        fmt='%(asctime)s.%(msecs)03d - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s',
+        fmt=f'%(asctime)s.%(msecs)03d - {session_prefix}%(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
     
