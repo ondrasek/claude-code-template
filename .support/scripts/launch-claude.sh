@@ -572,22 +572,22 @@ setup_logging() {
         
         # Set up log files in session directory with timestamps
         if [[ -z "$LOG_FILE" ]]; then
-            LOG_FILE="$SESSION_DIR/mycc-session-$SESSION_TIMESTAMP.log"
+            LOG_FILE="$SESSION_DIR/launch-claude-session-$SESSION_TIMESTAMP.log"
         fi
         
         # Set up environment variables for comprehensive logging
+        export CLAUDE_DEBUG=1
         export CLAUDE_CODE_ENABLE_TELEMETRY=1
+        export ANTHROPIC_DEBUG=1
         export ANTHROPIC_LOG_LEVEL=debug
-        export MCP_CLAUDE_DEBUG=true
+        export MCP_DEBUG=1
         export MCP_LOG_LEVEL=debug
         export MCP_TIMEOUT=30000
-        export CLAUDE_LOG_LEVEL=debug
         
-        # Enable telemetry but keep it local to files
-        export OTEL_LOGS_EXPORTER="otlp"
-        export OTEL_METRICS_EXPORTER="otlp"
-        export OTEL_TRACES_EXPORTER="otlp"
-        export OTEL_EXPORTER_OTLP_ENDPOINT="file://$MYCC_TELEMETRY_LOG"
+        # Disable OTEL exporters to prevent stdout pollution but enable telemetry collection
+        export OTEL_LOGS_EXPORTER=""
+        export OTEL_METRICS_EXPORTER=""
+        export OTEL_TRACES_EXPORTER=""
         export OTEL_METRIC_EXPORT_INTERVAL=5000
         export OTEL_LOGS_EXPORT_INTERVAL=2000
         
@@ -723,12 +723,10 @@ main() {
     echo "🚀 launch-claude - Enhanced Claude Code wrapper"
     echo "📦 Model: $DEFAULT_MODEL"
     
-    # Disable verbose and MCP debug modes for interactive mode (no arguments)
-    # Unless explicitly requested to keep logging enabled
+    # For interactive mode, keep logging enabled by default but inform user
     if [[ ${#ARGS[@]} -eq 0 ]] && [[ "$SAVE_LOGS" != "force" ]]; then
-        VERBOSE_MODE="false"
-        MCP_DEBUG="false"
-        echo "ℹ️  Interactive mode: verbose and MCP debug disabled (use --force-logs to enable)"
+        # Keep logging enabled for debugging purposes
+        echo "ℹ️  Interactive mode: logging enabled for debugging"
     elif [[ ${#ARGS[@]} -eq 0 ]] && [[ "$SAVE_LOGS" == "force" ]]; then
         echo "ℹ️  Interactive mode with forced logging enabled"
     fi
@@ -768,35 +766,33 @@ Project: $PROJECT_ROOT
         echo "$session_header" >> "$MYCC_DEBUG_LOG"
         
         # Execute Claude with comprehensive log redirection
-        # Use simpler and more reliable logging approach
-        if [[ ${#ARGS[@]} -eq 0 ]]; then
-            # Interactive mode - preserve terminal but still log
-            "${CLAUDE_CMD[@]}" 2>&1 | tee -a "$MYCC_SESSION_LOG" "$MYCC_DEBUG_LOG" | \
-                while IFS= read -r line; do
-                    echo "$line"
-                    # Detect and separate MCP and telemetry output
-                    if [[ "$line" =~ mcp|MCP ]]; then
-                        echo "$line" >> "$MYCC_MCP_LOG"
-                    fi
-                    if [[ "$line" =~ telemetry|TELEMETRY|trace|span ]]; then
-                        echo "$line" >> "$MYCC_TELEMETRY_LOG"
-                    fi
-                done
-        else
-            # Non-interactive mode with comprehensive logging
-            "${CLAUDE_CMD[@]}" 2>&1 | tee -a "$MYCC_SESSION_LOG" "$LOG_FILE" | \
-                while IFS= read -r line; do
-                    echo "$line"
-                    echo "$line" >> "$MYCC_DEBUG_LOG"
-                    # Detect and separate MCP and telemetry output
-                    if [[ "$line" =~ mcp|MCP ]]; then
-                        echo "$line" >> "$MYCC_MCP_LOG"
-                    fi
-                    if [[ "$line" =~ telemetry|TELEMETRY|trace|span ]]; then
-                        echo "$line" >> "$MYCC_TELEMETRY_LOG"
-                    fi
-                done
-        fi
+        # Use reliable logging approach that captures all output streams
+        {
+            # Capture all output and separate by patterns
+            "${CLAUDE_CMD[@]}" 2>&1 | while IFS= read -r line; do
+                # Always output to terminal
+                echo "$line"
+                
+                # Log to session and debug files
+                echo "$line" >> "$MYCC_SESSION_LOG"
+                echo "$line" >> "$MYCC_DEBUG_LOG"
+                
+                # Conditionally log to LOG_FILE if different from session log
+                if [[ "$LOG_FILE" != "$MYCC_SESSION_LOG" ]]; then
+                    echo "$line" >> "$LOG_FILE"
+                fi
+                
+                # Detect and separate MCP output (case insensitive)
+                if [[ "$line" =~ [Mm][Cc][Pp]|server|tool ]]; then
+                    echo "$line" >> "$MYCC_MCP_LOG"
+                fi
+                
+                # Detect and separate telemetry output (broader patterns)
+                if [[ "$line" =~ [Tt]elemetry|[Tt]race|[Ss]pan|[Mm]etric|otel|OTEL ]]; then
+                    echo "$line" >> "$MYCC_TELEMETRY_LOG"
+                fi
+            done
+        }
         
         # Write session footer
         local session_footer="=== launch-claude session ended at $(date) ==="
