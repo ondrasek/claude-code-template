@@ -76,7 +76,42 @@ Examples:
 
 **Agent coordination**: All agents MUST follow this protocol. specialist-git-workflow agent runs autonomously after every commit.
 
-Example sequence:
+### Automated Implementation: `/git` Command
+
+**PREFERRED METHOD**: Use the `/git` command for automated Git Protocol execution:
+
+```
+/git "Your commit message"
+```
+
+The `/git` command automatically:
+- Detects and stages all uncommitted changes
+- Creates commits with provided or generated messages
+- Evaluates commits for release tag creation
+- Updates CHANGELOG.md when tags are created
+- Pushes all changes and tags to remote
+- Handles errors with systematic troubleshooting
+- Delegates all operations to specialist-git-workflow agent to prevent context clutter
+
+**Benefits**:
+- ✅ **Complete Protocol Compliance**: Ensures 100% adherence to all Git Protocol requirements
+- ✅ **Context Preservation**: Keeps main conversation focused by delegating git operations
+- ✅ **Automated Releases**: Intelligent tag creation based on commit significance
+- ✅ **Error Recovery**: Systematic troubleshooting for git operation failures
+
+Example usage:
+  ```
+  # Simple automated protocol execution
+  /git "Add dark mode toggle to header component"
+  
+  # Auto-generates commit message if none provided
+  /git
+  
+  # Dry run to see what would happen
+  /git --dry-run
+  ```
+
+**Manual Implementation** (when `/git` command is unavailable):
   ```bash
   # After modifying src/components/Header.tsx
   git add -A
