@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.48.0] - 2025-08-02
+
+### Changed
+- **TODO Command Structure Refactoring**: Unified and simplified TODO command interface
+  - Consolidated todo-cleanup-done.md and todo-cleanup-stale.md into unified cleanup.md command
+  - Removed command name prefixes (todo-create.md → create.md, etc.) for cleaner namespace
+  - Enhanced cleanup command with comprehensive --done and --stale mode parameters
+  - Maintained all existing functionality while simplifying command interface
+  - Preserved git safety protocols and enhanced agent coordination patterns
+  - Improved user experience with consolidated cleanup functionality
+
 ## [2.47.0] - 2025-08-02
 
 ### Changed
