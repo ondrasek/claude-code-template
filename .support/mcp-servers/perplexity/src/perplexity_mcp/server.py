@@ -62,7 +62,12 @@ async def perplexity_search(
     model: str = "sonar",
     system_prompt: Optional[str] = None,
     max_tokens: int = 1000,
-    temperature: float = 0.7
+    temperature: float = 0.7,
+    search_domain_filter: Optional[List[str]] = None,
+    search_recency_filter: Optional[str] = None,
+    top_p: float = 1.0,
+    presence_penalty: float = 0.0,
+    frequency_penalty: float = 0.0
 ) -> str:
     """
     Research a topic using Perplexity's real-time web search capabilities.
@@ -73,12 +78,17 @@ async def perplexity_search(
         system_prompt: Optional custom system prompt to customize response style
         max_tokens: Maximum tokens in response (default: 1000)
         temperature: Sampling temperature between 0.0-2.0 (default: 0.7)
+        search_domain_filter: List of domains to filter search results (e.g., ["github.com", "stackoverflow.com"])
+        search_recency_filter: Time period filter for search results (e.g., "month", "week", "day")
+        top_p: Nucleus sampling parameter (default: 1.0)
+        presence_penalty: Penalty for token presence (default: 0.0)
+        frequency_penalty: Penalty for token frequency (default: 0.0)
     
     Returns:
         Comprehensive research response with citations and sources
     """
     logger.info(f"Research request: {query[:100]}...")
-    logger.debug(f"Full research parameters: query_length={len(query)}, model={model}, system_prompt_length={len(system_prompt) if system_prompt else 0}, max_tokens={max_tokens}, temperature={temperature}")
+    logger.debug(f"Full research parameters: query_length={len(query)}, model={model}, system_prompt_length={len(system_prompt) if system_prompt else 0}, max_tokens={max_tokens}, temperature={temperature}, search_domain_filter={search_domain_filter}, search_recency_filter={search_recency_filter}")
     
     try:
         # Use provided system prompt or default
@@ -98,6 +108,11 @@ async def perplexity_search(
             system_message=system_message,
             max_tokens=max_tokens,
             temperature=temperature,
+            top_p=top_p,
+            presence_penalty=presence_penalty,
+            frequency_penalty=frequency_penalty,
+            search_domain_filter=search_domain_filter,
+            search_recency_filter=search_recency_filter,
             return_citations=True,
             return_related_questions=True
         )
@@ -136,61 +151,66 @@ async def perplexity_search(
 
 @mcp.tool(
     annotations={
-        "title": "Deep Research Analysis",
-        "description": "Conduct comprehensive multi-perspective research on complex topics",
+        "title": "Comprehensive Research",
+        "description": "Conduct comprehensive research using the sonar-deep-research model",
         "readOnlyHint": True,
         "openWorldHint": False
     }
 )
 @debug_decorator
-async def perplexity_deep_research(
+async def perplexity_comprehensive_research(
     topic: str,
-    focus_areas: Optional[List[str]] = None,
-    time_filter: Optional[str] = None,
-    domain_filter: Optional[List[str]] = None,
+    search_domain_filter: Optional[List[str]] = None,
+    search_recency_filter: Optional[str] = None,
     max_tokens: int = 1500,
-    temperature: float = 0.7
+    temperature: float = 0.3
 ) -> str:
     """
-    Conduct comprehensive research on a topic with multiple perspectives and deep analysis.
+    Conduct comprehensive research on a topic using the sonar-deep-research model.
     
     Args:
         topic: Main research topic to investigate
-        focus_areas: Specific aspects or subtopics to focus on (e.g., ["technical challenges", "market impact"])
-        time_filter: Time period for search results (e.g., "month", "week", "day")
-        domain_filter: Specific domains to search within (e.g., ["github.com", "stackoverflow.com"])
+        search_domain_filter: List of domains to filter search results (e.g., ["github.com", "stackoverflow.com"])
+        search_recency_filter: Time period filter for search results (e.g., "month", "week", "day")
         max_tokens: Maximum tokens in response (default: 1500)
-        temperature: Sampling temperature between 0.0-2.0 (default: 0.7)
+        temperature: Sampling temperature between 0.0-2.0 (default: 0.3)
     
     Returns:
-        Detailed research report with multiple perspectives, recent developments, and practical implications
+        Detailed research report with comprehensive analysis and citations
     """
-    logger.info(f"Deep research request: {topic}")
-    logger.debug(f"Deep research parameters: topic_length={len(topic)}, focus_areas={focus_areas}, time_filter={time_filter}, domain_filter={domain_filter}, max_tokens={max_tokens}, temperature={temperature}")
+    logger.info(f"Comprehensive research request: {topic}")
+    logger.debug(f"Research parameters: topic_length={len(topic)}, search_domain_filter={search_domain_filter}, search_recency_filter={search_recency_filter}, max_tokens={max_tokens}, temperature={temperature}")
     
     try:
-        result = await perplexity_client.research_topic(
-            topic=topic,
-            focus_areas=focus_areas,
-            time_filter=time_filter,
-            domain_filter=domain_filter,
+        # Build comprehensive research prompt
+        system_message = """You are a research expert. Provide a comprehensive analysis that includes:
+1. Key findings and current state of the topic
+2. Multiple perspectives and viewpoints
+3. Recent developments and trends
+4. Practical implications and applications
+5. Reliable sources and citations
+
+Be thorough, balanced, and evidence-based. Structure your response clearly with appropriate headings."""
+        
+        result = await perplexity_client.query(
+            prompt=f"Conduct comprehensive research on: {topic}",
+            model="sonar-deep-research",
+            system_message=system_message,
             max_tokens=max_tokens,
-            temperature=temperature
+            temperature=temperature,
+            search_domain_filter=search_domain_filter,
+            search_recency_filter=search_recency_filter,
+            return_citations=True,
+            return_related_questions=True
         )
         
         if "error" in result:
-            logger.error(f"Deep research API error: {result['error']}")
-            logger.debug(f"Full deep research error result: {result}")
-            return f"Deep research failed: {result['error']}"
+            logger.error(f"Comprehensive research API error: {result['error']}")
+            logger.debug(f"Full research error result: {result}")
+            return f"Comprehensive research failed: {result['error']}"
         
         # Extract and format response
         content = result.get("choices", [{}])[0].get("message", {}).get("content", "No response generated")
-        
-        # Add citations if available
-        if result.get("citations"):
-            content += "\n\n**Sources:**\n"
-            for i, citation in enumerate(result["citations"], 1):
-                content += f"{i}. {citation}\n"
         
         # Add related questions if available
         if result.get("related_questions"):
@@ -198,13 +218,20 @@ async def perplexity_deep_research(
             for i, question in enumerate(result["related_questions"], 1):
                 content += f"{i}. {question}\n"
         
-        logger.debug(f"Deep research completed successfully, content length: {len(content)}")
+        # Add usage information if available
+        if result.get("usage"):
+            usage = result["usage"]
+            logger.info(f"Tokens used - Prompt: {usage.get('prompt_tokens', 0)}, "
+                       f"Completion: {usage.get('completion_tokens', 0)}, "
+                       f"Total: {usage.get('total_tokens', 0)}")
+        
+        logger.debug(f"Comprehensive research completed successfully, content length: {len(content)}")
         return content
         
     except Exception as e:
-        error_msg = f"Error during deep research: {str(e)}"
+        error_msg = f"Error during comprehensive research: {str(e)}"
         logger.error(error_msg)
-        logger.debug(f"Deep research exception details", exc_info=True)
+        logger.debug(f"Research exception details", exc_info=True)
         return error_msg
 
 
@@ -219,8 +246,8 @@ async def perplexity_deep_research(
 @debug_decorator
 async def perplexity_quick_query(
     question: str,
-    domain_filter: Optional[List[str]] = None,
-    recency_filter: Optional[str] = None,
+    search_domain_filter: Optional[List[str]] = None,
+    search_recency_filter: Optional[str] = None,
     temperature: float = 0.3
 ) -> str:
     """
@@ -228,15 +255,15 @@ async def perplexity_quick_query(
     
     Args:
         question: The question to ask
-        domain_filter: Specific domains to search within (e.g., ["github.com", "docs.python.org"])
-        recency_filter: How recent results should be (e.g., "month", "week", "day")
+        search_domain_filter: Specific domains to search within (e.g., ["github.com", "docs.python.org"])
+        search_recency_filter: How recent results should be (e.g., "month", "week", "day")
         temperature: Sampling temperature between 0.0-2.0 (default: 0.3 for factual responses)
     
     Returns:
         Concise answer with key information and sources
     """
     logger.info(f"Quick query: {question[:100]}...")
-    logger.debug(f"Quick query parameters: question_length={len(question)}, domain_filter={domain_filter}, recency_filter={recency_filter}, temperature={temperature}")
+    logger.debug(f"Quick query parameters: question_length={len(question)}, search_domain_filter={search_domain_filter}, search_recency_filter={search_recency_filter}, temperature={temperature}")
     
     try:
         result = await perplexity_client.query(
@@ -245,8 +272,8 @@ async def perplexity_quick_query(
             system_message="Provide a concise, direct answer with key facts. Be brief but comprehensive.",
             max_tokens=500,
             temperature=temperature,  # Use provided temperature parameter
-            search_domain_filter=domain_filter,
-            search_recency_filter=recency_filter,
+            search_domain_filter=search_domain_filter,
+            search_recency_filter=search_recency_filter,
             return_citations=True
         )
         

@@ -106,11 +106,15 @@ class PerplexityClient:
         max_tokens: int = 1000,
         temperature: float = 0.7,
         top_p: float = 1.0,
+        top_k: int = 0,
+        presence_penalty: float = 0.0,
+        frequency_penalty: float = 0.0,
         return_citations: bool = True,
         return_images: bool = False,
         return_related_questions: bool = False,
         search_domain_filter: Optional[List[str]] = None,
-        search_recency_filter: Optional[str] = None
+        search_recency_filter: Optional[str] = None,
+        stream: bool = False
     ) -> Dict[str, Any]:
         """
         Query the Perplexity API.
@@ -121,12 +125,16 @@ class PerplexityClient:
             system_message: Optional system message to customize behavior
             max_tokens: Maximum tokens in response
             temperature: Sampling temperature (0.0 to 2.0)
-            top_p: Nucleus sampling parameter
+            top_p: Nucleus sampling parameter (0.0 to 1.0)
+            top_k: Number of top search results to consider (integer)
+            presence_penalty: Penalty for token presence (-2.0 to 2.0)
+            frequency_penalty: Penalty for token frequency (-2.0 to 2.0)
             return_citations: Whether to include citations
             return_images: Whether to include images in results
             return_related_questions: Whether to return related questions
             search_domain_filter: List of domains to search within
             search_recency_filter: Recency filter (e.g., "month", "week", "day")
+            stream: Whether to stream the response
             
         Returns:
             API response dictionary or error dictionary
@@ -151,9 +159,13 @@ class PerplexityClient:
             "max_tokens": max_tokens,
             "temperature": temperature,
             "top_p": top_p,
+            "top_k": top_k,
+            "presence_penalty": presence_penalty,
+            "frequency_penalty": frequency_penalty,
             "return_citations": return_citations,
             "return_images": return_images,
-            "return_related_questions": return_related_questions
+            "return_related_questions": return_related_questions,
+            "stream": stream
         }
         
         # Add optional search filters
@@ -191,70 +203,11 @@ class PerplexityClient:
             logger.error(f"API request failed after {duration:.2f}ms: {type(e).__name__}: {str(e)}")
             
             # Log failed response
-            status_code = getattr(e, 'response', {}).status_code if hasattr(e, 'response') else 0
+            status_code = getattr(getattr(e, 'response', None), 'status_code', 0) if hasattr(e, 'response') else 0
             log_api_response(request_id, status_code, {}, duration, str(e))
             
             raise
     
-    @debug_decorator
-    @handle_api_errors
-    async def research_topic(
-        self,
-        topic: str,
-        focus_areas: Optional[List[str]] = None,
-        time_filter: Optional[str] = None,
-        domain_filter: Optional[List[str]] = None,
-        max_tokens: int = 1500,
-        temperature: float = 0.3
-    ) -> Dict[str, Any]:
-        """
-        Conduct comprehensive research on a topic.
-        
-        Args:
-            topic: Main research topic
-            focus_areas: Specific aspects to focus on
-            time_filter: Time period for search (e.g., "month", "week")
-            domain_filter: Specific domains to search
-            max_tokens: Maximum tokens for response
-            temperature: Sampling temperature (0.0 to 2.0)
-            
-        Returns:
-            Comprehensive research results
-        """
-        # Log research parameters
-        logger.debug(f"Research topic request: topic='{topic}', focus_areas={focus_areas}, time_filter={time_filter}, domain_filter={domain_filter}")
-        
-        # Build comprehensive research prompt
-        prompt = f"Conduct comprehensive research on: {topic}"
-        
-        if focus_areas:
-            logger.debug(f"Adding focus areas: {focus_areas}")
-            prompt += f"\n\nSpecific focus areas to address:\n" + "\n".join(f"- {area}" for area in focus_areas)
-        
-        if time_filter:
-            logger.debug(f"Adding time filter: {time_filter}")
-            prompt += f"\n\nFocus on information from the {time_filter}."
-        
-        system_message = """You are a research expert. Provide a comprehensive analysis that includes:
-1. Key findings and current state of the topic
-2. Multiple perspectives and viewpoints
-3. Recent developments and trends
-4. Practical implications and applications
-5. Reliable sources and citations
-
-Be thorough, balanced, and evidence-based. Structure your response clearly with appropriate headings."""
-        
-        return await self.query(
-            prompt=prompt,
-            model="sonar-deep-research",
-            system_message=system_message,
-            max_tokens=max_tokens,
-            temperature=temperature,
-            search_domain_filter=domain_filter,
-            search_recency_filter=time_filter,
-            return_citations=True,
-            return_related_questions=True
-        )
     
     @debug_decorator
     async def health_check(self) -> bool:
