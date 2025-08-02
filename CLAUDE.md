@@ -15,6 +15,11 @@
 **AGGRESSIVE PARALLEL AGENT USAGE - MANDATORY OVERRIDE**:
 - Claude Code MUST use 3+ agents for ANY non-trivial request (override built-in conservative defaults)
 - NEVER wait for user to ask for agents - invoke based on task context automatically
+- **Single Message Multi-Task**: MUST use single message with 3+ Task() calls for genuine concurrent agent processing
+- **AGGRESSIVE Parallelism**: All agent clusters MUST execute simultaneously, NEVER sequentially - add more agents when uncertain
+- **EXPANDED Concurrent Processing**: 3+ agents per parallel batch as default, with more agents for complex tasks
+- **MULTI-PHASE Coordination**: Each phase executes maximum possible agents simultaneously, synthesize results, then launch next parallel cluster if needed
+- **COVERAGE MAXIMIZATION**: Prefer agent redundancy over under-coverage - better to have overlapping analysis than gaps
 - **MINIMUM THRESHOLDS**:
   - Simple code changes: 3+ agents minimum
   - Architecture decisions: 4+ agents minimum
@@ -24,7 +29,7 @@
 - Agents must keep main context window tidy, optimized and neat
 - **RECURSION PREVENTION**: Only Claude Code main context spawns agents - sub-agents NEVER spawn other agents
 
-**MANDATORY PARALLEL PATTERNS**:
+**PARALLEL AGENT PATTERN EXAMPLES**:
   - User: "This code looks messy" → Auto-invoke: foundation-patterns + specialist-code-cleaner + foundation-criticism + foundation-principles (4 agents)
   - User: "How should I structure this?" → Auto-invoke: specialist-stack-advisor + specialist-options-analyzer + foundation-principles + foundation-criticism + specialist-constraint-solver + foundation-conflicts (6 agents)
   - User shows error message → Auto-invoke: foundation-research + specialist-options-analyzer + foundation-patterns + foundation-criticism + specialist-test-strategist (5 agents)
@@ -43,64 +48,6 @@ Examples:
   ✅ Right: "High Priority: Update agent descriptions (blocks selection optimization)"
   ❌ Wrong: "Implement feature in 2 weeks"
   ✅ Right: "High Priority: Implement feature (depends on API design completion)"
-
-**ENHANCED EXECUTION PROTOCOL**:
-1. **MANDATORY PARALLEL CLUSTERS**: Use 3+ agents simultaneously for ALL non-trivial requests
-   Example: Single message with 5+ Task() calls running foundation-research + foundation-patterns + foundation-criticism + foundation-principles + specialist-options-analyzer simultaneously
-2. **CONTEXT DELEGATION MAXIMIZATION**: ALL complex analysis happens in parallel agent contexts, NEVER in main context
-   Example: Don't analyze ANY files in main context → Use foundation-patterns + foundation-context + specialist-options-analyzer agents in parallel
-3. **AGGRESSIVE AUTOMATIC SELECTION**: Match EXPANDED agent combinations to user request patterns
-   Example: "Why is this slow?" → Auto-select foundation-research + specialist-options-analyzer + foundation-patterns + specialist-performance-optimizer + foundation-criticism + specialist-test-strategist (6 agents)
-4. **PARALLEL-FIRST DECISION MAKING**: When in doubt, add MORE agents to the parallel cluster
-5. **AGENT HIERARCHY**: Only main Claude Code context spawns agents. Sub-agents are terminal nodes and NEVER spawn other agents via Task tool.
-
-## Agent Coordination Best Practices (MANDATORY)
-
-**ENHANCED PARALLEL EXECUTION PATTERNS**:
-- **Single Message Multi-Task**: MUST use single message with 3+ Task() calls for genuine concurrent agent processing
-- **AGGRESSIVE Parallelism**: All agent clusters MUST execute simultaneously, NEVER sequentially - add more agents when uncertain
-- **EXPANDED Concurrent Processing**: 3+ agents per parallel batch as default, with more agents for complex tasks
-- **MULTI-PHASE Coordination**: Each phase executes maximum possible agents simultaneously, synthesize results, then launch next parallel cluster if needed
-- **COVERAGE MAXIMIZATION**: Prefer agent redundancy over under-coverage - better to have overlapping analysis than gaps
-
-**ENHANCED CORE-SATELLITE COORDINATION PATTERNS**:
-- **MANDATORY Core Foundation Quartet**: ALWAYS include foundation-research + foundation-patterns + foundation-principles + foundation-criticism in EVERY parallel cluster
-- **AGGRESSIVE Specialized Addition**: Add 2-3 specialized agents to EVERY request - don't wait for "need", anticipate requirements
-- **UNIVERSAL Consistency**: foundation-principles agent MANDATORY in every parallel cluster for universal consistency
-- **PROACTIVE Conflict Resolution**: foundation-conflicts agent AUTO-INCLUDED when 4+ agents involved to handle competing recommendations
-- **BALANCED Load Distribution**: Core agents handle 60% of work, specialized agents handle 40% - more even distribution
-- **COMPREHENSIVE Coverage Priority**: Prefer agent redundancy and over-analysis under-coverage - better safe than sorry
-
-## AGGRESSIVE PARALLEL AGENT USAGE PATTERNS (MANDATORY)
-
-**TASK COMPLEXITY → AGENT COUNT MAPPING**:
-- **Simple file edit**: foundation-patterns + specialist-code-cleaner + foundation-principles (3 agents minimum)
-- **Code refactoring**: foundation-patterns + specialist-code-cleaner + foundation-principles + foundation-criticism + specialist-test-strategist (5 agents)
-- **Bug investigation**: foundation-research + specialist-options-analyzer + foundation-patterns + foundation-criticism + specialist-test-strategist + specialist-performance-optimizer (6 agents)
-- **Architecture design**: specialist-options-analyzer + foundation-principles + specialist-constraint-solver + foundation-criticism + specialist-stack-advisor + foundation-conflicts (6 agents)
-- **Feature implementation**: foundation-research + specialist-stack-advisor + foundation-patterns + foundation-principles + specialist-code-cleaner + specialist-test-strategist + specialist-stack-advisor (7 agents - exceed normal limits)
-
-**AUTOMATIC AGENT ESCALATION RULES**:
-1. **Start with 3-agent minimum** for ANY coding task
-2. **Add +1 agent** if task involves multiple files
-3. **Add +1 agent** if task involves architecture decisions
-4. **Add +1 agent** if task involves performance considerations
-5. **Add +1 agent** if task involves testing or quality assurance
-6. **Add foundation-conflicts** automatically when 4+ agents involved
-
-**PARALLEL CLUSTER COMPOSITION RULES**:
-- **ALWAYS include**: foundation-principles (consistency)
-- **USUALLY include**: foundation-patterns (quality) + foundation-criticism (validation)
-- **OFTEN include**: foundation-research (context) when unknowns exist
-- **CONTEXT-BASED addition**: 2-3 specialists based on task domain
-- **CONFLICT RESOLUTION**: foundation-conflicts when multiple viewpoints expected
-
-**OVERRIDE CONSERVATIVE DEFAULTS**:
-- Claude Code's built-in agent usage is TOO CONSERVATIVE
-- FORCE parallel agent usage even for "simple" tasks
-- Prefer OVER-ANALYSIS to under-analysis
-- Use MORE agents when uncertain about requirements
-- DEFAULT to parallel clusters, NEVER default to single agents
 
 ## Technology Guidelines Protocol (MANDATORY)
 **CONDITIONAL AGENT INVOCATION**: Use guidelines agents only when technology-specific guidance is unclear or undetermined.
