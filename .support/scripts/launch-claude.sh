@@ -189,7 +189,8 @@ EXAMPLES:
     launch-claude --troubleshoot-mcp
 
 FEATURES:
-    - All logging enabled by default (verbose, debug, MCP debug, save logs)
+    - All logging enabled by default for non-interactive mode (verbose, debug, MCP debug, save logs)
+    - Interactive mode automatically disables verbose and logging for cleaner experience
     - Default model set to sonnet for optimal performance
     - Automatic MCP configuration loading from centralized config
       (.support/mcp-servers/mcp-config.json or legacy .mcp.json)
@@ -723,7 +724,7 @@ main() {
     echo "🚀 launch-claude - Enhanced Claude Code wrapper"
     echo "📦 Model: $DEFAULT_MODEL"
     
-    # For interactive mode, disable logging by default unless forced
+    # For interactive mode, disable logging and verbose by default unless forced
     if [[ ${#ARGS[@]} -eq 0 ]] && [[ "$SAVE_LOGS" == "true" ]]; then
         # Disable logging in interactive mode to preserve stdin
         SAVE_LOGS="false"
@@ -731,6 +732,12 @@ main() {
     elif [[ ${#ARGS[@]} -eq 0 ]] && [[ "$SAVE_LOGS" == "force" ]]; then
         SAVE_LOGS="true"
         echo "ℹ️  Interactive mode with forced logging enabled"
+    fi
+    
+    # Disable verbose mode in interactive mode unless explicitly enabled
+    if [[ ${#ARGS[@]} -eq 0 ]] && [[ "$VERBOSE_MODE" == "true" ]]; then
+        VERBOSE_MODE="false"
+        echo "ℹ️  Interactive mode: verbose disabled (use -q to explicitly disable or run with arguments to enable)"
     fi
     
     # Auto-detect environment before other setup
