@@ -10,11 +10,10 @@ Comprehensive technology stack configuration analysis and guidance effectiveness
 
 ## Instructions
 
-1. Parse $ARGUMENTS for stack analysis parameters:
-   - --stack [name] (analyze specific technology stack)
-   - --usage-patterns (show stack selection and usage patterns)
-   - --effectiveness (analyze guidance effectiveness and coverage gaps)
-   - --recommendations (suggest stack improvements and additions)
+1. Automatically determine analysis scope:
+   - If $ARGUMENTS contains stack name, focus on that stack
+   - If no arguments, analyze all stacks in .support/stacks/
+   - Always include usage patterns, effectiveness, and recommendations
 
 2. Execute enhanced parallel stack analysis clusters with universal agent integration
 1. coordinate enhanced parallel stack analysis clusters with universal agent integration:
@@ -26,11 +25,11 @@ Comprehensive technology stack configuration analysis and guidance effectiveness
 2. analyze stack configuration completeness and guidance effectiveness through specialist-code-cleaner + foundation-criticism + foundation-principles validation
 3. provide comprehensive technology guidance overview with usage recommendations validated by foundation-conflicts + specialist-stack-advisor agents
 
-PARAMETERS:
---stack [name] (analyze specific technology stack)
---usage-patterns (show stack selection and usage patterns)
---effectiveness (analyze guidance effectiveness and coverage gaps)
---recommendations (suggest stack improvements and additions)
+AUTOMATED ANALYSIS:
+- Stack detection and selection based on $ARGUMENTS or comprehensive analysis
+- Usage patterns automatically identified and analyzed
+- Effectiveness assessment included in all analyses
+- Recommendations generated based on findings
 
 ENHANCED_AGENT_CLUSTERS:
 Technology Guidance: specialist-stack-advisor + specialist-constraint-solver + foundation-principles + specialist-code-cleaner
