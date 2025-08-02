@@ -10,17 +10,28 @@ except ImportError:
     raise ImportError("FastMCP library is required. Install with: uv add fastmcp")
 
 from .client import PerplexityClient
-from .utils.logging import setup_logging, get_logger
+from .utils.logging import setup_logging, get_logger, debug_decorator
 
 # Load environment variables
 load_dotenv()
 
-# Initialize logging
+# Initialize enhanced logging with environment configuration
 logger = setup_logging(
-    log_level=os.getenv("PERPLEXITY_LOG_LEVEL", "INFO"),
+    log_level=os.getenv("PERPLEXITY_LOG_LEVEL", "DEBUG"),  # Default to DEBUG for troubleshooting
     log_file=os.getenv("PERPLEXITY_LOG_FILE"),
     logger_name="perplexity_mcp"
 )
+
+# Log environment configuration
+logger.debug(f"Environment variables:")
+logger.debug(f"  PERPLEXITY_LOG_LEVEL: {os.getenv('PERPLEXITY_LOG_LEVEL', 'INFO')}")
+logger.debug(f"  PERPLEXITY_LOG_PATH: {os.getenv('PERPLEXITY_LOG_PATH', './logs')}")
+logger.debug(f"  PERPLEXITY_LOG_FILE: {os.getenv('PERPLEXITY_LOG_FILE', 'perplexity_mcp.log')}")
+logger.debug(f"  PERPLEXITY_DEBUG_LOG_FILE: {os.getenv('PERPLEXITY_DEBUG_LOG_FILE', 'perplexity_debug.log')}")
+logger.debug(f"  PERPLEXITY_API_LOG_FILE: {os.getenv('PERPLEXITY_API_LOG_FILE', 'perplexity_api.log')}")
+logger.debug(f"  PERPLEXITY_ERROR_LOG_FILE: {os.getenv('PERPLEXITY_ERROR_LOG_FILE', 'perplexity_errors.log')}")
+logger.debug(f"  PERPLEXITY_TIMEOUT: {os.getenv('PERPLEXITY_TIMEOUT', '60.0')}")
+logger.debug(f"  PERPLEXITY_API_KEY: {'SET' if os.getenv('PERPLEXITY_API_KEY') else 'NOT_SET'}")
 
 # Create FastMCP server instance
 mcp = FastMCP("Perplexity Research Server")
@@ -42,6 +53,7 @@ except Exception as e:
         "openWorldHint": False
     }
 )
+@debug_decorator
 async def perplexity_search(
     query: str,
     model: str = "sonar",
@@ -63,6 +75,7 @@ async def perplexity_search(
         Comprehensive research response with citations and sources
     """
     logger.info(f"Research request: {query[:100]}...")
+    logger.debug(f"Full research parameters: query_length={len(query)}, model={model}, system_prompt_length={len(system_prompt) if system_prompt else 0}, max_tokens={max_tokens}, temperature={temperature}")
     
     try:
         # Use provided system prompt or default
@@ -88,6 +101,7 @@ async def perplexity_search(
         
         if "error" in result:
             logger.error(f"API error: {result['error']}")
+            logger.debug(f"Full error result: {result}")
             return f"Research failed: {result['error']}"
         
         # Extract response content
@@ -105,12 +119,15 @@ async def perplexity_search(
             logger.info(f"Tokens used - Prompt: {usage.get('prompt_tokens', 0)}, "
                        f"Completion: {usage.get('completion_tokens', 0)}, "
                        f"Total: {usage.get('total_tokens', 0)}")
+            logger.debug(f"Full usage details: {usage}")
         
+        logger.debug(f"Research completed successfully, content length: {len(content)}")
         return content
         
     except Exception as e:
         error_msg = f"Error during research: {str(e)}"
         logger.error(error_msg)
+        logger.debug(f"Research exception details", exc_info=True)
         return error_msg
 
 
@@ -122,6 +139,7 @@ async def perplexity_search(
         "openWorldHint": False
     }
 )
+@debug_decorator
 async def perplexity_deep_research(
     topic: str,
     focus_areas: Optional[List[str]] = None,
@@ -145,6 +163,7 @@ async def perplexity_deep_research(
         Detailed research report with multiple perspectives, recent developments, and practical implications
     """
     logger.info(f"Deep research request: {topic}")
+    logger.debug(f"Deep research parameters: topic_length={len(topic)}, focus_areas={focus_areas}, time_filter={time_filter}, domain_filter={domain_filter}, max_tokens={max_tokens}, temperature={temperature}")
     
     try:
         result = await perplexity_client.research_topic(
@@ -158,6 +177,7 @@ async def perplexity_deep_research(
         
         if "error" in result:
             logger.error(f"Deep research API error: {result['error']}")
+            logger.debug(f"Full deep research error result: {result}")
             return f"Deep research failed: {result['error']}"
         
         # Extract and format response
@@ -175,11 +195,13 @@ async def perplexity_deep_research(
             for i, question in enumerate(result["related_questions"], 1):
                 content += f"{i}. {question}\n"
         
+        logger.debug(f"Deep research completed successfully, content length: {len(content)}")
         return content
         
     except Exception as e:
         error_msg = f"Error during deep research: {str(e)}"
         logger.error(error_msg)
+        logger.debug(f"Deep research exception details", exc_info=True)
         return error_msg
 
 
@@ -191,6 +213,7 @@ async def perplexity_deep_research(
         "openWorldHint": False
     }
 )
+@debug_decorator
 async def perplexity_quick_query(
     question: str,
     domain_filter: Optional[List[str]] = None,
@@ -210,6 +233,7 @@ async def perplexity_quick_query(
         Concise answer with key information and sources
     """
     logger.info(f"Quick query: {question[:100]}...")
+    logger.debug(f"Quick query parameters: question_length={len(question)}, domain_filter={domain_filter}, recency_filter={recency_filter}, temperature={temperature}")
     
     try:
         result = await perplexity_client.query(
@@ -225,14 +249,17 @@ async def perplexity_quick_query(
         
         if "error" in result:
             logger.error(f"Quick query API error: {result['error']}")
+            logger.debug(f"Full quick query error result: {result}")
             return f"Query failed: {result['error']}"
         
         content = result.get("choices", [{}])[0].get("message", {}).get("content", "No response generated")
+        logger.debug(f"Quick query completed successfully, content length: {len(content)}")
         return content
         
     except Exception as e:
         error_msg = f"Error during quick query: {str(e)}"
         logger.error(error_msg)
+        logger.debug(f"Quick query exception details", exc_info=True)
         return error_msg
 
 
@@ -244,6 +271,7 @@ async def perplexity_quick_query(
         "openWorldHint": False
     }
 )
+@debug_decorator
 async def list_models() -> str:
     """
     List all available Perplexity models and their descriptions.
@@ -268,6 +296,7 @@ async def list_models() -> str:
     result += "• Use 'sonar-reasoning' for complex problem-solving\n"
     result += "• Use 'sonar-pro' for enhanced analysis needs\n"
     
+    logger.debug(f"Models list generated, length: {len(result)}")
     return result
 
 
@@ -279,6 +308,7 @@ async def list_models() -> str:
         "openWorldHint": False
     }
 )
+@debug_decorator
 async def health_check() -> str:
     """
     Check the health status of the Perplexity API connection.
@@ -287,32 +317,44 @@ async def health_check() -> str:
         Status message indicating if the API is accessible
     """
     logger.info("Performing health check")
+    logger.debug("Starting comprehensive health check of Perplexity API connection")
     
     try:
         is_healthy = await perplexity_client.health_check()
         
         if is_healthy:
+            logger.debug("Health check passed - API is responding correctly")
             return "✅ Perplexity API is accessible and working correctly."
         else:
+            logger.debug("Health check failed - API is not responding correctly")
             return "❌ Perplexity API is not responding correctly. Check your API key and network connection."
             
     except Exception as e:
         error_msg = f"❌ Health check failed: {str(e)}"
         logger.error(error_msg)
+        logger.debug(f"Health check exception details", exc_info=True)
         return error_msg
 
 
 # Entry point for stdio transport
 def main():
-    """Main entry point for the MCP server."""
+    """Main entry point for the MCP server with enhanced logging."""
     logger.info("Starting Perplexity MCP server...")
+    logger.debug(f"Server configuration: FastMCP instance={type(mcp).__name__}")
+    logger.debug(f"Available tools: {[tool for tool in dir(mcp) if not tool.startswith('_')]}")
+    
     try:
+        logger.debug("Starting FastMCP server with stdio transport")
         mcp.run()  # Defaults to stdio transport
     except KeyboardInterrupt:
-        logger.info("Server stopped by user")
+        logger.info("Server stopped by user (KeyboardInterrupt)")
+        logger.debug("Graceful shutdown initiated")
     except Exception as e:
         logger.error(f"Server error: {e}")
+        logger.debug(f"Server exception details", exc_info=True)
         raise
+    finally:
+        logger.debug("Server shutdown complete")
 
 
 if __name__ == "__main__":

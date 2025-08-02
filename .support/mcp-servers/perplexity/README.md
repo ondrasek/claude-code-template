@@ -8,7 +8,8 @@ A comprehensive Model Context Protocol (MCP) server for integrating Perplexity A
 - **Multiple Research Tools**: Quick queries, comprehensive research, and deep analysis
 - **Model Selection**: Support for all Perplexity models (sonar, sonar-pro, sonar-reasoning, sonar-deep-research)
 - **Customizable System Messages**: Tailor response style and behavior
-- **Comprehensive Logging**: Optional file logging with configurable levels
+- **Enhanced Debug Logging**: Extensive logging system with configurable paths and multiple log files
+- **Request/Response Tracking**: Detailed API call logging for troubleshooting
 - **Environment-based Configuration**: Secure API key management
 - **stdio Transport**: Full compatibility with Claude Code
 - **Comprehensive Testing**: Full test suite with mocking and edge case coverage
@@ -227,23 +228,95 @@ Verify API connectivity and authentication.
 
 ### Environment Variables
 
+#### Required Configuration
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
 | `PERPLEXITY_API_KEY` | Your Perplexity API key | - | Yes |
-| `PERPLEXITY_LOG_LEVEL` | Logging level (DEBUG, INFO, WARNING, ERROR) | INFO | No |
-| `PERPLEXITY_LOG_FILE` | Path to log file (if desired) | - | No |
+
+#### Logging Configuration
+| Variable | Description | Default | Required |
+|----------|-------------|---------|----------|
+| `PERPLEXITY_LOG_LEVEL` | Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL) | INFO | No |
+| `PERPLEXITY_LOG_PATH` | Base directory for all log files | ./logs | No |
+| `PERPLEXITY_LOG_FILE` | Main application log file name | perplexity_mcp.log | No |
+| `PERPLEXITY_DEBUG_LOG_FILE` | Verbose debug log file name | perplexity_debug.log | No |
+| `PERPLEXITY_API_LOG_FILE` | API request/response log file name | perplexity_api.log | No |
+| `PERPLEXITY_ERROR_LOG_FILE` | Error and exception log file name | perplexity_errors.log | No |
+
+#### API Configuration
+| Variable | Description | Default | Required |
+|----------|-------------|---------|----------|
+| `PERPLEXITY_TIMEOUT` | Request timeout in seconds | 60.0 | No |
 | `PERPLEXITY_DEFAULT_MODEL` | Default model for queries | sonar | No |
 | `PERPLEXITY_DEFAULT_SYSTEM` | Default system message | (built-in) | No |
 
 ### Example Configuration
 
 ```bash
-# .env file
+# .env file - Basic Configuration
 PERPLEXITY_API_KEY=pplx-abcd1234567890abcdef
 PERPLEXITY_LOG_LEVEL=INFO
-PERPLEXITY_LOG_FILE=/path/to/logs/perplexity.log
 PERPLEXITY_DEFAULT_MODEL=sonar-pro
+
+# Enhanced Logging Configuration
+PERPLEXITY_LOG_PATH=/var/log/perplexity
+PERPLEXITY_LOG_FILE=main.log
+PERPLEXITY_DEBUG_LOG_FILE=debug.log
+PERPLEXITY_API_LOG_FILE=api_calls.log
+PERPLEXITY_ERROR_LOG_FILE=errors.log
+
+# API Customization
+PERPLEXITY_TIMEOUT=120.0
 PERPLEXITY_DEFAULT_SYSTEM="Provide detailed, technical responses with citations."
+```
+
+### Logging System Features
+
+The enhanced logging system provides multiple specialized log files:
+
+#### 1. **Main Log** (`perplexity_mcp.log`)
+- Application lifecycle events
+- Tool execution status
+- Performance metrics
+- High-level operation flow
+
+#### 2. **Debug Log** (`perplexity_debug.log`)
+- Verbose function entry/exit tracking
+- Parameter values and internal state
+- Detailed execution flow
+- Function duration measurements
+
+#### 3. **API Log** (`perplexity_api.log`)
+- Structured request/response logging
+- Request correlation IDs
+- API timing and performance data
+- Rate limiting and error tracking
+- Sanitized payload information (sensitive data redacted)
+
+#### 4. **Error Log** (`perplexity_errors.log`)
+- Exception stack traces
+- Error context and debugging information
+- API failure details
+- Network and authentication issues
+
+#### Log Format Examples
+
+**Main Log:**
+```
+2025-08-02 10:30:15.123 - perplexity_mcp - INFO - perplexity_search:65 - Research request: What are the latest AI developments...
+```
+
+**API Log (structured JSON):**
+```json
+{
+  "request_id": "req_1722596215123_4567",
+  "timestamp": "2025-08-02T10:30:15.123456",
+  "type": "request",
+  "method": "POST",
+  "url": "https://api.perplexity.ai/chat/completions",
+  "headers": {"authorization": "[REDACTED]"},
+  "data": {"model": "sonar-pro", "messages_info": {"count": 2, "lengths": [45, 234]}}
+}
 ```
 
 ## Development
@@ -347,15 +420,54 @@ Error: Server not responding
 
 ### Debug Mode
 
-Enable debug logging for troubleshooting:
+The enhanced logging system provides comprehensive debugging capabilities:
+
+#### Enable Debug Logging
 
 ```bash
-# Set environment variable
+# Set environment variables for maximum debugging
 export PERPLEXITY_LOG_LEVEL=DEBUG
+export PERPLEXITY_LOG_PATH=/tmp/perplexity_debug
 
 # Or in .env file
 PERPLEXITY_LOG_LEVEL=DEBUG
-PERPLEXITY_LOG_FILE=/tmp/perplexity-debug.log
+PERPLEXITY_LOG_PATH=/tmp/perplexity_debug
+PERPLEXITY_DEBUG_LOG_FILE=verbose_debug.log
+PERPLEXITY_API_LOG_FILE=api_detailed.log
+```
+
+#### Debug Log Analysis
+
+1. **Monitor API Calls:**
+```bash
+# Watch API request/response flow
+tail -f /tmp/perplexity_debug/api_detailed.log | grep -E '(REQUEST|RESPONSE)'
+```
+
+2. **Track Function Performance:**
+```bash
+# Monitor function execution times
+tail -f /tmp/perplexity_debug/verbose_debug.log | grep -E '(ENTER|EXIT).*duration'
+```
+
+3. **Analyze Errors:**
+```bash
+# Review error patterns
+tail -f /tmp/perplexity_debug/errors.log
+```
+
+#### Troubleshooting Network Issues
+
+For deep research tool network errors, enable maximum logging:
+
+```bash
+# .env configuration for network debugging
+PERPLEXITY_LOG_LEVEL=DEBUG
+PERPLEXITY_TIMEOUT=120.0  # Increase timeout
+PERPLEXITY_LOG_PATH=/var/log/perplexity/network_debug
+
+# Then monitor logs:
+tail -f /var/log/perplexity/network_debug/api_detailed.log | grep 'deep-research'
 ```
 
 ### Health Check
@@ -444,3 +556,12 @@ For support with this MCP server:
 - ✅ Comprehensive test suite
 - ✅ Claude Code compatibility with stdio transport
 - ✅ Detailed documentation and troubleshooting guide
+
+### v0.2.0 (Enhanced Logging)
+- ✅ **Enhanced Debug Logging**: Multi-file logging system with configurable paths
+- ✅ **API Request Tracking**: Structured JSON logging for all API calls
+- ✅ **Performance Monitoring**: Function-level timing and performance metrics
+- ✅ **Error Analysis**: Dedicated error logging with full context
+- ✅ **Troubleshooting Tools**: Comprehensive debugging capabilities
+- ✅ **Environment Configuration**: Extensive configuration options via environment variables
+- ✅ **Log Security**: Automatic redaction of sensitive information in logs
