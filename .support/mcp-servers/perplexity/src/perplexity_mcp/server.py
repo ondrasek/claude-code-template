@@ -157,7 +157,7 @@ async def perplexity_search(
 async def perplexity_deep_research(
     topic: str,
     search_domain_filter: Optional[List[str]] = None,
-    search_recency_filter: Optional[str] = None,
+    search_filter: Optional[str] = None,
     max_tokens: int = 1500,
     temperature: float = 0.3
 ) -> str:
@@ -167,7 +167,7 @@ async def perplexity_deep_research(
     Args:
         topic: Main research topic to investigate
         search_domain_filter: List of domains to filter search results (e.g., ["github.com", "stackoverflow.com"])
-        search_recency_filter: Time period filter for search results (e.g., "month", "week", "day")
+        search_filter: Search filter for specialized results (e.g., "academic" for academic sources)
         max_tokens: Maximum tokens in response (default: 1500)
         temperature: Sampling temperature between 0.0-2.0 (default: 0.3)
     
@@ -175,7 +175,7 @@ async def perplexity_deep_research(
         Detailed research report with comprehensive analysis and citations
     """
     logger.info(f"Deep research request: {topic}")
-    logger.debug(f"Deep research parameters: topic_length={len(topic)}, search_domain_filter={search_domain_filter}, search_recency_filter={search_recency_filter}, max_tokens={max_tokens}, temperature={temperature}")
+    logger.debug(f"Deep research parameters: topic_length={len(topic)}, search_domain_filter={search_domain_filter}, search_filter={search_filter}, max_tokens={max_tokens}, temperature={temperature}")
     
     try:
         # Build comprehensive research prompt
@@ -195,7 +195,7 @@ Be thorough, balanced, and evidence-based. Structure your response clearly with 
             max_tokens=max_tokens,
             temperature=temperature,
             search_domain_filter=search_domain_filter,
-            search_recency_filter=search_recency_filter,
+            search_filter=search_filter,
             return_citations=True,
             return_related_questions=True
         )
