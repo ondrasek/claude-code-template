@@ -135,6 +135,6 @@ This command ensures systematic version management with complete traceability fr
 
 ## Related Commands
 
-- `/todo-cleanup-done` - Clean completed TODOs before version preparation
+- `/todo/todo-cleanup-done` - Clean completed TODOs before version preparation
 - `/doc-update` - Ensure documentation synchronization with release
 - `/agents-audit` - Analyze version management process effectiveness
