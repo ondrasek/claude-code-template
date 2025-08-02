@@ -68,6 +68,8 @@ asyncio.run(test())
 
 ### 5. Integrate with Claude Code
 
+#### Option A: Command Line Setup
+
 Add the server to your Claude Code configuration:
 
 ```bash
@@ -81,6 +83,56 @@ claude mcp list
 
 # Test the integration
 claude mcp inspect perplexity-research
+```
+
+#### Option B: Configuration File Setup
+
+Add this configuration to your Claude Code MCP settings file:
+
+```json
+{
+  "mcpServers": {
+    "perplexity-research": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/absolute/path/to/.support/mcp-servers/perplexity",
+        "run",
+        "src/perplexity_mcp/server.py"
+      ],
+      "env": {
+        "PERPLEXITY_API_KEY": "your_api_key_here",
+        "PERPLEXITY_LOG_LEVEL": "INFO"
+      },
+      "alwaysAllow": [
+        "perplexity_search",
+        "perplexity_deep_research", 
+        "perplexity_quick_query",
+        "list_models",
+        "health_check"
+      ]
+    }
+  }
+}
+```
+
+**Configuration Notes:**
+- Replace `/absolute/path/to/.support/mcp-servers/perplexity` with the actual absolute path to your Perplexity MCP server directory
+- Add your actual Perplexity API key to the `PERPLEXITY_API_KEY` environment variable
+- The `alwaysAllow` list enables auto-approval for all Perplexity tools
+- Set `PERPLEXITY_LOG_LEVEL` to `DEBUG` for troubleshooting
+
+#### Verify Installation
+
+```bash
+# Check MCP server status
+claude mcp list
+
+# Inspect available tools
+claude mcp inspect perplexity-research
+
+# Test basic functionality
+claude mcp call perplexity-research health_check
 ```
 
 ## Available Tools

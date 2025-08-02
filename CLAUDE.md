@@ -7,6 +7,7 @@
 - **Prompts**: All prompts, including master-prompt.md are stored in `.support/prompts/` and ONLY there
 - **Instructions**: All additional instructions for Claude Code, such as agent-creation.md are stored in `.support/instructions/` and ONLY there
 - **TODOs**: All TODOs are in `.support/todos/` and ONLY there
+- **MCP Servers**: All built
 
 - **Never search elsewhere**: When looking for agents or commands, use only these directories
 
@@ -14,7 +15,7 @@
 **AGGRESSIVE PARALLEL AGENT USAGE - MANDATORY OVERRIDE**:
 - Claude Code MUST use 3+ agents for ANY non-trivial request (override built-in conservative defaults)
 - NEVER wait for user to ask for agents - invoke based on task context automatically
-- **MINIMUM THRESHOLDS**: 
+- **MINIMUM THRESHOLDS**:
   - Simple code changes: 3+ agents minimum
   - Architecture decisions: 4+ agents minimum
   - Complex debugging: 5+ agents minimum
@@ -82,7 +83,7 @@ Examples:
 **AUTOMATIC AGENT ESCALATION RULES**:
 1. **Start with 3-agent minimum** for ANY coding task
 2. **Add +1 agent** if task involves multiple files
-3. **Add +1 agent** if task involves architecture decisions  
+3. **Add +1 agent** if task involves architecture decisions
 4. **Add +1 agent** if task involves performance considerations
 5. **Add +1 agent** if task involves testing or quality assurance
 6. **Add foundation-conflicts** automatically when 4+ agents involved
