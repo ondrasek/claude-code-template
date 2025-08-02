@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.43.0] - 2025-08-02
+
+### Added
+- **Automated Git Protocol Implementation**: New `/git` command for comprehensive git workflow automation
+  - Complete Git Protocol execution via specialist-git-workflow agent delegation
+  - Automated staging, committing, tagging, CHANGELOG updates, and pushing
+  - Intelligent release tag creation based on commit significance evaluation
+  - Error handling and systematic troubleshooting for git operation failures
+  - Options support: --dry-run, --force-tag, --no-push
+  - Context preservation by delegating all git operations to prevent main window clutter
+  - Full compliance with CLAUDE.md Git Protocol requirements
+  - Security considerations and branch protection rule compliance
+
 ## [2.42.0] - 2025-08-02
 
 ### Added
