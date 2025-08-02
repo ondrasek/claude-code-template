@@ -17,7 +17,7 @@ echo "📋 Test 1: Environment Variable Configuration"
 echo "----------------------------------------------"
 
 # Set test environment variables
-export CLAUDE_SESSION_ID="test-session-$(date +%Y%m%d-%H%M%S)"
+export CLAUDE_SESSION_ID="$(date +%Y%m%d-%H%M%S)"
 export PERPLEXITY_API_KEY="test_key_for_logging_test"
 export PERPLEXITY_LOG_LEVEL="DEBUG"
 
