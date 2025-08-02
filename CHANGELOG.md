@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.49.0] - 2025-08-02
+
+### Changed
+- **Command Autonomy Enhancement**: Streamlined all commands to operate autonomously without manual configuration
+  - Removed excessive argument parsing across 20 command files for better automation
+  - Simplified argument hints to essential parameters only (file paths and descriptions)
+  - Commands now automatically determine optimal settings instead of requiring flags
+  - Enhanced autonomous AI operation patterns for /test, /review, /todo operations, and others
+  - Auto-determination of coverage analysis, test creation, review scope, priority classification
+  - Improved user experience by eliminating manual configuration burden
+  - Focus shift from manual parameter control to intelligent AI decision-making
+
 ## [2.48.0] - 2025-08-02
 
 ### Changed
