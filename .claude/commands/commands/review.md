@@ -12,6 +12,8 @@ Review slash command definition for compliance with @.support/instructions/claud
 
 1. Parse $ARGUMENTS for review parameters:
    - Determine which commands are to be reviewed.
+   - When no arguments are passed, review all commands under .claude/commands, including commands in sub-folders
+   (namespaces).
 
 2. Validate command exists somewhere in .claude/commands/ directory before proceeding
 
