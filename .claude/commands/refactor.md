@@ -1,10 +1,26 @@
-# /refactor
+---
+description: "Comprehensive code refactoring for structure, performance, and maintainability"
+argument-hint: "[--pattern type] [--focus area] [--safe] [--dry-run] [--incremental] [FILES...]"
+allowed-tools: ["Task", "Read", "Edit", "MultiEdit", "Bash", "Grep"]
+model: "sonnet"
+---
 
-TRIGGER: refactoring request
-FOCUS: structure, performance, maintainability
-SCOPE: full codebase or specified files
+# Code Refactoring
 
-ENHANCED_ACTIONS:
+Comprehensive code refactoring focusing on structure, performance, and maintainability for full codebase or specified files.
+
+## Instructions
+
+1. Parse $ARGUMENTS for refactoring parameters:
+   - --pattern [extract-method|extract-class|inline|rename]
+   - --focus [performance|readability|structure|patterns]
+   - --safe (backward-compatible only)
+   - --dry-run (preview changes)
+   - --incremental (confirm each change)
+   - --max-changes N
+   - FILES... (specific files to refactor)
+
+2. Execute enhanced parallel analysis clusters for comprehensive refactoring
 1. coordinate enhanced parallel analysis clusters for comprehensive refactoring:
    - **Pattern Analysis Cluster**: foundation-patterns + foundation-research + foundation-context + foundation-criticism (find duplication with research validation)
    - **Architecture Quality Cluster**: foundation-principles + specialist-constraint-solver + specialist-stack-advisor + specialist-code-cleaner (check SOLID with design integrity)

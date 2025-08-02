@@ -34,7 +34,8 @@ MCP server configuration is stored in .support/mcp-servers/mcp-config.json set v
   - User requests feature → Auto-invoke: specialist-options-analyzer + foundation-principles + specialist-constraint-solver + foundation-criticism + specialist-test-strategist + specialist-stack-advisor (6 agents)
   - User asks to analyze → Auto-invoke: foundation-research + specialist-options-analyzer + foundation-principles + specialist-constraint-solver + foundation-criticism
   - User asks to adjust or modify a file → Auto-invoke: specialist-options-analyzer + foundation-principles + foundation-patterns + specialist-constraint-solver + foundation-criticism (6 agents)
-  - User asks to troubleshoot or fix an issue Auto-invoke: foundation-research + specialist-options-analyzer + specialist-constraint-solver + foundation-criticism (6 agents)
+  - User asks to troubleshoot or fix an issue → Auto-invoke: foundation-research + specialist-options-analyzer + specialist-constraint-solver + foundation-criticism (6 agents)
+  - User asks to research → Auto-invoke: foundation-research + specialist-options-analyzer + specialist-constraint-solver + foundation-principles + foundation-criticism (6 agents)
 
 ## Output Sanitization Protocol (MANDATORY)
 **NO ARTIFICIAL TIMELINES (MANDATORY)**:

@@ -1,13 +1,23 @@
-# Research Command
+---
+description: "Comprehensive research with multiple agents and external sources for thorough topic analysis"
+argument-hint: "<topic> [--focus areas] [--time filter] [--domains list]"
+allowed-tools: ["Task", "WebSearch", "mcp__perplexity-research__perplexity_search", "mcp__perplexity-research__perplexity_deep_research"]
+model: "sonnet"
+---
 
-Comprehensive research command that orchestrates multiple research agents and external sources to provide thorough analysis of any topic.
+# Comprehensive Research
 
-## Usage
-```
-/research <topic> [--focus <focus_areas>] [--time <time_filter>] [--domains <domain_list>]
-```
+Orchestrate multiple research agents and external sources to provide thorough analysis of any topic.
 
-## Parameters
+## Instructions
+
+1. Parse $ARGUMENTS for research parameters:
+   - topic (required): The main research topic to investigate
+   - --focus (optional): Comma-separated list of specific focus areas
+   - --time (optional): Time filter for search results (month, week, day)
+   - --domains (optional): Comma-separated list of specific domains to include
+
+2. Execute parallel research clusters with agent coordination
 - `topic` (required): The main research topic to investigate
 - `--focus` (optional): Comma-separated list of specific focus areas (e.g., "technical,market,risks")
 - `--time` (optional): Time filter for search results (month, week, day)

@@ -1,10 +1,23 @@
-# /todo-create
+---
+description: "Create new TODO task with proper classification and metadata"
+argument-hint: "[--type type] [--priority level] [--assignee agent] DESCRIPTION"
+allowed-tools: ["Task"]
+model: "sonnet"
+---
 
-TRIGGER: create new TODO task, track task, add to TODO list
-FOCUS: task creation and proper classification
-SCOPE: single task creation with proper metadata
+# TODO Creation
 
-ENHANCED_ACTIONS:
+Create new TODO task with proper classification and metadata in .support/todos/ directory.
+
+## Instructions
+
+1. Parse $ARGUMENTS for task creation parameters:
+   - --type [feat|fix|docs|refactor|test|chore] (force specific task type)
+   - --priority [high|medium|low] (override priority assessment)
+   - --assignee [agent-name] (assign to specific agent)
+   - DESCRIPTION (required task description text)
+
+2. Delegate task creation to specialist-todo-manager agent with enhanced coordination
 1. invoke todo agent: create new TODO file with enhanced agent coordination
 2. coordinate parallel task analysis:
    - **Classification Cluster**: foundation-patterns + foundation-principles + foundation-research (classify task type with pattern recognition and research validation)

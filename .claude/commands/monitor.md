@@ -1,10 +1,26 @@
-# /monitor
+---
+description: "Setup and manage application monitoring, logging, and observability"
+argument-hint: "[--type type] [--platform platform] [--env env] [--services services] [options]"
+allowed-tools: ["Task", "Read", "Write", "Edit", "Bash"]
+model: "sonnet"
+---
 
-TRIGGER: monitoring and observability setup request
-PURPOSE: setup and manage application monitoring, logging, and observability
-SCOPE: performance monitoring, logging, health checks, and alerting configuration
+# Monitoring and Observability
 
-ENHANCED_ACTIONS:
+Setup and manage application monitoring, logging, and observability for performance monitoring, health checks, and alerting configuration.
+
+## Instructions
+
+1. Parse $ARGUMENTS for monitoring parameters:
+   - --type [metrics|logs|traces|alerts|health] (monitoring type)
+   - --platform [prometheus|grafana|elk|datadog|newrelic|custom] (monitoring platform)
+   - --env [dev|staging|prod] (target environment)
+   - --services [service-names] (specific services to monitor)
+   - --dashboard (generate monitoring dashboards)
+   - --alerts (configure alerting rules)
+   - --dry-run (preview configuration without applying)
+
+2. Execute parallel clusters for monitoring setup
 1. **System Analysis**: foundation-context + foundation-research for application architecture and monitoring requirements
 2. **Monitoring Strategy**: specialist-performance-optimizer + specialist-constraint-solver for performance metrics and resource monitoring
 3. **Implementation Planning**: specialist-options-analyzer + specialist-stack-advisor for monitoring tool selection and configuration

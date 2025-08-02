@@ -1,10 +1,25 @@
-# /discuss
+---
+description: "Comprehensive multi-perspective analysis of ideas and proposals for decision support"
+argument-hint: "[--focus area] [--depth level] [--stakeholders group] [--constraints type] [topic]"
+allowed-tools: ["Task", "Read", "Grep", "WebSearch"]
+model: "sonnet"
+---
 
-TRIGGER: critical analysis request, proposal evaluation, decision support
-FOCUS: comprehensive multi-perspective analysis of ideas and proposals
-SCOPE: architecture decisions, technology choices, implementation strategies
+# Discussion and Analysis
 
-ENHANCED_ACTIONS:
+Provide comprehensive multi-perspective analysis of ideas and proposals for architecture decisions, technology choices, and implementation strategies.
+
+## Instructions
+
+1. Parse $ARGUMENTS for analysis parameters:
+   - --focus [technical|business|risk|alternatives] (analysis focus area)
+   - --depth [surface|comprehensive|deep-dive] (analysis thoroughness level)
+   - --stakeholders [dev|ops|security|business] (perspective prioritization)
+   - --constraints [time|budget|resources|tech] (constraint consideration)
+   - --memory-check (include historical decision patterns)
+   - Topic or proposal to analyze
+
+2. Execute enhanced parallel analysis clusters
 1. coordinate enhanced parallel analysis clusters for comprehensive evaluation with universal agent integration:
    - **Alternative Generation Cluster**: specialist-options-analyzer + specialist-constraint-solver + foundation-patterns + foundation-research (generate alternatives, identify limitations, recognize patterns, research validation)
    - **Evidence Analysis Cluster**: foundation-research + specialist-options-analyzer + foundation-context (evidence-based research, scenario modeling, system understanding)

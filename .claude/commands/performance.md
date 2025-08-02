@@ -1,10 +1,23 @@
-# /performance
+---
+description: "Analyze performance bottlenecks, optimization opportunities, and scalability concerns"
+argument-hint: "[--commits N] [--profile] [--memory] [FILES...]"
+allowed-tools: ["Task", "Read", "Grep", "Bash"]
+model: "sonnet"
+---
 
-TRIGGER: performance analysis request
-PURPOSE: analyze performance bottlenecks, optimization opportunities, scalability concerns
-SCOPE: codebase performance assessment and optimization recommendations
+# Performance Analysis
 
-OPTIMIZED_ACTIONS:
+Analyze performance bottlenecks, optimization opportunities, and scalability concerns for codebase performance assessment and optimization recommendations.
+
+## Instructions
+
+1. Parse $ARGUMENTS for performance analysis parameters:
+   - --commits N (analyze performance changes in last N commits)
+   - --profile (include profiling guidance)
+   - --memory (include historical performance patterns)
+   - FILES... (specific files to analyze for performance)
+
+2. Execute optimized parallel clusters for performance analysis
 1. **Performance Context Analysis**: foundation-context agent for system architecture understanding
 2. **Performance-Focused Analysis**: specialist-performance + specialist-constraints parallel analysis
 3. **Pattern & Research Integration**: foundation-patterns + foundation-research for optimization strategies

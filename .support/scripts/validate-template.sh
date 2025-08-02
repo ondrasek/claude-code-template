@@ -46,7 +46,7 @@ check "Settings file exists" "[ -f .claude/settings.json ]"
 echo ""
 
 echo "📜 Checking command files..."
-COMMANDS=(review test refactor security debug-mcp langchain-agent crewai-crew python-uv agent-guide doc-update stacks use-python create-prompt discuss)
+COMMANDS=(review test refactor security debug-mcp langchain-agent crewai-crew python-uv agents-guide doc-update stacks use-python create-prompt discuss)
 for cmd in "${COMMANDS[@]}"; do
     check "Command /$cmd exists" "[ -f .claude/commands/$cmd.md ]"
 done

@@ -1,10 +1,23 @@
-# /todo-cleanup-stale
+---
+description: "Cleanup stale TODOs by removing obsolete tasks no longer relevant to project"
+argument-hint: "[--older-than timeframe] [--dry-run] [--interactive] [--keep-types types]"
+allowed-tools: ["Task", "Bash"]
+model: "sonnet"
+---
 
-TRIGGER: cleanup stale TODOs, remove obsolete tasks
-FOCUS: identify and remove TODOs that are no longer relevant
-SCOPE: evaluate TODO relevance against current project state and priorities
+# TODO Cleanup - Stale
 
-ENHANCED_ACTIONS:
+Cleanup stale TODOs by identifying and removing tasks that are no longer relevant, evaluated against current project state and priorities.
+
+## Instructions
+
+1. Parse $ARGUMENTS for staleness cleanup parameters:
+   - --older-than [days|weeks|months] (target TODOs older than timeframe)
+   - --dry-run (show what would be cleaned up without making changes)
+   - --interactive (prompt for each stale TODO)
+   - --keep-types [types] (preserve specific task types even if stale)
+
+2. Delegate comprehensive staleness analysis to specialist-todo-manager agent with mandatory git safety protocol
 1. invoke todo agent: comprehensive staleness analysis with enhanced agent coordination
 2. coordinate parallel staleness assessment:
    - **Relevance Analysis Cluster**: patterns + context + time + researcher (analyze relevance with system understanding and historical evolution)

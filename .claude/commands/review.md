@@ -1,10 +1,22 @@
-# /review
+---
+description: "Analyze code quality, identify issues, and provide recommendations"
+argument-hint: "[--commits N] [--memory] [FILES...]"
+allowed-tools: ["Task", "Read", "Grep", "Bash"]
+model: "sonnet"
+---
 
-TRIGGER: code review request
-PURPOSE: analyze code quality, identify issues, provide recommendations
-SCOPE: uncommitted changes by default, or specified files/commits
+# Code Review
 
-OPTIMIZED_ACTIONS:
+Analyze code quality, identify issues, and provide recommendations for uncommitted changes by default, or specified files/commits.
+
+## Instructions
+
+1. Parse $ARGUMENTS for review parameters:
+   - --commits N (review last N commits)
+   - --memory (include historical review patterns)
+   - FILES... (specific files to review)
+
+2. Execute optimized parallel review clusters with focus detection
 1. **Focus Determination Phase**: Auto-detect review focus or ask user for clarification
 2. **Efficient Parallel Review Clusters** (3-4 agents per cluster, focus-driven selection):
    - **Core Analysis Cluster**: foundation-patterns + foundation-principles + foundation-criticism (essential quality assessment)

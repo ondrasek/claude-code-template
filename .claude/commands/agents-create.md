@@ -1,13 +1,19 @@
-# /agent-create
+---
+description: "Create new Claude Code agents following empirical principles and selection optimization"
+argument-hint: "[agent-name]"
+allowed-tools: ["Task", "Write", "Read", "Glob"]
+model: "sonnet"
+---
 
-Guide for creating new Claude Code agents following empirical principles, selection optimization, and multi-agent coordination patterns.
+# Agent Creation
 
-## Usage
-```
-/agent-create [agent-name]
-```
+Create new Claude Code agents following empirical principles, selection optimization, and multi-agent coordination patterns.
 
-## What it does
+## Instructions
+
+1. If $ARGUMENTS contains agent name, use it; otherwise prompt for agent name
+
+2. Execute enhanced parallel validation clusters
 - **Validates agent necessity** using enhanced decision framework with foundation-research + foundation-criticism + foundation-principles validation
 - **Checks for redundancy** with existing 16 agents using foundation-patterns + specialist-code-cleaner + foundation-context analysis
 - **Guides agent specification** with proven description patterns validated by foundation-criticism + foundation-principles agents
@@ -171,8 +177,8 @@ vulnerability-scanner MUST coordinate with:
 - **threat-modeling.md**: Outstanding architectural analysis framework
 
 ## Related Commands
-- `/agent-audit` - Review existing agents against principles
-- `/agent-guide` - Documentation on using existing 26 agents
+- `/agents-audit` - Review existing agents against principles
+- `/agents-guide` - Documentation on using existing 26 agents
 
 ## Reference Documentation
 - @.support/instructions/agent-creation.md - Complete creation principles

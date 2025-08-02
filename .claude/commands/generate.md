@@ -1,10 +1,26 @@
-# /generate
+---
+description: "Generate code components, services, and project scaffolding with templates"
+argument-hint: "[--type type] [--framework framework] [--template path] [--output dir] [--dry-run] [--overwrite] NAME"
+allowed-tools: ["Task", "Write", "Read", "MultiEdit", "Bash"]
+model: "sonnet"
+---
 
-TRIGGER: code generation and scaffolding request
-PURPOSE: generate code components, services, and project scaffolding
-SCOPE: framework-agnostic code generation with customizable templates
+# Code Generation
 
-ENHANCED_ACTIONS:
+Generate code components, services, and project scaffolding with framework-agnostic code generation and customizable templates.
+
+## Instructions
+
+1. Parse $ARGUMENTS for generation parameters:
+   - --type [component|service|api|model|test|config] (generation type)
+   - --framework [react|vue|angular|express|fastapi|django|spring] (target framework)
+   - --template [custom-template-path] (use custom template)
+   - --output [output-directory] (generation target directory)
+   - --dry-run (preview generation without creating files)
+   - --overwrite (overwrite existing files)
+   - NAME (component/service name)
+
+2. Execute optimized parallel clusters for code generation
 1. **Template Analysis**: foundation-patterns + foundation-research for code pattern recognition and template validation
 2. **Generation Strategy**: specialist-options-analyzer + specialist-stack-advisor for framework-specific generation approaches
 3. **Quality Validation**: foundation-principles + foundation-criticism for generated code quality and best practices

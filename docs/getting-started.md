@@ -34,7 +34,7 @@ This template helps developers understand:
 **Try immediately:**
 ```
 /review          # Get comprehensive code feedback
-/agent-guide     # Explore your AI helpers
+/agents-guide     # Explore your AI helpers
 /discuss         # Challenge your architectural ideas
 ```
 
@@ -141,7 +141,7 @@ These docs are maintained alongside code changes to ensure accuracy and relevanc
 
 **Agents not responding as expected?**
 - Try being more specific about what you want
-- Use `/agent-guide` to see what each agent does best
+- Use `/agents-guide` to see what each agent does best
 
 **Memory not persisting?**
 - Memory is handled by Claude Code's built-in MCP memory server

@@ -1,10 +1,26 @@
-# /deploy
+---
+description: "Automate deployment processes and infrastructure management with safety checks"
+argument-hint: "[--env env] [--strategy strategy] [--dry-run] [--rollback] [--health-check] [FILES...]"
+allowed-tools: ["Task", "Bash", "Read", "Write", "Glob"]
+model: "sonnet"
+---
 
-TRIGGER: deployment automation request
-PURPOSE: automate deployment processes and infrastructure management
-SCOPE: multi-environment deployment with safety checks and rollback capabilities
+# Deployment Automation
 
-ENHANCED_ACTIONS:
+Automate deployment processes and infrastructure management with multi-environment deployment, safety checks and rollback capabilities.
+
+## Instructions
+
+1. Parse $ARGUMENTS for deployment parameters:
+   - --env [dev|staging|prod] (target environment)
+   - --strategy [rolling|blue-green|canary] (deployment strategy)
+   - --dry-run (preview deployment without execution)
+   - --rollback (rollback to previous version)
+   - --health-check (include health validation)
+   - --docker (containerized deployment)
+   - FILES... (specific deployment configurations)
+
+2. Execute parallel agent clusters for deployment planning
 1. **Deployment Context Analysis**: foundation-context agent for environment and infrastructure understanding
 2. **Infrastructure Planning**: specialist-constraint-solver + specialist-options-analyzer for deployment strategy and resource constraints
 3. **Safety Validation**: foundation-criticism + foundation-principles for deployment safety and best practices

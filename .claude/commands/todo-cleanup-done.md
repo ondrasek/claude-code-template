@@ -1,10 +1,22 @@
-# /todo-cleanup-done
+---
+description: "Cleanup completed TODOs by removing implemented tasks with verification"
+argument-hint: "[--dry-run] [--since date/tag] [--confirm-all]"
+allowed-tools: ["Task", "Bash"]
+model: "sonnet"
+---
 
-TRIGGER: cleanup completed TODOs, remove implemented tasks
-FOCUS: identify and remove TODOs that are already implemented
-SCOPE: cross-reference TODOs with CHANGELOG and codebase state
+# TODO Cleanup - Completed
 
-ENHANCED_ACTIONS:
+Cleanup completed TODOs by identifying and removing tasks that are already implemented, with cross-reference to CHANGELOG and codebase state.
+
+## Instructions
+
+1. Parse $ARGUMENTS for cleanup parameters:
+   - --dry-run (show what would be cleaned up without making changes)
+   - --since [date|tag] (check implementations since specific date or version)
+   - --confirm-all (skip individual confirmation prompts)
+
+2. Delegate comprehensive completion analysis to specialist-todo-manager agent with mandatory git safety protocol
 1. invoke todo agent: comprehensive completion analysis with enhanced agent coordination
 2. coordinate parallel completion validation:
    - **Completion Detection Cluster**: patterns + completer + researcher + context (identify implemented functionality with comprehensive validation)

@@ -1,10 +1,24 @@
-# /doc-update
+---
+description: "Comprehensive documentation synchronization with code changes"
+argument-hint: "[--scope scope] [--changes-since point] [--validate-examples] [--dry-run] [--priority level]"
+allowed-tools: ["Task", "Read", "Edit", "Write", "MultiEdit", "Bash"]
+model: "sonnet"
+---
 
-TRIGGER: documentation update request, code changes requiring doc sync
-FOCUS: comprehensive documentation synchronization with code changes
-SCOPE: all project documentation including README, CHANGELOG, API docs, guides
+# Documentation Update
 
-ENHANCED_ACTIONS:
+Comprehensive documentation synchronization with code changes for all project documentation including README, CHANGELOG, API docs, and guides.
+
+## Instructions
+
+1. Parse $ARGUMENTS for documentation update parameters:
+   - --scope [api|readme|changelog|all] (documentation scope, default: all)
+   - --changes-since [commit|tag|date] (analyze changes since specific point)
+   - --validate-examples (test all code examples for accuracy)
+   - --dry-run (show what would be updated without making changes)
+   - --priority [critical|high|medium|low] (filter updates by priority)
+
+2. Execute enhanced parallel documentation analysis clusters
 1. invoke specialist-stack-advisor agent: systematic documentation analysis with enhanced universal agent coordination
 2. coordinate enhanced parallel documentation analysis clusters:
    - **Gap Analysis Cluster**: foundation-patterns + specialist-code-cleaner + foundation-criticism (identify gaps, inconsistencies, micro-improvements, critical assessment)

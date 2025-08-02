@@ -1,10 +1,25 @@
-# /security
+---
+description: "Security audit for vulnerabilities, risks, and remediation recommendations"
+argument-hint: "[--focus area] [--severity level] [--fix] [--quick] [--deps-only] [--output format]"
+allowed-tools: ["Task", "Read", "Grep", "Bash", "WebSearch"]
+model: "sonnet"
+---
 
-TRIGGER: security audit request
-FOCUS: vulnerabilities, risks, remediation
-SCOPE: full codebase security analysis
+# Security Audit
 
-ENHANCED_ACTIONS:
+Comprehensive security audit focusing on vulnerabilities, risks, and remediation for full codebase security analysis.
+
+## Instructions
+
+1. Parse $ARGUMENTS for security audit parameters:
+   - --focus [auth|injection|crypto|deps|config]
+   - --severity [critical|high|medium|low]
+   - --fix (auto-fix simple issues)
+   - --quick (critical only)
+   - --deps-only (dependency scan only)
+   - --output [json|sarif|html]
+
+2. Execute enhanced parallel security specialist clusters
 1. coordinate enhanced parallel security specialist clusters:
    - **Primary Security Analysis Cluster**: foundation-patterns + foundation-criticism + specialist-constraint-solver + foundation-research (comprehensive security analysis with intelligence validation)
    - **Threat Intelligence Cluster**: foundation-research + foundation-patterns + specialist-options-analyzer + foundation-context (CVE intelligence, pattern recognition, threat modeling, system understanding)

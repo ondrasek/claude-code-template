@@ -1,10 +1,20 @@
-# /todo-next
+---
+description: "Cleanup completed/stale TODOs and determine optimal next task with strategic prioritization"
+argument-hint: "[--limit N]"
+allowed-tools: ["Task", "Bash"]
+model: "sonnet"
+---
 
-TRIGGER: cleanup completed/stale TODOs and determine optimal next task
-FOCUS: comprehensive TODO hygiene followed by intelligent next step analysis
-SCOPE: full TODO lifecycle management with strategic task prioritization
+# TODO Cleanup and Next Task
 
-ENHANCED_ACTIONS:
+Comprehensive TODO hygiene followed by intelligent next step analysis for full TODO lifecycle management with strategic task prioritization.
+
+## Instructions
+
+1. Parse $ARGUMENTS for next task parameters:
+   - --limit N (limit number of next-step recommendations)
+
+2. Delegate comprehensive cleanup and analysis to specialist-todo-manager agent with enhanced coordination including mandatory git safety protocol
 1. invoke todo agent: comprehensive cleanup and analysis with enhanced agent coordination
 2. coordinate parallel cleanup operations:
    - **Completion Detection Cluster**: patterns + completer + researcher + context (identify implemented functionality)

@@ -1,13 +1,22 @@
-# /agent-audit
+---
+description: "Audit existing agents against creation principles and usage metrics"
+argument-hint: "[--detailed] [agent-name...]"
+allowed-tools: ["Task", "Read", "Glob", "Grep"]
+model: "sonnet"
+---
 
-Audit existing agents against creation principles and usage metrics for optimization opportunities.
+# Agent Audit
 
-## Usage
-```
-/agent-audit [--detailed] [agent-name...]
-```
+Audit existing agents in .claude/agents/ directory against creation principles and usage metrics for optimization opportunities.
 
-## What it does
+## Instructions
+
+1. Parse $ARGUMENTS for flags and agent names:
+   - If --detailed flag present, include comprehensive analysis
+   - If agent names specified, audit only those agents
+   - If no args, audit all agents in .claude/agents/
+
+2. Execute parallel agent clusters for comprehensive audit
 - **Spawns individual agents**: Creates separate audit agents for each agent being evaluated
 - **Parallel analysis**: Analyzes agent descriptions in isolated contexts for higher quality
 - **Selection optimization**: Identifies low-performing description patterns using creation principles
@@ -167,8 +176,8 @@ Cluster 5 - Completeness Assessment Analysis (completer + patterns + critic + pr
 - Cross-agent relationship patterns
 
 ## Related Commands
-- `/agent-create` - Create new agents following principles
-- `/agent-guide` - Documentation on using existing agents
+- `/agents-create` - Create new agents following principles
+- `/agents-guide` - Documentation on using existing agents
 - `/agent-ecosystem-review` - Comprehensive ecosystem analysis
 
 ## Reference Documentation

@@ -1,10 +1,23 @@
-# /stacks
+---
+description: "Technology stack analysis and guidance for stack configurations and technology choices"
+argument-hint: "[--stack name] [--usage-patterns] [--effectiveness] [--recommendations]"
+allowed-tools: ["Task", "Read", "Glob", "Grep"]
+model: "sonnet"
+---
 
-TRIGGER: technology stack overview, stack configuration analysis, technology guidance review
-FOCUS: comprehensive technology stack configuration analysis and guidance effectiveness
-SCOPE: all stack configurations in `.support/stacks/` directory and related guidance systems
+# Technology Stack Analysis
 
-ENHANCED_ACTIONS:
+Comprehensive technology stack configuration analysis and guidance effectiveness for all stack configurations in .support/stacks/ directory and related guidance systems.
+
+## Instructions
+
+1. Parse $ARGUMENTS for stack analysis parameters:
+   - --stack [name] (analyze specific technology stack)
+   - --usage-patterns (show stack selection and usage patterns)
+   - --effectiveness (analyze guidance effectiveness and coverage gaps)
+   - --recommendations (suggest stack improvements and additions)
+
+2. Execute enhanced parallel stack analysis clusters with universal agent integration
 1. coordinate enhanced parallel stack analysis clusters with universal agent integration:
    - **Technology Guidance Cluster**: specialist-stack-advisor + specialist-constraint-solver + foundation-principles (technology guidance analysis, limitations, design principles)
    - **Usage Intelligence Cluster**: foundation-patterns + foundation-context + foundation-research (usage patterns, system understanding, research validation)

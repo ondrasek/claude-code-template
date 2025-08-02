@@ -1,10 +1,24 @@
-# /todo-review
+---
+description: "Review existing TODOs, prioritize tasks, and analyze TODO backlog for strategic planning"
+argument-hint: "[--filter status] [--priority level] [--type type] [--limit N] [--actionable-only]"
+allowed-tools: ["Task"]
+model: "sonnet"
+---
 
-TRIGGER: review existing TODOs, prioritize tasks, analyze TODO backlog
-FOCUS: task evaluation and relevance assessment
-SCOPE: all pending TODOs in .support/todos/ directory
+# TODO Review
 
-ENHANCED_ACTIONS:
+Review existing TODOs, prioritize tasks, and analyze TODO backlog for task evaluation and relevance assessment across all pending TODOs in .support/todos/ directory.
+
+## Instructions
+
+1. Parse $ARGUMENTS for review parameters:
+   - --filter [pending|in_progress|all] (status filter, default: pending)
+   - --priority [high|medium|low] (filter by priority level)
+   - --type [feat|fix|docs|refactor|test|chore] (filter by task type)
+   - --limit N (limit number of TODOs to review)
+   - --actionable-only (show only immediately actionable tasks)
+
+2. Delegate comprehensive TODO analysis to specialist-todo-manager agent with enhanced coordination
 1. invoke todo agent: comprehensive TODO analysis with enhanced agent coordination
 2. coordinate parallel review analysis:
    - **Relevance Assessment Cluster**: patterns + context + time + researcher (analyze relevance with system understanding and historical context)

@@ -1,10 +1,18 @@
-# Git Protocol Command
+---
+description: "Fully automated Git Protocol implementation with intelligent commit messages"
+argument-hint: "[custom-commit-message]"
+allowed-tools: ["Task"]
+model: "sonnet"
+---
 
-**Name:** git
-**Usage:** `/git`
-**Description:** Fully automated Git Protocol implementation using specialist-git-workflow agent
+# Git Protocol Automation
 
-## Purpose
+Fully automated Git Protocol implementation using specialist-git-workflow agent with intelligent commit message generation.
+
+## Instructions
+
+1. If $ARGUMENTS contains custom commit message, pass it to specialist-git-workflow agent
+2. Otherwise, delegate complete Git Protocol automation to specialist-git-workflow agent
 
 This command implements the complete Git Protocol as described in CLAUDE.md by delegating all git operations to the specialist-git-workflow agent. This prevents context window clutter while ensuring full protocol compliance.
 

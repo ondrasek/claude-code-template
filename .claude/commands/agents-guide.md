@@ -1,6 +1,22 @@
-# /agent-guide
+---
+description: "Comprehensive guide for effectively using all specialized AI agents in the current ecosystem"
+argument-hint: "[--agent agent-name] [--workflow workflow-type] [--examples]"
+allowed-tools: ["Task", "Read", "Glob"]
+model: "sonnet"
+---
 
-Comprehensive guide for effectively using all 26 specialized AI agents in the current ecosystem.
+# Agent Usage Guide
+
+Comprehensive guide for effectively using all specialized AI agents in the current ecosystem with multi-agent coordination patterns.
+
+## Instructions
+
+1. Parse $ARGUMENTS for guide parameters:
+   - --agent [agent-name] (show specific agent usage)
+   - --workflow [workflow-type] (show specific workflow patterns)
+   - --examples (include usage examples)
+
+2. Provide comprehensive agent ecosystem overview and usage patterns
 
 ## Current Agent Ecosystem (16 agents)
 
@@ -127,5 +143,5 @@ Comprehensive guide for effectively using all 26 specialized AI agents in the cu
 **Ecosystem Health: Current 16 agents (6 foundation + 10 specialist) following CLAUDE.md parallel execution protocols**
 
 ## Related Commands
-- `/agent-audit` - Comprehensive ecosystem health analysis
-- `/agent-create` - Create new agents following proven principles
+- `/agents-audit` - Comprehensive ecosystem health analysis
+- `/agents-create` - Create new agents following proven principles

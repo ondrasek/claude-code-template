@@ -1,10 +1,24 @@
-# /fix
+---
+description: "Implement targeted solutions for identified issues, bugs, or improvements"
+argument-hint: "[--issue description] [--safe] [--test] [--memory] [FILES...]"
+allowed-tools: ["Task", "Read", "Edit", "MultiEdit", "Bash", "Grep"]
+model: "sonnet"
+---
 
-TRIGGER: implement specific fixes
-PURPOSE: implement targeted solutions for identified issues, bugs, or improvements
-SCOPE: focused implementation of specific fixes rather than broad refactoring
+# Issue Fix Implementation
 
-OPTIMIZED_ACTIONS:
+Implement targeted solutions for identified issues, bugs, or improvements with focused implementation rather than broad refactoring.
+
+## Instructions
+
+1. Parse $ARGUMENTS for fix parameters:
+   - --issue "description" (specific issue to fix)
+   - --safe (implement only low-risk fixes)
+   - --test (include test implementation for fixes)
+   - --memory (include historical fix patterns)
+   - FILES... (specific files to fix)
+
+2. Execute parallel clusters for fix implementation
 1. **Fix Context Analysis**: foundation-context agent for understanding the issue and system impact
 2. **Implementation Strategy**: specialist-code-cleaner for gap analysis and implementation approach
 3. **Quality Validation**: foundation-patterns + foundation-principles for ensuring fix quality

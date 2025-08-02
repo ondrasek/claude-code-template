@@ -1,10 +1,26 @@
-# /test
+---
+description: "Run tests, create tests, and analyze coverage with automatic framework detection"
+argument-hint: "[--coverage] [--create-only] [--fix] [--focus pattern] [--quick] [--watch] [FILES...]"
+allowed-tools: ["Task", "Bash", "Read", "Write", "Edit"]
+model: "sonnet"
+---
 
-TRIGGER: testing request
-FOCUS: run tests, create tests, analyze coverage
-FRAMEWORK_DETECTION: automatic (pytest, jest, go test, cargo test, etc.)
+# Test Management
 
-ENHANCED_ACTIONS:
+Run tests, create tests, and analyze coverage with automatic framework detection (pytest, jest, go test, cargo test, etc.).
+
+## Instructions
+
+1. Parse $ARGUMENTS for testing parameters:
+   - --coverage (include coverage analysis)
+   - --create-only (only create new tests)
+   - --fix (attempt to fix failing tests)
+   - --focus PATTERN (test name pattern)
+   - --quick (fast tests only)
+   - --watch (re-run on changes)
+   - FILES... (specific files to test)
+
+2. Execute enhanced parallel testing analysis clusters
 1. invoke specialist-test-strategist agent: comprehensive test strategy development with universal agent coordination
 2. coordinate enhanced parallel testing analysis clusters:
    - **Coverage Analysis Cluster**: foundation-patterns + specialist-code-cleaner + foundation-criticism (identify untested patterns, gaps, micro-improvements, critical assessment)

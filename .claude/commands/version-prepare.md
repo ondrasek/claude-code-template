@@ -1,13 +1,23 @@
-# Prepare Version Release
+---
+description: "Analyze completed TODOs and prepare version release with automatic CHANGELOG generation"
+argument-hint: "[version-type]"
+allowed-tools: ["Task", "Read", "Edit", "Write", "Bash"]
+model: "sonnet"
+---
 
-Analyze completed TODOs and prepare for version release with automatic CHANGELOG generation.
+# Version Release Preparation
 
-## Usage
-```
-/version-prepare [version-type]
-```
+Analyze completed TODOs and prepare version release with automatic CHANGELOG generation.
 
-## Version Types
+## Instructions
+
+1. Parse $ARGUMENTS for version type:
+   - auto (default): Automatically detect version bump based on completed TODO types
+   - major: Force major version bump (x.0.0)
+   - minor: Force minor version bump (0.x.0)
+   - patch: Force patch version bump (0.0.x)
+
+2. Execute enhanced parallel agent coordination for version preparation
 - `auto`: Automatically detect version bump based on completed TODO types
 - `major`: Force major version bump (x.0.0)
 - `minor`: Force minor version bump (0.x.0)  

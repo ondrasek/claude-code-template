@@ -236,9 +236,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - **Command Definitions Compatibility**: Updated all command definitions to match reorganized agent directory structure (foundation/, specialists/)
-- **Agent Reference Consistency**: Fixed agent references in /agent-guide, /refactor, and /review commands to use proper naming (foundation-patterns, etc.)
+- **Agent Reference Consistency**: Fixed agent references in /agents-guide, /refactor, and /review commands to use proper naming (foundation-patterns, etc.)
 - **Protocol Alignment**: Updated CLAUDE.md minimum agent requirements from 4-6 to 3+ agents for better usability
-- **Ecosystem Documentation**: Corrected /agent-guide to reflect accurate 16-agent ecosystem count
+- **Ecosystem Documentation**: Corrected /agents-guide to reflect accurate 16-agent ecosystem count
 - **Parallel Execution Compliance**: Ensured all commands follow CLAUDE.md parallel execution protocols with proper agent coordination
 
 ## [2.37.0] - 2025-07-31
@@ -676,8 +676,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Enhanced
 - **ALL SLASH COMMANDS**: Complete overhaul of all 16 commands with universal agent integration:
-  - /agent-audit: Enhanced with 5 parallel clusters and universal agent support
-  - /agent-create: Enhanced with 4-phase parallel cluster workflow
+  - /agents-audit: Enhanced with 5 parallel clusters and universal agent support
+  - /agents-create: Enhanced with 4-phase parallel cluster workflow
   - /agent-ecosystem-review: Enhanced with 6 specialized parallel clusters
   - /discuss: Enhanced with 6 multi-dimensional analysis clusters
   - /refactor: Enhanced with 8 comprehensive parallel clusters
@@ -688,7 +688,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - /stacks: Enhanced with 6 technology analysis clusters
   - All TODO commands: Enhanced with multi-agent validation clusters
   - /version-prepare: Enhanced with 5 release preparation clusters
-  - /agent-guide: Updated to reflect enhanced command patterns
+  - /agents-guide: Updated to reflect enhanced command patterns
 - **Command Architecture**: Maximized parallel execution with well-defined agent clusters that execute simultaneously when dependencies allow
 - **Quality Assurance**: Every command now starts with researcher for context, ends with critic for validation, and uses principles for design decisions
 
@@ -732,7 +732,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.15.0] - 2025-07-28
 
 ### Enhanced
-- **MAJOR**: Complete agent-guide.md overhaul from outdated 11-agent to current 26-agent ecosystem
+- **MAJOR**: Complete agents-guide.md overhaul from outdated 11-agent to current 26-agent ecosystem
 - Added comprehensive documentation for security agent split (vulnerability-scanner, threat-modeling, compliance-checker)
 - Enhanced multi-agent coordination patterns with proven workflow examples  
 - Added proactive agent usage protocol demonstrating automatic Claude Code behavior
@@ -786,7 +786,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.10.0] - 2025-07-28
 
 ### Enhanced
-- **agent-audit command**: Redesigned with individual agent spawning strategy
+- **agents-audit command**: Redesigned with individual agent spawning strategy
 - 4-phase workflow: discovery, parallel spawning, aggregation, reporting
 - Analysis quality improved through isolated contexts per agent evaluation
 - Context pollution prevention by using separate audit agents per target
@@ -1094,7 +1094,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `/langchain-agent` - LangChain development
   - `/crewai-crew` - CrewAI multi-agent systems
   - `/python-uv` - Python project setup with uv
-  - `/agent-guide` - Guide for using specialized AI agents
+  - `/agents-guide` - Guide for using specialized AI agents
   - `/doc-update` - Update documentation to match code changes
 - MCP (Model Context Protocol) tool integrations:
   - filesystem - Local file access
