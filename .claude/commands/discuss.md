@@ -1,6 +1,6 @@
 ---
 description: Comprehensive multi-perspective analysis of ideas and proposals for decision support.
-argument-hint: [--focus area] [--depth level] [--stakeholders group] [--constraints type] [topic]
+argument-hint: Topic or idea to analyze and discuss.
 allowed-tools: Task, Read, Grep, WebSearch
 ---
 

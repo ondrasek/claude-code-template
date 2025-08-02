@@ -1,6 +1,6 @@
 ---
 description: Generate code components, services, and project scaffolding with templates.
-argument-hint: [--type type] [--framework framework] [--template path] [--output dir] [--dry-run] [--overwrite] NAME
+argument-hint: Component or service NAME to generate.
 allowed-tools: Task, Write, Read, MultiEdit, Bash
 ---
 

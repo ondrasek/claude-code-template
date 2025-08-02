@@ -1,6 +1,6 @@
 ---
 description: Automate deployment processes and infrastructure management with safety checks.
-argument-hint: [--env env] [--strategy strategy] [--dry-run] [--rollback] [--health-check] [FILES...]
+argument-hint: Optional deployment target environment.
 allowed-tools: Task, Bash, Read, Write, Glob
 ---
 

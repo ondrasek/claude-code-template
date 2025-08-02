@@ -1,6 +1,6 @@
 ---
 description: Comprehensive research with multiple agents and external sources for thorough topic analysis.
-argument-hint: <topic> [--focus areas] [--time filter] [--domains list]
+argument-hint: Topic to research.
 allowed-tools: Task, WebSearch, mcp__perplexity-research__perplexity_search, mcp__perplexity-research__perplexity_deep_research
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Implement targeted solutions for identified issues, bugs, or improvements.
-argument-hint: [--issue description] [--safe] [--test] [--memory] [FILES...]
+argument-hint: Optional issue description or FILES to fix.
 allowed-tools: Task, Read, Edit, MultiEdit, Bash, Grep
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Analyze completed TODOs and prepare version release with automatic CHANGELOG generation.
-argument-hint: [version-type]
+argument-hint: No arguments needed - automatically analyzes changes and determines version.
 allowed-tools: Task, Read, Edit, Write, Bash
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Audit existing agents against creation principles and usage metrics.
-argument-hint: [--detailed] [agent-name...]
+argument-hint: Optional agent names to audit, or empty to audit all agents.
 allowed-tools: Task, Read, Glob, Grep
 ---
 

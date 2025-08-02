@@ -1,6 +1,6 @@
 ---
 description: Comprehensive documentation synchronization with code changes.
-argument-hint: [--scope scope] [--changes-since point] [--validate-examples] [--dry-run] [--priority level]
+argument-hint: Optional scope or FILES to update documentation for.
 allowed-tools: Task, Read, Edit, Write, MultiEdit, Bash
 ---
 

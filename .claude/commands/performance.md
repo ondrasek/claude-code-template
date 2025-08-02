@@ -1,6 +1,6 @@
 ---
 description: Analyze performance bottlenecks, optimization opportunities, and scalability concerns.
-argument-hint: [--commits N] [--profile] [--memory] [FILES...]
+argument-hint: Optional FILES to analyze, or empty to analyze entire project.
 allowed-tools: Task, Read, Grep, Bash
 ---
 

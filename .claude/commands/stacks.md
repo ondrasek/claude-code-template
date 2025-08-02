@@ -1,6 +1,6 @@
 ---
 description: Technology stack analysis and guidance for stack configurations and technology choices.
-argument-hint: [--stack name] [--usage-patterns] [--effectiveness] [--recommendations]
+argument-hint: Optional technology stack to analyze.
 allowed-tools: Task, Read, Glob, Grep
 ---
 

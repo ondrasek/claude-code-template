@@ -1,6 +1,6 @@
 ---
 description: Cleanup completed/stale TODOs and determine optimal next task with strategic prioritization.
-argument-hint: [--limit N]
+argument-hint: No arguments needed - automatically determines optimal next task.
 allowed-tools: Task, Bash
 ---
 

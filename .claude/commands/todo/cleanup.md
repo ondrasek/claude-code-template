@@ -1,6 +1,6 @@
 ---
 description: Cleanup TODOs by removing completed tasks and stale obsolete items.
-argument-hint: [--done] [--stale] [--dry-run] [--since date/tag] [--older-than timeframe] [--confirm-all] [--interactive] [--keep-types types]
+argument-hint: No arguments needed - automatically cleans completed and stale TODOs.
 allowed-tools: Task, Bash
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Comprehensive guide for effectively using all specialized AI agents in the current ecosystem.
-argument-hint: [--agent agent-name] [--workflow workflow-type] [--examples]
+argument-hint: Optional agent name to get specific guidance for.
 allowed-tools: Task, Read, Glob
 ---
 

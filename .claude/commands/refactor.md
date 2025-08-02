@@ -1,6 +1,6 @@
 ---
 description: Comprehensive code refactoring for structure, performance, and maintainability.
-argument-hint: [--pattern type] [--focus area] [--safe] [--dry-run] [--incremental] [FILES...]
+argument-hint: Optional FILES to refactor, or empty to analyze entire codebase.
 allowed-tools: Task, Read, Edit, MultiEdit, Bash, Grep
 ---
 

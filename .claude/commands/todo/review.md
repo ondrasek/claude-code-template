@@ -1,6 +1,6 @@
 ---
 description: Review existing TODOs, prioritize tasks, and analyze TODO backlog for strategic planning.
-argument-hint: [--filter status] [--priority level] [--type type] [--limit N] [--actionable-only]
+argument-hint: No arguments needed - automatically reviews and prioritizes all TODOs.
 allowed-tools: Task
 ---
 

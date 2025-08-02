@@ -1,6 +1,6 @@
 ---
 description: Run tests, create tests, and analyze coverage with automatic framework detection.
-argument-hint: [--coverage] [--create-only] [--fix] [--focus pattern] [--quick] [--watch] [FILES...]
+argument-hint: Optional FILES to test, or empty to test entire project.
 allowed-tools: Task, Bash, Read, Write, Edit
 ---
 
@@ -10,14 +10,11 @@ Run tests, create tests, and analyze coverage with automatic framework detection
 
 ## Instructions
 
-1. Parse $ARGUMENTS for testing parameters:
-   - --coverage (include coverage analysis)
-   - --create-only (only create new tests)
-   - --fix (attempt to fix failing tests)
-   - --focus PATTERN (test name pattern)
-   - --quick (fast tests only)
-   - --watch (re-run on changes)
-   - FILES... (specific files to test)
+1. Automatically determine testing scope:
+   - If $ARGUMENTS contains files, test only those files
+   - If no arguments, test entire project
+   - Always include coverage analysis and test creation
+   - Auto-fix failing tests when possible
 
 2. Execute enhanced parallel testing analysis clusters
 1. invoke specialist-test-strategist agent: comprehensive test strategy development with universal agent coordination

@@ -1,6 +1,6 @@
 ---
 description: Create new TODO task with proper classification and metadata.
-argument-hint: [--type type] [--priority level] [--assignee agent] DESCRIPTION
+argument-hint: Task DESCRIPTION to create.
 allowed-tools: Task
 ---
 

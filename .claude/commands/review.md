@@ -1,6 +1,6 @@
 ---
 description: Analyze code quality, identify issues, and provide recommendations.
-argument-hint: [--commits N] [--memory] [FILES...]
+argument-hint: Optional FILES to review, or empty to review all uncommitted changes.
 allowed-tools: Task, Read, Grep, Bash
 ---
 
@@ -10,10 +10,10 @@ Analyze code quality, identify issues, and provide recommendations for uncommitt
 
 ## Instructions
 
-1. Parse $ARGUMENTS for review parameters:
-   - --commits N (review last N commits)
-   - --memory (include historical review patterns)
-   - FILES... (specific files to review)
+1. Automatically determine review scope:
+   - If $ARGUMENTS contains files, review those files
+   - If no arguments, review all uncommitted changes
+   - Always include memory and historical patterns
 
 2. Execute optimized parallel review clusters with focus detection
 1. **Focus Determination Phase**: Auto-detect review focus or ask user for clarification
