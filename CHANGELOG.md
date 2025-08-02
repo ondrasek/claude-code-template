@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.45.2] - 2025-08-02
+
+### Fixed
+- **Perplexity MCP Server Logging Protocol Compliance**: Complete logging system overhaul for MCP server reliability
+  - Completely disable logging when PERPLEXITY_LOG_PATH not set to prevent STDIO interference
+  - Remove console logging handlers that interfere with MCP protocol communication
+  - Set logger.disabled = True when log path unavailable or directory creation fails
+  - Disable API logger when no log path available for clean server operation
+  - MCP server now functions silently without file logging capability
+  - Ensures full compliance with MCP STDIO protocol requirements
+  - Restore Python default values for environment variables in server code
+  - Rename function back to perplexity_deep_research for consistency
+  - Remove default value substitution from MCP configuration
+
 ## [2.45.1] - 2025-08-02
 
 ### Fixed
