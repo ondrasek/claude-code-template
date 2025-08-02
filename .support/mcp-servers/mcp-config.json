@@ -6,9 +6,7 @@
         "--directory",
         ".support/mcp-servers/perplexity",
         "run",
-        "python",
-        "-m",
-        "perplexity_mcp.server"
+        "perplexity-mcp"
       ],
       "env": {
         "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}",

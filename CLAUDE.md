@@ -7,7 +7,8 @@
 - **Prompts**: All prompts, including master-prompt.md are stored in `.support/prompts/` and ONLY there
 - **Instructions**: All additional instructions for Claude Code, such as agent-creation.md are stored in `.support/instructions/` and ONLY there
 - **TODOs**: All TODOs are in `.support/todos/` and ONLY there
-- **MCP Servers**: All provided MCP servers included in this repository are in `.support/mcp-servers/`
+- **MCP Servers**: All provided MCP server source code is included in this repository are in `.support/mcp-servers/`,
+MCP server configuration is stored in .support/mcp-servers/mcp-config.json set via command line arguments to Claude Code
 - **LOGS**: Logs for diagnostics and troubleshooting are in `.support/logs`.
 - **Never search elsewhere**: When looking for agents or commands, use only these directories
 
@@ -33,6 +34,7 @@
   - User requests feature → Auto-invoke: specialist-options-analyzer + foundation-principles + specialist-constraint-solver + foundation-criticism + specialist-test-strategist + specialist-stack-advisor (6 agents)
   - User asks to analyze → Auto-invoke: foundation-research + specialist-options-analyzer + foundation-principles + specialist-constraint-solver + foundation-criticism
   - User asks to adjust or modify a file → Auto-invoke: specialist-options-analyzer + foundation-principles + foundation-patterns + specialist-constraint-solver + foundation-criticism (6 agents)
+  - User asks to troubleshoot or fix an issue Auto-invoke: foundation-research + specialist-options-analyzer + specialist-constraint-solver + foundation-criticism (6 agents)
 
 ## Output Sanitization Protocol (MANDATORY)
 **NO ARTIFICIAL TIMELINES (MANDATORY)**:
