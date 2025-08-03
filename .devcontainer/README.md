@@ -1,6 +1,6 @@
-# DevContainer Configuration - Exact Codespace Replica
+# DevContainer Configuration - Repository Development
 
-This devcontainer configuration replicates the exact GitHub Codespace environment for the Claude Code Template repository.
+This devcontainer provides a development environment for working on the Claude Code Template repository.
 
 ## Overview
 
@@ -18,15 +18,15 @@ The devcontainer provides:
    - VS Code: Use "Dev Containers: Reopen in Container" command
    - GitHub Codespaces: Will automatically use this configuration
 
-2. **Configure Secrets Securely**:
+2. **Set Environment Variables**:
    ```bash
-   # Run comprehensive secret management
-   validate-security
+   # Set your API keys as environment variables on your host machine
+   export CLAUDE_API_KEY="your-key-here"
+   export PERPLEXITY_API_KEY="your-key-here"
    
-   # Or set up secrets manually based on your environment:
-   # GitHub Codespaces: Configure at github.com/settings/codespaces
-   # Local: cp .devcontainer/env.template .devcontainer/.env.local
-   # Enterprise: Set VAULT_URL and VAULT_TYPE environment variables
+   # Make them persistent in your shell profile
+   echo 'export CLAUDE_API_KEY="your-key"' >> ~/.bashrc
+   echo 'export PERPLEXITY_API_KEY="your-key"' >> ~/.bashrc
    ```
 
 3. **Validate Setup**:
@@ -115,10 +115,9 @@ The devcontainer includes enterprise-grade secret management with multiple secur
 ### Commands
 
 ```bash
-validate-security      # Comprehensive security check
-setup-secrets          # Interactive secret configuration
 gh auth login          # GitHub authentication
 claude auth status     # Verify Claude authentication
+/tmp/validate-environment.sh  # Validate development environment
 ```
 
 ## MCP Server Configuration

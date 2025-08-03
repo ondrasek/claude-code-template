@@ -70,7 +70,6 @@
     }
   },
 
-  "initializeCommand": ".devcontainer/secure-secrets.sh",
   "postCreateCommand": ".devcontainer/setup.sh",
 
   "mounts": [

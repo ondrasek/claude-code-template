@@ -73,9 +73,7 @@ export PYTHONIOENCODING=UTF-8
 # Add local bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
 
-# Security aliases
-alias validate-security='.devcontainer/security-validation.sh'
-alias setup-secrets='.devcontainer/secure-secrets.sh'
+# Development aliases for this repository
 
 EOF
 
@@ -96,14 +94,9 @@ export PYTHONIOENCODING=UTF-8
 # Add local bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
 
-# Security aliases
-alias validate-security='.devcontainer/security-validation.sh'
-alias setup-secrets='.devcontainer/secure-secrets.sh'
+# Development aliases for this repository
 
-# Load secure secrets on shell startup
-if [ -f ".devcontainer/secure-secrets.sh" ]; then
-    source .devcontainer/secure-secrets.sh
-fi
+# Shell configuration for repository development
 
 EOF
 
@@ -209,26 +202,14 @@ echo "✅ DevContainer setup complete!"
 EOF
 chmod +x /tmp/validate-environment.sh
 
-# Run secure secret management
-echo ""
-echo "🔐 Initializing secure secret management..."
-if [ -f ".devcontainer/secure-secrets.sh" ]; then
-    bash .devcontainer/secure-secrets.sh
-fi
-
 echo ""
 echo "🎉 DevContainer setup completed successfully!"
 echo "📋 Run '/tmp/validate-environment.sh' to validate the environment"
-echo "🔐 Run 'validate-security' for comprehensive security check"
 echo ""
 echo "⚡ Available commands:"
-echo "   validate-security  - Run security validation and secret management"
-echo "   setup-secrets      - Configure API keys and tokens securely"
 echo "   gh auth login      - Authenticate with GitHub"
 echo "   claude auth status - Check Claude authentication"
 echo ""
-echo "📖 Secret Management Options:"
-echo "   • GitHub Codespaces: Automatic (configure at github.com/settings/codespaces)"
-echo "   • Local Development: Use .env.local file (template provided)"
-echo "   • Enterprise: Vault integration available"
+echo "🔧 This devcontainer is for developing the Claude Code Template repository"
+echo "📖 For using Claude Code configurations, see the manual setup documentation"
 echo ""
