@@ -4,11 +4,11 @@
 
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
-      "version": "22.17.0",
+      "version": "latest",
       "nodeGypDependencies": true
     },
     "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.12",
+      "version": "latest",
       "installJupyterlab": false,
       "configureGitCredentialHelper": true
     },
@@ -26,7 +26,6 @@
       "extensions": [
         "anthropic.claude-code",
         "docker.docker",
-        "github.codespaces",
         "github.vscode-pull-request-github",
         "ms-python.python",
         "ms-python.vscode-pylance",
@@ -43,7 +42,6 @@
   },
 
   "containerEnv": {
-    "CODESPACES": "true",
     "CLAUDE_DEBUG": "1",
     "MCP_DEBUG": "1",
     "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
