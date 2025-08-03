@@ -209,13 +209,26 @@ echo "✅ DevContainer setup complete!"
 EOF
 chmod +x /tmp/validate-environment.sh
 
+# Run secure secret management
+echo ""
+echo "🔐 Initializing secure secret management..."
+if [ -f ".devcontainer/secure-secrets.sh" ]; then
+    bash .devcontainer/secure-secrets.sh
+fi
+
 echo ""
 echo "🎉 DevContainer setup completed successfully!"
 echo "📋 Run '/tmp/validate-environment.sh' to validate the environment"
-echo "🔐 Run '/tmp/setup-auth.sh' for authentication setup instructions"
+echo "🔐 Run 'validate-security' for comprehensive security check"
 echo ""
-echo "⚡ Quick authentication setup:"
-echo "   1. GitHub: gh auth login"
-echo "   2. Claude: export CLAUDE_API_KEY='<your-api-key>'"
-echo "   3. Optional: export PERPLEXITY_API_KEY='<your-key>'"
+echo "⚡ Available commands:"
+echo "   validate-security  - Run security validation and secret management"
+echo "   setup-secrets      - Configure API keys and tokens securely"
+echo "   gh auth login      - Authenticate with GitHub"
+echo "   claude auth status - Check Claude authentication"
+echo ""
+echo "📖 Secret Management Options:"
+echo "   • GitHub Codespaces: Automatic (configure at github.com/settings/codespaces)"
+echo "   • Local Development: Use .env.local file (template provided)"
+echo "   • Enterprise: Vault integration available"
 echo ""

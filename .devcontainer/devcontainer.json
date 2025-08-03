@@ -55,8 +55,11 @@
     "CLAUDE_API_KEY": "${localEnv:CLAUDE_API_KEY}",
     "PERPLEXITY_API_KEY": "${localEnv:PERPLEXITY_API_KEY}",
     "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}",
-    "SECRETS_AUDIT_ENABLED": "true",
-    "SECRETS_SECURITY_MODE": "enterprise"
+    "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}",
+    "LANGCHAIN_API_KEY": "${localEnv:LANGCHAIN_API_KEY}",
+    "LANGCHAIN_TRACING_V2": "${localEnv:LANGCHAIN_TRACING_V2}",
+    "LANGCHAIN_PROJECT": "${localEnv:LANGCHAIN_PROJECT}"
   },
 
   "initializeCommand": ".devcontainer/secure-secrets.sh",
@@ -69,6 +72,7 @@
     }
   },
   
+  "initializeCommand": ".devcontainer/secure-secrets.sh",
   "postCreateCommand": ".devcontainer/setup.sh",
   
   "mounts": [

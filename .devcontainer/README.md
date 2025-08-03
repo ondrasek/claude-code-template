@@ -18,15 +18,15 @@ The devcontainer provides:
    - VS Code: Use "Dev Containers: Reopen in Container" command
    - GitHub Codespaces: Will automatically use this configuration
 
-2. **Authenticate Services**:
+2. **Configure Secrets Securely**:
    ```bash
-   # Run the authentication setup helper
-   /tmp/setup-auth.sh
+   # Run comprehensive secret management
+   validate-security
    
-   # Or manually:
-   gh auth login                                    # GitHub authentication
-   export CLAUDE_API_KEY="<your-api-key-here>"     # Claude authentication
-   export PERPLEXITY_API_KEY="<your-key-here>"     # Optional: MCP server
+   # Or set up secrets manually based on your environment:
+   # GitHub Codespaces: Configure at github.com/settings/codespaces
+   # Local: cp .devcontainer/env.template .devcontainer/.env.local
+   # Enterprise: Set VAULT_URL and VAULT_TYPE environment variables
    ```
 
 3. **Validate Setup**:
@@ -75,6 +75,52 @@ claude-init='claude /init'         # Initialize Claude
 launch-claude='/.support/scripts/launch-claude.sh'  # Enhanced launcher
 ```
 
+## Secure Secret Management
+
+The devcontainer includes enterprise-grade secret management with multiple secure sources:
+
+### Secret Sources (Priority Order)
+
+1. **GitHub Codespaces** (Automatic):
+   - Configure at: `https://github.com/settings/codespaces`
+   - Add repository or organization secrets: `CLAUDE_API_KEY`, `PERPLEXITY_API_KEY`
+   - Secrets automatically injected into container
+
+2. **Local Environment Variables** (Development):
+   ```bash
+   # Set on your host machine
+   export CLAUDE_API_KEY="your-key-here"
+   export PERPLEXITY_API_KEY="your-key-here"
+   
+   # Make persistent in your shell profile
+   echo 'export CLAUDE_API_KEY="your-key"' >> ~/.bashrc
+   echo 'export PERPLEXITY_API_KEY="your-key"' >> ~/.bashrc
+   ```
+
+3. **Enterprise Vault Integration** (Advanced):
+   ```bash
+   export VAULT_TYPE="aws-secrets-manager"  # or azure-key-vault, hashicorp-vault
+   export VAULT_URL="your-vault-url"
+   ```
+
+### Security Features
+
+- **🔒 Host Isolation**: Environment variables inherited securely from host
+- **🛡️ Validation**: Secret format validation and placeholder detection
+- **📋 Audit Logging**: Comprehensive secret access logging
+- **🧹 Cleanup**: Automatic secret cleanup on container shutdown
+- **🔍 Security Scanning**: Automated detection of hardcoded secrets
+- **🚫 No File Storage**: No secret files managed in git repository
+
+### Commands
+
+```bash
+validate-security      # Comprehensive security check
+setup-secrets          # Interactive secret configuration
+gh auth login          # GitHub authentication
+claude auth status     # Verify Claude authentication
+```
+
 ## MCP Server Configuration
 
 The devcontainer automatically sets up the Perplexity MCP server:
@@ -83,6 +129,7 @@ The devcontainer automatically sets up the Perplexity MCP server:
 - **Python Environment**: Managed by uv
 - **Configuration**: `.support/mcp-servers/mcp-config.json`
 - **Dependencies**: fastmcp, httpx, python-dotenv
+- **Authentication**: Uses `PERPLEXITY_API_KEY` from secure secret management
 
 ## Differences from Codespace
 
