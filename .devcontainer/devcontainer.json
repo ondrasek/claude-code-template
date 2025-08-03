@@ -1,0 +1,84 @@
+{
+  "name": "Claude Code Template - Exact Codespace Replica",
+  "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22.17.0",
+      "nodeGypDependencies": true
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12",
+      "installJupyterlab": false,
+      "configureGitCredentialHelper": true
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "version": "latest",
+      "enableNonRootDocker": "true"
+    }
+  },
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "docker.docker",
+        "github.codespaces",
+        "github.vscode-pull-request-github",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "qwtel.sqlite-viewer"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
+        "python.terminal.activateEnvironment": false
+      }
+    }
+  },
+  
+  "containerEnv": {
+    "CODESPACES": "true",
+    "CLAUDE_DEBUG": "1",
+    "MCP_DEBUG": "1",
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
+    "PYTHONIOENCODING": "UTF-8"
+  },
+  
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/home/codespace/.local/bin:/root/.cargo/bin",
+    "CLAUDE_API_KEY": "${localEnv:CLAUDE_API_KEY}",
+    "PERPLEXITY_API_KEY": "${localEnv:PERPLEXITY_API_KEY}",
+    "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}",
+    "SECRETS_AUDIT_ENABLED": "true",
+    "SECRETS_SECURITY_MODE": "enterprise"
+  },
+
+  "initializeCommand": ".devcontainer/secure-secrets.sh",
+  
+  "forwardPorts": [58023],
+  "portsAttributes": {
+    "58023": {
+      "label": "Claude Code SSE",
+      "onAutoForward": "notify"
+    }
+  },
+  
+  "postCreateCommand": ".devcontainer/setup.sh",
+  
+  "mounts": [
+    "source=${localWorkspaceFolder}/.devcontainer,target=/tmp/.devcontainer,type=bind,consistency=cached"
+  ],
+  
+  "remoteUser": "codespace",
+  "updateContentCommand": "echo 'DevContainer ready'",
+  
+  "onCreateCommand": {
+    "permissions": "chmod +x .devcontainer/setup.sh"
+  }
+}
