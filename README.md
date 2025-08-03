@@ -1,26 +1,53 @@
 # Claude Code Configuration Template & Dotfiles
 
-[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template?label=v2.47.0)](https://github.com/ondrasek/claude-code-template/releases)
+[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template?label=v2.51.0)](https://github.com/ondrasek/claude-code-template/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A comprehensive template repository and dotfiles setup for Claude Code that automatically configures custom commands, MCP tools, and development environment. Works as a GitHub template repository or dotfiles repository.
+A comprehensive template repository and dotfiles setup for Claude Code that automatically configures custom commands, MCP tools, and development environment. Works as a GitHub template repository, dotfiles repository, or with DevContainers for local development that exactly replicates GitHub Codespace environments.
 
 ## 🚀 Quick Start
 
-### Method 1: Using as GitHub Dotfiles (Recommended for Persistent Setup)
+### Method 1: DevContainer (Local Development)
+
+**Enterprise-Grade Local Development Environment**
+
+1. **Prerequisites**: Docker Desktop and VS Code with Dev Containers extension
+2. **Clone and Open**: Clone this repository and open in VS Code
+3. **Reopen in Container**: Click "Reopen in Container" when prompted
+4. **Automatic Setup**: The devcontainer automatically:
+   - Replicates GitHub Codespace environment exactly
+   - Inherits your host environment variables securely
+   - Installs Claude Code and all dependencies
+   - Configures development tools and extensions
+
+**Secure Secret Management**: The devcontainer inherits environment variables from your host machine, enabling enterprise-grade secret management without hardcoding credentials.
+
+```bash
+# Set environment variables on your host machine:
+export CLAUDE_API_KEY='your-key-here'
+export PERPLEXITY_API_KEY='your-key-here'
+export GITHUB_TOKEN='your-token-here'
+
+# Add to your shell profile for persistence:
+echo 'export CLAUDE_API_KEY="your-key"' >> ~/.bashrc
+echo 'export PERPLEXITY_API_KEY="your-key"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+### Method 2: Using as GitHub Dotfiles (Recommended for Persistent Setup)
 
 1. Fork this repository and name it `dotfiles`
 2. Go to GitHub Settings → Codespaces → Enable "Automatically install dotfiles"
 3. Select your dotfiles repository
 4. Every new Codespace will automatically have Claude Code configured!
 
-### Method 2: Using as a GitHub Template (Project-Specific Setup)
+### Method 3: Using as a GitHub Template (Project-Specific Setup)
 
 1. Click "Use this template" on GitHub
 2. Create your new repository
 3. Clone and start coding - Claude Code will automatically detect the configuration!
 
-### Method 3: Direct Installation
+### Method 4: Direct Installation
 
 ```bash
 # Clone the repository
@@ -36,6 +63,17 @@ source ~/.bashrc
 
 ## 🎯 What Gets Installed
 
+### DevContainer Setup (Automatic)
+When using the devcontainer, automatically configured:
+
+1. **Exact Codespace Replica** - Same Node.js, Python, and tool versions
+2. **Secure Environment Variables** - Inherits from host machine safely
+3. **VS Code Extensions** - Claude Code, Docker, GitHub integration, Python tools
+4. **Development Tools** - GitHub CLI, Docker support, Python/Node.js runtimes
+5. **Security Features** - Secret validation, cleanup procedures, audit functions
+6. **Port Forwarding** - Claude Code SSE (58023) for seamless development
+
+### Dotfiles Installation
 When used as dotfiles, the install script automatically:
 
 1. **Installs Claude Code** via npm globally
@@ -58,6 +96,10 @@ This template follows Claude Code's expected structure and GitHub dotfiles conve
   - `hooks/` - Automation scripts
   - `mcp-servers/` - MCP tool configurations
 - **`.claude/settings.json`** - Main configuration (auto-loaded by Claude Code)
+- **`.devcontainer/`** - DevContainer configuration (v2.51.0)
+  - `devcontainer.json` - Complete development environment specification
+  - `secure-secrets.sh` - Enterprise-grade secret management system
+  - `setup.sh` - Automated container setup and validation
 - **`CLAUDE.md`** - Project guidelines for Claude Code
 - **`install.sh`** - Installation script for dotfiles setup
 
@@ -170,9 +212,19 @@ Update `CLAUDE.md` with your project's:
 
 ## 🛡️ Security Features
 
-- Claude Code's built-in security safeguards
+### Enterprise-Grade Secret Management (v2.51.0)
+- **Environment Variable Inheritance** - Securely inherits secrets from host machine
+- **Multi-Source Secret Loading** - GitHub Codespaces, local environment, enterprise vaults
+- **Secret Validation** - Automatic validation and status reporting for all API keys
+- **Security Auditing** - Built-in security audit functions to detect hardcoded secrets
+- **Automatic Cleanup** - Removes temporary secrets and sensitive data on container shutdown
+- **Zero Hardcoding** - No secrets stored in configuration files or containers
+
+### Built-in Security Safeguards
+- Claude Code's built-in security protections
 - Sensitive file awareness (`.env`, `*.key`)
 - Automatic dangerous operation prevention
+- Pre-read security scanning for sensitive data
 
 ## 🧪 Template Validation
 
@@ -188,17 +240,63 @@ This checks:
 - No deprecated configurations remain
 - Security features are enabled
 
+## 🔧 DevContainer Troubleshooting
+
+### Common Issues and Solutions
+
+**Environment Variables Not Available**:
+```bash
+# Check secret status
+validate-security
+
+# Re-run secret setup
+setup-secrets
+
+# Verify host environment variables are set
+echo $CLAUDE_API_KEY  # Should show your key
+```
+
+**Container Build Failures**:
+```bash
+# Rebuild container completely
+# In VS Code: Command Palette → "Dev Containers: Rebuild Container"
+
+# Or via Docker CLI:
+docker system prune -f
+# Then reopen in container
+```
+
+**Permission Issues**:
+```bash
+# Check container user
+whoami  # Should be 'codespace'
+
+# Fix permissions if needed
+chmod +x .devcontainer/setup.sh
+```
+
+**Secret Validation Commands**:
+```bash
+# Available inside the devcontainer
+validate-security    # Run security audit
+setup-secrets        # Display setup instructions
+gh auth status       # Check GitHub authentication
+claude auth status   # Check Claude authentication
+```
+
 ## 🎯 Best Practices
 
 1. **Agent coordination is mandatory** - All non-trivial requests automatically use minimum 3+ agents
 2. **Context-clean workflows** - Let agents handle complex multi-step processes independently
 3. **Documentation updates automatically** - Every code change includes documentation updates in same commit
 4. **Memory-first research** - System checks MCP memory before web searches
-5. **Keep CLAUDE.md updated** with project-specific information
-6. **Use slash commands** for repetitive tasks
-7. **Configure MCP tools** for external integrations
-8. **Customize agents** for your specific workflow needs
-9. **Run verification** after making configuration changes
+5. **Secure secret management** - Use host environment variables, never hardcode credentials
+6. **Keep CLAUDE.md updated** with project-specific information
+7. **Use slash commands** for repetitive tasks
+8. **Configure MCP tools** for external integrations
+9. **Customize agents** for your specific workflow needs
+10. **Run verification** after making configuration changes
+11. **Validate security regularly** - Use `validate-security` command in devcontainer environments
 
 ## 📚 Documentation
 
@@ -207,6 +305,13 @@ This checks:
 - **[Complete Features Guide](docs/features.md)** - All capabilities and AI agents
 - **[Memory System](docs/memory-system.md)** - Persistent context across sessions
 - **[Customization Guide](docs/customization.md)** - Adapt for your project
+
+### DevContainer Support (v2.51.0)
+- **Enterprise Environment Replication** - Exact GitHub Codespace functionality locally
+- **Secure Secret Management** - Host environment variable inheritance
+- **Automatic Validation** - Built-in security auditing and secret validation
+- **Development Tools** - Pre-configured VS Code extensions and development stack
+- **Port Management** - Automatic port forwarding for Claude Code services
 
 ### External Resources
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
