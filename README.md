@@ -13,7 +13,7 @@ A comprehensive configuration repository for Claude Code containing custom comma
 2. **Git access**: Clone or download this repository
 3. **File system access**: Ability to copy files to your home directory
 
-### Setup Instructions
+### Quick Setup
 
 1. **Clone this repository**:
    ```bash
@@ -30,18 +30,22 @@ A comprehensive configuration repository for Claude Code containing custom comma
    ls -la ~/.claude/
    ```
 
-3. **Copy support files** (optional):
+3. **Set up environment variables**:
    ```bash
-   # Copy support files to your preferred location
-   mkdir -p ~/claude-support
-   cp -r .support/ ~/claude-support/
+   # Add your API keys to shell configuration
+   echo 'export CLAUDE_API_KEY="your-api-key-here"' >> ~/.bashrc
+   source ~/.bashrc
    ```
 
-4. **Copy project guidelines**:
+4. **Test the setup**:
    ```bash
-   # Copy CLAUDE.md to your projects as needed
-   cp CLAUDE.md ~/your-project/
+   # Start Claude Code and test
+   claude
+   # Try: /review, /stacks, /agents-guide
    ```
+
+**📖 For detailed instructions, see: [Manual Setup Guide](docs/manual-setup-guide.md)**  
+**📋 For all setup options, see: [Manual Setup Index](docs/manual-setup-index.md)**
 
 ### Future CLI Tool
 
@@ -287,11 +291,11 @@ ls -la ~/.claude/
 - **[Memory System](docs/memory-system.md)** - Persistent context across sessions
 - **[Customization Guide](docs/customization.md)** - Adapt for your project
 
-### Manual Configuration Support
-- **Flexible Installation** - Copy only what you need to your preferred locations
-- **No Dependencies** - Works with any Claude Code installation
-- **Customizable Setup** - Modify configurations before copying
-- **Version Control Friendly** - Easy to track changes and updates
+### Manual Setup Guides
+- **[Manual Setup Guide](docs/manual-setup-guide.md)** - Complete step-by-step manual installation
+- **[Detailed Copying Instructions](docs/copying-instructions.md)** - File-by-file copying guide
+- **[Configuration Reference](docs/configuration-reference.md)** - Comprehensive configuration documentation
+- **[Migration Guide](docs/migration-guide.md)** - Transition from automated to manual setup
 
 ### External Resources
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)

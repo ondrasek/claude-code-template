@@ -26,7 +26,15 @@ This template helps developers understand:
 
 ## Quick Start (5 Minutes)
 
-**Recommended**: Use as GitHub Dotfiles
+### Option 1: Manual Setup (Recommended)
+1. Clone this repository: `git clone https://github.com/your-username/claude-code-template.git`
+2. Copy configuration: `cp -r .claude/ ~/.claude/`
+3. Set API key: `echo 'export CLAUDE_API_KEY="your-key"' >> ~/.bashrc && source ~/.bashrc`
+4. Test: Open Claude Code and try `/review`
+
+**📖 Detailed Instructions**: [Manual Setup Guide](manual-setup-guide.md)
+
+### Option 2: GitHub Dotfiles (For GitHub Codespaces)
 1. [Fork this repository](https://github.com/your-username/claude-code-template/fork) and rename it to `dotfiles`
 2. Go to GitHub Settings → Codespaces → Dotfiles → Enable
 3. Open any project in Claude Code - you now have superpowers! ✨
@@ -83,7 +91,17 @@ This template helps developers understand:
 - `/refactor` - Code improvement suggestions
 - `/security` - Security audit and recommendations
 
-## Documentation Guides
+## Setup Documentation
+
+| Guide | Purpose | When to Use |
+|-------|---------|-------------|
+| **[Manual Setup Guide](manual-setup-guide.md)** | Complete step-by-step installation | First-time setup, detailed instructions |
+| **[Copying Instructions](copying-instructions.md)** | File-by-file copying guide | Need exact copying instructions |
+| **[Configuration Reference](configuration-reference.md)** | Detailed file documentation | Understanding what each file does |
+| **[Migration Guide](migration-guide.md)** | Transition from automated setup | Moving from old automated installation |
+| **[Setup Scenarios](setup-scenarios.md)** | Common setup situations | Team, project-specific, or special environments |
+
+## Feature Documentation
 
 | Guide | Purpose |
 |-------|---------|
