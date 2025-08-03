@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.52.0] - 2025-08-03
+
+### Added
+- **Comprehensive Manual Setup Documentation**: Complete transition to manual configuration management
+  - Added manual-setup-guide.md with detailed installation instructions
+  - Added copying-instructions.md with step-by-step file copying procedures
+  - Added configuration-reference.md documenting all available configurations
+  - Added migration-guide.md for users transitioning from automated setup
+  - Added setup-scenarios.md covering various installation scenarios
+  - Added manual-setup-index.md as central documentation hub
+
+### Changed
+- **Repository Architecture Transformation**: Complete paradigm shift from automated template to manual configuration repository
+  - Updated README.md to focus on manual setup procedures and remove automation references
+  - Updated CLAUDE.md to remove dotfiles and automation infrastructure references
+  - Enhanced getting-started.md with manual setup focus
+  - Streamlined customization.md and launch-claude-usage.md for manual approach
+
+### Removed
+- **Automation Infrastructure Removal**: Complete removal of automated installation system
+  - Removed install.sh (137 lines) - automated installation script
+  - Removed install-launch-claude.sh (176 lines) - launch claude installation automation
+  - Removed validate-template.sh (121 lines) - template validation automation
+  - Archived automation removal documentation in .support/archive/automation-removed.md
+
+### Fixed
+- **Devcontainer Configuration Cleanup**: Improved formatting and removed redundant entries
+  - Cleaned up devcontainer.json formatting and whitespace consistency
+  - Removed duplicate initializeCommand entry
+  - Simplified container name from "Exact Codespace Replica" to standard naming
+
 ## [2.51.0] - 2025-08-03
 
 ### Added
