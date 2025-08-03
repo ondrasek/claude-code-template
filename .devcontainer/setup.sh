@@ -74,6 +74,9 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Development aliases for this repository
 
+# Setup local env (uv, etc.)
+source $HOME/.local/bin/env
+
 EOF
 
 # Configure zsh with same environment
@@ -96,6 +99,9 @@ export PATH="$HOME/.local/bin:$PATH"
 # Development aliases for this repository
 
 # Shell configuration for repository development
+
+# Setup local env (uv, etc.)
+source $HOME/.local/bin/env
 
 EOF
 
