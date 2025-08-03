@@ -9,7 +9,6 @@ echo "🚀 Setting up Claude Code Template DevContainer..."
 
 # Detect if we're in a container environment
 export CONTAINER_ENV=1
-export CODESPACES=true
 
 # Install uv (modern Python package manager)
 echo "📦 Installing uv Python package manager..."
@@ -19,7 +18,7 @@ echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
 
 # Install Claude CLI globally
 echo "🤖 Installing Claude CLI..."
-npm install -g claude-ai-cli
+npm install -g @anthropic-ai/claude-code
 
 # Install MCP tools
 echo "🔗 Installing MCP tools..."
@@ -112,6 +111,7 @@ echo "🔧 Setting up Git configuration..."
 git config --global credential.helper "!gh auth git-credential"
 git config --global alias.claude-commit '!claude "Please create a git commit with the staged changes"'
 git config --global alias.claude-pr '!claude "Please create a pull request"'
+git config --global --add safe.directory ${containerWorkspaceFolder}
 
 # Set up authentication guidance
 echo "🔐 Setting up authentication..."

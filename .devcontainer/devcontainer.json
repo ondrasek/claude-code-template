@@ -70,13 +70,10 @@
 
   "postCreateCommand": ".devcontainer/setup.sh",
 
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,
+
   "mounts": [
     "source=${localWorkspaceFolder}/.devcontainer,target=/tmp/.devcontainer,type=bind,consistency=cached"
-  ],
-
-  "updateContentCommand": "echo 'DevContainer ready'",
-
-  "onCreateCommand": {
-    "permissions": "chmod +x .devcontainer/setup.sh"
-  }
+  ]
 }
