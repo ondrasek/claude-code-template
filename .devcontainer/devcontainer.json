@@ -76,7 +76,6 @@
     "source=${localWorkspaceFolder}/.devcontainer,target=/tmp/.devcontainer,type=bind,consistency=cached"
   ],
 
-  "remoteUser": "codespace",
   "updateContentCommand": "echo 'DevContainer ready'",
 
   "onCreateCommand": {
