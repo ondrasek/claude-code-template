@@ -1,15 +1,17 @@
 # CLAUDE.md - AI Operational Instructions
 
 ## File Structure (MANDATORY)
-**AGENT AND COMMAND LOCATIONS**:
+**CONFIGURATION LOCATIONS**:
 - **Agent definitions**: All (sub-)agent definitions are stored in `.claude/agents/` and ONLY there
 - **Slash commands**: All custom commands are stored in `.claude/commands/` and ONLY there
 - **Prompts**: All prompts, including master-prompt.md are stored in `.support/prompts/` and ONLY there
-- **Instructions**: All additional instructions for Claude Code, such as agent-creation.md are stored in `.support/instructions/` and ONLY there
+- **Instructions**: All additional instructions for Claude Code are stored in `.support/instructions/` and ONLY there
 - **TODOs**: All TODOs are in `.support/todos/` and ONLY there
-- **MCP Servers**: All provided MCP server source code is included in this repository are in `.support/mcp-servers/`,
+- **MCP Servers**: All provided MCP server source code is in `.support/mcp-servers/`,
 MCP server configuration is stored in .support/mcp-servers/mcp-config.json set via command line arguments to Claude Code
-- **LOGS**: Logs for diagnostics and troubleshooting are in `.support/logs`.
+- **LOGS**: Logs for diagnostics and troubleshooting are in `.support/logs`
+- **DevContainer**: Development container configuration in `.devcontainer/`
+- **Archive**: Historical automation components documented in `.support/archive/`
 - **Never search elsewhere**: When looking for agents or commands, use only these directories
 
 ## Agent Coordination Protocol (MANDATORY)

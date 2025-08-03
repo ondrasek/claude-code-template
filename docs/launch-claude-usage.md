@@ -13,13 +13,10 @@
 
 ## Installation
 
-### Quick Install
+### Manual Setup
 
 ```bash
-# Run the installation script
-./.support/scripts/install-launch-claude.sh
-
-# Or manually add the alias to your shell config
+# Manually add the alias to your shell config
 echo "alias launch-claude='$(pwd)/.support/scripts/launch-claude.sh'" >> ~/.bashrc
 source ~/.bashrc
 ```
@@ -285,8 +282,7 @@ launch-claude --troubleshoot-mcp
 # Check if alias is installed
 type launch-claude
 
-# Reinstall if needed
-./.support/scripts/install-launch-claude.sh
+# Re-add alias if needed (manual setup)
 ```
 
 **Permission denied**
@@ -383,7 +379,6 @@ launch-claude --troubleshoot-mcp > mcp-diagnostics.md
 ```
 .support/scripts/
 ├── launch-claude.sh              # Main launch-claude script
-├── install-launch-claude.sh      # Installation script
 .support/prompts/
 ├── master-prompt.md     # Custom master prompt (auto-created)
 .logs/                   # Log files (auto-created when using --save-logs)

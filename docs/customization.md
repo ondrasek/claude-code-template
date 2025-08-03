@@ -322,7 +322,7 @@ Document team workflows in `CLAUDE.md`:
 ## Validation and Testing
 
 ### Custom Validation Scripts
-Extend `scripts/validate-template.sh`:
+Create your own validation scripts:
 
 ```bash
 #!/bin/bash
@@ -393,7 +393,9 @@ When updating the template:
 
 4. **Validate configuration**:
    ```bash
-   ./scripts/validate-template.sh
+   # Test your configuration manually
+   claude --version
+   claude /help
    ```
 
 ### Version Control Best Practices
