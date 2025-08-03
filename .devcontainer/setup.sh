@@ -22,7 +22,7 @@ npm install -g @anthropic-ai/claude-code
 
 # Install MCP tools
 echo "🔗 Installing MCP tools..."
-npm install -g @modelcontextprotocol/inspector @modelcontextprotocol/client-cli @modelcontextprotocol/server-memory
+npm install -g @modelcontextprotocol/inspector @modelcontextprotocol/server-sequential-thinking @modelcontextprotocol/server-memory
 
 # Set up Python environment for MCP servers
 echo "🐍 Setting up Python environment for MCP servers..."
