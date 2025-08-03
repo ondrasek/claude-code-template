@@ -81,6 +81,7 @@
   "workspaceFolder": "/workspace",
 
   "mounts": [
-    "source=${localWorkspaceFolder}/.devcontainer,target=/tmp/.devcontainer,type=bind,consistency=cached"
+    "source=${localWorkspaceFolder}/.devcontainer,target=/tmp/.devcontainer,type=bind,consistency=cached",
+    "source=claude-code-template-workspace,target=/workspace,type=volume"
   ]
 }
