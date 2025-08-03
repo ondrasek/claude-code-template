@@ -13,8 +13,7 @@ export CONTAINER_ENV=1
 # Install uv (modern Python package manager)
 echo "📦 Installing uv Python package manager..."
 curl -LsSf https://astral.sh/uv/install.sh | sh
-export PATH="$HOME/.cargo/bin:$PATH"
-echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
+source $HOME/.local/bin/env
 
 # Install Claude CLI globally
 echo "🤖 Installing Claude CLI..."
