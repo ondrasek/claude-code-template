@@ -18,6 +18,9 @@
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
       "version": "latest",
       "enableNonRootDocker": "true"
+    },
+    "ghcr.io/devcontainer/features/git:1": {
+      "version": "latest"
     }
   },
 
@@ -36,7 +39,9 @@
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
         "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
-        "python.terminal.activateEnvironment": false
+        "python.terminal.activateEnvironment": false,
+	"git.openRepositoryInParentFolders": "always",
+	"terminal.integrated.defaultLocation": "editor"
       }
     }
   },
@@ -71,7 +76,9 @@
   "postCreateCommand": ".devcontainer/setup.sh",
 
   "remoteUser": "vscode",
+  "containerUser": "vscode",
   "updateRemoteUserUID": true,
+  "workspaceFolder": "/workspace",
 
   "mounts": [
     "source=${localWorkspaceFolder}/.devcontainer,target=/tmp/.devcontainer,type=bind,consistency=cached"
