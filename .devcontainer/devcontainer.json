@@ -1,7 +1,7 @@
 {
-  "name": "Claude Code Template - Exact Codespace Replica",
+  "name": "Claude Code Template",
   "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
-  
+
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "22.17.0",
@@ -20,7 +20,7 @@
       "enableNonRootDocker": "true"
     }
   },
-  
+
   "customizations": {
     "vscode": {
       "extensions": [
@@ -41,7 +41,7 @@
       }
     }
   },
-  
+
   "containerEnv": {
     "CODESPACES": "true",
     "CLAUDE_DEBUG": "1",
@@ -49,7 +49,7 @@
     "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
     "PYTHONIOENCODING": "UTF-8"
   },
-  
+
   "remoteEnv": {
     "PATH": "${containerEnv:PATH}:/home/codespace/.local/bin:/root/.cargo/bin",
     "CLAUDE_API_KEY": "${localEnv:CLAUDE_API_KEY}",
@@ -62,8 +62,6 @@
     "LANGCHAIN_PROJECT": "${localEnv:LANGCHAIN_PROJECT}"
   },
 
-  "initializeCommand": ".devcontainer/secure-secrets.sh",
-  
   "forwardPorts": [58023],
   "portsAttributes": {
     "58023": {
@@ -71,17 +69,17 @@
       "onAutoForward": "notify"
     }
   },
-  
+
   "initializeCommand": ".devcontainer/secure-secrets.sh",
   "postCreateCommand": ".devcontainer/setup.sh",
-  
+
   "mounts": [
     "source=${localWorkspaceFolder}/.devcontainer,target=/tmp/.devcontainer,type=bind,consistency=cached"
   ],
-  
+
   "remoteUser": "codespace",
   "updateContentCommand": "echo 'DevContainer ready'",
-  
+
   "onCreateCommand": {
     "permissions": "chmod +x .devcontainer/setup.sh"
   }
