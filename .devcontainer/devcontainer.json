@@ -73,7 +73,7 @@
     }
   },
 
-  "postCreateCommand": ".devcontainer/setup.sh",
+  "postCreateCommand": "/tmp/.devcontainer/setup.sh",
 
   "remoteUser": "vscode",
   "containerUser": "vscode",

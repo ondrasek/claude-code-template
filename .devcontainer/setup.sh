@@ -24,12 +24,6 @@ npm install -g @anthropic-ai/claude-code
 echo "🔗 Installing MCP tools..."
 npm install -g @modelcontextprotocol/inspector @modelcontextprotocol/server-sequential-thinking @modelcontextprotocol/server-memory
 
-# Set up Python environment for MCP servers
-echo "🐍 Setting up Python environment for MCP servers..."
-cd .support/mcp-servers/perplexity
-uv sync
-cd - > /dev/null
-
 # Install Python development tools
 echo "🛠️ Installing Python development tools..."
 uv tool install ruff
@@ -114,9 +108,9 @@ fi
 
 # Set up Git configuration and aliases
 echo "🔧 Setting up Git configuration..."
+echo 1. Credential Helper
 git config --global credential.helper "!gh auth git-credential"
-git config --global alias.claude-commit '!claude "Please create a git commit with the staged changes"'
-git config --global alias.claude-pr '!claude "Please create a pull request"'
+echo 2. Safe Directory: ${containerWorkspaceDirectory}
 git config --global --add safe.directory ${containerWorkspaceFolder}
 
 # Set up authentication guidance
