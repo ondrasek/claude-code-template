@@ -6,6 +6,7 @@
 set -e
 
 echo "🚀 Setting up Claude Code Template DevContainer..."
+sudo mkdir -p /workspace && sudo chown vscode:vscode /workspace && cd /workspace
 
 # Detect if we're in a container environment
 export CONTAINER_ENV=1
