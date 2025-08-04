@@ -32,8 +32,6 @@ uv tool install mypy
 # Create necessary directories
 echo "📁 Creating necessary directories..."
 mkdir -p ~/.claude
-mkdir -p .support/logs
-chmod 755 .support/logs
 
 # Install and configure zsh
 echo "🐚 Setting up zsh shell environment..."
@@ -94,11 +92,9 @@ git config --global credential.helper "!gh auth git-credential"
 echo 2. Safe Directory: /workspace
 git config --global --add safe.directory /workspace
 
-# Set up authentication guidance
-echo "🔐 Setting up authentication..."
 
 # GitHub CLI authentication setup
-echo "📋 GitHub CLI authentication status:"
+echo "🔐 Setting up authentication..."
 if gh auth status >/dev/null 2>&1; then
     echo "✅ GitHub CLI is already authenticated"
     gh auth status
@@ -108,15 +104,8 @@ else
     echo "   This will authenticate both GitHub CLI and git operations"
 fi
 
-# Create authentication helper script
-echo "🔐 Authentication Setup"
-if [ ! -z $GH_TOKEN ]; then 
-  echo Setting up GH login with token from GH_TOKEN
-  echo $GH_TOKEN | gh auth login --with-token
-  gh auth status
-else
-  echo GH_TOKEN is empty, run `gh auth login`
-fi
+echo "📋 Cloning repository into workspace:"
+gh repo clone ondrasek/claude-code-template /workspace/claude-code-template
 
 # Verify installations
 echo "✅ Verifying installations..."
