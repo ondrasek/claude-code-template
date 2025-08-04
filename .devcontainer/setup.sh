@@ -139,31 +139,14 @@ else
 fi
 
 # Create authentication helper script
-cat > /tmp/setup-auth.sh << 'EOF'
-#!/bin/bash
-echo "🔐 DevContainer Authentication Setup"
-echo "==================================="
-echo ""
-echo "1. GitHub Authentication:"
-echo "   gh auth login"
-echo ""
-echo "2. Claude Authentication:"
-echo "   Option A: Set environment variable"
-echo "   export CLAUDE_API_KEY='<your-api-key-here>'"
-echo "   echo 'export CLAUDE_API_KEY=\"<your-api-key-here>\"' >> ~/.bashrc"
-echo ""
-echo "   Option B: Interactive login"
-echo "   claude auth login"
-echo ""
-echo "3. Verify authentication:"
-echo "   gh auth status"
-echo "   claude auth status"
-echo ""
-echo "4. Optional: Set Perplexity API key for MCP server"
-echo "   export PERPLEXITY_API_KEY='<your-perplexity-key>'"
-echo "   echo 'export PERPLEXITY_API_KEY=\"<your-key>\"' >> ~/.bashrc"
-EOF
-chmod +x /tmp/setup-auth.sh
+echo "🔐 Authentication Setup"
+if [ ! -z $GH_TOKEN ]; then 
+  echo Setting up GH login with token from GH_TOKEN
+  echo $GH_TOKEN | gh auth login --with-token
+  gh auth status
+else
+  echo GH_TOKEN is empty, run `gh auth login`
+fi
 
 # Verify installations
 echo "✅ Verifying installations..."
@@ -172,44 +155,9 @@ echo "npm: $(npm --version)"
 echo "Python: $(python3 --version)"
 echo "uv: $(uv --version)"
 echo "Git: $(git --version)"
+echo "gh: $(gh --version)"
 echo "Claude CLI: $(claude --version 2>/dev/null || echo 'Claude CLI installed, requires API key for full verification')"
-
-# Create a validation script
-cat > /tmp/validate-environment.sh << 'EOF'
-#!/bin/bash
-echo "🔍 DevContainer Environment Validation"
-echo "======================================"
-echo "Node.js: $(node --version)"
-echo "npm: $(npm --version)" 
-echo "Python: $(python3 --version)"
-echo "uv: $(uv --version)"
-echo "Git: $(git --version)"
-echo "Docker: $(docker --version 2>/dev/null || echo 'Docker available via docker-outside-of-docker')"
-echo "GitHub CLI: $(gh --version | head -1)"
-echo ""
-echo "Python packages:"
-uv tool list 2>/dev/null || echo "uv tools not installed"
-echo ""
-echo "npm global packages:"
-npm list -g --depth=0 2>/dev/null | grep -E "(claude-ai-cli|@modelcontextprotocol)" || echo "MCP packages need verification"
-echo ""
-echo "Environment variables:"
-echo "CODESPACES: $CODESPACES"
-echo "CLAUDE_DEBUG: $CLAUDE_DEBUG"
-echo "MCP_DEBUG: $MCP_DEBUG"
-echo ""
-echo "✅ DevContainer setup complete!"
-EOF
-chmod +x /tmp/validate-environment.sh
 
 echo ""
 echo "🎉 DevContainer setup completed successfully!"
-echo "📋 Run '/tmp/validate-environment.sh' to validate the environment"
-echo ""
-echo "⚡ Available commands:"
-echo "   gh auth login      - Authenticate with GitHub"
-echo "   claude auth status - Check Claude authentication"
-echo ""
-echo "🔧 This devcontainer is for developing the Claude Code Template repository"
-echo "📖 For using Claude Code configurations, see the manual setup documentation"
 echo ""

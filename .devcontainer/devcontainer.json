@@ -53,6 +53,10 @@
     "PYTHONIOENCODING": "UTF-8"
   },
 
+  "runArgs": [
+    "--env-file", ".env"
+  ]
+
   "remoteEnv": {
     "PATH": "${containerEnv:PATH}:/home/vscode/.local/bin"
   },
