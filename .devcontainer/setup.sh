@@ -105,7 +105,14 @@ else
 fi
 
 echo "📋 Cloning repository into workspace:"
-gh repo clone ondrasek/claude-code-template /workspace/claude-code-template
+workingCopy=/workspace/claude-code-template
+if [ -d $workingCopy ]; then 
+  cd $workingCopy
+  gh repo sync
+  cd -
+else
+  gh repo clone ondrasek/claude-code-template /workspace/claude-code-template
+fi
 
 # Verify installations
 echo "✅ Verifying installations..."
