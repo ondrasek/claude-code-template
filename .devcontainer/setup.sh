@@ -110,8 +110,8 @@ fi
 echo "🔧 Setting up Git configuration..."
 echo 1. Credential Helper
 git config --global credential.helper "!gh auth git-credential"
-echo 2. Safe Directory: ${containerWorkspaceDirectory}
-git config --global --add safe.directory ${containerWorkspaceFolder}
+echo 2. Safe Directory: /workspace
+git config --global --add safe.directory /workspace
 
 # Set up authentication guidance
 echo "🔐 Setting up authentication..."

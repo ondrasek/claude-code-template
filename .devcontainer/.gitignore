@@ -5,6 +5,7 @@
 *.pfx
 secrets/
 .secrets/
+secrets.json
 
 # Temporary files that might contain secrets
 *.tmp
