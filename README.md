@@ -1,6 +1,6 @@
 # Claude Code Configuration Repository
 
-[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template?label=v2.51.0)](https://github.com/ondrasek/claude-code-template/releases)
+[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template?label=v2.53.0)](https://github.com/ondrasek/claude-code-template/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A comprehensive configuration repository for Claude Code containing custom commands, MCP tools, specialized agents, and development configurations. This repository provides manually installable configurations that you can copy to your local Claude Code setup.
