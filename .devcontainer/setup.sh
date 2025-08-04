@@ -14,7 +14,6 @@ export CONTAINER_ENV=1
 # Install uv (modern Python package manager)
 echo "📦 Installing uv Python package manager..."
 curl -LsSf https://astral.sh/uv/install.sh | sh
-source $HOME/.local/bin/env
 
 # Install Claude CLI globally
 echo "🤖 Installing Claude CLI..."
@@ -53,9 +52,7 @@ echo "🐚 Configuring shell environment..."
 cat >> ~/.bashrc << 'EOF'
 
 # Claude Code Template Aliases
-alias cc='claude'
-alias claude-init='claude /init'
-alias launch-claude='/.support/scripts/launch-claude.sh'
+alias launch-claude='/workspace/claude-code-template/.support/scripts/launch-claude.sh'
 
 # Environment variables for Claude Code
 export CLAUDE_DEBUG=1
@@ -65,21 +62,13 @@ export PYTHONIOENCODING=UTF-8
 
 # Add local bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
-
-# Development aliases for this repository
-
-# Setup local env (uv, etc.)
-source $HOME/.local/bin/env
-
 EOF
 
 # Configure zsh with same environment
 cat >> ~/.zshrc << 'EOF'
 
 # Claude Code Template Aliases
-alias cc='claude'
-alias claude-init='claude /init'
-alias launch-claude='/.support/scripts/launch-claude.sh'
+alias launch-claude='/workspace/claude-code-template/.support/scripts/launch-claude.sh'
 
 # Environment variables for Claude Code
 export CLAUDE_DEBUG=1
@@ -89,14 +78,6 @@ export PYTHONIOENCODING=UTF-8
 
 # Add local bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
-
-# Development aliases for this repository
-
-# Shell configuration for repository development
-
-# Setup local env (uv, etc.)
-source $HOME/.local/bin/env
-
 EOF
 
 # Set up Git configuration (if not already configured)
@@ -125,17 +106,6 @@ else
     echo "⚠️  GitHub CLI not authenticated"
     echo "   Run 'gh auth login' after container setup completes"
     echo "   This will authenticate both GitHub CLI and git operations"
-fi
-
-# Claude CLI authentication setup
-echo "📋 Claude CLI authentication status:"
-if claude auth status >/dev/null 2>&1; then
-    echo "✅ Claude CLI is already authenticated"
-else
-    echo "⚠️  Claude CLI not authenticated"
-    echo "   Set your CLAUDE_API_KEY environment variable:"
-    echo "   export CLAUDE_API_KEY='<your-api-key-here>'"
-    echo "   Or run 'claude auth login' for interactive setup"
 fi
 
 # Create authentication helper script
