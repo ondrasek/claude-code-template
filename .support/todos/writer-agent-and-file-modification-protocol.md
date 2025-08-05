@@ -1,0 +1,1 @@
+Consider implementing writer agent for individual file modifications and file modification protocol: researcher or patterns or principles + critic and then writer.

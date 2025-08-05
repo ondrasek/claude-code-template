@@ -9,8 +9,8 @@ RULE 4: Follow file structure locations EXACTLY
 
 <parallel_agent_protocol priority="CRITICAL">
 <enforcement>Use Task() for concurrent agent processing when beneficial</enforcement>
-<minimum_agents>1-2 agents for simple tasks, 2-3 for complex</minimum_agents>
-<maximum_concurrent>5 agents per batch (10 theoretical max)</maximum_concurrent>
+<minimum_agents>1 agent for simple tasks, 2-3 for complex</minimum_agents>
+<maximum_concurrent>3 agents per batch</maximum_concurrent>
 <invocation_pattern>Single message with multiple Task() calls</invocation_pattern>
 
 <automatic_triggers>
@@ -41,7 +41,7 @@ RULE 4: Follow file structure locations EXACTLY
 </pattern_engine>
 </automatic_triggers>
 
-<recursion_prevention>Sub-agents NEVER spawn other agents</recursion_prevention>
+<recursion_prevention>Sub-agents NEVER spawn other sub-agents</recursion_prevention>
 </parallel_agent_protocol>
 
 <git_protocol priority="MANDATORY">
