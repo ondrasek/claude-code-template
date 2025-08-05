@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.57.0] - 2025-08-05
+
+### Changed
+- **Repository transformation finalization**: Complete conversion from template to Claude Config Manager CLI tool
+  - Updated README.md branding from "Claude Code CLI Tool" to "Claude Config Manager" with new command overview
+  - Enhanced launch-claude.sh with Node.js memory optimization (--max-old-space-size=8192) to prevent crashes
+  - Improved launch-claude.sh code formatting and structure for better maintainability
+  - Cleaned master-prompt.md to remove template-specific content
+
+### Removed
+- **Template documentation cleanup**: Removed outdated template-specific documentation files
+  - docs/copying-instructions.md (428 lines) - step-by-step template copying guide
+  - docs/manual-setup-guide.md (367 lines) - manual configuration instructions
+  - docs/manual-setup-index.md (189 lines) - documentation index
+  - docs/migration-guide.md (330 lines) - template migration procedures
+  - docs/setup-scenarios.md (272 lines) - various setup scenarios
+
 ## [2.56.1] - 2025-08-05
 
 ### Added
