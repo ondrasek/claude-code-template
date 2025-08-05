@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.56.0] - 2025-08-05
+
+### Added
+- **Enhanced launch-claude wrapper**: Complete continue/resume flag support for improved session management
+  - `-c/--continue` flag support (enabled by default for automatic conversation resumption)
+  - `-r/--resume` flag support with optional session ID for targeted conversation resumption
+  - `--no-continue` flag to disable continue mode and start fresh conversations
+  - `--dry-run` flag for testing command construction without execution
+  - Comprehensive help documentation with usage examples and feature descriptions
+  - Enhanced user feedback displaying current session mode (continue/resume/new)
+  - Proper integration of session flags into Claude command building pipeline
+
 ## [2.55.0] - 2025-08-05
 
 ### Changed
