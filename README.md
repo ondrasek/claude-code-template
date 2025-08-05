@@ -14,11 +14,33 @@ A professional CLI tool for automated Claude Code configuration management. Inst
 
 > **Note**: This is a complementary tool designed to enhance your Claude Code experience. It works alongside the official Claude Code CLI to provide advanced configuration management and specialized AI agents.
 
+## 📖 Table of Contents
+
+### Getting Started
+- [⚡ Quick Start](#-quick-start)
+- [📋 Installation Verification](#-installation-verification)
+- [🤔 FAQ](#-frequently-asked-questions)
+
+### Reference
+- [📋 Available Commands](#-available-commands)
+- [🎯 What Gets Installed](#-what-gets-installed)
+- [🔧 Configuration Management](#-configuration-management)
+
+### Advanced
+- [🛡️ Security & Safety](#-security--safety)
+- [🎨 Customization](#-customization)
+- [🚀 Development](#-development)
+
+### Support
+- [🔧 Troubleshooting](#-troubleshooting)
+- [📚 Documentation](#-documentation)
+- [📞 Support](#-support)
+
 ## ⚡ Quick Start
 
-### Prerequisites
+### 1. Prerequisites
 - [Claude Code CLI](https://claude.ai/code) installed and working
-- Python 3.13+ (for uvx support)
+- Python 3.11+ (for uvx support)
 - Internet connection for configuration downloads
 
 **Verify your setup:**
@@ -26,45 +48,63 @@ A professional CLI tool for automated Claude Code configuration management. Inst
 # Check Claude Code is installed
 claude --version
 
-# Check Python version (should be 3.13+)
+# Check Python version (should be 3.11+)
 python3 --version
 
 # Check uvx is available
 uvx --version
 ```
 
-### Installation & Verification
+> **Troubleshooting Prerequisites:**
+> - **Claude Code not found:** Install from [claude.ai/code](https://claude.ai/code)
+> - **Python version too old:** Install Python 3.11+ from [python.org](https://python.org)
+> - **uvx not available:** Upgrade Python or install with `pip install --user pipx`
 
-**1. Initialize all configurations:**
+### 2. Installation
+
 ```bash
+# One command installs everything
 uvx claude-code-forge init
 ```
 
-**2. Verify installation:**
+### 3. Quick Verification
+
 ```bash
-# Check agents were installed (should show 16 agents)
+# Check agents (should show 16 agents)
 claude /agents/audit
 
 # Test custom commands
 claude /stacks
-
-# Verify MCP tools
-claude "list available tools"
-```
-
-**3. Start using enhanced features:**
-```bash
-# Analyze technology stack
-claude /stacks
-
-# Get issue resolution help
-claude /fix "describe your problem"
-
-# Start critical analysis
-claude /discuss "topic to analyze"
 ```
 
 🎉 **Success!** Your Claude Code now includes 16 specialized agents, custom commands, and MCP tools.
+
+[📋 See detailed verification steps](#-installation-verification)
+
+---
+
+## ⚡ Quick Reference
+
+**Most Used Commands:**
+```bash
+# Full setup
+uvx claude-code-forge init
+
+# Stack analysis  
+claude /stacks
+
+# Issue help
+claude /fix "problem description"
+
+# Critical analysis
+claude /discuss "topic"
+```
+
+**Key Agents:** `researcher` • `context` • `patterns` • `principles` • `critic` • `conflicts`
+
+**[📖 Full Documentation](#-table-of-contents) • [❓ FAQ](#-frequently-asked-questions) • [🔧 Troubleshooting](#-troubleshooting)**
+
+---
 
 ## 📋 Installation Verification
 
@@ -87,29 +127,17 @@ ls -la .support/backups/
 claude "what tools do you have access to?"
 ```
 
-## 🔧 Prerequisites
-
-**Requirements:**
-- [Claude Code CLI](https://claude.ai/code) - Official Claude desktop application with CLI
-- Python 3.13+ (for uvx compatibility)
-- Internet connection (downloads configurations from GitHub)
-
-**Troubleshooting prerequisites:**
-- **Claude Code not found:** Install from [claude.ai/code](https://claude.ai/code)
-- **Python version too old:** Install Python 3.13+ from [python.org](https://python.org)
-- **uvx not available:** Included with Python 3.13+, no separate installation needed
-- **Connection issues:** Verify network access to GitHub
 
 ## 📋 Available Commands
 
-| Command | Description |
-|---------|-------------|
-| `uvx claude-code-forge init` | Initialize all configurations |
-| `uvx claude-code-forge factory-reset` | Reset to defaults with backup |
-| `uvx claude-code-forge upgrade` | Update to latest configurations |
-| `uvx claude-code-forge agent-ecosystem` | Generate project-specific agents |
-| `uvx claude-code-forge troubleshoot` | Debug Claude Code and MCP issues |
-| `uvx claude-code-forge master-prompt` | Craft optimized master prompts |
+| 🛠️ Command | 📝 Description | ⚡ Usage |
+|------------|----------------|----------|
+| `init` | Initialize all configurations | `uvx claude-code-forge init` |
+| `factory-reset` | Reset to defaults with backup | `uvx claude-code-forge factory-reset` |
+| `upgrade` | Update to latest configurations | `uvx claude-code-forge upgrade` |
+| `agent-ecosystem` | Generate project-specific agents | `uvx claude-code-forge agent-ecosystem` |
+| `troubleshoot` | Debug Claude Code and MCP issues | `uvx claude-code-forge troubleshoot` |
+| `master-prompt` | Craft optimized master prompts | `uvx claude-code-forge master-prompt` |
 
 ### Command Details
 
@@ -287,6 +315,8 @@ Your existing configuration is automatically backed up to `.support/backups/` be
 - **Troubleshooting:** Common issues and solutions in `.support/logs/`
 
 ## 🔧 Troubleshooting
+
+> **💡 Quick Help:** Run `uvx claude-code-forge troubleshoot` for AI-assisted debugging
 
 ### Common Issues & Solutions
 
