@@ -22,6 +22,10 @@ MCP_DEBUG="true"
 LOG_FILE=""
 SAVE_LOGS="true"
 SKIP_PERMISSIONS="false"
+USE_CONTINUE="true"
+USE_RESUME="false"
+RESUME_SESSION_ID=""
+DRY_RUN="false"
 
 # Environment file configuration
 ENV_FILES=(".env" ".env.local" ".env.development")
@@ -172,6 +176,10 @@ OPTIONS:
     --force-logs             Force enable logging even in interactive mode
     -m, --model MODEL        Set model (default: $DEFAULT_MODEL)
     --log-file FILE          Save logs to specified file (default: timestamped)
+    -c, --continue           Continue the most recent conversation (default: enabled)
+    --no-continue            Disable continue mode (start new conversation)
+    -r, --resume [ID]        Resume a conversation (with optional session ID)
+    --dry-run                Show what would be executed without running
     --analyze-logs           Analyze existing log files using Claude Code agents
     --clean-logs             Remove all existing session directories from .support/logs/
     --troubleshoot-mcp       Analyze and troubleshoot MCP server issues using agents
@@ -181,17 +189,22 @@ OPTIONS:
     --env-file FILE          Load specific .env file (can be used multiple times)
 
 EXAMPLES:
-    launch-claude "Review my code"
-    launch-claude --quiet --no-logs "Simple query without logging"
-    launch-claude --log-file custom.log "Session with custom log file"
-    launch-claude --analyze-logs
-    launch-claude --clean-logs
-    launch-claude --troubleshoot-mcp
+    launch-claude "Review my code"                    # Continue most recent conversation
+    launch-claude --no-continue "Start fresh"        # Start new conversation
+    launch-claude -r "Resume with selection"          # Interactive resume
+    launch-claude -r abc123 "Resume specific"         # Resume specific session
+    launch-claude --quiet --no-logs "Simple query"   # Without logging
+    launch-claude --log-file custom.log "Custom log" # Custom log file
+    launch-claude --analyze-logs                      # Analyze logs
+    launch-claude --clean-logs                        # Clean logs
+    launch-claude --troubleshoot-mcp                  # Troubleshoot MCP
 
 FEATURES:
+    - Continue mode enabled by default - automatically resumes most recent conversation
     - All logging enabled by default for non-interactive mode (verbose, debug, MCP debug, save logs)
     - Interactive mode automatically disables verbose and logging for cleaner experience
     - Default model set to sonnet for optimal performance
+    - Support for -c (continue) and -r (resume) flags with optional session ID
     - Automatic MCP configuration loading from centralized config
       (.support/mcp-servers/mcp-config.json or legacy .mcp.json)
     - Automatic master prompt loading from $MASTER_PROMPT_FILE
@@ -540,6 +553,26 @@ while [[ $# -gt 0 ]]; do
             SKIP_PERMISSIONS="false"
             shift
             ;;
+        -c|--continue)
+            USE_CONTINUE="true"
+            USE_RESUME="false"
+            shift
+            ;;
+        --no-continue)
+            USE_CONTINUE="false"
+            shift
+            ;;
+        -r|--resume)
+            USE_CONTINUE="false"
+            USE_RESUME="true"
+            # Check if next argument exists and is not a flag
+            if [[ -n "$2" && ! "$2" =~ ^- ]]; then
+                RESUME_SESSION_ID="$2"
+                shift 2
+            else
+                shift
+            fi
+            ;;
         --no-env)
             LOAD_ENV="false"
             shift
@@ -553,6 +586,10 @@ while [[ $# -gt 0 ]]; do
                 echo "❌ Error: --env-file requires a filename"
                 exit 1
             fi
+            ;;
+        --dry-run)
+            DRY_RUN="true"
+            shift
             ;;
         *)
             ARGS+=("$1")
@@ -709,6 +746,17 @@ build_claude_command() {
         CLAUDE_CMD+=(--dangerously-skip-permissions)
     fi
     
+    # Add continue or resume flags
+    if [[ "$USE_CONTINUE" == "true" ]]; then
+        CLAUDE_CMD+=(--continue)
+    elif [[ "$USE_RESUME" == "true" ]]; then
+        if [[ -n "$RESUME_SESSION_ID" ]]; then
+            CLAUDE_CMD+=(--resume "$RESUME_SESSION_ID")
+        else
+            CLAUDE_CMD+=(--resume)
+        fi
+    fi
+    
     # Add master prompt as system prompt only if it has meaningful content
     if [[ -n "$MASTER_PROMPT_CONTENT" ]]; then
         CLAUDE_CMD+=(--append-system-prompt)
@@ -730,6 +778,19 @@ build_claude_command() {
 main() {
     echo "🚀 launch-claude - Enhanced Claude Code wrapper"
     echo "📦 Model: $DEFAULT_MODEL"
+    
+    # Display session mode
+    if [[ "$USE_CONTINUE" == "true" ]]; then
+        echo "🔄 Continue mode: enabled (resuming most recent conversation)"
+    elif [[ "$USE_RESUME" == "true" ]]; then
+        if [[ -n "$RESUME_SESSION_ID" ]]; then
+            echo "🔄 Resume mode: specific session ($RESUME_SESSION_ID)"
+        else
+            echo "🔄 Resume mode: interactive selection"
+        fi
+    else
+        echo "🆕 New conversation mode"
+    fi
     
     # For interactive mode, disable logging and verbose by default unless forced
     if [[ ${#ARGS[@]} -eq 0 ]] && [[ "$SAVE_LOGS" == "true" ]]; then
@@ -758,10 +819,16 @@ main() {
     
     build_claude_command
     
-    if [[ "$DEBUG_MODE" == "true" ]]; then
+    if [[ "$DEBUG_MODE" == "true" ]] || [[ "$DRY_RUN" == "true" ]]; then
         echo "🔧 Debug mode enabled"
         echo "📝 Command: ${CLAUDE_CMD[*]}"
         echo
+    fi
+    
+    # Exit early if dry run
+    if [[ "$DRY_RUN" == "true" ]]; then
+        echo "🧪 Dry run complete - would execute: ${CLAUDE_CMD[*]}"
+        exit 0
     fi
     
     # Execute Claude with comprehensive logging if requested
