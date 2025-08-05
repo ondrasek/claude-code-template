@@ -1,9 +1,9 @@
-# Claude Config Manager
+# Claude Code Forge
 
-[![Version](https://img.shields.io/github/v/release/ondrasek/claude-config-manager?label=v2.56.0)](https://github.com/ondrasek/claude-config-manager/releases)
+[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-forge?label=v2.57.0)](https://github.com/ondrasek/claude-code-forge/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A professional CLI tool for automated Claude Code configuration management. Install custom commands, MCP tools, specialized agents, and development configurations with a single command.
+A professional CLI tool for automated Claude Code configuration management. Install custom agents, commands, MCP tools, and development configurations with a single command.
 
 ## 🚀 Quick Start
 
@@ -13,322 +13,190 @@ No installation required! Run directly with uvx:
 
 ```bash
 # Initialize Claude Code configuration
-uvx claude-config-manager init
+uvx claude-code-forge init
 
 # Verify installation
 claude /stacks
-```
-
-### Command Overview
-
-```bash
-# Core commands
-uvx claude-config-manager init          # Initialize all configurations
-uvx claude-config-manager factory-reset # Reset to defaults with backup
-uvx claude-config-manager upgrade       # Update to latest configurations
-
-# Advanced features
-uvx claude-config-manager agent-ecosystem  # Generate project-specific agents
-uvx claude-config-manager troubleshoot     # Debug Claude Code issues
-uvx claude-config-manager master-prompt    # Craft optimized master prompts
 ```
 
 ### Prerequisites
 
 - Claude Code CLI installed
 - Python 3.8+ (for uvx)
-- Internet connection (downloads from GitHub releases)
+- Internet connection (downloads configurations from GitHub releases)
 
-### Quick Start
-
-Install and initialize Claude Code configurations with a single command:
+## 📋 Available Commands
 
 ```bash
-# Initialize all configurations (agents, commands, MCP tools)
-uvx claude-code-cli init
+# Core commands
+uvx claude-code-forge init              # Initialize all configurations
+uvx claude-code-forge factory-reset     # Reset to defaults with backup
+uvx claude-code-forge upgrade           # Update to latest configurations
+
+# Advanced features
+uvx claude-code-forge agent-ecosystem   # Generate project-specific agents
+uvx claude-code-forge troubleshoot      # Debug Claude Code and MCP issues
+uvx claude-code-forge master-prompt     # Craft optimized master prompts
 ```
 
-### Prerequisites
+### Command Details
 
-1. **Claude Code installed**: Ensure you have Claude Code CLI installed
-2. **Python 3.8+**: Required for the CLI tool
-3. **API Keys**: Configure your Anthropic Claude API key
+#### `init`
+Initializes all custom configurations for Claude Code:
+- Installs 16 specialized AI agents (6 foundation + 10 specialist)
+- Sets up custom slash commands
+- Configures MCP servers (memory, perplexity, etc.)
+- Creates project structure and guidelines
+- Optionally backs up existing configuration to `.support/backups`
 
-### Available Commands
+#### `factory-reset`
+Resets all configurations to the default state:
+- Creates timestamped backup (e.g., `20250729-14h32m44-factory-reset`)
+- Removes current configurations
+- Installs fresh default configurations
+- Preserves backup in `.support/backups` directory
 
-```bash
-# Initialize all Claude Code configurations
-uvx claude-code-cli init
+#### `upgrade`
+Updates configurations to the latest available version:
+- Downloads latest release from GitHub
+- Preserves local customizations where possible
+- Creates backup before upgrading
 
-# Reset to default configuration (with backup)
-uvx claude-code-cli factory-reset
+#### `agent-ecosystem`
+Analyzes your repository and generates project-specific agents:
+- Runs Claude Code with specialized prompt for ecosystem analysis
+- Builds repository-specific agents and commands
+- Integrates with existing agent infrastructure
 
-# Upgrade to latest configuration
-uvx claude-code-cli upgrade
+#### `troubleshoot`
+Helps debug Claude Code and MCP issues:
+- Launches log analysis with Claude
+- Diagnoses configuration problems
+- Provides solutions for common issues
 
-# Run ecosystem analysis for repository-specific agents
-uvx claude-code-cli agent-ecosystem
+#### `master-prompt`
+Interactive wizard for creating optimized master prompts:
+- Uses prompt engineering best practices
+- Leverages web search and fetch capabilities
+- Helps craft effective prompts for your use case
 
-# Troubleshoot Claude Code and MCP issues
-uvx claude-code-cli troubleshoot
+## 🎯 What Gets Installed
 
-# Manage master prompts with guided wizard
-uvx claude-code-cli master-prompt
-```
+### AI Agents (16 total)
+**Foundation Agents (6)**:
+- `researcher` - External information discovery
+- `context` - Internal architecture understanding
+- `patterns` - Code quality and pattern detection
+- `principles` - Design principle validation
+- `critic` - Risk assessment and validation
+- `conflicts` - Conflict resolution
 
-## 🎯 What You Can Configure
-
-### Claude Code Configuration
-By copying the `.claude/` directory, you get:
-
-1. **Custom Slash Commands** - Pre-built commands for common development tasks
-2. **Specialized AI Agents** - 19+ agents for different aspects of development
-3. **Technology Stacks** - Guidelines for specific tech stacks (Python, etc.)
-4. **MCP Server Configurations** - Setup for memory, perplexity, and other tools
-5. **Automation Hooks** - Security scanning, formatting, and validation
-6. **Settings Configuration** - Optimized Claude Code settings
-
-### Support Files
-By copying the `.support/` directory, you get:
-
-1. **Enhanced CLI Tools** - launch-claude wrapper with comprehensive logging
-2. **Prompts and Instructions** - Reusable prompts and development guidelines
-3. **TODO Management** - Organized task tracking system
-4. **MCP Server Source** - Complete MCP server implementations
-5. **Documentation Templates** - Structured documentation examples
-6. **Log Management** - Organized logging and diagnostics system
-
-## 📁 Repository Structure
-
-This CLI tool manages Claude Code's expected structure and configuration:
-
-- **`.claude/`** - Claude Code configuration directory
-  - `commands/` - Custom slash commands (/review, /test, etc.)
-  - `agents/` - Specialized AI agents
-  - `stacks/` - Technology-specific guidelines
-  - `prompts/` - Reusable agent prompts
-  - `hooks/` - Automation scripts
-  - `mcp-servers/` - MCP tool configurations
-- **`.claude/settings.json`** - Main configuration (auto-loaded by Claude Code)
-- **`CLAUDE.md`** - Project guidelines for Claude Code
-- **Documentation** - Usage guides and feature documentation
-
-## 🔧 Pre-Configured Features
+**Specialist Agents (10)**:
+- `git-workflow` - Git operations and workflow
+- `stack-advisor` - Technology stack guidance
+- `code-cleaner` - Code refactoring and cleanup
+- `performance-optimizer` - Performance analysis
+- `test-strategist` - Testing strategy
+- `todo-manager` - Task management
+- `options-analyzer` - Decision analysis
+- `constraint-solver` - Constraint resolution
+- `meta-programmer` - Meta-programming tasks
+- `prompt-engineer` - AI prompt optimization
 
 ### Custom Slash Commands
-- `/review` - Comprehensive code review
-- `/test` - Testing assistance
-- `/refactor` - Code improvement
-- `/security` - Security audit
-- `/langchain-agent` - LangChain development
-- `/crewai-crew` - CrewAI multi-agent systems
-- `/python-uv` - Python project setup with uv
-- `/agents-guide` - Guide for using specialized AI agents
-- `/doc-update` - Update documentation to match code changes
-- `/stacks` - List available technology stacks
-- `/use-python` - Activate Python development guidelines
-- `/create-prompt` - Generate optimized prompts for AI frameworks
-- `/discuss` - Get critical analysis of ideas and proposals
+- `/stacks` - Technology stack analysis
+- `/fix` - Issue resolution
+- `/discuss` - Critical analysis
+- `/performance` - Performance optimization
+- Agent management commands (`/agents/audit`, `/agents/create`, `/agents/guide`)
+- TODO management commands (`/todo/next`, `/todo/create`, `/todo/review`)
 
-### MCP Tools (Non-Redundant Only)
-- **memory** - Persistent session memory (cross-session state)
-- **perplexity** - Real-time web search and research (v2.45.2: Enhanced STDIO protocol compliance)
-- **Database servers** - PostgreSQL, Redis, etc. (see examples)
-- **API integrations** - LangChain, Ollama, etc. (see examples)
-- Additional specialized tools in `.claude/mcp-servers/`
+### MCP Tools
+- **memory** - Persistent session memory
+- **perplexity** - Real-time web search and research
+- Additional specialized tools configurable via `.mcp.json`
 
-**Recent v2.45.2 Improvements:**
-- **Perplexity MCP Server**: Complete logging system overhaul for enhanced reliability
-  - Full STDIO protocol compliance prevents interference with MCP communication
-  - Silent operation mode when logging is disabled or unavailable
-  - Improved error handling and configuration management
-  - Enhanced stability for real-time research workflows
+### Project Structure
+```
+.claude/
+├── agents/          # AI agent definitions
+├── commands/        # Slash commands
+├── stacks/          # Technology guidelines
+├── mcp-servers/     # MCP configurations
+└── settings.json    # Claude Code settings
 
-Note: Claude Code has built-in filesystem and web tools - these MCP tools provide additional capabilities!
+.support/
+├── prompts/         # Reusable prompts
+├── instructions/    # Development guidelines
+├── todos/           # Task tracking
+├── mcp-servers/     # MCP server source code
+├── logs/           # Diagnostics
+└── backups/        # Configuration backups
 
-### AI-Native Agents
-- **Mandatory coordination**: Minimum 3+ agents used for all non-trivial requests
-- **Context-clean delegation**: Complex tasks handled by agents, main context stays focused
-- **Pattern-Based**: Context synthesis, pattern recognition, parallel exploration
-- **First-Principles**: Axiom derivation, principle enforcement, invariant protection
-- **Documentation**: Automatic documentation synchronization with every code change
-- **Conflict Resolution**: Handles pattern vs principle conflicts
-- **Technology Experts**: Python-expert and more stack-specific agents
-- **Implementation Support**: Prompt-engineer for creating framework-specific prompts
-- **Critical Analysis**: Critic agent to prevent sycophancy and bad decisions
-- **Baseline combination**: researcher + patterns + critic (minimum standard)
-- Total of 19 specialized agents for different aspects of development
-
-### Enhanced CLI Tools
-- **launch-claude wrapper** - Enhanced Claude Code wrapper with comprehensive session management
-  - **Continue/Resume flags**: `-c/--continue` (enabled by default), `-r/--resume` with optional session ID
-  - **Session control**: `--no-continue` to start fresh conversations, `--dry-run` for testing
-  - All logging enabled by default (verbose, debug, MCP debug, save logs)
-  - Sonnet model as default for optimal performance
-  - Master prompt loading from `.support/prompts/master-prompt.md`
-  - Secure .env file loading with validation and sensitive value masking
-  - Advanced logging with timestamped files and log analysis
-  - Auto-detection of different environments for permissions
-  - Manual installation: Copy and run `./.support/scripts/install-launch-claude.sh`
-  - Full documentation: [launch-claude Usage Guide](docs/launch-claude-usage.md)
-
-### Automation Hooks
-- **Pre-read security** - Scans for sensitive data
-- **Post-edit formatting** - Auto-formats code
-- **Prompt validation** - Checks for dangerous commands
-
-## 📝 Customization
-
-### Adding New Commands
-
-Create a new file in `.claude/commands/`:
-
-```markdown
-# my-command.md
-
-Your custom prompt here...
+CLAUDE.md           # Project guidelines
 ```
 
-Use with: `/my-command`
+## 🔧 Configuration Management
 
-### Configuring MCP Tools
+### Backup Strategy
+All backups are stored in `.support/backups/` with timestamped folders:
+- Format: `YYYYMMDD-HHhMMmSS-reason`
+- Example: `20250729-14h32m44-factory-reset`
+- Backups preserve your customizations and can be restored manually
 
-MCP servers are configured in `.mcp.json`:
+### GitIgnore Management
+The tool automatically manages `.gitignore` entries for:
+- `.support/backups/` - Configuration backups
+- `.support/logs/` - Log files
+- Other generated files that shouldn't be committed
 
-```json
-{
-  "mcpServers": {
-    "your-tool": {
-      "command": "npx",
-      "args": ["-y", "@your/mcp-server"],
-      "env": {
-        "API_KEY": "${YOUR_API_KEY}"
-      }
-    }
-  }
-}
-```
+### Working Directories
+The tool only modifies:
+- `.claude/` - Claude Code configuration
+- `.support/` - Support files and backups
+- `CLAUDE.md` - Project guidelines (with backups)
 
-After copying the configuration, you can also use the Claude Code CLI:
-```bash
-claude mcp add your-tool "npx -y @your/mcp-server"
-```
+## 🛡️ Security
 
-### Project-Specific Guidelines
-
-Update `CLAUDE.md` with your project's:
-- Architecture decisions
-- Coding standards
-- Development workflows
-- Testing requirements
-
-## 🛡️ Security Features
-
-### Configuration Security
-- **No Hardcoded Secrets** - All configurations use environment variables
-- **Template Safety** - No sensitive data included in configuration files
-- **Secure Defaults** - Conservative security settings in all configurations
-
-### Built-in Security Safeguards
-- Claude Code's built-in security protections
-- Sensitive file awareness (`.env`, `*.key`)
-- Automatic dangerous operation prevention
-- Pre-read security scanning for sensitive data
-
-## 🧪 Configuration Validation
-
-After copying the configuration, you can validate it works properly:
-
-```bash
-# Check that Claude Code can find your configuration
-claude config show
-
-# Test a custom command
-claude /stacks
-
-# Verify MCP tools are working
-claude mcp list
-```
-
-This verifies:
-- Configuration files are in the correct location
-- All commands and agents are available
-- MCP tools are properly configured
-- No configuration errors exist
-
-## 🔧 Configuration Troubleshooting
-
-### Common Issues and Solutions
-
-**Configuration Not Found**:
-```bash
-# Check if configuration was copied correctly
-ls -la ~/.claude/
-
-# Verify Claude Code can find the config
-claude config show
-```
-
-**Commands Not Working**:
-```bash
-# Check if commands directory exists
-ls -la ~/.claude/commands/
-
-# Test a specific command
-claude /stacks
-```
-
-**MCP Tools Not Available**:
-```bash
-# Check MCP configuration
-claude mcp list
-
-# Verify MCP servers configuration
-cat ~/.claude/mcp-servers/mcp-config.json
-```
-
-**Permission Issues**:
-```bash
-# Fix permissions if needed
-chmod -R 755 ~/.claude/
-
-# Check file ownership
-ls -la ~/.claude/
-```
-
-## 🎯 Best Practices
-
-1. **Agent coordination is mandatory** - All non-trivial requests automatically use minimum 3+ agents
-2. **Context-clean workflows** - Let agents handle complex multi-step processes independently
-3. **Documentation updates automatically** - Every code change includes documentation updates in same commit
-4. **Memory-first research** - System checks MCP memory before web searches
-5. **Secure secret management** - Use environment variables, never hardcode credentials
-6. **Keep CLAUDE.md updated** with project-specific information
-7. **Use slash commands** for repetitive tasks
-8. **Configure MCP tools** for external integrations
-9. **Customize agents** for your specific workflow needs
-10. **Run verification** after making configuration changes
-11. **Validate configuration regularly** - Use `claude config show` to verify your setup
+- **No hardcoded secrets** - All configurations use environment variables
+- **Secure defaults** - Conservative security settings
+- **Backup before changes** - Always creates backups before modifications
+- **Read-only downloads** - Configurations downloaded from official releases
 
 ## 📚 Documentation
 
-### User Guides
-- **[Getting Started](docs/getting-started.md)** - Quick setup and essential features
-- **[Complete Features Guide](docs/features.md)** - All capabilities and AI agents
-- **[Memory System](docs/memory-system.md)** - Persistent context across sessions
-- **[Customization Guide](docs/customization.md)** - Adapt for your project
+### Configuration Guides
+- Agent ecosystem documentation in `.claude/agents/`
+- Command documentation in `.claude/commands/`
+- Stack-specific guidelines in `.claude/stacks/`
 
-### Manual Setup Guides
-- **[Manual Setup Guide](docs/manual-setup-guide.md)** - Complete step-by-step manual installation
-- **[Detailed Copying Instructions](docs/copying-instructions.md)** - File-by-file copying guide
-- **[Configuration Reference](docs/configuration-reference.md)** - Comprehensive configuration documentation
-- **[Migration Guide](docs/migration-guide.md)** - Transition from automated to manual setup
+### Troubleshooting
+Use `uvx claude-code-forge troubleshoot` for interactive debugging assistance.
 
-### External Resources
-- [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
-- [MCP Protocol Specification](https://modelcontextprotocol.io)
-- [GitHub Dotfiles Documentation](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles)
-- [Versioning Guidelines](VERSIONING.md) - How we version this template
+### Customization
+After initialization, you can customize:
+1. Add custom agents in `.claude/agents/`
+2. Create new commands in `.claude/commands/`
+3. Update `CLAUDE.md` with project-specific guidelines
+4. Configure additional MCP servers in `.mcp.json`
+
+## 🚦 Development
+
+### Running as DevContainer Feature
+The tool is available as a devcontainer feature for seamless integration.
+
+### Local Development
+```bash
+# Clone the repository
+git clone https://github.com/ondrasek/claude-code-forge.git
+cd claude-code-forge
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run locally
+python -m claude_code_forge init
+```
 
 ## 📄 License
 
