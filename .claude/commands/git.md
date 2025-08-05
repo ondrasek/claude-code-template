@@ -1,55 +1,43 @@
 ---
-description: Fully automated Git Protocol implementation with intelligent commit messages.
+description: Fully automated Git Workflow Protocol implementation with intelligent commit messages.
 argument-hint: Custom commit message to be appended to automatically determined commit message.
 allowed-tools: Read, Write, Edit, MultiEdit, Glob, Bash, Task
 ---
 
-# Git Protocol Automation
+# Git Workflow Protocol Automation
 
-Fully automated Git Protocol implementation using git-workflow agent with intelligent commit message generation.
+Fully automated Git Workflow Protocol implementation using git-workflow agent with intelligent commit message generation.
 
 ## Instructions
 
 1. If $ARGUMENTS contains custom commit message, pass it to git-workflow agent
-2. Otherwise, delegate complete Git Protocol automation to git-workflow agent
+2. Otherwise, delegate complete Git Workflow Protocol automation to git-workflow agent
 3. Check that the git-workflow agent committed all changes
-4. Use agents to check that the git-workflow agent updated CHANGELOG.md, use agents to update it otherwise
-5. Use agents to check that the git-workflow agent updated README.md, use agents to update it otherwise
+4. Verify git-workflow agent completed all operations successfully
 
-This command implements the complete Git Protocol as described in CLAUDE.md by delegating all git operations to the
-git-workflow agent. This prevents context window clutter while ensuring full protocol compliance.
+This command implements the complete Git Workflow Protocol as described in CLAUDE.md by delegating all git operations to the git-workflow agent. This prevents context window clutter while ensuring full protocol compliance.
 
-**Example intelligent commit message generation:**
-- Modified `.claude/agents/` → "Update agent definitions for improved functionality"
-- Changed `src/components/` → "Enhance UI components with new features"
-- Added `.claude/commands/` → "Add new slash commands for workflow automation"
-- Updated `README.md` → "Update documentation to reflect current features"
-
-## README.md Update Instructions
-
-When release tags are created, the command automatically spawns a **code-cleaner** agent to:
-- Update README.md with current repository state
-- Reflect new features, commands, and capabilities
-- Update version information and installation instructions
-- Ensure documentation accuracy matches codebase
-- Maintain consistent formatting and structure
-
-This keeps README.md always current without cluttering the main context window.
+The git-workflow agent provides comprehensive commit message generation, documentation updates, and release tagging using sophisticated validation criteria and conventional commit formats.
 
 ## Error Handling
 
-The git-workflow agent handles:
-- Merge conflicts and resolution guidance
-- Authentication issues
-- Network connectivity problems
-- Repository corruption detection
-- Branch synchronization issues
-- Tag conflicts and resolution
+The git-workflow agent provides comprehensive troubleshooting with systematic diagnosis and resolution for all git issues. See the git-workflow agent documentation for detailed troubleshooting framework covering:
+- Repository state issues and corruption recovery
+- Remote synchronization and authentication problems  
+- Merge conflicts and history management
+- Branch management and configuration issues
 
-## Security Considerations
+## Command Responsibilities
 
-- Agent validates all git operations before execution
-- Sensitive information is redacted from logs and reports
-- Authentication credentials are handled securely
-- Branch protection rules are respected
-- Force pushes are avoided unless explicitly required
+**Git Command (this file):**
+- User interface and argument parsing
+- Delegation to git-workflow agent
+- Custom commit message pass-through
+
+**Git-Workflow Agent:**
+- All git operations and validation logic
+- Intelligent staging and commit message generation
+- Release tagging evaluation and execution
+- Comprehensive troubleshooting and error resolution
+- README.md and CHANGELOG.md update management
+- Security validation and sensitive data protection
