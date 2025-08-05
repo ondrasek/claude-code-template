@@ -7,7 +7,7 @@ gitUserEmail=$(git config --global user.email)
 postCreateEnvFile=.devcontainer/postCreate.env.tmp
 
 [ -f $postCreateEnvFile ] && rm $postCreateEnvFile 
-touch $postCreateFile
+touch $postCreateEnvFile
 
 echo repositoryName=$repositoryName >> $postCreateEnvFile
 echo repositoryNameWithOwner=$repositoryNameWithOwner >> $postCreateEnvFile
