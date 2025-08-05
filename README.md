@@ -1,6 +1,6 @@
 # Claude Code Configuration Repository
 
-[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template?label=v2.53.0)](https://github.com/ondrasek/claude-code-template/releases)
+[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template?label=v2.56.0)](https://github.com/ondrasek/claude-code-template/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A comprehensive configuration repository for Claude Code containing custom commands, MCP tools, specialized agents, and development configurations. This repository provides manually installable configurations that you can copy to your local Claude Code setup.
@@ -135,7 +135,9 @@ Note: Claude Code has built-in filesystem and web tools - these MCP tools provid
 - Total of 19 specialized agents for different aspects of development
 
 ### Enhanced CLI Tools
-- **launch-claude wrapper** - Enhanced Claude Code wrapper with comprehensive logging defaults
+- **launch-claude wrapper** - Enhanced Claude Code wrapper with comprehensive session management
+  - **Continue/Resume flags**: `-c/--continue` (enabled by default), `-r/--resume` with optional session ID
+  - **Session control**: `--no-continue` to start fresh conversations, `--dry-run` for testing
   - All logging enabled by default (verbose, debug, MCP debug, save logs)
   - Sonnet model as default for optimal performance
   - Master prompt loading from `.support/prompts/master-prompt.md`
