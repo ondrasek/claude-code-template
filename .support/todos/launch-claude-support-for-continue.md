@@ -1,0 +1,1 @@
+Enhance launch-clade wrapper to support -c and -r Claude Code switches (-c for continue and -r for resume).
