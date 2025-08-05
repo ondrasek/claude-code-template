@@ -8,7 +8,7 @@ set -e
 devcontainerDir=/tmp/.devcontainer 
 workingCopy=/workspace/$repositoryName
 
-eval "$(grep -v '^#' #devcontainerDir/postCreate.env.tmp | sed 's/^/export /')"
+eval "$(grep -v '^#' devcontainerDir/postCreate.env.tmp | sed 's/^/export /')"
 
 echo "🚀 Setting up Claude Code Template DevContainer..."
 sudo mkdir -p /workspace && sudo chown vscode:vscode /workspace && cd /workspace
