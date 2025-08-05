@@ -1,13 +1,20 @@
 # Output repository name without owner
 repositoryName=$(gh repo view --json name -q ".name")
+repositoryNameWithOwner=$(gh repo view --json nameWithOwner -q ".nameWithOwner")
 gitUserName=$(git config --global user.name)
 gitUserEmail=$(git config --global user.email)
 
-echo "Repository Name (as determined from GH): $repositoryName"
-echo $repositoryName > .devcontainer/repositoryName.tmp
+postCreateEnvFile=.devcontainer/postCreate.env.tmp
 
-echo "Git User Name: $gitUserName"
-echo $gitUserName > .devcontainer/gitUserName.tmp
+[ -f $postCreateEnvFile ] && rm $postCreateEnvFile 
+touch $postCreateFile
 
-echo "Git User Email: $gitUserEmail"
-echo $gitUserEmail > .devcontainer/gitUserEmail.tmp
+echo repositoryName=$repositoryName >> $postCreateEnvFile
+echo repositoryNameWithOwner=$repositoryNameWithOwner >> $postCreateEnvFile
+echo gitUserName=$gitUserName >> $postCreateEnvFile
+echo gitUserEmail=$gitUserEmail >> $postCreateEnvFile
+
+echo postCreateCommand env:
+cat $postCreateEnvFile
+echo
+

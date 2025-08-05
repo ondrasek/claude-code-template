@@ -5,8 +5,10 @@
 
 set -e
 
-echo LOCAL_WORKSPACE_FOLDER_BASENAME: $LOCAL_WORKSPACE_FOLDER_BASENAME
-echo REMOTE_WORKSPACE_FOLDER: $REMOTE_WORKSPACE_FOLDER
+devcontainerDir=/tmp/.devcontainer 
+workingCopy=/workspace/$repositoryName
+
+eval "$(grep -v '^#' #devcontainerDir/postCreate.env.tmp | sed 's/^/export /')"
 
 echo "🚀 Setting up Claude Code Template DevContainer..."
 sudo mkdir -p /workspace && sudo chown vscode:vscode /workspace && cd /workspace
@@ -60,6 +62,9 @@ export PYTHONIOENCODING=UTF-8
 
 # Add local bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+# Go to workspace
+cd /workspace/$repositoryName
 EOF
 
 # Configure zsh with same environment
@@ -73,6 +78,9 @@ export PYTHONIOENCODING=UTF-8
 
 # Add local bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+# Go to workspace
+cd /workspace/$repositoryName
 EOF
 
 # Set up Git configuration (if not already configured)
@@ -80,6 +88,8 @@ if [ -z "$(git config --global user.name)" ]; then
     echo "⚙️ Setting up basic Git configuration..."
     git config --global init.defaultBranch main
     git config --global pull.rebase false
+    git config --global user.name $gitUserName
+    git config --global user.email $gitUserEmail
 fi
 
 # Set up Git configuration and aliases
@@ -102,13 +112,12 @@ else
 fi
 
 echo "📋 Cloning repository into workspace:"
-workingCopy=/workspace/claude-code-template
 if [ -d $workingCopy ]; then 
   cd $workingCopy
   gh repo sync
   cd -
 else
-  gh repo clone ondrasek/claude-code-template /workspace/claude-code-template
+  gh repo clone $repositoryNameWithOwner $workingCopy
 fi
 
 # Verify installations
