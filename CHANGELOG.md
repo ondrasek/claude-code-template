@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.60.0] - 2025-08-05
+
+### Changed
+- **Command-agent architecture standardization**: Major architectural refactoring implementing proper separation of concerns
+  - Created github-pr-workflow specialist agent (381 lines) with comprehensive GitHub integration capabilities
+  - Refactored pr.md command (41 lines) to lightweight coordinator delegating to specialist agent
+  - Implemented context window decluttering following established git.md → git-workflow.md pattern
+  - Added intelligent PR content generation with branch analysis, semantic commit parsing, and error recovery
+  - Enhanced GitHub workflow automation with smart defaults, label detection, and robust error handling
+  - Maintained operational rules compliance and proper file structure organization
+
 ## [2.57.0] - 2025-08-05
 
 ### Changed
