@@ -51,7 +51,8 @@
   },
 
   "runArgs": [
-    "--env-file", ".env"
+    "--env-file", ".env",
+    "--label", "my.repositoryName=${localWorkspaceFolderBasename}"
   ],
 
   "remoteEnv": {

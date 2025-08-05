@@ -70,6 +70,10 @@ export PYTHONIOENCODING=UTF-8
 
 # Add local bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
+EOF
+
+# ...thsi time with variable substitution
+cat >> ~/.bashrc << EOF
 
 # Go to workspace
 cd /workspace/$repositoryName
@@ -86,6 +90,13 @@ export PYTHONIOENCODING=UTF-8
 
 # Add local bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+# Go to workspace
+cd /workspace/$repositoryName
+EOF
+
+# ...this time with variable substitution
+cat >> ~/.zshrc << EOF
 
 # Go to workspace
 cd /workspace/$repositoryName
