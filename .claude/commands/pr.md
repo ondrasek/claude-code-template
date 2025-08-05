@@ -6,12 +6,6 @@ allowed-tools: Task
 
 # Pull Request Creator
 
-**OPERATIONAL RULES DISPLAY:**
-- RULE 1: Display ALL rules (0-4) at the start of EVERY response ✓
-- RULE 2: Task(specialist-git-workflow) to commit, tag, and push after EVERY meaningful change
-- RULE 3: NEVER create artificial timelines or weekly milestones
-- RULE 4: Follow file structure locations EXACTLY
-
 ## Instructions
 
 1. **Validation**
