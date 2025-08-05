@@ -13,7 +13,6 @@ Fully automated Git Workflow Protocol implementation using git-workflow agent wi
 1. If $ARGUMENTS contains custom commit message, pass it to git-workflow agent
 2. Otherwise, delegate complete Git Workflow Protocol automation to git-workflow agent
 3. Check that the git-workflow agent committed all changes
-4. Verify git-workflow agent completed all operations successfully
 
 This command implements the complete Git Workflow Protocol as described in CLAUDE.md by delegating all git operations to the git-workflow agent. This prevents context window clutter while ensuring full protocol compliance.
 
@@ -23,7 +22,7 @@ The git-workflow agent provides comprehensive commit message generation, documen
 
 The git-workflow agent provides comprehensive troubleshooting with systematic diagnosis and resolution for all git issues. See the git-workflow agent documentation for detailed troubleshooting framework covering:
 - Repository state issues and corruption recovery
-- Remote synchronization and authentication problems  
+- Remote synchronization and authentication problems
 - Merge conflicts and history management
 - Branch management and configuration issues
 
