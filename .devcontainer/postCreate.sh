@@ -6,9 +6,15 @@
 set -e
 
 devcontainerDir=/tmp/.devcontainer 
-workingCopy=/workspace/$repositoryName
 
-eval "$(grep -v '^#' devcontainerDir/postCreate.env.tmp | sed 's/^/export /')"
+eval "$(grep -v '^#' $devcontainerDir/postCreate.env.tmp | sed 's/^/export /')"
+echo Configuration from initializeCommand:
+echo repositoryName: $repositoryName
+echo repositoryNameWithOwner: $repositoryNameWithOwner
+echo gitUserName: $gitUserName
+echo gitUserEmail: $gitUserEmail
+
+workingCopy=/workspace/$repositoryName
 
 echo "🚀 Setting up Claude Code Template DevContainer..."
 sudo mkdir -p /workspace && sudo chown vscode:vscode /workspace && cd /workspace
@@ -97,7 +103,7 @@ echo "🔧 Setting up Git configuration..."
 echo 1. Credential Helper
 git config --global credential.helper "!gh auth git-credential"
 echo 2. Safe Directory: /workspace
-git config --global --add safe.directory /workspace
+git config --global --add safe.directory $workingCopy
 
 
 # GitHub CLI authentication setup
@@ -112,12 +118,12 @@ else
 fi
 
 echo "📋 Cloning repository into workspace:"
-if [ -d $workingCopy ]; then 
+if [ -d $workingCopy/.git ]; then 
   cd $workingCopy
   gh repo sync
   cd -
 else
-  gh repo clone $repositoryNameWithOwner $workingCopy
+  echo gh repo clone $repositoryNameWithOwner $workingCopy
 fi
 
 # Verify installations

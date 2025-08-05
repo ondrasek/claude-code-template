@@ -11,7 +11,7 @@ touch $postCreateEnvFile
 
 echo repositoryName=$repositoryName >> $postCreateEnvFile
 echo repositoryNameWithOwner=$repositoryNameWithOwner >> $postCreateEnvFile
-echo gitUserName=$gitUserName >> $postCreateEnvFile
+echo gitUserName=\"$gitUserName\" >> $postCreateEnvFile
 echo gitUserEmail=$gitUserEmail >> $postCreateEnvFile
 
 echo postCreateCommand env:
