@@ -1,55 +1,48 @@
-# Claude Code Configuration Repository
+# Claude Code CLI Tool
 
 [![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template?label=v2.56.0)](https://github.com/ondrasek/claude-code-template/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A comprehensive configuration repository for Claude Code containing custom commands, MCP tools, specialized agents, and development configurations. This repository provides manually installable configurations that you can copy to your local Claude Code setup.
+A comprehensive CLI tool for managing Claude Code configurations containing custom commands, MCP tools, specialized agents, and development configurations. This tool provides automated installation and management of Claude Code configurations.
 
-## 🚀 Manual Setup
+## 🚀 Installation & Usage
+
+### Quick Start
+
+Install and initialize Claude Code configurations with a single command:
+
+```bash
+# Initialize all configurations (agents, commands, MCP tools)
+uvx claude-code-cli init
+```
 
 ### Prerequisites
 
 1. **Claude Code installed**: Ensure you have Claude Code CLI installed
-2. **Git access**: Clone or download this repository
-3. **File system access**: Ability to copy files to your home directory
+2. **Python 3.8+**: Required for the CLI tool
+3. **API Keys**: Configure your Anthropic Claude API key
 
-### Quick Setup
+### Available Commands
 
-1. **Clone this repository**:
-   ```bash
-   git clone https://github.com/yourusername/claude-code-template.git
-   cd claude-code-template
-   ```
+```bash
+# Initialize all Claude Code configurations
+uvx claude-code-cli init
 
-2. **Copy Claude Code configuration**:
-   ```bash
-   # Copy the main configuration directory
-   cp -r .claude/ ~/.claude/
-   
-   # Verify the configuration was copied
-   ls -la ~/.claude/
-   ```
+# Reset to default configuration (with backup)
+uvx claude-code-cli factory-reset
 
-3. **Set up environment variables**:
-   ```bash
-   # Add your API keys to shell configuration
-   echo 'export CLAUDE_API_KEY="your-api-key-here"' >> ~/.bashrc
-   source ~/.bashrc
-   ```
+# Upgrade to latest configuration
+uvx claude-code-cli upgrade
 
-4. **Test the setup**:
-   ```bash
-   # Start Claude Code and test
-   claude
-   # Try: /review, /stacks, /agents-guide
-   ```
+# Run ecosystem analysis for repository-specific agents
+uvx claude-code-cli agent-ecosystem
 
-**📖 For detailed instructions, see: [Manual Setup Guide](docs/manual-setup-guide.md)**  
-**📋 For all setup options, see: [Manual Setup Index](docs/manual-setup-index.md)**
+# Troubleshoot Claude Code and MCP issues
+uvx claude-code-cli troubleshoot
 
-### Future CLI Tool
-
-A dedicated CLI setup tool is planned for future development to automate this configuration process. For now, manual copying is the recommended approach as it gives you full control over what gets configured and where.
+# Manage master prompts with guided wizard
+uvx claude-code-cli master-prompt
+```
 
 ## 🎯 What You Can Configure
 
@@ -75,7 +68,7 @@ By copying the `.support/` directory, you get:
 
 ## 📁 Repository Structure
 
-This template follows Claude Code's expected structure and GitHub dotfiles conventions:
+This CLI tool manages Claude Code's expected structure and configuration:
 
 - **`.claude/`** - Claude Code configuration directory
   - `commands/` - Custom slash commands (/review, /test, etc.)
