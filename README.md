@@ -1,9 +1,11 @@
-# Claude Code Forge
+# Claude Code Forge (EXPERIMENTAL)
 
 [![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-forge)](https://github.com/ondrasek/claude-code-forge/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A professional CLI tool for automated Claude Code configuration management. Install custom agents, commands, MCP tools, and development configurations with a single command.
+An experimental CLI tool for automated Claude Code configuration management. Install custom agents, commands, MCP tools, and development configurations with a single command.
+
+As this is an experimental tool, use it at your own risk (and rewards ;-).
 
 **Transform your Claude Code experience with:**
 - 16 specialized AI agents for comprehensive development support
@@ -90,7 +92,7 @@ claude /stacks
 # Full setup
 uvx claude-code-forge init
 
-# Stack analysis  
+# Stack analysis
 claude /stacks
 
 # Issue help

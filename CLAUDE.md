@@ -14,7 +14,9 @@ RULE 4: Follow file structure locations EXACTLY
 <forbidden_patterns>
   - "Week 1", "Week 2", "Phase 1 (Week 1)", "Milestone 1", "Milestone 2"
   - "implement in X weeks", "Q1 goals", "monthly milestones"
+  - "est. durration 3-4 hours", "est. 2 days"
   - ANY time-based phases unless user explicitly requests
+  - ANY time-based estimates in hours, days or man-days
 </forbidden_patterns>
 <required_format>Priority-based (High/Medium/Low) with dependencies</required_format>
 <examples>
@@ -22,6 +24,7 @@ RULE 4: Follow file structure locations EXACTLY
   ❌ "Phase 1 (Week 1): Update agent descriptions"
   ❌ "Next Sprint (Sprint 1): Implement feature 23"
   ❌ "Sprint 2: Update documentation"
+  ❌ "Implement critical fixes first (estimated 2-3 hours)"
 </examples>
 </output_sanitization>
 
