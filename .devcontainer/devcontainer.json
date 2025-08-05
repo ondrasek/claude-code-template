@@ -40,22 +40,19 @@
         "terminal.integrated.defaultProfile.linux": "zsh",
         "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
         "python.terminal.activateEnvironment": false,
-	"git.openRepositoryInParentFolders": "always",
-	"terminal.integrated.defaultLocation": "editor"
+	      "git.openRepositoryInParentFolders": "always",
+	      "terminal.integrated.defaultLocation": "editor"
       }
     }
   },
 
   "containerEnv": {
-    "CLAUDE_DEBUG": "1",
-    "MCP_DEBUG": "1",
-    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
     "PYTHONIOENCODING": "UTF-8"
   },
 
   "runArgs": [
     "--env-file", ".env"
-  ]
+  ],
 
   "remoteEnv": {
     "PATH": "${containerEnv:PATH}:/home/vscode/.local/bin"
@@ -69,7 +66,8 @@
     }
   },
 
-  "postCreateCommand": "/tmp/.devcontainer/setup.sh",
+  "initializeCommand": ".devcontainer/initialize.sh",
+  "postCreateCommand": "/tmp/.devcontainer/postCreate.sh",
 
   "remoteUser": "vscode",
   "containerUser": "vscode",
