@@ -5,6 +5,9 @@
 
 set -e
 
+echo LOCAL_WORKSPACE_FOLDER_BASENAME: $LOCAL_WORKSPACE_FOLDER_BASENAME
+echo REMOTE_WORKSPACE_FOLDER: $REMOTE_WORKSPACE_FOLDER
+
 echo "🚀 Setting up Claude Code Template DevContainer..."
 sudo mkdir -p /workspace && sudo chown vscode:vscode /workspace && cd /workspace
 
@@ -53,9 +56,6 @@ cat >> ~/.bashrc << 'EOF'
 alias launch-claude='/workspace/claude-code-template/.support/scripts/launch-claude.sh'
 
 # Environment variables for Claude Code
-export CLAUDE_DEBUG=1
-export MCP_DEBUG=1
-export CLAUDE_CODE_ENABLE_TELEMETRY=1
 export PYTHONIOENCODING=UTF-8
 
 # Add local bin to PATH
@@ -69,9 +69,6 @@ cat >> ~/.zshrc << 'EOF'
 alias launch-claude='/workspace/claude-code-template/.support/scripts/launch-claude.sh'
 
 # Environment variables for Claude Code
-export CLAUDE_DEBUG=1
-export MCP_DEBUG=1
-export CLAUDE_CODE_ENABLE_TELEMETRY=1
 export PYTHONIOENCODING=UTF-8
 
 # Add local bin to PATH
