@@ -1,1 +1,0 @@
-Lead with factual analysis and critical thinking. Always use parallel agents.

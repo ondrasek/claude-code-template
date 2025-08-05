@@ -1,11 +1,43 @@
-# Claude Code CLI Tool
+# Claude Config Manager
 
-[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-template?label=v2.56.0)](https://github.com/ondrasek/claude-code-template/releases)
+[![Version](https://img.shields.io/github/v/release/ondrasek/claude-config-manager?label=v2.56.0)](https://github.com/ondrasek/claude-config-manager/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A comprehensive CLI tool for managing Claude Code configurations containing custom commands, MCP tools, specialized agents, and development configurations. This tool provides automated installation and management of Claude Code configurations.
+A professional CLI tool for automated Claude Code configuration management. Install custom commands, MCP tools, specialized agents, and development configurations with a single command.
 
-## 🚀 Installation & Usage
+## 🚀 Quick Start
+
+### Installation
+
+No installation required! Run directly with uvx:
+
+```bash
+# Initialize Claude Code configuration
+uvx claude-config-manager init
+
+# Verify installation
+claude /stacks
+```
+
+### Command Overview
+
+```bash
+# Core commands
+uvx claude-config-manager init          # Initialize all configurations
+uvx claude-config-manager factory-reset # Reset to defaults with backup
+uvx claude-config-manager upgrade       # Update to latest configurations
+
+# Advanced features
+uvx claude-config-manager agent-ecosystem  # Generate project-specific agents
+uvx claude-config-manager troubleshoot     # Debug Claude Code issues
+uvx claude-config-manager master-prompt    # Craft optimized master prompts
+```
+
+### Prerequisites
+
+- Claude Code CLI installed
+- Python 3.8+ (for uvx)
+- Internet connection (downloads from GitHub releases)
 
 ### Quick Start
 
