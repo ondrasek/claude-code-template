@@ -1,60 +1,42 @@
 ---
-description: Create GitHub pull request with intelligent content generation and workflow integration.
-argument-hint: Optional custom PR title or "draft" to create draft PR.
-allowed-tools: Bash, Task, Read
+description: Create GitHub pull request with intelligent content generation.
+argument-hint: Optional custom PR title, "draft" flag, or custom base branch.
+allowed-tools: Task
 ---
 
 # Pull Request Creator
 
-Creates a GitHub pull request for the current branch with intelligent title and body generation. Integrates with existing git-workflow automation and follows operational rules.
+Creates a GitHub pull request for the current branch using the github-pr-workflow specialist agent.
 
 ## Instructions
 
-1. **Branch Validation**
-   - Check if current branch is main branch - if so, display warning and exit
-   - Verify branch exists and has commits different from main branch
-   - If no differences found, inform user and exit gracefully
+**OPERATIONAL RULES DISPLAY:**
+- RULE 1: Display ALL rules (0-4) at the start of EVERY response ✓
+- RULE 2: Task(specialist-git-workflow) to commit, tag, and push after EVERY meaningful change
+- RULE 3: NEVER create artificial timelines or weekly milestones
+- RULE 4: Follow file structure locations EXACTLY
 
-2. **Existing PR Check**
-   - Use `gh pr list --head "$(git branch --show-current)" --state open` to check for existing PR
-   - If PR exists, display PR URL and open in browser with `gh pr view --web`
-   - Skip creation if PR already exists
+1. **Parameter Processing**
+   - Parse $ARGUMENTS for custom PR title, draft flag, or base branch specification
+   - Pass all arguments to github-pr-workflow agent for comprehensive processing
 
-3. **Pre-flight Requirements**
-   - Ensure branch is pushed to remote origin
-   - If not pushed, delegate to git-workflow agent: `Task(git-workflow) to push current branch to remote`
-   - Verify GitHub CLI authentication with `gh auth status`
+2. **Agent Delegation**
+   - Delegate complete PR creation workflow to github-pr-workflow specialist agent
+   - Pass $ARGUMENTS containing any custom parameters (title, draft mode, base branch)
+   - Agent handles all GitHub integration, content generation, and error recovery
 
-4. **Intelligent Content Generation**
-   - Generate PR title from recent commits using conventional commit format
-   - Extract semantic meaning from commit messages (docs:, feat:, fix:, refactor:)
-   - Create comprehensive PR body with:
-     - Summary section with bullet points of changes
-     - Test plan section with validation checklist
-     - File changes summary from git diff
-     - Standard footer with Claude Code attribution
+## Usage Examples
 
-5. **PR Creation with Smart Defaults**
-   - Use git-workflow agent for complex git operations: `Task(git-workflow) to analyze branch changes and generate PR content`
-   - Create draft PR by default (can be changed to ready later)
-   - Auto-assign to current user (@me)
-   - Detect and apply relevant labels based on file changes and commit types
-   - Set base branch to main (or detected default branch)
+```bash
+# Create PR with auto-generated content
+claude /pr
 
-6. **Error Handling**
-   - Handle authentication errors with clear guidance
-   - Manage permission issues for fork repositories
-   - Provide fallback if automated content generation fails
-   - Graceful handling of rate limiting or network issues
+# Create PR with custom title
+claude /pr "feat: implement advanced search functionality"
 
-7. **Post-Creation Actions**
-   - Display PR URL and key details
-   - Open PR in browser for review
-   - Provide next steps guidance (reviewers, labels, etc.)
+# Create draft PR explicitly
+claude /pr draft
 
-## Error Recovery
-
-- If PR creation fails, provide diagnostic information
-- Suggest manual PR creation via GitHub web interface as fallback
-- Preserve generated content for manual use
-- Guide user through authentication setup if needed
+# Create PR with custom base branch
+claude /pr --base develop
+```
