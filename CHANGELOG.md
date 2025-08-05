@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.55.0] - 2025-08-05
+
+### Changed
+- **Agent Naming Convention Cleanup**: Systematic refactoring to remove redundant prefixes from agent filenames
+  - Renamed foundation agents: `foundation-research.md` → `researcher.md`, `foundation-criticism.md` → `critic.md`
+  - Renamed specialist agents: removed `specialist-` prefix from all specialist agent files
+  - Updated all references in CLAUDE.md and command files to use new clean names
+  - Updated internal name fields in renamed agent files for consistency
+  - Improved code organization and reduced naming redundancy with directory-based structure
+
 ## [2.54.0] - 2025-08-05
 
 ### Added
