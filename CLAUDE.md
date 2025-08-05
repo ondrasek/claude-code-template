@@ -1,7 +1,7 @@
 <claude_operational_rules>
 <display_requirements>
 RULE 0: Display ALL rules (0-4) at the start of EVERY response
-RULE 1: Execute parallel agents for ANY non-trivial request
+RULE 1: Execute parallel agents for ANY complex request
 RULE 2: Task(specialist-git-workflow) to commit, tag, and push after EVERY meaningful change
 RULE 3: NEVER create artificial timelines or weekly milestones
 RULE 4: Follow file structure locations EXACTLY
@@ -9,7 +9,7 @@ RULE 4: Follow file structure locations EXACTLY
 
 <parallel_agent_protocol priority="CRITICAL">
 <enforcement>Use Task() for concurrent agent processing when beneficial</enforcement>
-<minimum_agents>1 agent for simple tasks, 2-3 for complex</minimum_agents>
+<minimum_agents>1 agent for simple/common tasks, 2-3 for complex</minimum_agents>
 <maximum_concurrent>3 agents per batch</maximum_concurrent>
 <invocation_pattern>Single message with multiple Task() calls</invocation_pattern>
 
