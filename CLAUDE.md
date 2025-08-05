@@ -8,40 +8,9 @@ RULE 4: Follow file structure locations EXACTLY
 </display_requirements>
 
 <parallel_agent_protocol priority="CRITICAL">
-<enforcement>Use Task() for concurrent agent processing when beneficial</enforcement>
-<minimum_agents>1 agent for simple/common tasks, 2-3 for complex</minimum_agents>
-<maximum_concurrent>3 agents per batch</maximum_concurrent>
-<invocation_pattern>Single message with multiple Task() calls</invocation_pattern>
-
-<automatic_triggers>
-<pattern_engine>
-  <pattern keywords="error,bug,broken,failing,fix,issue">
-    Task(debugger) Task(critic)
-  </pattern>
-
-  <pattern keywords="refactor,clean,improve,messy">
-    Task(patterns) Task(code-cleaner)
-  </pattern>
-
-  <pattern keywords="implement,build,create,add,feature">
-    Task(researcher) Task(stack-advisor)
-  </pattern>
-
-  <pattern keywords="analyze,research,investigate,understand,explain">
-    Task(researcher) Task(options-analyzer)
-  </pattern>
-
-  <pattern keywords="architect,design,structure,organize">
-    Task(stack-advisor) Task(principles)
-  </pattern>
-
-  <default>
-    Task(researcher) Task(critic)
-  </default>
-</pattern_engine>
-</automatic_triggers>
-
-<recursion_prevention>Sub-agents NEVER spawn other sub-agents</recursion_prevention>
+<enforcement>Use Task() in a single message for concurrent agent processing when beneficial</enforcement>
+<minimum_agents>1-2 agents for simple/common tasks, 2-3 for complex</minimum_agents>
+<invocation_pattern>Always single message with multiple Task() calls</invocation_pattern>
 </parallel_agent_protocol>
 
 <git_protocol priority="MANDATORY">
@@ -50,7 +19,7 @@ RULE 4: Follow file structure locations EXACTLY
 
 <output_sanitization priority="MANDATORY">
 <forbidden_patterns>
-  - "Week 1", "Week 2", "Phase 1 (Week 1)"
+  - "Week 1", "Week 2", "Phase 1 (Week 1)", "Milestone 1", "Milestone 2"
   - "implement in X weeks", "Q1 goals", "monthly milestones"
   - ANY time-based phases unless user explicitly requests
 </forbidden_patterns>
@@ -58,6 +27,8 @@ RULE 4: Follow file structure locations EXACTLY
 <examples>
   ✅ "High Priority: Update agent descriptions (blocks selection optimization)"
   ❌ "Phase 1 (Week 1): Update agent descriptions"
+  ❌ "Next Sprint (Sprint 1): Implement feature 23"
+  ❌ "Sprint 2: Update documentation"
 </examples>
 </output_sanitization>
 

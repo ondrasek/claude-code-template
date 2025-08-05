@@ -1,6 +1,6 @@
 ---
 name: principles
-description: "MUST USE when user asks 'is this SOLID', 'best practices', 'design principles', 'is this good architecture', or during code quality reviews. Expert at systematic principle validation and architectural assessment."
+description: "MUST USE when user asks 'review', 'is this SOLID', 'best practices', 'principles', 'is this good architecture', or during code quality reviews. Expert at systematic principle validation and architectural assessment."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 ---
 
@@ -148,7 +148,7 @@ mcp__memory__create_entities([{
 ### Document Principle Violations:
 ```javascript
 mcp__memory__create_entities([{
-  name: "principle_violation_description", 
+  name: "principle_violation_description",
   entityType: "principle_violation",
   observations: ["violated_principle", "code_location", "impact", "suggested_remediation"]
 }])
@@ -158,7 +158,7 @@ mcp__memory__create_entities([{
 ```javascript
 mcp__memory__create_relations([{
   from: "old_principle_approach",
-  to: "new_principle_approach", 
+  to: "new_principle_approach",
   relationType: "evolved_into"
 }])
 ```
