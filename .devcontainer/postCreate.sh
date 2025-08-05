@@ -6,15 +6,17 @@
 set -e
 
 devcontainerDir=/tmp/.devcontainer 
-
 eval "$(grep -v '^#' $devcontainerDir/postCreate.env.tmp | sed 's/^/export /')"
+workingCopy=/workspace/$repositoryName
+
 echo Configuration from initializeCommand:
 echo repositoryName: $repositoryName
 echo repositoryNameWithOwner: $repositoryNameWithOwner
 echo gitUserName: $gitUserName
 echo gitUserEmail: $gitUserEmail
+echo workingCopt: $workingCopy
 
-workingCopy=/workspace/$repositoryName
+
 
 echo "🚀 Setting up Claude Code Template DevContainer..."
 sudo mkdir -p /workspace && sudo chown vscode:vscode /workspace && cd /workspace
@@ -123,7 +125,7 @@ if [ -d $workingCopy/.git ]; then
   gh repo sync
   cd -
 else
-  echo gh repo clone $repositoryNameWithOwner $workingCopy
+  gh repo clone $repositoryNameWithOwner $workingCopy
 fi
 
 # Verify installations
