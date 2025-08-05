@@ -17,7 +17,7 @@ Review existing TODOs, prioritize tasks, and analyze TODO backlog for task evalu
    - --limit N (limit number of TODOs to review)
    - --actionable-only (show only immediately actionable tasks)
 
-2. Delegate comprehensive TODO analysis to specialist-todo-manager agent with enhanced coordination
+2. Delegate comprehensive TODO analysis to todo-manager agent with enhanced coordination
 1. invoke todo agent: comprehensive TODO analysis with enhanced agent coordination
 2. coordinate parallel review analysis:
    - **Relevance Assessment Cluster**: patterns + context + time + researcher (analyze relevance with system understanding and historical context)

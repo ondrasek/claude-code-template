@@ -18,15 +18,15 @@ Comprehensive documentation synchronization with code changes for all project do
    - --priority [critical|high|medium|low] (filter updates by priority)
 
 2. Execute enhanced parallel documentation analysis clusters
-1. invoke specialist-stack-advisor agent: systematic documentation analysis with enhanced universal agent coordination
+1. invoke stack-advisor agent: systematic documentation analysis with enhanced universal agent coordination
 2. coordinate enhanced parallel documentation analysis clusters:
-   - **Gap Analysis Cluster**: foundation-patterns + specialist-code-cleaner + foundation-criticism (identify gaps, inconsistencies, micro-improvements, critical assessment)
-   - **Historical Intelligence Cluster**: foundation-research + foundation-context + foundation-patterns (documentation evolution, historical patterns, system understanding, pattern recognition)
-   - **Standards Compliance Cluster**: specialist-stack-advisor + specialist-constraint-solver + foundation-principles (project standards, limitations, design principles, integrity validation)
-   - **Accuracy Validation Cluster**: foundation-criticism + specialist-test-strategist + specialist-performance-optimizer + specialist-code-cleaner (validate accuracy, test examples, performance impact, completeness assessment)
-   - **Implementation Coordination Cluster**: foundation-conflicts + foundation-principles + specialist-stack-advisor (conflict resolution, fundamental principles, documentation synthesis)
-3. generate comprehensive documentation update plan with priority mapping validated by foundation-conflicts + foundation-criticism + foundation-principles agents
-4. implement updates with cross-reference validation and consistency checking coordinated by specialist-code-cleaner + specialist-constraint-solver + specialist-test-strategist agents
+   - **Gap Analysis Cluster**: patterns + code-cleaner + critic (identify gaps, inconsistencies, micro-improvements, critical assessment)
+   - **Historical Intelligence Cluster**: researcher + context + patterns (documentation evolution, historical patterns, system understanding, pattern recognition)
+   - **Standards Compliance Cluster**: stack-advisor + constraint-solver + principles (project standards, limitations, design principles, integrity validation)
+   - **Accuracy Validation Cluster**: critic + test-strategist + performance-optimizer + code-cleaner (validate accuracy, test examples, performance impact, completeness assessment)
+   - **Implementation Coordination Cluster**: conflicts + principles + stack-advisor (conflict resolution, fundamental principles, documentation synthesis)
+3. generate comprehensive documentation update plan with priority mapping validated by conflicts + critic + principles agents
+4. implement updates with cross-reference validation and consistency checking coordinated by code-cleaner + constraint-solver + test-strategist agents
 
 PARAMETERS:
 --scope [api|readme|changelog|all] (documentation scope, default: all)
@@ -36,14 +36,14 @@ PARAMETERS:
 --priority [critical|high|medium|low] (filter updates by priority)
 
 ENHANCED_AGENT_CLUSTERS:
-Primary Documentation: specialist-stack-advisor (comprehensive documentation strategy with universal agent coordination)
-Gap Analysis: foundation-patterns + specialist-code-cleaner + foundation-criticism + foundation-research
-Historical Intelligence: foundation-research + foundation-context + foundation-patterns + foundation-principles
-Standards Compliance: specialist-stack-advisor + specialist-constraint-solver + foundation-principles + specialist-code-cleaner
-Accuracy Validation: foundation-criticism + specialist-test-strategist + specialist-performance-optimizer + specialist-code-cleaner + foundation-principles
-Implementation Coordination: foundation-conflicts + foundation-principles + specialist-stack-advisor + specialist-constraint-solver
-Synthesis & Quality: foundation-criticism + foundation-principles + specialist-code-cleaner + specialist-stack-advisor
-Coordination: All enhanced clusters support specialist-stack-advisor agent leadership with comprehensive universal integration
+Primary Documentation: stack-advisor (comprehensive documentation strategy with universal agent coordination)
+Gap Analysis: patterns + code-cleaner + critic + researcher
+Historical Intelligence: researcher + context + patterns + principles
+Standards Compliance: stack-advisor + constraint-solver + principles + code-cleaner
+Accuracy Validation: critic + test-strategist + performance-optimizer + code-cleaner + principles
+Implementation Coordination: conflicts + principles + stack-advisor + constraint-solver
+Synthesis & Quality: critic + principles + code-cleaner + stack-advisor
+Coordination: All enhanced clusters support stack-advisor agent leadership with comprehensive universal integration
 
 OUTPUT:
 - Comprehensive documentation audit with gap identification

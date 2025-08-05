@@ -20,10 +20,10 @@ Setup and manage application monitoring, logging, and observability for performa
    - --dry-run (preview configuration without applying)
 
 2. Execute parallel clusters for monitoring setup
-1. **System Analysis**: foundation-context + foundation-research for application architecture and monitoring requirements
-2. **Monitoring Strategy**: specialist-performance-optimizer + specialist-constraint-solver for performance metrics and resource monitoring
-3. **Implementation Planning**: specialist-options-analyzer + specialist-stack-advisor for monitoring tool selection and configuration
-4. **Quality Validation**: foundation-principles + foundation-criticism for monitoring best practices and alerting strategies
+1. **System Analysis**: context + researcher for application architecture and monitoring requirements
+2. **Monitoring Strategy**: performance-optimizer + constraint-solver for performance metrics and resource monitoring
+3. **Implementation Planning**: options-analyzer + stack-advisor for monitoring tool selection and configuration
+4. **Quality Validation**: principles + critic for monitoring best practices and alerting strategies
 
 PARAMETERS:
 --type [metrics|logs|traces|alerts|health] (monitoring type)
@@ -35,10 +35,10 @@ PARAMETERS:
 --dry-run (preview configuration without applying)
 
 OPTIMIZED_PARALLEL_CLUSTERS:
-Analysis & Research (2 agents): foundation-context + foundation-research
-Performance & Constraints (2 agents): specialist-performance-optimizer + specialist-constraint-solver
-Strategy & Implementation (2 agents): specialist-options-analyzer + specialist-stack-advisor
-Quality & Validation (2 agents): foundation-principles + foundation-criticism
+Analysis & Research (2 agents): context + researcher
+Performance & Constraints (2 agents): performance-optimizer + constraint-solver
+Strategy & Implementation (2 agents): options-analyzer + stack-advisor
+Quality & Validation (2 agents): principles + critic
 
 COORDINATION_PROTOCOL: All clusters execute simultaneously via single message with multiple Task() calls for efficient monitoring setup. Total agents: 8 (observability-focused coordination)
 
@@ -106,18 +106,18 @@ INTELLIGENT_OUTPUT:
 
 ### Phase 1: System Analysis & Research
 ```
-Task: "Analyze application architecture and monitoring requirements" (foundation-context + foundation-research)
+Task: "Analyze application architecture and monitoring requirements" (context + researcher)
 ```
 
 ### Phase 2: Performance & Strategy Planning
 ```
-Task: "Design performance monitoring and resource constraints" (specialist-performance-optimizer + specialist-constraint-solver)
-Task: "Select monitoring tools and implementation strategy" (specialist-options-analyzer + specialist-stack-advisor)
+Task: "Design performance monitoring and resource constraints" (performance-optimizer + constraint-solver)
+Task: "Select monitoring tools and implementation strategy" (options-analyzer + stack-advisor)
 ```
 
 ### Phase 3: Quality Validation & Implementation
 ```
-Task: "Validate monitoring best practices and configuration quality" (foundation-principles + foundation-criticism)
+Task: "Validate monitoring best practices and configuration quality" (principles + critic)
 ```
 
 **OBSERVABILITY-FOCUSED AGENT COUNT**: 8 agents total (monitoring and observability coordination)

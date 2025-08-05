@@ -17,16 +17,16 @@ Run tests, create tests, and analyze coverage with automatic framework detection
    - Auto-fix failing tests when possible
 
 2. Execute enhanced parallel testing analysis clusters
-1. invoke specialist-test-strategist agent: comprehensive test strategy development with universal agent coordination
+1. invoke test-strategist agent: comprehensive test strategy development with universal agent coordination
 2. coordinate enhanced parallel testing analysis clusters:
-   - **Coverage Analysis Cluster**: foundation-patterns + specialist-code-cleaner + foundation-criticism (identify untested patterns, gaps, micro-improvements, critical assessment)
-   - **Performance Testing Cluster**: specialist-performance-optimizer + specialist-constraint-solver + specialist-options-analyzer (performance requirements, resource limitations, optimization theories)
-   - **Security Testing Cluster**: foundation-patterns + foundation-criticism + specialist-constraint-solver + foundation-research (security testing with threat intelligence)
-   - **Quality & Strategy Cluster**: specialist-options-analyzer + foundation-principles + specialist-constraint-solver (edge case generation, alternative approaches, testing principles, design integrity)
-   - **Implementation Validation Cluster**: specialist-code-cleaner + specialist-stack-advisor + foundation-conflicts (completeness verification, documentation sync, technology guidance, conflict resolution)
-3. execute tests with framework-specific optimizations validated by specialist-stack-advisor + specialist-performance-optimizer + foundation-criticism agents
-4. analyze results through enhanced validation cluster: foundation-criticism + foundation-principles + specialist-code-cleaner + specialist-test-strategist agents
-5. generate comprehensive test improvement recommendations validated by foundation-conflicts + specialist-stack-advisor agents
+   - **Coverage Analysis Cluster**: patterns + code-cleaner + critic (identify untested patterns, gaps, micro-improvements, critical assessment)
+   - **Performance Testing Cluster**: performance-optimizer + constraint-solver + options-analyzer (performance requirements, resource limitations, optimization theories)
+   - **Security Testing Cluster**: patterns + critic + constraint-solver + researcher (security testing with threat intelligence)
+   - **Quality & Strategy Cluster**: options-analyzer + principles + constraint-solver (edge case generation, alternative approaches, testing principles, design integrity)
+   - **Implementation Validation Cluster**: code-cleaner + stack-advisor + conflicts (completeness verification, documentation sync, technology guidance, conflict resolution)
+3. execute tests with framework-specific optimizations validated by stack-advisor + performance-optimizer + critic agents
+4. analyze results through enhanced validation cluster: critic + principles + code-cleaner + test-strategist agents
+5. generate comprehensive test improvement recommendations validated by conflicts + stack-advisor agents
 
 PARAMETERS:
 --coverage (include coverage analysis)
@@ -38,14 +38,14 @@ PARAMETERS:
 FILES... (specific files to test)
 
 ENHANCED_AGENT_CLUSTERS:
-Primary Testing: specialist-test-strategist (comprehensive test strategy and methodology with universal coordination)
-Coverage Analysis: foundation-patterns + specialist-code-cleaner + foundation-criticism + foundation-research
-Security Testing: foundation-patterns + foundation-criticism + specialist-constraint-solver + foundation-research
-Performance Testing: specialist-performance-optimizer + specialist-constraint-solver + specialist-options-analyzer + foundation-principles
-Quality & Strategy: specialist-options-analyzer + foundation-principles + specialist-constraint-solver + foundation-context
-Implementation Validation: specialist-code-cleaner + specialist-stack-advisor + foundation-conflicts + specialist-test-strategist
-Result Analysis: foundation-criticism + foundation-principles + specialist-code-cleaner + specialist-test-strategist + specialist-performance-optimizer
-Coordination: All enhanced clusters work in parallel under specialist-test-strategist agent leadership with comprehensive integration
+Primary Testing: test-strategist (comprehensive test strategy and methodology with universal coordination)
+Coverage Analysis: patterns + code-cleaner + critic + researcher
+Security Testing: patterns + critic + constraint-solver + researcher
+Performance Testing: performance-optimizer + constraint-solver + options-analyzer + principles
+Quality & Strategy: options-analyzer + principles + constraint-solver + context
+Implementation Validation: code-cleaner + stack-advisor + conflicts + test-strategist
+Result Analysis: critic + principles + code-cleaner + test-strategist + performance-optimizer
+Coordination: All enhanced clusters work in parallel under test-strategist agent leadership with comprehensive integration
 
 TEST_GENERATION:
 - edge cases: null, empty, boundary values
@@ -235,17 +235,17 @@ def test_with_mock(mock_service):
 **Enhanced Primary Testing Integration**:
 
 **Primary Testing Agent**: 
-- **specialist-test-strategist**: Comprehensive test strategy development with 308-line systematic methodology enhanced by universal agent coordination
+- **test-strategist**: Comprehensive test strategy development with 308-line systematic methodology enhanced by universal agent coordination
 
 **Enhanced Supporting Analysis Clusters**:
-- **Coverage Analysis**: foundation-patterns + specialist-code-cleaner + foundation-criticism + foundation-research for comprehensive gap identification with research validation
-- **Security Testing**: foundation-patterns + foundation-criticism + specialist-constraint-solver + foundation-research for security validation with threat intelligence
-- **Performance Testing**: specialist-performance-optimizer + specialist-constraint-solver + specialist-options-analyzer + foundation-principles for optimization and fundamental principles
-- **Quality & Strategy**: specialist-options-analyzer + foundation-principles + specialist-constraint-solver + foundation-context for comprehensive test quality assurance with system understanding
-- **Implementation Validation**: specialist-code-cleaner + specialist-stack-advisor + foundation-conflicts + specialist-test-strategist for implementation verification with documentation and conflict resolution
-- **Result Analysis**: foundation-criticism + foundation-principles + specialist-code-cleaner + specialist-test-strategist + specialist-performance-optimizer for comprehensive result validation with quality assurance
+- **Coverage Analysis**: patterns + code-cleaner + critic + researcher for comprehensive gap identification with researcher validation
+- **Security Testing**: patterns + critic + constraint-solver + researcher for security validation with threat intelligence
+- **Performance Testing**: performance-optimizer + constraint-solver + options-analyzer + principles for optimization and fundamental principles
+- **Quality & Strategy**: options-analyzer + principles + constraint-solver + context for comprehensive test quality assurance with system understanding
+- **Implementation Validation**: code-cleaner + stack-advisor + conflicts + test-strategist for implementation verification with documentation and conflict resolution
+- **Result Analysis**: critic + principles + code-cleaner + test-strategist + performance-optimizer for comprehensive result validation with quality assurance
 
-**Enhanced Advanced Coordination**: specialist-test-strategist agent orchestrates all specialized testing approaches with universal agent support while maintaining systematic methodology focus through foundation-conflicts + foundation-criticism + foundation-principles integration
+**Enhanced Advanced Coordination**: test-strategist agent orchestrates all specialized testing approaches with universal agent support while maintaining systematic methodology focus through conflicts + critic + principles integration
 
 ## Related Commands
 

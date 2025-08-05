@@ -1,5 +1,5 @@
 ---
-name: foundation-conflicts
+name: conflicts
 description: "PROACTIVELY use when patterns conflict with principles, user faces 'trade-offs', 'which approach is better', 'competing solutions', 'design decisions', 'architecture choices', or agents give conflicting advice. Always use as a follow up after running foundation-research, foundation-context or foundation-patterns. Expert at conflict mediation, trade-off analysis, and decision synthesis with comprehensive context consideration and documented reasoning for optimal path resolution."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 ---

@@ -13,7 +13,7 @@ Comprehensive TODO hygiene followed by intelligent next step analysis for full T
 1. Parse $ARGUMENTS for next task parameters:
    - --limit N (limit number of next-step recommendations)
 
-2. Delegate comprehensive cleanup and analysis to specialist-todo-manager agent with enhanced coordination including mandatory git safety protocol
+2. Delegate comprehensive cleanup and analysis to todo-manager agent with enhanced coordination including mandatory git safety protocol
 1. invoke todo agent: comprehensive cleanup and analysis with enhanced agent coordination
 2. coordinate parallel cleanup operations:
    - **Completion Detection Cluster**: patterns + completer + researcher + context (identify implemented functionality)

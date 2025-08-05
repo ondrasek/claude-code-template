@@ -1,5 +1,5 @@
 ---
-name: foundation-context
+name: context
 description: "MUST USE when user needs codebase context for any development situation - implementation questions, problem-solving, decision-making, impact analysis, or system understanding. Expert at mapping, building, and presenting relevant contextual intelligence from the codebase using persistent memory."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 ---

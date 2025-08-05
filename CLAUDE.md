@@ -16,27 +16,27 @@ RULE 4: Follow file structure locations EXACTLY
 <automatic_triggers>
 <pattern_engine>
   <pattern keywords="error,bug,broken,failing,fix,issue">
-    Task(specialist-debugger) Task(foundation-criticism)
+    Task(debugger) Task(critic)
   </pattern>
 
   <pattern keywords="refactor,clean,improve,messy">
-    Task(foundation-patterns) Task(specialist-code-cleaner)
+    Task(patterns) Task(code-cleaner)
   </pattern>
 
   <pattern keywords="implement,build,create,add,feature">
-    Task(foundation-research) Task(specialist-stack-advisor)
+    Task(researcher) Task(stack-advisor)
   </pattern>
 
   <pattern keywords="analyze,research,investigate,understand,explain">
-    Task(foundation-research) Task(specialist-options-analyzer)
+    Task(researcher) Task(options-analyzer)
   </pattern>
 
   <pattern keywords="architect,design,structure,organize">
-    Task(specialist-stack-advisor) Task(foundation-principles)
+    Task(stack-advisor) Task(principles)
   </pattern>
 
   <default>
-    Task(foundation-research) Task(foundation-criticism)
+    Task(researcher) Task(critic)
   </default>
 </pattern_engine>
 </automatic_triggers>
@@ -45,7 +45,7 @@ RULE 4: Follow file structure locations EXACTLY
 </parallel_agent_protocol>
 
 <git_protocol priority="MANDATORY">
-<enforcement>Task(specialist-git-workflow) after EVERY meaningful change</enforcement>
+<enforcement>Task(git-workflow) after EVERY meaningful change</enforcement>
 </git_protocol>
 
 <output_sanitization priority="MANDATORY">

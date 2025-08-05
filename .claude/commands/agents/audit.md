@@ -71,20 +71,20 @@ description: "PROACTIVELY use when user asks 'why does this happen', 'strange be
 
 **Enhanced Parallel Agent Cluster Analysis:**
 - Use parallel agent clusters for comprehensive ecosystem analysis with universal agent integration
-- **Core Quality Cluster**: foundation-patterns + foundation-principles + foundation-criticism + foundation-research (agent analysis with research validation)
-- **Strategic Optimization Cluster**: specialist-options-analyzer + specialist-constraint-solver + foundation-conflicts + foundation-principles (gap analysis with principle validation)
-- **Performance Analysis Cluster**: foundation-research + foundation-context + foundation-criticism (performance with critical assessment)
-- **Design Validation Cluster**: foundation-principles + specialist-constraint-solver + foundation-research (fundamental validation with evidence research)
-- **Completeness Assessment Cluster**: specialist-code-cleaner + foundation-patterns + foundation-criticism + foundation-principles (gap identification with quality validation)
+- **Core Quality Cluster**: patterns + principles + critic + researcher (agent analysis with researcher validation)
+- **Strategic Optimization Cluster**: options-analyzer + constraint-solver + conflicts + principles (gap analysis with principle validation)
+- **Performance Analysis Cluster**: researcher + context + critic (performance with critical assessment)
+- **Design Validation Cluster**: principles + constraint-solver + researcher (fundamental validation with evidence researcher)
+- **Completeness Assessment Cluster**: code-cleaner + patterns + critic + principles (gap identification with quality validation)
 - Parallel execution for maximum performance and comprehensive coverage with universal agent support
 
 **Enhanced Multi-Dimensional Aggregation:**
 - Synthesize findings from all enhanced parallel agent clusters with universal agent support
-- Cross-validate recommendations between analysis dimensions using foundation-criticism and foundation-principles agents
-- Identify ecosystem-wide patterns, gaps, and optimization opportunities with foundation-research intelligence
-- Generate priority-based action plans with dependency mapping validated by specialist-constraint-solver and foundation-conflicts agents
-- Apply completeness verification through specialist-code-cleaner agent coordination
-- Ensure research-backed recommendations through systematic foundation-research integration
+- Cross-validate recommendations between analysis dimensions using critic and principles agents
+- Identify ecosystem-wide patterns, gaps, and optimization opportunities with researcher intelligence
+- Generate priority-based action plans with dependency mapping validated by constraint-solver and conflicts agents
+- Apply completeness verification through code-cleaner agent coordination
+- Ensure researcher-backed recommendations through systematic researcher integration
 
 ## Batch Analysis
 
@@ -106,7 +106,7 @@ description: "PROACTIVELY use when user asks 'why does this happen', 'strange be
 ### Phase 2: Enhanced Parallel Agent Cluster Execution
 ```
 Cluster 1 - Core Quality Analysis (patterns + principles + critic + researcher):
-  Task: "Analyze agent descriptions, selection optimization, and principle compliance with research validation"
+  Task: "Analyze agent descriptions, selection optimization, and principle compliance with researcher validation"
   Context: All agent definitions + creation principles + ecosystem patterns + latest agent best practices
   Output: Research-validated description quality assessment with optimization recommendations
 
@@ -121,8 +121,8 @@ Cluster 3 - Performance Intelligence Analysis (researcher + time + context + cri
   Output: Critically-assessed performance optimization recommendations with evidence basis
 
 Cluster 4 - Design Validation Analysis (axioms + invariants + connector + researcher):
-  Task: "Validate fundamental design principles and cross-domain connections with research support"
-  Context: Agent design principles + ecosystem architecture + integration patterns + domain research
+  Task: "Validate fundamental design principles and cross-domain connections with researcher support"
+  Context: Agent design principles + ecosystem architecture + integration patterns + domain researcher
   Output: Research-supported design integrity assessment with architectural recommendations
 
 Cluster 5 - Completeness Assessment Analysis (completer + patterns + critic + principles):

@@ -22,14 +22,14 @@ with comprehensive redundancy analysis and validation.
 2. Execute comprehensive parallel analysis clusters before creation:
 
 **Phase 1: Ecosystem Analysis (MANDATORY before creation)**
-- **Redundancy Detection Cluster**: foundation-patterns + foundation-context + specialist-options-analyzer (identify overlapping functionality, system understanding, alternative approaches)
-- **Security Analysis Cluster**: foundation-criticism + specialist-constraint-solver (security validation, tool restrictions, permission boundaries)
-- **Guidelines Compliance Cluster**: foundation-principles + specialist-code-cleaner (validate guidelines adherence, structure requirements)
+- **Redundancy Detection Cluster**: patterns + context + options-analyzer (identify overlapping functionality, system understanding, alternative approaches)
+- **Security Analysis Cluster**: critic + constraint-solver (security validation, tool restrictions, permission boundaries)
+- **Guidelines Compliance Cluster**: principles + code-cleaner (validate guidelines adherence, structure requirements)
 
 **Phase 2: Command Design and Validation**
-- **Design Strategy Cluster**: specialist-options-analyzer + foundation-research + foundation-principles (design alternatives, best practices research, principle compliance)
-- **Implementation Planning Cluster**: specialist-stack-advisor + specialist-constraint-solver + foundation-context (technology guidance, implementation constraints, system integration)
-- **Quality Assurance Cluster**: foundation-criticism + foundation-principles + specialist-test-strategist (quality validation, principle adherence, testing considerations)
+- **Design Strategy Cluster**: options-analyzer + researcher + principles (design alternatives, best practices researcher, principle compliance)
+- **Implementation Planning Cluster**: stack-advisor + constraint-solver + context (technology guidance, implementation constraints, system integration)
+- **Quality Assurance Cluster**: critic + principles + test-strategist (quality validation, principle adherence, testing considerations)
 
 3. Redundancy Analysis Requirements:
    - Compare proposed command against ALL existing commands in .claude/commands/

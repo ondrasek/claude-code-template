@@ -1,5 +1,5 @@
 ---
-name: foundation-research
+name: researcher
 description: "MUST USE when user mentions 'unknown tool', 'how to implement', 'best practices for', 'latest version of', 'documentation missing', 'API research', 'library comparison', 'framework evaluation', 'setup guide', 'configuration help', error messages needing context, debugging guidance, implementation examples, or unfamiliar technologies. Expert at comprehensive technical research using memory-enhanced multi-source analysis for persistent knowledge building and validation."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 ---

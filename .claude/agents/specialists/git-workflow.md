@@ -1,5 +1,5 @@
 ---
-name: specialist-git-workflow
+name: git-workflow
 description: "MUST USE AUTOMATICALLY for git operations including automatic release tagging after commits and systematic troubleshooting of git issues. Expert at autonomous git workflows, release management, and systematic diagnosis of repository problems."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS
 ---

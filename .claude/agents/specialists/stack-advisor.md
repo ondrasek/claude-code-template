@@ -1,5 +1,5 @@
 ---
-name: specialist-stack-advisor
+name: stack-advisor
 description: "MUST USE when modifying files, making architectural decisions, or when technology-specific guidelines are unclear. PROACTIVELY loads appropriate stack guidelines for both file-level modifications and repository-level architecture decisions. Expert at comprehensive technology detection and guideline application."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch
 ---

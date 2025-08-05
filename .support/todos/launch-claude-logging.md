@@ -1,0 +1,1 @@
+Update launch-claude wrapper to use ANTHROPIC_LOG=debug.

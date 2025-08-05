@@ -1,5 +1,5 @@
 ---
-name: specialist-constraint-solver
+name: constraint-solver
 description: "MUST USE when facing 'requirements conflict', 'limited resources', 'performance vs features', 'must work with legacy', multiple competing constraints, designing 'type safety', 'state machines', 'data integrity', 'system guarantees', preventing invalid states, or needs comprehensive security analysis including vulnerability detection, threat modeling, and compliance assessment."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 ---

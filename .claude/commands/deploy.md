@@ -20,10 +20,10 @@ Automate deployment processes and infrastructure management with multi-environme
    - FILES... (specific deployment configurations)
 
 2. Execute parallel agent clusters for deployment planning
-1. **Deployment Context Analysis**: foundation-context agent for environment and infrastructure understanding
-2. **Infrastructure Planning**: specialist-constraint-solver + specialist-options-analyzer for deployment strategy and resource constraints
-3. **Safety Validation**: foundation-criticism + foundation-principles for deployment safety and best practices
-4. **Implementation Coordination**: specialist-code-cleaner + specialist-stack-advisor for deployment scripts and technology-specific guidance
+1. **Deployment Context Analysis**: context agent for environment and infrastructure understanding
+2. **Infrastructure Planning**: constraint-solver + options-analyzer for deployment strategy and resource constraints
+3. **Safety Validation**: critic + principles for deployment safety and best practices
+4. **Implementation Coordination**: code-cleaner + stack-advisor for deployment scripts and technology-specific guidance
 
 PARAMETERS:
 --env [dev|staging|prod] (target environment)
@@ -35,9 +35,9 @@ PARAMETERS:
 FILES... (specific deployment configurations)
 
 OPTIMIZED_PARALLEL_CLUSTERS:
-Context & Planning (3 agents): foundation-context + specialist-constraint-solver + specialist-options-analyzer
-Safety & Standards (2 agents): foundation-criticism + foundation-principles  
-Implementation (2 agents): specialist-code-cleaner + specialist-stack-advisor
+Context & Planning (3 agents): context + constraint-solver + options-analyzer
+Safety & Standards (2 agents): critic + principles  
+Implementation (2 agents): code-cleaner + stack-advisor
 
 COORDINATION_PROTOCOL: All clusters execute simultaneously via single message with multiple Task() calls for efficient deployment planning. Total agents: 7 (deployment-focused coordination)
 
@@ -93,13 +93,13 @@ INTELLIGENT_OUTPUT:
 
 ### Phase 1: Environment Analysis & Planning
 ```
-Task: "Analyze deployment context and target environment" (foundation-context)
-Task: "Plan deployment strategy with constraint analysis" (specialist-constraint-solver + specialist-options-analyzer)
+Task: "Analyze deployment context and target environment" (context)
+Task: "Plan deployment strategy with constraint analysis" (constraint-solver + options-analyzer)
 ```
 
 ### Phase 2: Safety & Implementation Validation
 ```
-Task: "Validate deployment safety and best practices" (foundation-criticism + foundation-principles + specialist-code-cleaner + specialist-stack-advisor)
+Task: "Validate deployment safety and best practices" (critic + principles + code-cleaner + stack-advisor)
 ```
 
 **DEPLOYMENT-FOCUSED AGENT COUNT**: 7 agents total (environment and infrastructure coordination)

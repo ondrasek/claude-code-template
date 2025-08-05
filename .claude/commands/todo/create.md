@@ -16,14 +16,14 @@ Create new TODO task with proper classification and metadata in .support/todos/ 
    - --assignee [agent-name] (assign to specific agent)
    - DESCRIPTION (required task description text)
 
-2. Delegate task creation to specialist-todo-manager agent with enhanced coordination
+2. Delegate task creation to todo-manager agent with enhanced coordination
 1. invoke todo agent: create new TODO file with enhanced agent coordination
 2. coordinate parallel task analysis:
-   - **Classification Cluster**: foundation-patterns + foundation-principles + foundation-research (classify task type with pattern recognition and research validation)
-   - **Priority Assessment Cluster**: foundation-criticism + specialist-constraint-solver (assess priority based on urgency, impact, and constraints)
-   - **Completeness Validation Cluster**: specialist-code-cleaner + specialist-stack-advisor + specialist-constraint-solver (ensure complete task specification with documentation standards)
-3. generate kebab-case filename validated by specialist-code-cleaner + foundation-principles agents
-4. create markdown file with comprehensive metadata validated by specialist-stack-advisor + specialist-test-strategist agents
+   - **Classification Cluster**: patterns + principles + researcher (classify task type with pattern recognition and researcher validation)
+   - **Priority Assessment Cluster**: critic + constraint-solver (assess priority based on urgency, impact, and constraints)
+   - **Completeness Validation Cluster**: code-cleaner + stack-advisor + constraint-solver (ensure complete task specification with documentation standards)
+3. generate kebab-case filename validated by code-cleaner + principles agents
+4. create markdown file with comprehensive metadata validated by stack-advisor + test-strategist agents
 
 PARAMETERS:
 --type [feat|fix|docs|refactor|test|chore] (force specific task type)

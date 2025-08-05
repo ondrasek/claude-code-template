@@ -17,10 +17,10 @@ Analyze performance bottlenecks, optimization opportunities, and scalability con
    - FILES... (specific files to analyze for performance)
 
 2. Execute optimized parallel clusters for performance analysis
-1. **Performance Context Analysis**: foundation-context agent for system architecture understanding
+1. **Performance Context Analysis**: context agent for system architecture understanding
 2. **Performance-Focused Analysis**: specialist-performance + specialist-constraints parallel analysis
-3. **Pattern & Research Integration**: foundation-patterns + foundation-research for optimization strategies
-4. **Critical Assessment**: foundation-criticism for risk evaluation of proposed optimizations
+3. **Pattern & Research Integration**: patterns + researcher for optimization strategies
+4. **Critical Assessment**: critic for risk evaluation of proposed optimizations
 
 PARAMETERS:
 --commits N (analyze performance changes in last N commits)
@@ -36,8 +36,8 @@ INTELLIGENT_PERFORMANCE_DETECTION:
 
 OPTIMIZED_PARALLEL_CLUSTERS:
 Performance Analysis (2 agents): specialist-performance + specialist-constraints
-Context & Research (2 agents): foundation-context + foundation-research  
-Pattern & Quality (2 agents): foundation-patterns + foundation-criticism
+Context & Research (2 agents): context + researcher  
+Pattern & Quality (2 agents): patterns + critic
 
 COORDINATION_PROTOCOL: All clusters execute simultaneously via single message with multiple Task() calls for efficient analysis. Total agents: 6 (optimized for performance focus)
 
@@ -73,14 +73,14 @@ INTELLIGENT_OUTPUT:
 
 ### Phase 1: Performance Context Loading
 ```
-Task: "Analyze system architecture for performance context" (foundation-context)
-Task: "Research performance best practices for detected technologies" (foundation-research)
+Task: "Analyze system architecture for performance context" (context)
+Task: "Research performance best practices for detected technologies" (researcher)
 ```
 
 ### Phase 2: Performance Analysis Clusters
 ```
 Task: "Execute performance bottleneck analysis" (specialist-performance + specialist-constraints)
-Task: "Execute pattern and quality analysis" (foundation-patterns + foundation-criticism)
+Task: "Execute pattern and quality analysis" (patterns + critic)
 ```
 
 **OPTIMIZED AGENT COUNT**: 6 agents total (performance-focused coordination)

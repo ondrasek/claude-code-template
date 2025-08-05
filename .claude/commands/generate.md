@@ -20,10 +20,10 @@ Generate code components, services, and project scaffolding with framework-agnos
    - NAME (component/service name)
 
 2. Execute optimized parallel clusters for code generation
-1. **Template Analysis**: foundation-patterns + foundation-research for code pattern recognition and template validation
-2. **Generation Strategy**: specialist-options-analyzer + specialist-stack-advisor for framework-specific generation approaches
-3. **Quality Validation**: foundation-principles + foundation-criticism for generated code quality and best practices
-4. **Implementation**: specialist-code-cleaner + specialist-meta-programmer for code generation and template processing
+1. **Template Analysis**: patterns + researcher for code pattern recognition and template validation
+2. **Generation Strategy**: options-analyzer + stack-advisor for framework-specific generation approaches
+3. **Quality Validation**: principles + critic for generated code quality and best practices
+4. **Implementation**: code-cleaner + meta-programmer for code generation and template processing
 
 PARAMETERS:
 --type [component|service|api|model|test|config] (generation type)
@@ -35,9 +35,9 @@ PARAMETERS:
 NAME (component/service name)
 
 OPTIMIZED_PARALLEL_CLUSTERS:
-Pattern & Research (2 agents): foundation-patterns + foundation-research
-Strategy & Framework (2 agents): specialist-options-analyzer + specialist-stack-advisor
-Quality & Implementation (4 agents): foundation-principles + foundation-criticism + specialist-code-cleaner + specialist-meta-programmer
+Pattern & Research (2 agents): patterns + researcher
+Strategy & Framework (2 agents): options-analyzer + stack-advisor
+Quality & Implementation (4 agents): principles + critic + code-cleaner + meta-programmer
 
 COORDINATION_PROTOCOL: All clusters execute simultaneously via single message with multiple Task() calls for efficient code generation. Total agents: 8 (generation-focused coordination)
 
@@ -111,13 +111,13 @@ INTELLIGENT_OUTPUT:
 
 ### Phase 1: Template Analysis & Framework Detection
 ```
-Task: "Analyze code patterns and validate templates" (foundation-patterns + foundation-research)
-Task: "Determine generation strategy and framework specifics" (specialist-options-analyzer + specialist-stack-advisor)
+Task: "Analyze code patterns and validate templates" (patterns + researcher)
+Task: "Determine generation strategy and framework specifics" (options-analyzer + stack-advisor)
 ```
 
 ### Phase 2: Quality Validation & Code Generation
 ```
-Task: "Validate quality standards and generate code" (foundation-principles + foundation-criticism + specialist-code-cleaner + specialist-meta-programmer)
+Task: "Validate quality standards and generate code" (principles + critic + code-cleaner + meta-programmer)
 ```
 
 **GENERATION-FOCUSED AGENT COUNT**: 8 agents total (template and code generation coordination)

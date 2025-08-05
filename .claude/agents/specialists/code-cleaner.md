@@ -1,5 +1,5 @@
 ---
-name: specialist-code-cleaner
+name: code-cleaner
 description: "PROACTIVELY use when user asks to 'clean up code', 'improve code quality', 'finish this', 'complete implementation', or when you notice code issues, incomplete functionality, documentation updates needed, or quality improvements possible during file reviews."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS
 ---

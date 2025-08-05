@@ -18,10 +18,10 @@ Implement targeted solutions for identified issues, bugs, or improvements with f
    - FILES... (specific files to fix)
 
 2. Execute parallel clusters for fix implementation
-1. **Fix Context Analysis**: foundation-context agent for understanding the issue and system impact
-2. **Implementation Strategy**: specialist-code-cleaner for gap analysis and implementation approach
-3. **Quality Validation**: foundation-patterns + foundation-principles for ensuring fix quality
-4. **Risk Assessment**: foundation-criticism for evaluating fix safety and side effects
+1. **Fix Context Analysis**: context agent for understanding the issue and system impact
+2. **Implementation Strategy**: code-cleaner for gap analysis and implementation approach
+3. **Quality Validation**: patterns + principles for ensuring fix quality
+4. **Risk Assessment**: critic for evaluating fix safety and side effects
 
 PARAMETERS:
 --issue "description" (specific issue to fix)
@@ -37,8 +37,8 @@ INTELLIGENT_FIX_DETECTION:
 4. **Safety assessment**: Evaluate risk level of proposed fixes
 
 OPTIMIZED_PARALLEL_CLUSTERS:
-Implementation (2 agents): specialist-code-cleaner + foundation-context
-Quality & Safety (3 agents): foundation-patterns + foundation-principles + foundation-criticism
+Implementation (2 agents): code-cleaner + context
+Quality & Safety (3 agents): patterns + principles + critic
 
 COORDINATION_PROTOCOL: All clusters execute simultaneously via single message with multiple Task() calls for efficient fix implementation. Total agents: 5 (focused on safe, quality fixes)
 
@@ -80,13 +80,13 @@ INTELLIGENT_OUTPUT:
 
 ### Phase 1: Fix Analysis & Planning
 ```
-Task: "Analyze issue context and system impact" (foundation-context)
-Task: "Plan implementation approach and identify gaps" (specialist-code-cleaner)
+Task: "Analyze issue context and system impact" (context)
+Task: "Plan implementation approach and identify gaps" (code-cleaner)
 ```
 
 ### Phase 2: Quality & Safety Validation
 ```
-Task: "Validate fix quality and design adherence" (foundation-patterns + foundation-principles + foundation-criticism)
+Task: "Validate fix quality and design adherence" (patterns + principles + critic)
 ```
 
 **FOCUSED AGENT COUNT**: 5 agents total (implementation-focused coordination)

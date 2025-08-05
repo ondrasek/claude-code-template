@@ -21,16 +21,16 @@ Comprehensive code refactoring focusing on structure, performance, and maintaina
 
 2. Execute enhanced parallel analysis clusters for comprehensive refactoring
 1. coordinate enhanced parallel analysis clusters for comprehensive refactoring:
-   - **Pattern Analysis Cluster**: foundation-patterns + foundation-research + foundation-context + foundation-criticism (find duplication with research validation)
-   - **Architecture Quality Cluster**: foundation-principles + specialist-constraint-solver + specialist-stack-advisor + specialist-code-cleaner (check SOLID with design integrity)
-   - **Dependency Mapping Cluster**: specialist-constraint-solver + foundation-conflicts + foundation-context + specialist-stack-advisor (map dependencies with conflict resolution)
-   - **Performance Analysis Cluster**: specialist-performance-optimizer + foundation-patterns + foundation-criticism + specialist-constraint-solver (identify optimization opportunities)
-2. generate comprehensive refactoring plan validated by foundation-conflicts + foundation-principles + foundation-criticism agents
-3. apply changes incrementally with specialist-test-strategist + specialist-code-cleaner + specialist-stack-advisor validation at each step
-4. invoke specialist-code-cleaner agent: micro-improvements coordinated with foundation-principles + foundation-criticism agents
-5. invoke specialist-code-cleaner agent: verify completeness with foundation-patterns + specialist-test-strategist validation
-6. run comprehensive tests with specialist-test-strategist + specialist-performance-optimizer coordination
-7. invoke specialist-stack-advisor agent: update documentation with specialist-code-cleaner + foundation-principles validation
+   - **Pattern Analysis Cluster**: patterns + researcher + context + critic (find duplication with researcher validation)
+   - **Architecture Quality Cluster**: principles + constraint-solver + stack-advisor + code-cleaner (check SOLID with design integrity)
+   - **Dependency Mapping Cluster**: constraint-solver + conflicts + context + stack-advisor (map dependencies with conflict resolution)
+   - **Performance Analysis Cluster**: performance-optimizer + patterns + critic + constraint-solver (identify optimization opportunities)
+2. generate comprehensive refactoring plan validated by conflicts + principles + critic agents
+3. apply changes incrementally with test-strategist + code-cleaner + stack-advisor validation at each step
+4. invoke code-cleaner agent: micro-improvements coordinated with principles + critic agents
+5. invoke code-cleaner agent: verify completeness with patterns + test-strategist validation
+6. run comprehensive tests with test-strategist + performance-optimizer coordination
+7. invoke stack-advisor agent: update documentation with code-cleaner + principles validation
 
 PARAMETERS:
 --pattern [extract-method|extract-class|inline|rename]
@@ -42,14 +42,14 @@ PARAMETERS:
 FILES... (specific files to refactor)
 
 ENHANCED_AGENT_CLUSTERS (CLAUDE.md compliant 3+ agents per cluster):
-Pattern Analysis: foundation-patterns + foundation-research + foundation-context (3 agents)
-Architecture Quality: foundation-principles + specialist-constraint-solver + specialist-stack-advisor (3 agents)
-Dependency Mapping: specialist-constraint-solver + foundation-conflicts + foundation-context (3 agents)
-Performance Analysis: specialist-performance-optimizer + foundation-patterns + foundation-criticism (3 agents)
-Implementation Excellence: specialist-code-cleaner + foundation-patterns + specialist-test-strategist (3 agents)
-Quality Assurance: foundation-criticism + specialist-test-strategist + specialist-performance-optimizer (3 agents)
-Documentation: specialist-stack-advisor + foundation-principles + specialist-code-cleaner (3 agents)
-Validation: specialist-options-analyzer + foundation-conflicts + specialist-test-strategist (3 agents)
+Pattern Analysis: patterns + researcher + context (3 agents)
+Architecture Quality: principles + constraint-solver + stack-advisor (3 agents)
+Dependency Mapping: constraint-solver + conflicts + context (3 agents)
+Performance Analysis: performance-optimizer + patterns + critic (3 agents)
+Implementation Excellence: code-cleaner + patterns + test-strategist (3 agents)
+Quality Assurance: critic + test-strategist + performance-optimizer (3 agents)
+Documentation: stack-advisor + principles + code-cleaner (3 agents)
+Validation: options-analyzer + conflicts + test-strategist (3 agents)
 Coordination: All enhanced clusters execute in parallel via single message with multiple Task() calls (CLAUDE.md mandatory protocol)
 
 REFACTORING_PATTERNS:
@@ -73,7 +73,7 @@ OUTPUT:
 **Refactoring Opportunities**: 47
 **Estimated Improvement**: 35% reduction in complexity
 
-### Pattern Detection (foundation-patterns agent)
+### Pattern Detection (patterns agent)
 
 1. **Duplicate Authentication Logic**
    - Found in: 5 files
@@ -98,7 +98,7 @@ OUTPUT:
    - Found in: 8 endpoints
    - Recommendation: Use decorator pattern
 
-### SOLID Violations (foundation-principles agent)
+### SOLID Violations (principles agent)
 
 1. **Single Responsibility Violation**
    - File: `src/services/user_service.py`
@@ -110,7 +110,7 @@ OUTPUT:
    - Issue: Switch statement for types
    - Fix: Use strategy pattern
 
-### Performance Improvements (specialist-performance-optimizer agent)
+### Performance Improvements (performance-optimizer agent)
 
 1. **N+1 Query Problem**
    - Location: `src/api/list_users.py`
@@ -126,7 +126,7 @@ OUTPUT:
    users = User.query.options(joinedload('profile')).all()
    ```
 
-### Micro-Improvements Applied (specialist-code-cleaner agent)
+### Micro-Improvements Applied (code-cleaner agent)
 
 - Renamed 47 variables for clarity
 - Added type hints to 23 functions
@@ -217,47 +217,47 @@ def create_user(user_data: UserData):
 
 **Enhanced Advanced Multi-Cluster Coordination**:
 
-**Pattern Analysis Cluster** (foundation-patterns + foundation-research + foundation-context + foundation-criticism):
-- Comprehensive code pattern analysis with research validation and architectural context
+**Pattern Analysis Cluster** (patterns + researcher + context + critic):
+- Comprehensive code pattern analysis with researcher validation and architectural context
 - Critical assessment of pattern effectiveness and design quality evaluation
-- Deep system understanding across entire codebase with research-backed insights
+- Deep system understanding across entire codebase with researcher-backed insights
 
-**Architecture Quality Cluster** (foundation-principles + specialist-constraint-solver + specialist-stack-advisor + foundation-conflicts):
+**Architecture Quality Cluster** (principles + constraint-solver + stack-advisor + conflicts):
 - Architectural principle validation with constraint-aware design integrity and conflict resolution
 - Technology-specific guidance ensuring appropriate principle application
 - Systematic constraint navigation with comprehensive conflict resolution
 
-**Dependency Mapping Cluster** (specialist-constraint-solver + foundation-conflicts + foundation-context + specialist-stack-advisor):
+**Dependency Mapping Cluster** (constraint-solver + conflicts + context + stack-advisor):
 - Multi-dimensional dependency analysis with constraint-aware solutions
 - System context understanding and technology-specific dependency guidance
 - Conflict resolution in complex dependency relationships with architectural awareness
 
-**Performance Analysis Cluster** (specialist-performance-optimizer + foundation-patterns + foundation-criticism + specialist-constraint-solver):
+**Performance Analysis Cluster** (performance-optimizer + patterns + critic + constraint-solver):
 - Performance bottleneck analysis with pattern recognition and critical assessment
 - Optimization strategies within resource constraints and design limitations
 - Systematic performance pattern analysis with constraint-aware validation
 
-**Implementation Excellence Cluster** (specialist-code-cleaner + foundation-patterns + specialist-test-strategist + foundation-principles):
+**Implementation Excellence Cluster** (code-cleaner + patterns + test-strategist + principles):
 - Code quality improvements with pattern recognition and principle compliance
 - Comprehensive testing integration with quality assurance and principle adherence
 - Technology-aware code refinement ensuring optimal principle-based implementations
 
-**Quality Assurance Cluster** (foundation-criticism + specialist-test-strategist + specialist-performance-optimizer + specialist-code-cleaner):
+**Quality Assurance Cluster** (critic + test-strategist + performance-optimizer + code-cleaner):
 - Critical evaluation with comprehensive testing and performance validation
 - Code quality optimization with systematic risk assessment
 - Multi-dimensional quality metrics tracking and improvement validation
 
-**Documentation Cluster** (specialist-stack-advisor + foundation-principles + specialist-code-cleaner + foundation-context):
+**Documentation Cluster** (stack-advisor + principles + code-cleaner + context):
 - Technology-specific documentation with architectural context and principle compliance
 - Repository-level guideline compliance with code quality integration
 - Principle-based documentation standards with comprehensive system understanding
 
-**Validation Cluster** (specialist-options-analyzer + foundation-conflicts + specialist-test-strategist + foundation-criticism):
+**Validation Cluster** (options-analyzer + conflicts + test-strategist + critic):
 - Alternative approach exploration with systematic testing validation
 - Comprehensive conflict resolution with critical assessment and testing integration
 - Multi-option analysis with risk-aware validation and testing coverage
 
-**Enhanced Memory-Coordinated Integration**: Leverages historical refactoring outcomes through foundation-research + foundation-context agents for optimized decision-making with comprehensive validation by foundation-criticism + foundation-principles + foundation-conflicts agents
+**Enhanced Memory-Coordinated Integration**: Leverages historical refactoring outcomes through researcher + context agents for optimized decision-making with comprehensive validation by critic + principles + conflicts agents
 
 ## Memory Integration
 

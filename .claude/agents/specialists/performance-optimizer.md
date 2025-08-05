@@ -1,5 +1,5 @@
 ---
-name: specialist-performance-optimizer
+name: performance-optimizer
 description: "MUST USE when user mentions 'performance issues', 'optimization needed', 'slow code', 'bottleneck analysis', 'memory leaks', 'algorithm complexity', 'profiling results', or asks 'why is this slow'. Expert at systematic performance analysis, algorithmic complexity assessment, and optimization strategy development."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 ---
