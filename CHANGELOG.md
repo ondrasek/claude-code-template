@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.67.0] - 2025-08-06
+
+### Changed
+- **Repository transformation completion**: Finalized 6-phase architectural restructuring from mixed-purpose template to clean CLI distribution platform
+  - Completed Phase 6 cleanup: removed obsolete .support/ directory after successful migration (18 files cleaned)
+  - All development files migrated to root-level organization (/specs/, /analysis/, /research/, /archive/, /logs/, /implementation/)
+  - Source code consolidated into /src/ monorepo structure (cli/, perplexity-mcp/)
+  - Clean CLI distribution achieved with only /templates/ getting installed to user repositories
+  - Established proper separation of concerns: development workspace vs. distribution package
+  - Benefits: clean user experience, standard source organization, clear development workspace, no user confusion
+
 ## [2.66.0] - 2025-08-06
 
 ### Added
