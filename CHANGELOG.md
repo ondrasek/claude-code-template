@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.61.0] - 2025-08-06
+
+### Changed
+- **Major terminology refactoring**: Complete migration from todos/todo-manager to specs/specs-analyst
+  - Renamed .support/todos/ directory to .support/specs/ with all 26 specification documents
+  - Refactored todo-manager.md agent to specs-analyst.md with updated functionality and role clarity
+  - Updated all agent references, command integrations, and system documentation
+  - Modified CLAUDE.md file structure specification to reflect specs-based approach
+  - Resolved namespace collision and semantic ambiguity documented in ambiguous-concepts.md
+  - Improved system coherence by aligning terminology with evolved specification analysis role
+
 ## [2.60.0] - 2025-08-05
 
 ### Changed
