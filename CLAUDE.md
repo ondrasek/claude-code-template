@@ -35,8 +35,8 @@ RULE 4: Follow file structure locations EXACTLY
 <locations>
   <agents>.claude/agents/ (ONLY location for agent definitions)</agents>
   <commands>.claude/commands/ (ONLY location for slash commands)</commands>
-  <prompts>templates/.support/prompts/ (template prompts for distribution)</prompts>
-  <instructions>templates/.support/instructions/ (template instructions for distribution)</instructions>
+  <prompts>templates/prompts/ (template prompts for distribution)</prompts>
+  <instructions>templates/instructions/ (template instructions for distribution)</instructions>
   <github_issues>GitHub Issues in ondrasek/claude-code-forge (specifications managed via GitHub)</github_issues>
   <mcp_servers>/src/[mcp-name]/ (MCP server source code)</mcp_servers>
   <logs>/logs/ (diagnostics and troubleshooting)</logs>
