@@ -37,7 +37,7 @@ RULE 4: Follow file structure locations EXACTLY
   <commands>.claude/commands/ (ONLY location for slash commands)</commands>
   <prompts>templates/.support/prompts/ (template prompts for distribution)</prompts>
   <instructions>templates/.support/instructions/ (template instructions for distribution)</instructions>
-  <specs>/specs/ (ONLY location for specifications)</specs>
+  <github_issues>GitHub Issues in ondrasek/claude-code-forge (specifications managed via GitHub)</github_issues>
   <mcp_servers>/src/[mcp-name]/ (MCP server source code)</mcp_servers>
   <logs>/logs/ (diagnostics and troubleshooting)</logs>
 </locations>
@@ -45,32 +45,22 @@ RULE 4: Follow file structure locations EXACTLY
 </file_structure>
 
 <specification_management priority="CRITICAL">
-<specs_protocol>
-  <definition>Specifications are detailed planning documents that define requirements, implementation approaches, and project deliverables managed separately from active development work</definition>
+<github_issues_protocol>
+  <definition>Specifications are detailed planning documents that define requirements, implementation approaches, and project deliverables managed through GitHub Issues in ondrasek/claude-code-forge repository</definition>
   
-  <location>/specs/ (ABSOLUTE - never search elsewhere)</location>
+  <location>GitHub Issues in ondrasek/claude-code-forge (ABSOLUTE - never use local files)</location>
   
   <agent_delegation>
-    <primary_agent>specs-analyst (PROACTIVELY use when user mentions tasks, specs, requirements, or asks 'create spec', 'track progress', 'remember to do')</primary_agent>
+    <primary_agent>specs-analyst (PROACTIVELY use when user mentions tasks, specs, requirements, or asks 'create issue', 'track progress', 'remember to do')</primary_agent>
     <non_trivial_task_definition>Operations requiring more than 2 tool invocations, affecting multiple files, or involving agent coordination</non_trivial_task_definition>
     <coordination>All specification lifecycle management MUST be delegated to specs-analyst agent to prevent context pollution</coordination>
-    <commands>Use /specs commands: /specs create, /specs review, /specs cleanup, /specs next</commands>
+    <commands>Use /issue commands: /issue create, /issue review, /issue cleanup, /issue next</commands>
   </agent_delegation>
   
-  <file_format>
-    <structure>Individual markdown files with YAML frontmatter</structure>
-    <naming>kebab-case filenames derived from specification descriptions</naming>
+  <issue_format>
+    <structure>GitHub Issues with proper labels and metadata</structure>
+    <naming>Descriptive issue titles derived from specification descriptions</naming>
     <template>
-      ---
-      status: pending|in_progress|completed|archived
-      type: feat|fix|docs|refactor|test|chore
-      priority: high|medium|low
-      assignee: agent-name
-      created: YYYY-MM-DD
-      ---
-      
-      # Specification Title
-      
       ## Description
       Clear description of requirements and scope.
       
@@ -81,32 +71,39 @@ RULE 4: Follow file structure locations EXACTLY
       ## Implementation Notes
       Technical approach, dependencies, constraints.
     </template>
-  </file_format>
+    <labels>
+      - Type: feat|fix|docs|refactor|test|chore
+      - Priority: priority:high|priority:medium|priority:low
+      - Status: status:pending|status:in-progress|status:completed
+      - Migration: migrated-from-specs (for historical tracking)
+    </labels>
+  </issue_format>
   
   <operational_rules>
-    <context_separation>Specifications management happens OFF-CONTEXT via specs-analyst agent to keep main conversation clean</context_separation>
-    <autonomous_operation>specs-analyst handles full specification lifecycle independently without main thread interaction</autonomous_operation>
+    <context_separation>GitHub Issues management happens OFF-CONTEXT via specs-analyst agent to keep main conversation clean</context_separation>
+    <autonomous_operation>specs-analyst handles full issue lifecycle independently without main thread interaction</autonomous_operation>
     <integration_points>
-      - Update CHANGELOG.md when specifications are completed
+      - Update CHANGELOG.md when issues are completed
       - Coordinate with relevant agents for implementation
-      - Support version management workflow through specification types
+      - Support version management workflow through GitHub milestones and issue types
     </integration_points>
-    <discovery_commands>
-      - Find all specifications: Glob(pattern="specs/*.md")
-      - Read specific specification: Read(file_path="specs/spec-name.md")
-      - Create new specification: Write to specs/new-spec.md
-    </discovery_commands>
+    <github_commands>
+      - List all issues: gh issue list --repo ondrasek/claude-code-forge
+      - Create new issue: gh issue create --repo ondrasek/claude-code-forge
+      - Update issue: gh issue edit --repo ondrasek/claude-code-forge
+      - Close issue: gh issue close --repo ondrasek/claude-code-forge
+    </github_commands>
   </operational_rules>
   
   <namespace_separation>
-    <purpose>Specifications (/specs/) are distinct from Claude Code's built-in TodoWrite functionality</purpose>
+    <purpose>GitHub Issues are distinct from Claude Code's built-in TodoWrite functionality</purpose>
     <differentiation>
-      - Specifications: Detailed planning documents with metadata, managed by specs-analyst
+      - GitHub Issues: Detailed planning documents with metadata, managed by specs-analyst via GitHub
       - TodoWrite: Session task tracking for immediate conversation context
     </differentiation>
-    <command_usage>Use /specs commands for specification management, TodoWrite tool for session task tracking</command_usage>
+    <command_usage>Use /issue commands for specification management, TodoWrite tool for session task tracking</command_usage>
   </namespace_separation>
-</specs_protocol>
+</github_issues_protocol>
 </specification_management>
 
 <validation_check>
