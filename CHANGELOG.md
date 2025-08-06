@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.66.0] - 2025-08-06
+
+### Added
+- **CLI tool distribution infrastructure**: Complete /templates/ package for clean user repository deployment
+  - Established /templates/.support/ structure with comprehensive instruction templates (CLAUDE.md, guidelines, workflows)
+  - Added 8 technology stack configurations (Python, Rust, Java, C++, C#, Ruby, Kotlin, Docker)
+  - Created specification examples with best practices documentation and README
+  - Implemented clean separation between development workspace and distribution package
+  - Foundation enables CLI tool to install only user-facing template files, excluding development artifacts
+- **Repository transformation Phase 3**: Clean distribution package completing architectural milestone
+
 ## [2.62.1] - 2025-08-06
 
 ### Fixed
