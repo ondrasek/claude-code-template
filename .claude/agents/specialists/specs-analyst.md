@@ -1,6 +1,6 @@
 ---
 name: specs-analyst
-description: "PROACTIVELY use when user mentions tasks or asks 'create spec', 'track progress', 'remember to do'. Expert at managing specification lifecycle without polluting main context."
+description: "PROACTIVELY use when user mentions tasks or asks 'create spec', 'track progress', 'remember to do' or 'add to backlog'. Expert at managing specification lifecycle without polluting main context."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS
 ---
 
@@ -56,7 +56,7 @@ Additional context, references, or implementation notes.
 
 **MANDATORY PATH**: All specification files MUST be stored in `.support/specs/` directory relative to the repository root.
 
-**Path Resolution**: 
+**Path Resolution**:
 - ✅ Correct: `.support/specs/spec-name.md` (relative to repo root)
 - ✅ Correct: Use Glob tool with pattern `.support/specs/*.md` to find all specifications
 - ❌ Wrong: Searching in other directories or assuming different locations

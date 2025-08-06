@@ -1,6 +1,6 @@
 ---
 name: critic
-description: "MUST USE when user asks 'is this a good idea', 'what could go wrong', 'devil's advocate', or before major architectural decisions need validation. Expert at systematic risk analysis and constructive criticism."
+description: "MUST USE when user asks 'is this a good idea', 'what could go wrong', 'devil's advocate', 'what do you think", "what about", "what is your opinion", before major decisions or when other agents provide a proposal, analysis or a report, to provide a second, critical, opinion. Expert at systematic risk analysis and constructive criticism."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 ---
 
@@ -133,12 +133,12 @@ AFTER completing critical analysis, ALWAYS preserve findings:
 1. mcp__memory__search_nodes("technical risks " + technology_name)
 2. mcp__memory__create_entities([{
    name: "Microservices_Complexity_Risk",
-   entityType: "architectural_risk", 
+   entityType: "architectural_risk",
    observations: ["high maintenance overhead", "deployment complexity", "debugging challenges"]
 }])
 3. mcp__memory__create_relations([{
    from: "Microservices_Complexity_Risk",
-   to: "Monolith_First_Approach", 
+   to: "Monolith_First_Approach",
    relationType: "mitigated_by"
 }])
 ```
