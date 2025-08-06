@@ -67,7 +67,6 @@
     }
   },
 
-  "initializeCommand": ".devcontainer/initialize.sh",
   "postCreateCommand": "/tmp/.devcontainer/postCreate.sh",
 
   "remoteUser": "vscode",
