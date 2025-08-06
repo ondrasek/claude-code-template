@@ -1,6 +1,6 @@
 ---
 name: critic
-description: "MUST USE when user asks 'is this a good idea', 'what could go wrong', 'devil's advocate', 'what do you think", "what about", "what is your opinion", before major decisions or when other agents provide a proposal, analysis or a report, to provide a second, critical, opinion. Expert at systematic risk analysis and constructive criticism."
+description: "MUST USE when user asks 'is this a good idea', 'what could go wrong', 'devil's advocate', 'what do you think", "what about", "what is your opinion", before major decisions or when other agents provide a proposal, analysis, plan or a report, to provide a second, critical, opinion. Expert at systematic risk analysis and constructive criticism."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 ---
 
