@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.69.0] - 2025-08-06
+
+### Added
+- **Legacy Specs Archive**: Complete archival system for historical specification files
+  - Created /archive/legacy-specs/ directory with comprehensive README.md documentation
+  - Preserved all 30 original specification files for historical reference and audit trail
+  - Documentation includes migration date (2025-08-06), GitHub Issues range (#8-37), and file-to-issue mapping
+  - Maintains project evolution history and provides backup reference for GitHub Issues
+
+### Removed
+- **Specs System Cleanup**: Complete removal of legacy specification system infrastructure
+  - Removed /specs/ directory (30 files) after successful migration to GitHub Issues
+  - Removed migrate-spec.py migration script (197 lines) as migration is complete
+  - Updated agent and command references from /specs/ system to GitHub Issues workflow
+  - Clean repository structure focused on new GitHub Issues management system
+
+### Changed
+- **Documentation Updates**: Comprehensive reference updates reflecting new GitHub Issues workflow
+  - Updated code-cleaner agent to reference GitHub Issues (#8-37) instead of /specs/ directory
+  - Updated version-prepare command to analyze GitHub Issues instead of local specs
+  - Repository now fully transitioned to GitHub Issues for development task management
+  - All future development work tracking uses GitHub Issues instead of local specification files
+
 ## [2.68.0] - 2025-08-06
 
 ### Added

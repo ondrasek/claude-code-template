@@ -60,7 +60,7 @@ MultiEdit Strategy Example:
 1. **Code Comments**: Use Grep to find TODO, FIXME, HACK, XXX markers
 2. **Documentation Files**: Check README.md, CHANGELOG.md, API.md for staleness
 3. **Stub Functions**: Locate placeholder implementations and incomplete error handling
-4. **Managed Specifications**: Review `.support/specs/` directory for completion opportunities
+4. **GitHub Issues**: Review GitHub Issues (#8-37) for implementation opportunities via specs-analyst agent
 5. **Test Coverage**: Identify untested code paths and missing edge case tests
 
 ## Process Workflow
