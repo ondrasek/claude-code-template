@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.68.0] - 2025-08-06
+
+### Added
+- **GitHub Issues migration infrastructure**: Complete migration of 30 specification files to GitHub Issues
+  - Custom migration script with full metadata preservation (status, type, priority, assignee, dates)
+  - Systematic labeling with migrated-from-specs audit trail for accountability
+  - Enhanced critic agent description for improved plan and proposal evaluation
+  - Migration from proprietary /specs/ system to industry-standard GitHub Issues workflow
+  - Community collaboration enabled through standard GitHub project management
+  - Complete architectural transition milestone achieved
+
 ## [2.67.0] - 2025-08-06
 
 ### Changed
