@@ -26,7 +26,7 @@ Create new Claude Code agents following empirical principles, selection optimiza
 - **patterns**, **researcher**, **context**, **principles**, **critic**, **conflicts**
 
 ### Specialist Agents (10 total)
-- **code-cleaner**, **constraint-solver**, **git-workflow**, **meta-programmer**, **options-analyzer**, **performance-optimizer**, **prompt-engineer**, **stack-advisor**, **test-strategist**, **todo-manager**
+- **code-cleaner**, **constraint-solver**, **git-workflow**, **meta-programmer**, **options-analyzer**, **performance-optimizer**, **prompt-engineer**, **stack-advisor**, **test-strategist**, **specs-analyst**
 
 ## Enhanced Agent Creation Workflow
 

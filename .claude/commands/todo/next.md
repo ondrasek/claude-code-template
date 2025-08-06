@@ -13,7 +13,7 @@ Comprehensive TODO hygiene followed by intelligent next step analysis for full T
 1. Parse $ARGUMENTS for next task parameters:
    - --limit N (limit number of next-step recommendations)
 
-2. Delegate comprehensive cleanup and analysis to todo-manager agent with enhanced coordination including mandatory git safety protocol
+2. Delegate comprehensive cleanup and analysis to specs-analyst agent with enhanced coordination including mandatory git safety protocol
 1. invoke todo agent: comprehensive cleanup and analysis with enhanced agent coordination
 2. coordinate parallel cleanup operations:
    - **Completion Detection Cluster**: patterns + completer + researcher + context (identify implemented functionality)
@@ -32,7 +32,7 @@ PARAMETERS:
 
 GIT_SAFETY_PROTOCOL:
 MANDATORY git verification before deletion:
-1. Check `git ls-files .support/todos/` to verify TODOs are tracked
+1. Check `git ls-files .support/specs/` to verify TODOs are tracked
 2. Ensure `git status` shows files are committed (not untracked/modified)
 3. Only delete TODOs that exist in git history for full traceability
 4. ABORT deletion if TODOs are not properly committed to repository

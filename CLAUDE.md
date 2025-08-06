@@ -34,7 +34,7 @@ RULE 4: Follow file structure locations EXACTLY
   <commands>.claude/commands/ (ONLY location for slash commands)</commands>
   <prompts>.support/prompts/ (ONLY location for prompts)</prompts>
   <instructions>.support/instructions/ (additional instructions)</instructions>
-  <todos>.support/todos/ (ONLY location for TODOs)</todos>
+  <specs>.support/specs/ (ONLY location for specifications)</specs>
   <mcp_servers>.support/mcp-servers/ (MCP server source code)</mcp_servers>
   <logs>.support/logs/ (diagnostics and troubleshooting)</logs>
 </locations>

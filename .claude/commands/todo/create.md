@@ -6,7 +6,7 @@ allowed-tools: Task
 
 # TODO Creation
 
-Create new TODO task with proper classification and metadata in .support/todos/ directory.
+Create new TODO task with proper classification and metadata in .support/specs/ directory.
 
 ## Instructions
 
@@ -16,7 +16,7 @@ Create new TODO task with proper classification and metadata in .support/todos/ 
    - --assignee [agent-name] (assign to specific agent)
    - DESCRIPTION (required task description text)
 
-2. Delegate task creation to todo-manager agent with enhanced coordination
+2. Delegate task creation to specs-analyst agent with enhanced coordination
 1. invoke todo agent: create new TODO file with enhanced agent coordination
 2. coordinate parallel task analysis:
    - **Classification Cluster**: patterns + principles + researcher (classify task type with pattern recognition and researcher validation)
@@ -39,7 +39,7 @@ Completeness Validation: completer + docs + invariants
 Quality Assurance: critic + principles + completer
 
 ENHANCED_OUTPUT:
-- TODO file created in .support/todos/ with comprehensive metadata validation
+- TODO file created in .support/specs/ with comprehensive metadata validation
 - Task properly classified and prioritized through multi-agent analysis
 - Completeness verification ensuring all necessary information captured
 - Clean confirmation without context pollution with quality assurance

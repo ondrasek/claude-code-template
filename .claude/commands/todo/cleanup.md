@@ -17,7 +17,7 @@ Comprehensive TODO cleanup that removes both completed tasks (already implemente
    - **Operation Mode**: --dry-run (show what would be cleaned up without making changes)
    - **Interaction**: --confirm-all (skip individual confirmation prompts), --interactive (prompt for each item)
 
-2. Delegate comprehensive cleanup analysis to todo-manager agent with mandatory git safety protocol
+2. Delegate comprehensive cleanup analysis to specs-analyst agent with mandatory git safety protocol
 
 ### Completion Detection (--done mode)
 1. invoke todo agent: comprehensive completion analysis with enhanced agent coordination
@@ -61,7 +61,7 @@ Comprehensive TODO cleanup that removes both completed tasks (already implemente
 ## Git Safety Protocol
 
 MANDATORY git verification before deletion:
-1. Check `git ls-files .support/todos/` to verify TODOs are tracked
+1. Check `git ls-files .support/specs/` to verify TODOs are tracked
 2. Ensure `git status` shows files are committed (not untracked/modified)
 3. Only delete TODOs that exist in git history for full traceability
 4. ABORT deletion if TODOs are not properly committed to repository

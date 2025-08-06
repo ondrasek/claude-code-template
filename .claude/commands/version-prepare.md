@@ -34,7 +34,7 @@ I'll help you prepare a version release by analyzing completed TODOs and generat
 ## Process
 
 1. **Analyze completed TODOs** using enhanced parallel agent coordination:
-   - **Primary Analysis Cluster**: todo-manager + code-cleaner + patterns + critic (TODO analysis, completion validation, pattern recognition, critical assessment)
+   - **Primary Analysis Cluster**: specs-analyst + code-cleaner + patterns + critic (specification analysis, completion validation, pattern recognition, critical assessment)
    - **Version Intelligence Cluster**: researcher + context + options-analyzer (historical patterns, semantic versioning researcher, system understanding, version theories)
    - **Documentation Preparation Cluster**: stack-advisor + git-workflow + principles + constraint-solver (release documentation, tag preparation, design principles, integrity validation)
    - **Quality Assurance Cluster**: critic + test-strategist + performance-optimizer + conflicts (quality validation, test impact, performance assessment, conflict resolution)

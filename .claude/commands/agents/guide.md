@@ -37,7 +37,7 @@ Comprehensive guide for effectively using all specialized AI agents in the curre
 - **prompt-engineer**: AI agent prompt creation for user projects
 - **stack-advisor**: Technology-specific guidance for files and architecture decisions
 - **test-strategist**: Comprehensive test strategy development and coverage analysis
-- **todo-manager**: Specialized task lifecycle management (context-clean)
+- **specs-analyst**: Specialized specification analysis and planning (context-clean)
 
 ## Enhanced Multi-Agent Coordination Patterns
 

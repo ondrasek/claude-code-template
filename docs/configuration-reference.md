@@ -78,7 +78,7 @@ Contains AI agent definitions that work together to handle complex development t
 | **Prompt Engineer** | `specialist-prompt-engineer.md` | AI prompt creation, optimization | Creating effective AI prompts |
 | **Stack Advisor** | `specialist-stack-advisor.md` | Technology selection, architecture | Technology recommendations |
 | **Test Strategist** | `specialist-test-strategist.md` | Testing strategies, test design | Test planning, quality assurance |
-| **Todo Manager** | `specialist-todo-manager.md` | Task organization, project management | TODO tracking, task prioritization |
+| **Specs Analyst** | `specialist-specs-analyst.md` | Specification analysis, project planning | Specification tracking, requirements analysis |
 | **Meta Programmer** | `specialist-meta-programmer.md` | Code generation, template creation | Automated code generation |
 
 #### `commands/` Directory
