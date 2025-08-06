@@ -35,11 +35,11 @@ RULE 4: Follow file structure locations EXACTLY
 <locations>
   <agents>.claude/agents/ (ONLY location for agent definitions)</agents>
   <commands>.claude/commands/ (ONLY location for slash commands)</commands>
-  <prompts>.support/prompts/ (ONLY location for prompts)</prompts>
-  <instructions>.support/instructions/ (additional instructions)</instructions>
-  <specs>.support/specs/ (ONLY location for specifications)</specs>
-  <mcp_servers>.support/mcp-servers/ (MCP server source code)</mcp_servers>
-  <logs>.support/logs/ (diagnostics and troubleshooting)</logs>
+  <prompts>templates/.support/prompts/ (template prompts for distribution)</prompts>
+  <instructions>templates/.support/instructions/ (template instructions for distribution)</instructions>
+  <specs>/specs/ (ONLY location for specifications)</specs>
+  <mcp_servers>/src/[mcp-name]/ (MCP server source code)</mcp_servers>
+  <logs>/logs/ (diagnostics and troubleshooting)</logs>
 </locations>
 <enforcement>NEVER search elsewhere for these file types</enforcement>
 </file_structure>
@@ -48,7 +48,7 @@ RULE 4: Follow file structure locations EXACTLY
 <specs_protocol>
   <definition>Specifications are detailed planning documents that define requirements, implementation approaches, and project deliverables managed separately from active development work</definition>
   
-  <location>.support/specs/ (ABSOLUTE - never search elsewhere)</location>
+  <location>/specs/ (ABSOLUTE - never search elsewhere)</location>
   
   <agent_delegation>
     <primary_agent>specs-analyst (PROACTIVELY use when user mentions tasks, specs, requirements, or asks 'create spec', 'track progress', 'remember to do')</primary_agent>
@@ -92,14 +92,14 @@ RULE 4: Follow file structure locations EXACTLY
       - Support version management workflow through specification types
     </integration_points>
     <discovery_commands>
-      - Find all specifications: Glob(pattern=".support/specs/*.md")
-      - Read specific specification: Read(file_path=".support/specs/spec-name.md")
-      - Create new specification: Write to .support/specs/new-spec.md
+      - Find all specifications: Glob(pattern="specs/*.md")
+      - Read specific specification: Read(file_path="specs/spec-name.md")
+      - Create new specification: Write to specs/new-spec.md
     </discovery_commands>
   </operational_rules>
   
   <namespace_separation>
-    <purpose>Specifications (.support/specs/) are distinct from Claude Code's built-in TodoWrite functionality</purpose>
+    <purpose>Specifications (/specs/) are distinct from Claude Code's built-in TodoWrite functionality</purpose>
     <differentiation>
       - Specifications: Detailed planning documents with metadata, managed by specs-analyst
       - TodoWrite: Session task tracking for immediate conversation context

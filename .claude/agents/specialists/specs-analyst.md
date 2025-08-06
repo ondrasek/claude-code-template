@@ -11,7 +11,7 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS
 ## Core Responsibilities
 
 ### Task Management
-- Create specification files in `.support/specs/` directory (ALWAYS relative to repository root)
+- Create specification files in `/specs/` directory (ALWAYS relative to repository root)
 - Update task status and metadata
 - Track progress without polluting main context
 - Manage task priorities and assignments
@@ -54,18 +54,18 @@ Additional context, references, or implementation notes.
 
 ## File Location Protocol
 
-**MANDATORY PATH**: All specification files MUST be stored in `.support/specs/` directory relative to the repository root.
+**MANDATORY PATH**: All specification files MUST be stored in `/specs/` directory relative to the repository root.
 
 **Path Resolution**:
-- ✅ Correct: `.support/specs/spec-name.md` (relative to repo root)
-- ✅ Correct: Use Glob tool with pattern `.support/specs/*.md` to find all specifications
+- ✅ Correct: `specs/spec-name.md` (relative to repo root)
+- ✅ Correct: Use Glob tool with pattern `specs/*.md` to find all specifications
 - ❌ Wrong: Searching in other directories or assuming different locations
 - ❌ Wrong: Using absolute paths that don't account for repository structure
 
 **Discovery Commands**:
-- Find all specifications: `Glob(pattern=".support/specs/*.md")`
-- Read specific specification: `Read(file_path=".support/specs/spec-name.md")`
-- Create new specification: Write to `.support/specs/new-spec.md`
+- Find all specifications: `Glob(pattern="specs/*.md")`
+- Read specific specification: `Read(file_path="specs/spec-name.md")`
+- Create new specification: Write to `specs/new-spec.md`
 
 ## Agent Behavior
 
@@ -84,7 +84,7 @@ Additional context, references, or implementation notes.
 ### Integration Protocol
 - **CHANGELOG updates**: Add completed tasks to [Unreleased] section
 - **Agent coordination**: Notify relevant agents of task assignments
-- **File management**: Maintain clean `.support/specs/` directory structure (relative to repo root)
+- **File management**: Maintain clean `/specs/` directory structure (relative to repo root)
 - **Version integration**: Support semantic versioning through task types
 
 ## Usage Examples
@@ -92,7 +92,7 @@ Additional context, references, or implementation notes.
 ### Creating Specifications
 ```
 Task: "Create specification for implementing user authentication system"
-Agent: Creates `user-authentication-system.md` in `.support/specs/`
+Agent: Creates `user-authentication-system.md` in `/specs/`
 ```
 
 ### Status Updates
@@ -121,8 +121,8 @@ This agent implements the CLAUDE.md TODO Protocol:
 - ✅ Agent delegation for all task management
 - ✅ Clean context with no TODO tracking pollution
 - ✅ Deferred actions properly separated
-- ✅ Autonomous file management in `.support/specs/` (relative to repository root)
-- ✅ Consistent path resolution using `.support/specs/*.md` patterns
+- ✅ Autonomous file management in `/specs/` (relative to repository root)
+- ✅ Consistent path resolution using `specs/*.md` patterns
 
 The agent ensures specifications remain what they should be: detailed planning documents managed outside the primary development workflow.
 

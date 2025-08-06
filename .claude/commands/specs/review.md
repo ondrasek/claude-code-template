@@ -6,7 +6,7 @@ allowed-tools: Task
 
 # specification Review
 
-Review existing specifications, prioritize tasks, and analyze specification backlog for task evaluation and relevance assessment across all pending specifications in .support/specss/ directory.
+Review existing specifications, prioritize tasks, and analyze specification backlog for task evaluation and relevance assessment across all pending specifications in /specs/ directory.
 
 ## Instructions
 

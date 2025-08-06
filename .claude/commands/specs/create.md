@@ -6,7 +6,7 @@ allowed-tools: Task
 
 # Specification Creation
 
-Create new specification with proper classification and metadata in .support/specss/ directory.
+Create new specification with proper classification and metadata in /specs/ directory.
 
 ## Instructions
 
@@ -39,7 +39,7 @@ Completeness Validation: completer + docs + invariants
 Quality Assurance: critic + principles + completer
 
 ENHANCED_OUTPUT:
-- specification file created in .support/specss/ with comprehensive metadata validation
+- specification file created in /specs/ with comprehensive metadata validation
 - Task properly classified and prioritized through multi-agent analysis
 - Completeness verification ensuring all necessary information captured
 - Clean confirmation without context pollution with quality assurance

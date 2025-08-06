@@ -61,7 +61,7 @@ Comprehensive specification cleanup that removes both completed tasks (already i
 ## Git Safety Protocol
 
 MANDATORY git verification before deletion:
-1. Check `git ls-files .support/specss/` to verify specifications are tracked
+1. Check `git ls-files /specs/` to verify specifications are tracked
 2. Ensure `git status` shows files are committed (not untracked/modified)
 3. Only delete specifications that exist in git history for full traceability
 4. ABORT deletion if specifications are not properly committed to repository
