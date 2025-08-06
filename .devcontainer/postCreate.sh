@@ -3,6 +3,12 @@
 # DevContainer Setup Script - Replicates Codespace Environment
 # This script sets up the exact same environment as the GitHub Codespace
 
+# Skip the hassle when in GitHub Codespaces
+if [ "$CODESPACES" = "true" ]; then
+  echo "In Codespaces, exiting..."
+  exit 0
+fi
+
 set -e
 
 devcontainerDir=/tmp/.devcontainer 
