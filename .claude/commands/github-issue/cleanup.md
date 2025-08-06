@@ -17,10 +17,10 @@ Comprehensive GitHub Issue cleanup that closes both completed tasks (already imp
    - **Operation Mode**: --dry-run (show what would be cleaned up without making changes)
    - **Interaction**: --confirm-all (skip individual confirmation prompts), --interactive (prompt for each item)
 
-2. Delegate comprehensive cleanup analysis to specs-analyst agent with mandatory GitHub safety protocol
+2. Delegate comprehensive cleanup analysis to github-issues-workflow agent with mandatory GitHub safety protocol
 
 ### Completion Detection (--done mode)
-1. invoke specs-analyst agent: comprehensive completion analysis with enhanced agent coordination
+1. invoke github-issues-workflow agent: comprehensive completion analysis with enhanced agent coordination
 2. coordinate parallel completion validation:
    - **Completion Detection Cluster**: patterns + completer + researcher + context (identify implemented functionality with comprehensive validation)
    - **Documentation Cross-Reference Cluster**: docs + time + patterns + critic (cross-reference CHANGELOG entries with critical assessment)
@@ -28,7 +28,7 @@ Comprehensive GitHub Issue cleanup that closes both completed tasks (already imp
    - **Validation & Quality Cluster**: critic + principles + invariants + resolver (validate completion claims with quality assurance)
 
 ### Staleness Assessment (--stale mode)
-1. invoke specs-analyst agent: comprehensive staleness analysis with enhanced agent coordination
+1. invoke github-issues-workflow agent: comprehensive staleness analysis with enhanced agent coordination
 2. coordinate parallel staleness assessment:
    - **Relevance Analysis Cluster**: patterns + context + time + researcher (analyze relevance with system understanding and historical evolution)
    - **Dependency Validation Cluster**: constraints + resolver + explorer + invariants (validate dependencies with conflict resolution and design integrity)
@@ -68,7 +68,7 @@ MANDATORY GitHub verification before closure:
 
 ## Enhanced Agent Delegation
 
-**Primary:** specs-analyst (comprehensive cleanup analysis with universal agent coordination)
+**Primary:** github-issues-workflow (comprehensive cleanup analysis with universal agent coordination)
 
 **Completion Detection:** patterns + completer + researcher + context
 **Documentation Cross-Reference:** docs + time + patterns + critic
@@ -98,21 +98,21 @@ MANDATORY GitHub verification before closure:
 
 ```bash
 # Cleanup both completed and stale issues (default mode)
-/issue cleanup --dry-run
+/github-issue cleanup --dry-run
 
 # Cleanup only completed issues since version 1.2.0
-/issue cleanup --done --since v1.2.0 --confirm-all
+/github-issue cleanup --done --since v1.2.0 --confirm-all
 
 # Cleanup only stale issues older than 3 months, but preserve security/testing tasks
-/issue cleanup --stale --older-than 3months --keep-types security,testing --interactive
+/github-issue cleanup --stale --older-than 3months --keep-types security,testing --interactive
 
 # Combined cleanup with custom parameters
-/issue cleanup --since v1.1.0 --older-than 2months --dry-run
+/github-issue cleanup --since v1.1.0 --older-than 2months --dry-run
 ```
 
 ## Behavior
 
-- Delegates ALL cleanup analysis to specs-analyst agent with appropriate mode selection
+- Delegates ALL cleanup analysis to github-issues-workflow agent with appropriate mode selection
 - Works autonomously to identify implemented features and obsolete tasks
 - Verifies issues exist in GitHub before closure (GitHub safety check)
 - Presents findings to user for confirmation before closure

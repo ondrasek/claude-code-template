@@ -16,8 +16,8 @@ Create new GitHub Issue with proper classification and metadata in ondrasek/clau
    - --assignee [username] (assign to specific GitHub user)
    - DESCRIPTION (required issue description text)
 
-2. Delegate issue creation to specs-analyst agent with enhanced coordination
-1. invoke specs-analyst agent: create new GitHub Issue with enhanced agent coordination
+2. Delegate issue creation to github-issues-workflow agent with enhanced coordination
+1. invoke github-issues-workflow agent: create new GitHub Issue with enhanced agent coordination
 2. coordinate parallel issue analysis:
    - **Classification Cluster**: patterns + principles + researcher (classify issue type with pattern recognition and researcher validation)
    - **Priority Assessment Cluster**: critic + constraint-solver (assess priority based on urgency, impact, and constraints)
@@ -32,7 +32,7 @@ PARAMETERS:
 DESCRIPTION (issue description text)
 
 ENHANCED_AGENT_DELEGATION:
-Primary: specs-analyst (comprehensive issue creation with universal agent coordination)
+Primary: github-issues-workflow (comprehensive issue creation with universal agent coordination)
 Classification: patterns + principles + researcher
 Priority Assessment: critic + constraints + time
 Completeness Validation: completer + docs + invariants
@@ -45,10 +45,10 @@ ENHANCED_OUTPUT:
 - Clean confirmation without context pollution with quality assurance
 
 EXAMPLE:
-/issue create --type feat --priority high "Implement user authentication with JWT tokens"
+/github-issue create --type feat --priority high "Implement user authentication with JWT tokens"
 
 BEHAVIOR:
-- Delegates ALL issue management to specs-analyst agent
+- Delegates ALL issue management to github-issues-workflow agent
 - Keeps main context clean and focused
 - Returns only essential creation confirmation
 - No issue tracking pollution in main conversation

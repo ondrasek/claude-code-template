@@ -18,8 +18,8 @@ Review existing GitHub Issues, prioritize tasks, and analyze issue backlog for t
    - --actionable-only (show only immediately actionable tasks)
    - --labels [label1,label2] (filter by specific labels)
 
-2. Delegate comprehensive issue analysis to specs-analyst agent with enhanced coordination
-1. invoke specs-analyst agent: comprehensive GitHub Issue analysis with enhanced agent coordination
+2. Delegate comprehensive issue analysis to github-issues-workflow agent with enhanced coordination
+1. invoke github-issues-workflow agent: comprehensive GitHub Issue analysis with enhanced agent coordination
 2. coordinate parallel review analysis:
    - **Relevance Assessment Cluster**: patterns + context + time + researcher (analyze relevance with system understanding and historical context)
    - **Priority Validation Cluster**: critic + constraints + resolver (validate priorities with critical assessment and conflict resolution)
@@ -36,7 +36,7 @@ PARAMETERS:
 --labels [label1,label2] (filter by specific labels)
 
 ENHANCED_AGENT_DELEGATION:
-Primary: specs-analyst (comprehensive GitHub Issue analysis with universal agent coordination)
+Primary: github-issues-workflow (comprehensive GitHub Issue analysis with universal agent coordination)
 Relevance Assessment: patterns + context + time + researcher
 Priority Validation: critic + constraints + resolver + principles
 Impact Analysis: performance + completer + hypothesis + testing
@@ -52,10 +52,10 @@ ENHANCED_OUTPUT:
 - Quality assurance validation ensuring implementation feasibility
 
 EXAMPLE:
-/issue review --filter open --priority high --actionable-only
+/github-issue review --filter open --priority high --actionable-only
 
 BEHAVIOR:
-- Delegates ALL analysis to specs-analyst agent off-context
+- Delegates ALL analysis to github-issues-workflow agent off-context
 - Provides strategic overview without issue-by-issue noise
 - Returns only essential recommendations and insights
 - Maintains clean separation between review and implementation

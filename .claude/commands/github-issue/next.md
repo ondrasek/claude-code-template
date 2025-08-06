@@ -13,8 +13,8 @@ Comprehensive GitHub Issue hygiene followed by intelligent next step analysis fo
 1. Parse $ARGUMENTS for next task parameters:
    - --limit N (limit number of next-step recommendations)
 
-2. Delegate comprehensive cleanup and analysis to specs-analyst agent with enhanced coordination
-1. invoke specs-analyst agent: comprehensive cleanup and analysis with enhanced agent coordination
+2. Delegate comprehensive cleanup and analysis to github-issues-workflow agent with enhanced coordination
+1. invoke github-issues-workflow agent: comprehensive cleanup and analysis with enhanced agent coordination
 2. coordinate parallel cleanup operations:
    - **Completion Detection Cluster**: patterns + completer + researcher + context (identify implemented functionality)
    - **Staleness Assessment Cluster**: patterns + context + time + researcher (analyze relevance with system understanding)
@@ -38,7 +38,7 @@ GitHub Issue verification and management:
 4. Update issue status using GitHub labels for traceability
 
 ENHANCED_AGENT_DELEGATION:
-Primary: specs-analyst (comprehensive GitHub Issue lifecycle management with universal agent coordination)
+Primary: github-issues-workflow (comprehensive GitHub Issue lifecycle management with universal agent coordination)
 Cleanup Detection: patterns + completer + researcher + context + docs + time + critic
 Next-Step Analysis: critic + constraints + resolver + principles + performance + hypothesis + testing + explorer + axioms + invariants
 Strategic Coordination: resolver + principles + docs + time + completer
@@ -63,10 +63,10 @@ ENHANCED_OUTPUT:
   - Process improvement suggestions
 
 EXAMPLES:
-/issue next --limit 3 (show top 3 next-step recommendations)
+/github-issue next --limit 3 (show top 3 next-step recommendations)
 
 BEHAVIOR:
-- Delegates ALL cleanup and analysis to specs-analyst agent off-context
+- Delegates ALL cleanup and analysis to github-issues-workflow agent off-context
 - Performs comprehensive GitHub Issue hygiene before strategic analysis
 - Combines completion detection with staleness assessment
 - Verifies issues are properly managed in GitHub before closure

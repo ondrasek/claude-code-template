@@ -22,8 +22,8 @@ List and filter GitHub Issues with comprehensive filtering and formatting option
    - --order [asc|desc] (sort order)
    - --format [table|json|minimal] (output format)
 
-2. Delegate issue listing to specs-analyst agent with enhanced coordination
-1. invoke specs-analyst agent: list GitHub Issues with enhanced agent coordination
+2. Delegate issue listing to github-issues-workflow agent with enhanced coordination
+1. invoke github-issues-workflow agent: list GitHub Issues with enhanced agent coordination
 2. coordinate parallel listing analysis:
    - **Query Optimization Cluster**: patterns + performance (optimize GitHub API queries)
    - **Filter Validation Cluster**: critic + constraints (validate filter combinations)
@@ -44,7 +44,7 @@ PARAMETERS:
 --format [table|json|minimal] (output format)
 
 ENHANCED_AGENT_DELEGATION:
-Primary: specs-analyst (comprehensive issue listing with universal agent coordination)
+Primary: github-issues-workflow (comprehensive issue listing with universal agent coordination)
 Query Optimization: patterns + performance
 Filter Validation: critic + constraints
 Format Selection: context + principles
@@ -58,12 +58,12 @@ ENHANCED_OUTPUT:
 - Summary statistics of filtered results
 
 EXAMPLES:
-/issue list --priority high --state open --limit 10
-/issue list --labels "feat,priority:high" --assignee john-doe
-/issue list --milestone "v2.1.0" --format table --sort updated
+/github-issue list --priority high --state open --limit 10
+/github-issue list --labels "feat,priority:high" --assignee john-doe
+/github-issue list --milestone "v2.1.0" --format table --sort updated
 
 BEHAVIOR:
-- Delegates ALL issue listing to specs-analyst agent
+- Delegates ALL issue listing to github-issues-workflow agent
 - Provides clean, formatted output without noise
 - Supports multiple output formats for different use cases
 - Returns actionable issue overview with strategic insights

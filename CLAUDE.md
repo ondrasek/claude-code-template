@@ -51,10 +51,10 @@ RULE 4: Follow file structure locations EXACTLY
   <location>GitHub Issues in ondrasek/claude-code-forge (ABSOLUTE - never use local files)</location>
   
   <agent_delegation>
-    <primary_agent>specs-analyst (PROACTIVELY use when user mentions tasks, specs, requirements, or asks 'create issue', 'track progress', 'remember to do')</primary_agent>
+    <primary_agent>github-issues-workflow (PROACTIVELY use when user mentions tasks, specs, requirements, or asks 'create issue', 'track progress', 'remember to do')</primary_agent>
     <non_trivial_task_definition>Operations requiring more than 2 tool invocations, affecting multiple files, or involving agent coordination</non_trivial_task_definition>
-    <coordination>All specification lifecycle management MUST be delegated to specs-analyst agent to prevent context pollution</coordination>
-    <commands>Use /issue commands: /issue create, /issue review, /issue cleanup, /issue next</commands>
+    <coordination>All specification lifecycle management MUST be delegated to github-issues-workflow agent to prevent context pollution</coordination>
+    <commands>Use /github-issue commands: /github-issue create, /github-issue review, /github-issue cleanup, /github-issue next</commands>
   </agent_delegation>
   
   <issue_format>
@@ -80,8 +80,8 @@ RULE 4: Follow file structure locations EXACTLY
   </issue_format>
   
   <operational_rules>
-    <context_separation>GitHub Issues management happens OFF-CONTEXT via specs-analyst agent to keep main conversation clean</context_separation>
-    <autonomous_operation>specs-analyst handles full issue lifecycle independently without main thread interaction</autonomous_operation>
+    <context_separation>GitHub Issues management happens OFF-CONTEXT via github-issues-workflow agent to keep main conversation clean</context_separation>
+    <autonomous_operation>github-issues-workflow handles full issue lifecycle independently without main thread interaction</autonomous_operation>
     <integration_points>
       - Update CHANGELOG.md when issues are completed
       - Coordinate with relevant agents for implementation
@@ -101,7 +101,7 @@ RULE 4: Follow file structure locations EXACTLY
       - GitHub Issues: Detailed planning documents with metadata, managed by specs-analyst via GitHub
       - TodoWrite: Session task tracking for immediate conversation context
     </differentiation>
-    <command_usage>Use /issue commands for specification management, TodoWrite tool for session task tracking</command_usage>
+    <command_usage>Use /github-issue commands for specification management, TodoWrite tool for session task tracking</command_usage>
   </namespace_separation>
 </github_issues_protocol>
 </specification_management>

@@ -22,8 +22,8 @@ Update existing GitHub Issue with new information, labels, status, or assignment
    - --priority [high|medium|low] (update priority level)
    - --status [pending|in-progress|completed] (update status)
 
-2. Delegate issue update to specs-analyst agent with enhanced coordination
-1. invoke specs-analyst agent: update GitHub Issue with enhanced agent coordination
+2. Delegate issue update to github-issues-workflow agent with enhanced coordination
+1. invoke github-issues-workflow agent: update GitHub Issue with enhanced agent coordination
 2. coordinate parallel update validation:
    - **Existence Verification Cluster**: context + researcher (verify issue exists and current state)
    - **Change Validation Cluster**: critic + principles + resolver (validate proposed changes)
@@ -44,7 +44,7 @@ ISSUE_NUMBER (required GitHub issue number)
 --status [pending|in-progress|completed] (update status)
 
 ENHANCED_AGENT_DELEGATION:
-Primary: specs-analyst (comprehensive issue update with universal agent coordination)
+Primary: github-issues-workflow (comprehensive issue update with universal agent coordination)
 Existence Verification: context + researcher
 Change Validation: critic + principles + resolver
 Impact Assessment: patterns + context + time
@@ -57,12 +57,12 @@ ENHANCED_OUTPUT:
 - Quality assurance validation ensuring update correctness
 
 EXAMPLES:
-/issue update 42 --priority high --add-labels "priority:high,urgent"
-/issue update 15 --status completed --title "Implement JWT authentication (completed)"
-/issue update 23 --assignee john-doe --milestone "v2.1.0"
+/github-issue update 42 --priority high --add-labels "priority:high,urgent"
+/github-issue update 15 --status completed --title "Implement JWT authentication (completed)"
+/github-issue update 23 --assignee john-doe --milestone "v2.1.0"
 
 BEHAVIOR:
-- Delegates ALL issue updates to specs-analyst agent
+- Delegates ALL issue updates to github-issues-workflow agent
 - Keeps main context clean and focused
 - Returns only essential update confirmation
 - No issue tracking pollution in main conversation
