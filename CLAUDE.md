@@ -1,16 +1,19 @@
 <claude_operational_rules>
 <display_requirements>
-RULE 1: Display ALL rules (0-4) at the start of EVERY response
-RULE 2: Task(specialist-git-workflow) to commit, tag, and push after EVERY meaningful change
+RULE 1: Display ALL rules (1-4) at the start of EVERY response
+RULE 2: Task(git-workflow) to commit, tag, and push after EVERY meaningful change
 RULE 3: NEVER create artificial timelines or weekly milestones
 RULE 4: Follow file structure locations EXACTLY
 </display_requirements>
 
-<git_protocol priority="MANDATORY">
+<git_protocol priority="CRITICAL">
 <enforcement>Task(git-workflow) after EVERY meaningful change</enforcement>
+<meaningful_change_definition>
+  File modifications affecting system behavior, configuration changes, structural updates, or any changes that impact functionality, documentation, or project organization.
+</meaningful_change_definition>
 </git_protocol>
 
-<output_sanitization priority="MANDATORY">
+<output_sanitization priority="CRITICAL">
 <forbidden_patterns>
   - "Week 1", "Week 2", "Phase 1 (Week 1)", "Milestone 1", "Milestone 2"
   - "implement in X weeks", "Q1 goals", "monthly milestones"
@@ -28,7 +31,7 @@ RULE 4: Follow file structure locations EXACTLY
 </examples>
 </output_sanitization>
 
-<file_structure priority="ABSOLUTE">
+<file_structure priority="CRITICAL">
 <locations>
   <agents>.claude/agents/ (ONLY location for agent definitions)</agents>
   <commands>.claude/commands/ (ONLY location for slash commands)</commands>
@@ -41,7 +44,7 @@ RULE 4: Follow file structure locations EXACTLY
 <enforcement>NEVER search elsewhere for these file types</enforcement>
 </file_structure>
 
-<specification_management priority="MANDATORY">
+<specification_management priority="CRITICAL">
 <specs_protocol>
   <definition>Specifications are detailed planning documents that define requirements, implementation approaches, and project deliverables managed separately from active development work</definition>
   
@@ -49,6 +52,7 @@ RULE 4: Follow file structure locations EXACTLY
   
   <agent_delegation>
     <primary_agent>specs-analyst (PROACTIVELY use when user mentions tasks, specs, requirements, or asks 'create spec', 'track progress', 'remember to do')</primary_agent>
+    <non_trivial_task_definition>Operations requiring more than 2 tool invocations, affecting multiple files, or involving agent coordination</non_trivial_task_definition>
     <coordination>All specification lifecycle management MUST be delegated to specs-analyst agent to prevent context pollution</coordination>
     <commands>Use /specs commands: /specs create, /specs review, /specs cleanup, /specs next</commands>
   </agent_delegation>
@@ -107,7 +111,7 @@ RULE 4: Follow file structure locations EXACTLY
 
 <validation_check>
 Before EVERY response, verify:
-☐ All 5 display rules shown at start
+☐ All 4 display rules shown at start
 ☐ Parallel agents invoked for non-trivial tasks
 ☐ No artificial timelines in output
 ☐ File locations correctly referenced

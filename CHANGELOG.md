@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.62.1] - 2025-08-06
+
+### Fixed
+- **CLAUDE.md critical operational improvements**: Resolved breaking inconsistencies and operational ambiguities
+  - Fixed rule numbering from (0-4) to (1-4) eliminating Rule 0 mystery and mathematical inconsistency
+  - Standardized git workflow command references from "specialist-git-workflow" to "git-workflow"
+  - Unified priority system terminology from MANDATORY/ABSOLUTE to CRITICAL for clear precedence
+  - Added explicit definitions for "meaningful change" and "non-trivial tasks" replacing subjective criteria
+  - Corrected validation checklist from 5 to 4 display rules aligning with actual rule count
+  - Eliminates command execution failures and workflow confusion caused by inconsistent references
+
 ## [2.62.0] - 2025-08-06
 
 ### Changed
