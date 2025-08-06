@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.62.0] - 2025-08-06
+
+### Changed
+- **Command namespace migration**: Complete refactoring of /todo commands to /spec commands
+  - Renamed .claude/commands/todo/ directory to .claude/commands/spec/
+  - Renamed all command files with spec- prefix (cleanup.md → spec-cleanup.md, etc.)
+  - Updated all command content to use "specification" terminology instead of "TODO"
+  - Updated all slash command references from /todo to /spec
+  - Eliminates namespace collision with Claude Code's built-in TodoWrite functionality
+  - Completes architectural cleanup improving system coherence and command clarity
+
 ## [2.61.0] - 2025-08-06
 
 ### Changed
