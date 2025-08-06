@@ -14,7 +14,7 @@
 set -euo pipefail
 
 # Set Node.js memory options to prevent out of memory crashes
-export NODE_OPTIONS="--max-old-space-size=8192"
+export NODE_OPTIONS="--max-old-space-size=4096"
 
 # Configuration variables
 DEFAULT_MODEL="sonnet"
