@@ -41,6 +41,70 @@ RULE 4: Follow file structure locations EXACTLY
 <enforcement>NEVER search elsewhere for these file types</enforcement>
 </file_structure>
 
+<specification_management priority="MANDATORY">
+<specs_protocol>
+  <definition>Specifications are detailed planning documents that define requirements, implementation approaches, and project deliverables managed separately from active development work</definition>
+  
+  <location>.support/specs/ (ABSOLUTE - never search elsewhere)</location>
+  
+  <agent_delegation>
+    <primary_agent>specs-analyst (PROACTIVELY use when user mentions tasks, specs, requirements, or asks 'create spec', 'track progress', 'remember to do')</primary_agent>
+    <coordination>All specification lifecycle management MUST be delegated to specs-analyst agent to prevent context pollution</coordination>
+    <commands>Use /specs commands: /specs create, /specs review, /specs cleanup, /specs next</commands>
+  </agent_delegation>
+  
+  <file_format>
+    <structure>Individual markdown files with YAML frontmatter</structure>
+    <naming>kebab-case filenames derived from specification descriptions</naming>
+    <template>
+      ---
+      status: pending|in_progress|completed|archived
+      type: feat|fix|docs|refactor|test|chore
+      priority: high|medium|low
+      assignee: agent-name
+      created: YYYY-MM-DD
+      ---
+      
+      # Specification Title
+      
+      ## Description
+      Clear description of requirements and scope.
+      
+      ## Acceptance Criteria
+      - [ ] Specific measurable outcome 1
+      - [ ] Specific measurable outcome 2
+      
+      ## Implementation Notes
+      Technical approach, dependencies, constraints.
+    </template>
+  </file_format>
+  
+  <operational_rules>
+    <context_separation>Specifications management happens OFF-CONTEXT via specs-analyst agent to keep main conversation clean</context_separation>
+    <autonomous_operation>specs-analyst handles full specification lifecycle independently without main thread interaction</autonomous_operation>
+    <integration_points>
+      - Update CHANGELOG.md when specifications are completed
+      - Coordinate with relevant agents for implementation
+      - Support version management workflow through specification types
+    </integration_points>
+    <discovery_commands>
+      - Find all specifications: Glob(pattern=".support/specs/*.md")
+      - Read specific specification: Read(file_path=".support/specs/spec-name.md")
+      - Create new specification: Write to .support/specs/new-spec.md
+    </discovery_commands>
+  </operational_rules>
+  
+  <namespace_separation>
+    <purpose>Specifications (.support/specs/) are distinct from Claude Code's built-in TodoWrite functionality</purpose>
+    <differentiation>
+      - Specifications: Detailed planning documents with metadata, managed by specs-analyst
+      - TodoWrite: Session task tracking for immediate conversation context
+    </differentiation>
+    <command_usage>Use /specs commands for specification management, TodoWrite tool for session task tracking</command_usage>
+  </namespace_separation>
+</specs_protocol>
+</specification_management>
+
 <validation_check>
 Before EVERY response, verify:
 ☐ All 5 display rules shown at start
