@@ -3,6 +3,24 @@
 # DevContainer Setup Script - Replicates Codespace Environment
 # This script sets up the exact same environment as the GitHub Codespace
 
+# Install uv (modern Python package manager) - TODO; replace with pip install (this is insecure)
+echo "📦 Installing uv Python package manager..."
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install Claude CLI globally
+echo "🤖 Installing Claude CLI..."
+npm install -g @anthropic-ai/claude-code
+
+# Install MCP tools
+echo "🔗 Installing MCP tools..."
+npm install -g @modelcontextprotocol/inspector @modelcontextprotocol/server-sequential-thinking @modelcontextprotocol/server-memory
+
+# Install Python development tools
+echo "🛠️ Installing Python development tools..."
+uv tool install ruff
+uv tool install pytest
+uv tool install mypy
+
 # Skip the hassle when in GitHub Codespaces
 if [ "$CODESPACES" = "true" ]; then
   echo "In Codespaces, exiting..."
@@ -22,31 +40,11 @@ echo gitUserName: $gitUserName
 echo gitUserEmail: $gitUserEmail
 echo workingCopt: $workingCopy
 
-
-
 echo "🚀 Setting up Claude Code Template DevContainer..."
 sudo mkdir -p /workspace && sudo chown vscode:vscode /workspace && cd /workspace
 
 # Detect if we're in a container environment
 export CONTAINER_ENV=1
-
-# Install uv (modern Python package manager)
-echo "📦 Installing uv Python package manager..."
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Install Claude CLI globally
-echo "🤖 Installing Claude CLI..."
-npm install -g @anthropic-ai/claude-code
-
-# Install MCP tools
-echo "🔗 Installing MCP tools..."
-npm install -g @modelcontextprotocol/inspector @modelcontextprotocol/server-sequential-thinking @modelcontextprotocol/server-memory
-
-# Install Python development tools
-echo "🛠️ Installing Python development tools..."
-uv tool install ruff
-uv tool install pytest
-uv tool install mypy
 
 # Create necessary directories
 echo "📁 Creating necessary directories..."
