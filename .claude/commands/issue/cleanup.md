@@ -98,16 +98,16 @@ MANDATORY GitHub verification before closure:
 
 ```bash
 # Cleanup both completed and stale issues (default mode)
-/github-issue cleanup --dry-run
+/issue cleanup --dry-run
 
 # Cleanup only completed issues since version 1.2.0
-/github-issue cleanup --done --since v1.2.0 --confirm-all
+/issue cleanup --done --since v1.2.0 --confirm-all
 
 # Cleanup only stale issues older than 3 months, but preserve security/testing tasks
-/github-issue cleanup --stale --older-than 3months --keep-types security,testing --interactive
+/issue cleanup --stale --older-than 3months --keep-types security,testing --interactive
 
 # Combined cleanup with custom parameters
-/github-issue cleanup --since v1.1.0 --older-than 2months --dry-run
+/issue cleanup --since v1.1.0 --older-than 2months --dry-run
 ```
 
 ## Behavior

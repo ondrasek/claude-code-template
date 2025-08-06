@@ -54,7 +54,7 @@ RULE 4: Follow file structure locations EXACTLY
     <primary_agent>github-issues-workflow (PROACTIVELY use when user mentions tasks, specs, requirements, or asks 'create issue', 'track progress', 'remember to do')</primary_agent>
     <non_trivial_task_definition>Operations requiring more than 2 tool invocations, affecting multiple files, or involving agent coordination</non_trivial_task_definition>
     <coordination>All specification lifecycle management MUST be delegated to github-issues-workflow agent to prevent context pollution</coordination>
-    <commands>Use /github-issue commands: /github-issue create, /github-issue review, /github-issue cleanup, /github-issue next</commands>
+    <commands>Use /issue commands: /issue create, /issue review, /issue cleanup, /issue next</commands>
   </agent_delegation>
   
   <issue_format>
@@ -101,7 +101,7 @@ RULE 4: Follow file structure locations EXACTLY
       - GitHub Issues: Detailed planning documents with metadata, managed by specs-analyst via GitHub
       - TodoWrite: Session task tracking for immediate conversation context
     </differentiation>
-    <command_usage>Use /github-issue commands for specification management, TodoWrite tool for session task tracking</command_usage>
+    <command_usage>Use /issue commands for specification management, TodoWrite tool for session task tracking</command_usage>
   </namespace_separation>
 </github_issues_protocol>
 </specification_management>

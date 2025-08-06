@@ -52,7 +52,7 @@ ENHANCED_OUTPUT:
 - Quality assurance validation ensuring implementation feasibility
 
 EXAMPLE:
-/github-issue review --filter open --priority high --actionable-only
+/issue review --filter open --priority high --actionable-only
 
 BEHAVIOR:
 - Delegates ALL analysis to github-issues-workflow agent off-context

@@ -63,7 +63,7 @@ ENHANCED_OUTPUT:
   - Process improvement suggestions
 
 EXAMPLES:
-/github-issue next --limit 3 (show top 3 next-step recommendations)
+/issue next --limit 3 (show top 3 next-step recommendations)
 
 BEHAVIOR:
 - Delegates ALL cleanup and analysis to github-issues-workflow agent off-context

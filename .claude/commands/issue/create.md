@@ -45,7 +45,7 @@ ENHANCED_OUTPUT:
 - Clean confirmation without context pollution with quality assurance
 
 EXAMPLE:
-/github-issue create --type feat --priority high "Implement user authentication with JWT tokens"
+/issue create --type feat --priority high "Implement user authentication with JWT tokens"
 
 BEHAVIOR:
 - Delegates ALL issue management to github-issues-workflow agent

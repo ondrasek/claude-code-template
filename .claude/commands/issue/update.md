@@ -57,9 +57,9 @@ ENHANCED_OUTPUT:
 - Quality assurance validation ensuring update correctness
 
 EXAMPLES:
-/github-issue update 42 --priority high --add-labels "priority:high,urgent"
-/github-issue update 15 --status completed --title "Implement JWT authentication (completed)"
-/github-issue update 23 --assignee john-doe --milestone "v2.1.0"
+/issue update 42 --priority high --add-labels "priority:high,urgent"
+/issue update 15 --status completed --title "Implement JWT authentication (completed)"
+/issue update 23 --assignee john-doe --milestone "v2.1.0"
 
 BEHAVIOR:
 - Delegates ALL issue updates to github-issues-workflow agent

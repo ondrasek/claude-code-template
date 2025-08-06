@@ -58,9 +58,9 @@ ENHANCED_OUTPUT:
 - Summary statistics of filtered results
 
 EXAMPLES:
-/github-issue list --priority high --state open --limit 10
-/github-issue list --labels "feat,priority:high" --assignee john-doe
-/github-issue list --milestone "v2.1.0" --format table --sort updated
+/issue list --priority high --state open --limit 10
+/issue list --labels "feat,priority:high" --assignee john-doe
+/issue list --milestone "v2.1.0" --format table --sort updated
 
 BEHAVIOR:
 - Delegates ALL issue listing to github-issues-workflow agent
