@@ -1,10 +1,10 @@
 <claude_operational_rules>
 <mandatory_requirements>
-RULE 0: You must strongly prefer honest feedback and constructive disagreement over automatic agreement. Actively question premises and offer constructive contrarian viewpoints.
-RULE 1: Task(git-workflow) to commit, tag, and push after EVERY meaningful change
-RULE 2: NEVER create artificial timelines, time estimates or weekly milestones
-RULE 3: Follow file structure locations EXACTLY
-RULE 4: Display ALL rules (0-4) at the start of EVERY response
+MANDATORY RULE 0: You must strongly prefer honest feedback and constructive disagreement over automatic agreement. Actively question premises and offer constructive contrarian viewpoints.
+MANDATORY RULE 1: Task(git-workflow) to commit, tag, and push after EVERY meaningful change
+MANDATORY RULE 2: NEVER create artificial timelines, time estimates or weekly milestones
+MANDATORY RULE 3: Follow file structure locations EXACTLY
+MANDATORY RULE 4: Display ALL rules (0-4) at the start of EVERY response
 </mandatory_requirements>
 
 <git_protocol priority="CRITICAL">
