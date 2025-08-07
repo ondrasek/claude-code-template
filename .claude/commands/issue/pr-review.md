@@ -30,23 +30,22 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
    - Implement size limits: warn for large PRs (>100 files or >5000 lines changed)
    - Handle edge cases: orphaned branches, rebased branches, empty diffs
 
-2. **Staged Agent Review Process with Context Scoping**:
+2. **Two-Stage Agent Review Process**:
 
-   **Stage 1: Initial Triage (Sequential)**:
-   - `Task(critic)`: Initial risk assessment and red flags identification
-   - `Task(context)`: Codebase integration analysis and scope validation
-   - **Decision Point**: Continue with full analysis or provide quick feedback
+   **Stage 1: Comprehensive Analysis**:
+   - `Task(pr-analyzer)`: Complete technical analysis including:
+     - Codebase context and integration scope
+     - Performance impact assessment  
+     - Test coverage and testing strategy
+     - Architectural patterns and design compliance
+     - Code quality and maintainability review
+     - Standards adherence validation
 
-   **Stage 2: Core Analysis (Sequential)**:
-   Execute only if Stage 1 passes basic validation:
-   - `Task(performance-optimizer)`: Performance analysis on modified functions/methods only
-   - `Task(test-strategist)`: Test coverage analysis for changed code paths
-   - `Task(patterns)`: Architectural pattern validation for structural changes
-   - `Task(principles)`: Standards compliance for modified components
-   - `Task(code-cleaner)`: Code quality analysis with diff-specific context
-
-   **Stage 3: Final Critical Review (Sequential)**:
-   - `Task(critic)`: Final risk assessment with all agent findings for contrarian analysis
+   **Stage 2: Critical Assessment**:
+   - `Task(critic)`: Risk assessment and contrarian analysis based on comprehensive findings
+     - Review all technical findings for potential issues
+     - Identify risks, edge cases, and potential problems
+     - Provide final recommendations with priority ranking
 
 3. **Agent Context Scoping Strategy**:
    Each agent receives:
@@ -54,14 +53,13 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
    - **File List**: Specific files to analyze (not entire codebase)
    - **Change Summary**: Brief description of modification type (add/modify/delete)
    - **Size Limits**: Analysis scope limited to manageable segments
-   - **Timeout Enforcement**: Hard limits to prevent hanging
+   - **Progressive Context**: Stage 2 receives Stage 1 findings for enhanced analysis
 
 4. **Autonomous Command Execution**:
    Execute autonomously with intelligent defaults:
    - Analysis depth: Comprehensive review with summary presentation
    - Base branch: Auto-detect (main/master/develop)
-   - Agent selection: All available agents for complete coverage
-   - Sequential execution: Each agent builds on previous findings
+   - Two-agent sequential execution for optimal efficiency
    - File limits: Skip review if more than 100 files changed
 
 5. **Autonomous Review Report Generation**:
@@ -113,56 +111,60 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
    - **Empty Changes**: Clear messaging when no changes detected
    - **Fallback Modes**: Basic git analysis when agents unavailable
 
-## Agent Coordination Strategy (Revised)
+## Agent Coordination Strategy (Streamlined)
 
-**Stage 1: Initial Triage (Sequential - Risk-First)**
-- `critic` agent first: Identify obvious red flags and stop-gaps
-- `context` agent second: Validate integration scope and dependencies
-- **Decision Point**: If critic identifies critical risks, proceed with caution or quick exit
+**Two-Agent Sequential Pipeline**:
 
-**Stage 2: Sequential Core Analysis (Single-Threaded)**
-- Execute each agent sequentially, building context progressively
-- Each agent gets scoped context plus findings from previous agents
-- `performance-optimizer` → `test-strategist` → `patterns` → `principles` → `code-cleaner`
-- Each agent can reference and build upon previous agent findings
-- Graceful degradation: Continue with available agents if some fail
+**Stage 1: Comprehensive Technical Analysis**
+- `pr-analyzer` agent: Multi-domain technical analysis
+  - Performs integrated analysis across all technical domains
+  - Synthesizes context, performance, testing, patterns, and quality concerns
+  - Provides comprehensive findings with specific file/line references
+  - Delivers structured analysis for Stage 2 consumption
 
-**Stage 3: Consolidation with Intelligence (Sequential)**
-- `critic` agent reviews all findings for final risk assessment
-- **Synthesis**: Integrate findings across all agents with cross-references
-- **Prioritization**: Rank issues by impact, confidence, and agent consensus
-- **Actionability**: Ensure recommendations include specific locations and context
+**Stage 2: Critical Risk Assessment**
+- `critic` agent: Risk evaluation and contrarian analysis
+  - Reviews comprehensive findings from Stage 1
+  - Identifies risks, edge cases, and potential problems
+  - Challenges assumptions and provides contrarian perspective
+  - Delivers final prioritized recommendations with severity rankings
+
+**Progressive Context Building**:
+- Stage 2 receives complete Stage 1 analysis for informed criticism
+- Each stage builds upon previous findings for enhanced depth
+- Graceful degradation: Partial results if one agent fails
 
 ## Enhanced Integration Points
 
 - **Git Workflow**: Robust `git diff` with multiple fallback strategies
-- **Agent Infrastructure**: Sequential Task() delegation with progressive context building
+- **Agent Infrastructure**: Two-agent Task() delegation with progressive context building
 - **Error Recovery**: Graceful degradation when components fail
-- **Performance Management**: Size limits and timeout controls
+- **Performance Management**: Size limits and efficient two-stage analysis
 - **Output Standards**: Structured severity levels and specific file references
 
 ## Risk Mitigation Implementations
 
-1. **Agent Context Scoping**: Each Task() call includes specific file list, diff segments, and previous agent findings
-2. **Sequential Execution**: Each agent builds upon previous findings for comprehensive analysis
-3. **Fallback Strategies**: Multiple levels of degraded functionality
-4. **Performance Limits**: Size thresholds with early termination options
-5. **Enhanced Error Scenarios**: Specific handlers for all identified git edge cases
-6. **Progressive Context Building**: Later agents receive enriched context from earlier analysis
+1. **Streamlined Agent Architecture**: Two focused agents reduce coordination complexity
+2. **Comprehensive Analysis**: Single pr-analyzer synthesizes multi-domain expertise
+3. **Progressive Context Building**: Critic receives full technical analysis for informed assessment  
+4. **Fallback Strategies**: Graceful degradation with partial results
+5. **Performance Optimization**: Reduced agent count improves execution efficiency
+6. **Enhanced Error Scenarios**: Simplified error handling with two-agent model
 
 ## Success Criteria (Enhanced)
 
 - Command executes reliably across various git states and branch configurations
-- Provides useful analysis even when some agents fail or timeout
+- Provides comprehensive analysis through streamlined two-agent pipeline
 - Output includes severity-graded issues with specific file locations
-- Performance remains acceptable for typical PR sizes (< 2 minutes for < 50 files)
-- Error conditions provide actionable guidance for user resolution
-- Critic agent provides meaningful risk assessment at both triage and final phases
+- Improved performance through reduced agent overhead
+- Error conditions provide actionable guidance for user resolution  
+- Maintains analysis depth through synthesis approach
 
 ## Implementation Notes
 
 **Diff Analysis Scope**: Focus on `git diff main...HEAD` with validation and fallbacks
-**Agent Context Delivery**: Each agent receives JSON context with files, diffs, metadata, and previous agent findings
-**Sequential Execution Management**: Implement progressive context enrichment and graceful degradation
-**Error Reporting**: Structured error codes for different failure modes
-**Extensibility**: Plugin architecture for additional review agents
+**Two-Agent Pipeline**: pr-analyzer → critic with progressive context building
+**Agent Context Delivery**: Stage 1 receives diff context, Stage 2 receives Stage 1 findings
+**Performance Optimization**: Reduced coordination overhead with streamlined architecture
+**Error Reporting**: Simplified error handling with two-agent model
+**Extensibility**: pr-analyzer can incorporate additional analysis domains as needed
