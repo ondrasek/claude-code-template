@@ -1,224 +1,174 @@
 # Claude Code Forge
 
-**Professional Claude Code Enhancement Platform**
+**AI Agent System for Claude Code**
 
 [![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-forge)](https://github.com/ondrasek/claude-code-forge/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Issues](https://img.shields.io/github/issues/ondrasek/claude-code-forge)](https://github.com/ondrasek/claude-code-forge/issues)
 
-Transform Claude Code into an AI-powered development environment with **20+ specialized agents**, automated workflows, and comprehensive technology stack integration.
+Extends Claude Code with 17 specialized AI agents, automated workflows, and development integrations.
 
-## 🎬 What You Get
+## What It Does
 
-**Before**: Basic Claude Code with limited capabilities  
-**After**: Professional development environment with specialized AI agents for every task
+- **17 AI Agents**: Code review, performance analysis, testing, architecture, security
+- **27 Slash Commands**: Workflow automation and agent coordination
+- **GitHub Issues Integration**: Project management with AI assistance
+- **Technology Stack Support**: Python, Rust, Java, C++, TypeScript, Docker configs
+- **MCP Integration**: Perplexity server for web research
+- **Cross-session Memory**: Context preservation between Claude Code sessions
 
-- **🤖 20+ AI Agents**: Code review, performance optimization, testing, security analysis, and more
-- **⚡ Automated Workflows**: Git operations, GitHub Issues integration, project management  
-- **🏗️ Technology Stacks**: Built-in expertise for Python, Rust, Java, C++, TypeScript, and more
-- **🔍 Real-time Research**: Perplexity MCP integration for current information
-- **💾 Persistent Memory**: Cross-session context and learning capabilities
-
-## ⚡ Quick Start (30 seconds)
+## Installation
 
 ```bash
-# Install with one command
-uvx --from claude-code-forge init
-
-# Verify installation
-claude-code
-/agents-guide  # See your new AI capabilities
-
-# Try it out
-/review        # AI code review with multiple specialists
-/issue create  # GitHub Issues integration
-/research      # Real-time web research via Perplexity
-```
-
-## 🚀 Core Capabilities
-
-### 🧠 Multi-Agent Intelligence
-- **Foundation Agents**: patterns, principles, context, researcher, critic
-- **Specialists**: performance-optimizer, test-strategist, constraint-solver, code-cleaner
-- **Workflows**: git-workflow, github-issues-workflow, github-pr-workflow
-- **Coordinated Analysis**: Multiple agents work together for comprehensive insights
-
-### 🔧 Development Automation  
-- **Smart Commands**: 25+ slash commands for common development tasks
-- **Git Integration**: Automated commits, tagging, and release management
-- **GitHub Issues**: Seamless project management with AI-assisted workflows
-- **Technology Detection**: Automatic stack identification and best practices
-
-### 🌐 Real-World Integration
-- **MCP Servers**: Perplexity integration for web research and current information
-- **Memory System**: Persistent context across development sessions  
-- **Template System**: Technology-specific configurations and guidelines
-- **Multi-Stack Support**: 8+ technology stacks with built-in expertise
-
-### 📊 Professional Features
-- **Code Quality**: Automated pattern detection, principle validation, and improvement suggestions  
-- **Performance Analysis**: Systematic optimization recommendations with complexity analysis
-- **Security Workflows**: Vulnerability detection and defensive security practices
-- **Documentation**: Automated generation and maintenance of project documentation
-
-## 📚 Documentation Hub
-
-### Getting Started
-- **[Installation Guide](docs/getting-started.md)** - Comprehensive setup instructions
-- **[Configuration](docs/configuration-reference.md)** - Customization options and settings
-- **[Agent Usage](docs/agent-usage.md)** - How to work with AI agents effectively
-
-### Advanced Usage  
-- **[Features Overview](docs/features.md)** - Complete capabilities reference
-- **[Customization Guide](docs/customization.md)** - Extending and modifying the system
-- **[Launch Scripts](docs/launch-claude-usage.md)** - Advanced launch configurations
-
-### Development
-- **[Contributing](CONTRIBUTING.md)** - How to contribute to the project
-- **[Architecture](docs/architecture.md)** - System design and component interaction
-- **[Changelog](CHANGELOG.md)** - Version history and evolution
-
-## 🔧 Advanced Features
-
-<details>
-<summary><strong>Technology Stack Integration</strong></summary>
-
-Built-in expertise for major development stacks:
-
-- **Python**: Django, FastAPI, pytest, poetry, virtual environments
-- **Rust**: Cargo, async patterns, memory safety, performance optimization  
-- **Java**: Spring Boot, Maven/Gradle, JUnit, enterprise patterns
-- **TypeScript/JavaScript**: Node.js, React, testing frameworks
-- **C++**: Modern standards, CMake, performance optimization
-- **Docker**: Multi-stage builds, optimization, security best practices
-- **And more**: Ruby, C#, Kotlin with comprehensive guidelines
-
-Each stack includes:
-- Automated detection and configuration
-- Best practices and common patterns  
-- Security guidelines and optimization tips
-- Testing strategies and tooling recommendations
-
-</details>
-
-<details>
-<summary><strong>MCP Server Development</strong></summary>
-
-Create and deploy custom MCP (Model Context Protocol) servers:
-
-- **Perplexity Integration**: Real-time web research and current information
-- **Custom Servers**: Framework for building domain-specific integrations
-- **Logging & Debugging**: Comprehensive development and troubleshooting tools
-- **Template System**: Quick setup for new MCP server projects
-
-Example MCP servers included:
-- Perplexity web search and research
-- GitHub Issues management  
-- Development workflow automation
-- Custom API integrations
-
-</details>
-
-<details>
-<summary><strong>Memory & Context Management</strong></summary>
-
-Persistent intelligence across development sessions:
-
-- **Cross-Session Memory**: Context preservation between Claude Code sessions
-- **Pattern Recognition**: Learn from your codebase and development patterns
-- **Historical Analysis**: Track changes and improvements over time
-- **Context Optimization**: Prevent context window pollution with smart delegation
-
-</details>
-
-## 🏗️ Architecture Overview
-
-```
-Claude Code Forge Architecture:
-
-┌─ /templates/           # Clean distribution package
-│  ├─ instructions/      # Template instructions and guidelines  
-│  ├─ stacks/           # Technology-specific configurations
-│  └─ prompts/          # AI interaction templates
-│
-├─ /.claude/            # Core Claude Code configuration
-│  ├─ agents/           # 20+ specialized AI agents
-│  └─ commands/         # 25+ slash commands
-│
-├─ /src/               # Development source code
-│  └─ perplexity-mcp/  # MCP server implementation
-│
-├─ /scripts/           # Utility scripts  
-└─ /docs/             # Comprehensive documentation
-```
-
-**How It Works Together:**
-1. **Commands** coordinate multiple AI agents for complex tasks
-2. **Agents** provide specialized analysis and recommendations
-3. **MCP Servers** supply real-time data and external integrations
-4. **Templates** provide technology-specific guidance and best practices
-
-## 🤝 Community & Contributing
-
-### 🎯 Quick Contributions
-- **[Report Issues](https://github.com/ondrasek/claude-code-forge/issues)** - Bug reports and feature requests
-- **[GitHub Discussions](https://github.com/ondrasek/claude-code-forge/discussions)** - Questions and community support
-- **[Pull Requests](https://github.com/ondrasek/claude-code-forge/pulls)** - Code contributions and improvements
-
-### 🔥 Development Setup
-```bash
-# Clone and setup
 git clone https://github.com/ondrasek/claude-code-forge.git
 cd claude-code-forge
 
-# Install dependencies  
-uvx --from claude-code-forge dev-setup
-
-# Run tests
-./scripts/test-agents.sh
+# Copy configurations to your Claude Code setup
+# See docs/getting-started.md for detailed instructions
 ```
 
-### 📈 Project Management
-- **GitHub Issues**: All development tracked via [GitHub Issues](https://github.com/ondrasek/claude-code-forge/issues)
-- **Roadmap**: See [open issues](https://github.com/ondrasek/claude-code-forge/issues) for planned features
-- **Releases**: Follow [semantic versioning](https://semver.org/) with detailed [changelog](CHANGELOG.md)
+**Requirements:**
+- Claude Code CLI installed and working
+- Git for repository operations  
+- Python 3.13+ for MCP server functionality
+- Node.js for Claude Code operation
 
-## 📋 System Requirements
-
-- **Node.js**: Required for Claude Code CLI
-- **Python 3.13+**: For MCP server functionality  
-- **Git**: Repository operations and workflow integration
-- **Bash**: Launch scripts and automation (Linux/macOS/WSL)
-
-## 🆘 Support & Help
-
-### 🚀 Quick Help
-- **Installation Issues**: Check [getting started guide](docs/getting-started.md)
-- **Command Reference**: Use `/help` in Claude Code or see [documentation](docs/)
-- **Agent Problems**: See [agent usage guide](docs/agent-usage.md)
-
-### 💬 Community Support
-- **[GitHub Issues](https://github.com/ondrasek/claude-code-forge/issues)** - Bug reports and feature requests
-- **[Discussions](https://github.com/ondrasek/claude-code-forge/discussions)** - Community Q&A and sharing
-- **Documentation** - Comprehensive guides in [/docs](docs/) directory
-
-### 🔧 Advanced Support  
-- **MCP Development**: See [MCP integration guide](src/perplexity-mcp/README.md)
-- **Custom Agents**: Agent development patterns in [/analysis](analysis/)
-- **System Integration**: Architecture details in [documentation](docs/)
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-**Ready to supercharge your Claude Code experience?**
+## Quick Start
 
 ```bash
-uvx --from claude-code-forge init
+# Test agent system
+/agents-guide
+
+# Multi-agent code analysis
+/review
+
+# GitHub Issues management  
+/issue create
+/issue list
+
+# Web research via Perplexity MCP
+/research python async patterns
 ```
 
-*Transform your development workflow with AI-powered intelligence and automation.*
+## Agent System
+
+### Foundation Agents (6)
+- **patterns** - Code pattern analysis and recommendations
+- **principles** - Design principle validation  
+- **context** - Codebase context and architecture analysis
+- **researcher** - Web research and best practices
+- **critic** - Risk assessment and critical analysis
+- **conflicts** - Decision mediation and trade-off analysis
+
+### Specialist Agents (11)
+- **code-cleaner** - Code quality improvements
+- **constraint-solver** - Complex requirement analysis
+- **git-workflow** - Automated git operations
+- **github-issues-workflow** - GitHub Issues management
+- **github-pr-workflow** - Pull request automation
+- **meta-programmer** - Code generation and templates
+- **options-analyzer** - Solution comparison and analysis
+- **performance-optimizer** - Performance analysis and optimization
+- **prompt-engineer** - AI prompt development
+- **stack-advisor** - Technology-specific guidance
+- **test-strategist** - Testing strategy and implementation
+
+## Command System
+
+27 slash commands organized in namespaces:
+
+- `/agents/*` - Agent management and coordination
+- `/issue/*` - GitHub Issues workflow (6 commands)
+- `/commands/*` - Command system management
+- Plus individual commands for git, review, research, testing, etc.
+
+## Technology Stack Integration
+
+Built-in configurations for:
+
+- **Python**: Django, FastAPI, pytest, poetry
+- **Rust**: Cargo, async, memory safety
+- **Java**: Spring Boot, Maven/Gradle, JUnit
+- **TypeScript**: Node.js, React, testing frameworks
+- **C++**: Modern standards, CMake
+- **Docker**: Multi-stage builds, optimization
+- **Ruby**, **C#**, **Kotlin**: Basic configurations
+
+Each stack includes:
+- Automated detection
+- Best practices and patterns
+- Security guidelines  
+- Testing strategies
+
+## MCP Server
+
+Includes Perplexity MCP server implementation:
+
+```bash
+cd src/perplexity-mcp
+# See README.md for setup instructions
+```
+
+Provides real-time web search and research capabilities through the `/research` command.
+
+## Architecture
+
+```
+├── .claude/               # Core Claude Code configuration
+│   ├── agents/           # 17 AI agent definitions
+│   └── commands/         # 27 slash commands
+├── src/                  # Source code
+│   └── perplexity-mcp/   # MCP server implementation  
+├── templates/            # Configuration templates
+│   ├── instructions/     # Setup and usage guides
+│   ├── stacks/          # Technology-specific configs
+│   └── prompts/         # AI interaction templates
+├── scripts/             # Utility scripts
+└── docs/               # Documentation
+```
+
+## Development Workflow
+
+1. **Issue Management**: GitHub Issues integration with `/issue` commands
+2. **Code Review**: Multi-agent analysis with `/review`
+3. **Git Automation**: Automated commits, tagging, releases
+4. **Research Integration**: Real-time web research via MCP
+5. **Memory System**: Context preservation across sessions
+
+## Configuration
+
+The system uses template-based configuration:
+
+- Agent definitions in `.claude/agents/`
+- Command definitions in `.claude/commands/`
+- Technology stack configurations in `templates/stacks/`
+- Master prompts and instructions in `templates/`
+
+## Documentation
+
+- **[Getting Started](docs/getting-started.md)** - Setup instructions
+- **[Agent Usage](docs/agent-usage.md)** - Working with AI agents
+- **[Features](docs/features.md)** - Complete feature reference
+- **[Configuration](docs/configuration-reference.md)** - Customization options
+- **[Launch Scripts](docs/launch-claude-usage.md)** - Script configuration
+
+## Contributing
+
+- **Issues**: [Report bugs or request features](https://github.com/ondrasek/claude-code-forge/issues)
+- **Development**: See [contributing guidelines](CONTRIBUTING.md)
+- **Pull Requests**: [Submit improvements](https://github.com/ondrasek/claude-code-forge/pulls)
+
+## Project Status
+
+- **Version**: 2.70.0+ (actively maintained)
+- **Issue Tracking**: GitHub Issues (30+ migrated from legacy specs)
+- **Release Management**: Semantic versioning with detailed changelog
+- **Community**: Open source with MIT license
+
+## License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+---
+
+**Repository Structure**: Development workspace containing templates, agents, and tools for enhancing Claude Code with specialized AI workflows.
