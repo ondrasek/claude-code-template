@@ -1,7 +1,7 @@
 ---
 description: Analyze completed TODOs and prepare version release with automatic CHANGELOG generation.
-argument-hint: No arguments needed - automatically analyzes changes and determines version.
-allowed-tools: Task, Read, Edit, Write, Bash
+argument-hint: Optional version type (auto|major|minor|patch) - defaults to auto.
+allowed-tools: Task(github-issues-workflow), Task(git-workflow), Read, Edit, Write, Bash(git status), Bash(git log), Bash(git tag)
 ---
 
 # Version Release Preparation
@@ -10,41 +10,38 @@ Analyze completed TODOs and prepare version release with automatic CHANGELOG gen
 
 ## Instructions
 
-1. Parse $ARGUMENTS for version type:
-   - auto (default): Automatically detect version bump based on completed TODO types
-   - major: Force major version bump (x.0.0)
-   - minor: Force minor version bump (0.x.0)
-   - patch: Force patch version bump (0.0.x)
+1. **Parse Arguments**: Determine version type from $ARGUMENTS
+   - `auto` (default): Automatically detect version bump based on completed GitHub Issues
+   - `major`: Force major version bump (x.0.0)
+   - `minor`: Force minor version bump (0.x.0)
+   - `patch`: Force patch version bump (0.0.x)
 
-2. Execute enhanced parallel agent coordination for version preparation
-- `auto`: Automatically detect version bump based on completed TODO types
-- `major`: Force major version bump (x.0.0)
-- `minor`: Force minor version bump (0.x.0)  
-- `patch`: Force patch version bump (0.0.x)
+2. **Analyze Completed Issues**: 
+   ```
+   Task(github-issues-workflow): Analyze completed GitHub Issues since last release
+   - Categorize by type (feat/fix/break/docs/chore)
+   - Extract completion status and impact assessment
+   - Return clean summary for version determination
+   ```
 
-## Example
-```
-/version-prepare auto
-```
-
----
-
-I'll help you prepare a version release by analyzing completed TODOs and generating the appropriate CHANGELOG entries.
-
-## Process
-
-1. **Analyze completed GitHub Issues** using enhanced parallel agent coordination:
-   - **Primary Analysis Cluster**: github-issues-workflow + code-cleaner + patterns + critic (GitHub Issues analysis, completion validation, pattern recognition, critical assessment)
-   - **Version Intelligence Cluster**: researcher + context + options-analyzer (historical patterns, semantic versioning researcher, system understanding, version theories)
-   - **Documentation Preparation Cluster**: stack-advisor + git-workflow + principles + constraint-solver (release documentation, tag preparation, design principles, integrity validation)
-   - **Quality Assurance Cluster**: critic + test-strategist + performance-optimizer + conflicts (quality validation, test impact, performance assessment, conflict resolution)
-2. **Calculate version bump** based on semantic versioning analysis:
-   - Any `break` tasks → MAJOR version
-   - Any `feat` tasks (no breaks) → MINOR version
+3. **Calculate Version Bump**: Based on issue analysis
+   - Any `break` or breaking change issues → MAJOR version
+   - Any `feat` or new feature issues → MINOR version  
    - Only `fix`/`docs`/`perf`/`refactor`/`test`/`chore` → PATCH version
-3. **Generate CHANGELOG entries** from completed tasks
-4. **Update version number** in relevant files
-5. **Prepare release commit** with proper formatting
+
+4. **Execute Version Preparation**:
+   ```
+   Task(git-workflow): Prepare version release with parameters:
+   - Version type: [determined from analysis]
+   - CHANGELOG entries: [from completed issues]
+   - Tag preparation and release commit creation
+   ```
+
+## Error Handling
+
+- **No completed issues**: Report no changes warrant version bump
+- **Invalid version argument**: Default to `auto` with warning
+- **Git repository issues**: Delegate to git-workflow agent for resolution
 
 ## Automatic Version Detection
 
@@ -100,40 +97,19 @@ Completed TODOs are converted to CHANGELOG entries:
 
 ## Integration with Git Workflow
 
-Following trunk-based development:
-1. All changes committed to main branch
-2. Version tag created: `git tag -a v1.2.3 -m "Release version 1.2.3"`
-3. Push to origin: `git push origin main && git push origin v1.2.3`
+Following trunk-based development and CLAUDE.md Rule 1 compliance:
+1. All changes committed to main branch via git-workflow agent
+2. Version tag created with proper annotation
+3. Automatic push to origin with tag
 
-## Memory Integration
+## Expected Outcomes
 
-**Before Version Preparation**: Use `mcp__memory__search_nodes()` to check for:
-- Previous version release patterns and semantic versioning decisions
-- Historical TODO completion rates and release scope patterns
-- Successful release documentation strategies and CHANGELOG effectiveness
-- Version bump decision criteria and their long-term impact
-
-**After Version Preparation**: Store findings with `mcp__memory__create_entities()` and `mcp__memory__create_relations()`:
-- Version release effectiveness and semantic versioning accuracy
-- TODO completion pattern evolution and release planning optimization
-- Release documentation quality and user engagement metrics
-- Cross-release relationship patterns and version strategy evolution
-
-## Agent Integration
-
-**Enhanced Primary Coordination**: todo agent orchestrates version preparation with comprehensive universal agent integration
-
-**Enhanced Supporting Clusters**:
-- **Completion Analysis**: completer + patterns + context + testing for comprehensive implementation validation with system understanding
-- **Historical Intelligence**: researcher + time + axioms + explorer for version pattern analysis with fundamental principles and alternative approaches
-- **Documentation Excellence**: docs + git-tagger + principles + invariants for release preparation with design integrity and completeness validation
-- **Quality Assurance**: critic + testing + performance + resolver for comprehensive release readiness assessment with conflict resolution
-- **Strategic Validation**: principles + constraints + critic + completer for strategic release validation with comprehensive quality assurance
-
-This command ensures systematic version management with complete traceability from TODO tasks to release documentation, enhanced by memory-informed decision making and comprehensive parallel agent coordination with universal agent integration for maximum quality assurance and strategic validation.
+- Accurate semantic version determination
+- Comprehensive CHANGELOG.md updates from completed issues
+- Proper git tag creation with release notes
+- Clean main context with complex processing isolated to specialist agents
 
 ## Related Commands
 
-- `/todo:todo-cleanup-done` - Clean completed TODOs before version preparation
-- `/doc-update` - Ensure documentation synchronization with release
-- `/agents-audit` - Analyze version management process effectiveness
+- `/git` - Execute git workflow after version preparation
+- `/issue/cleanup` - Clean completed issues before version preparation
