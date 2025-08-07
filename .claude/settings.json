@@ -1,0 +1,83 @@
+{
+  "model": "claude-sonnet-4-20250514",
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
+    "CLAUDE_CODE_PROJECT_TYPE": "agent-framework"
+  },
+  "permissions": {
+    "allow": [
+      "Task(*)",
+      "Bash(git*)",
+      "Bash(gh*)",
+      "Bash(npm*)",
+      "Bash(python*)",
+      "Bash(cargo*)",
+      "Bash(docker*)",
+      "Bash(find*)",
+      "Bash(grep*)",
+      "Bash(rg*)",
+      "Bash(ls*)",
+      "Bash(cat*)",
+      "Bash(head*)",
+      "Bash(tail*)",
+      "Bash(wc*)",
+      "Bash(chmod*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "MultiEdit(*)",
+      "Grep(*)",
+      "Glob(*)",
+      "LS(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "TodoWrite(*)"
+    ],
+    "deny": [
+      "Bash(rm -rf*)",
+      "Bash(sudo*)",
+      "Bash(su*)",
+      "Bash(curl*)",
+      "Bash(wget*)",
+      "Bash(nc*)",
+      "Bash(netcat*)",
+      "Bash(*password*)",
+      "Bash(*secret*)",
+      "Bash(*key*)"
+    ],
+    "additionalDirectories": [
+      "templates",
+      "tests",
+      "logs"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Executing command: $CLAUDE_COMMAND'",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash", 
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Command completed with exit code: $CLAUDE_EXIT_CODE'",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "includeCoAuthoredBy": true,
+  "cleanupPeriodDays": 30,
+  "enableAllProjectMcpServers": false
+}
