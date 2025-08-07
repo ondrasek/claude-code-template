@@ -381,7 +381,7 @@ When updating the template:
 
 2. **Merge new template features**:
    ```bash
-   git remote add template https://github.com/yourusername/claude-code-template.git
+   git remote add template https://github.com/ondrasek/claude-code-forge.git
    git fetch template
    git merge template/main
    ```

@@ -66,8 +66,8 @@ sudo chsh -s $(which zsh) $USER
 echo "🐚 Configuring shell environment..."
 cat >> ~/.bashrc << 'EOF'
 
-# Claude Code Template Aliases
-alias launch-claude='/workspace/claude-code-template/.support/scripts/launch-claude.sh'
+# Claude Code Forge Aliases
+alias launch-claude='/workspace/claude-code-forge/scripts/launch-claude.sh'
 
 # Environment variables for Claude Code
 export PYTHONIOENCODING=UTF-8
@@ -86,8 +86,8 @@ EOF
 # Configure zsh with same environment
 cat >> ~/.zshrc << 'EOF'
 
-# Claude Code Template Aliases
-alias launch-claude='/workspace/claude-code-template/.support/scripts/launch-claude.sh'
+# Claude Code Forge Aliases
+alias launch-claude='/workspace/claude-code-forge/scripts/launch-claude.sh'
 
 # Environment variables for Claude Code
 export PYTHONIOENCODING=UTF-8
