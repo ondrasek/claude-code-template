@@ -31,11 +31,11 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
    - Handle edge cases: orphaned branches, rebased branches, empty diffs
 
 2. **Staged Agent Review Process with Context Scoping**:
-   
+
    **Stage 1: Quick Triage (Sequential - 30s timeout each)**:
    - `Task(critic)`: Initial risk assessment and red flags identification
    - `Task(context)`: Codebase integration analysis and scope validation
-   
+
    **Stage 2: Core Analysis (Parallel - 60s timeout each)**:
    Execute only if Stage 1 passes basic validation:
    - `Task(performance-optimizer)`: Performance analysis on modified functions/methods only
@@ -58,7 +58,7 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
 4. **Autonomous Command Execution**:
    Execute autonomously with intelligent defaults:
    - Analysis depth: Comprehensive review with summary presentation
-   - Base branch: Auto-detect (main/master/develop)  
+   - Base branch: Auto-detect (main/master/develop)
    - Agent selection: All available agents for complete coverage
    - Timeout handling: 30s triage, 60s analysis with automatic fallbacks
    - File limits: Skip review if more than 100 files changed
@@ -68,39 +68,39 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
 
    ```
    # Pull Request Review Report
-   
-   **Branch**: [current] → [base]  
+
+   **Branch**: [current] → [base]
    **Files Modified**: [count] ([skipped if > limit])
    **Lines Changed**: +[additions] -[deletions]
    **Review Duration**: [time]
-   
+
    ## Executive Summary
    [High-level readiness assessment: READY/NEEDS_WORK/RISKY]
-   
+
    ## Critical Issues [SEVERITY: HIGH]
    [Blocking issues that must be addressed]
-   
-   ## Major Concerns [SEVERITY: MEDIUM]  
+
+   ## Major Concerns [SEVERITY: MEDIUM]
    [Important issues that should be addressed]
-   
+
    ## Minor Issues [SEVERITY: LOW]
    [Suggestions for improvement]
-   
+
    ## Performance Analysis
    [Performance impact assessment with specific metrics]
-   
-   ## Test Coverage Assessment  
+
+   ## Test Coverage Assessment
    [Test completeness with coverage gaps identified]
-   
+
    ## Architectural Review
    [Design pattern compliance and structural concerns]
-   
+
    ## Code Quality Summary
    [Maintainability, readability, standards adherence]
-   
+
    ## Recommendations (Prioritized)
    1. [Critical] File:Line - Specific action required
-   2. [Major] File:Line - Important improvement  
+   2. [Major] File:Line - Important improvement
    3. [Minor] File:Line - Optional enhancement
    ```
 
@@ -163,4 +163,3 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
 **Resource Management**: Implement timeout supervision and resource pooling
 **Error Reporting**: Structured error codes for different failure modes
 **Extensibility**: Plugin architecture for additional review agents
-EOF < /dev/null
