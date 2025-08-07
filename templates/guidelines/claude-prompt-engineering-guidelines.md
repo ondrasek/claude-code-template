@@ -477,7 +477,7 @@ Organize instructions into distinct sections to prevent interference:
 Following the established file structure patterns:
 
 ```
-templates/instructions/    ← Template instructions for distribution
+templates/guidelines/     ← Template guidelines for distribution
 .claude/agents/           ← Agent definitions only
 .claude/commands/         ← Slash command definitions only
 templates/prompts/        ← Template prompts for distribution

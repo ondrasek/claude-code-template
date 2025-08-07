@@ -180,9 +180,9 @@ vulnerability-scanner MUST coordinate with:
 - `/agents-guide` - Documentation on using existing 26 agents
 
 ## Reference Documentation
-- @.support/instructions/agent-creation.md - Complete creation principles
+- @templates/guidelines/claude-agents-guidelines.md - Complete creation principles
 - @.support/workflows/security-workflows.md - Multi-agent coordination examples
-- @.support/instructions/stack-mapping.md - Technology detection patterns
+- @templates/guidelines/stack-mapping.md - Technology detection patterns
 
 ## Success Metrics
 

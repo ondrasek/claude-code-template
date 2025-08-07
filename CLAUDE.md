@@ -38,7 +38,7 @@ MANDATORY RULE 4: Display ALL rules (0-4) at the start of EVERY response
   <agents>.claude/agents/ (ONLY location for agent definitions)</agents>
   <commands>.claude/commands/ (ONLY location for slash commands)</commands>
   <prompts>templates/prompts/ (template prompts for distribution)</prompts>
-  <instructions>templates/instructions/ (template instructions for distribution)</instructions>
+  <guidelines>templates/guidelines/ (template guidelines for distribution)</guidelines>
   <github_issues>GitHub Issues in ondrasek/claude-code-forge (specifications managed via GitHub)</github_issues>
   <mcp_servers>/src/[mcp-name]/ (MCP server source code)</mcp_servers>
   <logs>/logs/ (diagnostics and troubleshooting)</logs>

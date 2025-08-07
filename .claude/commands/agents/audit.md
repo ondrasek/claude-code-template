@@ -149,7 +149,7 @@ Cluster 5 - Completeness Assessment Analysis (completer + patterns + critic + pr
 
 ## Integration with Creation Principles
 
-**Individual agent evaluation criteria** from @.support/instructions/agent-creation.md:
+**Individual agent evaluation criteria** from @templates/guidelines/claude-agents-guidelines.md:
 - **Overhead justification**: Does agent reduce >50 lines of main context?
 - **Context boundaries**: Clear input/output without back-and-forth?
 - **Selection optimization**: Tier 1/2 keywords for Claude Code selection?
@@ -180,4 +180,4 @@ Cluster 5 - Completeness Assessment Analysis (completer + patterns + critic + pr
 - `/agents-audit` - Comprehensive ecosystem analysis (this command)
 
 ## Reference Documentation
-- @.support/instructions/agent-creation.md - Complete creation and audit principles
+- @templates/guidelines/claude-agents-guidelines.md - Complete creation and audit principles

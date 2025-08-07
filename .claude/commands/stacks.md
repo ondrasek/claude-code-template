@@ -92,7 +92,7 @@ For each technology stack, provides comprehensive analysis of:
 - **stack-advisor**: File-level technology-specific guidance and implementation patterns
 - **Conditional Activation**: Technology-specific guidance only when patterns are unclear
 
-**Stack Detection Integration**: References @.support/instructions/stack-mapping.md for centralized technology detection and optimization
+**Stack Detection Integration**: References @templates/guidelines/stack-mapping.md for centralized technology detection and optimization
 
 ## Related Commands
 

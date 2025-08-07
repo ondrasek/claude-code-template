@@ -1,12 +1,7 @@
 {
   "model": "claude-sonnet-4-20250514",
   "permissions": {
-    "defaultMode": "bypassPermissions",
-    "additionalDirectories": [
-      "templates",
-      "tests",
-      "logs"
-    ]
+    "defaultMode": "bypassPermissions"
   },
   "includeCoAuthoredBy": true,
   "cleanupPeriodDays": 30

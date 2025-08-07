@@ -29,7 +29,7 @@ Triggered when specific files are being modified or created.
 
 **Process:**
 1. **File Analysis** - Examine file path(s), extract extensions, analyze context
-2. **Technology Detection** - Reference @.support/instructions/stack-mapping.md for detection rules
+2. **Technology Detection** - Reference @templates/guidelines/stack-mapping.md for detection rules
 3. **Contextual Enhancement** - Handle multi-technology files appropriately
 4. **Guideline Loading** - Load relevant stack files using @ syntax
 

@@ -6,7 +6,7 @@ allowed-tools: Task, Read, Write, Glob, Bash, WebSearch, WebFetch
 
 # Command Creation
 
-Create new slash command following guidelines from @.support/instructions/claude-commands-guidelines.md
+Create new slash command following guidelines from @templates/guidelines/claude-commands-guidelines.md
 with comprehensive redundancy analysis and validation.
 
 ## Instructions

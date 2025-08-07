@@ -6,7 +6,7 @@ allowed-tools: Task, Read, Glob, Bash
 
 # Command Compliance Review
 
-Review slash command definition for compliance with @.support/instructions/claude-commands-guidelines.md using comprehensive multi-agent analysis.
+Review slash command definition for compliance with @templates/guidelines/claude-commands-guidelines.md using comprehensive multi-agent analysis.
 
 ## Instructions
 
