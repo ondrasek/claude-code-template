@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.76.0] - 2025-08-07
+## [2.78.0] - 2025-08-07
 
 ### Added
 - **Enhanced Git-Workflow Error Handling**: Intelligent diagnostic and recovery patterns replacing generic error messages (closes #55)
