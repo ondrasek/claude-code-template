@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.72.0] - 2025-08-07
+
+### Added
+- **Dynamic Year Extraction**: Enhanced researcher agent with automatic current year detection
+  - Added mandatory dynamic_currency protocol to extract year from environment context
+  - Updated all search strategy examples to use [current_year] placeholder instead of hardcoded "2024/2025"
+  - Enhanced websearch patterns with current year extraction requirements for optimal research currency
+  - Updated documentation examples to demonstrate dynamic year usage
+  - Ensures agent always uses actual current year (e.g., 2025) without manual updates
+
 ## [2.71.0] - 2025-08-07
 
 ### Changed
