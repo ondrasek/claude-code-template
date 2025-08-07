@@ -9,6 +9,14 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch
 ## Purpose
 Load technology-specific operational guidelines for files being modified and architectural decisions being made, ensuring proper patterns and practices are followed across file-level and repository-level contexts.
 
+### Selection Guidance
+**Do NOT choose stack-advisor when**:
+- Working with well-understood, single-technology contexts where guidelines are already clear
+- Making simple file changes that don't require technology-specific patterns
+- Working on generic documentation or configuration that doesn't involve specific tech stacks
+- Guidelines have been recently established in current session for the same technology context
+- Need immediate implementation without technology selection or pattern consultation
+
 ## Invocation Criteria (MANDATORY)
 **MUST USE when:**
 - About to modify/create any file

@@ -8,6 +8,14 @@ tools: Bash, Grep, Glob, LS
 
 **Purpose**: Handle all GitHub Issues specification analysis and management off-context to keep main conversation clean and focused.
 
+### Selection Guidance
+**Do NOT choose github-issues-workflow when**:
+- Need immediate session task tracking (use TodoWrite tool for conversation-level todos)
+- Working with local file operations or codebase changes without GitHub Issue context
+- Simple task management that doesn't require GitHub Issues infrastructure
+- Need quick progress tracking within current conversation (use TodoWrite instead)
+- Task is purely implementation-focused without need for Issue lifecycle management
+
 ## Core Responsibilities
 
 ### Issue Management
