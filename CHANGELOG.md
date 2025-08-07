@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.75.0] - 2025-08-07
+
+### Changed
+- **Configuration Simplification**: Streamlined .claude/settings.json to essential minimal configuration
+  - Replaced extensive allow/deny permission lists with defaultMode: bypassPermissions for cleaner setup
+  - Removed unsupported environment variables (CLAUDE_CODE_ENABLE_TELEMETRY, CLAUDE_CODE_PROJECT_TYPE)
+  - Removed unnecessary hooks that only echo command execution
+  - Maintained same functionality with improved maintainability and reduced configuration complexity
+  - Results in cleaner user experience for Claude Code settings management
+
 ## [2.72.0] - 2025-08-07
 
 ### Added
