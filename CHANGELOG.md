@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.73.0] - 2025-08-07
+
+### Added
+- **Comprehensive Negative Triggers System**: Enhanced all agent descriptions with systematic boundary definitions
+  - Added standardized "Negative Triggers (Do Not Use)" sections to all 8 core agents
+  - Implemented 5 exclusion categories: Task Type, Context, Scale, Technology, and Timing
+  - Provided specific patterns, reasoning, and alternatives for each exclusion type
+  - Added validation checklists for proper agent selection workflow
+  - Covered 6 foundation agents (conflicts, context, critic, patterns, principles, researcher) and 2 specialists (code-cleaner, test-strategist)
+  - Included comprehensive design documentation with implementation strategy and success metrics
+  - Target 80% reduction in inappropriate agent selections through explicit boundary definitions
+
 ## [2.72.0] - 2025-08-07
 
 ### Added
