@@ -48,15 +48,18 @@ Technical approach, dependencies, constraints.
 
 **REPOSITORY**: All issues MUST be created in ondrasek/claude-code-forge repository.
 
-**Label System**:
-- **Type Labels**: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
-- **Priority Labels**: `priority:high`, `priority:medium`, `priority:low`
-- **Status Labels**: `status:pending`, `status:in-progress`, `status:completed`
-- **Migration Label**: `migrated-from-specs` (for historical tracking)
+**Dynamic Label Discovery**:
+Use `gh label list --repo ondrasek/claude-code-forge --json name,color,description` to discover available labels dynamically. Classify issues based on discovered labels:
+
+- **Type Classification**: Map issue content to available type labels (e.g., feat, fix, docs, refactor, test, chore)
+- **Priority Assignment**: Apply priority labels when available based on issue urgency
+- **Status Tracking**: Use status labels if present for workflow management
+- **Fallback Strategy**: Use generic labels like 'enhancement' when specific matches aren't found
 
 **GitHub CLI Commands**:
+- Discover labels: `gh label list --repo ondrasek/claude-code-forge --json name,color,description`
 - List all issues: `gh issue list --repo ondrasek/claude-code-forge`
-- Create new issue: `gh issue create --repo ondrasek/claude-code-forge`
+- Create new issue: `gh issue create --repo ondrasek/claude-code-forge --label $(discovered_labels)`
 - Update issue: `gh issue edit --repo ondrasek/claude-code-forge`
 - Close issue: `gh issue close --repo ondrasek/claude-code-forge`
 

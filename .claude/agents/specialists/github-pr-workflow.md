@@ -150,22 +150,42 @@ rm -f /tmp/pr_body.md
 **Create PR with intelligent defaults and error handling:**
 
 ```bash
-# 1. Detect appropriate labels based on file changes
+# 1. Discover available labels dynamically and detect appropriate labels based on file changes
+AVAILABLE_LABELS=$(gh label list --repo ondrasek/claude-code-forge --json name --jq '.[].name' 2>/dev/null | tr '\n' ' ')
 LABELS=()
+
+# File-based label detection using discovered labels
 if git diff --name-only HEAD ^origin/$BASE_BRANCH | grep -q '\.md$'; then
-    LABELS+=("documentation")
+    [[ "$AVAILABLE_LABELS" =~ "documentation" ]] && LABELS+=("documentation")
+    [[ "$AVAILABLE_LABELS" =~ "docs" ]] && LABELS+=("docs")
 fi
 if git diff --name-only HEAD ^origin/$BASE_BRANCH | grep -q 'test'; then
-    LABELS+=("testing")
+    [[ "$AVAILABLE_LABELS" =~ "testing" ]] && LABELS+=("testing")
 fi
 if git diff --name-only HEAD ^origin/$BASE_BRANCH | grep -q '\.py$\|\.js$\|\.ts$\|\.go$\|\.java$'; then
-    LABELS+=("enhancement")
+    [[ "$AVAILABLE_LABELS" =~ "enhancement" ]] && LABELS+=("enhancement")
 fi
+
+# Semantic type-based label detection using discovered labels
 if [[ "$SEMANTIC_TYPE" == "fix" ]]; then
-    LABELS+=("bug")
+    [[ "$AVAILABLE_LABELS" =~ "bug" ]] && LABELS+=("bug")
 fi
 if [[ "$SEMANTIC_TYPE" == "feat" ]]; then
-    LABELS+=("feature")
+    [[ "$AVAILABLE_LABELS" =~ "feat" ]] && LABELS+=("feat")
+    [[ "$AVAILABLE_LABELS" =~ "feature" ]] && LABELS+=("feature")
+    [[ "$AVAILABLE_LABELS" =~ "enhancement" ]] && LABELS+=("enhancement")
+fi
+if [[ "$SEMANTIC_TYPE" == "docs" ]]; then
+    [[ "$AVAILABLE_LABELS" =~ "documentation" ]] && LABELS+=("documentation")
+    [[ "$AVAILABLE_LABELS" =~ "docs" ]] && LABELS+=("docs")
+fi
+if [[ "$SEMANTIC_TYPE" == "refactor" ]]; then
+    [[ "$AVAILABLE_LABELS" =~ "refactoring" ]] && LABELS+=("refactoring")
+fi
+
+# Fallback to generic enhancement if no specific labels found
+if [[ ${#LABELS[@]} -eq 0 ]]; then
+    [[ "$AVAILABLE_LABELS" =~ "enhancement" ]] && LABELS+=("enhancement")
 fi
 
 # 2. Build label string
@@ -326,10 +346,11 @@ MEMORY STATUS: Authentication failure pattern stored for recognition
 - Maintain commit message consistency across PR lifecycle
 
 ### Intelligent Label Detection
-- File extension analysis for technology-specific labels
-- Commit message semantic analysis for type-based labels
-- Directory structure analysis for component-based labels
-- Integration with existing repository label taxonomy
+- **Dynamic Discovery**: Fetch current repository labels using `gh label list --repo ondrasek/claude-code-forge --json name,color,description`
+- **File Extension Analysis**: Map file types to discovered technology-specific labels
+- **Semantic Analysis**: Parse commit messages to match type-based labels from repository
+- **Multi-Label Support**: Apply multiple relevant labels when context supports it
+- **Fallback Strategy**: Use generic 'enhancement' label when specific matches aren't found
 
 ### Template and Automation Integration
 - Detect and use repository PR templates when available
