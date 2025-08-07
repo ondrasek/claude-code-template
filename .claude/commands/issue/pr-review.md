@@ -30,36 +30,44 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
    - Implement size limits: warn for large PRs (>100 files or >5000 lines changed)
    - Handle edge cases: orphaned branches, rebased branches, empty diffs
 
-2. **Two-Stage Agent Review Process**:
+2. **Three-Stage Sequential Agent Review Process**:
 
-   **Stage 1: Comprehensive Analysis**:
-   - `Task(pr-analyzer)`: Complete technical analysis including:
-     - Codebase context and integration scope
-     - Performance impact assessment  
-     - Test coverage and testing strategy
-     - Architectural patterns and design compliance
-     - Code quality and maintainability review
-     - Standards adherence validation
+   **Stage 1: Contextual Analysis**:
+   - `Task(context)`: Codebase context and architectural impact mapping
+     - Map affected systems, modules, and dependencies
+     - Identify architectural relationships and integration points
+     - Analyze scope of changes within broader codebase structure
+     - Provide contextual foundation for subsequent analysis
 
-   **Stage 2: Critical Assessment**:
-   - `Task(critic)`: Risk assessment and contrarian analysis based on comprehensive findings
-     - Review all technical findings for potential issues
-     - Identify risks, edge cases, and potential problems
+   **Stage 2: Technical Research**:
+   - `Task(researcher)`: Domain-specific research and technical analysis
+     - Research implications of changes using context findings
+     - Investigate patterns, best practices, and potential issues
+     - Gather technical knowledge about affected domains
+     - Analyze implementation approaches and alternatives
+
+   **Stage 3: Critical Assessment**:
+   - `Task(critic)`: Risk assessment and contrarian analysis using all findings
+     - Review context mapping and research findings for potential issues
+     - Apply contrarian perspective to identify risks and edge cases
      - Provide final recommendations with priority ranking
+     - Challenge assumptions and highlight overlooked concerns
 
-3. **Agent Context Scoping Strategy**:
-   Each agent receives:
-   - **Diff Context**: Only modified files and surrounding context (±5 lines)
-   - **File List**: Specific files to analyze (not entire codebase)
-   - **Change Summary**: Brief description of modification type (add/modify/delete)
-   - **Size Limits**: Analysis scope limited to manageable segments
-   - **Progressive Context**: Stage 2 receives Stage 1 findings for enhanced analysis
+3. **Sequential Context Building Strategy**:
+   **Stage 1 (context)**: Receives diff and change summary for architectural mapping
+   **Stage 2 (researcher)**: Receives Stage 1 context findings + diff for research analysis  
+   **Stage 3 (critic)**: Receives Stage 1 + Stage 2 findings for comprehensive critique
+   
+   Each agent builds upon previous findings:
+   - **Progressive Enhancement**: Later agents have richer information context
+   - **Cumulative Analysis**: Each stage adds depth to understanding
+   - **Size Limits**: Analysis scope remains manageable through focused delegation
 
-4. **Autonomous Command Execution**:
+4. **Autonomous Sequential Execution**:
    Execute autonomously with intelligent defaults:
-   - Analysis depth: Comprehensive review with summary presentation
+   - Analysis depth: Three-stage progressive analysis with summary presentation
    - Base branch: Auto-detect (main/master/develop)
-   - Two-agent sequential execution for optimal efficiency
+   - Sequential execution: context → researcher → critic
    - File limits: Skip review if more than 100 files changed
 
 5. **Autonomous Review Report Generation**:
@@ -111,60 +119,67 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
    - **Empty Changes**: Clear messaging when no changes detected
    - **Fallback Modes**: Basic git analysis when agents unavailable
 
-## Agent Coordination Strategy (Streamlined)
+## Agent Coordination Strategy (Sequential Pipeline)
 
-**Two-Agent Sequential Pipeline**:
+**Three-Agent Sequential Pipeline**:
 
-**Stage 1: Comprehensive Technical Analysis**
-- `pr-analyzer` agent: Multi-domain technical analysis
-  - Performs integrated analysis across all technical domains
-  - Synthesizes context, performance, testing, patterns, and quality concerns
-  - Provides comprehensive findings with specific file/line references
-  - Delivers structured analysis for Stage 2 consumption
+**Stage 1: Contextual Foundation**
+- `context` agent: Architectural impact mapping
+  - Maps affected systems, modules, and dependencies
+  - Identifies integration points and architectural relationships
+  - Provides structural context for understanding change scope
+  - Delivers contextual foundation for subsequent analysis
 
-**Stage 2: Critical Risk Assessment**
+**Stage 2: Research and Analysis**
+- `researcher` agent: Domain-specific investigation
+  - Uses contextual findings to research technical implications
+  - Investigates patterns, best practices, and potential issues
+  - Gathers domain knowledge about affected areas
+  - Analyzes implementation approaches and alternatives
+
+**Stage 3: Critical Assessment**
 - `critic` agent: Risk evaluation and contrarian analysis
-  - Reviews comprehensive findings from Stage 1
-  - Identifies risks, edge cases, and potential problems
-  - Challenges assumptions and provides contrarian perspective
+  - Reviews context mapping and research findings
+  - Applies contrarian perspective to identify overlooked risks
+  - Challenges assumptions and highlights edge cases
   - Delivers final prioritized recommendations with severity rankings
 
-**Progressive Context Building**:
-- Stage 2 receives complete Stage 1 analysis for informed criticism
-- Each stage builds upon previous findings for enhanced depth
-- Graceful degradation: Partial results if one agent fails
+**Sequential Context Building**:
+- Each stage receives all previous findings for enhanced analysis
+- Progressive information enhancement improves decision quality
+- Graceful degradation: Partial results if agents fail sequentially
 
 ## Enhanced Integration Points
 
 - **Git Workflow**: Robust `git diff` with multiple fallback strategies
-- **Agent Infrastructure**: Two-agent Task() delegation with progressive context building
+- **Agent Infrastructure**: Three-agent Task() delegation with sequential context building
 - **Error Recovery**: Graceful degradation when components fail
-- **Performance Management**: Size limits and efficient two-stage analysis
+- **Performance Management**: Size limits and efficient sequential analysis
 - **Output Standards**: Structured severity levels and specific file references
 
 ## Risk Mitigation Implementations
 
-1. **Streamlined Agent Architecture**: Two focused agents reduce coordination complexity
-2. **Comprehensive Analysis**: Single pr-analyzer synthesizes multi-domain expertise
-3. **Progressive Context Building**: Critic receives full technical analysis for informed assessment  
-4. **Fallback Strategies**: Graceful degradation with partial results
-5. **Performance Optimization**: Reduced agent count improves execution efficiency
-6. **Enhanced Error Scenarios**: Simplified error handling with two-agent model
+1. **Sequential Agent Architecture**: Three focused agents in logical sequence reduce complexity
+2. **Progressive Context Building**: Each agent builds upon previous findings for enhanced depth
+3. **Domain Specialization**: Context mapping → research → criticism leverages agent strengths
+4. **Fallback Strategies**: Graceful degradation with partial results from completed stages
+5. **Quality over Speed**: Sequential execution prioritizes thorough analysis over parallel efficiency
+6. **Enhanced Information Flow**: Later agents have richer context for better decision making
 
 ## Success Criteria (Enhanced)
 
 - Command executes reliably across various git states and branch configurations
-- Provides comprehensive analysis through streamlined two-agent pipeline
+- Provides comprehensive analysis through sequential three-agent pipeline
 - Output includes severity-graded issues with specific file locations
-- Improved performance through reduced agent overhead
-- Error conditions provide actionable guidance for user resolution  
-- Maintains analysis depth through synthesis approach
+- Enhanced analysis quality through progressive context building
+- Error conditions provide actionable guidance for user resolution
+- Maintains optimal balance of thoroughness and efficiency
 
 ## Implementation Notes
 
 **Diff Analysis Scope**: Focus on `git diff main...HEAD` with validation and fallbacks
-**Two-Agent Pipeline**: pr-analyzer → critic with progressive context building
-**Agent Context Delivery**: Stage 1 receives diff context, Stage 2 receives Stage 1 findings
-**Performance Optimization**: Reduced coordination overhead with streamlined architecture
-**Error Reporting**: Simplified error handling with two-agent model
-**Extensibility**: pr-analyzer can incorporate additional analysis domains as needed
+**Three-Agent Pipeline**: context → researcher → critic with sequential context building
+**Agent Context Delivery**: Each stage receives all previous findings plus diff context
+**Sequential Optimization**: Prioritizes analysis depth over execution speed
+**Error Reporting**: Graceful degradation with partial results from completed stages
+**Extensibility**: Each agent can evolve independently while maintaining pipeline integrity
