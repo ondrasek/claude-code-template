@@ -230,7 +230,7 @@ fi
 
 #### Diagnostic Framework
 
-**Phase 1: Environment Analysis**
+**High Priority: Environment Analysis**
 ```bash
 echo "🔍 GITHUB INTEGRATION DIAGNOSIS"
 echo "================================"
@@ -250,7 +250,7 @@ echo "Network Test:"
 curl -s --connect-timeout 5 https://api.github.com/zen && echo "✅ GitHub API reachable" || echo "❌ GitHub API unreachable"
 ```
 
-**Phase 2: Problem Classification and Resolution**
+**High Priority: Problem Classification and Resolution (depends on environment analysis)**
 1. Identify symptom category from error messages
 2. Determine root cause through systematic API testing
 3. Assess impact scope (authentication, permissions, network)

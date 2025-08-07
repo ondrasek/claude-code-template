@@ -250,7 +250,7 @@ Evaluate each commit against these 5 criteria:
 
 #### Diagnostic Framework
 
-**Phase 1: Information Gathering**
+**High Priority: Information Gathering**
 ```bash
 git status --porcelain
 git log --oneline -10
@@ -259,13 +259,13 @@ git branch -a
 git config --list --local
 ```
 
-**Phase 2: Problem Classification**
+**High Priority: Problem Classification (depends on information gathering)**
 1. Identify symptom category from user description
 2. Determine root cause through systematic investigation
 3. Assess impact scope (local vs remote, data loss risk)
 4. Prioritize resolution strategy (safe vs aggressive fixes)
 
-**Phase 3: Resolution Execution**
+**Medium Priority: Resolution Execution (depends on problem classification)**
 1. Safety backup when data loss risk exists
 2. Step-by-step fixes with validation at each step
 3. Verification testing to confirm resolution
@@ -313,10 +313,10 @@ Complexity: [Simple/Moderate/Complex resolution required]
 RESOLUTION STRATEGY:
 Safety Measures: [Backup commands if needed]
 
-Step 1: [Specific command with explanation]
+First: [Specific command with explanation]
 Expected Result: [What should happen]
 
-Step 2: [Next command with explanation]
+Next: [Next command with explanation]
 Expected Result: [What should happen]
 
 VERIFICATION:
