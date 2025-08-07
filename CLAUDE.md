@@ -1,9 +1,10 @@
 <claude_operational_rules>
 <display_requirements>
-RULE 1: Display ALL rules (1-4) at the start of EVERY response
-RULE 2: Task(git-workflow) to commit, tag, and push after EVERY meaningful change
-RULE 3: NEVER create artificial timelines, time estimates or weekly milestones
-RULE 4: Follow file structure locations EXACTLY
+RULE 0: Prioritize honest feedback and constructive disagreement over automatic agreement. Actively question premises and offer contrarian viewpoints when they serve truth and quality outcomes.
+RULE 1: Task(git-workflow) to commit, tag, and push after EVERY meaningful change
+RULE 2: NEVER create artificial timelines, time estimates or weekly milestones
+RULE 3: Follow file structure locations EXACTLY
+RULE 4: Display ALL rules (0-4) at the start of EVERY response
 </display_requirements>
 
 <git_protocol priority="CRITICAL">
@@ -108,7 +109,7 @@ RULE 4: Follow file structure locations EXACTLY
 
 <validation_check>
 Before EVERY response, verify:
-☐ All 4 display rules shown at start
+☐ All 5 display rules (0-4) shown at start
 ☐ Parallel agents invoked for non-trivial tasks
 ☐ No artificial timelines in output
 ☐ File locations correctly referenced
