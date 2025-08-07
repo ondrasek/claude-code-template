@@ -39,6 +39,61 @@ Expert at critical analysis and constructive disagreement using persistent knowl
 - Need code improvement suggestions (use foundation-patterns)
 - Focus is on positive validation rather than risk identification
 
+## Negative Triggers (Do Not Use)
+
+### Task Type Exclusions
+- ❌ **Pattern**: "create new solution", "generate ideas", "brainstorm options", "design approach"
+- ❌ **Reasoning**: This agent evaluates and challenges existing proposals, not creation of new ones
+- ❌ **Alternative**: Use creative problem-solving or design-focused agents for idea generation
+
+- ❌ **Pattern**: "implement solution", "write code", "build feature", "develop functionality"
+- ❌ **Reasoning**: Agent provides analysis and criticism, not implementation
+- ❌ **Alternative**: Use implementation-focused agents or direct development approaches
+
+- ❌ **Pattern**: "resolve conflicts", "choose between options", "make final decision"
+- ❌ **Reasoning**: Agent identifies risks and provides perspective, not decision resolution
+- ❌ **Alternative**: Use foundation-conflicts agent for decision mediation and resolution
+
+### Context Exclusions
+- ❌ **Pattern**: "initial brainstorming", "creative exploration", "open-ended research"
+- ❌ **Reasoning**: Agent most effective when concrete proposals exist to analyze
+- ❌ **Alternative**: Use creative and research-focused approaches during initial exploration
+
+- ❌ **Pattern**: "positive validation", "confirm good approach", "approve solution"
+- ❌ **Reasoning**: Agent specializes in critical analysis and risk identification, not validation
+- ❌ **Alternative**: Use validation-focused agents or approval processes for positive assessment
+
+### Scale Exclusions
+- ❌ **Pattern**: "trivial decision", "low-risk change", "minor implementation detail"
+- ❌ **Reasoning**: Agent overhead not justified for decisions with minimal impact or risk
+- ❌ **Alternative**: Direct decision-making or simple review processes for low-impact changes
+
+- ❌ **Pattern**: "well-established approach", "proven solution", "standard implementation"
+- ❌ **Reasoning**: Agent most valuable for novel or high-risk approaches requiring scrutiny
+- ❌ **Alternative**: Use standard implementation processes for well-established approaches
+
+### Technology Exclusions
+- ❌ **Pattern**: "mature technology", "well-documented approach", "widely-adopted solution"
+- ❌ **Reasoning**: Agent focuses on challenging assumptions for newer or riskier approaches
+- ❌ **Alternative**: Follow standard practices for mature, well-established technologies
+
+### Timing Exclusions
+- ❌ **Pattern**: "before proposal exists", "during initial planning", "idea formation phase"
+- ❌ **Reasoning**: Agent requires concrete proposals or approaches to analyze and challenge
+- ❌ **Alternative**: Use planning and ideation tools before concrete proposals are developed
+
+- ❌ **Pattern**: "after decision finalized", "post-implementation", "during execution"
+- ❌ **Reasoning**: Agent most effective during decision-making phase before commitment
+- ❌ **Alternative**: Use monitoring and adjustment processes for post-decision analysis
+
+## Selection Validation
+Before using this agent, verify:
+☐ Concrete proposal, plan, or approach exists to analyze
+☐ Decision involves significant risk or potential negative consequences
+☐ Need devil's advocate perspective or alternative viewpoints
+☐ Stakes justify comprehensive risk analysis and criticism
+☐ Timing aligns with pre-decision phase when changes are still feasible
+
 ## Core Capabilities
 - **Memory-Based Risk Analysis**: Build on previous risk discoveries and assessments
 - **Historical Failure Tracking**: Monitor how risks materialized in past decisions

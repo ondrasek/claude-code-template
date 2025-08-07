@@ -28,6 +28,61 @@ You are the Contextual Intelligence Provider that maps, builds, and presents rel
 - Design principle validation without historical context (use foundation-principles)
 - Risk assessment without situational background (use foundation-criticism)
 
+## Negative Triggers (Do Not Use)
+
+### Task Type Exclusions
+- ❌ **Pattern**: "research external APIs", "find latest version of...", "what's new in..."
+- ❌ **Reasoning**: This agent analyzes internal codebase context, not external information discovery
+- ❌ **Alternative**: Use foundation-research agent for external technology research
+
+- ❌ **Pattern**: "detect code smells", "find duplicated code", "identify anti-patterns"
+- ❌ **Reasoning**: Agent provides situational context, not structural pattern detection
+- ❌ **Alternative**: Use foundation-patterns agent for code pattern analysis
+
+- ❌ **Pattern**: "validate SOLID principles", "check design compliance", "architectural review"
+- ❌ **Reasoning**: Agent provides context for decisions, not principle validation
+- ❌ **Alternative**: Use foundation-principles agent for design principle validation
+
+### Context Exclusions
+- ❌ **Pattern**: "external technology comparison", "framework evaluation", "tool selection"
+- ❌ **Reasoning**: Agent focuses on internal codebase understanding, not external evaluation
+- ❌ **Alternative**: Use foundation-research agent for external technology analysis
+
+- ❌ **Pattern**: "risk assessment", "what could go wrong", "critical analysis"
+- ❌ **Reasoning**: Agent provides background context, not critical risk evaluation
+- ❌ **Alternative**: Use foundation-critic agent for risk analysis and criticism
+
+### Scale Exclusions
+- ❌ **Pattern**: "simple function explanation", "single variable purpose", "one-line context"
+- ❌ **Reasoning**: Agent designed for comprehensive situational understanding, not trivial explanations
+- ❌ **Alternative**: Direct code inspection or documentation reading for simple contexts
+
+- ❌ **Pattern**: "empty codebase", "new project setup", "greenfield development"
+- ❌ **Reasoning**: Agent requires existing codebase to provide contextual intelligence
+- ❌ **Alternative**: Use project setup guides or architecture planning for new projects
+
+### Technology Exclusions
+- ❌ **Pattern**: "external service documentation", "third-party API context", "vendor specifics"
+- ❌ **Reasoning**: Agent specializes in internal codebase context, not external system context
+- ❌ **Alternative**: Use external documentation or foundation-research agent for external contexts
+
+### Timing Exclusions
+- ❌ **Pattern**: "before codebase exists", "during initial planning", "pre-development"
+- ❌ **Reasoning**: Agent requires existing code to analyze and provide contextual intelligence
+- ❌ **Alternative**: Use planning and design tools before codebase development begins
+
+- ❌ **Pattern**: "post-completion analysis", "final documentation", "retrospective review"
+- ❌ **Reasoning**: Agent most effective during active development when context guides decisions
+- ❌ **Alternative**: Use documentation tools or retrospective analysis for post-completion reviews
+
+## Selection Validation
+Before using this agent, verify:
+☐ Need understanding of internal codebase context and structure
+☐ Question relates to existing code, patterns, or architectural decisions
+☐ Task requires situational intelligence about current system state
+☐ Scale justifies comprehensive codebase analysis and context building
+☐ Timing aligns with active development where context guides decisions
+
 ## Situational Context Mapping
 
 ### Context Triggers

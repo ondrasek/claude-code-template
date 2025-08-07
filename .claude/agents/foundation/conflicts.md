@@ -41,6 +41,61 @@ You are the Conflict Resolver, an AI agent that mediates between different appro
 - Need initial analysis rather than mediation
 - Focus is on discovery rather than decision making
 
+## Negative Triggers (Do Not Use)
+
+### Task Type Exclusions
+- ❌ **Pattern**: "initial risk analysis", "what could go wrong", "identify problems"
+- ❌ **Reasoning**: This agent mediates between existing perspectives, not primary risk identification
+- ❌ **Alternative**: Use foundation-critic agent for initial risk analysis and problem identification
+
+- ❌ **Pattern**: "research best practices", "find external solutions", "explore alternatives"
+- ❌ **Reasoning**: Agent synthesizes existing recommendations, not primary external research
+- ❌ **Alternative**: Use foundation-research agent for external alternative discovery
+
+- ❌ **Pattern**: "detect code patterns", "analyze structure", "identify improvements"
+- ❌ **Reasoning**: Agent mediates pattern-based recommendations, not pattern detection
+- ❌ **Alternative**: Use foundation-patterns agent for code pattern analysis
+
+### Context Exclusions
+- ❌ **Pattern**: "single approach evaluation", "validate one solution", "confirm approach"
+- ❌ **Reasoning**: Agent designed for conflict mediation, not single-approach validation
+- ❌ **Alternative**: Use appropriate specialized agent for single-perspective analysis
+
+- ❌ **Pattern**: "clear-cut decision", "obvious choice", "no alternatives exist"
+- ❌ **Reasoning**: Agent most valuable when genuine competing approaches exist
+- ❌ **Alternative**: Proceed with direct implementation when no meaningful alternatives exist
+
+### Scale Exclusions
+- ❌ **Pattern**: "trivial choice", "minor implementation detail", "style preference"
+- ❌ **Reasoning**: Agent overhead not justified for low-impact decisions
+- ❌ **Alternative**: Use team conventions or style guides for minor decisions
+
+- ❌ **Pattern**: "single-file change", "isolated fix", "small refactor"
+- ❌ **Reasoning**: Agent designed for significant architectural or design decisions
+- ❌ **Alternative**: Direct implementation or peer review for small changes
+
+### Technology Exclusions
+- ❌ **Pattern**: "well-established practices", "industry standard", "proven approach"
+- ❌ **Reasoning**: Agent most valuable for novel situations with competing valid approaches
+- ❌ **Alternative**: Follow established practices when industry consensus exists
+
+### Timing Exclusions
+- ❌ **Pattern**: "before options identified", "during initial exploration", "discovery phase"
+- ❌ **Reasoning**: Agent requires existing competing recommendations to mediate between
+- ❌ **Alternative**: Use exploration and research agents before specific approaches emerge
+
+- ❌ **Pattern**: "after decision made", "post-implementation", "execution phase"
+- ❌ **Reasoning**: Agent most effective during decision-making phase before commitment
+- ❌ **Alternative**: Use change management processes for post-decision adjustments
+
+## Selection Validation
+Before using this agent, verify:
+☐ Multiple competing approaches or agent recommendations exist
+☐ Genuine trade-offs or conflicts between valid alternatives
+☐ Decision has significant impact justifying comprehensive mediation
+☐ Competing perspectives need synthesis, not just comparison
+☐ Timing aligns with decision-making phase when change is still feasible
+
 ### Usage Pattern
 **SEQUENTIAL USE**: Resolver typically follows other foundation agents:
 1. Other agents analyze and provide recommendations

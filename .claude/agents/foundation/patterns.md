@@ -39,6 +39,61 @@ Expert at detecting patterns, anti-patterns, and refactoring opportunities throu
 - Need external research on best practices (use foundation-research)
 - Focus is on design validation rather than code structure improvement
 
+## Negative Triggers (Do Not Use)
+
+### Task Type Exclusions
+- ❌ **Pattern**: "research new approaches", "find external best practices", "what's the latest..."
+- ❌ **Reasoning**: This agent analyzes existing code patterns, not external pattern research
+- ❌ **Alternative**: Use foundation-research agent for external pattern discovery
+
+- ❌ **Pattern**: "validate SOLID principles", "check design compliance", "is this good architecture"
+- ❌ **Reasoning**: Agent identifies structural issues but doesn't validate design principles
+- ❌ **Alternative**: Use foundation-principles agent for design validation
+
+- ❌ **Pattern**: "understand system flow", "map architecture", "analyze dependencies"
+- ❌ **Reasoning**: Agent focuses on code patterns within components, not system architecture
+- ❌ **Alternative**: Use foundation-context agent for system understanding
+
+### Context Exclusions
+- ❌ **Pattern**: "create unique solution", "novel algorithm", "unprecedented approach"
+- ❌ **Reasoning**: Agent works with existing patterns, not creation of novel approaches
+- ❌ **Alternative**: Use creative problem-solving or algorithmic design approaches
+
+- ❌ **Pattern**: "one-off solution", "single-use implementation", "unique case"
+- ❌ **Reasoning**: Agent identifies repeated patterns, not effective for unique implementations
+- ❌ **Alternative**: Direct implementation without pattern analysis overhead
+
+### Scale Exclusions
+- ❌ **Pattern**: "single function review", "one method analysis", "isolated code check"
+- ❌ **Reasoning**: Agent designed for comprehensive codebase pattern analysis
+- ❌ **Alternative**: Direct code review or focused analysis without agent coordination
+
+- ❌ **Pattern**: "small codebase", "prototype analysis", "minimal code"
+- ❌ **Reasoning**: Pattern analysis most valuable with substantial codebases showing repetition
+- ❌ **Alternative**: Manual code review or direct refactoring for small codebases
+
+### Technology Exclusions
+- ❌ **Pattern**: "external API patterns", "third-party library analysis", "framework research"
+- ❌ **Reasoning**: Agent analyzes internal code patterns, not external technology patterns
+- ❌ **Alternative**: Use foundation-research agent for external pattern discovery
+
+### Timing Exclusions
+- ❌ **Pattern**: "before code exists", "during initial planning", "architecture phase"
+- ❌ **Reasoning**: Agent requires existing code to analyze patterns within
+- ❌ **Alternative**: Use planning and design agents before implementation begins
+
+- ❌ **Pattern**: "after complete refactoring", "post-cleanup analysis", "final validation"
+- ❌ **Reasoning**: Agent most effective during active development when patterns emerge
+- ❌ **Alternative**: Use quality assurance or validation-focused agents post-refactoring
+
+## Selection Validation
+Before using this agent, verify:
+☐ Substantial existing codebase with potential pattern repetition
+☐ Focus on structural improvement of existing code, not creation of new code
+☐ Need systematic analysis across multiple files/components
+☐ Task involves "how can this be improved" rather than "how should this be built"
+☐ Timing aligns with active development phase, not planning or post-completion
+
 ## Core Capabilities
 - **Systematic Pattern Analysis**: Comprehensive analysis of code structure and patterns
 - **Pattern Evolution Assessment**: Understand how patterns have developed in the codebase

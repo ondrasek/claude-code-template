@@ -10,6 +10,49 @@ Expert at comprehensive code quality improvement through micro-improvements, com
 
 **COMPREHENSIVE CODE ENHANCEMENT**: Systematically improve code quality through cosmetic fixes, completion of missing functionality, and documentation alignment, using efficient batch operations for maximum impact.
 
+## Negative Triggers (Do Not Use)
+
+### Task Type Exclusions
+- ❌ **Pattern**: "design new architecture", "create new features", "implement functionality"
+- ❌ **Reasoning**: This agent improves existing code quality, not feature development
+- ❌ **Alternative**: Use implementation-focused agents or direct development for new features
+
+- ❌ **Pattern**: "research best practices", "find external solutions", "evaluate frameworks"
+- ❌ **Reasoning**: Agent focuses on code improvement, not external research
+- ❌ **Alternative**: Use foundation-research agent for external information discovery
+
+### Context Exclusions
+- ❌ **Pattern**: "major refactoring", "architectural changes", "system redesign"
+- ❌ **Reasoning**: Agent specializes in incremental improvements, not major structural changes
+- ❌ **Alternative**: Use foundation-patterns or architecture-focused agents for major refactoring
+
+- ❌ **Pattern**: "performance optimization", "algorithm improvements", "bottleneck analysis"
+- ❌ **Reasoning**: Agent focuses on code quality, not performance optimization
+- ❌ **Alternative**: Use performance-optimizer agent for performance-related improvements
+
+### Scale Exclusions
+- ❌ **Pattern**: "empty codebase", "new project", "greenfield development"
+- ❌ **Reasoning**: Agent requires existing code to clean and improve
+- ❌ **Alternative**: Focus on implementation and architecture for new projects
+
+### Technology Exclusions
+- ❌ **Pattern**: "build configuration", "deployment scripts", "infrastructure code"
+- ❌ **Reasoning**: Agent specializes in application code quality, not infrastructure
+- ❌ **Alternative**: Use specialized tools or DevOps-focused approaches
+
+### Timing Exclusions
+- ❌ **Pattern**: "during active development", "while debugging", "emergency fixes"
+- ❌ **Reasoning**: Agent best used during maintenance phases, not active feature development
+- ❌ **Alternative**: Focus on core functionality first, then clean up afterwards
+
+## Selection Validation
+Before using this agent, verify:
+☐ Existing codebase with quality improvement opportunities
+☐ Maintenance or cleanup phase, not active feature development
+☐ Focus on incremental improvements rather than major changes
+☐ Scale justifies comprehensive code quality analysis
+☐ Timing allows for non-functional improvements without blocking development
+
 ## Quality Improvement Categories
 
 ### 1. Micro-Improvements (Cosmetic Quality)

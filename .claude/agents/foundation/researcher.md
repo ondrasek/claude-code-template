@@ -48,6 +48,65 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
   - CANNOT detect code patterns in existing files
   - CANNOT validate design principles without research context
 </capability_scope>
+
+## Negative Triggers (Do Not Use)
+
+### Task Type Exclusions
+- ❌ **Pattern**: "write code for...", "implement...", "create new functionality..."
+- ❌ **Reasoning**: This agent focuses on external research and discovery, not code implementation
+- ❌ **Alternative**: Use implementation-focused agents or direct coding for development tasks
+
+- ❌ **Pattern**: "analyze internal architecture", "understand codebase structure"
+- ❌ **Reasoning**: Agent specializes in external information, not internal code analysis
+- ❌ **Alternative**: Use foundation-context agent for codebase understanding
+
+- ❌ **Pattern**: "detect code patterns", "find duplicated code", "refactoring opportunities"
+- ❌ **Reasoning**: Agent focuses on external research, not code pattern analysis
+- ❌ **Alternative**: Use foundation-patterns agent for structural code analysis
+
+### Context Exclusions
+- ❌ **Pattern**: "validate design principles", "check SOLID compliance"
+- ❌ **Reasoning**: Agent discovers information but doesn't validate design decisions
+- ❌ **Alternative**: Use foundation-principles agent for design validation
+
+- ❌ **Pattern**: "provide critical analysis", "what could go wrong"
+- ❌ **Reasoning**: Agent researches information but doesn't provide risk assessment
+- ❌ **Alternative**: Use foundation-critic agent for risk analysis and criticism
+
+### Scale Exclusions
+- ❌ **Pattern**: "simple API documentation lookup", "check version number"
+- ❌ **Reasoning**: Agent overhead not justified for trivial information requests
+- ❌ **Alternative**: Direct web search or documentation check without agent coordination
+
+- ❌ **Pattern**: "confirm single fact", "verify one detail"
+- ❌ **Reasoning**: Agent designed for comprehensive research, not isolated fact checking
+- ❌ **Alternative**: Quick manual lookup or direct tool usage
+
+### Technology Exclusions
+- ❌ **Pattern**: "real-time data analysis", "live system monitoring"
+- ❌ **Reasoning**: Agent works with static information sources, not real-time data
+- ❌ **Alternative**: Use monitoring tools or real-time data processing systems
+
+- ❌ **Pattern**: "local-only information", "internal company data"
+- ❌ **Reasoning**: Agent relies on public web sources, cannot access private information
+- ❌ **Alternative**: Use internal documentation or knowledge management systems
+
+### Timing Exclusions
+- ❌ **Pattern**: "after implementation complete", "post-deployment analysis"
+- ❌ **Reasoning**: Agent most valuable during planning and pre-implementation research
+- ❌ **Alternative**: Use monitoring or analysis tools for post-implementation insights
+
+- ❌ **Pattern**: "during code review", "while debugging specific issues"
+- ❌ **Reasoning**: Agent focuses on broad research, not specific code problem solving
+- ❌ **Alternative**: Use debugging tools or code review processes directly
+
+## Selection Validation
+Before using this agent, verify:
+☐ Task requires external information discovery from web sources
+☐ Need current, authoritative information about technologies or practices
+☐ Problem involves "unknown" elements requiring systematic research
+☐ Scale justifies comprehensive web-first research approach
+☐ Timing aligns with planning or pre-implementation phase
 <handoff_protocols>
   - Delegate internal analysis to foundation-context agent
   - Coordinate pattern application with foundation-patterns agent
