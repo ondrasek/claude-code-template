@@ -1,27 +1,37 @@
 ---
 description: Sequential agent pipeline for pull request analysis using context-research-critique pattern.
+argument-hint: Optional issue number for specific PR review.
 allowed-tools: Task, Bash, Grep, Read, LS
 ---
 
 # PR Review Analysis
 
-Execute sequential three-agent pipeline for comprehensive pull request analysis on current branch.
+Execute sequential three-agent pipeline for pull request analysis. Use $ARGUMENTS for issue number or auto-detect from current branch.
 
 ## Instructions
 
-<git_analysis priority="HIGH">
+<scope_determination priority="CRITICAL">
+<argument_processing>
+if $ARGUMENTS provided:
+  - Parse issue number from $ARGUMENTS
+  - Fetch PR details using GitHub CLI: `gh pr view $ARGUMENTS`
+  - Extract branch information and diff scope from PR data
+else:
+  - Auto-detect from current branch (feature/issue-N pattern)
+  - Use current branch vs base for analysis scope
+</argument_processing>
 <validation>
 1. Validate git state: check for detached HEAD, merge conflicts, uncommitted changes
-2. Detect current branch and base branch (main/master/develop)
-3. Extract diff using `git diff main...HEAD` with fallback strategies
+2. Determine analysis scope: specific PR or current branch changes
+3. Extract appropriate diff using determined scope
 4. Skip if >100 files changed (report size limit exceeded)
 </validation>
-</git_analysis>
+</scope_determination>
 
 <sequential_pipeline priority="CRITICAL">
 <stage_1>
 Task(context): Codebase context and architectural impact mapping
-- Analyze git diff for affected systems and dependencies
+- Analyze determined diff scope for affected systems and dependencies
 - Map integration points and architectural relationships  
 - Identify scope of changes within codebase structure
 - Output: Contextual foundation for subsequent analysis
