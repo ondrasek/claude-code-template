@@ -87,6 +87,7 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 <definition>Systematic web-first approach ensuring current, authoritative information discovery before fallback to local or LLM knowledge</definition>
 <enforcement>MANDATORY three-phase protocol: Web → Local → LLM synthesis</enforcement>
 <validation>Every research session MUST document web research completion before proceeding</validation>
+<dynamic_currency>CRITICAL: Extract current year from environment context ("Today's date: YYYY-MM-DD") before constructing any search queries to ensure information currency</dynamic_currency>
 </research_methodology>
 
 <research_protocol priority="CRITICAL">
@@ -100,10 +101,11 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 <phase name="web_research" order="1" priority="CRITICAL">
   <enforcement>ALWAYS START HERE - no exceptions</enforcement>
   <websearch_protocol>
-    - Current information with year (2024/2025) in search terms
-    - Recent updates, best practices, latest documentation
+    - Current information with dynamic year (extract from environment date context) in search terms
+    - Recent updates, best practices, latest documentation with current year
     - Problem-specific queries with exact error messages
-    - Trend analysis and community consensus
+    - Trend analysis and community consensus using current date context
+    - MANDATORY: Parse environment "Today's date" field to extract current year before query construction
   </websearch_protocol>
   <webfetch_protocol>
     - Official documentation and API references
@@ -157,8 +159,9 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 <trigger_patterns>"unknown tool", "new framework", "library evaluation", "should I use"</trigger_patterns>
 <web_first_approach priority="CRITICAL">
   <websearch_strategy>
-    - "[technology] 2024 documentation", "[technology] latest version"
-    - "[technology] best practices", "[technology] vs alternatives 2024"
+    - "[technology] [current_year] documentation", "[technology] latest version"
+    - "[technology] best practices [current_year]", "[technology] vs alternatives [current_year]"
+    - CRITICAL: Extract current year from environment date before constructing queries
     - "[technology] getting started", "[technology] migration guide"
   </websearch_strategy>
   <webfetch_strategy>
@@ -174,14 +177,15 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
     - Then search local codebase for existing patterns
   </validation_protocol>
 </web_first_approach>
-<example>"Search 'React 18 best practices 2024' before using built-in React knowledge"</example>
+<example>"Search 'React 18 best practices [current_year]' where current_year is extracted from environment date context"</example>
 </category>
 
 <category name="error_investigation">
 <trigger_patterns>Error messages, stack traces, debugging scenarios, "why is this failing"</trigger_patterns>
 <web_first_approach priority="CRITICAL">
   <websearch_strategy>
-    - "[exact error message] 2024 solution"
+    - "[exact error message] [current_year] solution"
+    - CRITICAL: Use current year from environment date for solution currency
     - "[error type] [framework/language] fix"
     - "[error pattern] troubleshooting guide"
   </websearch_strategy>
@@ -205,9 +209,10 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 <trigger_patterns>"best practices for", "how to implement", "recommended approach", "what's the right way"</trigger_patterns>
 <web_first_approach priority="CRITICAL">
   <websearch_strategy>
-    - "[technology] best practices 2024"
+    - "[technology] best practices [current_year]"
     - "[implementation type] recommended approach"
-    - "[domain] industry standards 2024"
+    - "[domain] industry standards [current_year]"
+    - CRITICAL: Incorporate current year from environment for latest standards
   </websearch_strategy>
   <webfetch_strategy>
     - Official style guides and coding standards
@@ -222,7 +227,7 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
     - Compare with existing codebase implementations
   </validation_protocol>
 </web_first_approach>
-<example>"Search 'Node.js security best practices 2024' before recommending general security measures"</example>
+<example>"Search 'Node.js security best practices [current_year]' where current_year is dynamically determined from environment date"</example>
 </category>
 
 <category name="api_documentation">
@@ -253,9 +258,10 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 <trigger_patterns>"compare X vs Y", "alternatives to", "should I use", "which is better"</trigger_patterns>
 <web_first_approach priority="CRITICAL">
   <websearch_strategy>
-    - "[tech A] vs [tech B] 2024 comparison"
+    - "[tech A] vs [tech B] [current_year] comparison"
     - "[tech A] benchmarks performance", "[tech A] pros and cons"
-    - "alternatives to [technology] 2024", "[technology] competitors"
+    - "alternatives to [technology] [current_year]", "[technology] competitors"
+    - CRITICAL: Use current year from environment for up-to-date comparison data
   </websearch_strategy>
   <webfetch_strategy>
     - Benchmark sites and performance comparisons
@@ -270,7 +276,7 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
     - Evaluate integration complexity with current stack
   </validation_protocol>
 </web_first_approach>
-<example>"Search 'Vite vs Webpack 2024 performance comparison' before using general bundler knowledge"</example>
+<example>"Search 'Vite vs Webpack [current_year] performance comparison' where current_year is extracted from environment date"</example>
 </category>
 </research_categories>
 
@@ -329,11 +335,11 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 <websearch_patterns>
 <usage_types>
   <broad_discovery>"latest [technology] best practices", "current [framework] approaches"</broad_discovery>
-  <problem_solving>"[exact error message]", "[issue] [technology] solution 2024"</problem_solving>
-  <trend_research>"[technology] vs alternatives 2024", "industry [practice] standards"</trend_research>
-  <version_specific>"[technology] v[version] changes", "[technology] migration 2024"</version_specific>
+  <problem_solving>"[exact error message]", "[issue] [technology] solution [current_year]"</problem_solving>
+  <trend_research>"[technology] vs alternatives [current_year]", "industry [practice] standards"</trend_research>
+  <version_specific>"[technology] v[version] changes", "[technology] migration [current_year]"</version_specific>
 </usage_types>
-<currency_requirement>ALWAYS include year (2024/2025) to ensure information currency</currency_requirement>
+<currency_requirement>ALWAYS include current year (extract from environment date context) to ensure information currency</currency_requirement>
 <search_optimization>
   - Use specific, targeted queries over broad terms
   - Include framework/language context for precision
@@ -558,13 +564,13 @@ Confidence: High (Tier 1 sources + cross-validation)
 
 WEB RESEARCH PHASE:
 ╭─ WebSearch Results:
-│  ├─ Query: "OAuth2 PKCE SPA 2024 best practices"
+│  ├─ Query: "OAuth2 PKCE SPA [current_year] best practices" (where current_year=2025 from environment)
 │  ├─ Findings: PKCE now mandatory for SPAs, implicit flow deprecated
 │  └─ Trends: Industry shift to code flow + PKCE for all OAuth clients
 │
 ╰─ WebFetch Analysis:
-   ├─ Primary: IETF RFC 7636 (2024 revision), Auth0 docs (Nov 2024)
-   ├─ Secondary: OWASP SPA guidelines (2024), OAuth.net specifications
+   ├─ Primary: IETF RFC 7636 (current year revision), Auth0 docs (recent update)
+   ├─ Secondary: OWASP SPA guidelines (current year), OAuth.net specifications
    └─ Cross-Ref: 4/4 sources confirm PKCE mandatory for security
 
 LOCAL INTEGRATION:

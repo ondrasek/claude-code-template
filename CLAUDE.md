@@ -2,7 +2,7 @@
 <display_requirements>
 RULE 1: Display ALL rules (1-4) at the start of EVERY response
 RULE 2: Task(git-workflow) to commit, tag, and push after EVERY meaningful change
-RULE 3: NEVER create artificial timelines or weekly milestones
+RULE 3: NEVER create artificial timelines, time estimates or weekly milestones
 RULE 4: Follow file structure locations EXACTLY
 </display_requirements>
 
@@ -47,27 +47,27 @@ RULE 4: Follow file structure locations EXACTLY
 <specification_management priority="CRITICAL">
 <github_issues_protocol>
   <definition>Specifications are detailed planning documents that define requirements, implementation approaches, and project deliverables managed through GitHub Issues in ondrasek/claude-code-forge repository</definition>
-  
+
   <location>GitHub Issues in ondrasek/claude-code-forge (ABSOLUTE - never use local files)</location>
-  
+
   <agent_delegation>
     <primary_agent>github-issues-workflow (PROACTIVELY use when user mentions tasks, specs, requirements, or asks 'create issue', 'track progress', 'remember to do')</primary_agent>
     <non_trivial_task_definition>Operations requiring more than 2 tool invocations, affecting multiple files, or involving agent coordination</non_trivial_task_definition>
     <coordination>All specification lifecycle management MUST be delegated to github-issues-workflow agent to prevent context pollution</coordination>
     <commands>Use /issue commands: /issue create, /issue review, /issue cleanup, /issue next</commands>
   </agent_delegation>
-  
+
   <issue_format>
     <structure>GitHub Issues with proper labels and metadata</structure>
     <naming>Descriptive issue titles derived from specification descriptions</naming>
     <template>
       ## Description
       Clear description of requirements and scope.
-      
+
       ## Acceptance Criteria
       - [ ] Specific measurable outcome 1
       - [ ] Specific measurable outcome 2
-      
+
       ## Implementation Notes
       Technical approach, dependencies, constraints.
     </template>
@@ -78,7 +78,7 @@ RULE 4: Follow file structure locations EXACTLY
       - Migration: migrated-from-specs (for historical tracking)
     </labels>
   </issue_format>
-  
+
   <operational_rules>
     <context_separation>GitHub Issues management happens OFF-CONTEXT via github-issues-workflow agent to keep main conversation clean</context_separation>
     <autonomous_operation>github-issues-workflow handles full issue lifecycle independently without main thread interaction</autonomous_operation>
@@ -94,7 +94,7 @@ RULE 4: Follow file structure locations EXACTLY
       - Close issue: gh issue close --repo ondrasek/claude-code-forge
     </github_commands>
   </operational_rules>
-  
+
   <namespace_separation>
     <purpose>GitHub Issues are distinct from Claude Code's built-in TodoWrite functionality</purpose>
     <differentiation>
