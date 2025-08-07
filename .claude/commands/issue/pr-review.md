@@ -18,7 +18,8 @@ if $ARGUMENTS provided:
   - Extract branch information and diff scope from PR data
 else:
   - Auto-detect from current branch (feature/issue-N pattern)
-  - Use current branch vs base for analysis scope
+  - Extract git log since branch diverged: `git log main...HEAD --oneline`
+  - Use current branch vs base for analysis scope including commit history
 </argument_processing>
 <validation>
 1. Validate git state: check for detached HEAD, merge conflicts, uncommitted changes
@@ -31,10 +32,11 @@ else:
 <sequential_pipeline priority="CRITICAL">
 <stage_1>
 Task(context): Codebase context and architectural impact mapping
-- Analyze determined diff scope for affected systems and dependencies
+- Analyze determined diff scope and commit history for affected systems and dependencies
 - Map integration points and architectural relationships  
 - Identify scope of changes within codebase structure
-- Output: Contextual foundation for subsequent analysis
+- Consider commit progression and development patterns
+- Output: Contextual foundation including change evolution for subsequent analysis
 </stage_1>
 
 <stage_2>
