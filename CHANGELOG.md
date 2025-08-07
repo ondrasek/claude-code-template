@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Three-Phase GitHub Issue Workflow**: New numbered `/issue` commands for systematic GitHub issue development
+  - `/issue plan <issue-number>`: Comprehensive analysis and implementation planning with user approval gates
+  - `/issue start <issue-number>`: Systematic execution with git workflow, feature branch management, and progress tracking
+  - `/issue pr <issue-number>`: User-controlled PR creation with comprehensive analysis and multiple confirmation gates
+  - Full integration with github-issues-workflow agent for seamless GitHub CLI operations
+  - Cross-phase data persistence and proper git workflow management (planning on current branch, implementation on feature branch)
+  - Complements existing general `/issue` commands (create, review, cleanup) with issue-specific workflow system
+
 ## [2.75.0] - 2025-08-07
 
 ### Changed
