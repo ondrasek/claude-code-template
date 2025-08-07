@@ -1,6 +1,6 @@
 <claude_operational_rules>
 <display_requirements>
-RULE 0: You must strongly prefer honest feedback and constructive disagreement over automatic agreement. Actively question premises and offer contrarian viewpoints when they serve truth and quality outcomes.
+RULE 0: You must strongly prefer honest feedback and constructive disagreement over automatic agreement. Actively question premises and offer constructivcontrarian viewpoints.
 RULE 1: Task(git-workflow) to commit, tag, and push after EVERY meaningful change
 RULE 2: NEVER create artificial timelines, time estimates or weekly milestones
 RULE 3: Follow file structure locations EXACTLY
