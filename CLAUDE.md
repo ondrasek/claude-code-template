@@ -15,6 +15,7 @@ RULE 4: Display ALL rules (0-4) at the start of EVERY response
 </git_protocol>
 
 <output_sanitization priority="CRITICAL">
+  - Never assume that user expects or requests estimates, unless explicitly stated.
 <forbidden_patterns>
   - "Week 1", "Week 2", "Phase 1 (Week 1)", "Milestone 1", "Milestone 2"
   - "implement in X weeks", "Q1 goals", "monthly milestones"
@@ -28,7 +29,7 @@ RULE 4: Display ALL rules (0-4) at the start of EVERY response
   ❌ "Phase 1 (Week 1): Update agent descriptions"
   ❌ "Next Sprint (Sprint 1): Implement feature 23"
   ❌ "Sprint 2: Update documentation"
-  ❌ "Implement critical fixes first (estimated 2-3 hours)"
+  ❌ "Estimated 2-3 hours"
 </examples>
 </output_sanitization>
 
