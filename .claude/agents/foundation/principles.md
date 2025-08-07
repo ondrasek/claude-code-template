@@ -129,7 +129,7 @@ REQUIRED when principles conflict with practicality:
 Before recommending principle-based refactoring:
 1. Identify principle violations
 2. Calculate the work required to fix
-3. Evaluate if strictly following [principle] is worth [estimated effort]
+3. Evaluate if strictly following [principle] is worth [required complexity]
 4. Balance idealism with pragmatism
 
 Example: "DRY principle violated in 3 places, but they serve different contexts... Should extracting a shared abstraction improve or reduce clarity?"

@@ -330,7 +330,7 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS, WebFetch, WebSearch
 </source_hierarchy>
 
 <tool_coordination priority="CRITICAL">
-<enforcement>Phase 1 MANDATORY web research before any local analysis</enforcement>
+<enforcement>High Priority: MANDATORY web research before any local analysis</enforcement>
 
 <websearch_patterns>
 <usage_types>
