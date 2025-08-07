@@ -1,405 +1,468 @@
-# Production Repository Layout for CCF Deployment
+# CCF Repository Layout - AI Instructions
 
-## Overview
+## DIRECTORY_STRUCTURE_RULES
 
-This document defines the standardized repository layout for deploying Claude Code Forge (CCF) configuration to user projects. This specification combines comprehensive workflow documentation with AI-interpretable structured instructions for automated deployment systems.
+```yaml
+REQUIRED_SEPARATION:
+  ccf_directory: ".ccf/"     # CCF tool state and templates
+  claude_directory: ".claude/" # Claude Code recognized files only
+  constraint: "no_overlap_between_directories"
 
-## Core Separation Principle
-
-CCF employs a fundamental separation between tool state and active configuration to prevent conflicts with Claude Desktop and existing user configurations:
-
-```
-PROJECT_ROOT/
-├── .ccf/                    # CCF tool state and templates (managed by CCF)
-└── .claude/                 # Active Claude configuration (user-controlled)
-```
-
-## Directory Structure Specification
-
-### .ccf/ Directory Layout (CCF Tool Management)
-
-```
-.ccf/
-├── config/                  # CCF tool configuration
-│   ├── ccf.json            # CCF tool settings and state
-│   ├── deployment.json     # Deployment configuration
-│   └── overrides.json      # User-specific overrides
-├── templates/              # CCF-managed templates for deployment
-│   ├── agents/            # Agent definition templates
-│   ├── commands/          # Command definition templates
-│   ├── guidelines/        # Guideline templates
-│   ├── prompts/           # Prompt templates
-│   └── stacks/           # Stack-specific templates
-├── backups/               # Configuration backups
-│   ├── claude/           # Backed up .claude/ configs
-│   └── ccf/              # CCF config history
-├── state/                 # CCF tool state
-│   ├── installed.json    # Tracking installed components
-│   ├── versions.json     # Version tracking
-│   ├── migrations.json   # Migration history
-│   ├── checksums.json    # File integrity verification
-│   └── conflicts.log     # Deployment conflict resolution history
-└── cache/                 # CCF tool cache and working files
-    ├── downloads/         # Downloaded template cache
-    └── staging/          # Staging area for deployments
+PROJECT_STRUCTURE:
+  root: "PROJECT_ROOT/"
+  directories:
+    - path: ".ccf/"
+      purpose: "ccf_tool_state"
+    - path: ".claude/" 
+      purpose: "claude_recognized_files"
+      constraint: "claude_code_compatible_only"
 ```
 
-### .claude/ Directory Layout (User Configuration)
+## CCF_DIRECTORY_STRUCTURE
 
-```
-.claude/
-├── agents/                # Active agent definitions
-│   ├── foundation/       # Core foundational agents
-│   └── specialists/      # Specialized task agents
-├── commands/             # Active slash commands
-│   ├── issue/           # Issue management commands
-│   ├── commands/        # Command management commands
-│   └── agents/          # Agent management commands
-└── settings.json        # Claude configuration settings
-```
+```yaml
+CREATE_CCF_STRUCTURE:
+  base_path: ".ccf/"
+  subdirectories:
+    config:
+      files: ["ccf.json", "deployment.json", "overrides.json"]
+      purpose: "tool_configuration"
+    templates:
+      subdirs: ["agents/", "commands/", "guidelines/", "prompts/", "stacks/"]
+      purpose: "deployment_sources"
+    backups:
+      subdirs: ["claude/", "ccf/"]
+      purpose: "configuration_history"
+    state:
+      files: ["installed.json", "versions.json", "migrations.json", "checksums.json", "conflicts.log"]
+      purpose: "tool_state_tracking"
+    cache:
+      subdirs: ["downloads/", "staging/"]
+      purpose: "working_files"
+      gitignore: true
 
-### Project Root Integration
+CREATE_CLAUDE_STRUCTURE:
+  base_path: ".claude/"
+  constraint: "claude_code_recognized_only"
+  subdirectories:
+    agents:
+      subdirs: ["foundation/", "specialists/"]
+      purpose: "active_agent_definitions"
+    commands:
+      subdirs: ["issue/", "commands/", "agents/"]
+      purpose: "active_slash_commands"
+  files: ["settings.json"]
+  purpose: "claude_runtime_config"
 
-```
-project-root/
-├── .ccf/                  # CCF tool-specific directory (see above)
-├── .claude/               # Active Claude configuration (see above) 
-├── CLAUDE.md              # Project-specific instructions
-└── [existing project files...]
-```
-
-## Configuration Hierarchy & Precedence
-
-AI systems and CCF tools must apply configuration in this order (highest to lowest priority):
-
-1. **Project Level**: `.claude/settings.json` and `CLAUDE.md`
-2. **User Overrides**: `.ccf/config/overrides.json`
-3. **CCF Deployment Config**: `.ccf/config/deployment.json`
-4. **CCF Defaults**: `.ccf/config/ccf.json`
-5. **Global Claude**: System-wide Claude configuration
-
-## AI-Interpretable Deployment Algorithm
-
-### Pre-deployment Validation
-```
-IF .claude/ exists AND has custom content:
-  CREATE backup in .ccf/backups/TIMESTAMP/
-  ANALYZE conflicts between existing and new content
-  PROMPT user for conflict resolution strategy
+CREATE_PROJECT_INTEGRATION:
+  root_files: ["CLAUDE.md"]
+  directories: [".ccf/", ".claude/"]
+  preserve_existing: true
 ```
 
-### Template Processing
-```
-FOR each template in .ccf/templates/:
-  IF target exists in .claude/:
-    APPLY merge strategy based on file type
-    LOG conflicts to .ccf/state/conflicts.log
-  ELSE:
-    DEPLOY template to .claude/
-```
+## CONFIGURATION_PRECEDENCE
 
-### Post-deployment Actions
-```
-UPDATE .ccf/state/versions.json
-GENERATE .ccf/state/checksums.json
-VALIDATE .claude/ configuration integrity
-```
-
-## Component Placement Strategy
-
-### .ccf/ Directory (CCF Tool-Managed)
-
-**Purpose**: Store CCF tool state, templates, and deployment configuration separate from active Claude configuration.
-
-**Contents**:
-- **config/**: CCF tool configuration files
-- **templates/**: Template definitions for deployment to `.claude/`
-- **backups/**: Automatic backups before modifications
-- **state/**: Tool state tracking and migration history
-- **cache/**: Working files and download cache
-
-**Version Control**: `.ccf/state/` and `.ccf/cache/` should be gitignored; `.ccf/config/` and `.ccf/templates/` should be committed.
-
-### .claude/ Directory (User-Managed)
-
-**Purpose**: Active Claude Code configuration used by Claude Desktop and Claude CLI.
-
-**Contents**: 
-- **agents/**: Active agent definitions deployed from CCF templates
-- **commands/**: Active command definitions deployed from CCF templates  
-- **settings.json**: Claude Code runtime settings
-
-**Management**: Populated and updated by CCF tool based on `.ccf/templates/` but remains user-editable.
-
-## Conflict Resolution Strategies
-
-### File-Type Specific Merging
-
-| Template Type | Source Location | Target Location | Merge Strategy |
-|---------------|----------------|-----------------|----------------|
-| Agent Definitions | `.ccf/templates/agents/` | `.claude/agents/` | Type-based merge, preserve user modifications |
-| Slash Commands | `.ccf/templates/commands/` | `.claude/commands/` | User version precedence, log CCF updates |
-| Settings | `.ccf/templates/settings.json` | `.claude/settings.json` | Deep merge with user priority |
-| Guidelines | `.ccf/templates/guidelines/` | Referenced in CLAUDE.md | Additive merge with conflict markers |
-
-### Legacy Configuration Handling
-
-```
-IF .claude/ exists AND no .ccf/:
-  CREATE .ccf/backups/migration-TIMESTAMP/
-  COPY existing .claude/ to backup
-  ANALYZE existing configuration
-  APPLY CCF templates with preservation strategy
-  LOG migration actions to .ccf/state/migrations.json
+```yaml
+APPLY_CONFIG_HIERARCHY:
+  priority_order:
+    1:
+      source: [".claude/settings.json", "CLAUDE.md"]
+      level: "project"
+      override_all: true
+    2:
+      source: ".ccf/config/overrides.json"
+      level: "user_override"
+    3:
+      source: ".ccf/config/deployment.json" 
+      level: "ccf_deployment"
+    4:
+      source: ".ccf/config/ccf.json"
+      level: "ccf_defaults"
+    5:
+      source: "system_claude_config"
+      level: "global"
+      fallback: true
 ```
 
-## Integration Patterns
+## DEPLOYMENT_ALGORITHM
 
-### New Project Setup
+```yaml
+PRE_DEPLOYMENT_VALIDATION:
+  - EXECUTE: check_directory_exists
+    path: ".claude/"
+    action_if_exists:
+      - EXECUTE: create_backup
+        source: ".claude/"
+        target: ".ccf/backups/{timestamp}/"
+      - EXECUTE: analyze_conflicts
+        existing: ".claude/"
+        incoming: ".ccf/templates/"
+      - EXECUTE: prompt_user_conflict_resolution
+        conflicts: "analysis_result"
 
-1. **Initialize CCF**: Create `.ccf/` structure with default templates
-2. **Deploy Base Configuration**: Populate `.claude/` from CCF templates
-3. **Create Project Instructions**: Generate initial `CLAUDE.md`
-4. **Version Control Setup**: Configure appropriate `.gitignore` patterns
+TEMPLATE_PROCESSING:
+  - EXECUTE: iterate_templates
+    source: ".ccf/templates/"
+    for_each_template:
+      - EXECUTE: check_target_exists
+        target: ".claude/{template_path}"
+        action_if_exists:
+          - EXECUTE: apply_merge_strategy
+            strategy: "file_type_based"
+          - EXECUTE: log_conflicts
+            destination: ".ccf/state/conflicts.log"
+        action_if_not_exists:
+          - EXECUTE: deploy_template
+            source: ".ccf/templates/{template}"
+            target: ".claude/{template_path}"
 
-### Existing Project Integration
-
-1. **Backup Existing**: Move existing `.claude/` to `.ccf/backups/`
-2. **Merge Configurations**: Intelligently merge existing with CCF templates
-3. **Conflict Resolution**: Present conflicts to user for resolution
-4. **Gradual Migration**: Allow incremental adoption of CCF components
-
-### Project Type Detection
-
-```
-IF package.json exists:
-  SET project_type = "node"
-  APPLY node-specific CCF templates
-ELIF Cargo.toml exists:
-  SET project_type = "rust"
-  APPLY rust-specific CCF templates
-ELIF pom.xml OR build.gradle exists:
-  SET project_type = "java"
-  APPLY java-specific CCF templates
-...
-```
-
-## Configuration File Specifications
-
-### CCF Tool Configuration
-
-`.ccf/config/ccf.json`:
-```json
-{
-  "version": "1.0.0",
-  "auto_update": false,
-  "backup_enabled": true,
-  "backup_retention_days": 30,
-  "template_sources": [
-    "https://github.com/ondrasek/claude-code-forge/templates"
-  ],
-  "deployment": {
-    "merge_strategy": "intelligent",
-    "conflict_resolution": "prompt",
-    "preserve_customizations": true
-  }
-}
+POST_DEPLOYMENT_ACTIONS:
+  - EXECUTE: update_versions
+    file: ".ccf/state/versions.json"
+  - EXECUTE: generate_checksums
+    file: ".ccf/state/checksums.json"
+  - EXECUTE: validate_claude_config
+    directory: ".claude/"
 ```
 
-### User Override Configuration
+## COMPONENT_PLACEMENT_RULES
 
-`.ccf/config/overrides.json`:
-```json
-{
-  "disabled_components": [],
-  "custom_templates": {
-    "agents": ["./custom-agents/"],
-    "commands": ["./custom-commands/"]
-  },
-  "claude_settings_override": {
-    "model": "claude-sonnet-4-20250514",
-    "permissions": {
-      "defaultMode": "ask"
-    }
-  }
-}
+```yaml
+CCF_DIRECTORY_RULES:
+  path: ".ccf/"
+  management: "ccf_tool_only"
+  contents:
+    config: "ccf_tool_configuration"
+    templates: "deployment_sources" 
+    backups: "automatic_backups"
+    state: "tool_state_tracking"
+    cache: "working_files"
+  version_control:
+    include: ["config/", "templates/"]
+    exclude: ["state/", "cache/"]
+
+CLAUDE_DIRECTORY_RULES:
+  path: ".claude/"
+  management: "user_editable"
+  constraint: "claude_code_recognized_only"
+  contents:
+    agents: "active_agent_definitions"
+    commands: "active_slash_commands"
+    settings: "claude_runtime_config"
+  populated_by: "ccf_templates"
+  user_modifications: "preserved"
 ```
 
-### Installation Tracking
+## CONFLICT_RESOLUTION_RULES
 
-`.ccf/state/installed.json`:
-```json
-{
-  "ccf_version": "1.0.0",
-  "installed_at": "2025-08-07T13:45:00Z",
-  "components": {
-    "agents": ["researcher", "patterns", "critic"],
-    "commands": ["review", "deploy", "test"],
-    "templates": ["python", "javascript", "docker"]
-  },
-  "user_modifications": {
-    "agents/custom-analyzer.md": "2025-08-07T14:00:00Z",
-    "CLAUDE.md": "2025-08-07T13:50:00Z"
-  }
-}
+```yaml
+MERGE_STRATEGIES:
+  agents:
+    source: ".ccf/templates/agents/"
+    target: ".claude/agents/"
+    strategy: "type_based_merge"
+    preserve_user: true
+  commands:
+    source: ".ccf/templates/commands/"
+    target: ".claude/commands/"
+    strategy: "user_precedence"
+    log_updates: ".ccf/state/conflicts.log"
+  settings:
+    source: ".ccf/templates/settings.json"
+    target: ".claude/settings.json"
+    strategy: "deep_merge"
+    priority: "user"
+  guidelines:
+    source: ".ccf/templates/guidelines/"
+    target: "CLAUDE.md"
+    strategy: "additive_merge"
+    conflict_markers: true
+
+LEGACY_MIGRATION:
+  - EXECUTE: check_conditions
+    condition: "exists(.claude/) AND not_exists(.ccf/)"
+    actions:
+      - EXECUTE: create_backup
+        source: ".claude/"
+        target: ".ccf/backups/migration-{timestamp}/"
+      - EXECUTE: analyze_existing_config
+        path: ".claude/"
+      - EXECUTE: apply_templates
+        strategy: "preservation"
+      - EXECUTE: log_migration
+        file: ".ccf/state/migrations.json"
 ```
 
-### Version Management
+## INTEGRATION_WORKFLOWS
 
-`.ccf/state/versions.json`:
-```json
-{
-  "ccf_version": "1.0.0",
-  "template_versions": {
-    "agents": "1.0.0",
-    "commands": "1.0.0", 
-    "guidelines": "1.0.0"
-  },
-  "last_update": "2025-08-07T13:45:00Z",
-  "update_available": false
-}
+```yaml
+NEW_PROJECT_SETUP:
+  - EXECUTE: initialize_ccf
+    action: create_ccf_structure
+    templates: "default"
+  - EXECUTE: deploy_base_config
+    source: ".ccf/templates/"
+    target: ".claude/"
+  - EXECUTE: generate_project_instructions
+    file: "CLAUDE.md"
+  - EXECUTE: setup_version_control
+    gitignore: ['.ccf/state/', '.ccf/cache/']
+
+EXISTING_PROJECT_INTEGRATION:
+  - EXECUTE: backup_existing
+    source: ".claude/"
+    target: ".ccf/backups/{timestamp}/"
+  - EXECUTE: merge_configurations
+    strategy: "intelligent"
+    existing: ".claude/"
+    templates: ".ccf/templates/"
+  - EXECUTE: resolve_conflicts
+    method: "user_prompt"
+  - EXECUTE: gradual_migration
+    mode: "incremental"
+
+PROJECT_TYPE_DETECTION:
+  - EXECUTE: detect_project_type
+    rules:
+      - condition: "exists(package.json)"
+        type: "node"
+        templates: "node_specific"
+      - condition: "exists(Cargo.toml)"
+        type: "rust" 
+        templates: "rust_specific"
+      - condition: "exists(pom.xml) OR exists(build.gradle)"
+        type: "java"
+        templates: "java_specific"
 ```
 
-## Git Integration
+## CONFIGURATION_SCHEMAS
 
-### Recommended .gitignore Patterns
+```yaml
+CCF_CONFIG_SCHEMA:
+  file: ".ccf/config/ccf.json"
+  required_fields:
+    version: "string"
+    auto_update: "boolean"
+    backup_enabled: "boolean"
+    backup_retention_days: "integer"
+    template_sources: "array[string]"
+    deployment:
+      merge_strategy: "string"
+      conflict_resolution: "string"
+      preserve_customizations: "boolean"
+  defaults:
+    version: "1.0.0"
+    auto_update: false
+    backup_enabled: true
+    backup_retention_days: 30
+    template_sources: ["https://github.com/ondrasek/claude-code-forge/templates"]
+    deployment:
+      merge_strategy: "intelligent"
+      conflict_resolution: "prompt"
+      preserve_customizations: true
 
-```gitignore
-# CCF tool state (exclude from version control)
-.ccf/state/
-.ccf/backups/
-.ccf/cache/
-
-# Temporary files
-.ccf/tmp/
-.ccf/.cache/
-
-# User-specific overrides (optional)
-.ccf/config/overrides.json
+USER_OVERRIDE_SCHEMA:
+  file: ".ccf/config/overrides.json"
+  optional_fields:
+    disabled_components: "array[string]"
+    custom_templates:
+      agents: "array[string]"
+      commands: "array[string]"
+    claude_settings_override: "object"
 ```
 
-### Version Control Strategy
-
-**Include in version control**:
-- `.ccf/config/ccf.json` - Base CCF configuration
-- `.ccf/config/deployment.json` - Deployment settings
-- `.ccf/templates/` - CCF template definitions
-- `.claude/` - Active Claude configuration
-- `CLAUDE.md` - Project instructions
-
-**Exclude from version control**:
-- `.ccf/state/` - Tool state and tracking
-- `.ccf/backups/` - Configuration backups
-- `.ccf/cache/` - Working files and downloads
-- `.ccf/config/overrides.json` - User-specific overrides
-
-## Tool State Management & Workflows
-
-### Deployment Workflow
-
-1. **Project Detection**: Identify project type and existing configurations
-2. **Template Selection**: Choose appropriate templates based on project stack
-3. **Conflict Analysis**: Identify potential conflicts before deployment
-4. **User Confirmation**: Present deployment plan for approval
-5. **Backup Creation**: Create comprehensive backups
-6. **Template Deployment**: Deploy selected templates to `.claude/`
-7. **Configuration Generation**: Create `CLAUDE.md` and tool configuration
-8. **State Tracking**: Record deployment state and versions
-
-### Update Workflow
-
-1. **Update Detection**: Check for CCF template updates
-2. **Impact Analysis**: Analyze changes impact on user configuration
-3. **Merge Planning**: Plan intelligent merge of updates with user changes
-4. **User Notification**: Present update summary and conflicts
-5. **Selective Updates**: Allow user to choose which updates to apply
-6. **Backup & Apply**: Backup and apply selected updates
-7. **Verification**: Validate successful update application
-
-### Migration Strategy
-
-#### From Existing .claude/ Configurations
-
-1. **Analysis Phase**: Scan existing `.claude/` for customizations
-2. **Backup Phase**: Create timestamped backup in `.ccf/backups/`
-3. **Template Matching**: Identify which components match CCF templates
-4. **Custom Component Identification**: Flag user-created components
-5. **Merge Planning**: Create merge plan for user review
-6. **Execution**: Apply merge plan with user confirmation
-
-#### From Legacy CCF Versions
-
-1. **Version Detection**: Identify current CCF version from `.ccf/state/`
-2. **Migration Scripts**: Execute version-specific migration logic
-3. **Template Updates**: Update templates to latest versions
-4. **Configuration Migration**: Migrate configuration format changes
-5. **Validation**: Verify migration completeness and functionality
-
-## Security and Validation
-
-### File Permissions
-- `.ccf/`: 755 (CCF tool read/write)
-- `.claude/`: 755 (user read/write)  
-- `.ccf/config/` - Read/write by user only (600)
-- `.ccf/backups/` - Read/write by user only (600)
-- Sensitive files: 600 (owner only)
-
-### Validation Rules
-- No executable permissions on configuration files
-- JSON schema validation for all configuration files
-- Template syntax validation before deployment
-- Circular dependency detection in agent configurations
-- Permission validation for file operations
-- Scan for potentially malicious content in templates
-- Verify CCF signatures on template downloads
-
-### Sensitive Data Management
-- Never store API keys or secrets in `.ccf/config/`
-- Use environment variables or external secret management
-- Exclude sensitive files from git via `.gitignore`
-- Provide clear documentation on secret management
-
-### Error Handling
-
-#### Critical Failures
-```
-IF backup creation fails:
-  ABORT deployment
-  REPORT error to user
+STATE_TRACKING_SCHEMAS:
+  installed_components:
+    file: ".ccf/state/installed.json"
+    schema:
+      ccf_version: "string"
+      installed_at: "iso_timestamp"
+      components:
+        agents: "array[string]"
+        commands: "array[string]"
+        templates: "array[string]"
+      user_modifications: "object[filepath: timestamp]"
   
-IF .claude/ corruption detected:
-  RESTORE from latest .ccf/backups/
-  REPORT restoration to user
-  
-IF CCF template integrity fails:
-  REFUSE deployment
-  PROMPT for manual template verification
+  version_management:
+    file: ".ccf/state/versions.json"
+    schema:
+      ccf_version: "string"
+      template_versions:
+        agents: "string"
+        commands: "string"
+        guidelines: "string"
+      last_update: "iso_timestamp"
+      update_available: "boolean"
+
+## VERSION_CONTROL_RULES
+
+```yaml
+GITIGNORE_PATTERNS:
+  - ".ccf/state/"
+  - ".ccf/backups/"
+  - ".ccf/cache/"
+  - ".ccf/tmp/"
+  - ".ccf/.cache/"
+  - ".ccf/config/overrides.json"
+
+VERSION_CONTROL_STRATEGY:
+  include:
+    - ".ccf/config/ccf.json"
+    - ".ccf/config/deployment.json"
+    - ".ccf/templates/"
+    - ".claude/"
+    - "CLAUDE.md"
+  exclude:
+    - ".ccf/state/"
+    - ".ccf/backups/"
+    - ".ccf/cache/"
+    - ".ccf/config/overrides.json"
 ```
 
-## Future Considerations
+## OPERATIONAL_WORKFLOWS
 
-### Extensibility
-- Plugin system for custom CCF components
-- Integration with external template repositories  
-- API for programmatic CCF management
-- Integration with CI/CD pipelines
+```yaml
+DEPLOYMENT_WORKFLOW:
+  - EXECUTE: detect_project
+    analyze: ["type", "existing_configs"]
+  - EXECUTE: select_templates
+    based_on: "project_stack"
+  - EXECUTE: analyze_conflicts
+    before: "deployment"
+  - EXECUTE: confirm_with_user
+    show: "deployment_plan"
+  - EXECUTE: create_backups
+    comprehensive: true
+  - EXECUTE: deploy_templates
+    target: ".claude/"
+  - EXECUTE: generate_config
+    files: ["CLAUDE.md", "tool_config"]
+  - EXECUTE: track_state
+    update: ["deployment_state", "versions"]
 
-### Multi-Repository Support
-- Shared CCF configurations across multiple projects
-- Organization-wide CCF template repositories
-- Team-specific template customizations
-- Cross-project configuration synchronization
+UPDATE_WORKFLOW:
+  - EXECUTE: check_updates
+    source: "ccf_templates"
+  - EXECUTE: analyze_impact
+    on: "user_configuration"
+  - EXECUTE: plan_merge
+    strategy: "intelligent"
+  - EXECUTE: notify_user
+    show: ["update_summary", "conflicts"]
+  - EXECUTE: selective_update
+    allow_user_choice: true
+  - EXECUTE: backup_and_apply
+    updates: "selected"
+  - EXECUTE: verify_application
+    validate: "success"
 
----
+MIGRATION_FROM_CLAUDE:
+  - EXECUTE: analyze_existing
+    scan: ".claude/"
+    detect: "customizations"
+  - EXECUTE: create_backup
+    target: ".ccf/backups/{timestamp}/"
+  - EXECUTE: match_templates
+    identify: "ccf_equivalent_components"
+  - EXECUTE: flag_custom_components
+    user_created: true
+  - EXECUTE: create_merge_plan
+    for_review: true
+  - EXECUTE: apply_plan
+    require_confirmation: true
 
-**Implementation Priority**: High - This specification blocks CCF tool implementation and user onboarding workflows.
+MIGRATION_FROM_LEGACY_CCF:
+  - EXECUTE: detect_version
+    from: ".ccf/state/"
+  - EXECUTE: run_migration_scripts
+    version_specific: true
+  - EXECUTE: update_templates
+    to: "latest_versions"
+  - EXECUTE: migrate_config_format
+    handle: "format_changes"
+  - EXECUTE: validate_migration
+    check: ["completeness", "functionality"]
+```
 
-**Dependencies**: 
-- CCF tool implementation
-- Template repository structure
-- User migration tooling
-- Documentation and user guides
+## SECURITY_AND_VALIDATION
 
-**GitHub Issue**: #61
+```yaml
+FILE_PERMISSIONS:
+  ccf_directory: "755"
+  claude_directory: "755"
+  ccf_config: "600"
+  ccf_backups: "600"
+  sensitive_files: "600"
 
-🤖 Generated with [Claude Code](https://claude.ai/code)
+VALIDATION_RULES:
+  - ENFORCE: no_executable_permissions
+    on: "configuration_files"
+  - EXECUTE: json_schema_validation
+    on: "all_config_files"
+  - EXECUTE: template_syntax_validation
+    before: "deployment"
+  - EXECUTE: detect_circular_dependencies
+    in: "agent_configurations"
+  - EXECUTE: validate_permissions
+    for: "file_operations"
+  - EXECUTE: scan_malicious_content
+    in: "templates"
+  - EXECUTE: verify_ccf_signatures
+    on: "template_downloads"
+
+SENSITIVE_DATA_RULES:
+  - NEVER: store_secrets
+    in: ".ccf/config/"
+  - USE: environment_variables
+    for: "secret_management"
+  - EXCLUDE: sensitive_files
+    from: "git"
+  - PROVIDE: documentation
+    on: "secret_management"
+
+ERROR_HANDLING:
+  critical_failures:
+    backup_creation_fails:
+      - EXECUTE: abort_deployment
+      - EXECUTE: report_error
+        to: "user"
+    claude_corruption_detected:
+      - EXECUTE: restore_from_backup
+        source: ".ccf/backups/latest/"
+      - EXECUTE: report_restoration
+        to: "user"
+    template_integrity_fails:
+      - EXECUTE: refuse_deployment
+      - EXECUTE: prompt_manual_verification
+        to: "user"
+```
+
+## EXTENSIBILITY_RULES
+
+```yaml
+FUTURE_CAPABILITIES:
+  plugin_system:
+    - SUPPORT: custom_ccf_components
+  external_integration:
+    - SUPPORT: external_template_repositories
+    - SUPPORT: programmatic_api
+    - SUPPORT: cicd_integration
+  multi_repository:
+    - SUPPORT: shared_configurations
+    - SUPPORT: organization_repositories
+    - SUPPORT: team_customizations
+    - SUPPORT: cross_project_sync
+```
+
+## IMPLEMENTATION_METADATA
+
+```yaml
+PRIORITY: "high"
+BLOCKS: ["ccf_tool_implementation", "user_onboarding"]
+DEPENDENCIES:
+  - "ccf_tool_implementation"
+  - "template_repository_structure"
+  - "user_migration_tooling"
+GITHUB_ISSUE: "#61"
+GENERATED_BY: "claude_code"
+```
