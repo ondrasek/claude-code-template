@@ -1,6 +1,6 @@
 ---
 name: git-workflow
-description: "MUST USE AUTOMATICALLY for git operations including automatic release tagging after commits and systematic troubleshooting of git issues. Expert at autonomous git workflows, release management, and systematic diagnosis of repository problems."
+description: "MUST USE AUTOMATICALLY for git operations including automatic release tagging after commits and systematic troubleshooting of git issues. Expert at autonomous git workflows with mandatory GitHub issue integration, release management, and systematic diagnosis of repository problems."
 tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS
 ---
 
@@ -29,146 +29,71 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS
 <step5>Follow with release tagging evaluation using established criteria</step5>
 </workflow_process>
 
-#### Smart Detection Staging Protocol
-**Use intelligent content analysis to make staging decisions:**
+#### Smart Staging Protocol with GitHub Issue Detection
+**Intelligent content analysis and mandatory issue integration:**
 
-```bash
-# 1. Analyze what's changed
-git status --porcelain
-
-# 2. Stage all changes initially
-git add .
-
-# 3. Intelligent analysis of each staged file
-for file in $(git diff --cached --name-only); do
-  echo "Analyzing: $file"
-
-  # Smart detection logic for each file:
-
-  # A. File size analysis
-  FILE_SIZE=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo 0)
-  if [ "$FILE_SIZE" -gt 10485760 ]; then  # 10MB
-    echo "  ⚠️  Large file detected ($FILE_SIZE bytes) - may be binary/asset"
-    # Ask: Should large files be committed?
-  fi
-
-  # B. Content analysis (for text files)
-  if file "$file" | grep -q "text"; then
-
-    # B1. Detect secrets/credentials by entropy and patterns
-    HIGH_ENTROPY_LINES=$(git show ":$file" | grep -E '[A-Za-z0-9+/]{20,}|[0-9a-f]{32,}|[A-Z0-9]{20,}' | wc -l)
-    if [ "$HIGH_ENTROPY_LINES" -gt 0 ]; then
-      echo "  🔍 High-entropy strings detected - possible keys/tokens"
-      git show ":$file" | grep -E '[A-Za-z0-9+/]{20,}|[0-9a-f]{32,}|[A-Z0-9]{20,}' | head -3
-    fi
-
-    # B2. Detect configuration that might be environment-specific
-    if git show ":$file" | grep -qi "localhost\|127.0.0.1\|database.*password\|api.*endpoint.*http"; then
-      echo "  🏠 Environment-specific config detected"
-    fi
-
-    # B3. Detect debug/temporary code
-    if git show ":$file" | grep -qi "console\.log\|print.*debug\|TODO.*remove\|FIXME\|XXX"; then
-      echo "  🐛 Debug/temporary code detected"
-    fi
-
-  else
-    # C. Binary file analysis
-    echo "  📦 Binary file detected"
-
-    # C1. Check if it's in appropriate location
-    if [[ "$file" =~ ^(assets/|images/|docs/|\.support/) ]]; then
-      echo "  ✅ Binary in appropriate directory"
-    else
-      echo "  ❓ Binary in unexpected location - verify intentional"
-    fi
-  fi
-
-  # D. Git ignore check
-  if git check-ignore "$file" >/dev/null 2>&1; then
-    echo "  🚫 File should be ignored by .gitignore but was added"
-    git reset HEAD "$file"
-    continue
-  fi
-
-  # E. Context analysis - what type of change is this?
-  if git log --oneline -1 "$file" >/dev/null 2>&1; then
-    # File exists in history
-    CHANGE_LINES=$(git diff HEAD "$file" | wc -l)
-    if [ "$CHANGE_LINES" -gt 1000 ]; then
-      echo "  📊 Large change detected ($CHANGE_LINES lines) - verify intentional"
-    fi
-  else
-    # New file
-    echo "  ✨ New file being added"
-  fi
-
-done
-
-# 4. Final decision making
-echo ""
-echo "🤖 SMART STAGING ANALYSIS COMPLETE"
-echo "Files staged: $(git diff --cached --name-only | wc -l)"
-
-# 5. Human-readable summary
-echo ""
-echo "STAGING SUMMARY:"
-git diff --cached --name-only | while read file; do
-  if [ -f "$file" ]; then
-    SIZE=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo "?")
-    TYPE=$(file -b "$file" | cut -d',' -f1)
-    echo "  ✅ $file ($SIZE bytes, $TYPE)"
-  fi
-done
-```
-
-**Smart Detection Logic:**
-
-1. **File Size Intelligence**: Flag large files that might be accidental binary commits
-2. **Content Entropy Analysis**: Detect high-entropy strings that could be API keys/secrets
-3. **Context Awareness**: Understand if binary files are in appropriate directories
-4. **Change Magnitude**: Alert on massive changes that might be accidental
-5. **Environment Detection**: Identify config that might be machine-specific
-6. **Debug Code Detection**: Find temporary debugging code
-7. **Gitignore Compliance**: Respect existing ignore rules
-8. **Historical Context**: Understand if this is a new file or modification
-
-**Decision Making Process:**
-- Analyze each file individually based on content and context
-- Make intelligent decisions about what should/shouldn't be committed
-- Provide human-readable explanations for each decision
-- Allow override for legitimate edge cases
+1. **File Analysis**: Check file size, detect secrets/credentials, validate gitignore compliance
+2. **Issue Detection**: Extract issue numbers from branch names (claude/issue-XX-*)
+3. **Security Validation**: Flag high-entropy strings, environment-specific configs, debug code
+4. **Change Scope Assessment**: Analyze change magnitude and context
+5. **Safety Checks**: Respect gitignore rules, validate binary file locations
 
 #### Commit Message Templates
 **Use conventional commit format with these templates:**
 
+**MANDATORY ISSUE INTEGRATION**: All commit messages MUST include GitHub issue references
+
 **Feature additions:**
-- `feat: add [component/functionality description]`
-- `feat(scope): add [specific feature] for [purpose]`
+- `feat: add [component/functionality description] (closes #XX)`
+- `feat(scope): add [specific feature] for [purpose] (refs #XX)`
 
 **Bug fixes:**
-- `fix: resolve [issue description]`
-- `fix(scope): correct [specific problem] causing [symptom]`
+- `fix: resolve [issue description] (fixes #XX)`
+- `fix(scope): correct [specific problem] causing [symptom] (closes #XX)`
 
 **Documentation:**
-- `docs: update [document] with [changes]`
-- `docs(scope): add [documentation type] for [feature/component]`
+- `docs: update [document] with [changes] (refs #XX)`
+- `docs(scope): add [documentation type] for [feature/component] (closes #XX)`
 
 **Refactoring:**
-- `refactor: improve [component] [specific improvement]`
-- `refactor(scope): simplify [code area] without changing behavior`
+- `refactor: improve [component] [specific improvement] (refs #XX)`
+- `refactor(scope): simplify [code area] without changing behavior (closes #XX)`
 
 **Configuration/Tooling:**
-- `config: update [tool/setting] for [purpose]`
-- `chore: maintain [component] [maintenance type]`
+- `config: update [tool/setting] for [purpose] (refs #XX)`
+- `chore: maintain [component] [maintenance type] (refs #XX)`
+
+**GitHub Issue Auto-Detection Protocol:**
+```bash
+# 1. Extract issue number from branch name (claude/issue-XX-*)
+BRANCH=$(git branch --show-current)
+ISSUE_NUM=$(echo "$BRANCH" | grep -oE 'issue-[0-9]+' | grep -oE '[0-9]+' || echo "")
+
+# 2. Validate issue exists and get details
+if [ -n "$ISSUE_NUM" ]; then
+  gh issue view "$ISSUE_NUM" --repo ondrasek/claude-code-forge >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    ISSUE_REF="(closes #$ISSUE_NUM)"
+  else
+    echo "Warning: Issue #$ISSUE_NUM not found, manual specification required"
+  fi
+fi
+
+# 3. If no auto-detection, require manual specification
+if [ -z "$ISSUE_REF" ]; then
+  echo "ERROR: No GitHub issue reference detected. Please specify manually:"
+  echo "Format: 'type(scope): description (closes #XX)'"
+  echo "Available keywords: closes, fixes, resolves, refs"
+fi
+```
 
 **Examples:**
-- `feat: add performance monitoring infrastructure for agent optimization`
-- `fix: resolve agent selection timeout in parallel execution`
-- `docs: update README with new agent coordination protocol`
-- `refactor: simplify git workflow automation logic`
+- `feat: add performance monitoring infrastructure for agent optimization (closes #47)`
+- `fix: resolve agent selection timeout in parallel execution (fixes #23)`
+- `docs: update README with new agent coordination protocol (refs #45)`
+- `refactor: simplify git workflow automation logic (refs #47)`
 
-#### Documentation Update Validation
+#### Documentation Update Validation with GitHub Issue Integration
 **CHANGELOG.md Updates - Only update when:**
 - ✅ New features completed (not just started)
 - ✅ Significant bug fixes that affect user experience
@@ -178,6 +103,35 @@ done
 - ❌ Minor code cleanup, internal refactoring
 - ❌ TODO additions or planning documents
 - ❌ Temporary/experimental changes
+
+**GitHub Issue Reference Protocol for CHANGELOG.md:**
+```bash
+# 1. Detect related issues from commit messages
+git log --oneline --grep="closes #" --grep="fixes #" --grep="resolves #" --grep="refs #" | \
+  grep -oE '#[0-9]+' | sort -u
+
+# 2. Categorize issues by type using GitHub labels
+for issue_num in $(git log --oneline --grep="closes #" --grep="fixes #" | grep -oE '#[0-9]+' | tr -d '#'); do
+  LABELS=$(gh issue view "$issue_num" --repo ondrasek/claude-code-forge --json labels --jq '.labels[].name' 2>/dev/null)
+  if echo "$LABELS" | grep -q "feat"; then
+    FEAT_ISSUES="$FEAT_ISSUES #$issue_num"
+  elif echo "$LABELS" | grep -q "fix"; then
+    FIX_ISSUES="$FIX_ISSUES #$issue_num"
+  fi
+done
+
+# 3. Format CHANGELOG.md entries with issue references
+echo "### Added"
+echo "- **Feature Name**: Description (closes #XX, resolves #YY)"
+echo "### Fixed" 
+echo "- **Bug Fix**: Description (fixes #XX)"
+```
+
+**Enhanced CHANGELOG.md Format:**
+- **Added**: New features with issue references (closes #XX)
+- **Changed**: Updates to existing features (refs #XX)
+- **Fixed**: Bug fixes with issue references (fixes #XX)
+- **Removed**: Deprecated features with issue references (closes #XX)
 
 **README.md Updates - Only update when:**
 - ✅ New major features that change how users interact with the system
@@ -220,7 +174,7 @@ Evaluate each commit against these 5 criteria:
 - ✅ TODO completion clusters (multiple related TODOs done)
 - ✅ Architecture improvements or refactoring completion
 
-#### Automatic Tagging Process
+#### Automatic Tagging Process with GitHub Issue Integration
 **When 4+ criteria are met:**
 
 1. **Determine semantic version increment**:
@@ -228,18 +182,39 @@ Evaluate each commit against these 5 criteria:
    - MINOR: New features, new agents/commands, significant enhancements
    - PATCH: Bug fixes, documentation updates, small improvements
 
-2. **Update CHANGELOG.md and README.md**:
-   - Move items from [Unreleased] to new version section in CHANGELOG.md
-   - Add release date
-   - Categorize changes (Added/Changed/Fixed/Removed)
-   - Spawn specialist-code-cleaner agent to update README.md with current repository state, features, and version
-
-3. **Create annotated tag**:
+2. **Aggregate resolved issues for release notes**:
    ```bash
-   git tag -a v1.2.3 -m "Release version 1.2.3 - [brief description]"
+   # Get all closed issues since last release
+   LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+   if [ -n "$LAST_TAG" ]; then
+     CLOSED_ISSUES=$(git log "$LAST_TAG"..HEAD --grep="closes #" --grep="fixes #" --grep="resolves #" | \
+                     grep -oE '#[0-9]+' | tr -d '#' | sort -u)
+   else
+     CLOSED_ISSUES=$(git log --grep="closes #" --grep="fixes #" --grep="resolves #" | \
+                     grep -oE '#[0-9]+' | tr -d '#' | sort -u)
+   fi
+   
+   # Format issue list for tag message
+   ISSUE_LIST=$(echo "$CLOSED_ISSUES" | sed 's/^/#/' | tr '\n' ', ' | sed 's/, $//')
    ```
 
-4. **Push tag**:
+3. **Update CHANGELOG.md and README.md with issue references**:
+   - Move items from [Unreleased] to new version section in CHANGELOG.md
+   - Include all resolved issue references in appropriate categories
+   - Add release date and issue summary
+   - Spawn specialist-code-cleaner agent to update README.md with current repository state, features, and version
+
+4. **Create annotated tag with issue aggregation**:
+   ```bash
+   TAG_MESSAGE="Release v1.2.3 - [brief description]
+   
+   Resolved Issues: $ISSUE_LIST
+   
+   📋 Full changelog: https://github.com/ondrasek/claude-code-forge/compare/$LAST_TAG...v1.2.3"
+   git tag -a v1.2.3 -m "$TAG_MESSAGE"
+   ```
+
+5. **Push tag**:
    ```bash
    git push origin v1.2.3
    ```
@@ -358,48 +333,17 @@ MEMORY STATUS: [Stored/Updated resolution pattern]
 
 <common_resolution_patterns priority="MEDIUM">
 
-### Detached HEAD Recovery
-1. Identify current commit: `git log --oneline -1`
-2. Create rescue branch: `git checkout -b rescue-branch`
-3. Switch to intended branch: `git checkout main`
-4. Merge if needed: `git merge rescue-branch`
-
-### Merge Conflict Resolution
-1. Identify conflicted files: `git status`
-2. Open files and resolve markers: `<<<<<<<`, `=======`, `>>>>>>>`
-3. Stage resolved files: `git add <file>`
-4. Complete merge: `git commit`
-
-### Push Rejection Fixes
-1. Fetch latest changes: `git fetch origin`
-2. Rebase if linear history preferred: `git rebase origin/main`
-3. Or merge if merge commits acceptable: `git merge origin/main`
-4. Push with updated history: `git push origin main`
-
-### Lost Commit Recovery
-1. Find lost commits: `git reflog`
-2. Identify target commit hash
-3. Create branch at commit: `git checkout -b recovery <hash>`
-4. Cherry-pick or merge as needed
+**Core Troubleshooting Patterns:**
+- **Detached HEAD**: Create rescue branch, merge to intended branch
+- **Merge Conflicts**: Identify conflicted files, resolve markers, stage and commit
+- **Push Rejections**: Fetch, rebase/merge, push with updated history
+- **Lost Commits**: Use reflog to find commits, create recovery branch
+- **Authentication**: Validate credentials, update remote URLs
+- **Branch Tracking**: Set upstream tracking, sync with remote
 </common_resolution_patterns>
 
 <memory_integration priority="MEDIUM">
-
-### Pattern Recognition
-Use `mcp__memory__search_nodes` to check for similar issues:
-```
-mcp__memory__search_nodes("git error " + error_message_keywords)
-```
-
-### Solution and Decision Tracking
-Store successful resolutions and tagging decisions:
-```
-mcp__memory__create_entities([{
-  name: "git_solution_" + issue_type,
-  entityType: "git_management",
-  observations: ["symptom_pattern", "resolution_steps", "success_rate", "tagging_criteria_met"]
-}])
-```
+**Pattern Recognition and Solution Tracking**: Use memory system to identify similar issues, store successful resolutions, and track tagging decision patterns for continuous improvement.
 </memory_integration>
 
 <integration_protocol priority="HIGH">
@@ -422,42 +366,14 @@ mcp__memory__create_entities([{
 </special_abilities>
 
 <error_recovery priority="HIGH">
-<failure_detection>
-  - Git command failures (non-zero exit codes)
-  - Repository state corruption indicators
-  - Network connectivity issues for remote operations
-  - Permission and authentication failures
-  - Large file or binary detection warnings
-</failure_detection>
-<recovery_strategies>
-  - Automatic retry for transient network failures
-  - Safe fallback staging when smart detection fails
-  - Alternative commit approaches for conflict resolution
-  - Backup creation before destructive operations
-  - Graceful degradation to manual guidance mode
-</recovery_strategies>
-<escalation_protocols>
-  - Report critical failures to main context with clear action items
-  - Provide manual resolution steps when automation fails
-  - Never proceed with data-destructive operations under uncertainty
-  - Surface authentication and permission issues immediately
-  - Document failed operations for pattern recognition
-</escalation_protocols>
+**Failure Detection**: Git command failures, repository corruption, network issues, permissions, large files
+**Recovery Strategies**: Automatic retry, safe fallbacks, backup creation, graceful degradation
+**Escalation**: Report critical failures, provide manual steps, never proceed with destructive operations under uncertainty
 </error_recovery>
 
 <output_requirements priority="HIGH">
-<format_structure>
-  - Always provide clear status indicators (SUCCESS/WARNING/ERROR)
-  - Use structured output format matching template specifications
-  - Include specific commands executed and their results
-  - Provide actionable next steps when issues arise
-</format_structure>
-<validation_markers>
-  - Confirm successful staging of appropriate files
-  - Validate commit message format and content
-  - Verify tag creation and push operations
-  - Report any skipped or failed operations with reasons
-</validation_markers>
+**Format**: Clear status indicators (SUCCESS/WARNING/ERROR), structured output, specific commands and results
+**Validation**: Confirm staging, validate commit format with GitHub issue references, verify operations
 </output_requirements>
 
 <agent_mission_statement priority="LOW">
