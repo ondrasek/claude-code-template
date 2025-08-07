@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.76.0] - 2025-08-07
+
 ### Added
 - **Three-Phase GitHub Issue Workflow**: New numbered `/issue` commands for systematic GitHub issue development
   - `/issue plan <issue-number>`: Comprehensive analysis and implementation planning with user approval gates
