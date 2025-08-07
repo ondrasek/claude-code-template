@@ -1,6 +1,5 @@
 ---
 description: Intelligent pull request analysis using coordinated agent workflows for comprehensive code review.
-argument-hint: [--detailed|--summary] [--base=branch] [--agents=list] [--timeout=seconds]
 allowed-tools: Task
 ---
 
@@ -18,17 +17,8 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
 ## Usage Examples
 
 ```bash
-# Basic review with default settings
+# Autonomous pull request review
 /pr-review
-
-# Detailed review with specific base branch
-/pr-review --detailed --base=develop
-
-# Summary review with timeout override
-/pr-review --summary --timeout=120
-
-# Review with specific agents only
-/pr-review --agents=critic,performance-optimizer,test-strategist
 ```
 
 ## Instructions
@@ -65,16 +55,15 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
    - **Size Limits**: Analysis scope limited to manageable segments
    - **Timeout Enforcement**: Hard limits to prevent hanging
 
-4. **Enhanced Command Arguments**:
-   Parse `$ARGUMENTS` to support:
-   - `--detailed`: Show detailed analysis from each agent (default: summary)
-   - `--summary`: Show consolidated summary only  
-   - `--base=<branch>`: Override base branch for comparison (default: main)
-   - `--agents=<list>`: Specify subset of agents (comma-separated)
-   - `--timeout=<seconds>`: Override default timeouts (default: 30s triage, 60s analysis)
-   - `--max-files=<count>`: Skip review if more than N files changed (default: 100)
+4. **Autonomous Command Execution**:
+   Execute autonomously with intelligent defaults:
+   - Analysis depth: Comprehensive review with summary presentation
+   - Base branch: Auto-detect (main/master/develop)  
+   - Agent selection: All available agents for complete coverage
+   - Timeout handling: 30s triage, 60s analysis with automatic fallbacks
+   - File limits: Skip review if more than 100 files changed
 
-5. **Robust Review Report Generation**:
+5. **Autonomous Review Report Generation**:
    Consolidate feedback with deduplication and prioritization:
 
    ```
@@ -122,7 +111,6 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
    - **Timeout Handling**: Cancel hung agents, report partial results
    - **Empty Changes**: Clear messaging when no changes detected
    - **Fallback Modes**: Basic git analysis when agents unavailable
-   - **Invalid Arguments**: Clear error messages for malformed `$ARGUMENTS`
 
 ## Agent Coordination Strategy (Revised)
 
