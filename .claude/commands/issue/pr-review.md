@@ -1,6 +1,6 @@
 ---
 description: Intelligent pull request analysis using coordinated agent workflows for comprehensive code review.
-allowed-tools: Task
+allowed-tools: Task, Bash, Grep, Read, LS
 ---
 
 # Pull Request Review Command
@@ -32,11 +32,12 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
 
 2. **Staged Agent Review Process with Context Scoping**:
 
-   **Stage 1: Quick Triage (Sequential - 30s timeout each)**:
+   **Stage 1: Initial Triage (Sequential)**:
    - `Task(critic)`: Initial risk assessment and red flags identification
    - `Task(context)`: Codebase integration analysis and scope validation
+   - **Decision Point**: Continue with full analysis or provide quick feedback
 
-   **Stage 2: Core Analysis (Parallel - 60s timeout each)**:
+   **Stage 2: Core Analysis (Sequential)**:
    Execute only if Stage 1 passes basic validation:
    - `Task(performance-optimizer)`: Performance analysis on modified functions/methods only
    - `Task(test-strategist)`: Test coverage analysis for changed code paths
@@ -44,7 +45,7 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
    - `Task(principles)`: Standards compliance for modified components
    - `Task(code-cleaner)`: Code quality analysis with diff-specific context
 
-   **Stage 3: Final Critical Review**:
+   **Stage 3: Final Critical Review (Sequential)**:
    - `Task(critic)`: Final risk assessment with all agent findings for contrarian analysis
 
 3. **Agent Context Scoping Strategy**:
@@ -60,7 +61,7 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
    - Analysis depth: Comprehensive review with summary presentation
    - Base branch: Auto-detect (main/master/develop)
    - Agent selection: All available agents for complete coverage
-   - Timeout handling: 30s triage, 60s analysis with automatic fallbacks
+   - Sequential execution: Each agent builds on previous findings
    - File limits: Skip review if more than 100 files changed
 
 5. **Autonomous Review Report Generation**:
@@ -114,38 +115,40 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
 
 ## Agent Coordination Strategy (Revised)
 
-**Stage 1: Quick Triage (Sequential - Risk-First)**
+**Stage 1: Initial Triage (Sequential - Risk-First)**
 - `critic` agent first: Identify obvious red flags and stop-gaps
 - `context` agent second: Validate integration scope and dependencies
-- **Abort Conditions**: If critic identifies critical risks, offer abort or continue choice
+- **Decision Point**: If critic identifies critical risks, proceed with caution or quick exit
 
-**Stage 2: Parallel Core Analysis (Resource-Managed)**
-- Execute remaining agents simultaneously with resource limits
-- Each agent gets scoped context (specific files + diff segments)
-- Hard timeout enforcement prevents hanging
-- Collect partial results if some agents fail
+**Stage 2: Sequential Core Analysis (Single-Threaded)**
+- Execute each agent sequentially, building context progressively
+- Each agent gets scoped context plus findings from previous agents
+- `performance-optimizer` → `test-strategist` → `patterns` → `principles` → `code-cleaner`
+- Each agent can reference and build upon previous agent findings
+- Graceful degradation: Continue with available agents if some fail
 
-**Stage 3: Consolidation with Intelligence**
+**Stage 3: Consolidation with Intelligence (Sequential)**
 - `critic` agent reviews all findings for final risk assessment
-- **Deduplication**: Remove redundant findings across agents
-- **Prioritization**: Rank issues by impact and confidence level
-- **Actionability**: Ensure recommendations include specific locations
+- **Synthesis**: Integrate findings across all agents with cross-references
+- **Prioritization**: Rank issues by impact, confidence, and agent consensus
+- **Actionability**: Ensure recommendations include specific locations and context
 
 ## Enhanced Integration Points
 
 - **Git Workflow**: Robust `git diff` with multiple fallback strategies
-- **Agent Infrastructure**: Timeout-aware Task() delegation with scoped context
+- **Agent Infrastructure**: Sequential Task() delegation with progressive context building
 - **Error Recovery**: Graceful degradation when components fail
 - **Performance Management**: Size limits and timeout controls
 - **Output Standards**: Structured severity levels and specific file references
 
 ## Risk Mitigation Implementations
 
-1. **Agent Context Scoping**: Each Task() call includes specific file list and diff segments
-2. **Fallback Strategies**: Multiple levels of degraded functionality
-3. **Performance Limits**: Configurable timeouts and size thresholds
-4. **Enhanced Error Scenarios**: Specific handlers for all identified git edge cases
-5. **Consolidation Logic**: Deduplication algorithm and priority ranking system
+1. **Agent Context Scoping**: Each Task() call includes specific file list, diff segments, and previous agent findings
+2. **Sequential Execution**: Each agent builds upon previous findings for comprehensive analysis
+3. **Fallback Strategies**: Multiple levels of degraded functionality
+4. **Performance Limits**: Size thresholds with early termination options
+5. **Enhanced Error Scenarios**: Specific handlers for all identified git edge cases
+6. **Progressive Context Building**: Later agents receive enriched context from earlier analysis
 
 ## Success Criteria (Enhanced)
 
@@ -159,7 +162,7 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
 ## Implementation Notes
 
 **Diff Analysis Scope**: Focus on `git diff main...HEAD` with validation and fallbacks
-**Agent Context Delivery**: Each agent receives JSON context with files, diffs, and metadata
-**Resource Management**: Implement timeout supervision and resource pooling
+**Agent Context Delivery**: Each agent receives JSON context with files, diffs, metadata, and previous agent findings
+**Sequential Execution Management**: Implement progressive context enrichment and graceful degradation
 **Error Reporting**: Structured error codes for different failure modes
 **Extensibility**: Plugin architecture for additional review agents
