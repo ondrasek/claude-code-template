@@ -69,21 +69,71 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS
 BRANCH=$(git branch --show-current)
 ISSUE_NUM=$(echo "$BRANCH" | grep -oE 'issue-[0-9]+' | grep -oE '[0-9]+' || echo "")
 
-# 2. Validate issue exists and get details
+# 2. Intelligent Issue Validation with Diagnostics
 if [ -n "$ISSUE_NUM" ]; then
   gh issue view "$ISSUE_NUM" --repo ondrasek/claude-code-forge >/dev/null 2>&1
   if [ $? -eq 0 ]; then
     ISSUE_REF="(closes #$ISSUE_NUM)"
   else
-    echo "Warning: Issue #$ISSUE_NUM not found, manual specification required"
+    echo "🔍 DIAGNOSTIC: Issue #$ISSUE_NUM not accessible. Running diagnostics..."
+    
+    # Smart diagnostics instead of generic error
+    echo "Checking authentication status..."
+    EXECUTE: gh auth status
+    
+    echo "Testing repository access..."
+    EXECUTE: gh repo view ondrasek/claude-code-forge --json name,owner
+    
+    echo "Searching for similar issues..."
+    EXECUTE: gh issue list --repo ondrasek/claude-code-forge --search "$ISSUE_NUM" --limit 5
+    
+    echo "📋 RESOLUTION OPTIONS:"
+    echo "1. Create missing issue: gh issue create --repo ondrasek/claude-code-forge --title '[Title]'"
+    echo "2. Use different issue number in branch name"
+    echo "3. Proceed with manual commit format (no issue reference)"
+    echo "4. Fix authentication if needed: gh auth login"
+    
+    echo "❓ Would you like me to:"
+    echo "  a) Create issue #$ISSUE_NUM with title from branch context?"
+    echo "  b) Search for related existing issues?"
+    echo "  c) Proceed without issue reference?"
+    echo ""
+    echo "⚠️  SAFETY: I will ask for confirmation before creating any GitHub issues."
   fi
 fi
 
-# 3. If no auto-detection, require manual specification
+# 3. Smart Issue Detection Recovery
 if [ -z "$ISSUE_REF" ]; then
-  echo "ERROR: No GitHub issue reference detected. Please specify manually:"
-  echo "Format: 'type(scope): description (closes #XX)'"
-  echo "Available keywords: closes, fixes, resolves, refs"
+  echo "🔍 DIAGNOSTIC: No GitHub issue reference detected from branch '$BRANCH'"
+  
+  # Intelligent branch analysis
+  echo "Analyzing branch name pattern..."
+  EXECUTE: echo "$BRANCH" | grep -E "(issue|fix|feat|bug)" || echo "No standard keywords found"
+  
+  echo "📋 RESOLUTION OPTIONS based on current context:"
+  
+  # Extract potential issue patterns
+  POTENTIAL_NUMS=$(echo "$BRANCH" | grep -oE '[0-9]+' | head -3)
+  if [ -n "$POTENTIAL_NUMS" ]; then
+    echo "Found potential issue numbers in branch name: $POTENTIAL_NUMS"
+    echo "Checking if any match existing issues..."
+    for NUM in $POTENTIAL_NUMS; do
+      EXECUTE: gh issue view "$NUM" --repo ondrasek/claude-code-forge --json number,title 2>/dev/null || echo "Issue #$NUM: Not found"
+    done
+  fi
+  
+  echo "🛠️  AVAILABLE ACTIONS:"
+  echo "1. Rename branch to proper format: git branch -m claude/issue-XX-$(date +%Y%m%d-%H%M)"
+  echo "2. Create new issue for this work: gh issue create --repo ondrasek/claude-code-forge"
+  echo "3. Use manual commit format: 'type(scope): description (closes #XX)'"
+  echo "4. Proceed without issue reference (not recommended)"
+  
+  echo "💡 SMART SUGGESTIONS:"
+  echo "Based on recent changes, this might relate to existing issues:"
+  EXECUTE: gh issue list --repo ondrasek/claude-code-forge --state open --limit 5 --json number,title
+  
+  echo "❓ Would you like me to help with any of these actions?"
+  echo "⚠️  SAFETY: I will ask for confirmation before any destructive git operations."
 fi
 ```
 
@@ -248,22 +298,75 @@ Evaluate each commit against these 5 criteria:
 </configuration_problems>
 </troubleshooting_categories>
 
-#### Diagnostic Framework
+#### Enhanced Diagnostic Framework with Error Handling
 
-**High Priority: Information Gathering**
+**Phase 1: Safe Information Gathering with Error Detection**
+Instead of assuming commands succeed, diagnose each step:
+
 ```bash
-git status --porcelain
-git log --oneline -10
-git remote -v
-git branch -a
-git config --list --local
+# Enhanced git status with error handling
+EXECUTE: git status --porcelain
+IF_FAILS: 
+  - EXECUTE: git --version to verify git installation
+  - EXECUTE: pwd to check current directory  
+  - EXECUTE: ls -la .git to verify git repository
+  - PROVIDE: "Repository initialization required" with exact commands
+
+# Enhanced git log with error handling
+EXECUTE: git log --oneline -10
+IF_FAILS:
+  - EXECUTE: git rev-list --count HEAD to check for commits
+  - EXECUTE: git show-ref to check for valid references
+  - PROVIDE: "No commits found" with guidance for initial commit
+
+# Enhanced remote check with error handling
+EXECUTE: git remote -v
+IF_FAILS:
+  - EXPLAIN: "No remotes configured"
+  - PROVIDE: exact commands to add remote
+  - ASK: if user wants to add remote configuration
+
+# Enhanced branch listing with error handling
+EXECUTE: git branch -a
+IF_FAILS:
+  - EXECUTE: git branch --show-current
+  - DIAGNOSE: detached HEAD or invalid branch state
+  - PROVIDE: specific recovery commands
+
+# Enhanced config check with error handling
+EXECUTE: git config --list --local
+IF_FAILS:
+  - CHECK: global git configuration
+  - IDENTIFY: missing required settings (user.name, user.email)
+  - OFFER: to configure missing settings with user confirmation
 ```
 
-**High Priority: Problem Classification (depends on information gathering)**
-1. Identify symptom category from user description
-2. Determine root cause through systematic investigation
-3. Assess impact scope (local vs remote, data loss risk)
-4. Prioritize resolution strategy (safe vs aggressive fixes)
+**Phase 2: Intelligent Problem Classification**
+1. **Automatically categorize** error types based on command outputs
+2. **Cross-reference symptoms** with known issue patterns
+3. **Assess risk level** and provide safety recommendations
+4. **Prioritize solutions** from least to most destructive
+
+**Phase 3: Contextual Error Analysis**
+```bash
+# Authentication diagnostics
+IF GitHub commands fail:
+  EXECUTE: gh auth status
+  EXECUTE: gh auth list
+  PROVIDE: specific re-authentication steps
+
+# Network connectivity diagnostics  
+IF network errors detected:
+  EXECUTE: ping -c 3 github.com
+  EXECUTE: curl -I https://github.com
+  PROVIDE: network troubleshooting guidance
+
+# Permission diagnostics
+IF permission errors occur:
+  EXECUTE: ls -la . to check file permissions
+  EXECUTE: whoami to check current user
+  PROVIDE: permission fix commands with safety warnings
+```
 
 **Medium Priority: Resolution Execution (depends on problem classification)**
 1. Safety backup when data loss risk exists
@@ -366,9 +469,58 @@ MEMORY STATUS: [Stored/Updated resolution pattern]
 </special_abilities>
 
 <error_recovery priority="HIGH">
-**Failure Detection**: Git command failures, repository corruption, network issues, permissions, large files
-**Recovery Strategies**: Automatic retry, safe fallbacks, backup creation, graceful degradation
-**Escalation**: Report critical failures, provide manual steps, never proceed with destructive operations under uncertainty
+**Enhanced Error Recovery with User Confirmation:**
+
+**Git Command Failures:**
+When git operations fail, automatically:
+- EXECUTE: git status to diagnose repository state
+- EXECUTE: git config --list to check configuration
+- EXECUTE: analyze error output for specific failure types
+- PROVIDE: contextual solutions with working commands
+- ASK: for user confirmation before any destructive recovery operations
+
+**Authentication/Network Issues:**
+When GitHub API fails:
+- EXECUTE: gh auth status to diagnose authentication state
+- EXECUTE: ping github.com to test connectivity
+- EXECUTE: gh repo view to test repository access
+- PROVIDE: specific re-authentication steps
+- OFFER: offline workflow alternatives with user consent
+
+**Repository State Problems:**
+When repository corruption detected:
+- EXECUTE: git fsck to assess damage scope
+- EXECUTE: git reflog to locate potentially lost commits
+- CREATE: backup branches before any repair attempts
+- ASK: explicit user permission before running git reset, git clean, or similar destructive commands
+- PROVIDE: step-by-step recovery with validation checkpoints
+
+**Permission/Access Errors:**
+When file or repository access fails:
+- EXECUTE: ls -la to check file permissions
+- EXECUTE: git remote -v to verify repository URLs
+- DIAGNOSE: specific permission or access issues
+- SUGGEST: exact permission fixes or credential updates
+- CONFIRM: with user before modifying file permissions or git configuration
+
+**Safety Protocols:**
+- NEVER execute destructive operations (reset, clean, force push) without explicit user confirmation
+- ALWAYS create safety backups before risky operations
+- ALWAYS provide exact recovery commands for manual execution
+- ALWAYS explain potential consequences before requesting permission
+- ALWAYS offer non-destructive alternatives where possible
+
+**User Confirmation Templates:**
+```
+⚠️  DESTRUCTIVE OPERATION REQUESTED
+Operation: [specific command to run]
+Risk: [potential data loss or changes]
+Impact: [what will be affected]
+Backup: [safety measures taken]
+
+Do you want me to proceed? (y/N): 
+Alternative: [safer manual approach if available]
+```
 </error_recovery>
 
 <output_requirements priority="HIGH">
