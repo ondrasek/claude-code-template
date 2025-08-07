@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.71.0] - 2025-08-07
+
+### Changed
+- **Technical Accuracy Corrections**: Major README.md rewrite addressing user feedback and technical inaccuracies
+  - Fixed agent count from incorrect "20+ agents" to accurate "17 AI Agents" (6 foundation + 11 specialist)
+  - Updated command count to verified "27 Slash Commands" 
+  - Removed marketing language per user feedback ("Transform your development workflow", "supercharge", etc.)
+  - Replaced incorrect `uvx --from claude-code-forge init` installation with accurate git clone process
+  - Rewritten with developer-focused, no-nonsense approach as requested
+  - All claims verified against actual repository structure for technical accuracy
+  - Professional technical documentation without sales pitch language
+
 ## [2.70.0] - 2025-08-07
 
 ### Changed
