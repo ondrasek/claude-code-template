@@ -8,6 +8,29 @@ allowed-tools: Task
 
 Comprehensive pull request analysis leveraging the existing agent ecosystem to perform intelligent code review when executed from a checked-out branch containing pull request changes.
 
+## Prerequisites
+
+- Active Git repository with proper branch structure
+- Current branch contains changes to review (not on base branch)
+- Network access for agent coordination and repository operations
+- Sufficient permissions for git diff and branch analysis operations
+
+## Usage Examples
+
+```bash
+# Basic review with default settings
+/pr-review
+
+# Detailed review with specific base branch
+/pr-review --detailed --base=develop
+
+# Summary review with timeout override
+/pr-review --summary --timeout=120
+
+# Review with specific agents only
+/pr-review --agents=critic,performance-optimizer,test-strategist
+```
+
 ## Instructions
 
 1. **Branch and Diff Analysis with Enhanced Validation**:
@@ -43,6 +66,7 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
    - **Timeout Enforcement**: Hard limits to prevent hanging
 
 4. **Enhanced Command Arguments**:
+   Parse `$ARGUMENTS` to support:
    - `--detailed`: Show detailed analysis from each agent (default: summary)
    - `--summary`: Show consolidated summary only  
    - `--base=<branch>`: Override base branch for comparison (default: main)
@@ -98,6 +122,7 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
    - **Timeout Handling**: Cancel hung agents, report partial results
    - **Empty Changes**: Clear messaging when no changes detected
    - **Fallback Modes**: Basic git analysis when agents unavailable
+   - **Invalid Arguments**: Clear error messages for malformed `$ARGUMENTS`
 
 ## Agent Coordination Strategy (Revised)
 
@@ -150,5 +175,4 @@ Comprehensive pull request analysis leveraging the existing agent ecosystem to p
 **Resource Management**: Implement timeout supervision and resource pooling
 **Error Reporting**: Structured error codes for different failure modes
 **Extensibility**: Plugin architecture for additional review agents
-
 EOF < /dev/null
