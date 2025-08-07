@@ -1,5 +1,6 @@
 ---
 description: Analyze GitHub Issues backlog for strategic prioritization.
+argument-hint: <issue number> (optional) or [focus areas] (optional)
 allowed-tools: Task
 ---
 
@@ -14,7 +15,8 @@ Analyze GitHub Issues backlog and provide strategic prioritization recommendatio
    - Identify high-impact tasks ready for implementation
    - Group related issues for efficient batch processing
    - Assess dependencies and optimal implementation sequences
-   - Consider $ARGUMENTS for focus areas if provided
+   - Consider issues that meet $ARGUMENTS for focus areas if provided
+   - Review only single issue when <issue number> is in $ARGUMENTS
 
 2. Return strategic analysis with:
    - Top priority actionable items
