@@ -1,7 +1,7 @@
 ---
 name: github-issues-workflow
 description: "PROACTIVELY use when user mentions tasks or asks 'create issue', 'track progress', 'remember to do' or 'add to backlog'. Expert at managing GitHub Issues lifecycle without polluting main context."
-tools: Bash, Grep, Glob, LS
+tools: Bash, Grep, Glob, LS, Read, Edit, MultiEdit
 ---
 
 # GitHub Issues Analysis Agent
