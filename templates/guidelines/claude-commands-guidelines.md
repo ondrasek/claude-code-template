@@ -1,243 +1,215 @@
 # Claude Code Slash Command Guidelines
 
-This document provides comprehensive guidelines, rules, and best practices for defining and implementing slash commands in Claude Code,
-based on official Anthropic documentation and established community practices.
+<overview priority="HIGH">
+<definition>Comprehensive guidelines, rules, and best practices for defining and implementing slash commands in Claude Code</definition>
+<enforcement>ALL command definitions MUST follow these guidelines for proper Claude Code integration</enforcement>
+<fundamental_principle priority="CRITICAL">Command definitions are meant for Claude Code. They are instructions, NOT human readable documentation</fundamental_principle>
+</overview>
 
-You must remember and follow the main principle:
-command definitions are meant for Claude Code. They are instructions, NOT human readable documentation.
+<official_requirements priority="CRITICAL">
+<file_structure priority="CRITICAL">
+  <location>ALL slash commands MUST be stored in .claude/commands/ directory</location>
+  <format>Commands are Markdown (.md) files</format>
+  <naming>File name determines command name (without .md extension)</naming>
+  <discovery>Commands are automatically discovered by Claude Code</discovery>
+  <enforcement>NEVER place command files in any other directory</enforcement>
+</file_structure>
 
-## Official Requirements
+<command_file_structure priority="CRITICAL">
+  <template>
+    ---
+    description: Brief command description.
+    argument-hint: Expected argument format.
+    allowed-tools: Tool1, Tool2(tool arguments), Tool3
+    ---
 
-### File Structure and Organization
-- **Location**: All slash commands MUST be stored in `.claude/commands/` directory
-- **Format**: Commands are Markdown (.md) files
-- **Naming**: File name determines command name (without .md extension)
-- **Discovery**: Commands are automatically discovered by Claude Code
+    # Command Title
 
-### Command File Structure
-```markdown
----
-description: Brief command description.
-argument-hint: Expected argument format.
-allowed-tools: Tool1, Tool2(tool arguments), Tool3
----
+    Brief description of what the command does.
 
-# Command Title
+    ## Instructions
 
-Brief description of what the command does.
+    Detailed step-by-step instructions for Claude to follow.
+    Use $ARGUMENTS to reference passed parameters.
 
-## Instructions
+    1. First step with $ARGUMENTS
+    2. Second step
+    3. Final step
+  </template>
+  <validation>✅ Frontmatter present, ✅ Title section included, ✅ Instructions section detailed</validation>
+</command_file_structure>
+</official_requirements>
 
-Detailed step-by-step instructions for Claude to follow.
-Use $ARGUMENTS to reference passed parameters.
+<frontmatter_configuration priority="HIGH">
+<supported_fields priority="HIGH">
+  <field name="description" priority="HIGH">
+    <definition>Brief command explanation for help text</definition>
+    <enforcement>MUST be concise and action-oriented</enforcement>
+  </field>
+  <field name="argument_hint" priority="MEDIUM">
+    <definition>Describe expected arguments for user guidance</definition>
+    <enforcement>SHOULD provide clear parameter expectations</enforcement>
+  </field>
+  <field name="allowed_tools" priority="HIGH">
+    <definition>Array of permitted tools for command execution</definition>
+    <enforcement>MUST specify all required tools with parameters</enforcement>
+  </field>
+</supported_fields>
 
-1. First step with $ARGUMENTS
-2. Second step
-3. Final step
-```
+<example_frontmatter priority="MEDIUM">
+  <template>
+    ---
+    description: Execute git workflow with intelligent commit messages.
+    argument-hint: Optional custom commit message.
+    allowed-tools: Bash(git add *), Bash(got commit *), Read, Write, Edit
+    ---
+  </template>
+  <validation>✅ Clear description, ✅ Argument guidance provided, ✅ Tools specified</validation>
+</example_frontmatter>
+</frontmatter_configuration>
 
-## Frontmatter Configuration
+<naming_conventions priority="HIGH">
+<file_naming_rules priority="HIGH">
+  <rule>Use lowercase with hyphens for multi-word commands</rule>
+  <rule>Be descriptive and action-oriented</rule>
+  <rule>Avoid spaces (converted to underscores in normalization)</rule>
+  <enforcement>MUST follow kebab-case naming pattern</enforcement>
+  
+  <examples>
+    <correct>git-workflow.md</correct>
+    <correct>test-runner.md</correct>
+    <correct>deploy-production.md</correct>
+  </examples>
+</file_naming_rules>
 
-### Supported Fields
-- **`description`**: Brief command explanation for help text
-- **`argument-hint`**: Describe expected arguments for user guidance
-- **`allowed-tools`**: Array of permitted tools for command execution
+<namespace_implementation priority="MEDIUM">
+  <structure>Use subdirectories for logical grouping</structure>
+  <format>namespace/command-name.md</format>
+  
+  <examples>
+    <namespace>git/commit.md</namespace>
+    <namespace>testing/unit-tests.md</namespace>
+    <namespace>deployment/staging.md</namespace>
+  </examples>
+  
+  <validation>✅ Logical grouping, ✅ Consistent namespace structure</validation>
+</namespace_implementation>
+</naming_conventions>
 
-### Example Frontmatter
-```yaml
----
-description: Execute git workflow with intelligent commit messages.
-argument-hint: Optional custom commit message.
-allowed-tools: Bash(git add *), Bash(got commit *), Read, Write, Edit
----
-```
+<parameter_handling priority="HIGH">
+<arguments_keyword priority="HIGH">
+  <definition>Use $ARGUMENTS to reference passed parameters</definition>
+  <placement_behavior>Placement affects substitution behavior</placement_behavior>
+  <capability>Enable dynamic command behavior</capability>
+  <example>Create commit with message: $ARGUMENTS</example>
+  <enforcement>MUST use $ARGUMENTS for parameter access</enforcement>
+</arguments_keyword>
 
-## Naming Conventions
+<argument_processing priority="MEDIUM">
+  <processing>Commands receive arguments as passed by user</processing>
+  <parsing>No automatic parsing - handle in command logic</parsing>
+  <validation>Consider validation and error handling</validation>
+  <guidance>Provide clear argument hints in frontmatter</guidance>
+</argument_processing>
+</parameter_handling>
 
-### File Naming Rules
-- Use lowercase with hyphens for multi-word commands
-- Be descriptive and action-oriented
-- Avoid spaces (converted to underscores in normalization)
-- Examples:
-  - `git-workflow.md`
-  - `test-runner.md`
-  - `deploy-production.md`
+<best_practices priority="HIGH">
+<command_design priority="HIGH">
+  <principle name="single_responsibility" priority="HIGH">
+    <definition>Each command should have one clear purpose</definition>
+    <enforcement>AVOID multi-purpose commands that combine unrelated functionality</enforcement>
+  </principle>
+  
+  <principle name="clear_documentation" priority="MEDIUM">
+    <definition>Include comprehensive descriptions and examples</definition>
+    <enforcement>MUST provide step-by-step instructions for Claude</enforcement>
+  </principle>
+  
+  <principle name="error_handling" priority="HIGH">
+    <definition>Anticipate and handle common failure scenarios</definition>
+    <enforcement>MUST include error recovery instructions</enforcement>
+  </principle>
+  
+  <principle name="user_feedback" priority="MEDIUM">
+    <definition>Provide clear status and progress information</definition>
+    <enforcement>SHOULD include progress indicators and completion confirmations</enforcement>
+  </principle>
+  
+  <principle name="idempotency" priority="HIGH">
+    <definition>Commands should be safe to run multiple times</definition>
+    <enforcement>MUST design commands to handle repeated execution gracefully</enforcement>
+  </principle>
+</command_design>
 
-### Namespace Implementation
-- Use subdirectories for logical grouping
-- Format: `namespace/command-name.md`
-- Examples:
-  - `git/commit.md`
-  - `testing/unit-tests.md`
-  - `deployment/staging.md`
+<content_structure priority="MEDIUM">
+  <section name="title" priority="HIGH">Clear, descriptive command title</section>
+  <section name="description" priority="HIGH">Brief explanation of command purpose</section>
+  <section name="instructions" priority="CRITICAL">Step-by-step implementation details for Claude execution</section>
+  <validation>✅ All sections present, ✅ Instructions detailed and actionable</validation>
+</content_structure>
+</best_practices>
 
-## Parameter Handling
+<implementation_guidelines priority="HIGH">
+<command_execution_flow priority="HIGH">
+  <step order="1">User invokes command with /command-name parameters</step>
+  <step order="2">Claude Code loads command definition from .claude/commands/</step>
+  <step order="3">Frontmatter processed for tool permissions and guidance</step>
+  <step order="4">$ARGUMENTS substituted with user parameters</step>
+  <step order="5">Claude executes instructions using allowed tools</step>
+  <validation>✅ Flow understood, ✅ Tool restrictions respected</validation>
+</command_execution_flow>
 
-### $ARGUMENTS Keyword
-- Use `$ARGUMENTS` to reference passed parameters
-- Placement affects substitution behavior
-- Enable dynamic command behavior
-- Example: `Create commit with message: $ARGUMENTS`
+<tool_restrictions priority="CRITICAL">
+  <enforcement>Commands can ONLY use tools specified in allowed-tools frontmatter</enforcement>
+  <specification>Tools must be listed with their parameter patterns</specification>
+  <security>Tool restrictions prevent unauthorized system access</security>
+  <validation>✅ All required tools specified, ✅ Parameter patterns included</validation>
+</tool_restrictions>
+</implementation_guidelines>
 
-### Argument Processing
-- Commands receive arguments as passed by user
-- No automatic parsing - handle in command logic
-- Consider validation and error handling
-- Provide clear argument hints in frontmatter
+<optimization_principles priority="MEDIUM">
+<claude_instruction_optimization priority="HIGH">
+  <principle>Commands are AI instruction sets, not human documentation</principle>
+  <approach>Write for Claude's interpretation and execution</approach>
+  <language>Use imperative, action-oriented language</language>
+  <structure>Organize instructions for sequential Claude execution</structure>
+  <enforcement>MUST optimize for AI comprehension over human readability</enforcement>
+</claude_instruction_optimization>
 
-## Best Practices
+<performance_considerations priority="MEDIUM">
+  <consideration>Minimize tool invocations where possible</consideration>
+  <consideration>Group related operations for efficiency</consideration>
+  <consideration>Provide early validation to prevent wasted execution</consideration>
+  <consideration>Include completion indicators for user feedback</consideration>
+</performance_considerations>
+</optimization_principles>
 
-### Command Design
-1. **Single Responsibility**: Each command should have one clear purpose
-2. **Clear Documentation**: Include comprehensive descriptions and examples
-3. **Error Handling**: Anticipate and handle common failure scenarios
-4. **User Feedback**: Provide clear status and progress information
-5. **Idempotency**: Commands should be safe to run multiple times
+<validation_framework priority="HIGH">
+<command_validation_checklist priority="HIGH">
+  <validation name="frontmatter_complete">✅ All required frontmatter fields present</validation>
+  <validation name="tools_specified">✅ All necessary tools listed in allowed-tools</validation>
+  <validation name="instructions_detailed">✅ Step-by-step instructions provided for Claude</validation>
+  <validation name="arguments_handled">✅ $ARGUMENTS usage implemented where needed</validation>
+  <validation name="error_handling">✅ Common failure scenarios addressed</validation>
+  <validation name="single_purpose">✅ Command maintains single responsibility</validation>
+</command_validation_checklist>
 
-### Content Structure
-1. **Title**: Clear, descriptive command title
-2. **Description**: Brief explanation of command purpose
-3. **Instructions**: Step-by-step implementation details
-4. **Examples**: Usage examples and expected outcomes
-5. **Error Handling**: Instructions for common error scenarios
+<testing_approach priority="MEDIUM">
+  <test>Verify command discovery in Claude Code interface</test>
+  <test>Test argument passing and $ARGUMENTS substitution</test>
+  <test>Validate tool restrictions and permissions</test>
+  <test>Confirm error handling and recovery mechanisms</test>
+  <test>Verify idempotency with repeated executions</test>
+</testing_approach>
+</validation_framework>
 
-### Tool Integration
-1. **Selective Tools**: Only include necessary tools in `allowed-tools`
-2. **Tool Coordination**: Consider tool interaction patterns
-3. **Agent Delegation**: Use Task tool for complex operations
-4. **Parallel Execution**: Leverage multi-tool capabilities when appropriate
-
-## Security Considerations
-
-### Permission Model
-- Commands inherit Claude Code session permissions
-- `allowed-tools` restricts available functionality
-- Project commands accessible to all team members
-- Personal commands isolated to user scope
-
-### Safety Guidelines
-1. **Tool Restrictions**: Use `allowed-tools` to limit command capabilities
-2. **Input Validation**: Validate arguments before processing
-3. **Destructive Operations**: Require explicit confirmation
-4. **Sensitive Data**: Avoid including secrets or credentials
-
-## Integration Patterns
-
-### Git Workflow Integration
-- Follow repository Git Protocol requirements
-- Use specialist agents for complex operations
-- Maintain clean commit history
-- Automate release management
-
-### Agent Coordination
-- Delegate complex tasks to appropriate specialist agents
-- Use parallel agent execution for efficiency
-- Maintain context window optimization
-- Follow agent coordination protocols
-
-### Project Integration
-- Align with project structure and conventions
-- Respect existing workflows and processes
-- Integrate with CI/CD pipelines
-- Support team collaboration patterns
-
-## Command Categories
-
-### Workflow Commands
-- Git operations and release management
-- Build and deployment automation
-- Testing and quality assurance
-- Documentation generation
-
-### Development Commands
-- Code generation and scaffolding
-- Refactoring and optimization
-- Debugging and troubleshooting
-- Environment setup and configuration
-
-### Project Management Commands
-- Task tracking and management
-- Progress reporting and analysis
-- Team coordination and communication
-- Project planning and estimation
-
-## Examples and Templates
-
-### Basic Command Template
-```markdown
----
-description: "Brief description of command functionality"
-argument-hint: "Expected argument format"
----
-
-# Command Name
-
-Brief description of what this command accomplishes.
-
-## Instructions
-
-1. Step-by-step instructions for Claude
-2. Use $ARGUMENTS where parameters are needed
-3. Include error handling and validation
-4. Provide clear user feedback
-```
-
-### Advanced Command Template
-```markdown
----
-description: "Advanced command with tool restrictions"
-argument-hint: "Complex argument structure"
-allowed-tools: ["Bash", "Read", "Write", "Task"]
-model: "sonnet"
----
-
-# Advanced Command
-
-Comprehensive description with examples and use cases.
-
-## Prerequisites
-
-- Required environment setup
-- Dependencies and tools
-- Permission requirements
-
-## Instructions
-
-1. Validation and error checking
-2. Main command logic with $ARGUMENTS
-3. Agent coordination if needed
-4. Status reporting and cleanup
-
-## Error Handling
-
-- Common failure scenarios
-- Recovery procedures
-- User guidance for resolution
-```
-
-## Maintenance and Evolution
-
-### Version Control
-- Include commands in repository version control
-- Document changes in commit messages
-- Use semantic versioning for major command updates
-- Maintain backward compatibility when possible
-
-### Documentation Updates
-- Keep command descriptions current
-- Update examples and use cases
-- Maintain consistency across command suite
-- Regular review and optimization
-
-### Community Contribution
-- Follow established patterns and conventions
-- Contribute improvements back to community
-- Share successful command patterns
-- Participate in best practice discussions
-
-## References
-
-- Official Anthropic Claude Code Documentation
-- Community Best Practices and Patterns
-- Professional Command Suite Implementations
-- Claude Code CLI Reference Guide
+<operational_enforcement priority="CRITICAL">
+<mandatory_practices priority="CRITICAL">
+  <practice>NEVER create commands outside .claude/commands/ directory</practice>
+  <practice>ALWAYS include proper frontmatter with allowed-tools</practice>
+  <practice>MUST write instructions for Claude execution, not human reading</practice>
+  <practice>ALWAYS validate command functionality before deployment</practice>
+  <practice>MUST maintain single responsibility per command</practice>
+</mandatory_practices>
+</operational_enforcement>
+EOF < /dev/null
