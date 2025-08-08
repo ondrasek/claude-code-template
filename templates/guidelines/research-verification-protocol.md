@@ -1,236 +1,250 @@
 # Research Verification Protocol
-# Purpose: Mandatory research process for Zettelkasten notes with dynamic depth
-# Status: REQUIRED - Notes cannot be created without following this protocol
 
-## Core Principle
+<protocol_metadata priority="MEDIUM">
+<purpose>Mandatory research process for Zettelkasten notes with dynamic depth</purpose>
+<status>REQUIRED - Notes cannot be created without following this protocol</status>
+<enforcement>ALL claims MUST be verified or explicitly marked as unverifiable</enforcement>
+</protocol_metadata>
 
-Every claim must be verified or explicitly marked as unverifiable. Research is not optional - it is the foundation of note quality. Research depth should match claim complexity.
+<core_principle priority="HIGH">
+<definition>Every claim must be verified or explicitly marked as unverifiable</definition>
+<foundation>Research is not optional - it is the foundation of note quality</foundation>
+<depth_matching>Research depth should match claim complexity</depth_matching>
+<enforcement>MANDATORY verification for all claims regardless of perceived obviousness</enforcement>
+</core_principle>
 
-## Dynamic Research Depth
+<dynamic_research_depth priority="HIGH">
+<claim_complexity_assessment priority="HIGH">
+  <instruction>Rate each claim 1-5 on all dimensions</instruction>
+  
+  <dimension name="specificity" priority="MEDIUM">
+    <scale_1>Vague claim</scale_1>
+    <scale_5>Precise metric</scale_5>
+    <enforcement>MUST assess specificity level for research planning</enforcement>
+  </dimension>
+  
+  <dimension name="importance" priority="HIGH">
+    <scale_1>Supporting detail</scale_1>
+    <scale_5>Core concept</scale_5>
+    <enforcement>PRIORITIZE high-importance claims for thorough research</enforcement>
+  </dimension>
+  
+  <dimension name="controversy" priority="HIGH">
+    <scale_1>Widely accepted</scale_1>
+    <scale_5>Actively debated</scale_5>
+    <enforcement>INCREASE research depth for controversial claims</enforcement>
+  </dimension>
+  
+  <dimension name="recency" priority="MEDIUM">
+    <scale_1>Established knowledge</scale_1>
+    <scale_5>Cutting-edge</scale_5>
+    <enforcement>VERIFY currency for recent developments</enforcement>
+  </dimension>
+</claim_complexity_assessment>
 
-### Claim Complexity Assessment
-Rate each claim 1-5 on:
-- **Specificity**: Vague claim (1) vs precise metric (5)
-- **Importance**: Supporting detail (1) vs core concept (5)
-- **Controversy**: Widely accepted (1) vs actively debated (5)
-- **Recency**: Established knowledge (1) vs cutting-edge (5)
+<research_depth_formula priority="HIGH">
+  <calculation>Total Score → Required Research</calculation>
+  
+  <depth_level name="light" priority="MEDIUM" score_range="4-7">
+    <requirement>Single authoritative source sufficient</requirement>
+    <approach>Official docs or textbooks preferred</approach>
+    <verification>One verification search if needed</verification>
+    <enforcement>MINIMUM acceptable research for low-complexity claims</enforcement>
+  </depth_level>
+  
+  <depth_level name="medium" priority="HIGH" score_range="8-11">
+    <requirement>2-3 diverse sources needed</requirement>
+    <approach>Primary source + supporting secondary</approach>
+    <verification>Check for recent updates/contradictions</verification>
+    <enforcement>STANDARD research depth for most claims</enforcement>
+  </depth_level>
+  
+  <depth_level name="deep" priority="HIGH" score_range="12-16">
+    <requirement>4-5 sources including primary research</requirement>
+    <approach>Academic search first (Google Scholar)</approach>
+    <verification>Cross-reference multiple viewpoints, include historical context</verification>
+    <enforcement>COMPREHENSIVE research for complex claims</enforcement>
+  </depth_level>
+  
+  <depth_level name="comprehensive" priority="CRITICAL" score_range="17-20">
+    <requirement>Comprehensive literature review (6+ sources)</requirement>
+    <approach>Systematic review approach</approach>
+    <verification>Include opposing viewpoints, trace citation networks, document evolution of understanding</verification>
+    <enforcement>EXHAUSTIVE research for critical claims</enforcement>
+  </depth_level>
+</research_depth_formula>
+</dynamic_research_depth>
 
-### Research Depth Formula
-Total Score → Required Research:
-- 4-7: Single authoritative source sufficient
-- 8-11: 2-3 diverse sources needed
-- 12-16: 4-5 sources including primary research
-- 17-20: Comprehensive literature review (6+ sources)
+<verification_checklist priority="HIGH">
+<requirement>Required Before Any Artifact</requirement>
 
-### Search Strategy by Depth
-**Light (4-7)**:
-- Start with official docs or textbooks
-- One verification search if needed
+<checklist_format priority="MEDIUM">
+  <template>
+    Claims Requiring Verification:
+    1. [Claim]: _______________
+       Research Depth: ___
+       Sources Found: ___
+       Quality Assessment: ___
+       Verification Status: ___
+    2. [Next Claim]: _______________
+       [Same fields]
+  </template>
+  <enforcement>MUST document all claims with this format</enforcement>
+</checklist_format>
 
-**Medium (8-11)**:
-- Primary source + supporting secondary
-- Check for recent updates/contradictions
+<mandatory_fields priority="HIGH">
+  <field name="claim_statement">Exact claim being verified</field>
+  <field name="research_depth">Calculated depth level (Light/Medium/Deep/Comprehensive)</field>
+  <field name="sources_found">Number and quality of sources located</field>
+  <field name="quality_assessment">Source credibility evaluation</field>
+  <field name="verification_status">Verified/Unverified/Contradictory Evidence</field>
+  <enforcement>ALL fields MUST be completed for each claim</enforcement>
+</mandatory_fields>
+</verification_checklist>
 
-**Deep (12-16)**:
-- Academic search first (Google Scholar)
-- Cross-reference multiple viewpoints
-- Include historical context
+<search_strategy_framework priority="MEDIUM">
+<light_research priority="LOW" depth_range="4-7">
+  <approach>Start with official docs or textbooks</approach>
+  <verification>One verification search if needed</verification>
+  <time_investment>15-30 minutes</time_investment>
+  <sources_minimum>1 authoritative source</sources_minimum>
+</light_research>
 
-**Comprehensive (17-20)**:
-- Systematic review approach
-- Include opposing viewpoints
-- Trace citation networks
-- Document evolution of understanding
+<medium_research priority="MEDIUM" depth_range="8-11">
+  <approach>Primary source + supporting secondary</approach>
+  <verification>Check for recent updates/contradictions</verification>
+  <time_investment>30-60 minutes</time_investment>
+  <sources_minimum>2-3 diverse sources</sources_minimum>
+</medium_research>
 
-## Verification Checklist (Required Before Any Artifact)
+<deep_research priority="HIGH" depth_range="12-16">
+  <approach>Academic search first (Google Scholar)</approach>
+  <verification>Cross-reference multiple viewpoints</verification>
+  <context>Include historical context</context>
+  <time_investment>60-120 minutes</time_investment>
+  <sources_minimum>4-5 sources including primary research</sources_minimum>
+</deep_research>
 
-**Format:**
-```
-Claims Requiring Verification:
-1. [Claim]: _______________
-   - Complexity Score: [Specificity:_] [Importance:_] [Controversy:_] [Recency:_] = Total: __
-   - Research Depth Required: [Light/Medium/Deep/Comprehensive]
-   - Status: ❌ Unverified
-   - Search strategy: _______________
-   - Target source tier: [1-2 preferred]
-   
-2. [Claim]: _______________
-   - Complexity Score: [Specificity:_] [Importance:_] [Controversy:_] [Recency:_] = Total: __
-   - Research Depth Required: [Light/Medium/Deep/Comprehensive]
-   - Status: ❌ Unverified
-   - Search strategy: _______________
-   - Target source tier: [1-2 preferred]
-```
+<comprehensive_research priority="CRITICAL" depth_range="17-20">
+  <approach>Systematic review approach</approach>
+  <verification>Include opposing viewpoints</verification>
+  <analysis>Trace citation networks</analysis>
+  <documentation>Document evolution of understanding</documentation>
+  <time_investment>2+ hours</time_investment>
+  <sources_minimum>6+ sources with literature review methodology</sources_minimum>
+</comprehensive_research>
+</search_strategy_framework>
 
-**GATE RULE:** Cannot create artifact until ALL ❌ are resolved
+<source_prioritization priority="HIGH">
+<tier_1_sources priority="CRITICAL">
+  <source>Peer-reviewed academic papers</source>
+  <source>Official technical documentation</source>
+  <source>Government research reports</source>
+  <source>Systematic reviews and meta-analyses</source>
+  <enforcement>PRIORITIZE these sources for all research</enforcement>
+</tier_1_sources>
 
-## Research Execution Protocol
+<tier_2_sources priority="HIGH">
+  <source>Academic textbooks from reputable publishers</source>
+  <source>Professional organization guidelines</source>
+  <source>Expert-authored technical books</source>
+  <source>Conference proceedings</source>
+  <enforcement>ACCEPTABLE as primary sources when Tier 1 unavailable</enforcement>
+</tier_2_sources>
 
-### For EACH Claim:
+<tier_3_sources priority="MEDIUM">
+  <source>Reputable news outlets with fact-checking</source>
+  <source>Well-established technical blogs by experts</source>
+  <source>High-quality documentation sites</source>
+  <source>Community-validated resources</source>
+  <enforcement>USE for supporting evidence, not primary claims</enforcement>
+</tier_3_sources>
 
-1. **Search Phase** (Depth varies by complexity score)
-   ```
-   Searching: "[exact query shown to user]"
-   - Use web_search tool (NOT MCP fetch)
-   - Light: 1 targeted search
-   - Medium: 2-3 searches from different angles
-   - Deep: 4-5 including academic sources
-   - Comprehensive: 6+ systematic coverage
-   ```
+<tier_4_sources priority="LOW">
+  <source>Personal blogs</source>
+  <source>Social media posts</source>
+  <source>Marketing materials</source>
+  <source>Unvetted community content</source>
+  <enforcement>AVOID as primary sources, use only for leads to better sources</enforcement>
+</tier_4_sources>
+</source_prioritization>
 
-2. **Source Evaluation** (For each source found)
-   ```
-   Evaluating: [Source Domain/Title]
-   - Quality Tier: [1-4 per framework]
-   - Credibility: Academic/Primary/Secondary/Weak
-   - Date: [When published/updated]
-   - Relevant quote: "[Exact quote from source]"
-   - Assessment: [Why reliable or not]
-   ```
+<research_documentation_requirements priority="HIGH">
+<mandatory_documentation priority="HIGH">
+  <requirement>Source URL or citation</requirement>
+  <requirement>Author credentials assessment</requirement>
+  <requirement>Publication date and relevance</requirement>
+  <requirement>Key supporting evidence extracted</requirement>
+  <requirement>Conflicting information noted</requirement>
+  <requirement>Confidence level assigned</requirement>
+  <enforcement>DOCUMENT all research findings systematically</enforcement>
+</mandatory_documentation>
 
-3. **Verification Decision**
-   ```
-   ✓ Verified: "[exact quote]" (Source: https://full-url.com)
-   ⚠️ Partially verified: General support but not specific claim - apply appropriate hashtag per note-templates.md
-   ❌ Cannot verify: No credible sources found after X searches - apply appropriate hashtag per note-templates.md
-   🚫 Contradicted: Sources disagree - show both views with appropriate hashtag per note-templates.md
-   ```
+<confidence_level_scale priority="MEDIUM">
+  <level name="high_confidence" score="4-5">Multiple high-quality sources agree, recent verification</level>
+  <level name="medium_confidence" score="3">Some sources agree, reasonable verification</level>
+  <level name="low_confidence" score="2">Limited sources, some uncertainty</level>
+  <level name="uncertain" score="1">Conflicting sources, insufficient evidence</level>
+  <level name="unverifiable" score="0">No reliable sources found</level>
+  <enforcement>ASSIGN confidence level to every claim</enforcement>
+</confidence_level_scale>
+</research_documentation_requirements>
 
-4. **Checklist Update**
-   ```
-   Updated status:
-   1. ✓ [Claim] - Verified with Tier 1 source (apply hashtag per note-templates.md)
-   2. ⚠️ [Claim] - Partially supported by Tier 3 sources (apply hashtag per note-templates.md)
-   3. ❌ [Claim] - Removed as unverifiable (apply hashtag per note-templates.md)
-   ```
+<verification_outcomes priority="HIGH">
+<verified_claims priority="HIGH">
+  <definition>Claims supported by appropriate research depth and source quality</definition>
+  <action>Proceed with note creation</action>
+  <documentation>Include source references and confidence level</documentation>
+</verified_claims>
 
-## Source Citation Format
+<partially_verified_claims priority="MEDIUM">
+  <definition>Claims with some support but incomplete verification</definition>
+  <action>Note limitations explicitly</action>
+  <documentation>Specify what remains unverified</documentation>
+</partially_verified_claims>
 
-**Required format for ALL web sources:**
-- `"[Exact quote]" (Source: https://example.com/full-path)`
-- Can add domain for clarity: `(fs.blog: https://fs.blog/article)`
-- NO academic-style citations for web sources
-- URL must be complete and clickable
+<unverified_claims priority="HIGH">
+  <definition>Claims lacking sufficient supporting evidence</definition>
+  <action>Mark as unverified or exclude from notes</action>
+  <documentation>Document verification attempts</documentation>
+  <enforcement>NEVER present unverified claims as facts</enforcement>
+</unverified_claims>
 
-## Quality Standards
+<contradictory_evidence priority="CRITICAL">
+  <definition>Claims with conflicting evidence from reliable sources</definition>
+  <action>Present multiple perspectives with source attribution</action>
+  <documentation>Note the controversy and evidence on each side</documentation>
+  <enforcement>MANDATORY disclosure of contradictory evidence</enforcement>
+</contradictory_evidence>
+</verification_outcomes>
 
-### Minimum Requirements:
-- Every uncertain claim must be searched
-- Search depth must match complexity score
-- All sources evaluated for credibility and tier
-- Exact quotes required for verification
-- Failed searches must be documented
-- Contradicting evidence must be presented
-- Majority of sources should be Tier 1-2 when possible
+<quality_assurance_protocol priority="MEDIUM">
+<pre_publication_review priority="MEDIUM">
+  <step>Verify all claims have appropriate research depth</step>
+  <step>Check source quality meets tier requirements</step>
+  <step>Confirm confidence levels are documented</step>
+  <step>Review for unverified claims presented as facts</step>
+  <step>Validate citation formatting and accessibility</step>
+</pre_publication_review>
 
-### Target Metrics:
-- 80%+ claims successfully verified
-- 60%+ sources from Tier 1-2
-- Average source age < 5 years for empirical claims
-- Zero unverified claims marked as verified
-- All high-importance claims (4-5) have multiple sources
+<periodic_verification_updates priority="LOW">
+  <trigger>New contradictory evidence emerges</trigger>
+  <trigger>Source reliability changes</trigger>
+  <trigger>Field consensus shifts</trigger>
+  <action>Update verification status and confidence levels</action>
+  <enforcement>MAINTAIN accuracy through periodic review</enforcement>
+</periodic_verification_updates>
+</quality_assurance_protocol>
 
-## Research Transparency
-
-Every note must document:
-- **Search Evolution**: Started broad → narrowed to [specific aspect]
-- **Source Distribution**: X academic, Y technical docs, Z secondary (Tiers: X@1, Y@2, Z@3, W@4)
-- **Confidence Distribution**: X high, Y medium, Z low confidence claims
-- **Research Scope**: Y searches performed, Z sources evaluated
-- **Key Decisions**: 
-  - Rejected [source] because [specific reason]
-  - Chose [source A] over [source B] due to [criteria]
-  - Could not verify [aspect] despite searching [queries]
-- **Remaining Uncertainties**: [What would need better sources]
-
-## Common Pitfalls to Avoid
-
-❌ Marking claims verified without quotes
-❌ Using single search when complexity score > 7
-❌ Accepting Tier 4 sources for important claims
-❌ Hiding contradicting evidence
-❌ Creating artifact before research complete
-❌ Using vague "studies show" without citation
-❌ Not adjusting depth for claim importance
-
-## Workflow Integration
-
-1. User provides topic
-2. Create verification checklist with complexity scores FIRST
-3. Show checklist to user
-4. Research each claim according to required depth
-5. Update checklist after each
-6. Perform source quality audit
-7. Only create artifact when complete
-8. Include research metrics in note
-
-## Source Quality Audit (Before Artifact Creation)
-
-After completing searches but before creating artifact:
-1. Calculate source tier distribution
-2. If >50% sources are Tier 3-4, perform additional academic search
-3. Flag any claims relying solely on Tier 4 sources
-4. Suggest elevation strategy for weak sources
-5. Document any synthesis requiring 3+ sources
-
-## Example Research Flow
-
-```
-Verification Checklist:
-1. ❌ Technique improves learning by 55%
-   - Complexity: [Specificity:5] [Importance:5] [Controversy:3] [Recency:3] = 16 (Deep research)
-   - Target: Find primary research study
-   
-2. ❌ Developed by Richard Feynman
-   - Complexity: [Specificity:3] [Importance:3] [Controversy:1] [Recency:1] = 8 (Medium research)
-   - Target: Biography or primary source
-   
-3. ❌ Has 4 specific steps
-   - Complexity: [Specificity:4] [Importance:2] [Controversy:1] [Recency:1] = 8 (Medium research)
-   - Target: Multiple consistent sources
-
-Starting research...
-
-Claim 1: "Technique improves learning by 55%" (Deep - need 4-5 sources)
-Searching: "Feynman technique effectiveness percentage study"
-[No specific study found - Tier 4 blogs only]
-Searching: "self-explanation learning improvement research"
-[Found Chi et al. meta-analysis - Tier 1]
-Searching: "teaching others learning retention study"
-[Found Fiorella & Mayer 2015 - Tier 1]
-Searching: "explain to learn effectiveness research"
-[Additional supporting studies - Tier 1-2]
-⚠️ Partially verified: Self-explanation shows 20-40% improvement (apply #emerging per note-templates.md), but no Feynman-specific studies exist
-
-Claim 2: "Developed by Richard Feynman" (Medium - need 2-3 sources)
-Searching: "Richard Feynman teaching technique origin"
-[Multiple sources cite but no primary - Tier 3]
-Searching: "Feynman technique biography Surely You're Joking"  
-[Checked his books, no mention - Original source absent]
-❌ Cannot verify: Widely attributed but no primary source found (apply #attributed per note-templates.md)
-
-[Continue for all claims...]
-
-Source Quality Audit:
-- Tier 1: 3 sources (43%)
-- Tier 2: 1 source (14%)
-- Tier 3: 2 sources (29%)
-- Tier 4: 1 source (14%)
-- Action: Acceptable distribution, flagging attribution issue
-
-Final checklist:
-1. ⚠️ Partially verified - modified to general self-explanation benefits (apply hashtags per note-templates.md)
-2. ❌ Cannot verify - marked as popular attribution (apply hashtags per note-templates.md)
-3. ✓ Verified - consistent 4-step structure across sources (apply hashtag per note-templates.md)
-```
-
-## Remember
-
-- Research quality determines note value
-- Depth should match importance and complexity
-- Prefer Tier 1-2 sources whenever possible
-- Better to have fewer verified claims than many uncertain ones
-- Transparency about limitations builds trust
-- Every URL should be immediately checkable
-- This protocol is mandatory, not optional
-- Apply confidence hashtags as defined in note-templates.md
+<compliance_requirements priority="HIGH">
+<mandatory_compliance priority="HIGH">
+  <requirement>MUST assess claim complexity using 4-dimension scale</requirement>
+  <requirement>MUST apply appropriate research depth formula</requirement>
+  <requirement>MUST prioritize higher-tier sources</requirement>
+  <requirement>MUST document all research findings</requirement>
+  <requirement>MUST assign confidence levels to all claims</requirement>
+  <requirement>NEVER present unverified claims as verified facts</requirement>
+  <requirement>ALWAYS disclose contradictory evidence</requirement>
+</mandatory_compliance>
+</compliance_requirements>
+EOF < /dev/null
