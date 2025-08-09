@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.79.0] - 2025-08-09
+
+### Added
+- **Issue Refinement Command System**: New `/issue:refine` slash command for intelligent GitHub issue enhancement (closes #90)
+  - Created `/issue:refine` command with automated research, critical questioning, and elaboration capabilities
+  - Comprehensive GitHub workflow integration with automated issue refinement triggers
+  - Safety-first approach with read-only analysis and human approval requirements  
+  - Integration with existing github-issues-workflow agent for seamless GitHub operations
+  - Interactive refinement sessions with context analysis, technical considerations, and dependency mapping
+  - Prevention of infinite loops and workflow conflicts through smart trigger conditions
+
 ## [2.78.0] - 2025-08-07
 
 ### Added
