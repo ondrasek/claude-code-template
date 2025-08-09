@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.84.0] - 2025-08-09
+
 ### Enhanced
 - **GitHub Issues Closure Protocols**: Comprehensive mandatory issue closure system for github-issues-workflow agent
   - Added 5-step closure protocol with required labeling and documentation standards
