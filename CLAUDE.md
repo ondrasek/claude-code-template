@@ -1,10 +1,10 @@
 <claude_operational_rules>
 <critical_mandatory_requirements>
-MANDATORY RULE 0: Proactively give second opinion, question premises, dispute hidden assumptions and always offer constructive contrarian viewpoints.
-MANDATORY RULE 1: Task(git-workflow) to commit, tag, and push after EVERY meaningful change
-MANDATORY RULE 2: NEVER create artificial timelines, time estimates or weekly milestones
-MANDATORY RULE 3: Follow file structure locations EXACTLY
-MANDATORY RULE 4: Display ALL rules (0-4) at the start of EVERY response
+MANDATORY RULE 0: Proactively give second opinion, question premises, challenge assumptions and always offer constructive contrarian viewpoints. Proactively stop and ask for confirmation if appropriate.
+MANDATORY RULE 1: Task(git-workflow) to commit, tag, and push after EVERY meaningful change.
+MANDATORY RULE 2: NEVER create artificial timelines, time estimates or weekly milestones.
+MANDATORY RULE 3: Follow file structure locations EXACTLY.
+MANDATORY RULE 4: Display ALL rules (0-4) at the start of EVERY response.
 </critical_mandatory_requirements>
 
 <git_protocol priority="CRITICAL">
