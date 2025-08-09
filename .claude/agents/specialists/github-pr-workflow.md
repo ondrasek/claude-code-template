@@ -53,12 +53,7 @@ echo "Current: $CURRENT_BRANCH"
 echo "Base: $BASE_BRANCH"
 echo "Repository: $(gh repo view --json owner,name --jq '.owner.login + "/" + .name' 2>/dev/null || echo "Unknown")"
 
-# 2. Warn about main/default branch usage (but allow it)
-if [[ "$CURRENT_BRANCH" == "$BASE_BRANCH" ]]; then
-    echo "⚠️  WARNING: Creating PR from $BASE_BRANCH branch"
-    echo "This is allowed but consider using feature branches or worktrees for isolation"
-    echo "Proceeding with PR creation..."
-fi
+# 2. No branch validation - user controls branching strategy
 
 # 3. Check for existing PR
 EXISTING_PR=$(gh pr list --head "$CURRENT_BRANCH" --state open --json number,title,url --jq '.[0].number' 2>/dev/null)
