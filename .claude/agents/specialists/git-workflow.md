@@ -225,7 +225,25 @@ Evaluate each commit against these 5 criteria:
 - ✅ Architecture improvements or refactoring completion
 
 #### Automatic Tagging Process with GitHub Issue Integration
-**When 4+ criteria are met:**
+**CRITICAL: Feature Branch Tagging Prevention**
+
+**Pre-Tagging Validation (MANDATORY):**
+```bash
+# NEVER create version tags on feature branches
+CURRENT_BRANCH=$(git branch --show-current)
+if [[ "$CURRENT_BRANCH" != "main" ]]; then
+    echo "🚫 TAGGING BLOCKED: Version tags only allowed on main branch"
+    echo "Current branch: $CURRENT_BRANCH"
+    echo "Use pre-release naming for feature branches: v2.89.0-${CURRENT_BRANCH//[^a-zA-Z0-9]/-}-alpha.1"
+    exit 1
+fi
+
+# Get main branch current version for proper semantic versioning
+MAIN_VERSION=$(git describe --tags --abbrev=0 origin/main 2>/dev/null || echo "v0.0.0")
+echo "Main branch current version: $MAIN_VERSION"
+```
+
+**When 4+ criteria are met AND on main branch:**
 
 1. **Determine semantic version increment**:
    - MAJOR: Breaking changes, API removals, major architecture changes
@@ -234,10 +252,9 @@ Evaluate each commit against these 5 criteria:
 
 2. **Aggregate resolved issues for release notes**:
    ```bash
-   # Get all closed issues since last release
-   LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
-   if [ -n "$LAST_TAG" ]; then
-     CLOSED_ISSUES=$(git log "$LAST_TAG"..HEAD --grep="closes #" --grep="fixes #" --grep="resolves #" | \
+   # Use MAIN_VERSION from pre-tagging validation
+   if [ -n "$MAIN_VERSION" ] && [ "$MAIN_VERSION" != "v0.0.0" ]; then
+     CLOSED_ISSUES=$(git log "$MAIN_VERSION"..HEAD --grep="closes #" --grep="fixes #" --grep="resolves #" | \
                      grep -oE '#[0-9]+' | tr -d '#' | sort -u)
    else
      CLOSED_ISSUES=$(git log --grep="closes #" --grep="fixes #" --grep="resolves #" | \
@@ -256,17 +273,26 @@ Evaluate each commit against these 5 criteria:
 
 4. **Create annotated tag with issue aggregation**:
    ```bash
-   TAG_MESSAGE="Release v1.2.3 - [brief description]
+   # Calculate next version based on MAIN_VERSION
+   IFS='.' read MAJOR MINOR PATCH <<< "${MAIN_VERSION#v}"
+   case "$VERSION_TYPE" in
+     "MAJOR") NEXT_VERSION="v$((MAJOR + 1)).0.0" ;;
+     "MINOR") NEXT_VERSION="v$MAJOR.$((MINOR + 1)).0" ;;
+     "PATCH") NEXT_VERSION="v$MAJOR.$MINOR.$((PATCH + 1))" ;;
+   esac
+   
+   TAG_MESSAGE="Release $NEXT_VERSION - [brief description]
 
+   Previous Version: $MAIN_VERSION
    Resolved Issues: $ISSUE_LIST
 
-   📋 Full changelog: https://github.com/ondrasek/ai-code-forge/compare/$LAST_TAG...v1.2.3"
-   git tag -a v1.2.3 -m "$TAG_MESSAGE"
+   📋 Full changelog: https://github.com/ondrasek/ai-code-forge/compare/$MAIN_VERSION...$NEXT_VERSION"
+   git tag -a "$NEXT_VERSION" -m "$TAG_MESSAGE"
    ```
 
 5. **Push tag**:
    ```bash
-   git push origin v1.2.3
+   git push origin "$NEXT_VERSION"
    ```
 </mode_1_workflow>
 
