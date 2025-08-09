@@ -362,15 +362,16 @@ MEMORY STATUS: Authentication failure pattern stored for recognition
 - Auto-detect breaking changes and flag appropriately
 - Maintain commit message consistency across PR lifecycle
 
-### Intelligent Label Detection
-- **Dynamic Discovery**: Fetch current repository labels using `gh label list --repo ondrasek/ai-code-forge --json name,color,description`
-- **Issue Label Updates**: When PR relates to an issue, update issue labels to reflect PR workflow status
-- **File Extension Analysis**: Map file types to discovered technology-specific labels
-- **Semantic Analysis**: Parse commit messages to match type-based labels from repository
-- **Multi-Label Support**: Apply multiple relevant labels when context supports it
+### Intelligent Label Detection (MANDATORY DYNAMIC DISCOVERY)
+- **Dynamic Discovery**: ALWAYS fetch current repository labels using `gh label list --repo ondrasek/ai-code-forge --json name,color,description` before any label operations
+- **No Hardcoded Labels**: NEVER assume specific labels exist - always verify through dynamic discovery
+- **Issue Label Updates**: When PR relates to an issue, update issue labels to reflect PR workflow status using only discovered labels
+- **File Extension Analysis**: Map file types to discovered technology-specific labels from repository
+- **Semantic Analysis**: Parse commit messages to match type-based labels discovered from repository
+- **Multi-Label Support**: Apply multiple relevant labels when context supports it, using only discovered labels
 - **Append-Only for Autonomous Updates**: Add new comments to issues/PRs instead of modifying existing content during automated operations
 - **User-Requested Modifications**: Can modify existing PR/issue content when explicitly instructed by users
-- **Fallback Strategy**: Use generic 'enhancement' label when specific matches aren't found
+- **Conditional Application**: Only apply labels that are confirmed to exist in repository through discovery
 
 ### Template and Automation Integration
 - Detect and use repository PR templates when available

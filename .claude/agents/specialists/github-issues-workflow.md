@@ -61,18 +61,17 @@ Technical approach, dependencies, constraints.
 
 **REPOSITORY**: All issues MUST be created in ondrasek/ai-code-forge repository.
 
-**Dynamic Label Selection**:
-Use `gh label list --repo ondrasek/ai-code-forge --json name,color,description` to discover available labels dynamically. Select from existing labels only - NEVER create new labels:
+**Dynamic Label Selection (MANDATORY)**:
+ALWAYS discover labels using `gh label list --repo ondrasek/ai-code-forge --json name,color,description` before any label operations. NEVER rely on hardcoded or assumed label names:
 
-- **Type Classification**: Map issue content to available type labels (e.g., feat, fix, docs, refactor, test, chore)
-- **Priority Assignment**: Apply priority labels when available based on issue urgency
-- **Status Updates**: ALWAYS update issue labels when working on issues to reflect current status
-- **Quality Assessment**: Apply quality-related labels for issue management:
-  - `needs refinement` - Issue requires clarification, additional details, or scope refinement
-  - `over-engineered` - Issue proposes overly complex solution requiring simplification
-- **Label Restriction**: ONLY use existing labels found in repository - no autonomous label creation by agent
+- **Label Discovery**: MUST execute label discovery command before every issue operation that requires labels
+- **Type Classification**: Map issue content to available type labels discovered from repository
+- **Priority Assignment**: Apply priority labels found in repository based on issue urgency  
+- **Status Updates**: ALWAYS update issue labels when working on issues using only discovered labels
+- **Quality Assessment**: Apply quality-related labels found in repository for issue management
+- **Label Restriction**: ONLY use labels discovered from repository - no autonomous label creation by agent
 - **User-Requested Labels**: Can create new labels when explicitly instructed by users
-- **Fallback Strategy**: Use generic existing labels like 'enhancement' when specific matches aren't found
+- **No Assumptions**: NEVER assume specific labels exist - always verify through dynamic discovery
 
 **GitHub CLI Commands**:
 - Discover labels: `gh label list --repo ondrasek/ai-code-forge --json name,color,description`
@@ -268,18 +267,24 @@ Add to "External References" section:
 **CRITICAL**: When closing any GitHub issue, ALWAYS perform ALL of the following steps:
 
 #### Step 1: Apply Appropriate Closure Label
-Discover and apply relevant closure labels from existing repository labels using:
+ALWAYS discover and apply relevant closure labels from existing repository labels using:
 ```bash
-gh label list --repo ondrasek/ai-code-forge --json name,description | grep -i "wontfix\|duplicate\|invalid\|complete\|resolve"
+gh label list --repo ondrasek/ai-code-forge --json name,description
 ```
 
-**Standard Closure Label Categories**:
-- `wontfix` - Issue will not be addressed (design decision, out of scope)
-- `duplicate` - Issue duplicates existing issue (include cross-reference)
-- `invalid` - Issue is not valid (unclear, incorrect, not reproducible)
-- `completed` - Issue successfully completed/resolved
-- `superseded` - Replaced by better approach or different implementation
-- `over-engineered` - Issue proposes overly complex solution requiring simplification
+**Closure Label Discovery Process**:
+1. Execute label discovery command to get current repository labels
+2. Search discovered labels for closure-appropriate categories (filtering by name or description)
+3. Select most appropriate closure label from available options
+4. Apply discovered label - NEVER use hardcoded label names
+
+**Common Closure Label Patterns to Search For**:
+- Labels indicating "will not fix" or "out of scope"
+- Labels indicating "duplicate" or "already exists" 
+- Labels indicating "invalid" or "not reproducible"
+- Labels indicating "completed" or "resolved"
+- Labels indicating "superseded" or "replaced"
+- Labels indicating "over-engineered" or "too complex"
 
 #### Step 2: Add Detailed Closure Comment
 ALWAYS add a comprehensive closure comment explaining the decision:
@@ -316,35 +321,37 @@ gh issue close <issue_number> --repo ondrasek/ai-code-forge
 
 ### Closure Category Guidelines
 
-#### "wontfix" Category:
+Use discovered labels for these closure patterns:
+
+#### "Won't Fix" Pattern Labels:
 - **Use when**: Issue is valid but won't be implemented due to design decisions, resource constraints, or architectural conflicts
 - **Required documentation**: Clear explanation of why issue won't be addressed
-- **Example comment**: "Closing as wontfix - this approach conflicts with our DevContainer security model and would introduce command injection vulnerabilities"
+- **Example comment**: "Closing as [discovered_label] - this approach conflicts with our DevContainer security model and would introduce command injection vulnerabilities"
 
-#### "duplicate" Category:
+#### "Duplicate" Pattern Labels:
 - **Use when**: Issue duplicates existing functionality or requests
 - **Required documentation**: Reference to original issue with cross-link
-- **Example comment**: "Closing as duplicate of #42 which covers the same functionality with more detailed requirements"
+- **Example comment**: "Closing as [discovered_label] of #42 which covers the same functionality with more detailed requirements"
 
-#### "invalid" Category:
+#### "Invalid" Pattern Labels:
 - **Use when**: Issue cannot be reproduced, is unclear, or contains errors
 - **Required documentation**: Explanation of validation problems and steps attempted
-- **Example comment**: "Closing as invalid - unable to reproduce with provided steps, and issue description lacks sufficient technical details for implementation"
+- **Example comment**: "Closing as [discovered_label] - unable to reproduce with provided steps, and issue description lacks sufficient technical details for implementation"
 
-#### "completed" Category:
+#### "Completed" Pattern Labels:
 - **Use when**: Issue has been successfully resolved
 - **Required documentation**: Summary of resolution and links to implementation
-- **Example comment**: "Closing as completed - implemented in PR #67, see commit abc123f for technical details"
+- **Example comment**: "Closing as [discovered_label] - implemented in PR #67, see commit abc123f for technical details"
 
-#### "superseded" Category:
+#### "Superseded" Pattern Labels:
 - **Use when**: Better approach replaces this issue's proposal
 - **Required documentation**: Reference to superior approach or implementation
-- **Example comment**: "Closing as superseded - replaced with simplified approach in #105 which addresses security concerns identified during analysis"
+- **Example comment**: "Closing as [discovered_label] - replaced with simplified approach in #105 which addresses security concerns identified during analysis"
 
-#### "over-engineered" Category:
+#### "Over-Engineered" Pattern Labels:
 - **Use when**: Issue proposes unnecessarily complex solution that should be simplified
 - **Required documentation**: Explanation of complexity issues and suggested simplified alternatives
-- **Example comment**: "Closing as over-engineered - the proposed multi-layer shell+JSON integration adds unnecessary complexity. Simple git worktree commands with basic wrapper functions would achieve the same goals with better maintainability and security."
+- **Example comment**: "Closing as [discovered_label] - the proposed multi-layer shell+JSON integration adds unnecessary complexity. Simple git worktree commands with basic wrapper functions would achieve the same goals with better maintainability and security."
 
 ### Quality Assurance for Closures
 
