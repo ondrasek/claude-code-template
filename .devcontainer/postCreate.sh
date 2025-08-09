@@ -103,13 +103,11 @@ fi
 
 worktreesDir=/workspace/worktrees/$repositoryName
 mkdir -p $worktreesDir
+git config --global -add safe.directory $worktreesDir
 
 # Set up shell aliases and environment for both bash and zsh
 echo "🐚 Configuring shell environment..."
 cat >> ~/.bashrc << 'EOF'
-
-# AI Code Forge Aliases
-alias launch-claude='/workspace/ai-code-forge/scripts/launch-claude.sh'
 
 # Environment variables for Claude Code
 export PYTHONIOENCODING=UTF-8
@@ -131,9 +129,6 @@ EOF
 
 # Configure zsh with same environment
 cat >> ~/.zshrc << 'EOF'
-
-# AI Code Forge Aliases
-alias launch-claude='/workspace/ai-code-forge/scripts/launch-claude.sh'
 
 # Environment variables for Claude Code
 export PYTHONIOENCODING=UTF-8
