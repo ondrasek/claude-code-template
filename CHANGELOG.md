@@ -17,6 +17,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Human-supervised approach for all GitHub issue modifications with read-only analysis output
   - Template GitHub Actions workflow for automated issue refinement with security best practices
 
+## [2.88.2] - 2025-08-09
+
+### Security
+- **DevContainer Security Fix**: Eliminated curl|sh vulnerabilities in postCreate.sh (fixes #113)
+  - Replaced insecure UV installation with secure pip install method  
+  - Replaced insecure Oh My Zsh installation with secure git clone method
+  - Prevents supply chain attacks, DNS poisoning, and MitM vulnerabilities during container setup
+
 ## [2.88.1] - 2025-08-09
 
 ### Fixed
