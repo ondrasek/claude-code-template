@@ -60,6 +60,16 @@ Utility scripts for Claude Code setup and operation:
 - `test-agents.sh` - Test agent system functionality
 - `test-session-logging.sh` - Validate logging and session management
 
+### Git Worktree Management
+
+Parallel development workflow utilities:
+
+- `worktree.sh` - Unified worktree management interface
+  - `worktree.sh create <branch>` - Create new worktree
+  - `worktree.sh create --from-issue <num>` - Create from GitHub issue
+  - `worktree.sh list` - List all worktrees
+  - `worktree.sh cleanup` - Clean up invalid worktrees
+
 ## Technology Stack Integration
 
 Built-in configurations for:
