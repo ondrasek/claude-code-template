@@ -1,3 +1,3 @@
 
 [ -f devcontainer.json ] && cd ..
-devcontainer up --workspace-folder .
+devcontainer up --workspace-folder . $@
