@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.88.0] - 2025-08-09
+
+### Added
+- **Complete Worktree Management System**: Unified interface for parallel development workflows (closes #105)
+  - Added worktree.sh unified wrapper script with comprehensive command delegation
+  - Added worktree-list.sh for detailed worktree listing with verbose mode support
+  - Enhanced DevContainer setup with worktree directory structure and environment variables
+  - Updated README.md with complete worktree management documentation and usage examples
+  - Comprehensive Git worktree utilities supporting GitHub issue integration and cleanup functionality
+
 ## [2.87.0] - 2025-08-09
 
 ### Added
