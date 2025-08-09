@@ -53,11 +53,11 @@ echo "Current: $CURRENT_BRANCH"
 echo "Base: $BASE_BRANCH"
 echo "Repository: $(gh repo view --json owner,name --jq '.owner.login + "/" + .name' 2>/dev/null || echo "Unknown")"
 
-# 2. Validate branch is not main/default
+# 2. Warn about main/default branch usage (but allow it)
 if [[ "$CURRENT_BRANCH" == "$BASE_BRANCH" ]]; then
-    echo "❌ ERROR: Cannot create PR from $BASE_BRANCH branch"
-    echo "Switch to a feature branch first: git checkout -b feature/your-feature"
-    exit 1
+    echo "⚠️  WARNING: Creating PR from $BASE_BRANCH branch"
+    echo "This is allowed but consider using feature branches or worktrees for isolation"
+    echo "Proceeding with PR creation..."
 fi
 
 # 3. Check for existing PR
