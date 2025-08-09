@@ -23,11 +23,26 @@ get_repo_name() {
         repo_name=$(basename "$MAIN_REPO")
     fi
     
-    # Validate repo name (security check)
-    if [[ ! "$repo_name" =~ ^[a-zA-Z0-9._-]+$ ]] || [[ ${#repo_name} -gt 100 ]]; then
+    # Enhanced repository name validation (security check)
+    if [[ ! "$repo_name" =~ ^[a-zA-Z0-9][a-zA-Z0-9._-]*$ ]] || 
+       [[ ${#repo_name} -gt 50 ]] ||
+       [[ "$repo_name" =~ \.\. ]] ||
+       [[ "$repo_name" =~ ^\. ]] ||
+       [[ "$repo_name" =~ \$ ]]; then
         print_error "Invalid repository name detected: $repo_name"
         return 1
     fi
+    
+    # Test path resolution safety
+    local test_base="/tmp/repo-validate-$$"
+    local test_path="$test_base/$repo_name"
+    mkdir -p "$test_base" 2>/dev/null
+    if ! realpath -m "$test_path" 2>/dev/null | grep -q "^$test_base/[^/]*$"; then
+        rm -rf "$test_base" 2>/dev/null
+        print_error "Repository name fails path validation: $repo_name"
+        return 1
+    fi
+    rm -rf "$test_base" 2>/dev/null
     
     echo "$repo_name"
 }
@@ -90,11 +105,31 @@ validate_branch_name() {
         return 1
     fi
     
-    # Prevent path traversal sequences
-    if [[ "$branch" =~ \.\. ]] || [[ "$branch" =~ ^/ ]] || [[ "$branch" =~ //+ ]]; then
-        print_error "Branch name contains invalid path sequences"
+    # Comprehensive path traversal prevention
+    local decoded_branch
+    # Handle URL encoding and other escape sequences
+    decoded_branch=$(printf '%b' "${branch//%/\\x}" 2>/dev/null || echo "$branch")
+    
+    # Check for various path traversal patterns
+    if [[ "$decoded_branch" =~ \.\. ]] || 
+       [[ "$decoded_branch" =~ ^/ ]] || 
+       [[ "$decoded_branch" =~ //+ ]] ||
+       [[ "$decoded_branch" =~ \\\.\\\.[\\/] ]] ||
+       [[ "$branch" =~ %2e ]] || [[ "$branch" =~ %2f ]]; then
+        print_error "Branch name contains path traversal sequences"
         return 1
     fi
+    
+    # Additional path validation with temporary directory test
+    local test_base="/tmp/branch-validate-$$"
+    local test_path="$test_base/$branch"
+    mkdir -p "$test_base" 2>/dev/null
+    if ! realpath -m "$test_path" 2>/dev/null | grep -q "^$test_base/[^/]*$"; then
+        rm -rf "$test_base" 2>/dev/null
+        print_error "Branch name fails path validation"
+        return 1
+    fi
+    rm -rf "$test_base" 2>/dev/null
     
     # Prevent git-sensitive names
     if [[ "$branch" =~ ^(HEAD|refs|objects|hooks)$ ]]; then
@@ -272,13 +307,17 @@ create_git_worktree() {
         print_info "Creating new branch: $branch"
     fi
     
-    # Create worktree
+    # Create worktree with proper shell safety
+    local cmd_args=()
     if $branch_exists; then
-        git worktree add "$worktree_path" "$branch"
+        cmd_args=("worktree" "add" "--" "$worktree_path" "$branch")
     else
         # Create new branch based on current HEAD
-        git worktree add -b "$branch" "$worktree_path"
+        cmd_args=("worktree" "add" "-b" "$branch" "--" "$worktree_path")
     fi
+    
+    # Execute with array expansion to prevent injection
+    git "${cmd_args[@]}"
     
     return $?
 }

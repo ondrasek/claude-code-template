@@ -165,8 +165,9 @@ remove_worktree() {
         print_info "Attempting to remove directory anyway..."
     fi
     
-    # Remove from git worktree management
-    if git worktree remove "$validated_path" 2>/dev/null; then
+    # Remove from git worktree management with proper safety
+    local cleanup_args=("worktree" "remove" "--" "$validated_path")
+    if git "${cleanup_args[@]}" 2>/dev/null; then
         print_success "Git worktree removed successfully"
     else
         print_warning "Failed to remove git worktree (may already be removed)"
