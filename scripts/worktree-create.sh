@@ -49,16 +49,19 @@ print_info() { echo -e "${BLUE}INFO:${NC} $1"; }
 show_usage() {
     cat << EOF
 Usage: $0 <branch-name> [issue-number]
+       $0 --from-issue <issue-number>
 
 Creates a git worktree for parallel development workflow.
 
 Arguments:
   branch-name     Name of the branch to create worktree for
   issue-number    Optional GitHub issue number for validation
+  --from-issue    Create worktree from GitHub issue (auto-detects or creates branch)
 
 Examples:
   $0 feature/new-agent
   $0 claude/issue-105-worktree 105
+  $0 --from-issue 105
   $0 hotfix/critical-bug
 
 Location: Worktrees created in $WORKTREE_BASE/<repository>/<branch-name>
@@ -99,6 +102,89 @@ validate_branch_name() {
         return 1
     fi
     
+    return 0
+}
+
+# Find existing branch for GitHub issue
+find_issue_branch() {
+    local issue_num="$1"
+    
+    # Common branch naming patterns for issues
+    local patterns=(
+        "claude/issue-$issue_num-*"
+        "issue-$issue_num-*"
+        "issue/$issue_num-*"
+        "feature/issue-$issue_num-*"
+    )
+    
+    # Check local branches first
+    for pattern in "${patterns[@]}"; do
+        local found_branch
+        found_branch=$(git branch --list "$pattern" 2>/dev/null | head -1 | sed 's/^[* ] *//')
+        if [[ -n "$found_branch" ]]; then
+            echo "$found_branch"
+            return 0
+        fi
+    done
+    
+    # Check remote branches
+    for pattern in "${patterns[@]}"; do
+        local found_branch
+        found_branch=$(git branch -r --list "origin/$pattern" 2>/dev/null | head -1 | sed 's/^[* ] *origin\///')
+        if [[ -n "$found_branch" ]]; then
+            echo "$found_branch"
+            return 0
+        fi
+    done
+    
+    return 1
+}
+
+# Create branch name from GitHub issue
+create_issue_branch_name() {
+    local issue_num="$1"
+    local issue_title=""
+    
+    # Try to get issue title from GitHub CLI
+    if command -v gh >/dev/null 2>&1; then
+        issue_title=$(gh issue view "$issue_num" --repo ondrasek/ai-code-forge --json title --jq .title 2>/dev/null || echo "")
+    fi
+    
+    # Create branch name
+    local branch_suffix=""
+    if [[ -n "$issue_title" ]]; then
+        # Convert title to branch-friendly format
+        branch_suffix=$(echo "$issue_title" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-*\|-*$//g')
+        branch_suffix=$(echo "$branch_suffix" | cut -c1-50)  # Limit length
+    else
+        branch_suffix="implementation"
+    fi
+    
+    echo "claude/issue-$issue_num-$branch_suffix"
+}
+
+# Process --from-issue flag
+process_issue_mode() {
+    local issue_num="$1"
+    
+    print_info "Processing issue #$issue_num" >&2
+    
+    # Validate issue number
+    validate_issue_number "$issue_num" || return 1
+    
+    # Look for existing branch
+    local existing_branch
+    if existing_branch=$(find_issue_branch "$issue_num"); then
+        print_success "Found existing branch for issue #$issue_num: $existing_branch" >&2
+        echo "$existing_branch"
+        return 0
+    fi
+    
+    # Create new branch name
+    local new_branch
+    new_branch=$(create_issue_branch_name "$issue_num")
+    print_info "Creating new branch for issue #$issue_num: $new_branch" >&2
+    echo "$new_branch"
     return 0
 }
 
@@ -199,11 +285,44 @@ create_git_worktree() {
 
 # Main execution
 main() {
-    local branch_name="$1"
-    local issue_number="${2:-}"
+    local branch_name=""
+    local issue_number=""
+    local from_issue_mode=false
+    
+    # Parse arguments
+    case "${1:-}" in
+        "--from-issue")
+            if [[ $# -lt 2 ]]; then
+                print_error "--from-issue requires an issue number"
+                show_usage
+                exit 1
+            fi
+            from_issue_mode=true
+            issue_number="$2"
+            ;;
+        "")
+            print_error "Missing required arguments"
+            show_usage
+            exit 1
+            ;;
+        *)
+            branch_name="$1"
+            issue_number="${2:-}"
+            ;;
+    esac
     
     print_info "Git Worktree Creation Utility"
     print_info "=============================="
+    
+    # Handle --from-issue mode
+    if $from_issue_mode; then
+        if branch_name=$(process_issue_mode "$issue_number"); then
+            print_info "Using branch: $branch_name"
+        else
+            print_error "Failed to process issue #$issue_number"
+            exit 1
+        fi
+    fi
     
     # Validate inputs
     validate_branch_name "$branch_name" || exit 1
