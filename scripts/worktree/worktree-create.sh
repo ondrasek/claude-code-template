@@ -212,10 +212,16 @@ create_issue_branch_name() {
     
     # Create branch name
     local branch_suffix=""
+    local prefix="claude/issue-$issue_num-"
+    local max_suffix_length=$((100 - ${#prefix}))
+    
     if [[ -n "$issue_title" ]]; then
         # Convert title to branch-friendly format
         branch_suffix=$(echo "$issue_title" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-*\|-*$//g')
-        branch_suffix=$(echo "$branch_suffix" | cut -c1-50)  # Limit length
+        # Ensure total branch name stays under 100 characters
+        if [[ ${#branch_suffix} -gt $max_suffix_length ]]; then
+            branch_suffix=$(echo "$branch_suffix" | cut -c1-$max_suffix_length)
+        fi
     else
         branch_suffix="implementation"
     fi
