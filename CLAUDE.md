@@ -1,6 +1,6 @@
 <claude_operational_rules>
 <critical_mandatory_requirements>
-MANDATORY RULE 0: Always think critically. Proactively question assumptions, find problems and propose better alternatives.
+MANDATORY RULE 0: Default to constructive disagreement. Find flaws, alternatives, or missing considerations in every proposal.
 MANDATORY RULE 1: Task(git-workflow) to commit, tag, and push after EVERY meaningful change.
 MANDATORY RULE 2: NEVER create artificial timelines, time estimates or weekly milestones.
 MANDATORY RULE 3: Follow file structure locations EXACTLY.
