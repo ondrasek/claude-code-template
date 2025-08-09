@@ -46,9 +46,10 @@
     <definition>Brief command explanation for help text</definition>
     <enforcement>MUST be concise and action-oriented</enforcement>
   </field>
-  <field name="argument_hint" priority="MEDIUM">
-    <definition>Describe expected arguments for user guidance</definition>
-    <enforcement>SHOULD provide clear parameter expectations</enforcement>
+  <field name="argument_hint" priority="LOW">
+    <definition>Describe expected arguments for user guidance when absolutely necessary</definition>
+    <enforcement>AVOID unless arguments are critical - prefer autonomous command design</enforcement>
+    <constraint>ONLY include when essential parameters cannot be determined by agent delegation</constraint>
   </field>
   <field name="allowed_tools" priority="HIGH">
     <definition>Array of permitted tools for command execution</definition>
@@ -56,15 +57,14 @@
   </field>
 </supported_fields>
 
-<example_frontmatter priority="MEDIUM">
+  <example_frontmatter priority="MEDIUM">
   <template>
     ---
-    description: Execute git workflow with intelligent commit messages.
-    argument-hint: Optional custom commit message.
-    allowed-tools: Bash(git add *), Bash(got commit *), Read, Write, Edit
+    description: Execute autonomous git workflow with intelligent agent delegation.
+    allowed-tools: Task
     ---
   </template>
-  <validation>✅ Clear description, ✅ Argument guidance provided, ✅ Tools specified</validation>
+  <validation>✅ Clear description, ✅ Autonomous design, ✅ Agent delegation via Task tool</validation>
 </example_frontmatter>
 </frontmatter_configuration>
 
@@ -97,20 +97,28 @@
 </naming_conventions>
 
 <parameter_handling priority="HIGH">
-<arguments_keyword priority="HIGH">
-  <definition>Use $ARGUMENTS to reference passed parameters</definition>
-  <placement_behavior>Placement affects substitution behavior</placement_behavior>
-  <capability>Enable dynamic command behavior</capability>
-  <example>Create commit with message: $ARGUMENTS</example>
-  <enforcement>MUST use $ARGUMENTS for parameter access</enforcement>
+<autonomous_design_principle priority="CRITICAL">
+  <definition>Commands MUST be primarily autonomous, relying on agent delegation rather than user arguments</definition>
+  <enforcement>USE arguments sparingly - only for absolutely essential parameters</enforcement>
+  <approach>Commands should determine behavior intelligently and delegate to specialized agents</approach>
+  <essential_logic>Include only critical orchestration logic - avoid complex argument-driven branching</essential_logic>
+</autonomous_design_principle>
+
+<arguments_keyword priority="MEDIUM">
+  <definition>Use $ARGUMENTS to reference passed parameters when absolutely necessary</definition>
+  <constraint>MINIMIZE argument dependency - prefer autonomous agent delegation</constraint>
+  <essential_use>Reserve for critical parameters that cannot be determined by agents</essential_use>
+  <example>Task(agent): Execute with context determination rather than /command --complex-args</example>
+  <enforcement>ONLY use $ARGUMENTS when agent delegation cannot determine behavior</enforcement>
 </arguments_keyword>
 
-<argument_processing priority="MEDIUM">
-  <processing>Commands receive arguments as passed by user</processing>
-  <parsing>No automatic parsing - handle in command logic</parsing>
-  <validation>Consider validation and error handling</validation>
-  <guidance>Provide clear argument hints in frontmatter</guidance>
-</argument_processing>
+<argument_minimization priority="HIGH">
+  <principle>Commands should be autonomous and self-determining</principle>
+  <delegation>Delegate complex logic and decision-making to appropriate specialized agents</delegation>
+  <orchestration>Focus command logic on agent coordination, not argument processing</orchestration>
+  <validation>Agent-driven validation preferred over argument-based validation</validation>
+  <guidance>Design commands to work effectively without arguments whenever possible</guidance>
+</argument_minimization>
 </parameter_handling>
 
 <best_practices priority="HIGH">
@@ -167,7 +175,7 @@
 </tool_restrictions>
 </implementation_guidelines>
 
-<optimization_principles priority="MEDIUM">
+<optimization_principles priority="HIGH">
 <claude_instruction_optimization priority="HIGH">
   <principle>Commands are AI instruction sets, not human documentation</principle>
   <approach>Write for Claude's interpretation and execution</approach>
@@ -176,11 +184,19 @@
   <enforcement>MUST optimize for AI comprehension over human readability</enforcement>
 </claude_instruction_optimization>
 
+<autonomous_command_architecture priority="CRITICAL">
+  <principle>Commands MUST delegate complex logic to specialized agents</principle>
+  <orchestration>Focus on agent coordination rather than direct implementation</orchestration>
+  <intelligence>Let agents determine optimal approaches rather than hardcoding logic</intelligence>
+  <simplicity>Keep command logic minimal - essential orchestration only</simplicity>
+  <enforcement>AVOID complex branching, validation, or processing within commands</enforcement>
+</autonomous_command_architecture>
+
 <performance_considerations priority="MEDIUM">
-  <consideration>Minimize tool invocations where possible</consideration>
-  <consideration>Group related operations for efficiency</consideration>
-  <consideration>Provide early validation to prevent wasted execution</consideration>
-  <consideration>Include completion indicators for user feedback</consideration>
+  <consideration>Delegate to agents instead of multiple tool invocations</consideration>
+  <consideration>Use Task tool for complex operations requiring specialized expertise</consideration>
+  <consideration>Provide agent context rather than detailed command instructions</consideration>
+  <consideration>Include completion indicators through agent reporting</consideration>
 </performance_considerations>
 </optimization_principles>
 
