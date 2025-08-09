@@ -5,7 +5,7 @@ from pathlib import Path
 from .core.installer import ACFInstaller
 
 @click.group()
-@click.version_option(version="0.1.0", package_name="ai-code-forge-cli")
+@click.version_option(version="0.2.0", package_name="ai-code-forge")
 def main():
     """AI Code Forge configuration management tool."""
     pass
