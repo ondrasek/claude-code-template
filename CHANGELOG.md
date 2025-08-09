@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Documentation Accuracy and Link Validation**: Comprehensive audit and update of all documentation files (closes #96)
+  - Fixed critical installation-breaking path references in launch-claude-usage.md (changed .support/scripts/ to scripts/, .support/prompts/ to templates/prompts/)
+  - Updated configuration-reference.md with correct project structure (templates/, scripts/, src/ instead of non-existent .support/ directories)
+  - Corrected agent count claims: documented actual 17 agents (6 foundation + 11 specialists) and 31 commands
+  - Updated features.md and configuration-reference.md with real agent names and file paths from .claude directory
+  - Resolved Task tool usage conflicts between claude-code-tools.md and agent-usage.md
+  - Fixed broken internal links: removed references to non-existent files (memory-system.md, manual-setup-guide.md, etc.)
+  - Updated navigation references to point to existing resources and scripts
+  - Standardized formatting and cross-references across all documentation files
+
 ## [2.79.1] - 2025-08-09
 
 ### Changed
