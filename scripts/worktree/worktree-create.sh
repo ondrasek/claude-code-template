@@ -7,7 +7,7 @@ set -euo pipefail
 
 WORKTREE_BASE="/workspace/worktrees"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-MAIN_REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
+MAIN_REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 # Get repository full name (owner/repo) dynamically
 get_repo_full_name() {

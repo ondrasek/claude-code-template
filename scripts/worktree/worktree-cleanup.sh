@@ -7,7 +7,7 @@ set -euo pipefail
 
 WORKTREE_BASE="/workspace/worktrees"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-MAIN_REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
+MAIN_REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 # Determine repository name dynamically
 get_repo_name() {
@@ -66,7 +66,7 @@ find_issue_branch() {
 
     # Common branch naming patterns for issues
     local patterns=(
-        "issue-$issue_num-*"
+        "claude/issue-$issue_num-*"
         "issue-$issue_num-*"
         "issue/$issue_num-*"
         "feature/issue-$issue_num-*"
