@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.82.0] - 2025-08-09
+
+### Added
+- **Multi-Agent Worktree Documentation Integration**: Enhanced project with comprehensive multi-agent development workflow documentation (refs #103)
+  - Integrated README guidelines system with multi-agent coordination patterns
+  - Documented multi-agent worktree strategies for parallel development workflows
+  - Enhanced GitHub Issues integration for specification-driven development
+
 ## [2.81.0] - 2025-08-09
 
 ### Added
