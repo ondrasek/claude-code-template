@@ -33,6 +33,7 @@ COMMANDS:
     create --from-issue <issue-number>   Create worktree from GitHub issue
     list [issue-number]                  List all worktrees or specific issue worktree
     list --verbose [issue-number]        List with detailed information
+    inspect <issue-spec> [--json] [-v]   Comprehensive issue and worktree state analysis
     remove <worktree-path>               Remove specific worktree by path
     remove <issue-number>                Remove worktree by issue number
     remove-all [--dry-run]               Remove all worktrees (with confirmation)
@@ -46,6 +47,9 @@ EXAMPLES:
     ./worktree.sh list
     ./worktree.sh list 123               # Show worktree for issue #123
     ./worktree.sh list --verbose
+    ./worktree.sh inspect 115            # Analyze issue #115 state
+    ./worktree.sh inspect --json 115     # JSON output for scripting
+    ./worktree.sh inspect --verbose "add worktree inspect"  # Search by title
     ./worktree.sh remove 123             # Remove worktree for issue #123
     ./worktree.sh remove /path/to/worktree
     ./worktree.sh remove-all --dry-run
@@ -83,6 +87,13 @@ main() {
                 exit 1
             fi
             exec "$SCRIPT_DIR/worktree-list.sh" "$@"
+            ;;
+        inspect)
+            if [[ ! -f "$SCRIPT_DIR/worktree-inspect.sh" ]]; then
+                print_error "worktree-inspect.sh not found in $SCRIPT_DIR"
+                exit 1
+            fi
+            exec "$SCRIPT_DIR/worktree-inspect.sh" "$@"
             ;;
         remove)
             if [[ ! -f "$SCRIPT_DIR/worktree-cleanup.sh" ]]; then
