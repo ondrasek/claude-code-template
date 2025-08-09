@@ -172,11 +172,16 @@ remove_worktree() {
     else
         print_warning "Failed to remove git worktree (may already be removed)"
         
-        # Manual cleanup if git worktree remove failed
+        # Manual cleanup if git worktree remove failed - secure implementation
         if [[ -d "$validated_path" ]]; then
             print_info "Removing directory manually..."
-            rm -rf "$validated_path"
-            print_success "Directory removed manually"
+            # Use array-based command to prevent injection
+            local rm_args=("rm" "-rf" "--" "$validated_path")
+            if "${rm_args[@]}"; then
+                print_success "Directory removed manually"
+            else
+                print_error "Failed to remove directory manually"
+            fi
         fi
     fi
     

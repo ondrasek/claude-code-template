@@ -29,7 +29,7 @@ get_repo_name() {
        [[ "$repo_name" =~ \.\. ]] ||
        [[ "$repo_name" =~ ^\. ]] ||
        [[ "$repo_name" =~ \$ ]]; then
-        print_error "Invalid repository name detected: $repo_name"
+        print_error "Invalid repository name detected"
         return 1
     fi
     
@@ -39,7 +39,7 @@ get_repo_name() {
     mkdir -p "$test_base" 2>/dev/null
     if ! realpath -m "$test_path" 2>/dev/null | grep -q "^$test_base/[^/]*$"; then
         rm -rf "$test_base" 2>/dev/null
-        print_error "Repository name fails path validation: $repo_name"
+        print_error "Repository name fails path validation"
         return 1
     fi
     rm -rf "$test_base" 2>/dev/null
@@ -81,6 +81,31 @@ Examples:
 
 Location: Worktrees created in $WORKTREE_BASE/<repository>/<branch-name>
 EOF
+}
+
+# Validate that path contains no symlinks (security check)
+validate_no_symlinks() {
+    local path="$1"
+    local parent_path
+    parent_path="$(dirname "$path")"
+    
+    # Check if target path or any parent is a symlink
+    if [[ -L "$path" ]] || [[ -L "$parent_path" ]]; then
+        print_error "Symlink detected in path - security violation"
+        return 1
+    fi
+    
+    # Check if any component in the path chain is a symlink
+    local check_path="$path"
+    while [[ "$check_path" != "/" && "$check_path" != "." ]]; do
+        if [[ -L "$check_path" ]]; then
+            print_error "Symlink detected in path chain - security violation"
+            return 1
+        fi
+        check_path="$(dirname "$check_path")"
+    done
+    
+    return 0
 }
 
 # Validate branch name
@@ -126,7 +151,7 @@ validate_branch_name() {
     mkdir -p "$test_base" 2>/dev/null
     if ! realpath -m "$test_path" 2>/dev/null | grep -q "^$test_base/[^/]*$"; then
         rm -rf "$test_base" 2>/dev/null
-        print_error "Branch name fails path validation"
+        print_error "Branch name fails security validation"
         return 1
     fi
     rm -rf "$test_base" 2>/dev/null
@@ -253,23 +278,36 @@ create_worktree_path() {
     repo_name=$(get_repo_name) || return 1
     local worktree_path="$WORKTREE_BASE/$repo_name/$branch"
     
-    # Ensure base directories exist
+    # Ensure base directories exist with symlink validation
     if [[ ! -d "$WORKTREE_BASE" ]]; then
+        validate_no_symlinks "$WORKTREE_BASE" || return 1
         print_info "Creating worktree base directory: $WORKTREE_BASE" >&2
-        mkdir -p "$WORKTREE_BASE"
+        # Use atomic directory creation to prevent race conditions
+        if ! mkdir -p "$WORKTREE_BASE" 2>/dev/null; then
+            print_error "Failed to create worktree base directory"
+            return 1
+        fi
     fi
     
     local repo_base="$WORKTREE_BASE/$repo_name"
     if [[ ! -d "$repo_base" ]]; then
+        validate_no_symlinks "$repo_base" || return 1
         print_info "Creating repository worktree directory: $repo_base" >&2
-        mkdir -p "$repo_base"
+        # Use atomic directory creation to prevent race conditions
+        if ! mkdir -p "$repo_base" 2>/dev/null; then
+            print_error "Failed to create repository directory"
+            return 1
+        fi
     fi
     
-    # Check if worktree already exists
+    # Check if worktree already exists and validate no symlinks
     if [[ -d "$worktree_path" ]]; then
-        print_error "Worktree already exists at: $worktree_path"
+        print_error "Worktree already exists at path"
         return 1
     fi
+    
+    # Validate no symlinks in final path before creation
+    validate_no_symlinks "$worktree_path" || return 1
     
     # Validate final path is within worktree base (security check)
     local canonical_path
@@ -278,7 +316,7 @@ create_worktree_path() {
     canonical_base=$(realpath -m "$WORKTREE_BASE")
     
     if [[ ! "$canonical_path" =~ ^"$canonical_base"/ ]]; then
-        print_error "Path escapes worktree boundary: $canonical_path"
+        print_error "Path escapes worktree security boundary"
         return 1
     fi
     
