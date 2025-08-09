@@ -7,7 +7,7 @@ set -euo pipefail
 
 WORKTREE_BASE="/workspace/worktrees"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-MAIN_REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
+MAIN_REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 # Color codes for output
 RED='\033[0;31m'
@@ -87,24 +87,27 @@ list_worktrees() {
 
     # Process git worktree list output
     while IFS= read -r line; do
-        if [[ $line =~ ^worktree\ (.+) ]]; then
+        if [[ $line == worktree* ]]; then
             # Print previous worktree if exists
             if [[ -n $current_worktree ]]; then
                 print_worktree_info "$current_worktree" "$current_branch" "$current_commit" "$is_bare" "$is_detached" "$verbose"
-                ((worktree_count++))
+                worktree_count=$((worktree_count + 1))
             fi
             
             # Reset for new worktree
-            current_worktree="${BASH_REMATCH[1]}"
+            current_worktree="${line#worktree }"
             current_branch=""
             current_commit=""
             is_bare=""
             is_detached=""
             
-        elif [[ $line =~ ^branch\ refs/heads/(.+) ]]; then
-            current_branch="${BASH_REMATCH[1]}"
-        elif [[ $line =~ ^HEAD\ ([a-f0-9]+) ]]; then
-            current_commit="${BASH_REMATCH[1]}"
+        elif [[ $line == branch* ]]; then
+            # Extract branch name from "branch refs/heads/branch-name"
+            local branch_line="${line#branch refs/heads/}"
+            current_branch="$branch_line"
+        elif [[ $line == HEAD* ]]; then
+            # Extract commit hash from "HEAD commit-hash"
+            current_commit="${line#HEAD }"
         elif [[ $line == "bare" ]]; then
             is_bare="true"
         elif [[ $line == "detached" ]]; then
@@ -115,7 +118,7 @@ list_worktrees() {
     # Print last worktree
     if [[ -n $current_worktree ]]; then
         print_worktree_info "$current_worktree" "$current_branch" "$current_commit" "$is_bare" "$is_detached" "$verbose"
-        ((worktree_count++))
+        worktree_count=$((worktree_count + 1))
     fi
 
     echo
@@ -130,7 +133,7 @@ print_worktree_info() {
     local is_bare="$4"
     local is_detached="$5"
     local verbose="$6"
-
+    
     # Determine status indicators
     local status_indicator=""
     local branch_display="$branch"
