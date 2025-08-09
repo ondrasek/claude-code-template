@@ -9,6 +9,39 @@ WORKTREE_BASE="/workspace/worktrees"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MAIN_REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
 
+# Get repository full name (owner/repo) dynamically
+get_repo_full_name() {
+    local repo_full_name=""
+    
+    # Try GitHub CLI first (if available and authenticated)
+    if command -v gh >/dev/null 2>&1; then
+        repo_full_name=$(gh repo view --json nameWithOwner --jq .nameWithOwner 2>/dev/null || echo "")
+    fi
+    
+    # Fallback to git remote origin URL parsing
+    if [[ -z "$repo_full_name" ]]; then
+        local remote_url
+        remote_url=$(git remote get-url origin 2>/dev/null || echo "")
+        if [[ -n "$remote_url" ]]; then
+            # Parse GitHub URL formats:
+            # https://github.com/owner/repo.git
+            # git@github.com:owner/repo.git
+            if [[ "$remote_url" =~ github\.com[:/]([^/]+/[^/]+)(\.git)?$ ]]; then
+                repo_full_name="${BASH_REMATCH[1]%.git}"
+            fi
+        fi
+    fi
+    
+    # Validate format
+    if [[ "$repo_full_name" =~ ^[a-zA-Z0-9._-]+/[a-zA-Z0-9._-]+$ ]]; then
+        echo "$repo_full_name"
+        return 0
+    else
+        print_error "Unable to determine GitHub repository (owner/repo format)" >&2
+        return 1
+    fi
+}
+
 # Determine repository name dynamically
 get_repo_name() {
     local repo_name=""
@@ -63,8 +96,8 @@ print_info() { echo -e "${BLUE}INFO:${NC} $1"; }
 # Usage information
 show_usage() {
     cat << EOF
-Usage: $0 <branch-name> [issue-number]
-       $0 --from-issue <issue-number>
+Usage: $0 <branch-name> [issue-number] [--dry-run]
+       $0 --from-issue <issue-number> [--dry-run]
 
 Creates a git worktree for parallel development workflow.
 
@@ -72,11 +105,13 @@ Arguments:
   branch-name     Name of the branch to create worktree for
   issue-number    Optional GitHub issue number for validation
   --from-issue    Create worktree from GitHub issue (auto-detects or creates branch)
+  --dry-run       Show what commands would be executed without running them
 
 Examples:
   $0 feature/new-agent
   $0 claude/issue-105-worktree 105
   $0 --from-issue 105
+  $0 --from-issue 105 --dry-run
   $0 hotfix/critical-bug
 
 Location: Worktrees created in $WORKTREE_BASE/<repository>/<branch-name>
@@ -184,7 +219,7 @@ find_issue_branch() {
     # Check local branches first
     for pattern in "${patterns[@]}"; do
         local found_branch
-        found_branch=$(git branch --list "$pattern" 2>/dev/null | head -1 | sed 's/^[* ] *//')
+        found_branch=$(git branch --list "$pattern" 2>/dev/null | head -1 | sed 's/^[*+ ] *//')
         if [[ -n "$found_branch" ]]; then
             echo "$found_branch"
             return 0
@@ -211,7 +246,10 @@ create_issue_branch_name() {
 
     # Try to get issue title from GitHub CLI
     if command -v gh >/dev/null 2>&1; then
-        issue_title=$(gh issue view "$issue_num" --repo ondrasek/ai-code-forge --json title --jq .title 2>/dev/null || echo "")
+        local repo_full_name
+        if repo_full_name=$(get_repo_full_name); then
+            issue_title=$(gh issue view "$issue_num" --repo "$repo_full_name" --json title --jq .title 2>/dev/null || echo "")
+        fi
     fi
 
     # Create branch name
@@ -270,18 +308,21 @@ validate_issue_number() {
 
         # Validate issue exists on GitHub (if gh CLI available)
         if command -v gh >/dev/null 2>&1; then
-            if ! gh issue view "$issue" --repo ondrasek/ai-code-forge --json number >/dev/null 2>&1; then
-                print_error "Issue #$issue not found or not accessible on GitHub"
-                print_info "Please verify the issue exists and you have access to it"
-                print_info "Continue anyway? (y/N)"
-                read -r confirm
-                if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
-                    print_info "Operation cancelled by user"
-                    return 1
+            local repo_full_name
+            if repo_full_name=$(get_repo_full_name); then
+                if ! gh issue view "$issue" --repo "$repo_full_name" --json number >/dev/null 2>&1; then
+                    print_error "Issue #$issue not found or not accessible on GitHub"
+                    print_info "Please verify the issue exists and you have access to it"
+                    print_info "Continue anyway? (y/N)"
+                    read -r confirm
+                    if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
+                        print_info "Operation cancelled by user"
+                        return 1
+                    fi
+                    print_warning "Proceeding with potentially invalid issue #$issue"
+                else
+                    print_success "Validated issue #$issue exists on GitHub" >&2
                 fi
-                print_warning "Proceeding with potentially invalid issue #$issue"
-            else
-                print_success "Validated issue #$issue exists on GitHub" >&2
             fi
         else
             print_warning "GitHub CLI not available - cannot validate issue #$issue"
@@ -363,46 +404,66 @@ create_worktree_path() {
 create_git_worktree() {
     local branch="$1"
     local worktree_path="$2"
+    local dry_run="${3:-false}"
 
-    print_info "Creating git worktree for branch: $branch"
-
-    # Change to main repository directory
-    cd "$MAIN_REPO"
+    if [[ "$dry_run" == "true" ]]; then
+        print_info "[DRY RUN] Would create git worktree for branch: $branch"
+        print_info "[DRY RUN] Would change to directory: $MAIN_REPO"
+    else
+        print_info "Creating git worktree for branch: $branch"
+        # Change to main repository directory
+        cd "$MAIN_REPO"
+    fi
 
     # Check if branch exists locally or remotely
     local branch_exists=false
-    if git show-ref --verify --quiet "refs/heads/$branch"; then
-        print_info "Using existing local branch: $branch"
-        branch_exists=true
-    elif git show-ref --verify --quiet "refs/remotes/origin/$branch"; then
-        print_info "Using existing remote branch: origin/$branch"
-        branch_exists=true
+    if [[ "$dry_run" == "true" ]]; then
+        print_info "[DRY RUN] Would check if branch exists with: git show-ref --verify --quiet refs/heads/$branch"
+        print_info "[DRY RUN] Would check if remote branch exists with: git show-ref --verify --quiet refs/remotes/origin/$branch"
+        print_info "[DRY RUN] Assuming new branch for demonstration"
+        branch_exists=false
     else
-        print_info "Creating new branch: $branch"
+        if git show-ref --verify --quiet "refs/heads/$branch"; then
+            print_info "Using existing local branch: $branch"
+            branch_exists=true
+        elif git show-ref --verify --quiet "refs/remotes/origin/$branch"; then
+            print_info "Using existing remote branch: origin/$branch"
+            branch_exists=true
+        else
+            print_info "Creating new branch: $branch"
+        fi
     fi
 
     # Create worktree with proper shell safety
     local cmd_args=()
     if $branch_exists; then
-        cmd_args=("worktree" "add" "--" "$worktree_path" "$branch")
+        cmd_args=("git" "worktree" "add" "--" "$worktree_path" "$branch")
     else
         # Create new branch based on current HEAD
-        cmd_args=("worktree" "add" "-b" "$branch" "--" "$worktree_path")
+        cmd_args=("git" "worktree" "add" "-b" "$branch" "--" "$worktree_path")
     fi
 
     # Execute with array expansion to prevent injection
-    if ! git "${cmd_args[@]}"; then
-        return 1
+    if [[ "$dry_run" == "true" ]]; then
+        print_info "[DRY RUN] Would execute: ${cmd_args[*]}"
+    else
+        if ! git "${cmd_args[@]:1}"; then  # Remove 'git' from array since we're calling git directly
+            return 1
+        fi
     fi
 
     # Auto-push new branches to origin
     if ! $branch_exists; then
-        print_info "Pushing new branch to origin: $branch"
-        if git push --set-upstream origin "$branch"; then
-            print_success "Branch pushed to origin successfully"
+        if [[ "$dry_run" == "true" ]]; then
+            print_info "[DRY RUN] Would push new branch: git push --set-upstream origin $branch"
         else
-            print_warning "Failed to push branch to origin (continuing anyway)"
-            print_info "You can manually push later with: git push --set-upstream origin $branch"
+            print_info "Pushing new branch to origin: $branch"
+            if git push --set-upstream origin "$branch"; then
+                print_success "Branch pushed to origin successfully"
+            else
+                print_warning "Failed to push branch to origin (continuing anyway)"
+                print_info "You can manually push later with: git push --set-upstream origin $branch"
+            fi
         fi
     fi
 
@@ -413,10 +474,24 @@ create_git_worktree() {
 add_issue_comment() {
     local issue_num="$1"
     local branch_name="$2"
+    local dry_run="${3:-false}"
 
     # Only add comment if GitHub CLI is available and this is a new branch
     if ! command -v gh >/dev/null 2>&1; then
         print_warning "GitHub CLI not available - skipping issue comment"
+        return 0
+    fi
+
+    if [[ "$dry_run" == "true" ]]; then
+        print_info "[DRY RUN] Would add comment to issue #$issue_num"
+        print_info "[DRY RUN] Would change to directory: $MAIN_REPO"
+        
+        # Still get repo info for dry run demo
+        local repo_full_name="owner/repo"  # placeholder for dry run
+        local branch_url="https://github.com/${repo_full_name}/tree/${branch_name}"
+        local comment_body="Branch [$branch_name]($branch_url)"
+        
+        print_info "[DRY RUN] Would execute: gh issue comment $issue_num --repo <detected-repo> --body '$comment_body'"
         return 0
     fi
 
@@ -425,10 +500,11 @@ add_issue_comment() {
     # Ensure we're in the main repository directory for accurate repo info
     cd "$MAIN_REPO"
 
-    # Get repository info for branch URL
+    # Get repository info for branch URL and commenting
     local repo_full_name
-    if ! repo_full_name=$(gh repo view --json nameWithOwner --jq .nameWithOwner 2>/dev/null); then
-        repo_full_name="ondrasek/ai-code-forge"  # fallback
+    if ! repo_full_name=$(get_repo_full_name); then
+        print_error "Unable to determine repository for GitHub operations"
+        return 1
     fi
     
     # Create GitHub branch URL
@@ -436,7 +512,7 @@ add_issue_comment() {
     
     local comment_body="Branch [$branch_name]($branch_url)"
 
-    if gh issue comment "$issue_num" --repo ondrasek/ai-code-forge --body "$comment_body" 2>/dev/null; then
+    if gh issue comment "$issue_num" --repo "$repo_full_name" --body "$comment_body" 2>/dev/null; then
         print_success "Comment added to issue #$issue_num"
     else
         print_warning "Failed to add comment to issue #$issue_num (continuing anyway)"
@@ -448,17 +524,36 @@ main() {
     local branch_name=""
     local issue_number=""
     local from_issue_mode=false
+    local dry_run=false
 
     # Parse arguments
-    case "${1:-}" in
+    local args=("$@")
+    local arg_count=$#
+    
+    # Check for --dry-run flag and remove it from args
+    for i in "${!args[@]}"; do
+        if [[ "${args[i]}" == "--dry-run" ]]; then
+            dry_run=true
+            unset 'args[i]'
+            ((arg_count--))
+        fi
+    done
+    
+    # Rebuild args array
+    local clean_args=()
+    for arg in "${args[@]}"; do
+        [[ -n "$arg" ]] && clean_args+=("$arg")
+    done
+
+    case "${clean_args[0]:-}" in
         "--from-issue")
-            if [[ $# -lt 2 ]]; then
+            if [[ ${#clean_args[@]} -lt 2 ]]; then
                 print_error "--from-issue requires an issue number"
                 show_usage
                 exit 1
             fi
             from_issue_mode=true
-            issue_number="$2"
+            issue_number="${clean_args[1]}"
             ;;
         "")
             print_error "Missing required arguments"
@@ -466,8 +561,8 @@ main() {
             exit 1
             ;;
         *)
-            branch_name="$1"
-            issue_number="${2:-}"
+            branch_name="${clean_args[0]}"
+            issue_number="${clean_args[1]:-}"
             ;;
     esac
 
@@ -490,22 +585,39 @@ main() {
 
     # Create worktree path
     local worktree_path
-    worktree_path=$(create_worktree_path "$branch_name") || exit 1
+    if [[ "$dry_run" == "true" ]]; then
+        print_info "[DRY RUN] Would create worktree path for branch: $branch_name"
+        worktree_path="/workspace/worktrees/$(basename "$MAIN_REPO")/$branch_name"  # simulated path
+        print_info "[DRY RUN] Simulated path: $worktree_path"
+    else
+        worktree_path=$(create_worktree_path "$branch_name") || exit 1
+    fi
 
     # Create git worktree
-    if create_git_worktree "$branch_name" "$worktree_path"; then
-        print_success "Worktree created successfully!"
-        print_info "Location: $worktree_path"
+    if create_git_worktree "$branch_name" "$worktree_path" "$dry_run"; then
+        if [[ "$dry_run" == "true" ]]; then
+            print_success "[DRY RUN] Would create worktree successfully!"
+            print_info "[DRY RUN] Location would be: $worktree_path"
+        else
+            print_success "Worktree created successfully!"
+            print_info "Location: $worktree_path"
+        fi
 
         # Add comment to GitHub issue if this was created from an issue
         if $from_issue_mode && [[ -n "$issue_number" ]]; then
-            add_issue_comment "$issue_number" "$branch_name"
+            add_issue_comment "$issue_number" "$branch_name" "$dry_run"
         fi
 
         print_info ""
-        print_info "To work in this worktree:"
-        print_info "  cd \"$worktree_path\""
-        print_info "  # Launch Claude Code from this directory"
+        if [[ "$dry_run" == "true" ]]; then
+            print_info "[DRY RUN] To work in this worktree you would run:"
+            print_info "  cd \"$worktree_path\""
+            print_info "  # Launch Claude Code from this directory"
+        else
+            print_info "To work in this worktree:"
+            print_info "  cd \"$worktree_path\""
+            print_info "  # Launch Claude Code from this directory"
+        fi
     else
         print_error "Failed to create git worktree: $worktree_path"
         # Comprehensive cleanup on failure - remove git state and directory
