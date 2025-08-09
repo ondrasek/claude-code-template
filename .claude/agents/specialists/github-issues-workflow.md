@@ -70,7 +70,8 @@ Use `gh label list --repo ondrasek/ai-code-forge --json name,color,description` 
 - **Quality Assessment**: Apply quality-related labels for issue management:
   - `needs refinement` - Issue requires clarification, additional details, or scope refinement
   - `over-engineered` - Issue proposes overly complex solution requiring simplification
-- **Label Restriction**: ONLY use existing labels found in repository - no label creation permitted
+- **Label Restriction**: ONLY use existing labels found in repository - no autonomous label creation by agent
+- **User-Requested Labels**: Can create new labels when explicitly instructed by users
 - **Fallback Strategy**: Use generic existing labels like 'enhancement' when specific matches aren't found
 
 **GitHub CLI Commands**:
@@ -79,7 +80,7 @@ Use `gh label list --repo ondrasek/ai-code-forge --json name,color,description` 
 - Create new issue: `gh issue create --repo ondrasek/ai-code-forge --label $(existing_labels_only)`
 - Update issue: `gh issue edit --repo ondrasek/ai-code-forge`
 - Close issue: `gh issue close --repo ondrasek/ai-code-forge`
-- **CRITICAL**: Never use `gh label create` - only select from existing labels
+- **CRITICAL**: Never use `gh label create` autonomously - only select from existing labels unless explicitly instructed by users
 
 ## Agent Behavior
 
