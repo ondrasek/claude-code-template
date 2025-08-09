@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.84.0] - 2025-08-09
+
+### Changed
+- **GitHub Labels Guidelines Format Standardization**: Transformed github-labels.md to align with Claude prompt engineering format structure (closes #100)
+  - Restructured all sections using XML-structured markup for optimal AI instruction parsing
+  - Added comprehensive priority hierarchies (CRITICAL/HIGH/MEDIUM/LOW) throughout guidelines
+  - Implemented explicit enforcement patterns and validation mechanisms
+  - Added Quality Assurance Checklist section and comprehensive validation frameworks
+  - Included Claude-specific optimizations: context window efficiency and few-shot learning patterns
+  - Added action-oriented label application patterns and boundary definitions
+  - Enhanced template standardization across guidelines directory for improved AI workflow coordination
+
 ## [2.83.0] - 2025-08-09
 
 ### Added
