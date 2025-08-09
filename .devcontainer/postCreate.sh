@@ -8,8 +8,10 @@ echo "📦 Installing uv Python package manager..."
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install Claude CLI globally
-echo "🤖 Installing Claude CLI..."
+echo "🤖 Installing Claude CLI, OpenAI Codex and OpenCode..."
 npm install -g @anthropic-ai/claude-code
+npm install -g @openai/codex
+npm install -f opencode-ai
 
 # Install MCP tools
 echo "🔗 Installing MCP tools..."
