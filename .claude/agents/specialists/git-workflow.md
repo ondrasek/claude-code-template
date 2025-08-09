@@ -227,17 +227,128 @@ Evaluate each commit against these 5 criteria:
 #### Automatic Tagging Process with GitHub Issue Integration
 **When 4+ criteria are met:**
 
-1. **Determine semantic version increment**:
-   - MAJOR: Breaking changes, API removals, major architecture changes
-   - MINOR: New features, new agents/commands, significant enhancements
-   - PATCH: Bug fixes, documentation updates, small improvements
+1. **Repository State Validation and Version Detection**:
+   ```bash
+   # Essential repository context validation
+   CURRENT_BRANCH=$(git branch --show-current)
+   MAIN_BRANCH=$(git remote show origin | grep "HEAD branch" | cut -d' ' -f5 2>/dev/null || echo "main")
+   
+   # Get current repository version state from main branch
+   LAST_MAIN_TAG=$(git tag --sort=-version:refname --merged origin/$MAIN_BRANCH | head -1 2>/dev/null || echo "")
+   if [ -z "$LAST_MAIN_TAG" ]; then
+     # No tags exist - start at v0.1.0 for first release
+     CURRENT_VERSION="v0.0.0"
+     echo "📋 No existing tags found. Starting version sequence."
+   else
+     CURRENT_VERSION="$LAST_MAIN_TAG"
+     echo "📋 Current repository version: $CURRENT_VERSION"
+   fi
+   
+   # Parse semantic version components for calculation
+   VERSION_NUMBER=$(echo $CURRENT_VERSION | sed 's/^v//')
+   MAJOR=$(echo $VERSION_NUMBER | cut -d. -f1)
+   MINOR=$(echo $VERSION_NUMBER | cut -d. -f2)
+   PATCH=$(echo $VERSION_NUMBER | cut -d. -f3)
+   ```
 
-2. **Aggregate resolved issues for release notes**:
+2. **Change Type Analysis and Version Calculation**:
+   ```bash
+   # Analyze commits since last tag to determine semantic increment type
+   analyze_change_type_since_tag() {
+     local since_tag=$1
+     local commits_range=""
+     
+     if [ -n "$since_tag" ] && [ "$since_tag" != "v0.0.0" ]; then
+       commits_range="$since_tag..HEAD"
+     else
+       commits_range="HEAD"
+     fi
+     
+     # Check for BREAKING CHANGES (MAJOR version bump)
+     if git log "$commits_range" --grep="BREAKING" --grep="breaking:" --grep="!:" | grep -q .; then
+       echo "major"
+       return
+     fi
+     
+     # Check for new features (MINOR version bump)
+     if git log "$commits_range" --grep="feat:" --grep="feat(" | grep -q .; then
+       echo "minor"
+       return
+     fi
+     
+     # Default to PATCH for fixes, docs, chores, etc.
+     echo "patch"
+   }
+   
+   # Execute change type analysis
+   CHANGE_TYPE=$(analyze_change_type_since_tag "$CURRENT_VERSION")
+   
+   # Calculate next version based on semantic rules
+   case $CHANGE_TYPE in
+     "major")
+       NEW_VERSION="v$((MAJOR + 1)).0.0"
+       echo "🔥 MAJOR version bump detected: Breaking changes found"
+       ;;
+     "minor")
+       NEW_VERSION="v${MAJOR}.$((MINOR + 1)).0"
+       echo "✨ MINOR version bump detected: New features added"
+       ;;
+     "patch")
+       NEW_VERSION="v${MAJOR}.${MINOR}.$((PATCH + 1))"
+       echo "🔧 PATCH version bump detected: Bug fixes or improvements"
+       ;;
+   esac
+   ```
+
+3. **Pre-Tag Validation and Conflict Prevention**:
+   ```bash
+   # Version progression validation
+   validate_version_progression() {
+     local current_tag=$1
+     local proposed_tag=$2
+     
+     if [ "$proposed_tag" = "$current_tag" ]; then
+       echo "❌ ERROR: Version conflict - $proposed_tag already exists"
+       echo "📋 RESOLUTION: Check if commits were already tagged"
+       return 1
+     fi
+     
+     # Parse versions for regression check
+     current_num=$(echo $current_tag | sed 's/^v//' | tr '.' ' ')
+     proposed_num=$(echo $proposed_tag | sed 's/^v//' | tr '.' ' ')
+     
+     # Simple version comparison (handles semantic versioning)
+     if [ "$proposed_tag" = "$(echo -e "$current_tag\n$proposed_tag" | sort -V | head -1)" ] && [ "$proposed_tag" != "$current_tag" ]; then
+       echo "❌ ERROR: Version regression - $proposed_tag is not greater than $current_tag"
+       echo "📋 RESOLUTION: Verify change type analysis or consider manual version override"
+       return 1
+     fi
+     
+     return 0
+   }
+   
+   # Branch-aware tagging logic
+   if [ "$CURRENT_BRANCH" != "$MAIN_BRANCH" ]; then
+     # Feature branch - use feature-specific naming to avoid main version conflicts
+     FEATURE_TAG="${CURRENT_BRANCH}-$(date +%Y%m%d-%H%M%S)"
+     echo "⚠️  WARNING: Creating feature branch tag $FEATURE_TAG (not a release version)"
+     echo "📋 INFO: Release versions should only be created from $MAIN_BRANCH"
+     NEW_VERSION="$FEATURE_TAG"
+   else
+     # Main branch - validate version progression
+     if ! validate_version_progression "$CURRENT_VERSION" "$NEW_VERSION"; then
+       echo "🛑 TAG CREATION ABORTED: Version validation failed"
+       exit 1
+     fi
+     echo "✅ Version validation passed: $CURRENT_VERSION → $NEW_VERSION"
+   fi
+   ```
+
+4. **Aggregate resolved issues for release notes**:
    ```bash
    # Get all closed issues since last release
-   LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
-   if [ -n "$LAST_TAG" ]; then
-     CLOSED_ISSUES=$(git log "$LAST_TAG"..HEAD --grep="closes #" --grep="fixes #" --grep="resolves #" | \
+   if [ -n "$CURRENT_VERSION" ] && [ "$CURRENT_VERSION" != "v0.0.0" ]; then
+     CLOSED_ISSUES=$(git log "$CURRENT_VERSION"..HEAD --grep="closes #" --grep="fixes #" --grep="resolves #" | \
                      grep -oE '#[0-9]+' | tr -d '#' | sort -u)
    else
      CLOSED_ISSUES=$(git log --grep="closes #" --grep="fixes #" --grep="resolves #" | \
@@ -248,25 +359,50 @@ Evaluate each commit against these 5 criteria:
    ISSUE_LIST=$(echo "$CLOSED_ISSUES" | sed 's/^/#/' | tr '\n' ', ' | sed 's/, $//')
    ```
 
-3. **Update CHANGELOG.md and README.md with issue references**:
+5. **Update CHANGELOG.md and README.md with issue references**:
    - Move items from [Unreleased] to new version section in CHANGELOG.md
    - Include all resolved issue references in appropriate categories
    - Add release date and issue summary
    - Spawn specialist-code-cleaner agent to update README.md with current repository state, features, and version
 
-4. **Create annotated tag with issue aggregation**:
+6. **Create annotated tag with comprehensive validation**:
    ```bash
-   TAG_MESSAGE="Release v1.2.3 - [brief description]
+   # Final validation before tag creation
+   if git tag -l "$NEW_VERSION" | grep -q "$NEW_VERSION"; then
+     echo "❌ ERROR: Tag $NEW_VERSION already exists locally"
+     exit 1
+   fi
+   
+   # Create tag message with proper context
+   if [[ "$NEW_VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+     # Semantic version tag
+     TAG_MESSAGE="Release $NEW_VERSION - $(echo $CHANGE_TYPE | tr '[:lower:]' '[:upper:]') version bump
 
    Resolved Issues: $ISSUE_LIST
 
-   📋 Full changelog: https://github.com/ondrasek/ai-code-forge/compare/$LAST_TAG...v1.2.3"
-   git tag -a v1.2.3 -m "$TAG_MESSAGE"
+   📋 Full changelog: https://github.com/ondrasek/ai-code-forge/compare/$CURRENT_VERSION...$NEW_VERSION"
+   else
+     # Feature branch tag
+     TAG_MESSAGE="Feature branch snapshot: $NEW_VERSION
+
+   Branch: $CURRENT_BRANCH
+   Timestamp: $(date -u)"
+   fi
+   
+   git tag -a "$NEW_VERSION" -m "$TAG_MESSAGE"
+   echo "✅ Created annotated tag: $NEW_VERSION"
    ```
 
-5. **Push tag**:
+7. **Push tag with final validation**:
    ```bash
-   git push origin v1.2.3
+   # Validate tag was created successfully
+   if ! git tag -l "$NEW_VERSION" | grep -q "$NEW_VERSION"; then
+     echo "❌ ERROR: Tag creation failed"
+     exit 1
+   fi
+   
+   git push origin "$NEW_VERSION"
+   echo "🚀 Successfully pushed tag: $NEW_VERSION"
    ```
 </mode_1_workflow>
 
@@ -382,6 +518,11 @@ IF permission errors occur:
 ```
 TAG ASSESSMENT RESULT: [YES/NO]
 
+REPOSITORY VERSION STATE:
+📋 Current Version: [e.g., v2.88.0 or "No tags found"]
+📋 Target Branch: [main/feature branch name]
+📋 Change Type Detected: [major/minor/patch]
+
 Criteria Evaluation:
 ✅/❌ Functionality Completeness: [brief reasoning]
 ✅/❌ Repository Stability: [brief reasoning]
@@ -389,13 +530,25 @@ Criteria Evaluation:
 ✅/❌ Logical Breakpoint: [brief reasoning]
 ✅/❌ Milestone Significance: [brief reasoning]
 
+VERSION VALIDATION:
+✅/❌ Version Progression Valid: [current → proposed]
+✅/❌ No Version Conflicts: [tag doesn't exist]
+✅/❌ Branch Context Appropriate: [main branch or feature naming]
+
 DECISION: [Tag/No Tag] - [brief justification]
 
 [If tagging:]
-VERSION: v1.2.3 ([major/minor/patch] - [reasoning])
-TAG MESSAGE: [proposed tag message]
+VERSION: v1.2.3 ([major/minor/patch] - [semantic reasoning])
+TAG TYPE: [Release Version/Feature Branch Snapshot]
+TAG MESSAGE: [proposed annotated tag message]
 CHANGELOG UPDATES: [summary of changes to add]
 README UPDATES: [update README.md with current state]
+
+[If version conflict detected:]
+⚠️ VERSION CONFLICT RESOLUTION:
+Current: [existing version]
+Proposed: [conflicting version]
+Resolution: [specific guidance for fixing conflict]
 ```
 
 ### Troubleshooting Output
