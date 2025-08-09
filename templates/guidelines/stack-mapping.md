@@ -1,106 +1,194 @@
 # Technology Stack Mapping Rules
 
-Centralized technology detection logic for guidelines-file and guidelines-repo agents.
+<mapping_overview priority="LOW">
+<purpose>Centralized technology detection logic for guidelines-file and guidelines-repo agents</purpose>
+<function>Map file patterns to appropriate stack-specific guidance documents</function>
+<enforcement>MUST use consistent detection patterns across all agents</enforcement>
+</mapping_overview>
 
-## File Extension to Stack Mapping
+<file_extension_mapping priority="LOW">
+<python_projects priority="LOW">
+  <file_indicators>
+    <pattern>*.py</pattern>
+    <pattern>pyproject.toml</pattern>
+    <pattern>requirements.txt</pattern>
+    <pattern>Pipfile</pattern>
+    <pattern>setup.py</pattern>
+  </file_indicators>
+  <stack_file>@.support/stacks/python.md</stack_file>
+  <key_patterns>Python files, uv/pip configuration</key_patterns>
+  <enforcement>DETECT Python projects using any indicator pattern</enforcement>
+</python_projects>
 
-### Python Projects
-**File indicators**: `*.py`, `pyproject.toml`, `requirements.txt`, `Pipfile`, `setup.py`
-**Stack file**: `@.support/stacks/python.md`
-**Key patterns**: Python files, uv/pip configuration
+<rust_projects priority="LOW">
+  <file_indicators>
+    <pattern>*.rs</pattern>
+    <pattern>Cargo.toml</pattern>
+    <pattern>Cargo.lock</pattern>
+  </file_indicators>
+  <stack_file>@.support/stacks/rust.md</stack_file>
+  <key_patterns>Rust source files, Cargo configuration</key_patterns>
+  <enforcement>DETECT Rust projects using any indicator pattern</enforcement>
+</rust_projects>
 
-### Rust Projects  
-**File indicators**: `*.rs`, `Cargo.toml`, `Cargo.lock`
-**Stack file**: `@.support/stacks/rust.md`
-**Key patterns**: Rust source files, Cargo configuration
+<javascript_typescript_projects priority="LOW">
+  <file_indicators>
+    <pattern>*.js</pattern>
+    <pattern>*.ts</pattern>
+    <pattern>*.jsx</pattern>
+    <pattern>*.tsx</pattern>
+    <pattern>package.json</pattern>
+    <pattern>package-lock.json</pattern>
+    <pattern>yarn.lock</pattern>
+    <pattern>tsconfig.json</pattern>
+  </file_indicators>
+  <stack_file>@.support/stacks/javascript.md</stack_file>
+  <key_patterns>JS/TS files, npm/yarn configuration</key_patterns>
+  <enforcement>DETECT JavaScript/TypeScript projects using any indicator pattern</enforcement>
+</javascript_typescript_projects>
 
-### JavaScript/TypeScript Projects
-**File indicators**: `*.js`, `*.ts`, `*.jsx`, `*.tsx`, `package.json`, `package-lock.json`, `yarn.lock`, `tsconfig.json`
-**Stack file**: `@.support/stacks/javascript.md`
-**Key patterns**: JS/TS files, npm/yarn configuration
+<java_projects priority="LOW">
+  <file_indicators>
+    <pattern>*.java</pattern>
+    <pattern>pom.xml</pattern>
+    <pattern>build.gradle</pattern>
+    <pattern>gradle.properties</pattern>
+    <pattern>settings.gradle</pattern>
+  </file_indicators>
+  <stack_file>@.support/stacks/java.md</stack_file>
+  <key_patterns>Java source files, Maven/Gradle configuration</key_patterns>
+  <enforcement>DETECT Java projects using any indicator pattern</enforcement>
+</java_projects>
 
-### Java Projects
-**File indicators**: `*.java`, `pom.xml`, `build.gradle`, `gradle.properties`, `settings.gradle`
-**Stack file**: `@.support/stacks/java.md`
-**Key patterns**: Java source files, Maven/Gradle configuration
+<kotlin_projects priority="LOW">
+  <file_indicators>
+    <pattern>*.kt</pattern>
+    <pattern>*.kts</pattern>
+    <pattern>build.gradle.kts</pattern>
+  </file_indicators>
+  <stack_file>@.support/stacks/kotlin.md</stack_file>
+  <key_patterns>Kotlin source files, Gradle Kotlin DSL</key_patterns>
+  <enforcement>DETECT Kotlin projects using any indicator pattern</enforcement>
+</kotlin_projects>
 
-### Kotlin Projects
-**File indicators**: `*.kt`, `*.kts`, `build.gradle.kts`
-**Stack file**: `@.support/stacks/kotlin.md`
-**Key patterns**: Kotlin source files, Gradle Kotlin DSL
+<ruby_projects priority="LOW">
+  <file_indicators>
+    <pattern>*.rb</pattern>
+    <pattern>Gemfile</pattern>
+    <pattern>Gemfile.lock</pattern>
+    <pattern>Rakefile</pattern>
+    <pattern>config.ru</pattern>
+  </file_indicators>
+  <stack_file>@.support/stacks/ruby.md</stack_file>
+  <key_patterns>Ruby source files, Bundler configuration</key_patterns>
+  <enforcement>DETECT Ruby projects using any indicator pattern</enforcement>
+</ruby_projects>
 
-### Ruby Projects
-**File indicators**: `*.rb`, `Gemfile`, `Gemfile.lock`, `Rakefile`, `config.ru`
-**Stack file**: `@.support/stacks/ruby.md`
-**Key patterns**: Ruby source files, Bundler configuration
+<csharp_projects priority="LOW">
+  <file_indicators>
+    <pattern>*.cs</pattern>
+    <pattern>*.csproj</pattern>
+    <pattern>*.sln</pattern>
+    <pattern>*.props</pattern>
+    <pattern>Directory.Build.props</pattern>
+  </file_indicators>
+  <stack_file>@.support/stacks/csharp.md</stack_file>
+  <key_patterns>C# source files, MSBuild configuration</key_patterns>
+  <enforcement>DETECT C# projects using any indicator pattern</enforcement>
+</csharp_projects>
 
-### C# Projects
-**File indicators**: `*.cs`, `*.csproj`, `*.sln`, `*.props`, `Directory.Build.props`
-**Stack file**: `@.support/stacks/csharp.md`
-**Key patterns**: C# source files, MSBuild configuration
+<cpp_projects priority="LOW">
+  <file_indicators>
+    <pattern>*.cpp</pattern>
+    <pattern>*.cc</pattern>
+    <pattern>*.cxx</pattern>
+    <pattern>*.c</pattern>
+    <pattern>*.h</pattern>
+    <pattern>*.hpp</pattern>
+    <pattern>CMakeLists.txt</pattern>
+    <pattern>Makefile</pattern>
+  </file_indicators>
+  <stack_file>@.support/stacks/cpp.md</stack_file>
+  <key_patterns>C++ source files, CMake/Make configuration</key_patterns>
+  <enforcement>DETECT C++ projects using any indicator pattern</enforcement>
+</cpp_projects>
 
-### C++ Projects
-**File indicators**: `*.cpp`, `*.cc`, `*.cxx`, `*.c`, `*.h`, `*.hpp`, `CMakeLists.txt`, `Makefile`
-**Stack file**: `@.support/stacks/cpp.md`
-**Key patterns**: C++ source files, CMake/Make configuration
+<docker_projects priority="LOW">
+  <file_indicators>
+    <pattern>Dockerfile</pattern>
+    <pattern>docker-compose.yml</pattern>
+    <pattern>docker-compose.yaml</pattern>
+    <pattern>.dockerignore</pattern>
+  </file_indicators>
+  <stack_file>@.support/stacks/docker.md</stack_file>
+  <key_patterns>Docker configuration files</key_patterns>
+  <enforcement>DETECT Docker projects using any indicator pattern</enforcement>
+</docker_projects>
+</file_extension_mapping>
 
-### Docker Projects
-**File indicators**: `Dockerfile`, `docker-compose.yml`, `docker-compose.yaml`, `.dockerignore`
-**Stack file**: `@.support/stacks/docker.md`
-**Key patterns**: Docker configuration files
+<detection_algorithm priority="LOW">
+<pattern_matching priority="LOW">
+  <instruction>Scan project directory for indicator file patterns</instruction>
+  <precedence>Multiple stack detection is acceptable</precedence>
+  <selection>Choose most relevant stack based on file count and primary language</selection>
+  <enforcement>APPLY consistent detection logic across all agents</enforcement>
+</pattern_matching>
 
-### Go Projects
-**File indicators**: `*.go`, `go.mod`, `go.sum`
-**Stack file**: `@.support/stacks/go.md`
-**Key patterns**: Go source files, Go modules configuration
+<multi_stack_handling priority="LOW">
+  <scenario>Project contains multiple technology indicators</scenario>
+  <approach>Identify all detected stacks and prioritize based on prevalence</approach>
+  <documentation>Note all detected technologies in analysis</documentation>
+  <enforcement>HANDLE multi-stack projects gracefully</enforcement>
+</multi_stack_handling>
+</detection_algorithm>
 
-## Detection Priority Rules
+<stack_file_resolution priority="LOW">
+<path_resolution priority="LOW">
+  <base_path>@.support/stacks/</base_path>
+  <naming_convention>[technology].md</naming_convention>
+  <fallback>Use generic guidelines if stack-specific file unavailable</fallback>
+  <enforcement>RESOLVE stack files consistently</enforcement>
+</path_resolution>
 
-### Multi-Technology Repositories
-When multiple technologies are detected:
-1. **Primary language**: Most source files determines primary stack
-2. **Supporting technologies**: Docker, CI/CD configurations apply additionally
-3. **Framework detection**: Web frameworks, testing frameworks override general language rules
+<availability_checking priority="LOW">
+  <check>Verify stack file exists before referencing</check>
+  <fallback_behavior>Use general best practices if stack file missing</fallback_behavior>
+  <error_handling>Log missing stack files for future creation</error_handling>
+  <enforcement>VALIDATE stack file availability</enforcement>
+</availability_checking>
+</stack_file_resolution>
 
-### File-Level Detection Logic
-```
-1. Check file extension against mapping table
-2. If extension matches multiple technologies, use context:
-   - .js with package.json → JavaScript stack
-   - .js without package.json → Generic web stack
-3. For configuration files, detect parent technology:
-   - Dockerfile → Docker stack + primary language stack
-   - package.json → JavaScript stack
-4. Unknown extensions → Skip guideline loading
-```
+<usage_guidelines priority="LOW">
+<agent_integration priority="LOW">
+  <guidelines_file_agent>Use for single-file technology detection</guidelines_file_agent>
+  <guidelines_repo_agent>Use for project-wide stack analysis</guidelines_repo_agent>
+  <consistency>Ensure identical detection logic across agents</consistency>
+  <enforcement>MAINTAIN consistent stack detection behavior</enforcement>
+</agent_integration>
 
-### Repository-Level Detection Logic
-```
-1. Scan all files in repository root and src/ directories
-2. Count file types and identify primary technologies
-3. Load all relevant stack guidelines for architectural decisions
-4. Prioritize by file count: most frequent file type = primary stack
-```
+<detection_workflow priority="LOW">
+  <step order="1">Scan project/file directory for indicator patterns</step>
+  <step order="2">Match patterns against technology stack definitions</step>
+  <step order="3">Resolve appropriate stack guidance file path</step>
+  <step order="4">Verify stack file availability</step>
+  <step order="5">Apply stack-specific guidelines or fallback to general</step>
+  <enforcement>FOLLOW workflow sequence for reliable detection</enforcement>
+</detection_workflow>
+</usage_guidelines>
 
-## Agent Integration
+<maintenance_requirements priority="LOW">
+<pattern_updates priority="LOW">
+  <requirement>Update patterns when new file types emerge</requirement>
+  <requirement>Add new technology stacks as they become prevalent</requirement>
+  <requirement>Maintain alignment between patterns and actual stack files</requirement>
+  <enforcement>KEEP mapping current with technology evolution</enforcement>
+</pattern_updates>
 
-### guidelines-file Agent Usage
-- **Input**: Specific file path(s) being modified
-- **Process**: Map file extensions to appropriate stack files
-- **Output**: Load only relevant stack guidelines for those file types
-- **Optimization**: Skip if guidelines already loaded for same file type in session
-
-### guidelines-repo Agent Usage  
-- **Input**: Repository context or architectural question
-- **Process**: Scan repository for all technologies present
-- **Output**: Load all relevant stack guidelines for repository-wide decisions
-- **Optimization**: Skip if repository guidelines already determined in session
-
-## Stack Loading Syntax
-
-Use @ syntax to reference stack files:
-```
-For Python files: @.support/stacks/python.md
-For Docker files: @.support/stacks/docker.md  
-For multi-tech repos: @.support/stacks/python.md + @.support/stacks/docker.md
-```
+<validation_procedures priority="LOW">
+  <procedure>Test detection against real project samples</procedure>
+  <procedure>Verify stack file existence for all mapped technologies</procedure>
+  <procedure>Validate multi-stack project handling</procedure>
+  <enforcement>VALIDATE mapping accuracy periodically</enforcement>
+</validation_procedures>
+</maintenance_requirements>
+EOF < /dev/null
