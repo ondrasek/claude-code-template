@@ -6,8 +6,31 @@ set -euo pipefail
 # Usage: ./worktree-cleanup.sh [list|remove <worktree-path>|remove-all]
 
 WORKTREE_BASE="/workspace/worktrees"
-MAIN_REPO="/workspace/ai-code-forge"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MAIN_REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# Determine repository name dynamically
+get_repo_name() {
+    local repo_name=""
+    
+    # Try GitHub CLI first (if available and authenticated)
+    if command -v gh >/dev/null 2>&1; then
+        repo_name=$(gh repo view --json name --jq .name 2>/dev/null || echo "")
+    fi
+    
+    # Fallback to basename of repository directory
+    if [[ -z "$repo_name" ]]; then
+        repo_name=$(basename "$MAIN_REPO")
+    fi
+    
+    # Validate repo name (security check)
+    if [[ ! "$repo_name" =~ ^[a-zA-Z0-9._-]+$ ]] || [[ ${#repo_name} -gt 100 ]]; then
+        print_error "Invalid repository name detected: $repo_name"
+        return 1
+    fi
+    
+    echo "$repo_name"
+}
 
 # Color codes for output
 RED='\033[0;31m'
@@ -40,7 +63,7 @@ Examples:
   $0 remove-all
   $0 prune
 
-Location: Manages worktrees in $WORKTREE_BASE/
+Location: Manages worktrees in $WORKTREE_BASE/<repository>/
 EOF
 }
 
@@ -77,15 +100,21 @@ list_worktrees() {
     fi
     
     # Show worktree base directory contents for comparison
-    if [[ -d "$WORKTREE_BASE" ]]; then
-        print_info "Worktree base directory contents:"
-        find "$WORKTREE_BASE" -maxdepth 2 -type d | sort | while read -r dir; do
-            if [[ "$dir" != "$WORKTREE_BASE" ]]; then
-                echo -e "  ${YELLOW}Directory:${NC} $dir"
-            fi
-        done
+    local repo_name
+    if repo_name=$(get_repo_name 2>/dev/null); then
+        local repo_base="$WORKTREE_BASE/$repo_name"
+        if [[ -d "$repo_base" ]]; then
+            print_info "Repository worktree directory contents ($repo_name):"
+            find "$repo_base" -maxdepth 1 -type d | sort | while read -r dir; do
+                if [[ "$dir" != "$repo_base" ]]; then
+                    echo -e "  ${YELLOW}Directory:${NC} $dir"
+                fi
+            done
+        else
+            print_info "No repository worktree directory found at: $repo_base"
+        fi
     else
-        print_info "No worktree base directory found at: $WORKTREE_BASE"
+        print_info "Could not determine repository name for worktree listing"
     fi
 }
 

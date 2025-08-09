@@ -6,8 +6,31 @@ set -euo pipefail
 # Usage: ./worktree-create.sh <branch-name> [issue-number]
 
 WORKTREE_BASE="/workspace/worktrees"
-MAIN_REPO="/workspace/ai-code-forge"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MAIN_REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# Determine repository name dynamically
+get_repo_name() {
+    local repo_name=""
+    
+    # Try GitHub CLI first (if available and authenticated)
+    if command -v gh >/dev/null 2>&1; then
+        repo_name=$(gh repo view --json name --jq .name 2>/dev/null || echo "")
+    fi
+    
+    # Fallback to basename of repository directory
+    if [[ -z "$repo_name" ]]; then
+        repo_name=$(basename "$MAIN_REPO")
+    fi
+    
+    # Validate repo name (security check)
+    if [[ ! "$repo_name" =~ ^[a-zA-Z0-9._-]+$ ]] || [[ ${#repo_name} -gt 100 ]]; then
+        print_error "Invalid repository name detected: $repo_name"
+        return 1
+    fi
+    
+    echo "$repo_name"
+}
 
 # Color codes for output
 RED='\033[0;31m'
@@ -38,7 +61,7 @@ Examples:
   $0 claude/issue-105-worktree 105
   $0 hotfix/critical-bug
 
-Location: Worktrees created in $WORKTREE_BASE/<branch-name>
+Location: Worktrees created in $WORKTREE_BASE/<repository>/<branch-name>
 EOF
 }
 
@@ -105,12 +128,20 @@ validate_issue_number() {
 # Create worktree directory safely
 create_worktree_path() {
     local branch="$1"
-    local worktree_path="$WORKTREE_BASE/$branch"
+    local repo_name
+    repo_name=$(get_repo_name) || return 1
+    local worktree_path="$WORKTREE_BASE/$repo_name/$branch"
     
-    # Ensure base directory exists
+    # Ensure base directories exist
     if [[ ! -d "$WORKTREE_BASE" ]]; then
         print_info "Creating worktree base directory: $WORKTREE_BASE" >&2
         mkdir -p "$WORKTREE_BASE"
+    fi
+    
+    local repo_base="$WORKTREE_BASE/$repo_name"
+    if [[ ! -d "$repo_base" ]]; then
+        print_info "Creating repository worktree directory: $repo_base" >&2
+        mkdir -p "$repo_base"
     fi
     
     # Check if worktree already exists
