@@ -45,11 +45,11 @@ def handle_api_errors(func):
                     logger.error(f"Authentication failed - {func_name} - {duration:.2f}ms")
                     return {"error": "Authentication failed. Check your API key.", "error_type": "authentication"}
                 elif status_code == 400:
-                    logger.error(f"Bad request - {func_name} - {duration:.2f}ms: [RESPONSE_REDACTED]")
-                    return {"error": "Bad request: Invalid request format or parameters", "error_type": "bad_request"}
+                    logger.error(f"Bad request - {func_name} - {duration:.2f}ms: {response_text}")
+                    return {"error": f"Bad request: {response_text}", "error_type": "bad_request"}
                 else:
-                    logger.error(f"API error ({status_code}) - {func_name} - {duration:.2f}ms: [RESPONSE_REDACTED]")
-                    return {"error": f"API error ({status_code}): Request failed", "error_type": "api_error"}
+                    logger.error(f"API error ({status_code}) - {func_name} - {duration:.2f}ms: {response_text}")
+                    return {"error": f"API error ({status_code}): {response_text}", "error_type": "api_error"}
             else:
                 logger.error(f"Unexpected error - {func_name} - {duration:.2f}ms: {str(e)}")
                 return {"error": f"Unexpected error: {str(e)}", "error_type": "unexpected"}
