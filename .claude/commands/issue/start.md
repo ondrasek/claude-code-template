@@ -17,7 +17,7 @@ Systematic execution phase for GitHub Issue implementation with proper git workf
 
 2. **Use Task tool to delegate to github-issues-workflow agent**:
    - **Plan Validation**: Load and validate approved plan from Phase 1
-   - **Git Workflow**: Create feature branch following naming conventions (`feature/issue-<N>-implementation`)
+   - **Current Branch Workflow**: Work directly on current branch
    - **Progressive Implementation**: Execute plan step-by-step with progress tracking
    - **Agent Coordination**: Use specialized agents (code-cleaner, stack-advisor, test-strategist)
    - **Commit Strategy**: Create meaningful commits throughout implementation
@@ -28,12 +28,12 @@ Systematic execution phase for GitHub Issue implementation with proper git workf
 
 3. **Critical Constraints**:
    - Must validate Phase 1 (/issue plan) completion before proceeding
-   - Proper git-flow branch management with feature branches
+   - Work directly on current branch
    - Integration testing at key milestones
    - NO PR creation during this phase (reserved for Phase 3)
 
 4. **Success Criteria**:
-   - Feature branch created and implementation completed
+   - Implementation completed on current branch
    - All tests passing
    - Implementation summary provided
    - Metadata stored for /issue pr consumption

@@ -57,7 +57,7 @@ echo "Testing validate_branch_name..."
 # Valid branch names
 test_assert "Valid branch name: feature/test" "validate_branch_name 'feature/test'"
 test_assert "Valid branch name: hotfix-123" "validate_branch_name 'hotfix-123'"
-test_assert "Valid branch name: claude/issue-105" "validate_branch_name 'claude/issue-105'"
+test_assert "Valid branch name: issue-105-feature" "validate_branch_name 'issue-105-feature'"
 
 # Invalid branch names - path traversal
 test_assert "Invalid branch name: ../escape" "! validate_branch_name '../escape'"

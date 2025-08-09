@@ -53,12 +53,7 @@ echo "Current: $CURRENT_BRANCH"
 echo "Base: $BASE_BRANCH"
 echo "Repository: $(gh repo view --json owner,name --jq '.owner.login + "/" + .name' 2>/dev/null || echo "Unknown")"
 
-# 2. Validate branch is not main/default
-if [[ "$CURRENT_BRANCH" == "$BASE_BRANCH" ]]; then
-    echo "❌ ERROR: Cannot create PR from $BASE_BRANCH branch"
-    echo "Switch to a feature branch first: git checkout -b feature/your-feature"
-    exit 1
-fi
+# 2. No branch validation - user controls branching strategy
 
 # 3. Check for existing PR
 EXISTING_PR=$(gh pr list --head "$CURRENT_BRANCH" --state open --json number,title,url --jq '.[0].number' 2>/dev/null)

@@ -3,9 +3,9 @@
 # DevContainer Setup Script - Replicates Codespace Environment
 # This script sets up the exact same environment as the GitHub Codespace
 
-# Install uv (modern Python package manager) - TODO; replace with pip install (this is insecure)
+# Install uv (modern Python package manager) - Secure installation via pip
 echo "📦 Installing uv Python package manager..."
-curl -LsSf https://astral.sh/uv/install.sh | sh
+python3 -m pip install --user uv
 
 # Install Claude CLI globally
 echo "🤖 Installing Claude CLI, OpenAI Codex and OpenCode..."
@@ -58,9 +58,15 @@ mkdir -p ~/.claude
 echo "🐚 Setting up zsh shell environment..."
 sudo apt-get update && sudo apt-get install -y zsh
 
-# Install Oh My Zsh for better zsh experience
+# Install Oh My Zsh for better zsh experience - Secure git clone method
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    echo "🎨 Installing Oh My Zsh via secure git clone..."
+    git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh"
+    # Create zsh configuration from template
+    cp "$HOME/.oh-my-zsh/templates/zshrc.zsh-template" "$HOME/.zshrc"
+    # Set ZSH environment variable
+    echo 'export ZSH="$HOME/.oh-my-zsh"' >> "$HOME/.zshrc"
+    echo 'source $ZSH/oh-my-zsh.sh' >> "$HOME/.zshrc"
 fi
 
 # Set zsh as default shell

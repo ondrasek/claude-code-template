@@ -368,5 +368,34 @@ Use discovered labels for these closure patterns:
 - Leave related issues without cross-reference updates
 - Close issues without considering impact on dependent work
 
+## Simplified Branch Management (MANDATORY)
+
+### Current Branch Workflow
+
+**SIMPLIFIED APPROACH**: With native worktree support, eliminate feature branch creation overhead entirely. Work directly on the current branch for all issue implementations.
+
+**Simplified Branch Logic**:
+```bash
+# Work on current branch - no validation or warnings
+current_branch=$(git branch --show-current)
+echo "🚀 Starting issue implementation"
+echo "Working in branch: $current_branch"
+```
+
+**Benefits of Simplified Approach**:
+- **No Branch Proliferation**: Eliminates unnecessary feature branch creation
+- **Worktree Native**: Works seamlessly with existing worktree infrastructure  
+- **Reduced Complexity**: Removes branch management overhead and edge cases
+- **User Control**: Developers choose their own branching strategy (worktrees, feature branches, etc.)
+- **Flexibility**: Supports any workflow pattern without forced conventions
+
+**User Feedback Messages**:
+- **Standard**: "🚀 Starting issue implementation in branch: [branch-name]"
+
+**Integration Requirements**:
+- **Issue Start Command**: Work directly on current branch, no validation
+- **Issue PR Command**: Use current branch for PR creation
+- **No Branch Validation**: User is responsible for branch management
+
 ## RECURSION PREVENTION (MANDATORY)
 **SUB-AGENT RESTRICTION**: This agent MUST NOT spawn other agents via Task tool. All issue management, GitHub operations, web research, and specification lifecycle management happens within this agent's context to prevent recursive delegation loops. This agent is a terminal node in the agent hierarchy.

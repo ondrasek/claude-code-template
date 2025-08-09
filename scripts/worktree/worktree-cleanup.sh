@@ -7,7 +7,7 @@ set -euo pipefail
 
 WORKTREE_BASE="/workspace/worktrees"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-MAIN_REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
+MAIN_REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 # Determine repository name dynamically
 get_repo_name() {
@@ -60,23 +60,76 @@ print_success() { echo -e "${GREEN}SUCCESS:${NC} $1"; }
 print_warning() { echo -e "${YELLOW}WARNING:${NC} $1"; }
 print_info() { echo -e "${BLUE}INFO:${NC} $1"; }
 
+# Find existing branch for an issue number
+find_issue_branch() {
+    local issue_num="$1"
+
+    # Common branch naming patterns for issues
+    local patterns=(
+        "claude/issue-$issue_num-*"
+        "issue-$issue_num-*"
+        "issue/$issue_num-*"
+        "feature/issue-$issue_num-*"
+    )
+
+    # Check each pattern in git branches
+    for pattern in "${patterns[@]}"; do
+        local matches
+        matches=$(git branch -a --format="%(refname:short)" | grep -E "^(origin/)?${pattern//\*/.*}$" | head -1 || true)
+        if [[ -n "$matches" ]]; then
+            # Remove origin/ prefix if present
+            echo "${matches#origin/}"
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+# Find worktree path for issue branch
+find_issue_worktree() {
+    local issue_num="$1"
+    
+    local branch_name
+    if branch_name=$(find_issue_branch "$issue_num"); then
+        # Look for worktree with this branch
+        local worktree_path
+        worktree_path=$(git worktree list --porcelain | awk -v branch="$branch_name" '
+            /^worktree / { path = substr($0, 10) }
+            /^branch refs\/heads\// && substr($0, 19) == branch { print path; exit }
+        ')
+        
+        if [[ -n "$worktree_path" ]]; then
+            echo "$worktree_path"
+            return 0
+        fi
+    fi
+    
+    return 1
+}
+
 # Usage information
 show_usage() {
     cat << EOF
-Usage: $0 [command] [arguments]
+Usage: $0 [command] [arguments] [--dry-run]
 
 Commands:
   list                    List all existing worktrees
   remove <worktree-path>  Remove specific worktree
+  remove <issue-number>   Remove worktree for specific issue number
   remove-all             Remove all worktrees (with confirmation)
   prune                  Remove stale worktree references
   help                   Show this help message
 
+Options:
+  --dry-run              Show what operations would be performed without executing them
+
 Examples:
   $0 list
   $0 remove /workspace/worktrees/feature-branch
-  $0 remove-all
-  $0 prune
+  $0 remove 123                    # Remove worktree for issue #123
+  $0 remove-all --dry-run
+  $0 prune --dry-run
 
 Location: Manages worktrees in $WORKTREE_BASE/<repository>/
 EOF
@@ -166,9 +219,19 @@ validate_worktree_path() {
 # Remove single worktree
 remove_worktree() {
     local worktree_path="$1"
+    local dry_run="${2:-false}"
     local validated_path
     
     validated_path=$(validate_worktree_path "$worktree_path") || return 1
+    
+    if [[ "$dry_run" == "true" ]]; then
+        print_info "[DRY RUN] Would remove worktree: $validated_path"
+        print_info "[DRY RUN] Would change to directory: $MAIN_REPO"
+        print_info "[DRY RUN] Would check git worktree registration"
+        print_info "[DRY RUN] Would execute: git worktree remove -- $validated_path"
+        print_info "[DRY RUN] Would remove directory if git command fails: $validated_path"
+        return 0
+    fi
     
     print_info "Removing worktree: $validated_path"
     
@@ -214,6 +277,22 @@ remove_worktree() {
 
 # Remove all worktrees with confirmation
 remove_all_worktrees() {
+    local dry_run="${1:-false}"
+    
+    if [[ "$dry_run" == "true" ]]; then
+        print_info "[DRY RUN] Would remove ALL worktrees in $WORKTREE_BASE"
+        if [[ -d "$WORKTREE_BASE" ]]; then
+            print_info "[DRY RUN] Would remove these worktrees:"
+            find "$WORKTREE_BASE" -mindepth 1 -maxdepth 1 -type d | while read -r dir; do
+                echo -e "  ${RED}[DRY RUN]${NC} $dir"
+            done
+        fi
+        print_info "[DRY RUN] Would prompt for confirmation"
+        print_info "[DRY RUN] Would execute: git worktree remove for each worktree"
+        print_info "[DRY RUN] Would execute: rm -rf $WORKTREE_BASE if needed"
+        return 0
+    fi
+    
     print_warning "This will remove ALL worktrees in $WORKTREE_BASE"
     
     # List what will be removed
@@ -265,6 +344,15 @@ remove_all_worktrees() {
 
 # Prune stale worktree references
 prune_worktrees() {
+    local dry_run="${1:-false}"
+    
+    if [[ "$dry_run" == "true" ]]; then
+        print_info "[DRY RUN] Would prune stale worktree references"
+        print_info "[DRY RUN] Would change to directory: $MAIN_REPO"
+        print_info "[DRY RUN] Would execute: git worktree prune -v"
+        return 0
+    fi
+    
     print_info "Pruning stale worktree references"
     
     cd "$MAIN_REPO"
@@ -279,25 +367,54 @@ prune_worktrees() {
 
 # Main execution
 main() {
-    local command="${1:-list}"
+    local dry_run=false
+    local args=()
+    
+    # Parse arguments and extract --dry-run flag
+    for arg in "$@"; do
+        if [[ "$arg" == "--dry-run" ]]; then
+            dry_run=true
+        else
+            args+=("$arg")
+        fi
+    done
+    
+    local command="${args[0]:-list}"
     
     case "$command" in
         "list"|"")
             list_worktrees
             ;;
         "remove")
-            if [[ $# -lt 2 ]]; then
-                print_error "remove command requires worktree path"
+            if [[ ${#args[@]} -lt 2 ]]; then
+                print_error "remove command requires worktree path or issue number"
                 show_usage
                 exit 1
             fi
-            remove_worktree "$2"
+            
+            local target="${args[1]}"
+            
+            # Check if argument is a number (issue number) or path
+            if [[ "$target" =~ ^[0-9]+$ ]]; then
+                print_info "Looking for worktree for issue #$target"
+                local worktree_path
+                if worktree_path=$(find_issue_worktree "$target"); then
+                    print_info "Found worktree for issue #$target: $worktree_path"
+                    remove_worktree "$worktree_path" "$dry_run"
+                else
+                    print_error "No worktree found for issue #$target"
+                    exit 1
+                fi
+            else
+                # Treat as worktree path
+                remove_worktree "$target" "$dry_run"
+            fi
             ;;
         "remove-all")
-            remove_all_worktrees
+            remove_all_worktrees "$dry_run"
             ;;
         "prune")
-            prune_worktrees
+            prune_worktrees "$dry_run"
             ;;
         "help"|"-h"|"--help")
             show_usage

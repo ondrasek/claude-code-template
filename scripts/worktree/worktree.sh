@@ -31,8 +31,13 @@ USAGE:
 COMMANDS:
     create <branch-name> [issue-number]  Create a new worktree
     create --from-issue <issue-number>   Create worktree from GitHub issue
-    list                                 List all worktrees
-    cleanup [--dry-run] [--force]        Clean up invalid worktrees
+    list [issue-number]                  List all worktrees or specific issue worktree
+    list --verbose [issue-number]        List with detailed information
+    inspect <issue-spec> [--json] [-v]   Comprehensive issue and worktree state analysis
+    remove <worktree-path>               Remove specific worktree by path
+    remove <issue-number>                Remove worktree by issue number
+    remove-all [--dry-run]               Remove all worktrees (with confirmation)
+    prune [--dry-run]                    Remove stale worktree references
     help                                 Show this help message
 
 EXAMPLES:
@@ -40,7 +45,15 @@ EXAMPLES:
     ./worktree.sh create feature/fix-123 123
     ./worktree.sh create --from-issue 456
     ./worktree.sh list
-    ./worktree.sh cleanup --dry-run
+    ./worktree.sh list 123               # Show worktree for issue #123
+    ./worktree.sh list --verbose
+    ./worktree.sh inspect 115            # Analyze issue #115 state
+    ./worktree.sh inspect --json 115     # JSON output for scripting
+    ./worktree.sh inspect --verbose "add worktree inspect"  # Search by title
+    ./worktree.sh remove 123             # Remove worktree for issue #123
+    ./worktree.sh remove /path/to/worktree
+    ./worktree.sh remove-all --dry-run
+    ./worktree.sh prune --dry-run
     ./worktree.sh help
 
 For detailed information about each command, run:
@@ -75,11 +88,41 @@ main() {
             fi
             exec "$SCRIPT_DIR/worktree-list.sh" "$@"
             ;;
-        cleanup)
+        inspect)
+            if [[ ! -f "$SCRIPT_DIR/worktree-inspect.sh" ]]; then
+                print_error "worktree-inspect.sh not found in $SCRIPT_DIR"
+                exit 1
+            fi
+            exec "$SCRIPT_DIR/worktree-inspect.sh" "$@"
+            ;;
+        remove)
             if [[ ! -f "$SCRIPT_DIR/worktree-cleanup.sh" ]]; then
                 print_error "worktree-cleanup.sh not found in $SCRIPT_DIR"
                 exit 1
             fi
+            exec "$SCRIPT_DIR/worktree-cleanup.sh" remove "$@"
+            ;;
+        remove-all)
+            if [[ ! -f "$SCRIPT_DIR/worktree-cleanup.sh" ]]; then
+                print_error "worktree-cleanup.sh not found in $SCRIPT_DIR"
+                exit 1
+            fi
+            exec "$SCRIPT_DIR/worktree-cleanup.sh" remove-all "$@"
+            ;;
+        prune)
+            if [[ ! -f "$SCRIPT_DIR/worktree-cleanup.sh" ]]; then
+                print_error "worktree-cleanup.sh not found in $SCRIPT_DIR"
+                exit 1
+            fi
+            exec "$SCRIPT_DIR/worktree-cleanup.sh" prune "$@"
+            ;;
+        cleanup)
+            # Backward compatibility - default to list command
+            if [[ ! -f "$SCRIPT_DIR/worktree-cleanup.sh" ]]; then
+                print_error "worktree-cleanup.sh not found in $SCRIPT_DIR"
+                exit 1
+            fi
+            print_warning "The 'cleanup' command is deprecated. Use 'remove', 'remove-all', or 'prune' instead."
             exec "$SCRIPT_DIR/worktree-cleanup.sh" "$@"
             ;;
         help|--help|-h)
