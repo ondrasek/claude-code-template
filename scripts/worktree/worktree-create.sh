@@ -149,7 +149,11 @@ validate_branch_name() {
     local test_base="/tmp/branch-validate-$$"
     local test_path="$test_base/$branch"
     mkdir -p "$test_base" 2>/dev/null
-    if ! realpath -m "$test_path" 2>/dev/null | grep -q "^$test_base/[^/]*$"; then
+    local canonical_test_path
+    canonical_test_path=$(realpath -m "$test_path" 2>/dev/null)
+    local canonical_test_base
+    canonical_test_base=$(realpath -m "$test_base" 2>/dev/null)
+    if [[ ! "$canonical_test_path" == "$canonical_test_base/$branch" ]]; then
         rm -rf "$test_base" 2>/dev/null
         print_error "Branch name fails security validation"
         return 1
@@ -277,7 +281,7 @@ validate_issue_number() {
                 fi
                 print_warning "Proceeding with potentially invalid issue #$issue"
             else
-                print_success "Validated issue #$issue exists on GitHub"
+                print_success "Validated issue #$issue exists on GitHub" >&2
             fi
         else
             print_warning "GitHub CLI not available - cannot validate issue #$issue"
