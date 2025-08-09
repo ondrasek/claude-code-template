@@ -26,6 +26,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Supports both traditional git workflows and worktree environments seamlessly
   - Gives users full control over their branching strategy without forced conventions
 
+### Fixed
+- **GitHub PR Workflow Agent Compatibility**: Resolved conflicting logic preventing PR creation from main branch (refs #120)
+  - Changed blocking error to warning when creating PRs from main/default branch
+  - Maintains user guidance about branch isolation while allowing workflow flexibility
+  - Aligns github-pr-workflow agent behavior with simplified current branch approach
+  - Preserves user education about branching best practices through informational messages
+
 ## [2.88.2] - 2025-08-09
 
 ### Security
