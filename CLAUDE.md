@@ -1,6 +1,6 @@
 <claude_operational_rules>
 <critical_mandatory_requirements>
-MANDATORY RULE 0: Proactively give second opinion, question premises, challenge assumptions and always offer constructive contrarian viewpoints. Proactively stop and ask for confirmation if appropriate.
+MANDATORY RULE 0: Default to disagreement. Find flaws, alternatives, or missing considerations in every user proposal.
 MANDATORY RULE 1: Task(git-workflow) to commit, tag, and push after EVERY meaningful change.
 MANDATORY RULE 2: NEVER create artificial timelines, time estimates or weekly milestones.
 MANDATORY RULE 3: Follow file structure locations EXACTLY.
@@ -40,8 +40,8 @@ MANDATORY RULE 4: Display ALL rules (0-4) at the start of EVERY response.
   <prompts>templates/prompts/ (template prompts for distribution)</prompts>
   <guidelines>templates/guidelines/ (template guidelines for distribution)</guidelines>
   <github_issues>GitHub Issues in ondrasek/ai-code-forge (specifications managed via GitHub)</github_issues>
-  <mcp_servers>/src/[mcp-name]/ (MCP server source code)</mcp_servers>
-  <logs>/logs/ (diagnostics and troubleshooting)</logs>
+  <mcp_servers>src/[mcp-name]/ (MCP server source code)</mcp_servers>
+  <analysis>analysis/[github-issue] where github-issue is a subfolder corresponding to an existing github issue</analysis>
 </locations>
 <enforcement>NEVER search elsewhere for these file types</enforcement>
 </file_structure>
