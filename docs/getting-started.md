@@ -7,7 +7,7 @@ This template transforms your Claude Code experience into a comprehensive AI-pow
 ## What This Does
 
 Transform your Claude Code experience with:
-- ✅ **20+ AI agents** with mandatory coordination (minimum 3+ agents for complex tasks)
+- ✅ **AI agent framework** with mandatory coordination (minimum 3+ agents for complex tasks)
 - ✅ **Context-clean workflows** - Agents handle complex tasks independently, keeping conversations focused
 - ✅ **Custom slash commands** like `/review`, `/test`, `/refactor` for instant help
 - ✅ **Technology-specific guidance** - Python, Rust, Java, JavaScript, and more

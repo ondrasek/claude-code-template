@@ -5,7 +5,7 @@
 ## Features
 
 - **Enhanced Defaults**: All logging enabled by default (verbose, debug, MCP debug, save logs), Sonnet model as default
-- **Master Prompt Loading**: Automatic loading of custom prompts from `.support/prompts/master-prompt.md`
+- **Master Prompt Loading**: Automatic loading of custom prompts from `templates/prompts/master-prompt.md`
 - **Environment Variable Loading**: Secure loading of `.env` files with validation and sensitive value masking
 - **Advanced Logging**: Comprehensive logging enabled by default with timestamped files
 - **Log Analysis**: Built-in log analysis using Claude Code agents
@@ -17,7 +17,7 @@
 
 ```bash
 # Manually add the alias to your shell config
-echo "alias launch-claude='$(pwd)/.support/scripts/launch-claude.sh'" >> ~/.bashrc
+echo "alias launch-claude='$(pwd)/scripts/launch-claude.sh'" >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -86,7 +86,7 @@ Create a custom master prompt that gets automatically prepended to all queries:
 
 ```bash
 # Create/edit the master prompt file
-vim .support/prompts/master-prompt.md
+vim templates/prompts/master-prompt.md
 ```
 
 Example master prompt content:
@@ -193,7 +193,7 @@ launch-claude --clean-logs
 
 Log files are organized in session-based directories with timestamped structure:
 ```
-.support/logs/
+.logs/
 ├── 20250801-110044/                    # Session started Aug 1, 2025 at 11:00:44
 │   ├── session-20250801-110044.log     # Main session log
 │   ├── mcp-20250801-110044.log         # MCP server communication
@@ -271,7 +271,7 @@ launch-claude --troubleshoot-mcp
 | MCP Debug | Off | On | `--no-mcp-debug` |
 | Log Saving | Off | On (timestamped) | `--no-logs` |
 | Model | Various | sonnet | `--model` |
-| Master Prompt | None | Auto-loaded | Edit `.support/prompts/master-prompt.md` |
+| Master Prompt | None | Auto-loaded | Edit `templates/prompts/master-prompt.md` |
 
 ## Troubleshooting
 
@@ -288,17 +288,17 @@ type launch-claude
 **Permission denied**
 ```bash
 # Make script executable
-chmod +x .support/scripts/launch-claude.sh
+chmod +x scripts/launch-claude.sh
 ```
 
 **Master prompt not loading**
 ```bash
 # Check if file exists
-ls -la .support/prompts/master-prompt.md
+ls -la templates/prompts/master-prompt.md
 
 # Create if missing
-mkdir -p .support/prompts
-touch .support/prompts/master-prompt.md
+mkdir -p templates/prompts
+touch templates/prompts/master-prompt.md
 ```
 
 ### Debug Mode Output
@@ -348,7 +348,7 @@ launch-claude --clean-logs
 
 ```bash
 # Share master prompt across team
-git add .support/prompts/master-prompt.md
+git add templates/prompts/master-prompt.md
 git commit -m "Add team coding standards to master prompt"
 
 # Use consistent model for team sessions (logging enabled by default)
@@ -377,9 +377,9 @@ launch-claude --troubleshoot-mcp > mcp-diagnostics.md
 ## File Structure
 
 ```
-.support/scripts/
+scripts/
 ├── launch-claude.sh              # Main launch-claude script
-.support/prompts/
+templates/prompts/
 ├── master-prompt.md     # Custom master prompt (auto-created)
 .logs/                   # Log files (auto-created when using --save-logs)
 ├── launch-claude-20240128-143022.log
