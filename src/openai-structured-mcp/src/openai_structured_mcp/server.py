@@ -78,7 +78,7 @@ async def extract_data(
         JSON string with structured data extraction results including entities, facts, and summary
     """
     logger.info(f"Data extraction request: {len(text)} characters")
-    logger.debug(f"Text preview: {text[:100]}...")
+    # Text preview removed for security - user input may contain PII
     
     try:
         result = await openai_client.extract_data(
@@ -132,7 +132,7 @@ async def analyze_code(
         JSON string with structured code analysis including complexity score, issues, and recommendations
     """
     logger.info(f"Code analysis request: {len(code)} characters, language_hint: {language_hint}")
-    logger.debug(f"Code preview: {code[:200]}...")
+    # Code preview removed for security - may contain sensitive information
     
     try:
         result = await openai_client.analyze_code(
@@ -184,7 +184,7 @@ async def create_configuration_task(
         JSON string with structured task definition including steps, priorities, and validation criteria
     """
     logger.info(f"Configuration task creation request: {len(description)} characters")
-    logger.debug(f"Task description: {description}")
+    # Task description removed for security - may contain sensitive information
     
     try:
         result = await openai_client.create_configuration_task(
@@ -235,7 +235,7 @@ async def analyze_sentiment(
         JSON string with structured sentiment analysis including overall sentiment, emotions, and reasoning
     """
     logger.info(f"Sentiment analysis request: {len(text)} characters")
-    logger.debug(f"Text preview: {text[:100]}...")
+    # Text preview removed for security - user input may contain PII
     
     try:
         result = await openai_client.analyze_sentiment(
