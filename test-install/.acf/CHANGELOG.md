@@ -7,102 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- **ACF CLI Tool**: Complete configuration management tool for AI Code Forge installations (closes #59)
-  - `ai-code-forge install` command for automated configuration deployment with comprehensive file management
-  - `ai-code-forge status` command for installation verification and diagnostics with detailed component reporting
-  - Support for targeted installations with `--target` option for custom directory deployment
-  - Force installation option with `--force` flag for overwriting existing configurations
-  - Automated deployment of `.claude/` (agents, commands, settings), `.acf/` (templates, docs), and `CLAUDE.md`
-  - Complete Python packaging with pyproject.toml and build system for distribution-ready wheel creation
-  - Comprehensive test suite with 30 test cases covering installer, CLI, and integration scenarios
-  - Build validation system with GitHub Actions workflow for automated CI/CD pipeline
-  - PyPI publishing workflow enabling `pip install ai-code-forge` and `uvx ai-code-forge install`
-
-## [2.90.0] - 2025-08-09
-
-### Added
-- **Worktree Inspect Command**: Complete implementation of comprehensive issue state analysis system (closes #115)
-  - New `worktree inspect` command with multi-format issue specification parsing
-  - Support for GitHub issue numbers, branch names, and title search functionality
-  - Comprehensive state detection: worktree, git, AI assistant, and GitHub integration status
-  - Multiple output formats including human-readable summaries and JSON for automation
-  - Robust error handling, security validation, and comprehensive test suite
-  - Full integration with existing worktree command dispatcher system
-
 ### Fixed
-- **Documentation Synchronization**: Complete documentation update aligning with recent code changes (refs #126, #120)
-  - Fixed branch naming inconsistencies in worktree scripts removing outdated "claude/" prefix references
-  - Updated README.md with enhanced worktree capabilities including --from-issue functionality and issue number support
-  - Corrected worktree script examples and usage patterns to reflect current branch naming logic
-  - Enhanced worktree documentation with comprehensive GitHub Issues integration details
-
-### Added
-- **GitHub Issue Refinement System**: Complete implementation of `/issue:refine` slash command with automated workflow integration (closes #90)
-  - Created `/issue:refine` command with intelligent issue analysis and critical questioning capabilities
-  - Implemented GitHub workflow automation with safety-first approach requiring human approval
-  - Integration with existing github-issues-workflow agent for seamless GitHub CLI operations
-  - Comprehensive refinement capabilities: research, critical analysis, edge case detection, acceptance criteria enhancement
-  - Safety mechanisms preventing infinite loops and over-automation through conservative design
-  - Human-supervised approach for all GitHub issue modifications with read-only analysis output
-  - Template GitHub Actions workflow for automated issue refinement with security best practices
-
-### Enhanced
-- **Issue Workflow Simplification**: Streamlined GitHub issue workflow to eliminate worktree detection complexity (fixes #120)
-  - Removed automatic feature branch creation in favor of current branch workflow
-  - Enhanced `/issue:start` command to work directly on current branch with protected branch warnings
-  - Updated `/issue:pr` command to create PRs from current branch instead of feature branches
-  - Simplified github-issues-workflow agent by eliminating conditional branch management logic
-  - Supports both traditional git workflows and worktree environments seamlessly
-  - Gives users full control over their branching strategy without forced conventions
-  - Final simplification: removed all branch validation and warning logic for maximum flexibility (refs #120)
-
-### Fixed
-- **GitHub PR Workflow Agent Compatibility**: Resolved conflicting logic preventing PR creation from main branch (refs #120)
-  - Changed blocking error to warning when creating PRs from main/default branch
-  - Maintains user guidance about branch isolation while allowing workflow flexibility
-  - Aligns github-pr-workflow agent behavior with simplified current branch approach
-  - Preserves user education about branching best practices through informational messages
-
-## [2.88.2] - 2025-08-09
-
-### Security
-- **DevContainer Security Fix**: Eliminated curl|sh vulnerabilities in postCreate.sh (fixes #113)
-  - Replaced insecure UV installation with secure pip install method  
-  - Replaced insecure Oh My Zsh installation with secure git clone method
-  - Prevents supply chain attacks, DNS poisoning, and MitM vulnerabilities during container setup
-
-## [2.88.1] - 2025-08-09
-
-### Fixed
-- **Git-Workflow Agent Version Detection**: Fixed critical bug preventing correct version tag generation (closes #123)
-  - Added comprehensive repository state validation with main branch tag checking
-  - Implemented change type analysis (BREAKING/feat/patch) from commit messages  
-  - Added branch-aware logic: semantic versions for main, timestamped tags for features
-  - Added version conflict prevention with validate_version_progression() function
-  - Enhanced error handling with specific resolution guidance for version conflicts
-  - Prevents creating incorrect tags like v0.7.0 when repository is at v2.88.0+
-
-### Removed
-- **Development Scripts Cleanup**: Removed obsolete development and testing scripts (refs #105)
-  - Removed setup-claude-memory.sh (functionality integrated into launch script)
-  - Removed test-agents.sh and test-session-logging.sh (development utilities)
-  - Updated README.md to reflect current script system
-
-## [0.1.0] - 2025-08-09
-
-### Fixed
-- **Worktree GitHub Comment Logic**: Fixed GitHub comment logic for existing branches in worktree creation workflow (resolves #121)
-  - Only add GitHub issue comments when new branches are created
-  - Skip GitHub comments when using existing branches in --from-issue mode
-  - Add branch_was_created global variable to track creation status
-  - Provide informative message when skipping comment for existing branch
 - **Comprehensive PR Review Response**: Addressed all high/medium priority concerns in worktree management scripts (closes #105)
   - Fixed critical TOCTOU race condition in directory creation logic with proper timing attack prevention
   - Standardized repository name validation across worktree-create.sh and worktree-cleanup.sh with enhanced security
   - Enhanced error handling with specific path context and proper error code returns for failed operations
   - Implemented comprehensive cleanup logic for failed worktree creation operations with secure state management
   - Added comprehensive security testing infrastructure with unit tests for validation functions and injection attack prevention
+
+### Removed
+- **Development Scripts Cleanup**: Removed obsolete development and testing scripts (refs #105)
+  - Removed setup-claude-memory.sh (functionality integrated into launch script)
+  - Removed test-agents.sh and test-session-logging.sh (development utilities)
+  - Updated README.md to reflect current script system
 
 ## [2.88.0] - 2025-08-09
 

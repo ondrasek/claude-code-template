@@ -10,36 +10,6 @@ A comprehensive template system that enhances Claude Code with specialized AI ag
 
 ## Quick Start
 
-### Method 1: ACF CLI Tool (Recommended)
-
-```bash
-# Install ACF tool
-pip install ai-code-forge
-
-# Deploy configuration to your project
-ai-code-forge install
-
-# Verify installation
-ai-code-forge status
-```
-
-### Method 2: Development Installation
-
-```bash
-# 1. Clone and build from source
-git clone https://github.com/ondrasek/ai-code-forge.git
-cd ai-code-forge/acf
-
-# 2. Build and install the configuration manager
-./build.sh
-python -m src.acf.main install
-
-# 3. Verify installation
-python -m src.acf.main status
-```
-
-### Method 3: Manual Setup
-
 ```bash
 # 1. Clone and setup
 git clone https://github.com/ondrasek/ai-code-forge.git
@@ -50,7 +20,6 @@ cd ai-code-forge
 
 # 3. Create worktrees for parallel development (optional)
 ./scripts/worktree/worktree.sh create feature/new-feature
-./scripts/worktree/worktree.sh create --from-issue 126  # From GitHub issue
 ```
 
 **Requirements**: Claude Code CLI, Git, Python 3.13+, Node.js
@@ -63,7 +32,6 @@ cd ai-code-forge
 - **🔍 Research Integration**: Real-time web search via Perplexity MCP server
 - **📝 Smart Documentation**: Templates and guidelines for consistent project documentation
 - **⚡ Launch Scripts**: One-command setup for different development scenarios
-- **🚀 ACF CLI Tool**: Configuration management tool for automated AI Code Forge setup
 
 ## Core Features
 
@@ -82,19 +50,6 @@ cd ai-code-forge
 - **TypeScript**: Node.js/React patterns, testing strategies, build optimization
 - **Docker**: Multi-stage builds, security hardening, size optimization
 
-### ACF CLI Tool
-**Automated Configuration Management:**
-- **Installation Command**: `ai-code-forge install` - Deploys complete Claude Code configuration
-- **Status Monitoring**: `ai-code-forge status` - Verifies installation and shows components
-- **Targeted Deployment**: `--target` option for custom installation directories
-- **Force Updates**: `--force` option for overwriting existing configurations
-- **File Management**: Automatically installs `.claude/`, `.acf/`, and `CLAUDE.md`
-
-**What Gets Installed:**
-- **`.claude/`** - All agents, commands, and Claude Code settings
-- **`.acf/`** - Templates, documentation, and ACF-specific tools
-- **`CLAUDE.md`** - Core operational rules and project guidelines
-
 ## Script System
 
 Utility scripts for Claude Code setup and operation:
@@ -108,11 +63,11 @@ Utility scripts for Claude Code setup and operation:
 
 Parallel development workflow utilities:
 
-- `worktree/worktree.sh` - Unified worktree management interface with GitHub Issues integration
-  - `worktree.sh create <branch> [issue-number]` - Create new worktree with optional issue linking
-  - `worktree.sh create --from-issue <num>` - Create from GitHub issue (auto-detects existing branches)
-  - `worktree.sh list` - List all worktrees with detailed status information
-  - `worktree.sh cleanup` - Clean up invalid worktrees with safety checks
+- `worktree/worktree.sh` - Unified worktree management interface
+  - `worktree.sh create <branch>` - Create new worktree
+  - `worktree.sh create --from-issue <num>` - Create from GitHub issue
+  - `worktree.sh list` - List all worktrees
+  - `worktree.sh cleanup` - Clean up invalid worktrees
 
 ## Technology Stack Integration
 

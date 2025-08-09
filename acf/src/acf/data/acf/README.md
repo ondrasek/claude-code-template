@@ -50,7 +50,6 @@ cd ai-code-forge
 
 # 3. Create worktrees for parallel development (optional)
 ./scripts/worktree/worktree.sh create feature/new-feature
-./scripts/worktree/worktree.sh create --from-issue 126  # From GitHub issue
 ```
 
 **Requirements**: Claude Code CLI, Git, Python 3.13+, Node.js
@@ -108,11 +107,11 @@ Utility scripts for Claude Code setup and operation:
 
 Parallel development workflow utilities:
 
-- `worktree/worktree.sh` - Unified worktree management interface with GitHub Issues integration
-  - `worktree.sh create <branch> [issue-number]` - Create new worktree with optional issue linking
-  - `worktree.sh create --from-issue <num>` - Create from GitHub issue (auto-detects existing branches)
-  - `worktree.sh list` - List all worktrees with detailed status information
-  - `worktree.sh cleanup` - Clean up invalid worktrees with safety checks
+- `worktree/worktree.sh` - Unified worktree management interface
+  - `worktree.sh create <branch>` - Create new worktree
+  - `worktree.sh create --from-issue <num>` - Create from GitHub issue
+  - `worktree.sh list` - List all worktrees
+  - `worktree.sh cleanup` - Clean up invalid worktrees
 
 ## Technology Stack Integration
 
