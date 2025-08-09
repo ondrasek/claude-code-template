@@ -90,10 +90,12 @@ Use `gh label list --repo ondrasek/ai-code-forge --json name,color,description` 
 - **Create issues**: Generate properly formatted GitHub Issues
 - **Update status**: Modify issue status through labels without context noise
 - **Label Management**: ALWAYS update issue labels when working on issues to reflect progress and status
+- **Cross-reference**: ALWAYS cross-reference all relevant issues (open and recently closed)
 - **Append-Only for Autonomous Updates**: For automated updates, add new comments instead of modifying existing content
 - **User-Requested Modifications**: Can modify existing content when explicitly instructed by users
 - **Track progress**: Monitor completion without constant updates
 - **Manage lifecycle**: Handle issue creation to closure flow
+- **Issue Closure**: ALWAYS add appropriate closure labels and detailed closure comments when closing issues
 
 ### Integration Protocol
 - **CHANGELOG updates**: Add completed issues to [Unreleased] section
@@ -144,7 +146,7 @@ The agent ensures specifications remain what they should be: detailed planning d
 
 ### Automatic Cross-Referencing
 
-**Issue Relationship Detection**: 
+**Issue Relationship Detection**:
 When creating or updating issues, automatically analyze existing issues for relationships:
 
 - **Keyword Analysis**: Extract key terms from issue title and description
@@ -157,7 +159,7 @@ When creating or updating issues, automatically analyze existing issues for rela
 2. Search existing issues using `gh issue list --search "keyword1 OR keyword2" --repo ondrasek/ai-code-forge`
 3. Apply relevance scoring based on:
    - **Direct keyword matches** (high relevance)
-   - **Technical domain overlap** (medium relevance) 
+   - **Technical domain overlap** (medium relevance)
    - **Implementation dependencies** (critical relevance)
    - **Timeline coordination needs** (planning relevance)
 4. Add cross-references to "Related Issues" section with relationship type
@@ -254,6 +256,100 @@ Add to "External References" section:
 - Update priority labels if issue urgency changes during work
 - Use status-indicating labels to show current phase of work
 - **User-requested label changes**: Apply any specific label modifications when explicitly instructed
+
+## Issue Closure Protocol (MANDATORY)
+
+### Closure Labels and Documentation Requirements
+
+**CRITICAL**: When closing any GitHub issue, ALWAYS perform ALL of the following steps:
+
+#### Step 1: Apply Appropriate Closure Label
+Discover and apply relevant closure labels from existing repository labels using:
+```bash
+gh label list --repo ondrasek/ai-code-forge --json name,description | grep -i "wontfix\|duplicate\|invalid\|complete\|resolve"
+```
+
+**Standard Closure Label Categories**:
+- `wontfix` - Issue will not be addressed (design decision, out of scope)
+- `duplicate` - Issue duplicates existing issue (include cross-reference)
+- `invalid` - Issue is not valid (unclear, incorrect, not reproducible)
+- `completed` - Issue successfully completed/resolved
+- `superseded` - Replaced by better approach or different implementation
+
+#### Step 2: Add Detailed Closure Comment
+ALWAYS add a comprehensive closure comment explaining the decision:
+
+**Closure Comment Template**:
+```markdown
+## Closure Reason: [CATEGORY]
+
+### Decision Context
+[Explain why this issue is being closed - what factors led to this decision]
+
+### Alternative Actions (if applicable)
+[Reference replacement issues, alternative approaches, or related work]
+
+### Cross-References
+[Link to related issues, pull requests, or documentation]
+
+### Future Considerations
+[Note any conditions that might cause this issue to be reopened or reconsidered]
+```
+
+#### Step 3: Update Cross-References
+- Add closure reference to related open issues
+- Update replacement issues with "Replaces #XX" notation
+- Close dependent issues if necessary
+
+#### Step 4: GitHub CLI Closure Command Pattern
+```bash
+# Always combine label addition with closure comment
+gh issue edit <issue_number> --repo ondrasek/ai-code-forge --add-label <closure_label>
+gh issue comment <issue_number> --repo ondrasek/ai-code-forge --body "<detailed_closure_comment>"
+gh issue close <issue_number> --repo ondrasek/ai-code-forge
+```
+
+### Closure Category Guidelines
+
+#### "wontfix" Category:
+- **Use when**: Issue is valid but won't be implemented due to design decisions, resource constraints, or architectural conflicts
+- **Required documentation**: Clear explanation of why issue won't be addressed
+- **Example comment**: "Closing as wontfix - this approach conflicts with our DevContainer security model and would introduce command injection vulnerabilities"
+
+#### "duplicate" Category:
+- **Use when**: Issue duplicates existing functionality or requests
+- **Required documentation**: Reference to original issue with cross-link
+- **Example comment**: "Closing as duplicate of #42 which covers the same functionality with more detailed requirements"
+
+#### "invalid" Category:
+- **Use when**: Issue cannot be reproduced, is unclear, or contains errors
+- **Required documentation**: Explanation of validation problems and steps attempted
+- **Example comment**: "Closing as invalid - unable to reproduce with provided steps, and issue description lacks sufficient technical details for implementation"
+
+#### "completed" Category:
+- **Use when**: Issue has been successfully resolved
+- **Required documentation**: Summary of resolution and links to implementation
+- **Example comment**: "Closing as completed - implemented in PR #67, see commit abc123f for technical details"
+
+#### "superseded" Category:
+- **Use when**: Better approach replaces this issue's proposal
+- **Required documentation**: Reference to superior approach or implementation
+- **Example comment**: "Closing as superseded - replaced with simplified approach in #105 which addresses security concerns identified during analysis"
+
+### Quality Assurance for Closures
+
+**MANDATORY VERIFICATION**:
+- ✅ Appropriate closure label applied from existing repository labels
+- ✅ Detailed closure comment added explaining decision context
+- ✅ Cross-references updated in related issues
+- ✅ Replacement issues created if applicable
+- ✅ Future reconsideration criteria documented when relevant
+
+**NEVER**:
+- Close issues without explanation
+- Apply generic closure without specific reasoning
+- Leave related issues without cross-reference updates
+- Close issues without considering impact on dependent work
 
 ## RECURSION PREVENTION (MANDATORY)
 **SUB-AGENT RESTRICTION**: This agent MUST NOT spawn other agents via Task tool. All issue management, GitHub operations, web research, and specification lifecycle management happens within this agent's context to prevent recursive delegation loops. This agent is a terminal node in the agent hierarchy.
