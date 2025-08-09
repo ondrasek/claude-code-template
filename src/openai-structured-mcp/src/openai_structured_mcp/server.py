@@ -35,7 +35,7 @@ logger.debug(f"Environment variables:")
 logger.debug(f"  OPENAI_STRUCTURED_LOG_LEVEL: {os.getenv('OPENAI_STRUCTURED_LOG_LEVEL', 'INFO')}")
 logger.debug(f"  OPENAI_STRUCTURED_LOG_PATH: {os.getenv('OPENAI_STRUCTURED_LOG_PATH') or 'NOT_SET'}")
 logger.debug(f"  OPENAI_API_KEY: {'SET' if os.getenv('OPENAI_API_KEY') else 'NOT_SET'}")
-logger.debug(f"  OPENAI_DEFAULT_MODEL: {os.getenv('OPENAI_DEFAULT_MODEL', 'gpt-4o-mini')}")
+logger.debug(f"  OPENAI_DEFAULT_MODEL: {os.getenv('OPENAI_DEFAULT_MODEL', 'gpt-5')}")
 logger.debug(f"  OPENAI_DEFAULT_TEMPERATURE: {os.getenv('OPENAI_DEFAULT_TEMPERATURE', '0.7')}")
 
 # Create FastMCP server instance

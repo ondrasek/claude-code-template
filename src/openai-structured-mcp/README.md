@@ -51,7 +51,7 @@ An experimental Model Context Protocol (MCP) server that demonstrates structured
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
 | `OPENAI_API_KEY` | OpenAI API key | None | Yes |
-| `OPENAI_DEFAULT_MODEL` | Default OpenAI model | `gpt-4o-mini` | No |
+| `OPENAI_DEFAULT_MODEL` | Default OpenAI model | `gpt-5` | No |
 | `OPENAI_DEFAULT_TEMPERATURE` | Default sampling temperature | `0.7` | No |
 | `OPENAI_DEFAULT_MAX_TOKENS` | Default max tokens | `1000` | No |
 | `OPENAI_STRUCTURED_LOG_LEVEL` | Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL, none) | `INFO` | No |

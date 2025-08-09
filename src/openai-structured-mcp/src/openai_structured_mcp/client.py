@@ -60,6 +60,7 @@ class OpenAIStructuredClient:
     """Client for interacting with OpenAI API using structured outputs."""
     
     AVAILABLE_MODELS = [
+        "gpt-5",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4-turbo", 
@@ -87,7 +88,7 @@ class OpenAIStructuredClient:
         self.client = AsyncOpenAI(api_key=self.api_key)
         
         # Configuration
-        self.default_model = os.getenv("OPENAI_DEFAULT_MODEL", "gpt-4o-mini")
+        self.default_model = os.getenv("OPENAI_DEFAULT_MODEL", "gpt-5")
         self.default_temperature = float(os.getenv("OPENAI_DEFAULT_TEMPERATURE", "0.7"))
         self.default_max_tokens = int(os.getenv("OPENAI_DEFAULT_MAX_TOKENS", "1000"))
         

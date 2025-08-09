@@ -16,7 +16,7 @@ class TestOpenAIStructuredClient:
         with patch.dict(os.environ, {}, clear=True):  # Clear environment
             client = OpenAIStructuredClient(api_key="test-key")
             assert client.api_key == "test-key"
-            assert client.default_model == "gpt-4o-mini"  # Default value
+            assert client.default_model == "gpt-5"  # Default value
     
     def test_client_initialization_from_env(self):
         """Test client initialization from environment variable."""
