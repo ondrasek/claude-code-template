@@ -60,6 +60,54 @@ print_success() { echo -e "${GREEN}SUCCESS:${NC} $1"; }
 print_warning() { echo -e "${YELLOW}WARNING:${NC} $1"; }
 print_info() { echo -e "${BLUE}INFO:${NC} $1"; }
 
+# Find existing branch for an issue number
+find_issue_branch() {
+    local issue_num="$1"
+
+    # Common branch naming patterns for issues
+    local patterns=(
+        "claude/issue-$issue_num-*"
+        "issue-$issue_num-*"
+        "issue/$issue_num-*"
+        "feature/issue-$issue_num-*"
+    )
+
+    # Check each pattern in git branches
+    for pattern in "${patterns[@]}"; do
+        local matches
+        matches=$(git branch -a --format="%(refname:short)" | grep -E "^(origin/)?${pattern//\*/.*}$" | head -1 || true)
+        if [[ -n "$matches" ]]; then
+            # Remove origin/ prefix if present
+            echo "${matches#origin/}"
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+# Find worktree path for issue branch
+find_issue_worktree() {
+    local issue_num="$1"
+    
+    local branch_name
+    if branch_name=$(find_issue_branch "$issue_num"); then
+        # Look for worktree with this branch
+        local worktree_path
+        worktree_path=$(git worktree list --porcelain | awk -v branch="$branch_name" '
+            /^worktree / { path = substr($0, 10) }
+            /^branch refs\/heads\// && substr($0, 19) == branch { print path; exit }
+        ')
+        
+        if [[ -n "$worktree_path" ]]; then
+            echo "$worktree_path"
+            return 0
+        fi
+    fi
+    
+    return 1
+}
+
 # Usage information
 show_usage() {
     cat << EOF
@@ -68,6 +116,7 @@ Usage: $0 [command] [arguments] [--dry-run]
 Commands:
   list                    List all existing worktrees
   remove <worktree-path>  Remove specific worktree
+  remove <issue-number>   Remove worktree for specific issue number
   remove-all             Remove all worktrees (with confirmation)
   prune                  Remove stale worktree references
   help                   Show this help message
@@ -78,6 +127,7 @@ Options:
 Examples:
   $0 list
   $0 remove /workspace/worktrees/feature-branch
+  $0 remove 123                    # Remove worktree for issue #123
   $0 remove-all --dry-run
   $0 prune --dry-run
 
@@ -337,11 +387,28 @@ main() {
             ;;
         "remove")
             if [[ ${#args[@]} -lt 2 ]]; then
-                print_error "remove command requires worktree path"
+                print_error "remove command requires worktree path or issue number"
                 show_usage
                 exit 1
             fi
-            remove_worktree "${args[1]}" "$dry_run"
+            
+            local target="${args[1]}"
+            
+            # Check if argument is a number (issue number) or path
+            if [[ "$target" =~ ^[0-9]+$ ]]; then
+                print_info "Looking for worktree for issue #$target"
+                local worktree_path
+                if worktree_path=$(find_issue_worktree "$target"); then
+                    print_info "Found worktree for issue #$target: $worktree_path"
+                    remove_worktree "$worktree_path" "$dry_run"
+                else
+                    print_error "No worktree found for issue #$target"
+                    exit 1
+                fi
+            else
+                # Treat as worktree path
+                remove_worktree "$target" "$dry_run"
+            fi
             ;;
         "remove-all")
             remove_all_worktrees "$dry_run"
