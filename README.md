@@ -1,66 +1,55 @@
 # AI Code Forge
 
-**AI Agent System for Claude Code**
+**Transform Claude Code into a specialized AI agent system with templates, workflows, and intelligent automation.**
 
 [![Version](https://img.shields.io/github/v/release/ondrasek/ai-code-forge)](https://github.com/ondrasek/ai-code-forge/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Issues](https://img.shields.io/github/issues/ondrasek/ai-code-forge)](https://github.com/ondrasek/ai-code-forge/issues)
 
-Development workspace and template system for enhancing Claude Code with specialized AI workflows and integrations.
-
-## What It Provides
-
-- **Agent Templates & Guidelines**: Framework for creating specialized AI agents
-- **Technology Stack Templates**: Pre-configured guidelines for Python, Rust, Java, C++, TypeScript, Docker
-- **GitHub Issues Workflow**: Project management integration and templates
-- **MCP Server Implementation**: Perplexity server for web research capabilities
-- **Development Scripts**: Setup and testing utilities for Claude Code enhancement
-- **Documentation Templates**: Comprehensive guides and configuration examples
-
-## Installation
-
-```bash
-git clone https://github.com/ondrasek/ai-code-forge.git
-cd ai-code-forge
-
-# Copy configurations to your Claude Code setup
-# See docs/getting-started.md for detailed instructions
-```
-
-**Requirements:**
-- Claude Code CLI installed and working
-- Git for repository operations  
-- Python 3.13+ for MCP server functionality
-- Node.js for Claude Code operation
+A comprehensive template system that enhances Claude Code with specialized AI agents, technology stack configurations, and automated workflows. Get your AI development environment running in under 3 minutes.
 
 ## Quick Start
 
 ```bash
-# Setup Claude Code memory system
+# 1. Clone and setup
+git clone https://github.com/ondrasek/ai-code-forge.git
+cd ai-code-forge
 ./scripts/setup-claude-memory.sh
 
-# Launch Claude Code with configuration
+# 2. Launch enhanced Claude Code
 ./scripts/launch-claude.sh
 
-# Test agent system
+# 3. Test your AI agent system
 ./scripts/test-agents.sh
 ```
 
-## Template System
+**Requirements**: Claude Code CLI, Git, Python 3.13+, Node.js
 
-### Agent Guidelines
-Frameworks for creating specialized AI agents:
-- **Foundation patterns** - Code analysis, principles validation, context understanding
-- **Workflow automation** - Git operations, GitHub integration, testing strategies
-- **Development support** - Performance optimization, security analysis, code generation
+## What You Get
 
-### Technology Stack Templates
-Pre-configured development guidelines for:
-- **Python**: Django, FastAPI, pytest, poetry patterns
-- **Rust**: Cargo workflows, async patterns, memory safety
-- **Java**: Spring Boot, Maven/Gradle, testing frameworks
-- **C++**: Modern standards, CMake configuration
-- **Docker**: Multi-stage builds, optimization strategies
+- **🤖 Specialized AI Agents**: Pre-built agents for code analysis, testing, security, and performance
+- **📚 Technology Templates**: Battle-tested configurations for Python, Rust, Java, C++, TypeScript, Docker
+- **🔧 Automated Workflows**: GitHub integration, git operations, and project management
+- **🔍 Research Integration**: Real-time web search via Perplexity MCP server
+- **📝 Smart Documentation**: Templates and guidelines for consistent project documentation
+- **⚡ Launch Scripts**: One-command setup for different development scenarios
+
+## Core Features
+
+### AI Agent System
+**Transform Claude Code into a specialized development assistant:**
+- **Code Analysis Agents**: Automated code review, pattern detection, quality assessment
+- **Workflow Agents**: Git operations, GitHub integration, testing automation
+- **Performance Agents**: Optimization analysis, bottleneck detection, security scanning
+- **Documentation Agents**: README generation, API documentation, code comments
+
+### Technology Stack Intelligence
+**Pre-configured expertise for major development stacks:**
+- **Python**: Django/FastAPI patterns, pytest strategies, poetry workflows
+- **Rust**: Cargo optimization, async patterns, memory safety validation
+- **Java**: Spring Boot setup, Maven/Gradle best practices, testing frameworks
+- **TypeScript**: Node.js/React patterns, testing strategies, build optimization
+- **Docker**: Multi-stage builds, security hardening, size optimization
 
 ## Script System
 
@@ -143,18 +132,18 @@ The system provides template-based configuration:
 - **[Configuration](docs/configuration-reference.md)** - Customization options
 - **[Launch Scripts](docs/launch-claude-usage.md)** - Script configuration
 
+## Getting Help
+
+- **📚 Documentation**: Comprehensive guides in `/docs/` directory
+- **🐛 Issues**: [Report bugs or request features](https://github.com/ondrasek/ai-code-forge/issues)
+- **💡 Discussions**: [Community discussions and Q&A](https://github.com/ondrasek/ai-code-forge/discussions)
+- **📖 Examples**: Real-world usage examples in `/templates/` and `/analysis/`
+
 ## Contributing
 
-- **Issues**: [Report bugs or request features](https://github.com/ondrasek/ai-code-forge/issues)
-- **Development**: See [contributing guidelines](CONTRIBUTING.md)
-- **Pull Requests**: [Submit improvements](https://github.com/ondrasek/ai-code-forge/pulls)
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-## Project Status
-
-- **Version**: 2.78.0+ (actively maintained)
-- **Issue Tracking**: GitHub Issues for specification management
-- **Release Management**: Semantic versioning with detailed changelog
-- **Community**: Open source with MIT license
+**Project Status**: Actively maintained • Version 2.78.0+ • MIT License
 
 ## License
 
