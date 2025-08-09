@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.81.0] - 2025-08-09
+
+### Added
+- **README Documentation Guidelines Framework**: Comprehensive AI-optimized documentation system (refs #95)
+  - Created templates/guidelines/readme-documentation-guidelines.md with XML-structured guidelines for consistent AI interpretation
+  - Added three reusable README templates: general-project-template.md, mcp-server-template.md, library-package-template.md
+  - Implemented user-first design principles optimizing for 5-second understanding over format compliance
+  - Guidelines-based approach achieving consistency through principles rather than rigid tooling
+  - Progressive disclosure hierarchy from README → docs → wiki for better information architecture
+
+### Changed
+- **Main README.md**: Updated with user-first design principles and improved quick start experience
+- **Perplexity MCP README**: Enhanced with better quick start flow and 2-minute setup guide
+- **Documentation Strategy**: Shifted from Standard README compliance to superior guidelines-based approach for better user experience
+
 ## [2.79.1] - 2025-08-09
 
 ### Changed
