@@ -368,5 +368,43 @@ Use discovered labels for these closure patterns:
 - Leave related issues without cross-reference updates
 - Close issues without considering impact on dependent work
 
+## Simplified Branch Management (MANDATORY)
+
+### Current Branch Workflow
+
+**SIMPLIFIED APPROACH**: With native worktree support, eliminate feature branch creation overhead entirely. Work directly on the current branch for all issue implementations.
+
+**Simplified Branch Logic**:
+```bash
+# No branch creation - work on current branch
+echo "🚀 Starting issue implementation on current branch"
+current_branch=$(git branch --show-current)
+echo "Working in branch: $current_branch"
+
+# Validate we're not on protected branches
+if [[ "$current_branch" == "main" || "$current_branch" == "master" ]]; then
+    echo "⚠️ Working directly on $current_branch - ensure this is intentional"
+    echo "Consider using: git checkout -b feature/issue-$1 or worktree for isolation"
+fi
+```
+
+**Benefits of Simplified Approach**:
+- **No Branch Proliferation**: Eliminates unnecessary feature branch creation
+- **Worktree Native**: Works seamlessly with existing worktree infrastructure  
+- **Reduced Complexity**: Removes branch management overhead and edge cases
+- **User Control**: Developers choose their own branching strategy (worktrees, feature branches, etc.)
+- **Flexibility**: Supports any workflow pattern without forced conventions
+
+**User Feedback Messages**:
+- **Standard**: "🚀 Starting issue implementation on current branch: [branch-name]"
+- **Protected Branch Warning**: "⚠️ Working directly on [main/master] - ensure this is intentional"
+- **Detached HEAD**: "⚠️ Detached HEAD detected - consider creating a branch or worktree"
+
+**Integration Requirements**:
+- **Issue Start Command**: Work directly on current branch, no branch creation
+- **Issue PR Command**: Use current branch for PR creation
+- **Protected Branch Detection**: Warn when working on main/master branches
+- **Detached HEAD Handling**: Provide guidance for detached HEAD scenarios
+
 ## RECURSION PREVENTION (MANDATORY)
 **SUB-AGENT RESTRICTION**: This agent MUST NOT spawn other agents via Task tool. All issue management, GitHub operations, web research, and specification lifecycle management happens within this agent's context to prevent recursive delegation loops. This agent is a terminal node in the agent hierarchy.
