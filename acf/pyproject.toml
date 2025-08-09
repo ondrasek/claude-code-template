@@ -1,0 +1,20 @@
+[project]
+name = "ai-code-forge-cli"
+version = "0.1.0"
+description = "Configuration management tool for AI Code Forge"
+requires-python = ">=3.13"
+dependencies = [
+    "click>=8.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+acf = "acf.main:main"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0",
+]
