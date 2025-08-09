@@ -63,7 +63,7 @@ print_info() { echo -e "${BLUE}INFO:${NC} $1"; }
 # Usage information
 show_usage() {
     cat << EOF
-Usage: $0 [command] [arguments]
+Usage: $0 [command] [arguments] [--dry-run]
 
 Commands:
   list                    List all existing worktrees
@@ -72,11 +72,14 @@ Commands:
   prune                  Remove stale worktree references
   help                   Show this help message
 
+Options:
+  --dry-run              Show what operations would be performed without executing them
+
 Examples:
   $0 list
   $0 remove /workspace/worktrees/feature-branch
-  $0 remove-all
-  $0 prune
+  $0 remove-all --dry-run
+  $0 prune --dry-run
 
 Location: Manages worktrees in $WORKTREE_BASE/<repository>/
 EOF
@@ -166,9 +169,19 @@ validate_worktree_path() {
 # Remove single worktree
 remove_worktree() {
     local worktree_path="$1"
+    local dry_run="${2:-false}"
     local validated_path
     
     validated_path=$(validate_worktree_path "$worktree_path") || return 1
+    
+    if [[ "$dry_run" == "true" ]]; then
+        print_info "[DRY RUN] Would remove worktree: $validated_path"
+        print_info "[DRY RUN] Would change to directory: $MAIN_REPO"
+        print_info "[DRY RUN] Would check git worktree registration"
+        print_info "[DRY RUN] Would execute: git worktree remove -- $validated_path"
+        print_info "[DRY RUN] Would remove directory if git command fails: $validated_path"
+        return 0
+    fi
     
     print_info "Removing worktree: $validated_path"
     
@@ -214,6 +227,22 @@ remove_worktree() {
 
 # Remove all worktrees with confirmation
 remove_all_worktrees() {
+    local dry_run="${1:-false}"
+    
+    if [[ "$dry_run" == "true" ]]; then
+        print_info "[DRY RUN] Would remove ALL worktrees in $WORKTREE_BASE"
+        if [[ -d "$WORKTREE_BASE" ]]; then
+            print_info "[DRY RUN] Would remove these worktrees:"
+            find "$WORKTREE_BASE" -mindepth 1 -maxdepth 1 -type d | while read -r dir; do
+                echo -e "  ${RED}[DRY RUN]${NC} $dir"
+            done
+        fi
+        print_info "[DRY RUN] Would prompt for confirmation"
+        print_info "[DRY RUN] Would execute: git worktree remove for each worktree"
+        print_info "[DRY RUN] Would execute: rm -rf $WORKTREE_BASE if needed"
+        return 0
+    fi
+    
     print_warning "This will remove ALL worktrees in $WORKTREE_BASE"
     
     # List what will be removed
@@ -265,6 +294,15 @@ remove_all_worktrees() {
 
 # Prune stale worktree references
 prune_worktrees() {
+    local dry_run="${1:-false}"
+    
+    if [[ "$dry_run" == "true" ]]; then
+        print_info "[DRY RUN] Would prune stale worktree references"
+        print_info "[DRY RUN] Would change to directory: $MAIN_REPO"
+        print_info "[DRY RUN] Would execute: git worktree prune -v"
+        return 0
+    fi
+    
     print_info "Pruning stale worktree references"
     
     cd "$MAIN_REPO"
@@ -279,25 +317,37 @@ prune_worktrees() {
 
 # Main execution
 main() {
-    local command="${1:-list}"
+    local dry_run=false
+    local args=()
+    
+    # Parse arguments and extract --dry-run flag
+    for arg in "$@"; do
+        if [[ "$arg" == "--dry-run" ]]; then
+            dry_run=true
+        else
+            args+=("$arg")
+        fi
+    done
+    
+    local command="${args[0]:-list}"
     
     case "$command" in
         "list"|"")
             list_worktrees
             ;;
         "remove")
-            if [[ $# -lt 2 ]]; then
+            if [[ ${#args[@]} -lt 2 ]]; then
                 print_error "remove command requires worktree path"
                 show_usage
                 exit 1
             fi
-            remove_worktree "$2"
+            remove_worktree "${args[1]}" "$dry_run"
             ;;
         "remove-all")
-            remove_all_worktrees
+            remove_all_worktrees "$dry_run"
             ;;
         "prune")
-            prune_worktrees
+            prune_worktrees "$dry_run"
             ;;
         "help"|"-h"|"--help")
             show_usage
