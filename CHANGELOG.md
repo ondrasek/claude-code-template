@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.79.1] - 2025-08-09
+
+### Changed
+- **README.md Documentation Accuracy**: Comprehensive update to reflect current project structure and capabilities
+  - Updated project description from active agent system to template/development workspace
+  - Corrected Claude Code version requirement from 2.70.0+ to 2.78.0+
+  - Removed references to non-existent .claude/ directories and incorrect agent/command counts
+  - Updated architecture section to show actual directory structure
+  - Fixed Quick Start section to reference actual scripts in /scripts/ directory
+  - Updated configuration section to reference actual template locations
+  - Improved clarity for users setting up the template system
+
 ## [2.78.0] - 2025-08-07
 
 ### Added
