@@ -320,7 +320,9 @@ analyze_worktree_directory() {
         WORKTREE_STATE["exists"]="true"
         
         # Check if it's a valid git repository
-        if [[ -d "$worktree_path/.git" ]]; then
+        # In worktrees, .git is usually a file pointing to the actual git directory
+        # Use git rev-parse as the definitive test for a valid git repository
+        if (cd "$worktree_path" && git rev-parse --git-dir >/dev/null 2>&1); then
             WORKTREE_STATE["git_valid"]="true"
         else
             WORKTREE_STATE["git_valid"]="false"
