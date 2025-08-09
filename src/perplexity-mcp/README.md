@@ -1,53 +1,43 @@
 # Perplexity MCP Server
 
-A comprehensive Model Context Protocol (MCP) server for integrating Perplexity AI's research capabilities with Claude Code. This server provides real-time web search and research functionality through Perplexity's API, ensuring supply chain security by implementing the integration directly in your codebase.
+**Add real-time web research capabilities to Claude Code with Perplexity AI integration.**
 
-## Features
+Transform Claude Code into a research powerhouse with live web search, current information access, and comprehensive analysis tools. Get up and running in under 2 minutes.
 
-- **Real-time Web Search**: Access current information through Perplexity's live web search
-- **Multiple Research Tools**: Quick queries, comprehensive research, and deep analysis
-- **Model Selection**: Support for all Perplexity models (sonar, sonar-pro, sonar-reasoning, sonar-deep-research)
-- **Customizable System Messages**: Tailor response style and behavior
-- **Enhanced Debug Logging**: Extensive logging system with configurable paths and multiple log files
-- **Request/Response Tracking**: Detailed API call logging for troubleshooting
-- **Environment-based Configuration**: Secure API key management
-- **stdio Transport**: Full compatibility with Claude Code
-- **Comprehensive Testing**: Full test suite with mocking and edge case coverage
+## What You Get
+
+- **🔍 Real-time Web Search**: Access current information through Perplexity's live search
+- **🧠 Multiple AI Models**: Choose from sonar, sonar-pro, sonar-reasoning, and sonar-deep-research
+- **⚡ Quick Integration**: Plug-and-play setup with Claude Code MCP system
+- **🔧 Flexible Configuration**: Custom system prompts and behavior tuning
+- **📊 Debug & Monitoring**: Comprehensive logging and request tracking
+- **🔒 Secure Setup**: Environment-based API key management
 
 ## Quick Start
 
-### 1. Prerequisites
-
-- Python 3.13 or higher
-- UV package manager (recommended) or pip
-- Perplexity API key ([Get one here](https://www.perplexity.ai/settings/api))
-
-### 2. Installation
-
 ```bash
-# Navigate to the server directory
-cd .support/mcp-servers/perplexity
+# 1. Navigate to server directory
+cd src/perplexity-mcp
 
-# Install dependencies with UV (recommended)
-uv sync
+# 2. Install dependencies
+uv sync  # or: pip install -e .
 
-# Or with pip
-pip install -e .
-```
-
-### 3. Configuration
-
-Create a `.env` file in the server directory:
-
-```bash
-# Copy the example environment file
+# 3. Configure API key
 cp .env.example .env
-
-# Edit with your API key
-PERPLEXITY_API_KEY=your_api_key_here
+# Edit .env with your Perplexity API key
 ```
 
-### 4. Test the Server
+**Prerequisites**: Python 3.13+, UV/pip, [Perplexity API key](https://www.perplexity.ai/settings/api)
+
+## Test & Verify
+
+```bash
+# Quick health check
+uv run python -m perplexity_mcp.server health_check
+
+# Test with Claude Code
+claude mcp call perplexity-research health_check
+```
 
 ```bash
 # Run health check
