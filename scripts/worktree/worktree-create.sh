@@ -254,7 +254,7 @@ create_issue_branch_name() {
 
     # Create branch name
     local branch_suffix=""
-    local prefix="claude/issue-$issue_num-"
+    local prefix="issue-$issue_num-"
     local max_suffix_length=$((100 - ${#prefix}))
 
     if [[ -n "$issue_title" ]]; then
