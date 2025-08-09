@@ -6,16 +6,16 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Issues](https://img.shields.io/github/issues/ondrasek/claude-code-forge)](https://github.com/ondrasek/claude-code-forge/issues)
 
-Extends Claude Code with 17 specialized AI agents, automated workflows, and development integrations.
+Development workspace and template system for enhancing Claude Code with specialized AI workflows and integrations.
 
-## What It Does
+## What It Provides
 
-- **17 AI Agents**: Code review, performance analysis, testing, architecture, security
-- **27 Slash Commands**: Workflow automation and agent coordination
-- **GitHub Issues Integration**: Project management with AI assistance
-- **Technology Stack Support**: Python, Rust, Java, C++, TypeScript, Docker configs
-- **MCP Integration**: Perplexity server for web research
-- **Cross-session Memory**: Context preservation between Claude Code sessions
+- **Agent Templates & Guidelines**: Framework for creating specialized AI agents
+- **Technology Stack Templates**: Pre-configured guidelines for Python, Rust, Java, C++, TypeScript, Docker
+- **GitHub Issues Workflow**: Project management integration and templates
+- **MCP Server Implementation**: Perplexity server for web research capabilities
+- **Development Scripts**: Setup and testing utilities for Claude Code enhancement
+- **Documentation Templates**: Comprehensive guides and configuration examples
 
 ## Installation
 
@@ -36,51 +36,40 @@ cd claude-code-forge
 ## Quick Start
 
 ```bash
+# Setup Claude Code memory system
+./scripts/setup-claude-memory.sh
+
+# Launch Claude Code with configuration
+./scripts/launch-claude.sh
+
 # Test agent system
-/agents-guide
-
-# Multi-agent code analysis
-/review
-
-# GitHub Issues management  
-/issue create
-/issue list
-
-# Web research via Perplexity MCP
-/research python async patterns
+./scripts/test-agents.sh
 ```
 
-## Agent System
+## Template System
 
-### Foundation Agents (6)
-- **patterns** - Code pattern analysis and recommendations
-- **principles** - Design principle validation  
-- **context** - Codebase context and architecture analysis
-- **researcher** - Web research and best practices
-- **critic** - Risk assessment and critical analysis
-- **conflicts** - Decision mediation and trade-off analysis
+### Agent Guidelines
+Frameworks for creating specialized AI agents:
+- **Foundation patterns** - Code analysis, principles validation, context understanding
+- **Workflow automation** - Git operations, GitHub integration, testing strategies
+- **Development support** - Performance optimization, security analysis, code generation
 
-### Specialist Agents (11)
-- **code-cleaner** - Code quality improvements
-- **constraint-solver** - Complex requirement analysis
-- **git-workflow** - Automated git operations
-- **github-issues-workflow** - GitHub Issues management
-- **github-pr-workflow** - Pull request automation
-- **meta-programmer** - Code generation and templates
-- **options-analyzer** - Solution comparison and analysis
-- **performance-optimizer** - Performance analysis and optimization
-- **prompt-engineer** - AI prompt development
-- **stack-advisor** - Technology-specific guidance
-- **test-strategist** - Testing strategy and implementation
+### Technology Stack Templates
+Pre-configured development guidelines for:
+- **Python**: Django, FastAPI, pytest, poetry patterns
+- **Rust**: Cargo workflows, async patterns, memory safety
+- **Java**: Spring Boot, Maven/Gradle, testing frameworks
+- **C++**: Modern standards, CMake configuration
+- **Docker**: Multi-stage builds, optimization strategies
 
-## Command System
+## Script System
 
-27 slash commands organized in namespaces:
+Utility scripts for Claude Code setup and operation:
 
-- `/agents/*` - Agent management and coordination
-- `/issue/*` - GitHub Issues workflow (6 commands)
-- `/commands/*` - Command system management
-- Plus individual commands for git, review, research, testing, etc.
+- `launch-claude.sh` - Launch Claude Code with memory configuration
+- `setup-claude-memory.sh` - Configure cross-session memory system
+- `test-agents.sh` - Test agent system functionality
+- `test-session-logging.sh` - Validate logging and session management
 
 ## Technology Stack Integration
 
@@ -114,35 +103,37 @@ Provides real-time web search and research capabilities through the `/research` 
 ## Architecture
 
 ```
-├── .claude/               # Core Claude Code configuration
-│   ├── agents/           # 17 AI agent definitions
-│   └── commands/         # 27 slash commands
-├── src/                  # Source code
-│   └── perplexity-mcp/   # MCP server implementation  
-├── templates/            # Configuration templates
-│   ├── instructions/     # Setup and usage guides
-│   ├── stacks/          # Technology-specific configs
-│   └── prompts/         # AI interaction templates
-├── scripts/             # Utility scripts
-└── docs/               # Documentation
+├── analysis/             # Project analysis and research
+├── docs/                # Documentation and guides
+├── research/            # Technical research documents
+├── scripts/             # Setup and utility scripts
+├── src/                 # Source code
+│   └── perplexity-mcp/  # MCP server implementation
+├── templates/           # Template system
+│   ├── guidelines/      # Agent and workflow templates
+│   ├── prompts/        # Master prompt templates
+│   ├── specs/          # Specification templates
+│   └── stacks/         # Technology stack configurations
+├── CLAUDE.md           # Core operational rules
+└── CHANGELOG.md        # Version history
 ```
 
 ## Development Workflow
 
-1. **Issue Management**: GitHub Issues integration with `/issue` commands
-2. **Code Review**: Multi-agent analysis with `/review`
-3. **Git Automation**: Automated commits, tagging, releases
-4. **Research Integration**: Real-time web research via MCP
-5. **Memory System**: Context preservation across sessions
+1. **Template-Based Setup**: Use provided templates for agent and stack configuration
+2. **GitHub Issues Integration**: Specification management through GitHub Issues
+3. **Memory System**: Cross-session context preservation via CLAUDE.md
+4. **Research Integration**: Real-time web research via Perplexity MCP server
+5. **Automated Git Operations**: Consistent versioning and change management
 
 ## Configuration
 
-The system uses template-based configuration:
+The system provides template-based configuration:
 
-- Agent definitions in `.claude/agents/`
-- Command definitions in `.claude/commands/`
-- Technology stack configurations in `templates/stacks/`
-- Master prompts and instructions in `templates/`
+- Technology stack guidelines in `templates/stacks/`
+- Agent framework templates in `templates/guidelines/`
+- Master prompt templates in `templates/prompts/`
+- Core operational rules in `CLAUDE.md`
 
 ## Documentation
 
@@ -160,8 +151,8 @@ The system uses template-based configuration:
 
 ## Project Status
 
-- **Version**: 2.70.0+ (actively maintained)
-- **Issue Tracking**: GitHub Issues (30+ migrated from legacy specs)
+- **Version**: 2.78.0+ (actively maintained)
+- **Issue Tracking**: GitHub Issues for specification management
 - **Release Management**: Semantic versioning with detailed changelog
 - **Community**: Open source with MIT license
 
