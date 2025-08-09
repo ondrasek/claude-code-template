@@ -1,37 +1,37 @@
-# CCF Repository Layout - AI Instructions
+# ACF Repository Layout - AI Instructions
 
 ## DIRECTORY_STRUCTURE_RULES
 
 ```yaml
 REQUIRED_SEPARATION:
-  ccf_directory: ".ccf/"     # CCF tool state and templates
+  acf_directory: ".acf/"     # ACF tool state and templates
   claude_directory: ".claude/" # Claude Code recognized files only
   constraint: "no_overlap_between_directories"
 
 PROJECT_STRUCTURE:
   root: "PROJECT_ROOT/"
   directories:
-    - path: ".ccf/"
-      purpose: "ccf_tool_state"
+    - path: ".acf/"
+      purpose: "acf_tool_state"
     - path: ".claude/" 
       purpose: "claude_recognized_files"
       constraint: "claude_code_compatible_only"
 ```
 
-## CCF_DIRECTORY_STRUCTURE
+## ACF_DIRECTORY_STRUCTURE
 
 ```yaml
-CREATE_CCF_STRUCTURE:
-  base_path: ".ccf/"
+CREATE_ACF_STRUCTURE:
+  base_path: ".acf/"
   subdirectories:
     config:
-      files: ["ccf.json", "deployment.json", "overrides.json"]
+      files: ["acf.json", "deployment.json", "overrides.json"]
       purpose: "tool_configuration"
     templates:
       subdirs: ["agents/", "commands/", "guidelines/", "prompts/", "stacks/"]
       purpose: "deployment_sources"
     backups:
-      subdirs: ["claude/", "ccf/"]
+      subdirs: ["claude/", "acf/"]
       purpose: "configuration_history"
     state:
       files: ["installed.json", "versions.json", "migrations.json", "checksums.json", "conflicts.log"]
@@ -56,7 +56,7 @@ CREATE_CLAUDE_STRUCTURE:
 
 CREATE_PROJECT_INTEGRATION:
   root_files: ["CLAUDE.md"]
-  directories: [".ccf/", ".claude/"]
+  directories: [".acf/", ".claude/"]
   preserve_existing: true
 ```
 
@@ -70,14 +70,14 @@ APPLY_CONFIG_HIERARCHY:
       level: "project"
       override_all: true
     2:
-      source: ".ccf/config/overrides.json"
+      source: ".acf/config/overrides.json"
       level: "user_override"
     3:
-      source: ".ccf/config/deployment.json" 
-      level: "ccf_deployment"
+      source: ".acf/config/deployment.json" 
+      level: "acf_deployment"
     4:
-      source: ".ccf/config/ccf.json"
-      level: "ccf_defaults"
+      source: ".acf/config/acf.json"
+      level: "acf_defaults"
     5:
       source: "system_claude_config"
       level: "global"
@@ -93,16 +93,16 @@ PRE_DEPLOYMENT_VALIDATION:
     action_if_exists:
       - EXECUTE: create_backup
         source: ".claude/"
-        target: ".ccf/backups/{timestamp}/"
+        target: ".acf/backups/{timestamp}/"
       - EXECUTE: analyze_conflicts
         existing: ".claude/"
-        incoming: ".ccf/templates/"
+        incoming: ".acf/templates/"
       - EXECUTE: prompt_user_conflict_resolution
         conflicts: "analysis_result"
 
 TEMPLATE_PROCESSING:
   - EXECUTE: iterate_templates
-    source: ".ccf/templates/"
+    source: ".acf/templates/"
     for_each_template:
       - EXECUTE: check_target_exists
         target: ".claude/{template_path}"
@@ -110,17 +110,17 @@ TEMPLATE_PROCESSING:
           - EXECUTE: apply_merge_strategy
             strategy: "file_type_based"
           - EXECUTE: log_conflicts
-            destination: ".ccf/state/conflicts.log"
+            destination: ".acf/state/conflicts.log"
         action_if_not_exists:
           - EXECUTE: deploy_template
-            source: ".ccf/templates/{template}"
+            source: ".acf/templates/{template}"
             target: ".claude/{template_path}"
 
 POST_DEPLOYMENT_ACTIONS:
   - EXECUTE: update_versions
-    file: ".ccf/state/versions.json"
+    file: ".acf/state/versions.json"
   - EXECUTE: generate_checksums
-    file: ".ccf/state/checksums.json"
+    file: ".acf/state/checksums.json"
   - EXECUTE: validate_claude_config
     directory: ".claude/"
 ```
@@ -128,11 +128,11 @@ POST_DEPLOYMENT_ACTIONS:
 ## COMPONENT_PLACEMENT_RULES
 
 ```yaml
-CCF_DIRECTORY_RULES:
-  path: ".ccf/"
-  management: "ccf_tool_only"
+ACF_DIRECTORY_RULES:
+  path: ".acf/"
+  management: "acf_tool_only"
   contents:
-    config: "ccf_tool_configuration"
+    config: "acf_tool_configuration"
     templates: "deployment_sources" 
     backups: "automatic_backups"
     state: "tool_state_tracking"
@@ -149,7 +149,7 @@ CLAUDE_DIRECTORY_RULES:
     agents: "active_agent_definitions"
     commands: "active_slash_commands"
     settings: "claude_runtime_config"
-  populated_by: "ccf_templates"
+  populated_by: "acf_templates"
   user_modifications: "preserved"
 ```
 
@@ -158,64 +158,64 @@ CLAUDE_DIRECTORY_RULES:
 ```yaml
 MERGE_STRATEGIES:
   agents:
-    source: ".ccf/templates/agents/"
+    source: ".acf/templates/agents/"
     target: ".claude/agents/"
     strategy: "type_based_merge"
     preserve_user: true
   commands:
-    source: ".ccf/templates/commands/"
+    source: ".acf/templates/commands/"
     target: ".claude/commands/"
     strategy: "user_precedence"
-    log_updates: ".ccf/state/conflicts.log"
+    log_updates: ".acf/state/conflicts.log"
   settings:
-    source: ".ccf/templates/settings.json"
+    source: ".acf/templates/settings.json"
     target: ".claude/settings.json"
     strategy: "deep_merge"
     priority: "user"
   guidelines:
-    source: ".ccf/templates/guidelines/"
+    source: ".acf/templates/guidelines/"
     target: "CLAUDE.md"
     strategy: "additive_merge"
     conflict_markers: true
 
 LEGACY_MIGRATION:
   - EXECUTE: check_conditions
-    condition: "exists(.claude/) AND not_exists(.ccf/)"
+    condition: "exists(.claude/) AND not_exists(.acf/)"
     actions:
       - EXECUTE: create_backup
         source: ".claude/"
-        target: ".ccf/backups/migration-{timestamp}/"
+        target: ".acf/backups/migration-{timestamp}/"
       - EXECUTE: analyze_existing_config
         path: ".claude/"
       - EXECUTE: apply_templates
         strategy: "preservation"
       - EXECUTE: log_migration
-        file: ".ccf/state/migrations.json"
+        file: ".acf/state/migrations.json"
 ```
 
 ## INTEGRATION_WORKFLOWS
 
 ```yaml
 NEW_PROJECT_SETUP:
-  - EXECUTE: initialize_ccf
-    action: create_ccf_structure
+  - EXECUTE: initialize_acf
+    action: create_acf_structure
     templates: "default"
   - EXECUTE: deploy_base_config
-    source: ".ccf/templates/"
+    source: ".acf/templates/"
     target: ".claude/"
   - EXECUTE: generate_project_instructions
     file: "CLAUDE.md"
   - EXECUTE: setup_version_control
-    gitignore: ['.ccf/state/', '.ccf/cache/']
+    gitignore: ['.acf/state/', '.acf/cache/']
 
 EXISTING_PROJECT_INTEGRATION:
   - EXECUTE: backup_existing
     source: ".claude/"
-    target: ".ccf/backups/{timestamp}/"
+    target: ".acf/backups/{timestamp}/"
   - EXECUTE: merge_configurations
     strategy: "intelligent"
     existing: ".claude/"
-    templates: ".ccf/templates/"
+    templates: ".acf/templates/"
   - EXECUTE: resolve_conflicts
     method: "user_prompt"
   - EXECUTE: gradual_migration
@@ -238,8 +238,8 @@ PROJECT_TYPE_DETECTION:
 ## CONFIGURATION_SCHEMAS
 
 ```yaml
-CCF_CONFIG_SCHEMA:
-  file: ".ccf/config/ccf.json"
+ACF_CONFIG_SCHEMA:
+  file: ".acf/config/acf.json"
   required_fields:
     version: "string"
     auto_update: "boolean"
@@ -262,7 +262,7 @@ CCF_CONFIG_SCHEMA:
       preserve_customizations: true
 
 USER_OVERRIDE_SCHEMA:
-  file: ".ccf/config/overrides.json"
+  file: ".acf/config/overrides.json"
   optional_fields:
     disabled_components: "array[string]"
     custom_templates:
@@ -273,9 +273,9 @@ USER_OVERRIDE_SCHEMA:
 
 STATE_TRACKING_SCHEMAS:
   installed_components:
-    file: ".ccf/state/installed.json"
+    file: ".acf/state/installed.json"
     schema:
-      ccf_version: "string"
+      acf_version: "string"
       installed_at: "iso_timestamp"
       components:
         agents: "array[string]"
@@ -284,9 +284,9 @@ STATE_TRACKING_SCHEMAS:
       user_modifications: "object[filepath: timestamp]"
   
   version_management:
-    file: ".ccf/state/versions.json"
+    file: ".acf/state/versions.json"
     schema:
-      ccf_version: "string"
+      acf_version: "string"
       template_versions:
         agents: "string"
         commands: "string"
@@ -298,25 +298,25 @@ STATE_TRACKING_SCHEMAS:
 
 ```yaml
 GITIGNORE_PATTERNS:
-  - ".ccf/state/"
-  - ".ccf/backups/"
-  - ".ccf/cache/"
-  - ".ccf/tmp/"
-  - ".ccf/.cache/"
-  - ".ccf/config/overrides.json"
+  - ".acf/state/"
+  - ".acf/backups/"
+  - ".acf/cache/"
+  - ".acf/tmp/"
+  - ".acf/.cache/"
+  - ".acf/config/overrides.json"
 
 VERSION_CONTROL_STRATEGY:
   include:
-    - ".ccf/config/ccf.json"
-    - ".ccf/config/deployment.json"
-    - ".ccf/templates/"
+    - ".acf/config/acf.json"
+    - ".acf/config/deployment.json"
+    - ".acf/templates/"
     - ".claude/"
     - "CLAUDE.md"
   exclude:
-    - ".ccf/state/"
-    - ".ccf/backups/"
-    - ".ccf/cache/"
-    - ".ccf/config/overrides.json"
+    - ".acf/state/"
+    - ".acf/backups/"
+    - ".acf/cache/"
+    - ".acf/config/overrides.json"
 ```
 
 ## OPERATIONAL_WORKFLOWS
@@ -342,7 +342,7 @@ DEPLOYMENT_WORKFLOW:
 
 UPDATE_WORKFLOW:
   - EXECUTE: check_updates
-    source: "ccf_templates"
+    source: "acf_templates"
   - EXECUTE: analyze_impact
     on: "user_configuration"
   - EXECUTE: plan_merge
@@ -361,9 +361,9 @@ MIGRATION_FROM_CLAUDE:
     scan: ".claude/"
     detect: "customizations"
   - EXECUTE: create_backup
-    target: ".ccf/backups/{timestamp}/"
+    target: ".acf/backups/{timestamp}/"
   - EXECUTE: match_templates
-    identify: "ccf_equivalent_components"
+    identify: "acf_equivalent_components"
   - EXECUTE: flag_custom_components
     user_created: true
   - EXECUTE: create_merge_plan
@@ -371,9 +371,9 @@ MIGRATION_FROM_CLAUDE:
   - EXECUTE: apply_plan
     require_confirmation: true
 
-MIGRATION_FROM_LEGACY_CCF:
+MIGRATION_FROM_LEGACY_ACF:
   - EXECUTE: detect_version
-    from: ".ccf/state/"
+    from: ".acf/state/"
   - EXECUTE: run_migration_scripts
     version_specific: true
   - EXECUTE: update_templates
@@ -388,10 +388,10 @@ MIGRATION_FROM_LEGACY_CCF:
 
 ```yaml
 FILE_PERMISSIONS:
-  ccf_directory: "755"
+  acf_directory: "755"
   claude_directory: "755"
-  ccf_config: "600"
-  ccf_backups: "600"
+  acf_config: "600"
+  acf_backups: "600"
   sensitive_files: "600"
 
 VALIDATION_RULES:
@@ -407,12 +407,12 @@ VALIDATION_RULES:
     for: "file_operations"
   - EXECUTE: scan_malicious_content
     in: "templates"
-  - EXECUTE: verify_ccf_signatures
+  - EXECUTE: verify_acf_signatures
     on: "template_downloads"
 
 SENSITIVE_DATA_RULES:
   - NEVER: store_secrets
-    in: ".ccf/config/"
+    in: ".acf/config/"
   - USE: environment_variables
     for: "secret_management"
   - EXCLUDE: sensitive_files
@@ -428,7 +428,7 @@ ERROR_HANDLING:
         to: "user"
     claude_corruption_detected:
       - EXECUTE: restore_from_backup
-        source: ".ccf/backups/latest/"
+        source: ".acf/backups/latest/"
       - EXECUTE: report_restoration
         to: "user"
     template_integrity_fails:
@@ -442,7 +442,7 @@ ERROR_HANDLING:
 ```yaml
 FUTURE_CAPABILITIES:
   plugin_system:
-    - SUPPORT: custom_ccf_components
+    - SUPPORT: custom_acf_components
   external_integration:
     - SUPPORT: external_template_repositories
     - SUPPORT: programmatic_api
@@ -458,9 +458,9 @@ FUTURE_CAPABILITIES:
 
 ```yaml
 PRIORITY: "high"
-BLOCKS: ["ccf_tool_implementation", "user_onboarding"]
+BLOCKS: ["acf_tool_implementation", "user_onboarding"]
 DEPENDENCIES:
-  - "ccf_tool_implementation"
+  - "acf_tool_implementation"
   - "template_repository_structure"
   - "user_migration_tooling"
 GITHUB_ISSUE: "#61"
