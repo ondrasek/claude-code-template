@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **ACF CLI Tool**: Complete configuration management tool for AI Code Forge installations (closes #59)
-  - `acf install` command for automated configuration deployment with comprehensive file management
-  - `acf status` command for installation verification and diagnostics with detailed component reporting
+  - `ai-code-forge install` command for automated configuration deployment with comprehensive file management
+  - `ai-code-forge status` command for installation verification and diagnostics with detailed component reporting
   - Support for targeted installations with `--target` option for custom directory deployment
   - Force installation option with `--force` flag for overwriting existing configurations
   - Automated deployment of `.claude/` (agents, commands, settings), `.acf/` (templates, docs), and `CLAUDE.md`

@@ -17,10 +17,10 @@ A comprehensive template system that enhances Claude Code with specialized AI ag
 pip install ai-code-forge
 
 # Deploy configuration to your project
-acf install
+ai-code-forge install
 
 # Verify installation
-acf status
+ai-code-forge status
 ```
 
 ### Method 2: Development Installation
@@ -83,8 +83,8 @@ cd ai-code-forge
 
 ### ACF CLI Tool
 **Automated Configuration Management:**
-- **Installation Command**: `acf install` - Deploys complete Claude Code configuration
-- **Status Monitoring**: `acf status` - Verifies installation and shows components
+- **Installation Command**: `ai-code-forge install` - Deploys complete Claude Code configuration
+- **Status Monitoring**: `ai-code-forge status` - Verifies installation and shows components
 - **Targeted Deployment**: `--target` option for custom installation directories
 - **Force Updates**: `--force` option for overwriting existing configurations
 - **File Management**: Automatically installs `.claude/`, `.acf/`, and `CLAUDE.md`

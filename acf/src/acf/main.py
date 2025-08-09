@@ -28,7 +28,7 @@ def install(target, force):
     if not force and (status["claude_dir_exists"] or status["acf_dir_exists"]):
         click.echo("⚠️  ACF configuration already exists in target directory")
         click.echo("Use --force to overwrite existing installation")
-        click.echo("Run 'acf status' to see current installation")
+        click.echo("Run 'ai-code-forge status' to see current installation")
         return
     
     if force:
@@ -87,9 +87,9 @@ def status(target):
     if all([status["claude_dir_exists"], status["acf_dir_exists"], status["claude_md_exists"]]):
         click.echo("🎉 Complete ACF installation detected!")
     elif any([status["claude_dir_exists"], status["acf_dir_exists"], status["claude_md_exists"]]):
-        click.echo("⚠️  Partial ACF installation - run 'acf install' to complete")
+        click.echo("⚠️  Partial ACF installation - run 'ai-code-forge install' to complete")
     else:
-        click.echo("❌ No ACF installation found - run 'acf install' to set up")
+        click.echo("❌ No ACF installation found - run 'ai-code-forge install' to set up")
 
 if __name__ == "__main__":
     main()

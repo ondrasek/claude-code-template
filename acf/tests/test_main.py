@@ -27,7 +27,7 @@ class TestMainCLI:
         """Test version option works."""
         result = self.runner.invoke(main, ["--version"])
         assert result.exit_code == 0
-        assert "0.1.0" in result.output
+        assert "0.2.0" in result.output
     
     def test_install_command_help(self):
         """Test install command help."""
@@ -158,7 +158,7 @@ class TestMainCLI:
             result = self.runner.invoke(main, ["status"])
             assert result.exit_code == 0
             assert "No ACF installation found" in result.output
-            assert "run 'acf install'" in result.output
+            assert "run 'ai-code-forge install'" in result.output
     
     @patch('acf.main.ACFInstaller')
     def test_status_partial_installation(self, mock_installer_class):
@@ -178,7 +178,7 @@ class TestMainCLI:
             result = self.runner.invoke(main, ["status"])
             assert result.exit_code == 0
             assert "Partial ACF installation" in result.output
-            assert "run 'acf install' to complete" in result.output
+            assert "run 'ai-code-forge install' to complete" in result.output
     
     def test_status_with_target_directory(self):
         """Test status command with target directory."""
