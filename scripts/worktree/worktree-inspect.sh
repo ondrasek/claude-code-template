@@ -95,16 +95,22 @@ parse_issue_spec() {
 find_issue_from_branch() {
     local branch="$1"
     
-    # Common branch naming patterns
+    # Common branch naming patterns - order matters, most specific first
     local patterns=(
-        "issue-([0-9]+)-.*"
-        "issue/([0-9]+)-.*"
-        "feature/issue-([0-9]+)-.*"
-        "([0-9]+)-.*"  # Simple number prefix
+        "claude/issue-([0-9]+)-.*"        # claude/issue-123-feature
+        "claude/issue-([0-9]+)$"          # claude/issue-123
+        "feature/issue-([0-9]+)-.*"       # feature/issue-123-name
+        "feature/issue-([0-9]+)$"         # feature/issue-123
+        "issue/([0-9]+)-.*"               # issue/123-feature
+        "issue/([0-9]+)$"                 # issue/123
+        "issue-([0-9]+)-.*"               # issue-123-feature
+        "issue-([0-9]+)$"                 # issue-123
+        "([0-9]+)-.*"                     # 123-feature (simple number prefix)
+        "([0-9]+)$"                       # 123 (simple number)
     )
     
     for pattern in "${patterns[@]}"; do
-        if [[ "$branch" =~ $pattern ]]; then
+        if [[ "$branch" =~ ^${pattern}$ ]]; then
             echo "${BASH_REMATCH[1]}"
             return 0
         fi
@@ -118,12 +124,18 @@ find_issue_branches() {
     local issue_num="$1"
     local found_branches=()
     
-    # Common branch naming patterns for issues
+    # Common branch naming patterns for issues - order matters, most specific first
     local patterns=(
-        "issue-$issue_num-*"
-        "issue/$issue_num-*"
-        "feature/issue-$issue_num-*"
-        "$issue_num-*"
+        "claude/issue-$issue_num-*"      # claude/issue-123-feature
+        "claude/issue-$issue_num"        # claude/issue-123
+        "feature/issue-$issue_num-*"     # feature/issue-123-name
+        "feature/issue-$issue_num"       # feature/issue-123
+        "issue/$issue_num-*"             # issue/123-feature
+        "issue/$issue_num"               # issue/123
+        "issue-$issue_num-*"             # issue-123-feature
+        "issue-$issue_num"               # issue-123
+        "$issue_num-*"                   # 123-feature
+        "$issue_num"                     # 123
     )
     
     # Check local branches
