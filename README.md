@@ -16,7 +16,7 @@ git clone https://github.com/ondrasek/ai-code-forge.git
 cd ai-code-forge
 
 # 2. Launch enhanced Claude Code
-./scripts/dev-tools/launch-claude.sh
+./scripts/launch-claude.sh
 
 # 3. Create worktrees for parallel development (optional)
 ./scripts/worktree/worktree.sh create feature/new-feature
@@ -54,7 +54,7 @@ cd ai-code-forge
 
 Utility scripts for Claude Code setup and operation:
 
-- `dev-tools/launch-claude.sh` - Launch Claude Code with enhanced configuration and logging
+- `launch-claude.sh` - Launch Claude Code with enhanced configuration and logging
 - `worktree/worktree.sh` - Unified interface for git worktree management and parallel development
 - `worktree-create.sh` - Core worktree creation utility with GitHub issue integration
 - `worktree-list.sh` - Advanced worktree listing with detailed status information
