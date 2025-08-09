@@ -2,9 +2,9 @@
 
 Complete overview of what this Claude Code template provides.
 
-## 🤖 AI Agent Framework
+## 🤖 AI Agents (17 Included)
 
-Template and guidelines for creating your personal team of AI specialists with **mandatory coordination** for all non-trivial requests.
+Your personal team of AI specialists with **mandatory coordination** for all non-trivial requests.
 
 ### Mandatory Protocol
 - **Minimum 3+ agents** automatically used for complex tasks
@@ -12,57 +12,68 @@ Template and guidelines for creating your personal team of AI specialists with *
 - **Memory-first research**: System checks MCP memory before web searches
 - **Parallel clusters**: Multiple agents work simultaneously when possible
 
-### Recommended Foundation Agents
-| Agent Type | What It Does | When to Use |
+### Foundation Agents (6 Core Agents)
+| Agent | What It Does | When to Use |
 |-------|-------------|-------------|
-| **`research`** | Finds current best practices and documentation | "What's the latest way to do X?" |
+| **`researcher`** | Finds current best practices and documentation | "What's the latest way to do X?" |
 | **`patterns`** | Identifies code patterns and refactoring opportunities | Code reviews, architecture cleanup |
-| **`criticism`** | Provides honest feedback and challenges assumptions | Before big decisions, design reviews |
+| **`critic`** | Provides honest feedback and challenges assumptions | Before big decisions, design reviews |
+| **`context`** | Explains how systems work and interact | Understanding complex codebases |
+| **`principles`** | Applies SOLID, DRY, KISS design principles | Architecture reviews, refactoring |
+| **`conflicts`** | Mediates when different approaches conflict | When agents give conflicting advice |
 
-**Note**: These are recommended agent types - you create the actual agents using the provided guidelines.
-
-### Recommended Specialist Agents
-| Agent Type | What It Does | When to Use |
+### Specialist Agents (11 Domain Experts)
+| Agent | What It Does | When to Use |
 |-------|-------------|-------------|
-| **Hypothesis Former** | Forms theories and tests them scientifically | Debugging complex issues |
-| **Constraint Solver** | Handles competing requirements and trade-offs | "I need X but also Y, and they conflict" |
-| **Conflict Mediator** | Mediates when different approaches conflict | When agents give conflicting advice |
+| **`constraint-solver`** | Handles competing requirements and trade-offs | "I need X but also Y, and they conflict" |
+| **`code-cleaner`** | Finds missing functionality and TODOs | "What am I missing?" reviews |
+| **`performance-optimizer`** | Performance analysis and optimization | Speed optimization, profiling |
+| **`test-strategist`** | Testing strategies and test design | Test planning, quality assurance |
+| **`options-analyzer`** | Generates multiple solution approaches | "What are my options?" questions |
+| **`git-workflow`** | Git operations and version control | Git troubleshooting, workflow automation |
+| **`github-issues-workflow`** | GitHub Issues lifecycle management | Issue tracking, project management |
+| **`github-pr-workflow`** | GitHub Pull Request workflows | PR creation, review automation |
+| **`stack-advisor`** | Technology selection and architecture | Technology recommendations |
+| **`prompt-engineer`** | AI prompt creation and optimization | Creating effective AI prompts |
+| **`meta-programmer`** | Code generation and template creation | Automated code generation |
 
-### Code Quality Agent Types
-| Agent Type | What It Does | When to Use |
-|-------|-------------|-------------|
-| **Code Completer** | Finds missing functionality and TODOs | "What am I missing?" reviews |
-| **Polish Agent** | Suggests micro-improvements and polish | Final code cleanup |
-| **Invariant Checker** | Ensures type safety and prevents invalid states | Designing robust data structures |
 
-### Architecture Agent Types
-| Agent Type | What It Does | When to Use |
-|-------|-------------|-------------|
-| **Option Explorer** | Generates multiple solution approaches | "What are my options?" questions |
-| **First Principles** | Builds solutions from first principles | "Why does this work?" deep understanding |
-| **Context Builder** | Explains how systems work and interact | Understanding complex codebases |
-| **Principles Enforcer** | Applies SOLID, DRY, KISS design principles | Architecture reviews, refactoring |
 
-### Workflow Agent Types
-| Agent Type | What It Does | When to Use |
-|-------|-------------|-------------|
-| **Code Generator** | Creates code templates and boilerplate | Repetitive code generation |
-| **Prompt Engineer** | Helps build AI agents and prompts | Creating custom Claude Code agents |
-| **Git Workflow** | Automatically manages releases and versions | Automated release workflows |
-| **Cross-Domain** | Finds creative cross-domain solutions | "How do other fields solve this?" |
 
-**Important**: This template provides the framework and guidelines. You create actual agents based on your needs using the patterns described in `templates/guidelines/claude-agents-guidelines.md`.
-
-## 📋 Custom Commands
+## 📋 Custom Commands (31 Included)
 
 Ready-to-use slash commands for common tasks.
 
+### Core Commands
 | Command | Purpose | Example Usage |
 |---------|---------|---------------|
 | **`/review`** | Comprehensive code review | `/review` on any file or selection |
 | **`/test`** | Generate tests and testing guidance | `/test` for the current function |
 | **`/refactor`** | Code improvement suggestions | `/refactor` messy code sections |
 | **`/security`** | Security audit and recommendations | `/security` on authentication code |
+| **`/research`** | Research and information gathering | `/research` for technical questions |
+| **`/fix`** | Problem diagnosis and resolution | `/fix` bug reports and errors |
+| **`/generate`** | Code and template generation | `/generate` boilerplate code |
+| **`/performance`** | Performance analysis | `/performance` optimization tasks |
+
+### Issue Management Commands
+| Command | Purpose |
+|---------|---------|
+| **`/issue create`** | Create new GitHub issues |
+| **`/issue review`** | Review existing issues |
+| **`/issue next`** | Get next priority issue |
+| **`/issue cleanup`** | Clean up completed issues |
+
+### Workflow Commands
+| Command | Purpose |
+|---------|---------|
+| **`/git`** | Git workflow assistance |
+| **`/deploy`** | Deployment assistance |
+| **`/monitor`** | System monitoring |
+| **`/stacks`** | Technology stack guidance |
+| **`/discuss`** | Architecture discussions |
+
+**Plus 16 additional specialized commands** for agents, version management, and project-specific workflows.
 
 ## 🧠 Memory System
 
@@ -192,6 +203,6 @@ Agents work together in intelligent clusters with **mandatory coordination proto
 ---
 
 **Next Steps:**
-- 🧠 Learn about the [Memory System](memory-system.md) for persistent context
+- 🧠 Memory system setup available via scripts/setup-claude-memory.sh
 - 🛠️ [Customize](customization.md) the template for your project
 - 📚 Return to [Getting Started](getting-started.md)

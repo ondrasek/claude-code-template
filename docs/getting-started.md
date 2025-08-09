@@ -7,7 +7,7 @@ This template transforms your Claude Code experience into a comprehensive AI-pow
 ## What This Does
 
 Transform your Claude Code experience with:
-- ✅ **AI agent framework** with mandatory coordination (minimum 3+ agents for complex tasks)
+- ✅ **17 AI agents** with mandatory coordination (minimum 3+ agents for complex tasks)
 - ✅ **Context-clean workflows** - Agents handle complex tasks independently, keeping conversations focused
 - ✅ **Custom slash commands** like `/review`, `/test`, `/refactor` for instant help
 - ✅ **Technology-specific guidance** - Python, Rust, Java, JavaScript, and more
@@ -32,7 +32,7 @@ This template helps developers understand:
 3. Set API key: `echo 'export CLAUDE_API_KEY="your-key"' >> ~/.bashrc && source ~/.bashrc`
 4. Test: Open Claude Code and try `/review`
 
-**📖 Detailed Instructions**: [Manual Setup Guide](manual-setup-guide.md)
+**📖 Detailed Instructions**: See [Configuration Reference](configuration-reference.md) for complete setup details
 
 ### Option 2: GitHub Dotfiles (For GitHub Codespaces)
 1. [Fork this repository](https://github.com/ondrasek/ai-code-forge/fork) and rename it to `dotfiles`
@@ -95,18 +95,15 @@ This template helps developers understand:
 
 | Guide | Purpose | When to Use |
 |-------|---------|-------------|
-| **[Manual Setup Guide](manual-setup-guide.md)** | Complete step-by-step installation | First-time setup, detailed instructions |
-| **[Copying Instructions](copying-instructions.md)** | File-by-file copying guide | Need exact copying instructions |
 | **[Configuration Reference](configuration-reference.md)** | Detailed file documentation | Understanding what each file does |
-| **[Migration Guide](migration-guide.md)** | Transition from automated setup | Moving from old automated installation |
-| **[Setup Scenarios](setup-scenarios.md)** | Common setup situations | Team, project-specific, or special environments |
+| **[Launch Claude Usage](launch-claude-usage.md)** | Enhanced wrapper tool setup | Setup and usage of launch-claude script |
+| **[Customization Guide](customization.md)** | Project adaptation | Making template work for your specific needs |
 
 ## Feature Documentation
 
 | Guide | Purpose |
 |-------|---------|
 | **[Features](features.md)** | Complete overview of all capabilities |
-| **[Memory System](memory-system.md)** | How persistent memory works |
 | **[Customization](customization.md)** | Adapt the template for your project |
 | **[Agent Usage](agent-usage.md)** | Detailed patterns and examples for coordinating multiple AI agents effectively |
 | **[Documentation](documentation.md)** | Guidelines for maintaining project documentation automatically alongside code changes |
@@ -168,7 +165,7 @@ These docs are maintained alongside code changes to ensure accuracy and relevanc
 ## Need Help?
 
 - 📖 **[Full Feature Guide](features.md)** - Everything the template can do
-- 🧠 **[Memory System Guide](memory-system.md)** - Persistent context and learning
+- 🧠 **Memory System** - See scripts/setup-claude-memory.sh for memory system configuration
 - 🛠️ **[Customization Guide](customization.md)** - Make it yours
 - 🐛 **Issues?** [Report bugs or request features](https://github.com/ondrasek/ai-code-forge/issues)
 

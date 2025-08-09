@@ -1,4 +1,4 @@
 Claude Code supports the following tools for commands and agents:
 Bash, Glob, Grep, LS, Read, Edit, MultiEdit, Write, WebFetch, WebSearch, Task
 
-Do not use Task(), which seems to be bugged and enables agents to spawn more agents.
+**Task Tool Usage**: The Task tool enables agent coordination and delegation. Use according to your specific agent workflow requirements and coordination protocols.
