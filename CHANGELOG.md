@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.83.0] - 2025-08-09
+
+### Added
+- **Enhanced GitHub Workflow Agents**: Major improvements to GitHub Issues and PR workflow automation
+  - Added MANDATORY label update requirements for github-issues-workflow agent ensuring consistent issue tracking
+  - Implemented comprehensive append-only policy preventing accidental content modification while preserving audit trails
+  - Enhanced GitHub CLI integration with smart label discovery using existing repository labels only
+  - Added automatic issue label updates when PR workflow begins for seamless issue-PR coordination
+  - Implemented intelligent cross-referencing between issues and PRs with real-time status tracking
+  - Added recursion prevention mechanisms to prevent infinite agent delegation loops
+  - Enforced existing-labels-only policy with dynamic label discovery preventing label proliferation
+  - Enhanced workflow reliability through comment-based updates instead of destructive content replacement
+
 ## [2.82.0] - 2025-08-09
 
 ### Added
