@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **GitHub Issue Refinement System**: Complete implementation of `/issue:refine` slash command with automated workflow integration (closes #90)
+  - Created `/issue:refine` command with intelligent issue analysis and critical questioning capabilities
+  - Implemented GitHub workflow automation with safety-first approach requiring human approval
+  - Integration with existing github-issues-workflow agent for seamless GitHub CLI operations
+  - Comprehensive refinement capabilities: research, critical analysis, edge case detection, acceptance criteria enhancement
+  - Safety mechanisms preventing infinite loops and over-automation through conservative design
+  - Human-supervised approach for all GitHub issue modifications with read-only analysis output
+  - Template GitHub Actions workflow for automated issue refinement with security best practices
+
 ## [2.88.1] - 2025-08-09
 
 ### Fixed
