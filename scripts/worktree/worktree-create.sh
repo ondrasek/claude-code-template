@@ -12,19 +12,19 @@ MAIN_REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
 # Determine repository name dynamically
 get_repo_name() {
     local repo_name=""
-    
+
     # Try GitHub CLI first (if available and authenticated)
     if command -v gh >/dev/null 2>&1; then
         repo_name=$(gh repo view --json name --jq .name 2>/dev/null || echo "")
     fi
-    
+
     # Fallback to basename of repository directory
     if [[ -z "$repo_name" ]]; then
         repo_name=$(basename "$MAIN_REPO")
     fi
-    
+
     # Enhanced repository name validation (security check)
-    if [[ ! "$repo_name" =~ ^[a-zA-Z0-9][a-zA-Z0-9._-]*$ ]] || 
+    if [[ ! "$repo_name" =~ ^[a-zA-Z0-9][a-zA-Z0-9._-]*$ ]] ||
        [[ ${#repo_name} -gt 50 ]] ||
        [[ "$repo_name" =~ \.\. ]] ||
        [[ "$repo_name" =~ ^\. ]] ||
@@ -32,7 +32,7 @@ get_repo_name() {
         print_error "Invalid repository name detected"
         return 1
     fi
-    
+
     # Test path resolution safety
     local test_base="/tmp/repo-validate-$$"
     local test_path="$test_base/$repo_name"
@@ -43,7 +43,7 @@ get_repo_name() {
         return 1
     fi
     rm -rf "$test_base" 2>/dev/null
-    
+
     echo "$repo_name"
 }
 
@@ -88,13 +88,13 @@ validate_no_symlinks() {
     local path="$1"
     local parent_path
     parent_path="$(dirname "$path")"
-    
+
     # Check if target path or any parent is a symlink
     if [[ -L "$path" ]] || [[ -L "$parent_path" ]]; then
         print_error "Symlink detected in path - security violation"
         return 1
     fi
-    
+
     # Check if any component in the path chain is a symlink
     local check_path="$path"
     while [[ "$check_path" != "/" && "$check_path" != "." ]]; do
@@ -104,47 +104,47 @@ validate_no_symlinks() {
         fi
         check_path="$(dirname "$check_path")"
     done
-    
+
     return 0
 }
 
 # Validate branch name
 validate_branch_name() {
     local branch="$1"
-    
+
     # Check for empty branch name
     if [[ -z "$branch" ]]; then
         print_error "Branch name cannot be empty"
         return 1
     fi
-    
+
     # Check length (reasonable limit)
     if [[ ${#branch} -gt 100 ]]; then
         print_error "Branch name too long (max 100 characters)"
         return 1
     fi
-    
+
     # Validate characters (alphanumeric, hyphens, underscores, forward slashes)
     if [[ ! "$branch" =~ ^[a-zA-Z0-9/_-]+$ ]]; then
         print_error "Branch name contains invalid characters. Only alphanumeric, hyphens, underscores, and forward slashes allowed"
         return 1
     fi
-    
+
     # Comprehensive path traversal prevention
     local decoded_branch
     # Handle URL encoding and other escape sequences
     decoded_branch=$(printf '%b' "${branch//%/\\x}" 2>/dev/null || echo "$branch")
-    
+
     # Check for various path traversal patterns
-    if [[ "$decoded_branch" =~ \.\. ]] || 
-       [[ "$decoded_branch" =~ ^/ ]] || 
+    if [[ "$decoded_branch" =~ \.\. ]] ||
+       [[ "$decoded_branch" =~ ^/ ]] ||
        [[ "$decoded_branch" =~ //+ ]] ||
        [[ "$decoded_branch" =~ \\\.\\\.[\\/] ]] ||
        [[ "$branch" =~ %2e ]] || [[ "$branch" =~ %2f ]]; then
         print_error "Branch name contains path traversal sequences"
         return 1
     fi
-    
+
     # Additional path validation with temporary directory test
     local test_base="/tmp/branch-validate-$$"
     local test_path="$test_base/$branch"
@@ -159,20 +159,20 @@ validate_branch_name() {
         return 1
     fi
     rm -rf "$test_base" 2>/dev/null
-    
+
     # Prevent git-sensitive names
     if [[ "$branch" =~ ^(HEAD|refs|objects|hooks)$ ]]; then
         print_error "Branch name conflicts with git internals"
         return 1
     fi
-    
+
     return 0
 }
 
 # Find existing branch for GitHub issue
 find_issue_branch() {
     local issue_num="$1"
-    
+
     # Common branch naming patterns for issues
     local patterns=(
         "claude/issue-$issue_num-*"
@@ -180,7 +180,7 @@ find_issue_branch() {
         "issue/$issue_num-*"
         "feature/issue-$issue_num-*"
     )
-    
+
     # Check local branches first
     for pattern in "${patterns[@]}"; do
         local found_branch
@@ -190,7 +190,7 @@ find_issue_branch() {
             return 0
         fi
     done
-    
+
     # Check remote branches
     for pattern in "${patterns[@]}"; do
         local found_branch
@@ -200,7 +200,7 @@ find_issue_branch() {
             return 0
         fi
     done
-    
+
     return 1
 }
 
@@ -208,17 +208,17 @@ find_issue_branch() {
 create_issue_branch_name() {
     local issue_num="$1"
     local issue_title=""
-    
+
     # Try to get issue title from GitHub CLI
     if command -v gh >/dev/null 2>&1; then
         issue_title=$(gh issue view "$issue_num" --repo ondrasek/ai-code-forge --json title --jq .title 2>/dev/null || echo "")
     fi
-    
+
     # Create branch name
     local branch_suffix=""
     local prefix="claude/issue-$issue_num-"
     local max_suffix_length=$((100 - ${#prefix}))
-    
+
     if [[ -n "$issue_title" ]]; then
         # Convert title to branch-friendly format
         branch_suffix=$(echo "$issue_title" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-*\|-*$//g')
@@ -229,19 +229,19 @@ create_issue_branch_name() {
     else
         branch_suffix="implementation"
     fi
-    
+
     echo "claude/issue-$issue_num-$branch_suffix"
 }
 
 # Process --from-issue flag
 process_issue_mode() {
     local issue_num="$1"
-    
+
     print_info "Processing issue #$issue_num" >&2
-    
+
     # Validate issue number
     validate_issue_number "$issue_num" || return 1
-    
+
     # Look for existing branch
     local existing_branch
     if existing_branch=$(find_issue_branch "$issue_num"); then
@@ -249,7 +249,7 @@ process_issue_mode() {
         echo "$existing_branch"
         return 0
     fi
-    
+
     # Create new branch name
     local new_branch
     new_branch=$(create_issue_branch_name "$issue_num")
@@ -261,13 +261,13 @@ process_issue_mode() {
 # Validate issue number (optional)
 validate_issue_number() {
     local issue="$1"
-    
+
     if [[ -n "$issue" ]]; then
         if [[ ! "$issue" =~ ^[0-9]+$ ]] || [[ $issue -lt 1 ]] || [[ $issue -gt 99999 ]]; then
             print_error "Issue number must be a positive integer (1-99999)"
             return 1
         fi
-        
+
         # Validate issue exists on GitHub (if gh CLI available)
         if command -v gh >/dev/null 2>&1; then
             if ! gh issue view "$issue" --repo ondrasek/ai-code-forge --json number >/dev/null 2>&1; then
@@ -293,7 +293,7 @@ validate_issue_number() {
             fi
         fi
     fi
-    
+
     return 0
 }
 
@@ -303,7 +303,7 @@ create_worktree_path() {
     local repo_name
     repo_name=$(get_repo_name) || return 1
     local worktree_path="$WORKTREE_BASE/$repo_name/$branch"
-    
+
     # Ensure base directories exist - fix race condition by validating after creation
     if [[ ! -d "$WORKTREE_BASE" ]]; then
         print_info "Creating worktree base directory: $WORKTREE_BASE" >&2
@@ -319,7 +319,7 @@ create_worktree_path() {
             return 1
         }
     fi
-    
+
     local repo_base="$WORKTREE_BASE/$repo_name"
     if [[ ! -d "$repo_base" ]]; then
         print_info "Creating repository worktree directory: $repo_base" >&2
@@ -335,27 +335,27 @@ create_worktree_path() {
             return 1
         }
     fi
-    
+
     # Check if worktree already exists and validate no symlinks
     if [[ -d "$worktree_path" ]]; then
         print_error "Worktree already exists at path"
         return 1
     fi
-    
+
     # Validate no symlinks in final path before creation
     validate_no_symlinks "$worktree_path" || return 1
-    
+
     # Validate final path is within worktree base (security check)
     local canonical_path
     canonical_path=$(realpath -m "$worktree_path")
     local canonical_base
     canonical_base=$(realpath -m "$WORKTREE_BASE")
-    
+
     if [[ ! "$canonical_path" =~ ^"$canonical_base"/ ]]; then
         print_error "Path escapes worktree security boundary"
         return 1
     fi
-    
+
     echo "$canonical_path"
 }
 
@@ -363,12 +363,12 @@ create_worktree_path() {
 create_git_worktree() {
     local branch="$1"
     local worktree_path="$2"
-    
+
     print_info "Creating git worktree for branch: $branch"
-    
+
     # Change to main repository directory
     cd "$MAIN_REPO"
-    
+
     # Check if branch exists locally or remotely
     local branch_exists=false
     if git show-ref --verify --quiet "refs/heads/$branch"; then
@@ -380,7 +380,7 @@ create_git_worktree() {
     else
         print_info "Creating new branch: $branch"
     fi
-    
+
     # Create worktree with proper shell safety
     local cmd_args=()
     if $branch_exists; then
@@ -389,12 +389,12 @@ create_git_worktree() {
         # Create new branch based on current HEAD
         cmd_args=("worktree" "add" "-b" "$branch" "--" "$worktree_path")
     fi
-    
+
     # Execute with array expansion to prevent injection
     if ! git "${cmd_args[@]}"; then
         return 1
     fi
-    
+
     # Auto-push new branches to origin
     if ! $branch_exists; then
         print_info "Pushing new branch to origin: $branch"
@@ -405,7 +405,7 @@ create_git_worktree() {
             print_info "You can manually push later with: git push --set-upstream origin $branch"
         fi
     fi
-    
+
     return 0
 }
 
@@ -413,30 +413,29 @@ create_git_worktree() {
 add_issue_comment() {
     local issue_num="$1"
     local branch_name="$2"
-    
+
     # Only add comment if GitHub CLI is available and this is a new branch
     if ! command -v gh >/dev/null 2>&1; then
         print_warning "GitHub CLI not available - skipping issue comment"
         return 0
     fi
-    
+
     print_info "Adding comment to issue #$issue_num"
+
+    # Ensure we're in the main repository directory for accurate repo info
+    cd "$MAIN_REPO"
+
+    # Get repository info for branch URL
+    local repo_full_name
+    if ! repo_full_name=$(gh repo view --json nameWithOwner --jq .nameWithOwner 2>/dev/null); then
+        repo_full_name="ondrasek/ai-code-forge"  # fallback
+    fi
     
-    local comment_body="🚀 **Development branch created**
-
-Branch \`$branch_name\` has been created for this issue.
-
-**To work on this issue:**
-\`\`\`bash
-# Clone the worktree (if not already done)
-git worktree add /workspace/worktrees/ai-code-forge/$branch_name $branch_name
-
-# Or switch to existing worktree
-cd /workspace/worktrees/ai-code-forge/$branch_name
-\`\`\`
-
-This comment was automatically generated by the worktree creation script."
+    # Create GitHub branch URL
+    local branch_url="https://github.com/${repo_full_name}/tree/${branch_name}"
     
+    local comment_body="Branch [$branch_name]($branch_url)"
+
     if gh issue comment "$issue_num" --repo ondrasek/ai-code-forge --body "$comment_body" 2>/dev/null; then
         print_success "Comment added to issue #$issue_num"
     else
@@ -449,7 +448,7 @@ main() {
     local branch_name=""
     local issue_number=""
     local from_issue_mode=false
-    
+
     # Parse arguments
     case "${1:-}" in
         "--from-issue")
@@ -471,10 +470,10 @@ main() {
             issue_number="${2:-}"
             ;;
     esac
-    
+
     print_info "Git Worktree Creation Utility"
     print_info "=============================="
-    
+
     # Handle --from-issue mode
     if $from_issue_mode; then
         if branch_name=$(process_issue_mode "$issue_number"); then
@@ -484,25 +483,25 @@ main() {
             exit 1
         fi
     fi
-    
+
     # Validate inputs
     validate_branch_name "$branch_name" || exit 1
     validate_issue_number "$issue_number" || exit 1
-    
+
     # Create worktree path
     local worktree_path
     worktree_path=$(create_worktree_path "$branch_name") || exit 1
-    
+
     # Create git worktree
     if create_git_worktree "$branch_name" "$worktree_path"; then
         print_success "Worktree created successfully!"
         print_info "Location: $worktree_path"
-        
+
         # Add comment to GitHub issue if this was created from an issue
         if $from_issue_mode && [[ -n "$issue_number" ]]; then
             add_issue_comment "$issue_number" "$branch_name"
         fi
-        
+
         print_info ""
         print_info "To work in this worktree:"
         print_info "  cd \"$worktree_path\""
