@@ -278,26 +278,36 @@ create_worktree_path() {
     repo_name=$(get_repo_name) || return 1
     local worktree_path="$WORKTREE_BASE/$repo_name/$branch"
     
-    # Ensure base directories exist with symlink validation
+    # Ensure base directories exist - fix race condition by validating after creation
     if [[ ! -d "$WORKTREE_BASE" ]]; then
-        validate_no_symlinks "$WORKTREE_BASE" || return 1
         print_info "Creating worktree base directory: $WORKTREE_BASE" >&2
-        # Use atomic directory creation to prevent race conditions
+        # Create directory first, then validate - prevents TOCTOU race condition
         if ! mkdir -p "$WORKTREE_BASE" 2>/dev/null; then
-            print_error "Failed to create worktree base directory"
+            print_error "Failed to create worktree base directory: $WORKTREE_BASE"
             return 1
         fi
+        # Validate after creation to prevent race conditions
+        validate_no_symlinks "$WORKTREE_BASE" || {
+            rm -rf "$WORKTREE_BASE" 2>/dev/null
+            print_error "Symlink security violation in worktree base path"
+            return 1
+        }
     fi
     
     local repo_base="$WORKTREE_BASE/$repo_name"
     if [[ ! -d "$repo_base" ]]; then
-        validate_no_symlinks "$repo_base" || return 1
         print_info "Creating repository worktree directory: $repo_base" >&2
-        # Use atomic directory creation to prevent race conditions
+        # Create directory first, then validate - prevents TOCTOU race condition
         if ! mkdir -p "$repo_base" 2>/dev/null; then
-            print_error "Failed to create repository directory"
+            print_error "Failed to create repository directory: $repo_base"
             return 1
         fi
+        # Validate after creation to prevent race conditions
+        validate_no_symlinks "$repo_base" || {
+            rm -rf "$repo_base" 2>/dev/null
+            print_error "Symlink security violation in repository path"
+            return 1
+        }
     fi
     
     # Check if worktree already exists and validate no symlinks
@@ -418,9 +428,17 @@ main() {
         print_info "  cd \"$worktree_path\""
         print_info "  # Launch Claude Code from this directory"
     else
-        print_error "Failed to create git worktree"
-        # Cleanup partial directory if created
-        [[ -d "$worktree_path" ]] && rmdir "$worktree_path" 2>/dev/null
+        print_error "Failed to create git worktree: $worktree_path"
+        # Comprehensive cleanup on failure - remove git state and directory
+        if [[ -d "$worktree_path" ]]; then
+            print_info "Cleaning up partial worktree creation..."
+            # Remove git worktree reference if exists
+            git worktree remove "$worktree_path" --force 2>/dev/null || true
+            # Remove directory structure
+            local rm_args=("rm" "-rf" "--" "$worktree_path")
+            "${rm_args[@]}" 2>/dev/null || true
+            print_info "Partial worktree cleaned up"
+        fi
         exit 1
     fi
 }

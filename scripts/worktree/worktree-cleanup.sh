@@ -23,11 +23,26 @@ get_repo_name() {
         repo_name=$(basename "$MAIN_REPO")
     fi
     
-    # Validate repo name (security check)
-    if [[ ! "$repo_name" =~ ^[a-zA-Z0-9._-]+$ ]] || [[ ${#repo_name} -gt 100 ]]; then
-        print_error "Invalid repository name detected: $repo_name"
+    # Enhanced repository name validation (standardized security check)
+    if [[ ! "$repo_name" =~ ^[a-zA-Z0-9][a-zA-Z0-9._-]*$ ]] || 
+       [[ ${#repo_name} -gt 50 ]] ||
+       [[ "$repo_name" =~ \.\. ]] ||
+       [[ "$repo_name" =~ ^\. ]] ||
+       [[ "$repo_name" =~ \$ ]]; then
+        print_error "Invalid repository name detected"
         return 1
     fi
+    
+    # Test path resolution safety
+    local test_base="/tmp/repo-validate-$$"
+    local test_path="$test_base/$repo_name"
+    mkdir -p "$test_base" 2>/dev/null
+    if ! realpath -m "$test_path" 2>/dev/null | grep -q "^$test_base/[^/]*$"; then
+        rm -rf "$test_base" 2>/dev/null
+        print_error "Repository name fails path validation"
+        return 1
+    fi
+    rm -rf "$test_base" 2>/dev/null
     
     echo "$repo_name"
 }
@@ -174,13 +189,15 @@ remove_worktree() {
         
         # Manual cleanup if git worktree remove failed - secure implementation
         if [[ -d "$validated_path" ]]; then
-            print_info "Removing directory manually..."
+            print_info "Removing directory manually: $validated_path"
             # Use array-based command to prevent injection
             local rm_args=("rm" "-rf" "--" "$validated_path")
             if "${rm_args[@]}"; then
-                print_success "Directory removed manually"
+                print_success "Directory removed manually: $validated_path"
+                return 0
             else
-                print_error "Failed to remove directory manually"
+                print_error "Failed to remove directory manually: $validated_path"
+                return 1
             fi
         fi
     fi
