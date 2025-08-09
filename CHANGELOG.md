@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.87.0] - 2025-08-09
+
+### Added
+- **GitHub Issue Integration for Worktree Scripts**: Enhanced worktree-create.sh with intelligent GitHub issue workflow integration (closes #105)
+  - Added `--from-issue <number>` flag for automatic worktree creation from GitHub issues
+  - Intelligent branch detection system finds existing issue branches across multiple naming patterns
+  - Automatic branch name generation from GitHub issue titles using gh CLI integration
+  - Support for both existing branch discovery and new branch creation workflows
+  - Enhanced worktree creation workflow for seamless DevContainer development with GitHub Issues
+
 ## [2.85.0] - 2025-08-09
 
 ### Enhanced
