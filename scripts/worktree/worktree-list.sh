@@ -32,6 +32,7 @@ USAGE:
 
 OPTIONS:
     --verbose, -v    Show detailed information for each worktree
+    --dry-run        No effect (list operations are read-only)
     --help, -h       Show this help message
 
 DESCRIPTION:
@@ -42,6 +43,7 @@ EXAMPLES:
     ./worktree-list.sh
     ./worktree-list.sh --verbose
     ./worktree-list.sh -v
+    ./worktree-list.sh --dry-run
 
 EOF
 }
@@ -55,6 +57,11 @@ list_worktrees() {
         case $1 in
             --verbose|-v)
                 verbose=true
+                shift
+                ;;
+            --dry-run)
+                # No-op: list operations are read-only
+                print_info "Note: --dry-run has no effect on read-only list operations"
                 shift
                 ;;
             --help|-h)
