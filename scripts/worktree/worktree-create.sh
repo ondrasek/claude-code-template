@@ -401,6 +401,8 @@ create_worktree_path() {
 }
 
 # Create git worktree
+# Returns: 0 if successful, 1 if failed
+# Sets global variable 'branch_was_created' to true if new branch was created, false if existing branch was used
 create_git_worktree() {
     local branch="$1"
     local worktree_path="$2"
@@ -432,6 +434,12 @@ create_git_worktree() {
         else
             print_info "Creating new branch: $branch"
         fi
+    fi
+
+    # Set global variable to indicate if branch was newly created
+    branch_was_created=true
+    if $branch_exists; then
+        branch_was_created=false
     fi
 
     # Create worktree with proper shell safety
@@ -603,9 +611,11 @@ main() {
             print_info "Location: $worktree_path"
         fi
 
-        # Add comment to GitHub issue if this was created from an issue
-        if $from_issue_mode && [[ -n "$issue_number" ]]; then
+        # Add comment to GitHub issue only if this was created from an issue AND a new branch was created
+        if $from_issue_mode && [[ -n "$issue_number" ]] && [[ "$branch_was_created" == "true" ]]; then
             add_issue_comment "$issue_number" "$branch_name" "$dry_run"
+        elif $from_issue_mode && [[ -n "$issue_number" ]] && [[ "$branch_was_created" == "false" ]]; then
+            print_info "Using existing branch - skipping GitHub issue comment"
         fi
 
         print_info ""
