@@ -83,6 +83,51 @@ Task(critic): Risk assessment using all previous findings
 </format>
 </output_template>
 
+## Examples
+
+<usage_scenarios priority="HIGH">
+<automatic_detection>
+# Analyze current branch changes automatically
+/issue pr-review
+
+# Works when on feature branch (e.g., feature/issue-123)
+# Auto-extracts commit history and diff since divergence from main
+# Ideal for: Current development workflow, branch-based analysis
+</automatic_detection>
+
+<specific_pr_number>
+# Analyze specific pull request by number
+/issue pr-review 456
+
+# Fetches PR #456 details using GitHub CLI
+# Analyzes specific PR scope and changes
+# Ideal for: Code review of others' PRs, historical analysis
+</specific_pr_number>
+
+<github_url_usage>
+# Analyze PR from GitHub URL (extracted automatically)
+/issue pr-review https://github.com/owner/repo/pull/789
+
+# Parses GitHub URL and extracts PR number
+# Works with any repository URL format
+# Ideal for: Cross-repository reviews, external PR analysis
+</github_url_usage>
+
+<advanced_scenarios>
+# Large PR handling (>100 files)
+/issue pr-review 123
+# → Reports size limit exceeded with file count summary
+
+# Merge conflict detection
+/issue pr-review
+# → Detects and reports git state issues before analysis
+
+# Missing base branch scenario
+/issue pr-review feature-branch
+# → Handles missing base branch with graceful error reporting
+</advanced_scenarios>
+</usage_scenarios>
+
 <error_handling priority="MEDIUM">
 <git_errors>Handle detached HEAD, merge conflicts, missing base branch</git_errors>
 <agent_failures>Continue with available agents, report failed stages</agent_failures>
