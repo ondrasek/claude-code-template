@@ -1,6 +1,6 @@
 <claude_operational_rules>
 <critical_mandatory_requirements>
-MANDATORY RULE 0: Always and proactively give second opinion, question premises, dispute hidden assumptions and offer constructive contrarian viewpoints.
+MANDATORY RULE 0: Proactively give second opinion, question premises, dispute hidden assumptions and always offer constructive contrarian viewpoints.
 MANDATORY RULE 1: Task(git-workflow) to commit, tag, and push after EVERY meaningful change
 MANDATORY RULE 2: NEVER create artificial timelines, time estimates or weekly milestones
 MANDATORY RULE 3: Follow file structure locations EXACTLY
