@@ -261,10 +261,26 @@ validate_issue_number() {
         # Validate issue exists on GitHub (if gh CLI available)
         if command -v gh >/dev/null 2>&1; then
             if ! gh issue view "$issue" --repo ondrasek/ai-code-forge --json number >/dev/null 2>&1; then
-                print_warning "Issue #$issue not found or not accessible (continuing anyway)"
+                print_error "Issue #$issue not found or not accessible on GitHub"
+                print_info "Please verify the issue exists and you have access to it"
+                print_info "Continue anyway? (y/N)"
+                read -r confirm
+                if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
+                    print_info "Operation cancelled by user"
+                    return 1
+                fi
+                print_warning "Proceeding with potentially invalid issue #$issue"
+            else
+                print_success "Validated issue #$issue exists on GitHub"
             fi
         else
-            print_info "GitHub CLI not available - skipping issue validation"
+            print_warning "GitHub CLI not available - cannot validate issue #$issue"
+            print_info "Continue without GitHub validation? (y/N)"
+            read -r confirm
+            if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
+                print_info "Operation cancelled by user"
+                return 1
+            fi
         fi
     fi
     
@@ -431,13 +447,22 @@ main() {
         print_error "Failed to create git worktree: $worktree_path"
         # Comprehensive cleanup on failure - remove git state and directory
         if [[ -d "$worktree_path" ]]; then
-            print_info "Cleaning up partial worktree creation..."
-            # Remove git worktree reference if exists
-            git worktree remove "$worktree_path" --force 2>/dev/null || true
-            # Remove directory structure
+            print_info "Cleaning up partial worktree creation: $worktree_path"
+            # Remove git worktree reference first (most important)
+            local cleanup_args=("worktree" "remove" "--force" "--" "$worktree_path")
+            if git "${cleanup_args[@]}" 2>/dev/null; then
+                print_info "Git worktree reference removed successfully"
+            else
+                print_warning "Could not remove git worktree reference (may not exist)"
+            fi
+            # Remove directory structure with secure command
             local rm_args=("rm" "-rf" "--" "$worktree_path")
-            "${rm_args[@]}" 2>/dev/null || true
-            print_info "Partial worktree cleaned up"
+            if "${rm_args[@]}" 2>/dev/null; then
+                print_info "Directory structure removed: $worktree_path"
+            else
+                print_error "Failed to remove directory structure: $worktree_path"
+            fi
+            print_success "Cleanup completed for failed worktree creation"
         fi
         exit 1
     fi
