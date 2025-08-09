@@ -409,6 +409,6 @@ This customization system allows you to adapt the template to any development wo
 ---
 
 **Next Steps:**
-- 🧠 Explore the [Memory System](memory-system.md) for persistent context
+- 🧠 Configure memory system using scripts/setup-claude-memory.sh
 - 📖 See all [Features](features.md) available for customization
 - 📚 Return to [Getting Started](getting-started.md)

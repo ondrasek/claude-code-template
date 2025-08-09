@@ -24,9 +24,9 @@ The `.claude` directory contains all Claude Code configuration and should be cop
 }
 ```
 
-##### `settings.local.json`
+##### `settings.local.json` (Optional)
 **Location**: `~/.claude/settings.local.json`  
-**Purpose**: Local environment settings and permissions
+**Purpose**: Local environment settings and permissions (user-created)
 **Content**: Security permissions and local overrides
 
 ```json
@@ -40,6 +40,8 @@ The `.claude` directory contains all Claude Code configuration and should be cop
 }
 ```
 
+**Note**: This file does not exist by default and must be created by users who need custom permissions.
+
 **Configuration Options**:
 - `permissions.allow`: Array of allowed command patterns
 - `permissions.deny`: Array of denied command patterns (not shown)
@@ -49,37 +51,38 @@ The `.claude` directory contains all Claude Code configuration and should be cop
 
 Contains AI agent definitions that work together to handle complex development tasks.
 
-##### `agents/foundation/` - Core Agents
+##### `agents/foundation/` - Core Agents (6 Agents)
 
 **Purpose**: Essential agents used in all complex operations (mandatory 3+ agent coordination)
 
 | Agent | File | Purpose | When Used |
 |-------|------|---------|-----------|
-| **Research** | `foundation-research.md` | Information gathering, best practice lookup | All requests needing external knowledge |
-| **Patterns** | `foundation-patterns.md` | Code pattern recognition, anti-pattern detection | Code analysis, architecture review |
-| **Criticism** | `foundation-criticism.md` | Critical analysis, honest feedback | All requests requiring evaluation |
-| **Principles** | `foundation-principles.md` | SOLID principles, design patterns enforcement | Architecture decisions, code quality |
-| **Context** | `foundation-context.md` | Deep system understanding, context synthesis | Complex system analysis |
-| **Conflicts** | `foundation-conflicts.md` | Mediate between competing approaches | When agents disagree on solutions |
+| **researcher** | `researcher.md` | Information gathering, best practice lookup | All requests needing external knowledge |
+| **patterns** | `patterns.md` | Code pattern recognition, anti-pattern detection | Code analysis, architecture review |
+| **critic** | `critic.md` | Critical analysis, honest feedback | All requests requiring evaluation |
+| **principles** | `principles.md` | SOLID principles, design patterns enforcement | Architecture decisions, code quality |
+| **context** | `context.md` | Deep system understanding, context synthesis | Complex system analysis |
+| **conflicts** | `conflicts.md` | Mediate between competing approaches | When agents disagree on solutions |
 
 **Mandatory Usage**: These agents are automatically invoked for all non-trivial requests as part of the coordination protocol.
 
-##### `agents/specialists/` - Specialized Agents
+##### `agents/specialists/` - Specialized Agents (11 Agents)
 
 **Purpose**: Domain-specific experts for particular technologies or workflows
 
 | Agent | File | Purpose | Specialization |
 |-------|------|---------|----------------|
-| **Code Cleaner** | `specialist-code-cleaner.md` | Code quality, refactoring | Clean code practices, readability |
-| **Constraint Solver** | `specialist-constraint-solver.md` | Handle competing requirements | Requirements analysis, trade-offs |
-| **Git Workflow** | `specialist-git-workflow.md` | Git operations, version control | Git troubleshooting, workflow automation |
-| **Options Analyzer** | `specialist-options-analyzer.md` | Solution exploration, alternatives | Decision making, approach comparison |
-| **Performance Optimizer** | `specialist-performance-optimizer.md` | Performance analysis, optimization | Speed, memory, efficiency improvements |
-| **Prompt Engineer** | `specialist-prompt-engineer.md` | AI prompt creation, optimization | Creating effective AI prompts |
-| **Stack Advisor** | `specialist-stack-advisor.md` | Technology selection, architecture | Technology recommendations |
-| **Test Strategist** | `specialist-test-strategist.md` | Testing strategies, test design | Test planning, quality assurance |
-| **Specs Analyst** | `specialist-specs-analyst.md` | Specification analysis, project planning | Specification tracking, requirements analysis |
-| **Meta Programmer** | `specialist-meta-programmer.md` | Code generation, template creation | Automated code generation |
+| **code-cleaner** | `code-cleaner.md` | Code quality, refactoring | Clean code practices, readability |
+| **constraint-solver** | `constraint-solver.md` | Handle competing requirements | Requirements analysis, trade-offs |
+| **git-workflow** | `git-workflow.md` | Git operations, version control | Git troubleshooting, workflow automation |
+| **github-issues-workflow** | `github-issues-workflow.md` | GitHub Issues lifecycle management | Issue tracking, project management |
+| **github-pr-workflow** | `github-pr-workflow.md` | GitHub Pull Request workflows | PR creation, review automation |
+| **options-analyzer** | `options-analyzer.md` | Solution exploration, alternatives | Decision making, approach comparison |
+| **performance-optimizer** | `performance-optimizer.md` | Performance analysis, optimization | Speed, memory, efficiency improvements |
+| **prompt-engineer** | `prompt-engineer.md` | AI prompt creation, optimization | Creating effective AI prompts |
+| **stack-advisor** | `stack-advisor.md` | Technology selection, architecture | Technology recommendations |
+| **test-strategist** | `test-strategist.md` | Testing strategies, test design | Test planning, quality assurance |
+| **meta-programmer** | `meta-programmer.md` | Code generation, template creation | Automated code generation |
 
 #### `commands/` Directory
 
@@ -124,19 +127,19 @@ Contains custom slash commands that provide instant access to common development
 - `/git` - Git workflow assistance
 - `/doc-update` - Update documentation automatically
 
-### `.support/` Directory (Project Support Files)
+### Project Structure (Support Files)
 
-The `.support` directory contains project-specific support files, templates, and configurations.
+The project contains various support files, templates, and configurations organized in multiple directories.
 
 #### Core Subdirectories
 
-##### `prompts/`
+##### `templates/prompts/`
 **Purpose**: Reusable prompts and templates
 **Contents**: 
 - `master-prompt.md` - Main Claude Code prompt template
 - Additional prompt templates for specific use cases
 
-##### `instructions/`
+##### `templates/guidelines/`
 **Purpose**: Additional guidelines and instructions for Claude Code
 **Contents**:
 - `CLAUDE.md` - Copy of main project guidelines
@@ -146,12 +149,11 @@ The `.support` directory contains project-specific support files, templates, and
 - `software-tradeoff-framework.md` - Decision-making frameworks
 - `stack-mapping.md` - Technology stack guidelines
 
-##### `mcp-servers/`
-**Purpose**: MCP (Model Context Protocol) server configurations
+##### `src/` Directory
+**Purpose**: MCP (Model Context Protocol) server implementations
 **Contents**:
-- `mcp-config.json` - MCP server configuration
-- `perplexity/` - Perplexity AI research server source code
-- Server implementations for additional tools
+- `perplexity-mcp/` - Perplexity AI research server source code
+- Additional MCP server implementations
 
 **MCP Configuration Example**:
 ```json
@@ -159,11 +161,11 @@ The `.support` directory contains project-specific support files, templates, and
   "mcpServers": {
     "perplexity-research": {
       "command": "uv",
-      "args": ["--directory", ".support/mcp-servers/perplexity", "run", "perplexity-mcp"],
+      "args": ["--directory", "src/perplexity-mcp", "run", "perplexity-mcp"],
       "env": {
         "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}",
         "PERPLEXITY_LOG_LEVEL": "debug",
-        "PERPLEXITY_LOG_PATH": ".support/logs/perplexity"
+        "PERPLEXITY_LOG_PATH": ".logs/perplexity"
       },
       "alwaysAllow": ["perplexity_search", "perplexity_deep_research"],
       "description": "Perplexity AI research and web search capabilities"
@@ -172,48 +174,44 @@ The `.support` directory contains project-specific support files, templates, and
 }
 ```
 
-##### `logs/`
+**Note**: This MCP configuration would need to be added to your Claude Code settings.
+
+##### `.logs/` Directory (Auto-created)
 **Purpose**: Diagnostic and troubleshooting logs
 **Contents**: 
-- Application logs organized by service
+- Session-based log organization
 - MCP server logs
 - Debug information for troubleshooting
+**Note**: This directory is created automatically when logging is enabled.
 
-##### `scripts/`
+##### `scripts/` Directory
 **Purpose**: Utility scripts for setup and maintenance
 **Contents**:
-- `install-launch-claude.sh` - Enhanced Claude Code wrapper installation
+- `launch-claude.sh` - Enhanced Claude Code wrapper
 - `setup-claude-memory.sh` - Memory system configuration
-- Additional automation scripts
+- `test-agents.sh` - Agent testing utilities
+- `test-session-logging.sh` - Logging system tests
 
-##### `analysis/`
+##### `analysis/` Directory
 **Purpose**: Project analysis and optimization reports
 **Contents**:
-- Agent ecosystem analysis
-- Performance metrics
+- Performance baseline metrics
 - Usage pattern analysis
+- Agent ecosystem analysis
 - Optimization recommendations
 
-##### `todos/`
-**Purpose**: Project task management
-**Contents**:
-- Task definitions and tracking
-- Project roadmaps
-- Implementation plans
-
-##### `stacks/`
+##### `templates/stacks/` Directory
 **Purpose**: Technology-specific guidelines
 **Contents**:
+- `cpp.md`, `csharp.md`, `docker.md`, `java.md` - Language-specific guidelines
+- `kotlin.md`, `python.md`, `ruby.md`, `rust.md` - Additional stack templates
 - Framework-specific best practices
-- Technology stack recommendations
-- Implementation patterns
 
-##### `implementation/`
-**Purpose**: Implementation specifications and documentation
+##### `templates/specs/` Directory
+**Purpose**: Specification templates
 **Contents**:
-- Architecture specifications
-- Design documents
-- Implementation guidelines
+- Template files for project specifications
+- Standardized documentation formats
 
 ## Configuration Integration
 
@@ -231,7 +229,7 @@ The `.support` directory contains project-specific support files, templates, and
 2. **Agent Definitions**: All `.md` files in `~/.claude/agents/`
 3. **Command Definitions**: All `.md` files in `~/.claude/commands/`
 4. **Project Context**: `CLAUDE.md` in project root
-5. **Support Files**: `.support/` directory in project root
+5. **Support Files**: `templates/`, `scripts/`, and `src/` directories in project root
 6. **Environment Variables**: System environment variables
 
 ### Customization Guidelines
