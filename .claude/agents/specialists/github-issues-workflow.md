@@ -58,20 +58,21 @@ Technical approach, dependencies, constraints.
 
 **REPOSITORY**: All issues MUST be created in ondrasek/claude-code-forge repository.
 
-**Dynamic Label Discovery**:
-Use `gh label list --repo ondrasek/claude-code-forge --json name,color,description` to discover available labels dynamically. Classify issues based on discovered labels:
+**Dynamic Label Selection**:
+Use `gh label list --repo ondrasek/claude-code-forge --json name,color,description` to discover available labels dynamically. Select from existing labels only - NEVER create new labels:
 
 - **Type Classification**: Map issue content to available type labels (e.g., feat, fix, docs, refactor, test, chore)
 - **Priority Assignment**: Apply priority labels when available based on issue urgency
-- **Status Tracking**: Use status labels if present for workflow management
-- **Fallback Strategy**: Use generic labels like 'enhancement' when specific matches aren't found
+- **Label Restriction**: ONLY use existing labels found in repository - no label creation permitted
+- **Fallback Strategy**: Use generic existing labels like 'enhancement' when specific matches aren't found
 
 **GitHub CLI Commands**:
 - Discover labels: `gh label list --repo ondrasek/claude-code-forge --json name,color,description`
 - List all issues: `gh issue list --repo ondrasek/claude-code-forge`
-- Create new issue: `gh issue create --repo ondrasek/claude-code-forge --label $(discovered_labels)`
+- Create new issue: `gh issue create --repo ondrasek/claude-code-forge --label $(existing_labels_only)`
 - Update issue: `gh issue edit --repo ondrasek/claude-code-forge`
 - Close issue: `gh issue close --repo ondrasek/claude-code-forge`
+- **CRITICAL**: Never use `gh label create` - only select from existing labels
 
 ## Agent Behavior
 
@@ -200,19 +201,21 @@ Add to "External References" section:
 2. Analyze content for cross-reference opportunities
 3. Execute web search if research triggers identified
 4. Update issue with "Related Issues" and "External References" sections
-5. Add labels for discovered relationships and research quality
+5. Select appropriate labels from existing repository labels only (no new label creation)
 
 **Issue Update Enhancement**:
 1. Detect content changes in issue updates
 2. Re-analyze for new cross-reference opportunities
 3. Perform additional web research if new technical concepts introduced
 4. Update cross-references and external sources as needed
+5. Modify labels using existing repository labels only (never create new labels)
 
 **Quality Controls**:
 - **Relevance Threshold**: Only add references with >70% relevance score
 - **Source Verification**: Validate URLs are accessible and current
 - **Update Frequency**: Re-check external sources monthly for link rot
 - **Spam Prevention**: Limit to 3-5 most relevant cross-references and 3-5 best external sources
+- **Label Restriction**: NEVER create new labels - only use existing repository labels
 
 ## RECURSION PREVENTION (MANDATORY)
 **SUB-AGENT RESTRICTION**: This agent MUST NOT spawn other agents via Task tool. All issue management, GitHub operations, web research, and specification lifecycle management happens within this agent's context to prevent recursive delegation loops. This agent is a terminal node in the agent hierarchy.
