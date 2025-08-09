@@ -42,6 +42,8 @@ MANDATORY RULE 4: Display ALL rules (0-4) at the start of EVERY response.
   <github_issues>GitHub Issues in ondrasek/ai-code-forge (specifications managed via GitHub)</github_issues>
   <mcp_servers>src/[mcp-name]/ (MCP server source code)</mcp_servers>
   <analysis>analysis/[github-issue] where github-issue is a subfolder corresponding to an existing github issue</analysis>
+  <scripts>scripts/ and subfolders under scripts/</scripts>
+  <cli>src/acf with source code for the acf (ai-code-forge) cli tool</cli>
 </locations>
 <enforcement>NEVER search elsewhere for these file types</enforcement>
 </file_structure>
