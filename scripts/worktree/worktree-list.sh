@@ -28,7 +28,7 @@ find_issue_branch() {
 
     # Common branch naming patterns for issues
     local patterns=(
-        "claude/issue-$issue_num-*"
+        "issue-$issue_num-*"
         "issue-$issue_num-*"
         "issue/$issue_num-*"
         "feature/issue-$issue_num-*"

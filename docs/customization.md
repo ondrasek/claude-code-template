@@ -31,9 +31,9 @@ Add custom detection rules in the CLAUDE.md file:
 
 ```markdown
 ## Technology Stack Detection
-- **Next.js files** (`next.config.js`, `app/`, `pages/`) → Refer to @.claude/stacks/nextjs.md
-- **Terraform files** (`*.tf`) → Refer to @.claude/stacks/terraform.md
-- **GraphQL files** (`*.graphql`, `schema.graphql`) → Refer to @.claude/stacks/graphql.md
+- **Next.js files** (`next.config.js`, `app/`, `pages/`) → Refer to @templates/stacks/nextjs.md
+- **Terraform files** (`*.tf`) → Refer to @templates/stacks/terraform.md
+- **GraphQL files** (`*.graphql`, `schema.graphql`) → Refer to @templates/stacks/graphql.md
 ```
 
 ## Custom Slash Commands
@@ -168,10 +168,10 @@ OPENAI_API_KEY=your-openai-key
 ## Technology Stack Customization
 
 ### Adding New Stack Guidelines
-Create new stack files in `.claude/stacks/`:
+Create new stack files in `templates/stacks/`:
 
 ```markdown
-# .claude/stacks/nextjs.md
+# templates/stacks/nextjs.md
 
 # Next.js Development Guidelines
 
@@ -200,9 +200,9 @@ Update the detection rules in `CLAUDE.md`:
 
 ```markdown
 ### Detection Rules
-- **Next.js files** (`next.config.js`, `app/`, `middleware.ts`) → Refer to @.claude/stacks/nextjs.md
-- **Svelte files** (`*.svelte`, `svelte.config.js`) → Refer to @.claude/stacks/svelte.md
-- **Flutter files** (`pubspec.yaml`, `lib/*.dart`) → Refer to @.claude/stacks/flutter.md
+- **Next.js files** (`next.config.js`, `app/`, `middleware.ts`) → Refer to @templates/stacks/nextjs.md
+- **Svelte files** (`*.svelte`, `svelte.config.js`) → Refer to @templates/stacks/svelte.md
+- **Flutter files** (`pubspec.yaml`, `lib/*.dart`) → Refer to @templates/stacks/flutter.md
 ```
 
 ## Automation and Hooks

@@ -109,7 +109,7 @@ Arguments:
 
 Examples:
   $0 feature/new-agent
-  $0 claude/issue-105-worktree 105
+  $0 issue-105-worktree 105
   $0 --from-issue 105
   $0 --from-issue 105 --dry-run
   $0 hotfix/critical-bug
@@ -210,7 +210,7 @@ find_issue_branch() {
 
     # Common branch naming patterns for issues
     local patterns=(
-        "claude/issue-$issue_num-*"
+        "issue-$issue_num-*"
         "issue-$issue_num-*"
         "issue/$issue_num-*"
         "feature/issue-$issue_num-*"
@@ -268,7 +268,7 @@ create_issue_branch_name() {
         branch_suffix="implementation"
     fi
 
-    echo "claude/issue-$issue_num-$branch_suffix"
+    echo "issue-$issue_num-$branch_suffix"
 }
 
 # Process --from-issue flag

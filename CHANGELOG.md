@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Documentation Synchronization**: Complete documentation update aligning with recent code changes (refs #126, #120)
+  - Fixed branch naming inconsistencies in worktree scripts removing outdated "claude/" prefix references
+  - Updated README.md with enhanced worktree capabilities including --from-issue functionality and issue number support
+  - Corrected worktree script examples and usage patterns to reflect current branch naming logic
+  - Enhanced worktree documentation with comprehensive GitHub Issues integration details
+
 ### Added
 - **GitHub Issue Refinement System**: Complete implementation of `/issue:refine` slash command with automated workflow integration (closes #90)
   - Created `/issue:refine` command with intelligent issue analysis and critical questioning capabilities

@@ -236,14 +236,14 @@ The project contains various support files, templates, and configurations organi
 
 #### Adding New Agents
 
-1. Create a new `.md` file in `~/.claude/agents/specialists/`
+1. Create a new `.md` file in `~/.claude/agents/specialists/` (or `.claude/agents/` for your project)
 2. Follow the agent template format
 3. Define clear specialization and trigger conditions
 4. Test with various scenarios
 
 #### Creating Custom Commands
 
-1. Create a new `.md` file in `~/.claude/commands/`
+1. Create a new `.md` file in `~/.claude/commands/` (or `.claude/commands/` for your project)
 2. Use descriptive, action-oriented command names
 3. Include clear usage instructions
 4. Test command functionality

@@ -28,7 +28,7 @@ This template helps developers understand:
 
 ### Option 1: Manual Setup (Recommended)
 1. Clone this repository: `git clone https://github.com/ondrasek/ai-code-forge.git`
-2. Copy configuration: `cp -r .claude/ ~/.claude/`
+2. Copy configuration: `cp -r .claude/ ~/.claude/` (from this repository)
 3. Set API key: `echo 'export CLAUDE_API_KEY="your-key"' >> ~/.bashrc && source ~/.bashrc`
 4. Test: Open Claude Code and try `/review`
 
@@ -152,7 +152,7 @@ These docs are maintained alongside code changes to ensure accuracy and relevanc
 
 **Commands not working?**
 - Make sure you're in a Claude Code session
-- Check that the template was installed correctly with `ls .claude/`
+- Check that the template was installed correctly with `ls ~/.claude/`
 
 **Agents not responding as expected?**
 - Try being more specific about what you want
