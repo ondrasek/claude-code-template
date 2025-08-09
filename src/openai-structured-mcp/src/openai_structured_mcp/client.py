@@ -59,14 +59,6 @@ def handle_api_errors(func):
 class OpenAIStructuredClient:
     """Client for interacting with OpenAI API using structured outputs."""
     
-    AVAILABLE_MODELS = [
-        "gpt-5",
-        "gpt-4o",
-        "gpt-4o-mini",
-        "gpt-4-turbo", 
-        "gpt-4-turbo-preview"
-    ]
-    
     def __init__(self, api_key: Optional[str] = None):
         """
         Initialize OpenAI client with enhanced debugging.
@@ -94,6 +86,26 @@ class OpenAIStructuredClient:
         
         logger.debug(f"Client configuration: model={self.default_model}, temperature={self.default_temperature}, max_tokens={self.default_max_tokens}")
         logger.info("OpenAI structured client initialized successfully")
+    
+    async def get_available_models(self) -> List[str]:
+        """
+        Fetch available models from OpenAI API dynamically.
+        
+        Returns:
+            List of available model names
+        """
+        try:
+            logger.debug("Fetching available models from OpenAI API...")
+            models_response = await self.client.models.list()
+            models = [model.id for model in models_response.data]
+            logger.debug(f"Fetched {len(models)} models from OpenAI API")
+            return models
+        except Exception as e:
+            logger.error(f"Failed to fetch models from OpenAI API: {e}")
+            # Fallback to a minimal set if API fails
+            fallback_models = ["gpt-5", "gpt-4o", "gpt-4o-mini"]
+            logger.warning(f"Using fallback models: {fallback_models}")
+            return fallback_models
     
     @handle_api_errors
     async def structured_completion(
@@ -137,8 +149,9 @@ class OpenAIStructuredClient:
         temperature = temperature if temperature is not None else self.default_temperature
         max_tokens = max_tokens or self.default_max_tokens
         
-        # Validate model
-        if model not in self.AVAILABLE_MODELS:
+        # Validate model against OpenAI API
+        available_models = await self.get_available_models()
+        if model not in available_models:
             logger.warning(f"Unknown model '{model}', using '{self.default_model}' instead")
             model = self.default_model
         

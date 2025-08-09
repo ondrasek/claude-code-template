@@ -362,3 +362,33 @@ class TestOpenAIStructuredClient:
                 
                 assert "error" in result
                 assert result["error_type"] == "no_choices"
+    
+    @pytest.mark.asyncio
+    async def test_dynamic_model_fetching(self, mock_openai_models_response):
+        """Test dynamic model fetching from OpenAI API."""
+        with patch.dict(os.environ, {"OPENAI_API_KEY": "test-key"}):
+            client = OpenAIStructuredClient()
+            
+            # Create an async mock that returns the models response
+            async def mock_list():
+                return mock_openai_models_response
+            
+            # Mock the models.list() call
+            with patch.object(client.client.models, 'list', side_effect=mock_list):
+                models = await client.get_available_models()
+                
+                expected_models = ["gpt-5", "gpt-4o", "gpt-4o-mini", "gpt-4-turbo", "gpt-3.5-turbo"]
+                assert models == expected_models
+                
+    @pytest.mark.asyncio
+    async def test_model_fetching_with_api_failure(self):
+        """Test model fetching fallback when API fails."""
+        with patch.dict(os.environ, {"OPENAI_API_KEY": "test-key"}):
+            client = OpenAIStructuredClient()
+            
+            # Mock API failure
+            with patch.object(client.client.models, 'list', side_effect=Exception("API Error")):
+                models = await client.get_available_models()
+                
+                expected_fallback = ["gpt-5", "gpt-4o", "gpt-4o-mini"]
+                assert models == expected_fallback

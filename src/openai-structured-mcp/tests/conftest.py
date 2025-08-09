@@ -197,3 +197,21 @@ def mock_openai_client():
     
     mock_client.chat.completions.create.return_value = mock_completion
     return mock_client
+
+
+@pytest.fixture
+def mock_openai_models_response():
+    """Mock OpenAI models API response."""
+    from types import SimpleNamespace
+    
+    # Mock model objects
+    models_data = [
+        SimpleNamespace(id="gpt-5"),
+        SimpleNamespace(id="gpt-4o"),
+        SimpleNamespace(id="gpt-4o-mini"),
+        SimpleNamespace(id="gpt-4-turbo"),
+        SimpleNamespace(id="gpt-3.5-turbo")
+    ]
+    
+    # Mock the models response
+    return SimpleNamespace(data=models_data)
