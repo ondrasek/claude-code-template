@@ -27,7 +27,7 @@ This template helps developers understand:
 ## Quick Start (5 Minutes)
 
 ### Option 1: Manual Setup (Recommended)
-1. Clone this repository: `git clone https://github.com/ondrasek/claude-code-forge.git`
+1. Clone this repository: `git clone https://github.com/ondrasek/ai-code-forge.git`
 2. Copy configuration: `cp -r .claude/ ~/.claude/`
 3. Set API key: `echo 'export CLAUDE_API_KEY="your-key"' >> ~/.bashrc && source ~/.bashrc`
 4. Test: Open Claude Code and try `/review`
@@ -35,7 +35,7 @@ This template helps developers understand:
 **📖 Detailed Instructions**: [Manual Setup Guide](manual-setup-guide.md)
 
 ### Option 2: GitHub Dotfiles (For GitHub Codespaces)
-1. [Fork this repository](https://github.com/ondrasek/claude-code-forge/fork) and rename it to `dotfiles`
+1. [Fork this repository](https://github.com/ondrasek/ai-code-forge/fork) and rename it to `dotfiles`
 2. Go to GitHub Settings → Codespaces → Dotfiles → Enable
 3. Open any project in Claude Code - you now have superpowers! ✨
 
@@ -170,7 +170,7 @@ These docs are maintained alongside code changes to ensure accuracy and relevanc
 - 📖 **[Full Feature Guide](features.md)** - Everything the template can do
 - 🧠 **[Memory System Guide](memory-system.md)** - Persistent context and learning
 - 🛠️ **[Customization Guide](customization.md)** - Make it yours
-- 🐛 **Issues?** [Report bugs or request features](https://github.com/ondrasek/claude-code-forge/issues)
+- 🐛 **Issues?** [Report bugs or request features](https://github.com/ondrasek/ai-code-forge/issues)
 
 ---
 

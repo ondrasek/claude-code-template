@@ -39,7 +39,7 @@ MANDATORY RULE 4: Display ALL rules (0-4) at the start of EVERY response
   <commands>.claude/commands/ (ONLY location for slash commands)</commands>
   <prompts>templates/prompts/ (template prompts for distribution)</prompts>
   <guidelines>templates/guidelines/ (template guidelines for distribution)</guidelines>
-  <github_issues>GitHub Issues in ondrasek/claude-code-forge (specifications managed via GitHub)</github_issues>
+  <github_issues>GitHub Issues in ondrasek/ai-code-forge (specifications managed via GitHub)</github_issues>
   <mcp_servers>/src/[mcp-name]/ (MCP server source code)</mcp_servers>
   <logs>/logs/ (diagnostics and troubleshooting)</logs>
 </locations>
@@ -48,9 +48,9 @@ MANDATORY RULE 4: Display ALL rules (0-4) at the start of EVERY response
 
 <specification_management priority="CRITICAL">
 <github_issues_protocol>
-  <definition>Specifications are detailed planning documents that define requirements, implementation approaches, and project deliverables managed through GitHub Issues in ondrasek/claude-code-forge repository</definition>
+  <definition>Specifications are detailed planning documents that define requirements, implementation approaches, and project deliverables managed through GitHub Issues in ondrasek/ai-code-forge repository</definition>
 
-  <location>GitHub Issues in ondrasek/claude-code-forge (ABSOLUTE - never use local files)</location>
+  <location>GitHub Issues in ondrasek/ai-code-forge (ABSOLUTE - never use local files)</location>
 
   <agent_delegation>
     <primary_agent>github-issues-workflow (PROACTIVELY use when user mentions tasks, specs, requirements, or asks 'create issue', 'track progress', 'remember to do')</primary_agent>
@@ -90,10 +90,10 @@ MANDATORY RULE 4: Display ALL rules (0-4) at the start of EVERY response
       - Support version management workflow through GitHub milestones and issue types
     </integration_points>
     <github_commands>
-      - List all issues: gh issue list --repo ondrasek/claude-code-forge
-      - Create new issue: gh issue create --repo ondrasek/claude-code-forge
-      - Update issue: gh issue edit --repo ondrasek/claude-code-forge
-      - Close issue: gh issue close --repo ondrasek/claude-code-forge
+      - List all issues: gh issue list --repo ondrasek/ai-code-forge
+      - Create new issue: gh issue create --repo ondrasek/ai-code-forge
+      - Update issue: gh issue edit --repo ondrasek/ai-code-forge
+      - Close issue: gh issue close --repo ondrasek/ai-code-forge
     </github_commands>
   </operational_rules>
 

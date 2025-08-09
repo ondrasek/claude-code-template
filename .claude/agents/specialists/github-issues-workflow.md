@@ -11,7 +11,7 @@ tools: Bash, Grep, Glob, LS, Read, Edit, MultiEdit, WebSearch
 ## Core Responsibilities
 
 ### Issue Management
-- Create GitHub Issues in ondrasek/claude-code-forge repository with automatic cross-referencing
+- Create GitHub Issues in ondrasek/ai-code-forge repository with automatic cross-referencing
 - Update issue status and metadata using labels and assignees
 - Track progress without polluting main context
 - Manage task priorities and assignments through GitHub
@@ -56,10 +56,10 @@ Technical approach, dependencies, constraints.
 
 ## GitHub Issues Protocol
 
-**REPOSITORY**: All issues MUST be created in ondrasek/claude-code-forge repository.
+**REPOSITORY**: All issues MUST be created in ondrasek/ai-code-forge repository.
 
 **Dynamic Label Selection**:
-Use `gh label list --repo ondrasek/claude-code-forge --json name,color,description` to discover available labels dynamically. Select from existing labels only - NEVER create new labels:
+Use `gh label list --repo ondrasek/ai-code-forge --json name,color,description` to discover available labels dynamically. Select from existing labels only - NEVER create new labels:
 
 - **Type Classification**: Map issue content to available type labels (e.g., feat, fix, docs, refactor, test, chore)
 - **Priority Assignment**: Apply priority labels when available based on issue urgency
@@ -67,11 +67,11 @@ Use `gh label list --repo ondrasek/claude-code-forge --json name,color,descripti
 - **Fallback Strategy**: Use generic existing labels like 'enhancement' when specific matches aren't found
 
 **GitHub CLI Commands**:
-- Discover labels: `gh label list --repo ondrasek/claude-code-forge --json name,color,description`
-- List all issues: `gh issue list --repo ondrasek/claude-code-forge`
-- Create new issue: `gh issue create --repo ondrasek/claude-code-forge --label $(existing_labels_only)`
-- Update issue: `gh issue edit --repo ondrasek/claude-code-forge`
-- Close issue: `gh issue close --repo ondrasek/claude-code-forge`
+- Discover labels: `gh label list --repo ondrasek/ai-code-forge --json name,color,description`
+- List all issues: `gh issue list --repo ondrasek/ai-code-forge`
+- Create new issue: `gh issue create --repo ondrasek/ai-code-forge --label $(existing_labels_only)`
+- Update issue: `gh issue edit --repo ondrasek/ai-code-forge`
+- Close issue: `gh issue close --repo ondrasek/ai-code-forge`
 - **CRITICAL**: Never use `gh label create` - only select from existing labels
 
 ## Agent Behavior
@@ -99,7 +99,7 @@ Use `gh label list --repo ondrasek/claude-code-forge --json name,color,descripti
 ### Creating Issues
 ```
 Task: "Create issue for implementing user authentication system"
-Agent: Creates GitHub Issue in ondrasek/claude-code-forge with proper labels
+Agent: Creates GitHub Issue in ondrasek/ai-code-forge with proper labels
 ```
 
 ### Status Updates
@@ -147,7 +147,7 @@ When creating or updating issues, automatically analyze existing issues for rela
 
 **Cross-Reference Algorithm**:
 1. Extract keywords and technical concepts from new/updated issue
-2. Search existing issues using `gh issue list --search "keyword1 OR keyword2" --repo ondrasek/claude-code-forge`
+2. Search existing issues using `gh issue list --search "keyword1 OR keyword2" --repo ondrasek/ai-code-forge`
 3. Apply relevance scoring based on:
    - **Direct keyword matches** (high relevance)
    - **Technical domain overlap** (medium relevance) 

@@ -151,7 +151,7 @@ rm -f /tmp/pr_body.md
 
 ```bash
 # 1. Discover available labels dynamically and detect appropriate labels based on file changes
-AVAILABLE_LABELS=$(gh label list --repo ondrasek/claude-code-forge --json name --jq '.[].name' 2>/dev/null | tr '\n' ' ')
+AVAILABLE_LABELS=$(gh label list --repo ondrasek/ai-code-forge --json name --jq '.[].name' 2>/dev/null | tr '\n' ' ')
 LABELS=()
 
 # File-based label detection using discovered labels
@@ -346,7 +346,7 @@ MEMORY STATUS: Authentication failure pattern stored for recognition
 - Maintain commit message consistency across PR lifecycle
 
 ### Intelligent Label Detection
-- **Dynamic Discovery**: Fetch current repository labels using `gh label list --repo ondrasek/claude-code-forge --json name,color,description`
+- **Dynamic Discovery**: Fetch current repository labels using `gh label list --repo ondrasek/ai-code-forge --json name,color,description`
 - **File Extension Analysis**: Map file types to discovered technology-specific labels
 - **Semantic Analysis**: Parse commit messages to match type-based labels from repository
 - **Multi-Label Support**: Apply multiple relevant labels when context supports it

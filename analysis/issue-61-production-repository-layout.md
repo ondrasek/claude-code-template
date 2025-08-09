@@ -255,7 +255,7 @@ CCF_CONFIG_SCHEMA:
     auto_update: false
     backup_enabled: true
     backup_retention_days: 30
-    template_sources: ["https://github.com/ondrasek/claude-code-forge/templates"]
+    template_sources: ["https://github.com/ondrasek/ai-code-forge/templates"]
     deployment:
       merge_strategy: "intelligent"
       conflict_resolution: "prompt"

@@ -24,8 +24,8 @@ tools: Read, Edit, Write, MultiEdit, Bash, Grep, Glob, LS
 <workflow_process priority="HIGH">
 <step1>Analyze and selectively stage changes using intelligent staging logic (not blanket git add -A)</step1>
 <step2>Review the scope of uncommitted changes and craft commit message using standardized templates</step2>
-<step3>Validate need for CHANGELOG.md updates and update only if substantive changes warrant documentation</step3>
-<step4>Determine need for README.md updates and update only if features/structure changed</step4>
+<step3>Review and update CHANGELOG.md </step3>
+<step4>Review and update README.md</step4>
 <step5>Follow with release tagging evaluation using established criteria</step5>
 </workflow_process>
 
@@ -71,28 +71,28 @@ ISSUE_NUM=$(echo "$BRANCH" | grep -oE 'issue-[0-9]+' | grep -oE '[0-9]+' || echo
 
 # 2. Intelligent Issue Validation with Diagnostics
 if [ -n "$ISSUE_NUM" ]; then
-  gh issue view "$ISSUE_NUM" --repo ondrasek/claude-code-forge >/dev/null 2>&1
+  gh issue view "$ISSUE_NUM" --repo ondrasek/ai-code-forge >/dev/null 2>&1
   if [ $? -eq 0 ]; then
     ISSUE_REF="(closes #$ISSUE_NUM)"
   else
     echo "🔍 DIAGNOSTIC: Issue #$ISSUE_NUM not accessible. Running diagnostics..."
-    
+
     # Smart diagnostics instead of generic error
     echo "Checking authentication status..."
     EXECUTE: gh auth status
-    
+
     echo "Testing repository access..."
-    EXECUTE: gh repo view ondrasek/claude-code-forge --json name,owner
-    
+    EXECUTE: gh repo view ondrasek/ai-code-forge --json name,owner
+
     echo "Searching for similar issues..."
-    EXECUTE: gh issue list --repo ondrasek/claude-code-forge --search "$ISSUE_NUM" --limit 5
-    
+    EXECUTE: gh issue list --repo ondrasek/ai-code-forge --search "$ISSUE_NUM" --limit 5
+
     echo "📋 RESOLUTION OPTIONS:"
-    echo "1. Create missing issue: gh issue create --repo ondrasek/claude-code-forge --title '[Title]'"
+    echo "1. Create missing issue: gh issue create --repo ondrasek/ai-code-forge --title '[Title]'"
     echo "2. Use different issue number in branch name"
     echo "3. Proceed with manual commit format (no issue reference)"
     echo "4. Fix authentication if needed: gh auth login"
-    
+
     echo "❓ Would you like me to:"
     echo "  a) Create issue #$ISSUE_NUM with title from branch context?"
     echo "  b) Search for related existing issues?"
@@ -105,33 +105,33 @@ fi
 # 3. Smart Issue Detection Recovery
 if [ -z "$ISSUE_REF" ]; then
   echo "🔍 DIAGNOSTIC: No GitHub issue reference detected from branch '$BRANCH'"
-  
+
   # Intelligent branch analysis
   echo "Analyzing branch name pattern..."
   EXECUTE: echo "$BRANCH" | grep -E "(issue|fix|feat|bug)" || echo "No standard keywords found"
-  
+
   echo "📋 RESOLUTION OPTIONS based on current context:"
-  
+
   # Extract potential issue patterns
   POTENTIAL_NUMS=$(echo "$BRANCH" | grep -oE '[0-9]+' | head -3)
   if [ -n "$POTENTIAL_NUMS" ]; then
     echo "Found potential issue numbers in branch name: $POTENTIAL_NUMS"
     echo "Checking if any match existing issues..."
     for NUM in $POTENTIAL_NUMS; do
-      EXECUTE: gh issue view "$NUM" --repo ondrasek/claude-code-forge --json number,title 2>/dev/null || echo "Issue #$NUM: Not found"
+      EXECUTE: gh issue view "$NUM" --repo ondrasek/ai-code-forge --json number,title 2>/dev/null || echo "Issue #$NUM: Not found"
     done
   fi
-  
+
   echo "🛠️  AVAILABLE ACTIONS:"
   echo "1. Rename branch to proper format: git branch -m claude/issue-XX-$(date +%Y%m%d-%H%M)"
-  echo "2. Create new issue for this work: gh issue create --repo ondrasek/claude-code-forge"
+  echo "2. Create new issue for this work: gh issue create --repo ondrasek/ai-code-forge"
   echo "3. Use manual commit format: 'type(scope): description (closes #XX)'"
   echo "4. Proceed without issue reference (not recommended)"
-  
+
   echo "💡 SMART SUGGESTIONS:"
   echo "Based on recent changes, this might relate to existing issues:"
-  EXECUTE: gh issue list --repo ondrasek/claude-code-forge --state open --limit 5 --json number,title
-  
+  EXECUTE: gh issue list --repo ondrasek/ai-code-forge --state open --limit 5 --json number,title
+
   echo "❓ Would you like me to help with any of these actions?"
   echo "⚠️  SAFETY: I will ask for confirmation before any destructive git operations."
 fi
@@ -162,7 +162,7 @@ git log --oneline --grep="closes #" --grep="fixes #" --grep="resolves #" --grep=
 
 # 2. Categorize issues by type using GitHub labels
 for issue_num in $(git log --oneline --grep="closes #" --grep="fixes #" | grep -oE '#[0-9]+' | tr -d '#'); do
-  LABELS=$(gh issue view "$issue_num" --repo ondrasek/claude-code-forge --json labels --jq '.labels[].name' 2>/dev/null)
+  LABELS=$(gh issue view "$issue_num" --repo ondrasek/ai-code-forge --json labels --jq '.labels[].name' 2>/dev/null)
   if echo "$LABELS" | grep -q "feat"; then
     FEAT_ISSUES="$FEAT_ISSUES #$issue_num"
   elif echo "$LABELS" | grep -q "fix"; then
@@ -173,7 +173,7 @@ done
 # 3. Format CHANGELOG.md entries with issue references
 echo "### Added"
 echo "- **Feature Name**: Description (closes #XX, resolves #YY)"
-echo "### Fixed" 
+echo "### Fixed"
 echo "- **Bug Fix**: Description (fixes #XX)"
 ```
 
@@ -243,7 +243,7 @@ Evaluate each commit against these 5 criteria:
      CLOSED_ISSUES=$(git log --grep="closes #" --grep="fixes #" --grep="resolves #" | \
                      grep -oE '#[0-9]+' | tr -d '#' | sort -u)
    fi
-   
+
    # Format issue list for tag message
    ISSUE_LIST=$(echo "$CLOSED_ISSUES" | sed 's/^/#/' | tr '\n' ', ' | sed 's/, $//')
    ```
@@ -257,10 +257,10 @@ Evaluate each commit against these 5 criteria:
 4. **Create annotated tag with issue aggregation**:
    ```bash
    TAG_MESSAGE="Release v1.2.3 - [brief description]
-   
+
    Resolved Issues: $ISSUE_LIST
-   
-   📋 Full changelog: https://github.com/ondrasek/claude-code-forge/compare/$LAST_TAG...v1.2.3"
+
+   📋 Full changelog: https://github.com/ondrasek/ai-code-forge/compare/$LAST_TAG...v1.2.3"
    git tag -a v1.2.3 -m "$TAG_MESSAGE"
    ```
 
@@ -306,9 +306,9 @@ Instead of assuming commands succeed, diagnose each step:
 ```bash
 # Enhanced git status with error handling
 EXECUTE: git status --porcelain
-IF_FAILS: 
+IF_FAILS:
   - EXECUTE: git --version to verify git installation
-  - EXECUTE: pwd to check current directory  
+  - EXECUTE: pwd to check current directory
   - EXECUTE: ls -la .git to verify git repository
   - PROVIDE: "Repository initialization required" with exact commands
 
@@ -355,7 +355,7 @@ IF GitHub commands fail:
   EXECUTE: gh auth list
   PROVIDE: specific re-authentication steps
 
-# Network connectivity diagnostics  
+# Network connectivity diagnostics
 IF network errors detected:
   EXECUTE: ping -c 3 github.com
   EXECUTE: curl -I https://github.com
@@ -518,7 +518,7 @@ Risk: [potential data loss or changes]
 Impact: [what will be affected]
 Backup: [safety measures taken]
 
-Do you want me to proceed? (y/N): 
+Do you want me to proceed? (y/N):
 Alternative: [safer manual approach if available]
 ```
 </error_recovery>

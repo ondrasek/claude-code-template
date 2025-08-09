@@ -1,10 +1,10 @@
-# Claude Code Forge
+# AI Code Forge
 
 **AI Agent System for Claude Code**
 
-[![Version](https://img.shields.io/github/v/release/ondrasek/claude-code-forge)](https://github.com/ondrasek/claude-code-forge/releases)
+[![Version](https://img.shields.io/github/v/release/ondrasek/ai-code-forge)](https://github.com/ondrasek/ai-code-forge/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Issues](https://img.shields.io/github/issues/ondrasek/claude-code-forge)](https://github.com/ondrasek/claude-code-forge/issues)
+[![Issues](https://img.shields.io/github/issues/ondrasek/ai-code-forge)](https://github.com/ondrasek/ai-code-forge/issues)
 
 Development workspace and template system for enhancing Claude Code with specialized AI workflows and integrations.
 
@@ -20,8 +20,8 @@ Development workspace and template system for enhancing Claude Code with special
 ## Installation
 
 ```bash
-git clone https://github.com/ondrasek/claude-code-forge.git
-cd claude-code-forge
+git clone https://github.com/ondrasek/ai-code-forge.git
+cd ai-code-forge
 
 # Copy configurations to your Claude Code setup
 # See docs/getting-started.md for detailed instructions
@@ -145,9 +145,9 @@ The system provides template-based configuration:
 
 ## Contributing
 
-- **Issues**: [Report bugs or request features](https://github.com/ondrasek/claude-code-forge/issues)
+- **Issues**: [Report bugs or request features](https://github.com/ondrasek/ai-code-forge/issues)
 - **Development**: See [contributing guidelines](CONTRIBUTING.md)
-- **Pull Requests**: [Submit improvements](https://github.com/ondrasek/claude-code-forge/pulls)
+- **Pull Requests**: [Submit improvements](https://github.com/ondrasek/ai-code-forge/pulls)
 
 ## Project Status
 

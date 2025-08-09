@@ -1,4 +1,4 @@
-# README Analysis: Claude Code Forge vs 2025 Industry Standards
+# README Analysis: AI Code Forge vs 2025 Industry Standards
 
 **RESEARCH TOPIC**: CLI Tool Documentation Best Practices and README Structure Analysis
 **RESEARCH TYPE**: Comparative Documentation Analysis
@@ -21,7 +21,7 @@
 
 3. **Quick Start Excellence**
    - Prerequisites clearly listed with verification commands
-   - Single command installation (`uvx claude-code-forge init`)
+   - Single command installation (`uvx ai-code-forge init`)
    - Immediate verification steps
    - Quick reference section for most-used commands
 
@@ -62,7 +62,7 @@
 - Client library information
 - Regular documentation updates
 
-**Claude Code Forge Alignment:** ✅ Strong - Incorporates best practices from all three patterns
+**AI Code Forge Alignment:** ✅ Strong - Incorporates best practices from all three patterns
 
 ### 2025 Documentation Trends Analysis
 
@@ -179,7 +179,7 @@
 - [Detailed solutions...]
 
 ### "Installation Hangs" Issues
-**Symptoms:** `uvx claude-code-forge init` doesn't complete
+**Symptoms:** `uvx ai-code-forge init` doesn't complete
 **Causes & Solutions:**
 - [Detailed solutions...]
 ```
@@ -207,9 +207,9 @@
 
 **Add Community Metrics:**
 ```markdown
-[![GitHub Stars](https://img.shields.io/github/stars/ondrasek/claude-code-forge)](https://github.com/ondrasek/claude-code-forge/stargazers)
-[![Contributors](https://img.shields.io/github/contributors/ondrasek/claude-code-forge)](https://github.com/ondrasek/claude-code-forge/graphs/contributors)
-[![Last Commit](https://img.shields.io/github/last-commit/ondrasek/claude-code-forge)](https://github.com/ondrasek/claude-code-forge/commits)
+[![GitHub Stars](https://img.shields.io/github/stars/ondrasek/ai-code-forge)](https://github.com/ondrasek/ai-code-forge/stargazers)
+[![Contributors](https://img.shields.io/github/contributors/ondrasek/ai-code-forge)](https://github.com/ondrasek/ai-code-forge/graphs/contributors)
+[![Last Commit](https://img.shields.io/github/last-commit/ondrasek/ai-code-forge)](https://github.com/ondrasek/ai-code-forge/commits)
 ```
 
 **SEO Keywords Addition:**
