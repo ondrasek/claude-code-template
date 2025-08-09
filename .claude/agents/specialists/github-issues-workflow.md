@@ -67,6 +67,9 @@ Use `gh label list --repo ondrasek/ai-code-forge --json name,color,description` 
 - **Type Classification**: Map issue content to available type labels (e.g., feat, fix, docs, refactor, test, chore)
 - **Priority Assignment**: Apply priority labels when available based on issue urgency
 - **Status Updates**: ALWAYS update issue labels when working on issues to reflect current status
+- **Quality Assessment**: Apply quality-related labels for issue management:
+  - `needs refinement` - Issue requires clarification, additional details, or scope refinement
+  - `over-engineered` - Issue proposes overly complex solution requiring simplification
 - **Label Restriction**: ONLY use existing labels found in repository - no label creation permitted
 - **Fallback Strategy**: Use generic existing labels like 'enhancement' when specific matches aren't found
 
@@ -275,6 +278,7 @@ gh label list --repo ondrasek/ai-code-forge --json name,description | grep -i "w
 - `invalid` - Issue is not valid (unclear, incorrect, not reproducible)
 - `completed` - Issue successfully completed/resolved
 - `superseded` - Replaced by better approach or different implementation
+- `over-engineered` - Issue proposes overly complex solution requiring simplification
 
 #### Step 2: Add Detailed Closure Comment
 ALWAYS add a comprehensive closure comment explaining the decision:
@@ -335,6 +339,11 @@ gh issue close <issue_number> --repo ondrasek/ai-code-forge
 - **Use when**: Better approach replaces this issue's proposal
 - **Required documentation**: Reference to superior approach or implementation
 - **Example comment**: "Closing as superseded - replaced with simplified approach in #105 which addresses security concerns identified during analysis"
+
+#### "over-engineered" Category:
+- **Use when**: Issue proposes unnecessarily complex solution that should be simplified
+- **Required documentation**: Explanation of complexity issues and suggested simplified alternatives
+- **Example comment**: "Closing as over-engineered - the proposed multi-layer shell+JSON integration adds unnecessary complexity. Simple git worktree commands with basic wrapper functions would achieve the same goals with better maintainability and security."
 
 ### Quality Assurance for Closures
 

@@ -395,7 +395,7 @@ DECISION: [Tag/No Tag] - [brief justification]
 VERSION: v1.2.3 ([major/minor/patch] - [reasoning])
 TAG MESSAGE: [proposed tag message]
 CHANGELOG UPDATES: [summary of changes to add]
-README UPDATES: [spawn separate agent to update README.md with current state]
+README UPDATES: [update README.md with current state]
 ```
 
 ### Troubleshooting Output
