@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+- **Development Scripts Cleanup**: Removed obsolete development and testing scripts (refs #105)
+  - Removed setup-claude-memory.sh (functionality integrated into launch script)
+  - Removed test-agents.sh and test-session-logging.sh (development utilities)
+  - Updated README.md to reflect current script system
+
 ## [2.88.0] - 2025-08-09
 
 ### Added
