@@ -14,13 +14,12 @@ A comprehensive template system that enhances Claude Code with specialized AI ag
 # 1. Clone and setup
 git clone https://github.com/ondrasek/ai-code-forge.git
 cd ai-code-forge
-./scripts/setup-claude-memory.sh
 
 # 2. Launch enhanced Claude Code
 ./scripts/launch-claude.sh
 
-# 3. Test your AI agent system
-./scripts/test-agents.sh
+# 3. Create worktrees for parallel development (optional)
+./scripts/worktree/worktree.sh create feature/new-feature
 ```
 
 **Requirements**: Claude Code CLI, Git, Python 3.13+, Node.js
@@ -55,10 +54,20 @@ cd ai-code-forge
 
 Utility scripts for Claude Code setup and operation:
 
-- `launch-claude.sh` - Launch Claude Code with memory configuration
-- `setup-claude-memory.sh` - Configure cross-session memory system
-- `test-agents.sh` - Test agent system functionality
-- `test-session-logging.sh` - Validate logging and session management
+- `launch-claude.sh` - Launch Claude Code with enhanced configuration and logging
+- `worktree/worktree.sh` - Unified interface for git worktree management and parallel development
+- `worktree-create.sh` - Core worktree creation utility with GitHub issue integration
+- `worktree-list.sh` - Advanced worktree listing with detailed status information
+
+### Git Worktree Management
+
+Parallel development workflow utilities:
+
+- `worktree/worktree.sh` - Unified worktree management interface
+  - `worktree.sh create <branch>` - Create new worktree
+  - `worktree.sh create --from-issue <num>` - Create from GitHub issue
+  - `worktree.sh list` - List all worktrees
+  - `worktree.sh cleanup` - Clean up invalid worktrees
 
 ## Technology Stack Integration
 

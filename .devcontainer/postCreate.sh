@@ -31,7 +31,7 @@ fi
 
 set -e
 
-devcontainerDir=/tmp/.devcontainer 
+devcontainerDir=/tmp/.devcontainer
 eval "$(grep -v '^#' $devcontainerDir/postCreate.env.tmp | sed 's/^/export /')"
 workingCopy=/workspace/$repositoryName
 
@@ -64,50 +64,6 @@ fi
 # Set zsh as default shell
 sudo chsh -s $(which zsh) $USER
 
-# Set up shell aliases and environment for both bash and zsh
-echo "🐚 Configuring shell environment..."
-cat >> ~/.bashrc << 'EOF'
-
-# AI Code Forge Aliases
-alias launch-claude='/workspace/ai-code-forge/scripts/launch-claude.sh'
-
-# Environment variables for Claude Code
-export PYTHONIOENCODING=UTF-8
-
-# Add local bin to PATH
-export PATH="$HOME/.local/bin:$PATH"
-EOF
-
-# ...thsi time with variable substitution
-cat >> ~/.bashrc << EOF
-
-# Go to workspace
-cd /workspace/$repositoryName
-EOF
-
-# Configure zsh with same environment
-cat >> ~/.zshrc << 'EOF'
-
-# AI Code Forge Aliases
-alias launch-claude='/workspace/ai-code-forge/scripts/launch-claude.sh'
-
-# Environment variables for Claude Code
-export PYTHONIOENCODING=UTF-8
-
-# Add local bin to PATH
-export PATH="$HOME/.local/bin:$PATH"
-
-# Go to workspace
-cd /workspace/$repositoryName
-EOF
-
-# ...this time with variable substitution
-cat >> ~/.zshrc << EOF
-
-# Go to workspace
-cd /workspace/$repositoryName
-EOF
-
 # Set up Git configuration (if not already configured)
 if [ -z "$(git config --global user.name)" ]; then
     echo "⚙️ Setting up basic Git configuration..."
@@ -137,13 +93,63 @@ else
 fi
 
 echo "📋 Cloning repository into workspace:"
-if [ -d $workingCopy/.git ]; then 
+if [ -d $workingCopy/.git ]; then
   cd $workingCopy
   gh repo sync
   cd -
 else
   gh repo clone $repositoryNameWithOwner $workingCopy
 fi
+
+worktreesDir=/workspace/worktrees/$repositoryName
+mkdir -p $worktreesDir
+git config --global -add safe.directory $worktreesDir
+
+# Set up shell aliases and environment for both bash and zsh
+echo "🐚 Configuring shell environment..."
+cat >> ~/.bashrc << 'EOF'
+
+# Environment variables for Claude Code
+export PYTHONIOENCODING=UTF-8
+
+# Add local bin to PATH
+export PATH="$HOME/.local/bin:$PATH"
+EOF
+
+# ...thsi time with variable substitution
+cat >> ~/.bashrc << EOF
+# Devcontainer folder structure
+export REPOSITORY_NAME=$repositoryName
+export WORKING_COPY=$workingCopy
+export WORKTREES=$worktreesDir
+
+# Go to workspace
+cd /workspace/$repositoryName
+EOF
+
+# Configure zsh with same environment
+cat >> ~/.zshrc << 'EOF'
+
+# Environment variables for Claude Code
+export PYTHONIOENCODING=UTF-8
+
+# Add local bin to PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+# Go to workspace
+cd /workspace/$repositoryName
+EOF
+
+# ...this time with variable substitution
+cat >> ~/.zshrc << EOF
+# Devcontainer folder structure
+export REPOSITORY_NAME=$repositoryName
+export WORKING_COPY=$workingCopy
+export WORKTREES=$worktreesDir
+
+# Go to workspace
+cd /workspace/$repositoryName
+EOF
 
 # Verify installations
 echo "✅ Verifying installations..."
