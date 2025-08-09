@@ -17,6 +17,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Human-supervised approach for all GitHub issue modifications with read-only analysis output
   - Template GitHub Actions workflow for automated issue refinement with security best practices
 
+### Enhanced
+- **Issue Workflow Simplification**: Streamlined GitHub issue workflow to eliminate worktree detection complexity (fixes #120)
+  - Removed automatic feature branch creation in favor of current branch workflow
+  - Enhanced `/issue:start` command to work directly on current branch with protected branch warnings
+  - Updated `/issue:pr` command to create PRs from current branch instead of feature branches
+  - Simplified github-issues-workflow agent by eliminating conditional branch management logic
+  - Supports both traditional git workflows and worktree environments seamlessly
+  - Gives users full control over their branching strategy without forced conventions
+
 ## [2.88.2] - 2025-08-09
 
 ### Security
