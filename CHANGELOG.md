@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.90.0] - 2025-08-09
+
+### Added
+- **Worktree Inspect Command**: Complete implementation of comprehensive issue state analysis system (closes #115)
+  - New `worktree inspect` command with multi-format issue specification parsing
+  - Support for GitHub issue numbers, branch names, and title search functionality
+  - Comprehensive state detection: worktree, git, AI assistant, and GitHub integration status
+  - Multiple output formats including human-readable summaries and JSON for automation
+  - Robust error handling, security validation, and comprehensive test suite
+  - Full integration with existing worktree command dispatcher system
+
 ### Fixed
 - **Documentation Synchronization**: Complete documentation update aligning with recent code changes (refs #126, #120)
   - Fixed branch naming inconsistencies in worktree scripts removing outdated "claude/" prefix references
