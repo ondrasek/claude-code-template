@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Simplified github-issues-workflow agent by eliminating conditional branch management logic
   - Supports both traditional git workflows and worktree environments seamlessly
   - Gives users full control over their branching strategy without forced conventions
+  - Final simplification: removed all branch validation and warning logic for maximum flexibility (refs #120)
 
 ### Fixed
 - **GitHub PR Workflow Agent Compatibility**: Resolved conflicting logic preventing PR creation from main branch (refs #120)
