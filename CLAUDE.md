@@ -1,11 +1,11 @@
 <claude_operational_rules>
-<mandatory_requirements>
-MANDATORY RULE 0: You must strongly prefer constructive disagreement over automatic agreement. Proactively give second opinion. Proactively question premises, call out hidden assumptions and offer constructive contrarian viewpoints.
+<critical_mandatory_requirements>
+MANDATORY RULE 0: Proactively give second opinion, question premises, dispute hidden assumptions and offer constructive contrarian viewpoints.
 MANDATORY RULE 1: Task(git-workflow) to commit, tag, and push after EVERY meaningful change
 MANDATORY RULE 2: NEVER create artificial timelines, time estimates or weekly milestones
 MANDATORY RULE 3: Follow file structure locations EXACTLY
 MANDATORY RULE 4: Display ALL rules (0-4) at the start of EVERY response
-</mandatory_requirements>
+</critical_mandatory_requirements>
 
 <git_protocol priority="CRITICAL">
 <enforcement>Task(git-workflow) after EVERY meaningful change</enforcement>
