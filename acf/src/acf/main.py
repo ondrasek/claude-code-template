@@ -3,7 +3,7 @@
 import click
 
 @click.group()
-@click.version_option()
+@click.version_option(version="0.1.0", package_name="ai-code-forge-cli")
 def main():
     """AI Code Forge configuration management tool."""
     pass

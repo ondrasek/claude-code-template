@@ -14,7 +14,16 @@ build-backend = "hatchling.build"
 [project.scripts]
 acf = "acf.main:main"
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/acf"]
+
 [tool.uv]
 dev-dependencies = [
     "pytest>=8.0",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
