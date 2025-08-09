@@ -7,19 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+- **Development Scripts Cleanup**: Removed obsolete development and testing scripts (refs #105)
+  - Removed setup-claude-memory.sh (functionality integrated into launch script)
+  - Removed test-agents.sh and test-session-logging.sh (development utilities)
+  - Updated README.md to reflect current script system
+
+## [0.1.0] - 2025-08-09
+
 ### Fixed
+- **Worktree GitHub Comment Logic**: Fixed GitHub comment logic for existing branches in worktree creation workflow (resolves #121)
+  - Only add GitHub issue comments when new branches are created
+  - Skip GitHub comments when using existing branches in --from-issue mode
+  - Add branch_was_created global variable to track creation status
+  - Provide informative message when skipping comment for existing branch
 - **Comprehensive PR Review Response**: Addressed all high/medium priority concerns in worktree management scripts (closes #105)
   - Fixed critical TOCTOU race condition in directory creation logic with proper timing attack prevention
   - Standardized repository name validation across worktree-create.sh and worktree-cleanup.sh with enhanced security
   - Enhanced error handling with specific path context and proper error code returns for failed operations
   - Implemented comprehensive cleanup logic for failed worktree creation operations with secure state management
   - Added comprehensive security testing infrastructure with unit tests for validation functions and injection attack prevention
-
-### Removed
-- **Development Scripts Cleanup**: Removed obsolete development and testing scripts (refs #105)
-  - Removed setup-claude-memory.sh (functionality integrated into launch script)
-  - Removed test-agents.sh and test-session-logging.sh (development utilities)
-  - Updated README.md to reflect current script system
 
 ## [2.88.0] - 2025-08-09
 
