@@ -22,6 +22,7 @@ Comprehensive planning phase for GitHub Issue implementation with deep analysis 
    - **Quality Review**: Invoke critic agent to review plan completeness and feasibility
    - **User Approval Gate**: Present complete findings and require explicit approval before any modifications
    - **Plan Persistence**: Store approved plan for /issue start consumption
+   - **Update Github Issue**: Update github issue with the created plan description, add/remove appropriate labels from the issue
 
 3. **Critical Constraints**:
    - All work occurs on current branch (no branching during planning)
