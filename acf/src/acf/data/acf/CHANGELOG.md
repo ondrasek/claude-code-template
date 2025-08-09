@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **ACF CLI Tool**: Complete configuration management tool for AI Code Forge installations (closes #59)
+  - `acf install` command for automated configuration deployment with comprehensive file management
+  - `acf status` command for installation verification and diagnostics with detailed component reporting
+  - Support for targeted installations with `--target` option for custom directory deployment
+  - Force installation option with `--force` flag for overwriting existing configurations
+  - Automated deployment of `.claude/` (agents, commands, settings), `.acf/` (templates, docs), and `CLAUDE.md`
+  - Complete Python packaging with pyproject.toml and build system for distribution-ready wheel creation
+  - Comprehensive test suite with 30 test cases covering installer, CLI, and integration scenarios
+  - Build validation system with GitHub Actions workflow for automated CI/CD pipeline
+
 ### Fixed
 - **Comprehensive PR Review Response**: Addressed all high/medium priority concerns in worktree management scripts (closes #105)
   - Fixed critical TOCTOU race condition in directory creation logic with proper timing attack prevention

@@ -3,7 +3,7 @@ revision = 3
 requires-python = ">=3.13"
 
 [[package]]
-name = "ai-code-forge-cli"
+name = "ai-code-forge"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
