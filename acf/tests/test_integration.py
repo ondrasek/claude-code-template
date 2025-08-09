@@ -27,7 +27,7 @@ class TestCLIIntegration:
         with self.runner.isolated_filesystem():
             result = self.runner.invoke(main, ["install"])
             assert result.exit_code == 0
-            assert "Installing configuration..." in result.output
+            assert "🚀 Installing ACF configuration to:" in result.output
     
     def test_status_after_install(self):
         """Test status command after install."""
@@ -39,7 +39,7 @@ class TestCLIIntegration:
             # Then check status
             status_result = self.runner.invoke(main, ["status"])
             assert status_result.exit_code == 0
-            assert "Checking status..." in status_result.output
+            assert "📊 ACF Installation Status for:" in status_result.output
     
     def test_command_order_independence(self):
         """Test commands work in any order."""

@@ -1,10 +1,13 @@
 #!/bin/bash
 set -e
 
-# ACF package data build script
-# Copies source files from repository root to package data directory
+# ACF complete build script
+# 1. Copies source files to package data directory
+# 2. Builds the package
+# 3. Validates the build
 
-echo "Building ACF package data..."
+echo "=== ACF Complete Build Process ==="
+echo "Step 1: Building package data..."
 
 # Get repository root (parent of acf directory)
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -29,10 +32,41 @@ cp -r "$REPO_ROOT"/templates "$PACKAGE_DATA/acf/"
 cp -r "$REPO_ROOT"/scripts "$PACKAGE_DATA/acf/"
 cp -r "$REPO_ROOT"/docs "$PACKAGE_DATA/acf/"
 
+# Copy ACF tool documentation
+echo "Copying ACF tool documentation..."
+cp "$REPO_ROOT/README.md" "$PACKAGE_DATA/acf/"
+cp "$REPO_ROOT/CHANGELOG.md" "$PACKAGE_DATA/acf/"
+
 # Copy CLAUDE.md to root
 echo "Copying CLAUDE.md..."
 cp "$REPO_ROOT/CLAUDE.md" "$PACKAGE_DATA/"
 
-echo "Build complete!"
-echo "Package data structure:"
-find "$PACKAGE_DATA" -type d | head -20
+echo "Step 1 complete - Package data prepared!"
+
+echo ""
+echo "Step 2: Building ACF package..."
+uv build
+
+echo ""
+echo "Step 3: Validating build..."
+# Check if wheel was created
+if ls dist/*.whl >/dev/null 2>&1; then
+    echo "✅ Wheel file created successfully"
+else
+    echo "❌ No wheel file found"
+    exit 1
+fi
+
+# Test that the package can be imported
+echo "Testing package import..."
+if uv run python -c "import acf; print('✅ Package imports successfully')"; then
+    echo "✅ Package validation passed"
+else
+    echo "❌ Package validation failed"
+    exit 1
+fi
+
+echo ""
+echo "🎉 ACF Complete Build Process Successful!"
+echo "Generated files:"
+ls -la dist/

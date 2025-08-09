@@ -22,6 +22,8 @@ echo "🛠️ Installing Python development tools..."
 uv tool install ruff
 uv tool install pytest
 uv tool install mypy
+uv tool install yamllint
+uv tool install yq
 
 # Skip the hassle when in GitHub Codespaces
 if [ "$CODESPACES" = "true" ]; then
