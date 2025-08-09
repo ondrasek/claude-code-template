@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.88.1] - 2025-08-09
+
+### Fixed
+- **Git-Workflow Agent Version Detection**: Fixed critical bug preventing correct version tag generation (closes #123)
+  - Added comprehensive repository state validation with main branch tag checking
+  - Implemented change type analysis (BREAKING/feat/patch) from commit messages  
+  - Added branch-aware logic: semantic versions for main, timestamped tags for features
+  - Added version conflict prevention with validate_version_progression() function
+  - Enhanced error handling with specific resolution guidance for version conflicts
+  - Prevents creating incorrect tags like v0.7.0 when repository is at v2.88.0+
+
 ### Removed
 - **Development Scripts Cleanup**: Removed obsolete development and testing scripts (refs #105)
   - Removed setup-claude-memory.sh (functionality integrated into launch script)
